@@ -174,22 +174,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
   border:1px solid var(--border);}
 
 /* NL */
-#nl{background:var(--navy);padding:84px 20px;text-align:center;}
-.nl-inner{max-width:480px;margin:0 auto;}
+#nl{background:var(--navy);padding:72px 20px;text-align:center;}
+.nl-inner{max-width:580px;margin:0 auto;}
 #nl .eyebrow{color:rgba(220,196,106,0.8);}
-#nl h2{color:#fff;margin-bottom:10px;}
+#nl h2{color:#fff;margin-bottom:12px;}
 #nl p{font-size:14.5px;color:rgba(255,255,255,0.55);font-weight:400;margin-bottom:28px;line-height:1.7;}
-.nl-row{display:flex;gap:8px;max-width:400px;margin:0 auto;}
-.nl-in{flex:1;padding:12px 15px;background:rgba(255,255,255,0.08);
-  border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;
-  font-family:'Poppins',sans-serif;font-size:14px;font-weight:400;outline:none;transition:all 0.18s;}
-.nl-in:focus{border-color:var(--gold-border);}
-.nl-in::placeholder{color:rgba(255,255,255,0.3);}
-.nl-btn{background:var(--gold-accent);color:#fff;border:none;border-radius:10px;
-  padding:12px 20px;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;
-  transition:all 0.18s;white-space:nowrap;}
-.nl-btn:hover{background:var(--gold);transform:translateY(-1px);}
-#nl-ok{color:var(--gold-border);font-size:13.5px;margin-top:14px;display:none;font-weight:500;}
+
+/* Brevo iframe wrapper — blends into dark navy bg */
+.brevo-wrap{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  overflow:hidden;
+  margin:0 auto 20px;
+  max-width:520px;
+  /* Force Brevo iframe to match our dark theme */
+  filter:invert(0);
+}
+.brevo-wrap iframe{
+  min-height:280px;
+  width:100% !important;
+}
+
+/* Trust badges */
+.nl-trust{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:rgba(255,255,255,0.35);font-weight:400;
+  margin-top:16px;
+}
+.nl-trust span{letter-spacing:0.02em;}
 
 /* FOOTER */
 footer{background:var(--bg-off);border-top:1px solid var(--border);padding:52px 20px 26px;}
@@ -367,7 +381,7 @@ footer{background:var(--bg-off);border-top:1px solid var(--border);padding:52px 
     <a href="#reviews" class="nav-a">Reviews</a>
     <a href="#nl" class="nav-a">Newsletter</a>
     <button class="nav-admin" onclick="openLogin()">Admin</button>
-    <button class="btn-navy" onclick="document.getElementById('nl').scrollIntoView({behavior:'smooth'})">Subscribe Free</button>
+    <a href="#nl" class="btn-navy" style="border-radius:980px;padding:9px 22px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:5px;background:var(--navy);color:#fff;box-shadow:0 2px 10px rgba(13,31,51,0.2);">Subscribe Free</a>
   </div>
 </nav>
 
@@ -549,12 +563,29 @@ footer{background:var(--bg-off);border-top:1px solid var(--border);padding:52px 
   <div class="nl-inner">
     <div class="eyebrow">Weekly Digest</div>
     <h2>The AI Toolbox</h2>
-    <p>Every Friday — 5 new tools, 1 deep comparison, 1 actionable tip. Join 1,000+ subscribers. Completely free.</p>
-    <div class="nl-row">
-      <input class="nl-in" type="email" id="nl-email" placeholder="your@email.com">
-      <button class="nl-btn" onclick="subscribe()">Subscribe →</button>
+    <p>Every Friday — 5 new AI tools, 1 deep comparison, 1 actionable tip.<br>Join <strong style="color:#e2c06a">1,000+ subscribers</strong>. Completely free, always.</p>
+
+    <!-- Brevo Form Wrapper -->
+    <div class="brevo-wrap">
+      <iframe
+        width="100%"
+        height="320"
+        src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ=="
+        frameborder="0"
+        scrolling="auto"
+        allowfullscreen
+        style="display:block;margin:0 auto;max-width:100%;border:none;background:transparent;">
+      </iframe>
     </div>
-    <div id="nl-ok">✓ You're in. Welcome aboard.</div>
+
+    <!-- Trust badges below form -->
+    <div class="nl-trust">
+      <span>🔒 No spam, ever</span>
+      <span>·</span>
+      <span>📬 Every Friday</span>
+      <span>·</span>
+      <span>✅ Unsubscribe anytime</span>
+    </div>
   </div>
 </div>
 
