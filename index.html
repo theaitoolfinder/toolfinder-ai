@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolFinder AI — Discover the Best AI Tools</title>
+<meta name="description" content="Curated AI tools for solopreneurs, freelancers, and creators. Find, compare, and choose the right AI tool for your workflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --accent: #7fff6e;
+    --accent2: #00e5ff;
+    --accent3: #ff6b6b;
+    --text: #f0f0f0;
+    --text2: #9090a8;
+    --border: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.04);
+    --glow: rgba(127,255,110,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.3rem;
+    color: var(--text);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .logo-dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: #0a0a0f !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 100px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+  }
+  .admin-btn {
+    background: transparent !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text2) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 100px !important;
+    font-size: 0.8rem !important;
+    cursor: pointer;
+  }
+  .admin-btn:hover { border-color: var(--accent2) !important; color: var(--accent2) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(127,255,110,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,255,110,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(127,255,110,0.1);
+    border: 1px solid rgba(127,255,110,0.3);
+    padding: 0.4rem 1rem; border-radius: 100px;
+    font-size: 0.8rem; color: var(--accent);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .pulse { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 800; line-height: 1.05;
+    max-width: 900px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 em { color: var(--accent); font-style: normal; }
+  .hero-sub {
+    margin-top: 1.5rem;
+    color: var(--text2); font-size: 1.1rem; font-weight: 300;
+    max-width: 560px; line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-search {
+    margin-top: 2.5rem;
+    display: flex; gap: 0.75rem;
+    width: 100%; max-width: 560px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-search input {
+    flex: 1; padding: 1rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 1rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .hero-search input:focus { border-color: var(--accent); }
+  .hero-search input::placeholder { color: var(--text2); }
+  .btn-primary {
+    background: var(--accent); color: #0a0a0f;
+    border: none; border-radius: 12px;
+    padding: 1rem 1.8rem;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--glow); }
+  .hero-stats {
+    margin-top: 3rem; display: flex; gap: 3rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--text2); margin-top: 0.2rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION ── */
+  section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; line-height: 1.15;
+  }
+  .section-sub { color: var(--text2); margin-top: 0.75rem; font-size: 1rem; }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    margin: 2.5rem 0;
+  }
+  .filter-btn {
+    padding: 0.5rem 1.2rem; border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--text2);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent); color: #0a0a0f;
+    border-color: var(--accent); font-weight: 600;
+  }
+
+  /* ── TOOLS GRID ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(127,255,110,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .tool-card:hover::before { opacity: 1; }
+  .tool-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .tool-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+    background: var(--bg3);
+  }
+  .tool-meta { flex: 1; }
+  .tool-name {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .tool-category {
+    font-size: 0.75rem; color: var(--accent2);
+    background: rgba(0,229,255,0.1);
+    padding: 0.15rem 0.6rem; border-radius: 100px;
+    display: inline-block;
+  }
+  .tool-desc {
+    font-size: 0.875rem; color: var(--text2); line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .tool-footer { display: flex; align-items: center; justify-content: space-between; }
+  .tool-commission {
+    font-size: 0.8rem; color: var(--accent);
+    background: rgba(127,255,110,0.08);
+    padding: 0.25rem 0.75rem; border-radius: 100px;
+    font-weight: 600;
+  }
+  .tool-link {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--text2); text-decoration: none;
+    display: flex; align-items: center; gap: 0.3rem;
+    transition: color 0.2s;
+  }
+  .tool-link:hover { color: var(--accent); }
+  .featured-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--accent); color: #0a0a0f;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem; border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  /* ── NEWSLETTER ── */
+  #newsletter {
+    background: linear-gradient(135deg, rgba(127,255,110,0.05), rgba(0,229,255,0.05));
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .nl-input-wrap { display: flex; gap: 0.75rem; max-width: 480px; margin: 2rem auto 0; }
+  .nl-input-wrap input {
+    flex: 1; padding: 0.9rem 1.2rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    outline: none;
+  }
+  .nl-input-wrap input:focus { border-color: var(--accent); }
+  .nl-input-wrap input::placeholder { color: var(--text2); }
+  #nl-success { color: var(--accent); margin-top: 1rem; display: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text2); font-size: 0.85rem;
+  }
+  footer a { color: var(--text2); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ── MODAL / OVERLAY ── */
+  .overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 100%; max-width: 480px;
+    position: relative;
+  }
+  .modal h2 {
+    font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .modal p { color: var(--text2); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: none; border: none; color: var(--text2);
+    font-size: 1.3rem; cursor: pointer; line-height: 1;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.85rem; color: var(--text2); margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group select option { background: var(--bg3); }
+  .form-error { color: var(--accent3); font-size: 0.82rem; margin-top: 0.4rem; display: none; }
+  .btn-full { width: 100%; }
+  .btn-secondary {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text2); border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  /* ── ADMIN PANEL ── */
+  #admin-panel {
+    position: fixed; inset: 0; z-index: 300;
+    background: var(--bg);
+    display: none; flex-direction: column;
+    overflow-y: auto;
+  }
+  #admin-panel.open { display: flex; }
+  .admin-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2rem;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .admin-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .admin-title span { color: var(--accent); }
+  .admin-body { padding: 2rem; max-width: 1200px; width: 100%; margin: 0 auto; }
+  .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+  .tab-btn {
+    padding: 0.6rem 1.4rem; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--text2);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--accent); color: #0a0a0f; border-color: var(--accent); font-weight: 600; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Admin stats */
+  .admin-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .admin-stat-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+  }
+  .admin-stat-card .label { font-size: 0.8rem; color: var(--text2); margin-bottom: 0.5rem; }
+  .admin-stat-card .value { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; }
+  .admin-stat-card .value.green { color: var(--accent); }
+  .admin-stat-card .value.blue { color: var(--accent2); }
+  .admin-stat-card .value.red { color: var(--accent3); }
+
+  /* Admin table */
+  .admin-table-wrap { overflow-x: auto; }
+  .admin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .admin-table th {
+    text-align: left; padding: 0.75rem 1rem;
+    color: var(--text2); font-weight: 500; font-size: 0.8rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .admin-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+  .admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .badge {
+    display: inline-block; padding: 0.2rem 0.6rem;
+    border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+  }
+  .badge-green { background: rgba(127,255,110,0.15); color: var(--accent); }
+  .badge-blue { background: rgba(0,229,255,0.15); color: var(--accent2); }
+  .badge-red { background: rgba(255,107,107,0.15); color: var(--accent3); }
+  .icon-btn {
+    background: none; border: 1px solid var(--border);
+    color: var(--text2); padding: 0.3rem 0.6rem;
+    border-radius: 6px; cursor: pointer; font-size: 0.8rem;
+    transition: all 0.2s; margin-left: 0.25rem;
+  }
+  .icon-btn:hover { border-color: var(--accent3); color: var(--accent3); }
+  .icon-btn.edit:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* Subscribers list */
+  .sub-tag {
+    display: inline-block; background: rgba(127,255,110,0.1);
+    color: var(--accent); padding: 0.15rem 0.5rem;
+    border-radius: 4px; font-size: 0.75rem; margin: 0.1rem;
+  }
+
+  /* Add tool form in admin */
+  .admin-form { max-width: 640px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* AI helper */
+  .ai-helper {
+    background: var(--bg2); border: 1px solid rgba(127,255,110,0.2);
+    border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;
+  }
+  .ai-helper-title { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+  .ai-response {
+    font-size: 0.85rem; color: var(--text2); line-height: 1.7;
+    min-height: 60px; white-space: pre-wrap;
+  }
+  .ai-loading { color: var(--accent2); font-size: 0.85rem; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.5rem;
+    font-size: 0.9rem; transform: translateY(100px); opacity: 0;
+    transition: all 0.3s; max-width: 320px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-color: rgba(127,255,110,0.4); }
+  .toast.error { border-color: rgba(255,107,107,0.4); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    nav { padding: 1rem; }
+    .nav-links { gap: 1rem; }
+    .hero-stats { gap: 1.5rem; }
+    .nl-input-wrap { flex-direction: column; }
+    .form-row { grid-template-columns: 1fr; }
+    .admin-body { padding: 1rem; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Tool<span class="logo-dot">Finder</span> AI</a>
+  <div class="nav-links">
+    <a href="#tools">Tools</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#" onclick="openAdminLogin()" class="admin-btn">Admin</a>
+    <a href="#newsletter" class="nav-cta">Get Free Digest</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-badge"><div class="pulse"></div> 200+ tools reviewed & updated weekly</div>
+  <h1>Find the <em>Perfect AI Tool</em><br>for Your Workflow</h1>
+  <p class="hero-sub">Curated AI tools for solopreneurs, freelancers & creators — with honest reviews, affiliate earnings, and side-by-side comparisons.</p>
+  <div class="hero-search">
+    <input type="text" id="search-input" placeholder="Search AI tools…" oninput="filterTools()">
+    <button class="btn-primary" onclick="filterTools()">Search</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="stat-tools">0</div><div class="stat-label">AI Tools</div></div>
+    <div class="stat"><div class="stat-num" id="stat-cats">0</div><div class="stat-label">Categories</div></div>
+    <div class="stat"><div class="stat-num" id="stat-subs">0</div><div class="stat-label">Subscribers</div></div>
+  </div>
+</div>
+
+<!-- TOOLS SECTION -->
+<section id="tools">
+  <div class="section-label">Curated Directory</div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <h2 class="section-title">Top AI Tools</h2>
+      <p class="section-sub">Sorted by commission, quality & real-world usefulness.</p>
+    </div>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="tools-grid" id="tools-grid"></div>
+  <div id="no-results" style="display:none;text-align:center;padding:3rem;color:var(--text2);">
+    No tools found for that search. Try a different keyword.
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section>
+  <div id="newsletter">
+    <div class="section-label">Weekly Digest</div>
+    <h2 class="section-title">The AI Toolbox Newsletter</h2>
+    <p class="section-sub" style="margin-top:0.75rem;">Every Friday: 5 new AI tools, 1 deep comparison, 1 money-making tip.<br>Read by 500+ solopreneurs.</p>
+    <div class="nl-input-wrap">
+      <input type="email" id="nl-email" placeholder="your@email.com">
+      <button class="btn-primary" onclick="subscribe()">Subscribe Free</button>
+    </div>
+    <div id="nl-success">🎉 You're in! Check your inbox for a welcome email.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ToolFinder AI &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Affiliate Disclosure</a></p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.2);">Some links are affiliate links. We earn a commission at no cost to you.</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ADMIN LOGIN MODAL -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="overlay" id="admin-login-overlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAdminLogin()">✕</button>
+    <h2>Admin Access</h2>
+    <p>Enter your credentials to manage ToolFinder AI.</p>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="admin-username" placeholder="admin">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="admin-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="form-error" id="login-error">❌ Invalid credentials. Try again.</div>
+    <button class="btn-primary btn-full" style="margin-top:0.5rem" onclick="doLogin()">Sign In →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ADMIN PANEL -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="admin-panel">
+  <div class="admin-nav">
+    <div class="admin-title">ToolFinder <span>Admin</span></div>
+    <div style="display:flex;gap:0.75rem;align-items:center;">
+      <span style="font-size:0.8rem;color:var(--text2)">Logged in as <b style="color:var(--accent)">admin</b></span>
+      <button class="btn-secondary" onclick="adminLogout()">Log Out</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <div class="admin-tabs">
+      <button class="tab-btn active" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="tab-btn" onclick="switchTab('tools')">Manage Tools</button>
+      <button class="tab-btn" onclick="switchTab('subscribers')">Subscribers</button>
+      <button class="tab-btn" onclick="switchTab('ai')">AI Assistant</button>
+    </div>
+
+    <!-- DASHBOARD TAB -->
+    <div class="tab-panel active" id="tab-dashboard">
+      <div class="admin-stats" id="admin-stats-cards"></div>
+      <h3 style="font-family:'Syne',sans-serif;margin-bottom:1rem;">Recent Subscribers</h3>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>#</th><th>Email</th><th>Subscribed</th><th>Action</th></tr></thead>
+          <tbody id="recent-subs-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TOOLS TAB -->
+    <div class="tab-panel" id="tab-tools">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+        <h3 style="font-family:'Syne',sans-serif;">All Tools <span id="tools-count-badge" style="font-size:0.9rem;color:var(--text2);font-weight:400"></span></h3>
+        <button class="btn-primary" onclick="openAddTool()">+ Add New Tool</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Tool</th><th>Category</th><th>Commission</th><th>Featured</th><th>Actions</th></tr></thead>
+          <tbody id="admin-tools-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBERS TAB -->
+    <div class="tab-panel" id="tab-subscribers">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+        <h3 style="font-family:'Syne',sans-serif;">Newsletter Subscribers</h3>
+        <button class="btn-primary" onclick="exportCSV()">Export CSV</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>#</th><th>Email</th><th>Date Subscribed</th><th>Action</th></tr></thead>
+          <tbody id="all-subs-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AI ASSISTANT TAB -->
+    <div class="tab-panel" id="tab-ai">
+      <h3 style="font-family:'Syne',sans-serif;margin-bottom:0.5rem;">AI Content Assistant</h3>
+      <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1.5rem;">Use Claude AI to generate tool descriptions, review drafts, and create newsletter content.</p>
+      <div class="form-group">
+        <label>What do you need?</label>
+        <textarea id="ai-prompt" rows="3" placeholder="e.g. Write a compelling description for Jasper AI — an AI writing tool for marketers. Focus on affiliate angle."></textarea>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <button class="filter-btn" onclick="setPrompt('Write a 2-sentence affiliate-focused description for: ')">Tool Description</button>
+        <button class="filter-btn" onclick="setPrompt('Write a compelling newsletter intro for this week featuring: ')">Newsletter Intro</button>
+        <button class="filter-btn" onclick="setPrompt('Compare these two AI tools for a solopreneur: ')">Tool Comparison</button>
+        <button class="filter-btn" onclick="setPrompt('Write an SEO meta description for a page about: ')">SEO Meta</button>
+      </div>
+      <button class="btn-primary" onclick="runAI()">Generate with Claude AI →</button>
+      <div class="ai-helper" style="margin-top:1.5rem;">
+        <div class="ai-helper-title">⚡ AI Output</div>
+        <div class="ai-response" id="ai-output">Your AI-generated content will appear here…</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ADD / EDIT TOOL MODAL -->
+<div class="overlay" id="tool-modal-overlay">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-close" onclick="closeToolModal()">✕</button>
+    <h2 id="tool-modal-title">Add New Tool</h2>
+    <p id="tool-modal-sub">Fill in the details below to add a tool to the directory.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Tool Name *</label>
+        <input type="text" id="t-name" placeholder="e.g. Jasper AI">
+      </div>
+      <div class="form-group">
+        <label>Icon (emoji)</label>
+        <input type="text" id="t-icon" placeholder="✍️" maxlength="4">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description *</label>
+      <textarea id="t-desc" rows="2" placeholder="Short description of what this tool does…"></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Category *</label>
+        <select id="t-cat">
+          <option value="Writing">Writing</option>
+          <option value="SEO">SEO</option>
+          <option value="Design">Design</option>
+          <option value="Video">Video</option>
+          <option value="Automation">Automation</option>
+          <option value="Email">Email</option>
+          <option value="Analytics">Analytics</option>
+          <option value="Coding">Coding</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Commission Rate</label>
+        <input type="text" id="t-comm" placeholder="e.g. 30% recurring">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Affiliate URL *</label>
+      <input type="url" id="t-url" placeholder="https://yourlink.com/ref=toolfinder">
+    </div>
+    <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;">
+      <input type="checkbox" id="t-featured" style="width:auto">
+      <label for="t-featured" style="margin:0;cursor:pointer;">Mark as Featured (shown with badge)</label>
+    </div>
+    <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+      <button class="btn-primary btn-full" onclick="saveTool()">Save Tool</button>
+      <button class="btn-secondary" onclick="closeToolModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- JAVASCRIPT -->
+<!-- ═══════════════════════════════════════════ -->
+<script>
+// ── ADMIN CREDENTIALS (change these!) ──
+// In production: move to environment variable or backend
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "ToolFinder@2026!"; // CHANGE THIS
+
+// ── DATA STORE (localStorage = persists across sessions) ──
+function getData(key, def) {
+  try { return JSON.parse(localStorage.getItem(key)) ?? def; } catch { return def; }
+}
+function setData(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+
+// ── DEFAULT TOOLS ──
+const DEFAULT_TOOLS = [
+  { id:1, name:"Jasper AI", icon:"✍️", category:"Writing", desc:"AI writing assistant for marketers and content creators. Generates blog posts, ads, and social content in seconds.", commission:"30% recurring", url:"https://jasper.ai", featured:true },
+  { id:2, name:"Surfer SEO", icon:"📈", category:"SEO", desc:"AI-powered SEO tool that helps you rank on Google by analyzing top SERP pages and optimizing your content in real time.", commission:"25% recurring", url:"https://surferseo.com", featured:false },
+  { id:3, name:"Notion AI", icon:"📋", category:"Automation", desc:"Your all-in-one workspace with built-in AI that summarizes docs, drafts content, and automates your knowledge base.", commission:"$10 per referral", url:"https://notion.so", featured:true },
+  { id:4, name:"Pictory AI", icon:"🎬", category:"Video", desc:"Turn long-form content into short branded video clips. Perfect for repurposing blog posts into social media videos.", commission:"20% recurring", url:"https://pictory.ai", featured:false },
+  { id:5, name:"GetResponse", icon:"📧", category:"Email", desc:"All-in-one email marketing platform with AI tools, landing pages, and automation — ideal for solopreneurs and creators.", commission:"33% recurring", url:"https://getresponse.com", featured:false },
+  { id:6, name:"Midjourney", icon:"🎨", category:"Design", desc:"The leading AI image generator used by designers worldwide. Generate stunning visuals from text prompts in seconds.", commission:"$20 per referral", url:"https://midjourney.com", featured:true },
+  { id:7, name:"Copy.ai", icon:"💬", category:"Writing", desc:"AI copywriting tool for sales copy, product descriptions, and marketing content. Has a generous free tier to get started.", commission:"45% recurring", url:"https://copy.ai", featured:false },
+  { id:8, name:"Descript", icon:"🎙️", category:"Video", desc:"Edit audio and video by editing text. Remove filler words automatically, create transcripts, and publish to any platform.", commission:"15% recurring", url:"https://descript.com", featured:false },
+];
+
+// Init tools if not in storage
+if (!getData('tools', null)) setData('tools', DEFAULT_TOOLS);
+
+let tools = getData('tools', DEFAULT_TOOLS);
+let subscribers = getData('subscribers', []);
+let editingId = null;
+let activeFilter = 'All';
+
+// ── RENDER PUBLIC TOOLS ──
+function renderTools(list) {
+  const grid = document.getElementById('tools-grid');
+  const noRes = document.getElementById('no-results');
+  if (!list.length) { grid.innerHTML=''; noRes.style.display='block'; return; }
+  noRes.style.display='none';
+  grid.innerHTML = list.map(t => `
+    <div class="tool-card" onclick="window.open('${t.url}','_blank')">
+      ${t.featured ? '<div class="featured-badge">Featured</div>' : ''}
+      <div class="tool-header">
+        <div class="tool-icon">${t.icon||'🔧'}</div>
+        <div class="tool-meta">
+          <div class="tool-name">${t.name}</div>
+          <span class="tool-category">${t.category}</span>
+        </div>
+      </div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="tool-footer">
+        <span class="tool-commission">${t.commission||'Affiliate'}</span>
+        <a class="tool-link" href="${t.url}" target="_blank" onclick="event.stopPropagation()">Visit →</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function buildFilters() {
+  const cats = ['All', ...new Set(tools.map(t=>t.category))];
+  document.getElementById('filters').innerHTML = cats.map(c =>
+    `<button class="filter-btn ${c===activeFilter?'active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join('');
+}
+
+function setFilter(cat) {
+  activeFilter = cat;
+  buildFilters();
+  filterTools();
+}
+
+function filterTools() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  let list = tools;
+  if (activeFilter !== 'All') list = list.filter(t => t.category === activeFilter);
+  if (q) list = list.filter(t => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q));
+  renderTools(list);
+}
+
+// ── STATS ──
+function updateStats() {
+  const cats = new Set(tools.map(t=>t.category)).size;
+  animateNum('stat-tools', tools.length);
+  animateNum('stat-cats', cats);
+  animateNum('stat-subs', subscribers.length);
+}
+
+function animateNum(id, target) {
+  const el = document.getElementById(id);
+  let cur = 0; const step = Math.ceil(target/30);
+  const iv = setInterval(() => {
+    cur = Math.min(cur+step, target);
+    el.textContent = cur;
+    if (cur >= target) clearInterval(iv);
+  }, 30);
+}
+
+// ── NEWSLETTER SUBSCRIBE ──
+function subscribe() {
+  const email = document.getElementById('nl-email').value.trim();
+  if (!email || !email.includes('@')) { toast('Please enter a valid email.','error'); return; }
+  if (subscribers.find(s=>s.email===email)) { toast('You\'re already subscribed!','error'); return; }
+  subscribers.push({ email, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) });
+  setData('subscribers', subscribers);
+  document.getElementById('nl-success').style.display='block';
+  document.getElementById('nl-email').value='';
+  updateStats();
+  toast('🎉 Welcome aboard!','success');
+}
+
+// ── ADMIN AUTH ──
+function openAdminLogin() { document.getElementById('admin-login-overlay').classList.add('open'); }
+function closeAdminLogin() { document.getElementById('admin-login-overlay').classList.remove('open'); }
+
+function doLogin() {
+  const u = document.getElementById('admin-username').value;
+  const p = document.getElementById('admin-password').value;
+  const err = document.getElementById('login-error');
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    closeAdminLogin();
+    openAdmin();
+    err.style.display='none';
+  } else {
+    err.style.display='block';
+    document.getElementById('admin-password').value='';
+  }
+}
+
+function openAdmin() {
+  document.getElementById('admin-panel').classList.add('open');
+  renderAdminDashboard();
+  renderAdminTools();
+  renderAdminSubs();
+}
+
+function adminLogout() {
+  document.getElementById('admin-panel').classList.remove('open');
+  toast('Logged out.','success');
+}
+
+// ── ADMIN TABS ──
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active', ['dashboard','tools','subscribers','ai'][i]===tab);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+
+// ── ADMIN DASHBOARD ──
+function renderAdminDashboard() {
+  const featured = tools.filter(t=>t.featured).length;
+  document.getElementById('admin-stats-cards').innerHTML = `
+    <div class="admin-stat-card"><div class="label">Total Tools</div><div class="value green">${tools.length}</div></div>
+    <div class="admin-stat-card"><div class="label">Featured Tools</div><div class="value blue">${featured}</div></div>
+    <div class="admin-stat-card"><div class="label">Subscribers</div><div class="value green">${subscribers.length}</div></div>
+    <div class="admin-stat-card"><div class="label">Categories</div><div class="value blue">${new Set(tools.map(t=>t.category)).size}</div></div>
+  `;
+  const tbody = document.getElementById('recent-subs-table');
+  const recent = [...subscribers].reverse().slice(0,5);
+  tbody.innerHTML = recent.length ? recent.map((s,i)=>`
+    <tr><td>${i+1}</td><td>${s.email}</td><td>${s.date}</td>
+    <td><button class="icon-btn" onclick="deleteSub('${s.email}')">🗑</button></td></tr>
+  `).join('') : `<tr><td colspan="4" style="color:var(--text2);text-align:center;padding:2rem">No subscribers yet.</td></tr>`;
+}
+
+// ── ADMIN TOOLS TABLE ──
+function renderAdminTools() {
+  tools = getData('tools', DEFAULT_TOOLS);
+  document.getElementById('tools-count-badge').textContent = `(${tools.length})`;
+  document.getElementById('admin-tools-table').innerHTML = tools.map(t => `
+    <tr>
+      <td><b>${t.icon||'🔧'} ${t.name}</b></td>
+      <td><span class="badge badge-blue">${t.category}</span></td>
+      <td style="color:var(--accent);font-size:0.8rem">${t.commission||'—'}</td>
+      <td>${t.featured?'<span class="badge badge-green">Yes</span>':'<span style="color:var(--text2);font-size:0.8rem">No</span>'}</td>
+      <td>
+        <button class="icon-btn edit" onclick="editTool(${t.id})">✏️ Edit</button>
+        <button class="icon-btn" onclick="deleteTool(${t.id})">🗑 Del</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ── ADMIN SUBSCRIBERS ──
+function renderAdminSubs() {
+  document.getElementById('all-subs-table').innerHTML = subscribers.length
+    ? [...subscribers].reverse().map((s,i)=>`
+      <tr><td>${i+1}</td><td>${s.email}</td><td>${s.date}</td>
+      <td><button class="icon-btn" onclick="deleteSub('${s.email}')">🗑</button></td></tr>
+    `).join('')
+    : `<tr><td colspan="4" style="color:var(--text2);text-align:center;padding:2rem">No subscribers yet.</td></tr>`;
+}
+
+function deleteSub(email) {
+  if (!confirm(`Remove ${email}?`)) return;
+  subscribers = subscribers.filter(s=>s.email!==email);
+  setData('subscribers', subscribers);
+  renderAdminDashboard(); renderAdminSubs(); updateStats();
+  toast('Subscriber removed.','success');
+}
+
+function exportCSV() {
+  if (!subscribers.length) { toast('No subscribers to export.','error'); return; }
+  const csv = 'Email,Date Subscribed\n' + subscribers.map(s=>`${s.email},${s.date}`).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'toolfinder-subscribers.csv';
+  a.click();
+  toast('CSV exported!','success');
+}
+
+// ── ADD / EDIT TOOL ──
+function openAddTool() {
+  editingId = null;
+  document.getElementById('tool-modal-title').textContent = 'Add New Tool';
+  document.getElementById('tool-modal-sub').textContent = 'Fill in the details below to add a tool to the directory.';
+  ['t-name','t-icon','t-desc','t-comm','t-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('t-cat').value='Writing';
+  document.getElementById('t-featured').checked=false;
+  document.getElementById('tool-modal-overlay').classList.add('open');
+}
+
+function editTool(id) {
+  const t = tools.find(x=>x.id===id);
+  if (!t) return;
+  editingId = id;
+  document.getElementById('tool-modal-title').textContent = 'Edit Tool';
+  document.getElementById('tool-modal-sub').textContent = 'Update the tool details below.';
+  document.getElementById('t-name').value = t.name;
+  document.getElementById('t-icon').value = t.icon||'';
+  document.getElementById('t-desc').value = t.desc;
+  document.getElementById('t-cat').value = t.category;
+  document.getElementById('t-comm').value = t.commission||'';
+  document.getElementById('t-url').value = t.url;
+  document.getElementById('t-featured').checked = !!t.featured;
+  document.getElementById('tool-modal-overlay').classList.add('open');
+}
+
+function closeToolModal() { document.getElementById('tool-modal-overlay').classList.remove('open'); }
+
+function saveTool() {
+  const name = document.getElementById('t-name').value.trim();
+  const desc = document.getElementById('t-desc').value.trim();
+  const url  = document.getElementById('t-url').value.trim();
+  if (!name||!desc||!url) { toast('Name, description & URL are required.','error'); return; }
+  const toolObj = {
+    id: editingId || Date.now(),
+    name, icon: document.getElementById('t-icon').value||'🔧',
+    category: document.getElementById('t-cat').value,
+    desc, commission: document.getElementById('t-comm').value,
+    url, featured: document.getElementById('t-featured').checked
+  };
+  if (editingId) {
+    tools = tools.map(t=>t.id===editingId?toolObj:t);
+    toast('Tool updated!','success');
+  } else {
+    tools.push(toolObj);
+    toast('Tool added!','success');
+  }
+  setData('tools', tools);
+  closeToolModal();
+  buildFilters(); filterTools(); updateStats();
+  renderAdminTools(); renderAdminDashboard();
+}
+
+function deleteTool(id) {
+  if (!confirm('Delete this tool?')) return;
+  tools = tools.filter(t=>t.id!==id);
+  setData('tools', tools);
+  renderAdminTools(); buildFilters(); filterTools(); updateStats();
+  toast('Tool deleted.','success');
+}
+
+// ── AI ASSISTANT ──
+function setPrompt(text) { document.getElementById('ai-prompt').value = text; document.getElementById('ai-prompt').focus(); }
+
+async function runAI() {
+  const prompt = document.getElementById('ai-prompt').value.trim();
+  if (!prompt) { toast('Enter a prompt first.','error'); return; }
+  const out = document.getElementById('ai-output');
+  out.innerHTML = '<span class="ai-loading">⚡ Generating with Claude AI…</span>';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: 'You are a content assistant for ToolFinder AI, a curated AI tools directory monetized through affiliate marketing. Write compelling, conversion-focused content for solopreneurs and freelancers. Be concise, punchy, and honest. Never be salesy or use clichés.',
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.find(b=>b.type==='text')?.text || 'No response generated.';
+    out.textContent = text;
+  } catch(e) {
+    out.textContent = 'Error connecting to Claude AI. Check your network and try again.';
+  }
+}
+
+// ── TOAST ──
+function toast(msg, type='success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  setTimeout(()=>el.classList.remove('show'), 3000);
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  tools = getData('tools', DEFAULT_TOOLS);
+  subscribers = getData('subscribers', []);
+  buildFilters();
+  filterTools();
+  updateStats();
+});
+</script>
+</body>
+</html>
