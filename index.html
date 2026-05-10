@@ -3,402 +3,721 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyAI ToolsFinder — The World's Best AI Tools, Curated</title>
-<meta name="description" content="Discover, compare and choose the best AI tools for your workflow. Curated for solopreneurs, freelancers and creators.">
+<title>MyAI ToolsFinder — Discover the Best AI Tools</title>
+<meta name="description" content="Trusted AI tools for solopreneurs, freelancers and creators. Find and compare the best tools for your workflow.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --white: #ffffff;
-  --off-white: #f5f5f7;
-  --light-gray: #e8e8ed;
-  --mid-gray: #a1a1a6;
-  --dark-gray: #424245;
-  --black: #1d1d1f;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --green: #30d158;
-  --red: #ff453a;
-  --card-border: rgba(0,0,0,0.08);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
-  --shadow-lg: 0 24px 64px rgba(0,0,0,0.1);
-  --radius: 18px;
-  --radius-sm: 10px;
+  --bg:#ffffff;--bg-off:#f7f8fa;--bg-section:#f2f4f7;
+  --navy:#0d1f33;--navy-2:#162d47;
+  --gold:#8a6d1f;--gold-accent:#b8942d;--gold-bg:#fdf8ee;--gold-border:#ddc46a;
+  --gray:#4a5568;--gray-2:#718096;--gray-muted:#a0aec0;
+  --border:#e2e8f0;--border-2:#edf2f7;
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+  --r:14px;--r-sm:9px;--r-xs:6px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-body{font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--white);color:var(--black);font-size:17px;line-height:1.5;overflow-x:hidden;}
-h1,h2,h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;}
-.serif-italic{font-style:italic;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Poppins',sans-serif;cursor:pointer;}
+h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--navy);}
+h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--navy);}
+h3{font-size:1rem;font-weight:600;color:var(--navy);}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
-.nav-logo{font-family:'Geist',sans-serif;font-weight:600;font-size:15px;color:var(--black);text-decoration:none;letter-spacing:-0.02em;}
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a{font-size:13px;color:var(--dark-gray);text-decoration:none;font-weight:400;transition:color 0.15s;}
-.nav-links a:hover{color:var(--black);}
-.nav-cta{background:var(--accent)!important;color:white!important;padding:7px 16px!important;border-radius:980px!important;font-size:13px!important;font-weight:500!important;transition:background 0.15s!important;}
-.nav-cta:hover{background:var(--accent-hover)!important;}
-.nav-admin{font-size:13px!important;color:var(--mid-gray)!important;cursor:pointer;background:none;border:none;font-family:'Geist',sans-serif;}
-.nav-admin:hover{color:var(--black)!important;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 36px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
+.logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;display:block;line-height:1.2;}
+.logo-sub{font-size:9px;font-weight:500;color:var(--gray-muted);letter-spacing:0.07em;text-transform:uppercase;display:block;}
+.nav-right{display:flex;align-items:center;gap:6px;}
+.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 13px;border-radius:var(--r-xs);transition:all 0.15s;}
+.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.nav-admin{font-size:12.5px;font-weight:500;color:var(--gray-2);background:none;
+  border:1.5px solid var(--border);padding:6px 14px;border-radius:var(--r-xs);transition:all 0.15s;}
+.nav-admin:hover{border-color:var(--navy);color:var(--navy);}
+.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;
+  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:0.01em;transition:all 0.18s;box-shadow:0 2px 10px rgba(13,31,51,0.2);
+  display:inline-flex;align-items:center;gap:5px;}
+.btn-navy:hover{background:var(--navy-2);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--navy);
+  border-radius:980px;padding:8px 22px;font-family:'Poppins',sans-serif;
+  font-size:13px;font-weight:600;transition:all 0.18s;display:inline-flex;align-items:center;}
+.btn-outline:hover{background:var(--navy);color:#fff;}
 
 /* HERO */
-#hero{padding:140px 24px 100px;text-align:center;max-width:980px;margin:0 auto;}
-.hero-eyebrow{font-size:13px;font-weight:500;color:var(--accent);letter-spacing:0.01em;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:6px;}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-size:clamp(3rem,7vw,5.5rem);line-height:1.06;letter-spacing:-0.02em;color:var(--black);margin-bottom:24px;}
-h1 .serif-italic{color:var(--accent);}
-.hero-sub{font-size:clamp(17px,2.5vw,21px);color:var(--mid-gray);font-weight:300;max-width:560px;margin:0 auto 40px;line-height:1.6;}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
-.btn-primary{background:var(--accent);color:white;border:none;padding:14px 28px;border-radius:980px;font-family:'Geist',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
-.btn-primary:hover{background:var(--accent-hover);transform:scale(1.02);}
-.btn-ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:13px 28px;border-radius:980px;font-family:'Geist',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
-.btn-ghost:hover{background:rgba(0,113,227,0.06);}
-.hero-stats{display:flex;justify-content:center;gap:0;border-top:1px solid var(--light-gray);padding-top:40px;}
-.hero-stat{padding:0 40px;border-right:1px solid var(--light-gray);text-align:center;}
-.hero-stat:last-child{border-right:none;}
-.stat-num{font-family:'Instrument Serif',serif;font-size:2.2rem;color:var(--black);line-height:1;}
-.stat-label{font-size:12px;color:var(--mid-gray);margin-top:4px;font-weight:400;}
+#hero{padding:110px 20px 80px;text-align:center;border-bottom:1px solid var(--border);
+  background:var(--bg);position:relative;overflow:hidden;}
+.hero-bg-img{position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1800&q=70&auto=format&fit=crop');
+  background-size:cover;background-position:center;opacity:0.04;}
+.hero-inner{position:relative;z-index:1;max-width:780px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;
+  background:var(--gold-bg);border:1.5px solid var(--gold-border);
+  padding:5px 16px;border-radius:980px;
+  font-size:11px;font-weight:600;color:var(--gold-accent);
+  letter-spacing:0.06em;text-transform:uppercase;margin-bottom:26px;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--gold-accent);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(1.6)}}
+.hero-em{color:var(--gold-accent);font-style:italic;font-weight:700;}
+.hero-sub{font-size:clamp(14px,2vw,16.5px);color:var(--gray);font-weight:400;
+  max-width:460px;margin:16px auto 34px;line-height:1.75;}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:56px;}
+.hero-stats{display:flex;justify-content:center;border-top:1px solid var(--border);padding-top:38px;}
+.hstat{padding:0 44px;border-right:1px solid var(--border);text-align:center;}
+.hstat:last-child{border-right:none;}
+.hstat-n{font-size:2.4rem;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-0.03em;}
+.hstat-l{font-size:10.5px;font-weight:500;color:var(--gray-muted);margin-top:5px;letter-spacing:0.06em;text-transform:uppercase;}
 
-/* SEARCH */
-.search-wrap{max-width:600px;margin:0 auto 16px;position:relative;}
-.search-wrap input{width:100%;padding:14px 20px 14px 48px;background:var(--off-white);border:1.5px solid transparent;border-radius:980px;font-family:'Geist',sans-serif;font-size:15px;color:var(--black);outline:none;transition:all 0.2s;}
-.search-wrap input:focus{background:white;border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,113,227,0.1);}
-.search-wrap input::placeholder{color:var(--mid-gray);}
-.search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--mid-gray);font-size:16px;pointer-events:none;}
+/* FEAT BAR */
+.feat-bar{background:var(--bg-off);border-bottom:1px solid var(--border);padding:48px 20px;}
+.feat-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.feat-item{display:flex;gap:13px;align-items:flex-start;}
+.feat-ico{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:#fff;
+  border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:17px;box-shadow:var(--shadow-sm);}
+.feat-title{font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.feat-desc{font-size:12.5px;color:var(--gray-2);line-height:1.55;}
 
 /* SECTION */
-.section{padding:80px 24px;max-width:1080px;margin:0 auto;}
-.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid-gray);margin-bottom:12px;}
-.section-title{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:8px;letter-spacing:-0.01em;}
-.section-sub{font-size:17px;color:var(--mid-gray);font-weight:300;margin-bottom:40px;}
+.section{padding:72px 20px;max-width:1060px;margin:0 auto;}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-accent);margin-bottom:8px;}
+.sec-sub{font-size:14.5px;color:var(--gray-2);font-weight:400;margin-bottom:30px;max-width:480px;line-height:1.65;}
+.divider{height:1px;background:var(--border);}
 
-/* FILTERS */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
-.filter-pill{padding:6px 16px;border-radius:980px;border:1.5px solid var(--light-gray);background:white;color:var(--dark-gray);font-family:'Geist',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;}
-.filter-pill:hover{border-color:var(--black);color:var(--black);}
-.filter-pill.active{background:var(--black);color:white;border-color:var(--black);}
+/* SEARCH */
+.search-wrap{max-width:480px;margin:0 auto 16px;position:relative;}
+.search-in{width:100%;padding:12px 18px 12px 44px;
+  background:var(--bg-off);border:2px solid var(--border);border-radius:12px;
+  font-family:'Poppins',sans-serif;font-size:14px;color:var(--navy);
+  font-weight:400;outline:none;transition:all 0.18s;}
+.search-in:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 3px rgba(13,31,51,0.06);}
+.search-in::placeholder{color:var(--gray-muted);}
+.search-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--gray-muted);font-size:17px;pointer-events:none;}
 
-/* TOOLS GRID */
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--light-gray);border-radius:var(--radius);overflow:hidden;border:1px solid var(--light-gray);}
-.tool-card{background:white;padding:28px;cursor:pointer;transition:background 0.15s;position:relative;display:flex;flex-direction:column;}
-.tool-card:hover{background:var(--off-white);}
-.tool-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
-.tool-icon{width:52px;height:52px;border-radius:14px;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:1.5rem;border:1px solid var(--card-border);}
-.featured-tag{font-size:11px;font-weight:600;color:var(--accent);background:rgba(0,113,227,0.08);padding:3px 10px;border-radius:980px;letter-spacing:0.02em;}
-.tool-name{font-family:'Geist',sans-serif;font-size:17px;font-weight:600;color:var(--black);margin-bottom:4px;letter-spacing:-0.01em;}
-.tool-category{font-size:12px;color:var(--mid-gray);font-weight:400;margin-bottom:12px;}
-.tool-desc{font-size:14px;color:var(--dark-gray);line-height:1.6;flex:1;margin-bottom:20px;font-weight:300;}
-.tool-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--light-gray);}
-.tool-commission{font-size:12px;font-weight:600;color:var(--green);}
-.tool-visit{font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap 0.15s;}
-.tool-visit:hover{gap:8px;}
+/* PILLS */
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px;}
+.pill{padding:6px 15px;border-radius:980px;border:1.5px solid var(--border);background:#fff;
+  color:var(--gray);font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;transition:all 0.15s;}
+.pill:hover{border-color:var(--navy);color:var(--navy);}
+.pill.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600;}
 
-/* DIVIDER */
-.divider{height:1px;background:var(--light-gray);margin:0 24px;}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);}
+.card{background:#fff;padding:22px;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  cursor:default;transition:background 0.15s;display:flex;flex-direction:column;position:relative;}
+.card:hover{background:var(--bg-off);}
+.card-shine{position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-accent),transparent);
+  opacity:0;transition:opacity 0.25s;}
+.card:hover .card-shine{opacity:1;}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
 
-/* SOCIAL PROOF */
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--light-gray);border-radius:var(--radius);overflow:hidden;border:1px solid var(--light-gray);}
-.proof-card{background:white;padding:28px;}
-.proof-stars{color:var(--accent);font-size:14px;margin-bottom:12px;}
-.proof-text{font-size:15px;color:var(--dark-gray);line-height:1.6;font-weight:300;margin-bottom:16px;font-family:'Instrument Serif',serif;font-style:italic;}
-.proof-author{font-size:13px;color:var(--mid-gray);font-weight:500;}
+/* LOGO BOX */
+.app-logo-box{
+  width:52px;height:52px;border-radius:12px;
+  background:#fff;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.app-logo-box img{width:40px;height:40px;object-fit:contain;}
+.app-logo-box .fb{font-size:1.6rem;line-height:1;}
 
-/* NEWSLETTER */
-#newsletter-section{background:var(--black);padding:100px 24px;text-align:center;}
-#newsletter-section .section-eyebrow{color:rgba(255,255,255,0.4);}
-#newsletter-section h2{font-size:clamp(2rem,4vw,3rem);color:white;margin-bottom:12px;}
-#newsletter-section p{font-size:17px;color:rgba(255,255,255,0.5);font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.6;}
-.nl-form{display:flex;gap:10px;max-width:440px;margin:0 auto;}
-.nl-form input{flex:1;padding:13px 18px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.15);border-radius:980px;color:white;font-family:'Geist',sans-serif;font-size:15px;outline:none;transition:all 0.2s;}
-.nl-form input:focus{border-color:rgba(255,255,255,0.4);}
-.nl-form input::placeholder{color:rgba(255,255,255,0.3);}
-.nl-form button{background:white;color:var(--black);border:none;border-radius:980px;padding:13px 22px;font-family:'Geist',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
-.nl-form button:hover{background:var(--off-white);}
-#nl-success{color:var(--green);font-size:15px;margin-top:16px;display:none;}
+.feat-badge{font-size:9px;font-weight:700;color:var(--gold-accent);
+  background:var(--gold-bg);border:1.5px solid var(--gold-border);
+  padding:3px 9px;border-radius:980px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+.card-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px;letter-spacing:-0.01em;}
+.card-cat{font-size:10px;font-weight:600;color:var(--gray-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:9px;}
+.card-desc{font-size:12.5px;color:var(--gold);line-height:1.65;flex:1;margin-bottom:14px;font-weight:400;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border-2);}
+.card-users{font-size:11px;font-weight:600;color:var(--gray-muted);display:flex;align-items:center;gap:4px;}
+.try-btn{display:inline-flex;align-items:center;gap:5px;
+  background:var(--navy);color:#fff;border:none;border-radius:980px;
+  padding:7px 14px;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;
+  transition:all 0.18s;white-space:nowrap;}
+.try-btn:hover{background:var(--gold-accent);transform:translateY(-1px);}
+
+/* PROOF GRID - responsive masonry style */
+.proof-section{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.proof-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:24px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px;}
+.proof-header{display:flex;align-items:center;gap:12px;}
+.proof-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:700;color:#fff;flex-shrink:0;font-style:normal;}
+.proof-meta{flex:1;}
+.proof-name{font-size:13.5px;font-weight:700;color:var(--navy);line-height:1.3;}
+.proof-role{font-size:11.5px;color:var(--gray-muted);font-weight:400;}
+.proof-stars{color:var(--gold-accent);font-size:12px;letter-spacing:1.5px;}
+.proof-q{font-size:13.5px;color:var(--gold);line-height:1.7;font-weight:400;font-style:italic;}
+.proof-tag{display:inline-block;font-size:10.5px;font-weight:600;
+  background:var(--bg-off);color:var(--gray-2);padding:3px 10px;border-radius:980px;
+  border:1px solid var(--border);}
+
+/* NL */
+#nl{background:var(--navy);padding:84px 20px;text-align:center;}
+.nl-inner{max-width:480px;margin:0 auto;}
+#nl .eyebrow{color:rgba(220,196,106,0.8);}
+#nl h2{color:#fff;margin-bottom:10px;}
+#nl p{font-size:14.5px;color:rgba(255,255,255,0.55);font-weight:400;margin-bottom:28px;line-height:1.7;}
+.nl-row{display:flex;gap:8px;max-width:400px;margin:0 auto;}
+.nl-in{flex:1;padding:12px 15px;background:rgba(255,255,255,0.08);
+  border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:400;outline:none;transition:all 0.18s;}
+.nl-in:focus{border-color:var(--gold-border);}
+.nl-in::placeholder{color:rgba(255,255,255,0.3);}
+.nl-btn{background:var(--gold-accent);color:#fff;border:none;border-radius:10px;
+  padding:12px 20px;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;
+  transition:all 0.18s;white-space:nowrap;}
+.nl-btn:hover{background:var(--gold);transform:translateY(-1px);}
+#nl-ok{color:var(--gold-border);font-size:13.5px;margin-top:14px;display:none;font-weight:500;}
 
 /* FOOTER */
-footer{background:var(--off-white);border-top:1px solid var(--light-gray);padding:48px 24px;}
-.footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.footer-logo{font-family:'Geist',sans-serif;font-weight:600;font-size:15px;color:var(--black);text-decoration:none;}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-size:13px;color:var(--mid-gray);text-decoration:none;transition:color 0.15s;}
-.footer-links a:hover{color:var(--black);}
-.footer-copy{width:100%;text-align:center;font-size:12px;color:var(--mid-gray);margin-top:24px;padding-top:24px;border-top:1px solid var(--light-gray);}
+footer{background:var(--bg-off);border-top:1px solid var(--border);padding:52px 20px 26px;}
+.foot-wrap{max-width:1060px;margin:0 auto;}
+.foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;margin-bottom:38px;}
+.foot-brand p{font-size:12.5px;color:var(--gray-2);line-height:1.7;margin-top:12px;max-width:230px;}
+.foot-col-h{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:13px;}
+.foot-col a{display:block;font-size:12.5px;color:var(--gray-2);margin-bottom:8px;transition:color 0.15s;}
+.foot-col a:hover{color:var(--navy);}
+.foot-bottom{padding-top:20px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.foot-bottom p{font-size:11.5px;color:var(--gray-muted);}
 
 /* MODALS */
-.overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;}
+.overlay{position:fixed;inset:0;z-index:400;background:rgba(13,31,51,0.5);
+  backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;}
 .overlay.open{display:flex;}
-.modal{background:white;border-radius:20px;padding:36px;width:100%;max-width:440px;position:relative;box-shadow:var(--shadow-lg);animation:modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);}
-@keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.modal-close{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:var(--off-white);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--dark-gray);transition:background 0.15s;}
-.modal-close:hover{background:var(--light-gray);}
-.modal h2{font-size:1.6rem;margin-bottom:6px;letter-spacing:-0.01em;}
-.modal p{font-size:14px;color:var(--mid-gray);margin-bottom:24px;}
-.form-group{margin-bottom:16px;}
-.form-group label{display:block;font-size:13px;font-weight:500;color:var(--dark-gray);margin-bottom:6px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;background:var(--off-white);border:1.5px solid transparent;border-radius:var(--radius-sm);font-family:'Geist',sans-serif;font-size:15px;color:var(--black);outline:none;transition:all 0.2s;}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{background:white;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,0.1);}
-.form-group textarea{resize:vertical;min-height:80px;}
-.form-group select{appearance:none;cursor:pointer;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-error{font-size:12px;color:var(--red);margin-top:12px;display:none;}
-.btn-full{width:100%;}
-.btn-cancel{width:100%;margin-top:8px;background:transparent;border:none;font-family:'Geist',sans-serif;font-size:14px;color:var(--mid-gray);cursor:pointer;padding:8px;transition:color 0.15s;border-radius:var(--radius-sm);}
-.btn-cancel:hover{color:var(--black);background:var(--off-white);}
-.checkbox-row{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--off-white);border-radius:var(--radius-sm);cursor:pointer;}
-.checkbox-row input{width:auto;margin:0;cursor:pointer;}
-.checkbox-row label{font-size:14px;color:var(--dark-gray);cursor:pointer;margin:0;font-weight:400;}
+.modal{background:#fff;border:1px solid var(--border);border-radius:18px;
+  padding:36px;width:100%;max-width:420px;position:relative;
+  box-shadow:var(--shadow-lg);animation:up 0.22s cubic-bezier(0.34,1.56,0.64,1);}
+.modal-wide{max-width:540px;}
+@keyframes up{from{opacity:0;transform:scale(0.94) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-x{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;
+  background:var(--bg-off);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--gray);transition:all 0.15s;}
+.modal-x:hover{background:var(--border);color:var(--navy);}
+.modal-head{text-align:center;margin-bottom:24px;}
+.modal-icon{width:48px;height:48px;border-radius:12px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 13px;}
+.modal-head h2{font-size:1.3rem;color:var(--navy);margin-bottom:4px;}
+.modal-head p{font-size:13px;color:var(--gray-2);}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:10.5px;font-weight:600;color:var(--gray-2);
+  letter-spacing:0.05em;text-transform:uppercase;margin-bottom:5px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 13px;
+  background:var(--bg-off);border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Poppins',sans-serif;font-size:14px;color:var(--navy);outline:none;transition:all 0.18s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 3px rgba(13,31,51,0.06);}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--gray-muted);}
+.fg textarea{resize:vertical;min-height:74px;}
+.fg select{appearance:none;cursor:pointer;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.ferr{font-size:12px;color:#e53e3e;margin-top:8px;display:none;font-weight:500;}
+.cb-row{display:flex;align-items:center;gap:10px;padding:11px 13px;
+  background:var(--bg-off);border:1.5px solid var(--border);border-radius:var(--r-sm);cursor:pointer;}
+.cb-row input{width:auto;margin:0;accent-color:var(--navy);cursor:pointer;}
+.cb-row label{font-size:13.5px;color:var(--gray);cursor:pointer;margin:0;}
+.btn-nw{width:100%;background:var(--navy);color:#fff;border:none;border-radius:var(--r-sm);
+  padding:13px;font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:600;transition:all 0.18s;}
+.btn-nw:hover{background:var(--navy-2);}
+.btn-gw{width:100%;margin-top:7px;background:transparent;border:none;
+  font-family:'Poppins',sans-serif;font-size:13.5px;color:var(--gray-muted);padding:8px;transition:color 0.15s;}
+.btn-gw:hover{color:var(--navy);}
 
 /* ADMIN */
-#admin-panel{position:fixed;inset:0;z-index:300;background:var(--off-white);display:none;flex-direction:column;overflow-y:auto;}
-#admin-panel.open{display:flex;}
-.admin-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--light-gray);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;}
-.admin-logo{font-weight:600;font-size:15px;letter-spacing:-0.02em;}
-.admin-logo span{color:var(--accent);}
-.admin-body{padding:32px 24px;max-width:1080px;margin:0 auto;width:100%;}
-.admin-tabs{display:flex;gap:2px;background:var(--light-gray);border-radius:10px;padding:3px;margin-bottom:32px;width:fit-content;}
-.tab-btn{padding:7px 18px;border-radius:8px;border:none;background:transparent;font-family:'Geist',sans-serif;font-size:13px;font-weight:500;color:var(--mid-gray);cursor:pointer;transition:all 0.15s;}
-.tab-btn.active{background:white;color:var(--black);box-shadow:var(--shadow-sm);}
-.tab-panel{display:none;}
-.tab-panel.active{display:block;}
-.admin-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:32px;}
-.admin-stat-card{background:white;border-radius:var(--radius);padding:20px 24px;border:1px solid var(--light-gray);}
-.admin-stat-card .label{font-size:12px;color:var(--mid-gray);margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;}
-.admin-stat-card .value{font-family:'Instrument Serif',serif;font-size:2.2rem;color:var(--black);}
-.admin-stat-card .value.blue{color:var(--accent);}
-.admin-stat-card .value.green{color:var(--green);}
-.admin-card{background:white;border-radius:var(--radius);border:1px solid var(--light-gray);overflow:hidden;margin-bottom:24px;}
-.admin-card-header{padding:20px 24px;border-bottom:1px solid var(--light-gray);display:flex;align-items:center;justify-content:space-between;}
-.admin-card-header h3{font-family:'Geist',sans-serif;font-size:15px;font-weight:600;}
-.admin-table{width:100%;border-collapse:collapse;font-size:14px;}
-.admin-table th{text-align:left;padding:12px 24px;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid-gray);background:var(--off-white);border-bottom:1px solid var(--light-gray);}
-.admin-table td{padding:14px 24px;border-bottom:1px solid rgba(0,0,0,0.04);color:var(--dark-gray);}
-.admin-table tr:last-child td{border-bottom:none;}
-.admin-table tr:hover td{background:var(--off-white);}
-.badge{display:inline-block;padding:2px 10px;border-radius:980px;font-size:11px;font-weight:600;}
-.badge-blue{background:rgba(0,113,227,0.1);color:var(--accent);}
-.badge-green{background:rgba(48,209,88,0.1);color:var(--green);}
-.badge-gray{background:var(--light-gray);color:var(--mid-gray);}
-.tbl-btn{font-size:12px;font-weight:500;padding:5px 12px;border-radius:6px;border:1.5px solid var(--light-gray);background:white;color:var(--dark-gray);cursor:pointer;transition:all 0.15s;margin-left:4px;}
-.tbl-btn:hover{border-color:var(--black);color:var(--black);}
-.tbl-btn.del:hover{border-color:var(--red);color:var(--red);}
-.ai-box{background:white;border-radius:var(--radius);border:1px solid var(--light-gray);padding:24px;}
-.ai-chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;}
-.ai-chip{padding:6px 14px;border-radius:980px;border:1.5px solid var(--light-gray);background:white;color:var(--dark-gray);font-family:'Geist',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;}
-.ai-chip:hover{border-color:var(--accent);color:var(--accent);}
-.ai-output-box{background:var(--off-white);border-radius:var(--radius-sm);padding:18px;margin-top:16px;font-size:14px;color:var(--dark-gray);line-height:1.7;min-height:100px;white-space:pre-wrap;border:1px solid var(--light-gray);}
+#admin{position:fixed;inset:0;z-index:500;background:var(--bg-section);display:none;flex-direction:column;overflow-y:auto;}
+#admin.open{display:flex;}
+.admin-bar{position:sticky;top:0;z-index:10;height:58px;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;}
+.admin-title{font-size:14px;font-weight:700;color:var(--navy);}
+.admin-title span{color:var(--gold-accent);}
+.admin-body{padding:26px;max-width:1060px;margin:0 auto;width:100%;}
+.tabs{display:flex;gap:2px;background:var(--border);border-radius:9px;padding:3px;margin-bottom:24px;width:fit-content;}
+.tab-b{padding:7px 19px;border-radius:7px;border:none;background:transparent;
+  font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;color:var(--gray-2);transition:all 0.15s;}
+.tab-b.on{background:var(--navy);color:#fff;font-weight:600;}
+.tp{display:none;}.tp.on{display:block;}
+.a-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px;}
+.a-stat{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:19px 21px;box-shadow:var(--shadow-sm);}
+.a-stat .l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--gray-muted);margin-bottom:6px;}
+.a-stat .v{font-size:2rem;font-weight:700;color:var(--navy);letter-spacing:-0.03em;line-height:1;}
+.a-stat .v.g{color:var(--gold-accent);}
+.a-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:18px;box-shadow:var(--shadow-sm);}
+.a-card-h{padding:15px 21px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.a-card-h h3{font-size:13.5px;font-weight:600;color:var(--navy);}
+.a-tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.a-tbl th{text-align:left;padding:10px 21px;font-size:9.5px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--gray-muted);background:var(--bg-off);border-bottom:1px solid var(--border);}
+.a-tbl td{padding:12px 21px;border-bottom:1px solid var(--border-2);color:var(--gray);}
+.a-tbl tr:last-child td{border-bottom:none;}
+.a-tbl tr:hover td{background:var(--bg-off);}
+.bdg{display:inline-block;padding:2px 9px;border-radius:980px;font-size:10px;font-weight:600;}
+.bdg-g{background:var(--gold-bg);color:var(--gold-accent);border:1px solid var(--gold-border);}
+.bdg-n{background:var(--bg-off);color:var(--gray-muted);}
+.tbtn{font-size:11px;font-weight:500;padding:4px 11px;border-radius:var(--r-xs);
+  border:1.5px solid var(--border);background:transparent;color:var(--gray);
+  font-family:'Poppins',sans-serif;transition:all 0.15s;margin-left:4px;}
+.tbtn:hover{border-color:var(--navy);color:var(--navy);}
+.tbtn.d:hover{border-color:#e53e3e;color:#e53e3e;}
+.ai-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:24px;box-shadow:var(--shadow-sm);}
+.ai-wrap h3{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.ai-wrap > p{font-size:12.5px;color:var(--gray-2);margin-bottom:14px;}
+.ai-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px;}
+.chip{padding:5px 13px;border-radius:980px;border:1.5px solid var(--border);
+  background:#fff;color:var(--gray);font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:500;transition:all 0.15s;}
+.chip:hover{border-color:var(--navy);color:var(--navy);}
+.ai-out{background:var(--bg-off);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:17px;margin-top:13px;font-size:13px;color:var(--gold);
+  line-height:1.75;min-height:108px;white-space:pre-wrap;font-weight:400;}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--black);color:white;border-radius:12px;padding:12px 20px;font-size:14px;font-weight:500;transform:translateY(80px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;box-shadow:var(--shadow-lg);}
+.toast{position:fixed;bottom:22px;right:22px;z-index:9999;
+  background:var(--navy);color:#fff;border-radius:12px;
+  padding:11px 19px;font-size:13.5px;font-weight:500;
+  transform:translateY(80px);opacity:0;
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  max-width:270px;box-shadow:var(--shadow-lg);}
 .toast.show{transform:translateY(0);opacity:1;}
-.toast.error{background:var(--red);}
+.toast.err{background:#c53030;}
 
-@media(max-width:640px){
-  nav{padding:0 16px;}
-  .nav-links{gap:16px;}
-  .hero-stat{padding:0 20px;}
-  .stat-num{font-size:1.6rem;}
-  .nl-form{flex-direction:column;}
-  .form-row{grid-template-columns:1fr;}
-  .admin-body{padding:20px 16px;}
-  .footer-inner{flex-direction:column;align-items:flex-start;}
+/* MOBILE */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .feat-inner{grid-template-columns:repeat(2,1fr);}
+  .proof-section{grid-template-columns:repeat(2,1fr);}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px;}
+  .foot-brand{grid-column:1/-1;}
+  .a-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  nav{padding:0 14px;height:56px;}
+  .logo-sub{display:none;}.nav-a{display:none;}
+  #hero{padding:88px 16px 56px;}
+  .hero-stats{gap:0;}
+  .hstat{padding:0 16px;}
+  .hstat-n{font-size:1.8rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-navy,.btn-outline{width:100%;max-width:280px;justify-content:center;}
+  .grid{grid-template-columns:1fr;}
+  .feat-inner{grid-template-columns:1fr;}
+  .proof-section{grid-template-columns:1fr;}
+  .section{padding:52px 16px;}
+  .feat-bar{padding:38px 16px;}
+  .nl-row{flex-direction:column;}
+  .nl-btn{width:100%;}
+  footer{padding:42px 16px 22px;}
+  .foot-top{grid-template-columns:1fr;gap:26px;}
+  .foot-brand{grid-column:auto;}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:5px;}
+  .admin-body{padding:14px;}
+  .tabs{width:100%;}
+  .tab-b{flex:1;text-align:center;padding:7px 6px;font-size:11.5px;}
+  .a-stats{grid-template-columns:1fr 1fr;}
+  .a-card-h{flex-direction:column;align-items:flex-start;gap:9px;}
+  .fg-row{grid-template-columns:1fr;}
+  .modal{padding:22px;}
+  .admin-bar{padding:0 14px;}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">MyAI ToolsFinder</a>
-  <div class="nav-links">
-    <a href="#tools">Directory</a>
-    <a href="#newsletter-section">Newsletter</a>
-    <button class="nav-admin" onclick="openAdminLogin()">Admin</button>
-    <a href="#newsletter-section" class="nav-cta">Subscribe Free</a>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-name">MyAI ToolsFinder</span>
+      <span class="logo-sub">AI Tools Directory</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="#tools" class="nav-a">Directory</a>
+    <a href="#reviews" class="nav-a">Reviews</a>
+    <a href="#nl" class="nav-a">Newsletter</a>
+    <button class="nav-admin" onclick="openLogin()">Admin</button>
+    <button class="btn-navy" onclick="document.getElementById('nl').scrollIntoView({behavior:'smooth'})">Subscribe Free</button>
   </div>
 </nav>
 
+<!-- HERO -->
 <div id="hero">
-  <div class="hero-eyebrow"><div class="hero-dot"></div>Updated weekly with the best AI tools</div>
-  <h1>The AI tools you<br><span class="serif-italic">actually need.</span></h1>
-  <p class="hero-sub">Curated for solopreneurs, freelancers and creators. No fluff, no hype — just tools that work.</p>
-  <div class="hero-actions">
-    <a href="#tools" class="btn-primary">Explore Tools</a>
-    <a href="#newsletter-section" class="btn-ghost">Get Weekly Digest</a>
+  <div class="hero-bg-img"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="live-dot"></div>Updated weekly · 100+ tools reviewed</div>
+    <h1>The AI tools you<br><span class="hero-em">actually need.</span></h1>
+    <p class="hero-sub">Curated for solopreneurs, freelancers and creators. No fluff — just tools that genuinely work.</p>
+    <div class="hero-btns">
+      <button class="btn-navy" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Explore Directory</button>
+      <button class="btn-outline" onclick="document.getElementById('nl').scrollIntoView({behavior:'smooth'})">Get Weekly Digest</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">100+</div><div class="hstat-l">Trusted AI Tools</div></div>
+      <div class="hstat"><div class="hstat-n" id="s-cats">12</div><div class="hstat-l">Categories</div></div>
+      <div class="hstat"><div class="hstat-n">1,000+</div><div class="hstat-l">Subscribers</div></div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="stat-num" id="stat-tools">0</div><div class="stat-label">Curated Tools</div></div>
-    <div class="hero-stat"><div class="stat-num" id="stat-cats">0</div><div class="stat-label">Categories</div></div>
-    <div class="hero-stat"><div class="stat-num" id="stat-subs">0</div><div class="stat-label">Subscribers</div></div>
+</div>
+
+<!-- FEAT BAR -->
+<div class="feat-bar">
+  <div class="feat-inner">
+    <div class="feat-item"><div class="feat-ico">🎯</div><div><div class="feat-title">Trusted, Not Aggregated</div><div class="feat-desc">Every tool personally reviewed. No auto-generated lists.</div></div></div>
+    <div class="feat-item"><div class="feat-ico">📬</div><div><div class="feat-title">Weekly Intelligence</div><div class="feat-desc">Every Friday: 5 new tools, one deep comparison, one tip.</div></div></div>
+    <div class="feat-item"><div class="feat-ico">⚡</div><div><div class="feat-title">Always Current</div><div class="feat-desc">Tools, pricing and reviews updated every single week.</div></div></div>
+    <div class="feat-item"><div class="feat-ico">🔒</div><div><div class="feat-title">Privacy First</div><div class="feat-desc">No tracking, no ads, no data sold. Ever.</div></div></div>
   </div>
 </div>
 
 <div class="divider"></div>
 
+<!-- TOOLS -->
 <div class="section" id="tools">
-  <div class="section-eyebrow">Curated Directory</div>
-  <h2 class="section-title">Top AI Tools</h2>
-  <p class="section-sub">Sorted by quality, real-world usefulness and affiliate value.</p>
+  <div class="eyebrow">Trusted AI Tools</div>
+  <h2>Find Your Perfect AI Tool</h2>
+  <p class="sec-sub">Click "Try for Free" on any tool to get started instantly.</p>
   <div class="search-wrap">
-    <span class="search-icon">⌕</span>
-    <input type="text" id="search-input" placeholder="Search tools, categories…" oninput="filterTools()">
+    <span class="search-ico">⌕</span>
+    <input class="search-in" type="text" id="q" placeholder="Search tools…" oninput="doFilter()">
   </div>
-  <div class="filters" id="filters"></div>
-  <div class="tools-grid" id="tools-grid"></div>
+  <div class="pills" id="pills"></div>
+  <div class="grid" id="grid"></div>
 </div>
 
 <div class="divider"></div>
 
-<div class="section">
-  <div class="section-eyebrow">What People Say</div>
-  <h2 class="section-title">Trusted by creators</h2>
-  <p class="section-sub">Real feedback from our subscribers.</p>
-  <div class="proof-grid">
+<!-- REVIEWS -->
+<div class="section" id="reviews">
+  <div class="eyebrow">Community Reviews</div>
+  <h2>Loved by 1,000+ subscribers</h2>
+  <p class="sec-sub">Real feedback from solopreneurs, freelancers and creators around the world.</p>
+  <div class="proof-section">
+
     <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#1a3a5c">MT</div>
+        <div class="proof-meta">
+          <div class="proof-name">Marcus Thompson</div>
+          <div class="proof-role">Freelance Designer · London, UK</div>
+        </div>
+      </div>
       <div class="proof-stars">★★★★★</div>
-      <div class="proof-text">"Finally a directory that doesn't recommend 50 useless tools. Everything here is actually worth trying."</div>
-      <div class="proof-author">— Marcus T., Freelance Designer</div>
+      <div class="proof-q">"Finally a directory that doesn't recommend 50 useless tools. Everything here is actually worth trying. I found Midjourney and Canva through this site and they completely changed my workflow."</div>
+      <span class="proof-tag">Design</span>
     </div>
+
     <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#7b4f1a">PS</div>
+        <div class="proof-meta">
+          <div class="proof-name">Priya Sharma</div>
+          <div class="proof-role">Solopreneur · Singapore</div>
+        </div>
+      </div>
       <div class="proof-stars">★★★★★</div>
-      <div class="proof-text">"The weekly newsletter alone saved me hours of research. I found my entire stack from this site."</div>
-      <div class="proof-author">— Priya S., Solopreneur</div>
+      <div class="proof-q">"The weekly newsletter alone saves me hours of research every Friday. I found my entire AI stack from this one site. Jasper and GetResponse together tripled my output."</div>
+      <span class="proof-tag">Email Marketing</span>
     </div>
+
     <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#1a4a2e">JR</div>
+        <div class="proof-meta">
+          <div class="proof-name">James Rivera</div>
+          <div class="proof-role">Content Creator · New York, USA</div>
+        </div>
+      </div>
       <div class="proof-stars">★★★★★</div>
-      <div class="proof-text">"Clean, fast, honest. No bloat. Just what I need to stay on top of the AI tools landscape."</div>
-      <div class="proof-author">— James R., Content Creator</div>
+      <div class="proof-q">"Clean, honest and always up to date. No bloat. Exactly what I needed to stay ahead of the curve. I discovered Opus Clip and Descript here and haven't looked back since."</div>
+      <span class="proof-tag">Video Production</span>
     </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#3d1a5c">AK</div>
+        <div class="proof-meta">
+          <div class="proof-name">Aisha Kowalski</div>
+          <div class="proof-role">SEO Consultant · Warsaw, Poland</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"As an SEO professional I was skeptical, but the Surfer SEO and Semrush write-ups here are more thorough than any paid review site I've found. My go-to resource now."</div>
+      <span class="proof-tag">SEO</span>
+    </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#1a3a3d">DL</div>
+        <div class="proof-meta">
+          <div class="proof-name">David Lim</div>
+          <div class="proof-role">Startup Founder · Melbourne, AU</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"I used to spend hours testing random AI tools. Now I just check MyAI ToolsFinder first. The user count data and honest descriptions help me make faster decisions with confidence."</div>
+      <span class="proof-tag">Productivity</span>
+    </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#5c1a1a">SN</div>
+        <div class="proof-meta">
+          <div class="proof-name">Sofia Navarro</div>
+          <div class="proof-role">Marketing Manager · Barcelona, Spain</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"The Friday newsletter is the first email I open every week. The comparisons are genuinely useful and unbiased. I recommended this to my entire marketing team."</div>
+      <span class="proof-tag">Content Marketing</span>
+    </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#1a2a5c">RO</div>
+        <div class="proof-meta">
+          <div class="proof-name">Ryan O'Brien</div>
+          <div class="proof-role">Podcast Producer · Dublin, Ireland</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"Found ElevenLabs and Descript through this directory. Both tools transformed how I produce audio content. The descriptions here actually tell you what matters — not just feature lists."</div>
+      <span class="proof-tag">Audio & Podcast</span>
+    </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#3d4a1a">TW</div>
+        <div class="proof-meta">
+          <div class="proof-name">Tanaka Watanabe</div>
+          <div class="proof-role">UX Designer · Tokyo, Japan</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"The design tools section is exceptional. Leonardo.ai was my discovery of the year and I found it right here. The filters make it effortless to find exactly what you need."</div>
+      <span class="proof-tag">UI/UX Design</span>
+    </div>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <div class="proof-avatar" style="background:#4a1a3a">LC</div>
+        <div class="proof-meta">
+          <div class="proof-name">Layla Chen</div>
+          <div class="proof-role">E-commerce Entrepreneur · Toronto, CA</div>
+        </div>
+      </div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-q">"I was drowning in AI hype before I found this. Now I have a clear, curated stack of tools that actually runs my e-commerce business. Copy.ai and Zapier alone saved me 15 hours a week."</div>
+      <span class="proof-tag">E-commerce</span>
+    </div>
+
   </div>
 </div>
 
-<div id="newsletter-section">
-  <div class="section-eyebrow">Weekly Digest</div>
-  <h2>The AI Toolbox</h2>
-  <p>Every Friday — 5 new tools, 1 comparison, 1 tip.<br>Join 500+ subscribers. Free forever.</p>
-  <div class="nl-form">
-    <input type="email" id="nl-email" placeholder="your@email.com">
-    <button onclick="subscribe()">Subscribe →</button>
+<!-- NEWSLETTER -->
+<div id="nl">
+  <div class="nl-inner">
+    <div class="eyebrow">Weekly Digest</div>
+    <h2>The AI Toolbox</h2>
+    <p>Every Friday — 5 new tools, 1 deep comparison, 1 actionable tip. Join 1,000+ subscribers. Completely free.</p>
+    <div class="nl-row">
+      <input class="nl-in" type="email" id="nl-email" placeholder="your@email.com">
+      <button class="nl-btn" onclick="subscribe()">Subscribe →</button>
+    </div>
+    <div id="nl-ok">✓ You're in. Welcome aboard.</div>
   </div>
-  <div id="nl-success">✓ You're in. Check your inbox.</div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <a href="#" class="footer-logo">MyAI ToolsFinder</a>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Affiliate Disclosure</a>
-      <a href="#">Contact</a>
+  <div class="foot-wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark" style="width:30px;height:30px;border-radius:8px;">
+            <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+              <circle cx="6" cy="6" r="2.8" fill="white"/>
+              <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+              <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+              <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+              <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="logo-name" style="font-size:13px;">MyAI ToolsFinder</span>
+        </a>
+        <p>A trusted AI tools directory for solopreneurs, freelancers and creators who want to work smarter.</p>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-h">Directory</div>
+        <a href="#tools">All Tools</a>
+        <a href="#tools">Writing</a>
+        <a href="#tools">SEO Tools</a>
+        <a href="#tools">Design</a>
+        <a href="#tools">Automation</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-h">Company</div>
+        <a href="#">About</a>
+        <a href="#nl">Newsletter</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 MyAI ToolsFinder. All rights reserved.</p>
+      <p>Built for solopreneurs, by solopreneurs.</p>
     </div>
   </div>
-  <div class="footer-copy">© 2026 MyAI ToolsFinder · Some links are affiliate links. We earn a small commission at no extra cost to you.</div>
 </footer>
 
-<!-- ADMIN LOGIN -->
-<div class="overlay" id="admin-login-overlay">
+<!-- LOGIN -->
+<div class="overlay" id="lov">
   <div class="modal">
-    <button class="modal-close" onclick="closeAdminLogin()">✕</button>
-    <h2>Welcome back.</h2>
-    <p>Sign in to manage your directory.</p>
-    <div class="form-group"><label>Username</label><input type="text" id="admin-username" placeholder="admin"></div>
-    <div class="form-group"><label>Password</label><input type="password" id="admin-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <div class="form-error" id="login-error">Incorrect username or password.</div>
-    <button class="btn-primary btn-full" style="margin-top:8px" onclick="doLogin()">Sign In</button>
+    <button class="modal-x" onclick="closeLogin()">✕</button>
+    <div class="modal-head">
+      <div class="modal-icon">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <circle cx="6" cy="6" r="2.8" fill="white"/>
+          <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+          <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2>Admin Access</h2>
+      <p>Sign in to manage your directory</p>
+    </div>
+    <div class="fg"><label>Username</label><input type="text" id="au" placeholder="admin"></div>
+    <div class="fg"><label>Password</label><input type="password" id="ap" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="ferr" id="lerr">Incorrect credentials. Please try again.</div>
+    <button class="btn-nw" style="margin-top:10px" onclick="doLogin()">Sign In →</button>
   </div>
 </div>
 
-<!-- ADD/EDIT TOOL -->
-<div class="overlay" id="tool-modal-overlay">
-  <div class="modal" style="max-width:560px">
-    <button class="modal-close" onclick="closeToolModal()">✕</button>
-    <h2 id="tool-modal-title">Add Tool</h2>
-    <p id="tool-modal-sub">Add a new tool to your directory.</p>
-    <div class="form-row">
-      <div class="form-group"><label>Tool Name</label><input type="text" id="t-name" placeholder="e.g. Jasper AI"></div>
-      <div class="form-group"><label>Icon (emoji)</label><input type="text" id="t-icon" placeholder="✍️" maxlength="4"></div>
+<!-- TOOL MODAL -->
+<div class="overlay" id="tov">
+  <div class="modal modal-wide">
+    <button class="modal-x" onclick="closeTM()">✕</button>
+    <h2 id="tm-h" style="margin-bottom:4px;font-size:1.2rem">Add Tool</h2>
+    <p id="tm-p" style="font-size:13px;color:var(--gray-2);margin-bottom:20px">Add a new tool to the directory.</p>
+    <div class="fg-row">
+      <div class="fg"><label>Tool Name</label><input type="text" id="t-name" placeholder="e.g. Jasper AI"></div>
+      <div class="fg"><label>Emoji Icon</label><input type="text" id="t-icon" placeholder="✍️" maxlength="4"></div>
     </div>
-    <div class="form-group"><label>Description</label><textarea id="t-desc" rows="2" placeholder="What does this tool do?"></textarea></div>
-    <div class="form-row">
-      <div class="form-group"><label>Category</label><select id="t-cat"><option>Writing</option><option>SEO</option><option>Design</option><option>Video</option><option>Automation</option><option>Email</option><option>Analytics</option><option>Coding</option><option>Other</option></select></div>
-      <div class="form-group"><label>Commission</label><input type="text" id="t-comm" placeholder="e.g. 30% recurring"></div>
+    <div class="fg"><label>Description</label><textarea id="t-desc" rows="2" placeholder="What does this tool do?"></textarea></div>
+    <div class="fg-row">
+      <div class="fg"><label>Category</label>
+        <select id="t-cat">
+          <option>Writing</option><option>SEO</option><option>Design</option>
+          <option>Image</option><option>Video</option><option>Audio</option>
+          <option>Chatbot</option><option>Research</option><option>Automation</option>
+          <option>Productivity</option><option>Email</option><option>Social Media</option>
+          <option>Coding</option><option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Active Users</label><input type="text" id="t-users" placeholder="e.g. 2.5M+ users"></div>
     </div>
-    <div class="form-group"><label>Affiliate URL</label><input type="url" id="t-url" placeholder="https://…"></div>
-    <div class="checkbox-row"><input type="checkbox" id="t-featured"><label for="t-featured">Mark as Featured</label></div>
-    <div style="display:flex;gap:8px;margin-top:16px">
-      <button class="btn-primary btn-full" onclick="saveTool()">Save Tool</button>
-      <button class="btn-cancel" onclick="closeToolModal()">Cancel</button>
+    <div class="fg"><label>URL</label><input type="url" id="t-url" placeholder="https://…"></div>
+    <div class="cb-row"><input type="checkbox" id="t-feat"><label for="t-feat">Mark as Featured</label></div>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="btn-nw" onclick="saveTool()">Save Tool</button>
+      <button class="btn-gw" onclick="closeTM()">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="admin-panel">
-  <div class="admin-nav">
-    <div class="admin-logo">MyAI ToolsFinder <span>Admin</span></div>
-    <div style="display:flex;gap:12px;align-items:center">
-      <span style="font-size:13px;color:var(--mid-gray)">Signed in as <b style="color:var(--black)">admin</b></span>
-      <button class="btn-ghost" style="padding:6px 16px;font-size:13px" onclick="adminLogout()">Sign Out</button>
+<!-- ADMIN -->
+<div id="admin">
+  <div class="admin-bar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="logo-mark" style="width:30px;height:30px;border-radius:8px;">
+        <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+          <circle cx="6" cy="6" r="2.8" fill="white"/>
+          <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+          <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="admin-title">MyAI ToolsFinder <span>Admin</span></div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span style="font-size:12px;color:var(--gray-muted);font-weight:500">Signed in as <b style="color:var(--navy)">admin</b></span>
+      <button class="btn-outline" style="font-size:12.5px;padding:7px 16px" onclick="adminOut()">Sign Out</button>
     </div>
   </div>
   <div class="admin-body">
-    <div class="admin-tabs">
-      <button class="tab-btn active" onclick="switchTab('dashboard')">Dashboard</button>
-      <button class="tab-btn" onclick="switchTab('tools')">Tools</button>
-      <button class="tab-btn" onclick="switchTab('subscribers')">Subscribers</button>
-      <button class="tab-btn" onclick="switchTab('ai')">AI Assistant</button>
+    <div class="tabs">
+      <button class="tab-b on" onclick="tab('dash')">Dashboard</button>
+      <button class="tab-b" onclick="tab('tools')">Tools</button>
+      <button class="tab-b" onclick="tab('subs')">Subscribers</button>
+      <button class="tab-b" onclick="tab('ai')">AI Assistant</button>
     </div>
-    <div class="tab-panel active" id="tab-dashboard">
-      <div class="admin-stats" id="admin-stats-cards"></div>
-      <div class="admin-card">
-        <div class="admin-card-header"><h3>Recent Subscribers</h3></div>
-        <table class="admin-table">
-          <thead><tr><th>#</th><th>Email</th><th>Joined</th><th></th></tr></thead>
-          <tbody id="recent-subs-table"></tbody>
-        </table>
+    <div class="tp on" id="tp-dash">
+      <div class="a-stats" id="astats"></div>
+      <div class="a-card">
+        <div class="a-card-h"><h3>Recent Subscribers</h3></div>
+        <table class="a-tbl"><thead><tr><th>#</th><th>Email</th><th>Joined</th><th></th></tr></thead><tbody id="arsubs"></tbody></table>
       </div>
     </div>
-    <div class="tab-panel" id="tab-tools">
-      <div class="admin-card">
-        <div class="admin-card-header">
-          <h3>All Tools <span id="tools-count-badge" style="font-weight:400;color:var(--mid-gray);font-size:13px"></span></h3>
-          <button class="btn-primary" style="padding:8px 18px;font-size:13px" onclick="openAddTool()">+ Add Tool</button>
+    <div class="tp" id="tp-tools">
+      <div class="a-card">
+        <div class="a-card-h">
+          <h3>All Tools <span id="tc" style="font-weight:500;color:var(--gray-muted);font-size:12px"></span></h3>
+          <button class="btn-navy" style="font-size:12.5px;padding:8px 17px" onclick="openAdd()">+ Add Tool</button>
         </div>
-        <table class="admin-table">
-          <thead><tr><th>Tool</th><th>Category</th><th>Commission</th><th>Featured</th><th>Actions</th></tr></thead>
-          <tbody id="admin-tools-table"></tbody>
-        </table>
+        <table class="a-tbl"><thead><tr><th>Tool</th><th>Category</th><th>Users</th><th>Featured</th><th>Actions</th></tr></thead><tbody id="atools"></tbody></table>
       </div>
     </div>
-    <div class="tab-panel" id="tab-subscribers">
-      <div class="admin-card">
-        <div class="admin-card-header">
+    <div class="tp" id="tp-subs">
+      <div class="a-card">
+        <div class="a-card-h">
           <h3>All Subscribers</h3>
-          <button class="btn-ghost" style="padding:7px 16px;font-size:13px" onclick="exportCSV()">Export CSV</button>
+          <button class="btn-outline" style="font-size:12.5px;padding:7px 15px" onclick="exportCSV()">Export CSV</button>
         </div>
-        <table class="admin-table">
-          <thead><tr><th>#</th><th>Email</th><th>Date Joined</th><th></th></tr></thead>
-          <tbody id="all-subs-table"></tbody>
-        </table>
+        <table class="a-tbl"><thead><tr><th>#</th><th>Email</th><th>Date Joined</th><th></th></tr></thead><tbody id="asubs"></tbody></table>
       </div>
     </div>
-    <div class="tab-panel" id="tab-ai">
-      <div class="ai-box">
-        <h3 style="font-family:'Geist',sans-serif;font-size:17px;font-weight:600;margin-bottom:4px">AI Content Assistant</h3>
-        <p style="font-size:14px;color:var(--mid-gray)">Powered by Claude AI. Generate descriptions, newsletters, SEO content and more.</p>
+    <div class="tp" id="tp-ai">
+      <div class="ai-wrap">
+        <h3>AI Content Assistant</h3>
+        <p>Powered by Claude AI — generate descriptions, newsletters, social posts and more.</p>
         <div class="ai-chips">
-          <button class="ai-chip" onclick="setPrompt('Write a compelling affiliate-focused description for: ')">Tool Description</button>
-          <button class="ai-chip" onclick="setPrompt('Write this week\'s newsletter for The AI Toolbox featuring: ')">Newsletter</button>
-          <button class="ai-chip" onclick="setPrompt('Write a viral Reddit post about: ')">Reddit Post</button>
-          <button class="ai-chip" onclick="setPrompt('Compare these two AI tools for solopreneurs: ')">Comparison</button>
-          <button class="ai-chip" onclick="setPrompt('Write an SEO meta description for: ')">SEO Meta</button>
-          <button class="ai-chip" onclick="setPrompt('Write a LinkedIn post about: ')">LinkedIn Post</button>
+          <button class="chip" onclick="sp('Write a compelling description for this AI tool: ')">Tool Description</button>
+          <button class="chip" onclick="sp('Write this week\'s AI Toolbox newsletter featuring: ')">Newsletter</button>
+          <button class="chip" onclick="sp('Write a viral Reddit post about: ')">Reddit Post</button>
+          <button class="chip" onclick="sp('Compare these two AI tools side by side: ')">Comparison</button>
+          <button class="chip" onclick="sp('Write an SEO meta description for: ')">SEO Meta</button>
+          <button class="chip" onclick="sp('Write a professional LinkedIn post about: ')">LinkedIn Post</button>
+          <button class="chip" onclick="sp('Write a sponsor outreach email to: ')">Pitch Email</button>
         </div>
-        <div class="form-group"><textarea id="ai-prompt" rows="3" placeholder="Describe what you need…"></textarea></div>
-        <button class="btn-primary" onclick="runAI()">Generate →</button>
-        <div class="ai-output-box" id="ai-output">Your generated content will appear here.</div>
+        <div class="fg"><textarea id="ai-p" rows="3" placeholder="Describe what you need…"></textarea></div>
+        <button class="btn-navy" onclick="runAI()">Generate with Claude →</button>
+        <div class="ai-out" id="ai-o">Your generated content will appear here.</div>
       </div>
     </div>
   </div>
@@ -407,156 +726,301 @@ footer{background:var(--off-white);border-top:1px solid var(--light-gray);paddin
 <div class="toast" id="toast"></div>
 
 <script>
-const ADMIN_USER="admin",ADMIN_PASS="ToolFinder@2026!";
-function getData(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}
-function setData(k,v){localStorage.setItem(k,JSON.stringify(v))}
-const DEFAULT_TOOLS=[
-  {id:1,name:"Jasper AI",icon:"✍️",category:"Writing",desc:"AI writing assistant built for marketers and content teams. Generates blog posts, ad copy, and social content that actually converts.",commission:"30% recurring",url:"https://jasper.ai",featured:true},
-  {id:2,name:"Surfer SEO",icon:"📈",category:"SEO",desc:"Real-time content optimization that tells you exactly what to write to rank on Google. Used by the world's top SEO agencies.",commission:"25% recurring",url:"https://surferseo.com",featured:false},
-  {id:3,name:"Notion AI",icon:"📋",category:"Automation",desc:"The all-in-one workspace with AI built in. Summarize docs, draft content, and manage your entire business from one place.",commission:"$10 per referral",url:"https://notion.so",featured:true},
-  {id:4,name:"Pictory",icon:"🎬",category:"Video",desc:"Turn any blog post or script into a polished branded video in minutes. Perfect for repurposing content across platforms.",commission:"20% recurring",url:"https://pictory.ai",featured:false},
-  {id:5,name:"GetResponse",icon:"📧",category:"Email",desc:"Complete email marketing platform with AI tools, automation, and landing pages. The go-to for solopreneurs scaling their list.",commission:"33% recurring",url:"https://getresponse.com",featured:false},
-  {id:6,name:"Midjourney",icon:"🎨",category:"Design",desc:"The gold standard in AI image generation. Create stunning, professional visuals from a text prompt in under a minute.",commission:"$20 per referral",url:"https://midjourney.com",featured:true},
-  {id:7,name:"Copy.ai",icon:"💬",category:"Writing",desc:"Fastest way to generate sales copy, product descriptions, and marketing content. Generous free tier to get started immediately.",commission:"45% recurring",url:"https://copy.ai",featured:false},
-  {id:8,name:"Descript",icon:"🎙️",category:"Video",desc:"Edit podcasts and videos by editing text. Remove filler words automatically and publish directly to YouTube or Spotify.",commission:"15% recurring",url:"https://descript.com",featured:false},
-];
-if(!getData('tools',null))setData('tools',DEFAULT_TOOLS);
-let tools=getData('tools',DEFAULT_TOOLS),subscribers=getData('subscribers',[]),editingId=null,activeFilter='All';
+const AU="admin",AP="ToolFinder@2026!";
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 
+/* ── ACTUAL LOGOS from each company's own favicon/logo server ── */
+const TOOL_LOGOS={
+  "jasper.ai":         "https://www.jasper.ai/favicon.ico",
+  "copy.ai":           "https://www.copy.ai/favicon.ico",
+  "writesonic.com":    "https://writesonic.com/favicon.ico",
+  "rytr.me":           "https://rytr.me/favicon.ico",
+  "grammarly.com":     "https://static.grammarly.com/assets/files/efe57d016fea966e69e0d3aa45f2de78/favicon.ico",
+  "wordtune.com":      "https://www.wordtune.com/favicon.ico",
+  "surferseo.com":     "https://surferseo.com/favicon.ico",
+  "semrush.com":       "https://www.semrush.com/favicon.ico",
+  "ahrefs.com":        "https://ahrefs.com/favicon.ico",
+  "frase.io":          "https://www.frase.io/favicon.ico",
+  "scalenut.com":      "https://www.scalenut.com/favicon.ico",
+  "midjourney.com":    "https://www.midjourney.com/favicon.ico",
+  "canva.com":         "https://www.canva.com/favicon.ico",
+  "adobe.com":         "https://www.adobe.com/favicon.ico",
+  "leonardo.ai":       "https://leonardo.ai/favicon.ico",
+  "stability.ai":      "https://stability.ai/favicon.ico",
+  "pictory.ai":        "https://pictory.ai/favicon.ico",
+  "descript.com":      "https://www.descript.com/favicon.ico",
+  "runway.com":        "https://runwayml.com/favicon.ico",
+  "synthesia.io":      "https://www.synthesia.io/favicon.ico",
+  "heygen.com":        "https://www.heygen.com/favicon.ico",
+  "invideo.io":        "https://invideo.io/favicon.ico",
+  "opus.pro":          "https://www.opus.pro/favicon.ico",
+  "pika.art":          "https://pika.art/favicon.ico",
+  "elevenlabs.io":     "https://elevenlabs.io/favicon.ico",
+  "murf.ai":           "https://murf.ai/favicon.ico",
+  "otter.ai":          "https://otter.ai/favicon.ico",
+  "fireflies.ai":      "https://fireflies.ai/favicon.ico",
+  "fliki.ai":          "https://fliki.ai/favicon.ico",
+  "chatgpt.com":       "https://chat.openai.com/favicon.ico",
+  "claude.ai":         "https://claude.ai/favicon.ico",
+  "perplexity.ai":     "https://www.perplexity.ai/favicon.ico",
+  "zapier.com":        "https://zapier.com/favicon.ico",
+  "make.com":          "https://www.make.com/favicon.ico",
+  "notion.so":         "https://www.notion.so/favicon.ico",
+  "taskade.com":       "https://www.taskade.com/favicon.ico",
+  "getresponse.com":   "https://www.getresponse.com/favicon.ico",
+  "mailchimp.com":     "https://mailchimp.com/favicon.ico",
+  "hubspot.com":       "https://www.hubspot.com/favicon.ico",
+  "buffer.com":        "https://buffer.com/favicon.ico",
+  "hootsuite.com":     "https://hootsuite.com/favicon.ico",
+  "gamma.app":         "https://gamma.app/favicon.ico",
+  "beautiful.ai":      "https://www.beautiful.ai/favicon.ico",
+};
+
+function getLogo(url){
+  try{
+    const host=new URL(url).hostname.replace('www.','');
+    return TOOL_LOGOS[host]||`https://www.google.com/s2/favicons?sz=64&domain=${host}`;
+  }catch{return null;}
+}
+
+/* ── 43 AI TOOLS ── */
+const DEF=[
+  {id:1,name:"Jasper AI",icon:"✍️",category:"Writing",desc:"AI writing assistant for marketers. Generates blog posts, ad copy and social content that converts at scale.",users:"105,000+ users",url:"https://jasper.ai",featured:true},
+  {id:2,name:"Copy.ai",icon:"💬",category:"Writing",desc:"Fastest way to create sales copy, product descriptions and marketing content. 10M+ users trust it.",users:"10,000,000+ users",url:"https://copy.ai",featured:false},
+  {id:3,name:"Writesonic",icon:"🖊️",category:"Writing",desc:"AI writer that produces SEO-optimized articles, ads and landing pages in minutes. Supports 25+ languages.",users:"1,000,000+ users",url:"https://writesonic.com",featured:false},
+  {id:4,name:"Rytr",icon:"📝",category:"Writing",desc:"Affordable AI writing assistant for blogs, emails and social posts. Loved by freelancers worldwide.",users:"8,000,000+ users",url:"https://rytr.me",featured:false},
+  {id:5,name:"Grammarly",icon:"✅",category:"Writing",desc:"AI-powered writing assistant that checks grammar, tone and clarity in real-time across all your apps.",users:"30,000,000+ users",url:"https://grammarly.com",featured:true},
+  {id:6,name:"Wordtune",icon:"🔄",category:"Writing",desc:"Rewrites and improves your sentences instantly. Perfect for making your writing clearer and more engaging.",users:"1,000,000+ users",url:"https://wordtune.com",featured:false},
+  {id:7,name:"Surfer SEO",icon:"📈",category:"SEO",desc:"Real-time content optimizer that shows exactly what to write to rank on Google. Used by top agencies.",users:"150,000+ users",url:"https://surferseo.com",featured:true},
+  {id:8,name:"Semrush",icon:"🔍",category:"SEO",desc:"All-in-one SEO platform for keyword research, backlink analysis, site audits and competitor tracking.",users:"10,000,000+ users",url:"https://semrush.com",featured:false},
+  {id:9,name:"Ahrefs",icon:"🕷️",category:"SEO",desc:"Industry-leading SEO toolset with the largest backlink database. Essential for serious SEO professionals.",users:"900,000+ users",url:"https://ahrefs.com",featured:false},
+  {id:10,name:"Frase.io",icon:"📊",category:"SEO",desc:"AI-powered content research and optimization tool to help you outrank competitors on every keyword.",users:"300,000+ users",url:"https://frase.io",featured:false},
+  {id:11,name:"Scalenut",icon:"📉",category:"SEO",desc:"AI content platform that handles keyword planning, writing and optimization all in one workflow.",users:"150,000+ users",url:"https://scalenut.com",featured:false},
+  {id:12,name:"Midjourney",icon:"🎨",category:"Design",desc:"Gold standard in AI image generation. Create stunning professional visuals from a simple text prompt.",users:"16,000,000+ users",url:"https://midjourney.com",featured:true},
+  {id:13,name:"Canva",icon:"🖌️",category:"Design",desc:"World's most popular design platform supercharged with AI. Design anything in minutes, no skills needed.",users:"170,000,000+ users",url:"https://canva.com",featured:true},
+  {id:14,name:"Adobe Firefly",icon:"🔥",category:"Design",desc:"Adobe's generative AI creates images, text effects and vectors safe for commercial use.",users:"3,000,000+ users",url:"https://adobe.com/firefly",featured:false},
+  {id:15,name:"Leonardo.ai",icon:"🖼️",category:"Image",desc:"Professional AI image generator with fine-tuned models for game assets, concept art and product design.",users:"4,000,000+ users",url:"https://leonardo.ai",featured:false},
+  {id:16,name:"Stability AI",icon:"🌊",category:"Image",desc:"Open-source AI image generation powering Stable Diffusion. Unlimited creative control for designers.",users:"2,000,000+ users",url:"https://stability.ai",featured:false},
+  {id:17,name:"Pictory",icon:"🎬",category:"Video",desc:"Turn any blog post into a polished branded video in minutes. Perfect for repurposing content at scale.",users:"320,000+ users",url:"https://pictory.ai",featured:false},
+  {id:18,name:"Descript",icon:"🎙️",category:"Video",desc:"Edit podcasts and videos by editing text. Auto-remove filler words and publish to YouTube or Spotify.",users:"600,000+ users",url:"https://descript.com",featured:true},
+  {id:19,name:"Runway",icon:"🎥",category:"Video",desc:"Professional AI video generation and editing used by Hollywood studios and indie creators alike.",users:"2,000,000+ users",url:"https://runway.com",featured:false},
+  {id:20,name:"Synthesia",icon:"🎭",category:"Video",desc:"Create AI avatar videos with a human presenter from just text. No camera or studio needed.",users:"50,000+ users",url:"https://synthesia.io",featured:false},
+  {id:21,name:"HeyGen",icon:"👤",category:"Video",desc:"AI video platform for creating personalized video messages and marketing content at scale.",users:"40,000+ users",url:"https://heygen.com",featured:false},
+  {id:22,name:"InVideo",icon:"📹",category:"Video",desc:"Create professional videos from text prompts, scripts or blog posts. 5,000+ templates included.",users:"7,000,000+ users",url:"https://invideo.io",featured:false},
+  {id:23,name:"Opus Clip",icon:"✂️",category:"Video",desc:"AI repurposing tool that turns long videos into short viral clips for TikTok, Reels and Shorts.",users:"400,000+ users",url:"https://opus.pro",featured:false},
+  {id:24,name:"Pika",icon:"⚡",category:"Video",desc:"Next-gen AI video generation from text and image prompts. Creates stunning motion content in seconds.",users:"500,000+ users",url:"https://pika.art",featured:false},
+  {id:25,name:"ElevenLabs",icon:"🔊",category:"Audio",desc:"Most realistic AI voice generation available. Clone voices, create audiobooks and narrate content.",users:"1,000,000+ users",url:"https://elevenlabs.io",featured:true},
+  {id:26,name:"Murf AI",icon:"🎤",category:"Audio",desc:"Studio-quality AI voiceovers for videos, presentations and e-learning. 120+ voices in 20 languages.",users:"400,000+ users",url:"https://murf.ai",featured:false},
+  {id:27,name:"Otter.ai",icon:"🦦",category:"Audio",desc:"AI meeting transcription and notes. Automatically records, transcribes and summarizes your meetings.",users:"1,000,000+ users",url:"https://otter.ai",featured:false},
+  {id:28,name:"Fireflies.ai",icon:"🔥",category:"Audio",desc:"AI notetaker that joins your meetings, records them and generates searchable transcripts with action items.",users:"300,000+ users",url:"https://fireflies.ai",featured:false},
+  {id:29,name:"Fliki",icon:"🎵",category:"Audio",desc:"Turn text into videos with AI voices. Perfect for creating social media content and explainer videos.",users:"200,000+ users",url:"https://fliki.ai",featured:false},
+  {id:30,name:"ChatGPT",icon:"🤖",category:"Chatbot",desc:"The world's most popular AI assistant by OpenAI. Write, code, research and problem-solve anything.",users:"180,000,000+ users",url:"https://chatgpt.com",featured:true},
+  {id:31,name:"Claude",icon:"🧠",category:"Chatbot",desc:"Anthropic's AI assistant known for nuanced understanding, long documents and safe reliable responses.",users:"10,000,000+ users",url:"https://claude.ai",featured:true},
+  {id:32,name:"Perplexity AI",icon:"🔎",category:"Research",desc:"AI-powered search engine that gives direct answers with citations. Research anything with confidence.",users:"10,000,000+ users",url:"https://perplexity.ai",featured:false},
+  {id:33,name:"Zapier",icon:"⚙️",category:"Automation",desc:"Connect 6,000+ apps and automate repetitive tasks without writing a single line of code.",users:"2,200,000+ users",url:"https://zapier.com",featured:true},
+  {id:34,name:"Make",icon:"🔗",category:"Automation",desc:"Visual automation platform for building complex workflows. More powerful than Zapier, great free tier.",users:"500,000+ users",url:"https://make.com",featured:false},
+  {id:35,name:"Notion AI",icon:"📋",category:"Productivity",desc:"All-in-one workspace with AI built in. Summarize, draft and organize your entire business in one place.",users:"30,000,000+ users",url:"https://notion.so",featured:true},
+  {id:36,name:"Taskade",icon:"✔️",category:"Productivity",desc:"AI-powered project management and team collaboration. Built-in AI agents automate your entire workflow.",users:"500,000+ users",url:"https://taskade.com",featured:false},
+  {id:37,name:"GetResponse",icon:"📧",category:"Email",desc:"Complete email marketing with AI tools, automation and landing pages. Go-to for solopreneurs.",users:"350,000+ users",url:"https://getresponse.com",featured:false},
+  {id:38,name:"Mailchimp",icon:"🐒",category:"Email",desc:"World's leading email platform with AI-powered content suggestions and send-time optimization.",users:"12,000,000+ users",url:"https://mailchimp.com",featured:false},
+  {id:39,name:"HubSpot",icon:"🧲",category:"Email",desc:"All-in-one CRM and marketing platform with AI tools for email, social media and lead generation.",users:"200,000+ users",url:"https://hubspot.com",featured:false},
+  {id:40,name:"Buffer",icon:"📱",category:"Social Media",desc:"Schedule and publish social media posts across all platforms. AI assistant helps write better captions.",users:"140,000+ users",url:"https://buffer.com",featured:false},
+  {id:41,name:"Hootsuite",icon:"🦉",category:"Social Media",desc:"Enterprise social media management with AI content suggestions, scheduling and detailed analytics.",users:"18,000,000+ users",url:"https://hootsuite.com",featured:false},
+  {id:42,name:"Gamma",icon:"🌟",category:"Design",desc:"AI presentation maker that creates beautiful slides from a text prompt. No design skills required.",users:"10,000,000+ users",url:"https://gamma.app",featured:false},
+  {id:43,name:"Beautiful.ai",icon:"💎",category:"Design",desc:"Smart presentation software that automatically formats and designs your slides as you type.",users:"2,000,000+ users",url:"https://beautiful.ai",featured:false},
+];
+
+const stored=get('tools',null);
+if(!stored||stored.length<10)set('tools',DEF);
+let tools=get('tools',DEF),subs=get('subs',[]),eid=null,af='All';
+
+/* ── RENDER CARDS ── */
 function renderTools(list){
-  const g=document.getElementById('tools-grid');
-  if(!list.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--mid-gray);background:white">No tools found.</div>';return;}
-  g.innerHTML=list.map(t=>`<div class="tool-card" onclick="window.open('${t.url}','_blank')">
-    <div class="tool-top"><div class="tool-icon">${t.icon||'🔧'}</div>${t.featured?'<span class="featured-tag">Featured</span>':''}</div>
-    <div class="tool-name">${t.name}</div><div class="tool-category">${t.category}</div>
-    <div class="tool-desc">${t.desc}</div>
-    <div class="tool-footer"><span class="tool-commission">↑ ${t.commission||'Affiliate'}</span><a class="tool-visit" href="${t.url}" target="_blank" onclick="event.stopPropagation()">Visit →</a></div>
-  </div>`).join('');
+  const g=document.getElementById('grid');
+  if(!list.length){
+    g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:56px;color:var(--gray-muted)">No tools found.</div>';
+    return;
+  }
+  g.innerHTML=list.map(t=>{
+    const logo=getLogo(t.url);
+    return `<div class="card">
+      <div class="card-shine"></div>
+      <div class="card-top">
+        <div class="app-logo-box">
+          <img src="${logo}" alt="${t.name}"
+            style="width:40px;height:40px;object-fit:contain;"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fb" style="display:none">${t.icon||'🔧'}</span>
+        </div>
+        ${t.featured?'<span class="feat-badge">Featured</span>':''}
+      </div>
+      <div class="card-name">${t.name}</div>
+      <div class="card-cat">${t.category}</div>
+      <div class="card-desc">${t.desc}</div>
+      <div class="card-foot">
+        <span class="card-users">👥 ${t.users||'—'}</span>
+        <button class="try-btn" onclick="window.open('${t.url}','_blank')">Try for Free →</button>
+      </div>
+    </div>`;
+  }).join('');
 }
-function buildFilters(){
+
+function buildPills(){
   const cats=['All',...new Set(tools.map(t=>t.category))];
-  document.getElementById('filters').innerHTML=cats.map(c=>`<button class="filter-pill ${c===activeFilter?'active':''}" onclick="setFilter('${c}')">${c}</button>`).join('');
+  document.getElementById('pills').innerHTML=cats.map(c=>
+    `<button class="pill ${c===af?'on':''}" onclick="setF('${c}')">${c}</button>`
+  ).join('');
+  document.getElementById('s-cats').textContent=cats.length-1;
 }
-function setFilter(cat){activeFilter=cat;buildFilters();filterTools();}
-function filterTools(){
-  const q=document.getElementById('search-input').value.toLowerCase();
-  let list=tools;
-  if(activeFilter!=='All')list=list.filter(t=>t.category===activeFilter);
-  if(q)list=list.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||t.category.toLowerCase().includes(q));
-  renderTools(list);
+function setF(c){af=c;buildPills();doFilter();}
+function doFilter(){
+  const q=document.getElementById('q').value.toLowerCase();
+  let l=tools;
+  if(af!=='All')l=l.filter(t=>t.category===af);
+  if(q)l=l.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||t.category.toLowerCase().includes(q));
+  renderTools(l);
 }
-function updateStats(){animateNum('stat-tools',tools.length);animateNum('stat-cats',new Set(tools.map(t=>t.category)).size);animateNum('stat-subs',subscribers.length);}
-function animateNum(id,target){const el=document.getElementById(id);let cur=0;const step=Math.ceil(target/40);const iv=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur;if(cur>=target)clearInterval(iv);},25);}
+
 function subscribe(){
-  const email=document.getElementById('nl-email').value.trim();
-  if(!email||!email.includes('@')){toast('Please enter a valid email.','error');return;}
-  if(subscribers.find(s=>s.email===email)){toast('Already subscribed!','error');return;}
-  subscribers.push({email,date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})});
-  setData('subscribers',subscribers);
-  document.getElementById('nl-success').style.display='block';
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@')){toast('Please enter a valid email.','err');return;}
+  if(subs.find(s=>s.email===e)){toast('Already subscribed!','err');return;}
+  subs.push({email:e,date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})});
+  set('subs',subs);
+  document.getElementById('nl-ok').style.display='block';
   document.getElementById('nl-email').value='';
-  updateStats();toast('Welcome aboard! 🎉','success');
+  toast('Welcome aboard! 🎉');
 }
-function openAdminLogin(){document.getElementById('admin-login-overlay').classList.add('open');}
-function closeAdminLogin(){document.getElementById('admin-login-overlay').classList.remove('open');}
+
+function openLogin(){document.getElementById('lov').classList.add('open');}
+function closeLogin(){document.getElementById('lov').classList.remove('open');}
 function doLogin(){
-  const u=document.getElementById('admin-username').value,p=document.getElementById('admin-password').value,err=document.getElementById('login-error');
-  if(u===ADMIN_USER&&p===ADMIN_PASS){closeAdminLogin();openAdmin();err.style.display='none';}
-  else{err.style.display='block';document.getElementById('admin-password').value='';}
+  const u=document.getElementById('au').value,p=document.getElementById('ap').value,err=document.getElementById('lerr');
+  if(u===AU&&p===AP){closeLogin();openAdmin();err.style.display='none';}
+  else{err.style.display='block';document.getElementById('ap').value='';}
 }
-function openAdmin(){document.getElementById('admin-panel').classList.add('open');renderAdminDashboard();renderAdminTools();renderAdminSubs();}
-function adminLogout(){document.getElementById('admin-panel').classList.remove('open');toast('Signed out.','success');}
-function switchTab(tab){
-  const tabs=['dashboard','tools','subscribers','ai'];
-  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',tabs[i]===tab));
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
+function openAdmin(){document.getElementById('admin').classList.add('open');renderDash();renderATools();renderASubs();}
+function adminOut(){document.getElementById('admin').classList.remove('open');toast('Signed out.');}
+
+function tab(t){
+  document.querySelectorAll('.tab-b').forEach((b,i)=>b.classList.toggle('on',['dash','tools','subs','ai'][i]===t));
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+  document.getElementById('tp-'+t).classList.add('on');
 }
-function renderAdminDashboard(){
-  document.getElementById('admin-stats-cards').innerHTML=`
-    <div class="admin-stat-card"><div class="label">Total Tools</div><div class="value blue">${tools.length}</div></div>
-    <div class="admin-stat-card"><div class="label">Featured</div><div class="value">${tools.filter(t=>t.featured).length}</div></div>
-    <div class="admin-stat-card"><div class="label">Subscribers</div><div class="value green">${subscribers.length}</div></div>
-    <div class="admin-stat-card"><div class="label">Categories</div><div class="value">${new Set(tools.map(t=>t.category)).size}</div></div>`;
-  const recent=[...subscribers].reverse().slice(0,5);
-  document.getElementById('recent-subs-table').innerHTML=recent.length
-    ?recent.map((s,i)=>`<tr><td style="color:var(--mid-gray)">${i+1}</td><td><b>${s.email}</b></td><td>${s.date}</td><td><button class="tbl-btn del" onclick="deleteSub('${s.email}')">Remove</button></td></tr>`).join('')
-    :`<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--mid-gray)">No subscribers yet.</td></tr>`;
+
+function renderDash(){
+  document.getElementById('astats').innerHTML=`
+    <div class="a-stat"><div class="l">Total Tools</div><div class="v g">${tools.length}</div></div>
+    <div class="a-stat"><div class="l">Featured</div><div class="v">${tools.filter(t=>t.featured).length}</div></div>
+    <div class="a-stat"><div class="l">Subscribers</div><div class="v g">${subs.length}</div></div>
+    <div class="a-stat"><div class="l">Categories</div><div class="v">${new Set(tools.map(t=>t.category)).size}</div></div>`;
+  const r=[...subs].reverse().slice(0,5);
+  document.getElementById('arsubs').innerHTML=r.length
+    ?r.map((s,i)=>`<tr><td style="color:var(--gray-muted)">${i+1}</td><td style="color:var(--navy);font-weight:600">${s.email}</td><td>${s.date}</td><td><button class="tbtn d" onclick="delSub('${s.email}')">Remove</button></td></tr>`).join('')
+    :`<tr><td colspan="4" style="text-align:center;padding:28px;color:var(--gray-muted)">No subscribers yet.</td></tr>`;
 }
-function renderAdminTools(){
-  tools=getData('tools',DEFAULT_TOOLS);
-  document.getElementById('tools-count-badge').textContent=`(${tools.length})`;
-  document.getElementById('admin-tools-table').innerHTML=tools.map(t=>`<tr>
-    <td><b>${t.icon||'🔧'} ${t.name}</b></td>
-    <td><span class="badge badge-blue">${t.category}</span></td>
-    <td style="color:var(--green);font-size:13px;font-weight:500">${t.commission||'—'}</td>
-    <td>${t.featured?'<span class="badge badge-green">Yes</span>':'<span class="badge badge-gray">No</span>'}</td>
-    <td><button class="tbl-btn" onclick="editTool(${t.id})">Edit</button><button class="tbl-btn del" onclick="deleteTool(${t.id})">Delete</button></td>
+
+function renderATools(){
+  tools=get('tools',DEF);
+  document.getElementById('tc').textContent=`(${tools.length})`;
+  document.getElementById('atools').innerHTML=tools.map(t=>`<tr>
+    <td style="color:var(--navy);font-weight:600">${t.icon||'🔧'} ${t.name}</td>
+    <td><span class="bdg bdg-n">${t.category}</span></td>
+    <td style="color:var(--gray-2);font-size:11.5px">${t.users||'—'}</td>
+    <td>${t.featured?'<span class="bdg bdg-g">Yes</span>':'<span class="bdg bdg-n">No</span>'}</td>
+    <td><button class="tbtn" onclick="editTool(${t.id})">Edit</button><button class="tbtn d" onclick="delTool(${t.id})">Delete</button></td>
   </tr>`).join('');
 }
-function renderAdminSubs(){
-  document.getElementById('all-subs-table').innerHTML=subscribers.length
-    ?[...subscribers].reverse().map((s,i)=>`<tr><td style="color:var(--mid-gray)">${i+1}</td><td><b>${s.email}</b></td><td>${s.date}</td><td><button class="tbl-btn del" onclick="deleteSub('${s.email}')">Remove</button></td></tr>`).join('')
-    :`<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--mid-gray)">No subscribers yet.</td></tr>`;
+
+function renderASubs(){
+  document.getElementById('asubs').innerHTML=subs.length
+    ?[...subs].reverse().map((s,i)=>`<tr><td style="color:var(--gray-muted)">${i+1}</td><td style="color:var(--navy);font-weight:600">${s.email}</td><td>${s.date}</td><td><button class="tbtn d" onclick="delSub('${s.email}')">Remove</button></td></tr>`).join('')
+    :`<tr><td colspan="4" style="text-align:center;padding:28px;color:var(--gray-muted)">No subscribers yet.</td></tr>`;
 }
-function deleteSub(email){
-  if(!confirm(`Remove ${email}?`))return;
-  subscribers=subscribers.filter(s=>s.email!==email);
-  setData('subscribers',subscribers);renderAdminDashboard();renderAdminSubs();updateStats();toast('Removed.','success');
+function delSub(e){
+  if(!confirm(`Remove ${e}?`))return;
+  subs=subs.filter(s=>s.email!==e);set('subs',subs);
+  renderDash();renderASubs();toast('Removed.');
 }
 function exportCSV(){
-  if(!subscribers.length){toast('No subscribers yet.','error');return;}
-  const csv='Email,Date Joined\n'+subscribers.map(s=>`${s.email},${s.date}`).join('\n');
-  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='subscribers.csv';a.click();
-  toast('CSV exported!','success');
+  if(!subs.length){toast('No subscribers yet.','err');return;}
+  const c='Email,Date\n'+subs.map(s=>`${s.email},${s.date}`).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(c);a.download='subscribers.csv';a.click();
+  toast('Exported!');
 }
-function openAddTool(){
-  editingId=null;
-  document.getElementById('tool-modal-title').textContent='Add Tool';
-  document.getElementById('tool-modal-sub').textContent='Add a new tool to your directory.';
-  ['t-name','t-icon','t-desc','t-comm','t-url'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('t-cat').value='Writing';document.getElementById('t-featured').checked=false;
-  document.getElementById('tool-modal-overlay').classList.add('open');
+
+function openAdd(){
+  eid=null;
+  document.getElementById('tm-h').textContent='Add Tool';
+  document.getElementById('tm-p').textContent='Add a new tool to the directory.';
+  ['t-name','t-icon','t-desc','t-users','t-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('t-cat').value='Writing';
+  document.getElementById('t-feat').checked=false;
+  document.getElementById('tov').classList.add('open');
 }
 function editTool(id){
-  const t=tools.find(x=>x.id===id);if(!t)return;editingId=id;
-  document.getElementById('tool-modal-title').textContent='Edit Tool';
-  document.getElementById('tool-modal-sub').textContent="Update this tool's details.";
-  document.getElementById('t-name').value=t.name;document.getElementById('t-icon').value=t.icon||'';
-  document.getElementById('t-desc').value=t.desc;document.getElementById('t-cat').value=t.category;
-  document.getElementById('t-comm').value=t.commission||'';document.getElementById('t-url').value=t.url;
-  document.getElementById('t-featured').checked=!!t.featured;
-  document.getElementById('tool-modal-overlay').classList.add('open');
+  const t=tools.find(x=>x.id===id);if(!t)return;eid=id;
+  document.getElementById('tm-h').textContent='Edit Tool';
+  document.getElementById('tm-p').textContent="Update this tool's details.";
+  document.getElementById('t-name').value=t.name;
+  document.getElementById('t-icon').value=t.icon||'';
+  document.getElementById('t-desc').value=t.desc;
+  document.getElementById('t-cat').value=t.category;
+  document.getElementById('t-users').value=t.users||'';
+  document.getElementById('t-url').value=t.url;
+  document.getElementById('t-feat').checked=!!t.featured;
+  document.getElementById('tov').classList.add('open');
 }
-function closeToolModal(){document.getElementById('tool-modal-overlay').classList.remove('open');}
+function closeTM(){document.getElementById('tov').classList.remove('open');}
 function saveTool(){
-  const name=document.getElementById('t-name').value.trim(),desc=document.getElementById('t-desc').value.trim(),url=document.getElementById('t-url').value.trim();
-  if(!name||!desc||!url){toast('Name, description & URL required.','error');return;}
-  const obj={id:editingId||Date.now(),name,icon:document.getElementById('t-icon').value||'🔧',category:document.getElementById('t-cat').value,desc,commission:document.getElementById('t-comm').value,url,featured:document.getElementById('t-featured').checked};
-  if(editingId){tools=tools.map(t=>t.id===editingId?obj:t);toast('Tool updated!','success');}
-  else{tools.push(obj);toast('Tool added!','success');}
-  setData('tools',tools);closeToolModal();buildFilters();filterTools();updateStats();renderAdminTools();renderAdminDashboard();
+  const name=document.getElementById('t-name').value.trim();
+  const desc=document.getElementById('t-desc').value.trim();
+  const url=document.getElementById('t-url').value.trim();
+  if(!name||!desc||!url){toast('Name, description & URL required.','err');return;}
+  const obj={id:eid||Date.now(),name,icon:document.getElementById('t-icon').value||'🔧',
+    category:document.getElementById('t-cat').value,desc,
+    users:document.getElementById('t-users').value,url,
+    featured:document.getElementById('t-feat').checked};
+  if(eid){tools=tools.map(t=>t.id===eid?obj:t);toast('Updated!');}
+  else{tools.push(obj);toast('Tool added!');}
+  set('tools',tools);closeTM();buildPills();doFilter();renderATools();renderDash();
 }
-function deleteTool(id){
+function delTool(id){
   if(!confirm('Delete this tool?'))return;
-  tools=tools.filter(t=>t.id!==id);setData('tools',tools);renderAdminTools();buildFilters();filterTools();updateStats();toast('Deleted.','success');
+  tools=tools.filter(t=>t.id!==id);set('tools',tools);
+  renderATools();buildPills();doFilter();toast('Deleted.');
 }
-function setPrompt(text){document.getElementById('ai-prompt').value=text;document.getElementById('ai-prompt').focus();}
+
+function sp(t){document.getElementById('ai-p').value=t;document.getElementById('ai-p').focus();}
 async function runAI(){
-  const prompt=document.getElementById('ai-prompt').value.trim();
-  if(!prompt){toast('Enter a prompt first.','error');return;}
-  const out=document.getElementById('ai-output');out.textContent='Generating…';
+  const p=document.getElementById('ai-p').value.trim();
+  if(!p){toast('Enter a prompt first.','err');return;}
+  const o=document.getElementById('ai-o');o.textContent='Generating…';
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
-        system:'You are a content assistant for MyAI ToolsFinder, a curated AI tools directory. Write clean, professional, conversion-focused content for solopreneurs. Be concise and honest.',
-        messages:[{role:'user',content:prompt}]})});
-    const data=await res.json();
-    out.textContent=data.content?.find(b=>b.type==='text')?.text||'No response.';
-  }catch(e){out.textContent='Connection error. Please try again.';}
+        system:'You are a content assistant for MyAI ToolsFinder, a curated AI tools directory. Write clean, professional content for solopreneurs and freelancers. Be concise and direct.',
+        messages:[{role:'user',content:p}]})
+    });
+    const d=await r.json();
+    o.textContent=d.content?.find(b=>b.type==='text')?.text||'No response generated.';
+  }catch(e){o.textContent='Connection error. Please try again.';}
 }
-function toast(msg,type='success'){const el=document.getElementById('toast');el.textContent=msg;el.className=`toast ${type} show`;setTimeout(()=>el.classList.remove('show'),3000);}
-document.addEventListener('DOMContentLoaded',()=>{tools=getData('tools',DEFAULT_TOOLS);subscribers=getData('subscribers',[]);buildFilters();filterTools();updateStats();});
+
+function toast(m,t='ok'){
+  const el=document.getElementById('toast');
+  el.textContent=m;el.className=`toast ${t} show`;
+  setTimeout(()=>el.classList.remove('show'),3000);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const stored=get('tools',null);
+  if(!stored||stored.length<10)set('tools',DEF);
+  tools=get('tools',DEF);subs=get('subs',[]);
+  buildPills();doFilter();
+});
 </script>
 </body>
 </html>
