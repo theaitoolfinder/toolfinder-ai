@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SZQYFK19QN');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My AI Tools Finder — Discover & Compare the Best AI Tools</title>
+<title>MyAI ToolsFinder — Discover & Compare the Best AI Tools</title>
 <meta name="description" content="Discover, compare and choose the best AI tools. 100+ tools rated and reviewed for solopreneurs, freelancers and creators.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
@@ -793,7 +783,7 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
 
 <!-- ═══ NAV ═══ -->
 <nav>
-  <a href="/" class="logo">
+  <a href="index.html" class="logo">
     <div class="logo-mark">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="6" cy="6" r="2.8" fill="white"/>
@@ -804,7 +794,7 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
       </svg>
     </div>
     <div>
-      <span class="logo-name">My AI Tools Finder</span>
+      <span class="logo-name">MyAI ToolsFinder</span>
       <span class="logo-sub">AI Tools Directory</span>
     </div>
   </a>
@@ -812,10 +802,10 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
     <button class="nav-compare-btn" id="nav-cmp-btn" onclick="openBattle()">
       ⚔️ Battle <span class="cmp-cnt" id="cmp-count">0</span>
     </button>
-    <a href="tools" class="nav-a">AI Tools</a>
-    <a href="articles" class="nav-a">Articles</a>
-    <a href="about" class="nav-a">About</a>
-    <a href="newsletter" class="nav-a">Newsletter</a>
+    <a href="#tools" class="nav-a">AI Tools</a>
+    <a href="articles.html" class="nav-a">Articles</a>
+    <a href="about.html" class="nav-a">About</a>
+    <a href="#nl" class="nav-a">Newsletter</a>
     <button class="nav-admin" onclick="openLogin()">Admin</button>
     <button class="nav-admin" id="nav-sub-btn" onclick="openSubLogin()" style="border-color:rgba(221,196,106,0.5);color:var(--gold-a);">⭐ Login</button>
     <button class="btn-navy" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">⚔️ AI Tools Comparo</button>
@@ -965,7 +955,7 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
         <button class="slider-btn" id="slider-prev" onclick="slideArticles(-1)">←</button>
         <button class="slider-btn" id="slider-next" onclick="slideArticles(1)">→</button>
       </div>
-      <a href="articles" class="btn-outline" style="white-space:nowrap">View All →</a>
+      <a href="articles.html" class="btn-outline" style="white-space:nowrap">View All →</a>
     </div>
   </div>
   <div class="art-slider-wrap">
@@ -1130,40 +1120,40 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
   <div class="foot-wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="/" class="logo">
+        <a href="index.html" class="logo">
           <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;">
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
-          <span style="font-size:13px;font-weight:700;color:#fff;">My AI Tools Finder</span>
+          <span style="font-size:13px;font-weight:700;color:#fff;">MyAI ToolsFinder</span>
         </a>
         <p>A trusted AI tools directory for solopreneurs, freelancers and creators who want to work smarter.</p>
         <div class="social-links" id="footer-socials"></div>
       </div>
       <div class="foot-col">
         <div class="foot-col-h">Directory</div>
-        <a href="tools">All AI Tools</a>
-        <a href="articles">Articles</a>
-        <a href="about">About Us</a>
-        <a href="newsletter">Newsletter</a>
+        <a href="#tools">All AI Tools</a>
+        <a href="articles.html">Articles</a>
+        <a href="about.html">About Us</a>
+        <a href="#nl">Newsletter</a>
       </div>
       <div class="foot-col">
         <div class="foot-col-h">Categories</div>
-        <a href="tools">Writing</a>
-        <a href="tools">SEO Tools</a>
-        <a href="tools">Design</a>
-        <a href="tools">Video</a>
-        <a href="tools">Automation</a>
+        <a href="#tools">Writing</a>
+        <a href="#tools">SEO Tools</a>
+        <a href="#tools">Design</a>
+        <a href="#tools">Video</a>
+        <a href="#tools">Automation</a>
       </div>
       <div class="foot-col">
         <div class="foot-col-h">Company</div>
-        <a href="about">About</a>
-        <a href="newsletter">Newsletter</a>
+        <a href="about.html">About</a>
+        <a href="#nl">Newsletter</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Contact</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>© 2026 My AI Tools Finder. All rights reserved.</p>
+      <p>© 2026 MyAI ToolsFinder. All rights reserved.</p>
       <p>Built for solopreneurs, by solopreneurs.</p>
     </div>
   </div>
@@ -1281,7 +1271,7 @@ footer{background:rgba(13,31,51,0.96);backdrop-filter:var(--blur);padding:56px 2
   <div class="admin-bar">
     <div style="display:flex;align-items:center;gap:10px;">
       <div class="logo-mark" style="width:30px;height:30px;border-radius:8px;"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="admin-title">My AI Tools Finder <span>Admin</span></div>
+      <div class="admin-title">MyAI ToolsFinder <span>Admin</span></div>
     </div>
     <div style="display:flex;gap:10px;align-items:center;">
       <span style="font-size:12px;color:var(--gray-m);font-weight:500;">Signed in as <b style="color:var(--navy)">admin</b></span>
@@ -1397,7 +1387,7 @@ const DEF=[
   {id:19,name:"QuillBot",icon:"🪶",cat:"Writing",desc:"AI paraphrasing and summarizing tool trusted by students and professionals worldwide.",users:"5M+ users",rating:4.6,ratingCount:"3.2K",url:"https://quillbot.com",trial:"freemium",api:"no",price:"Free / $10mo",featured:false},
   {id:20,name:"Rytr",icon:"📝",cat:"Writing",desc:"Affordable AI writing assistant for blogs, emails and social posts. Loved by freelancers.",users:"8M+ users",rating:4.6,ratingCount:"2.1K",url:"https://rytr.me",trial:"freemium",api:"yes",price:"Free / $9mo",featured:false},
   {id:21,name:"Semrush",icon:"🔍",cat:"SEO",desc:"All-in-one SEO platform for keyword research, backlinks, site audits and competitor tracking.",users:"10M+ users",rating:4.6,ratingCount:"2.1K",url:"https://semrush.com",trial:"yes",api:"yes",price:"$130mo",featured:false},
-  {id:22,name:"As",icon:"🕷️",cat:"SEO",desc:"Industry-leading SEO toolset with the largest backlink database. Essential for SEO pros.",users:"900K+ users",rating:4.6,ratingCount:"1.65K",url:"https://ahrefs.com",trial:"no",api:"yes",price:"$99mo",featured:false},
+  {id:22,name:"Ahrefs",icon:"🕷️",cat:"SEO",desc:"Industry-leading SEO toolset with the largest backlink database. Essential for SEO pros.",users:"900K+ users",rating:4.6,ratingCount:"1.65K",url:"https://ahrefs.com",trial:"no",api:"yes",price:"$99mo",featured:false},
   {id:23,name:"Tidio",icon:"🤗",cat:"Chatbot",desc:"Live chat and AI chatbot for websites. Automates support and captures leads automatically.",users:"300K+ users",rating:4.6,ratingCount:"1.8K",url:"https://tidio.com",trial:"freemium",api:"yes",price:"Free / $19mo",featured:false},
   {id:24,name:"Descript",icon:"🎙️",cat:"Video",desc:"Edit podcasts and videos by editing text. Auto-remove filler words and publish anywhere.",users:"600K+ users",rating:4.6,ratingCount:"2.8K",url:"https://descript.com",trial:"freemium",api:"no",price:"Free / $24mo",featured:true},
   {id:25,name:"NeuronWriter",icon:"🧬",cat:"SEO",desc:"SEO content editor with NLP optimization and competitor analysis built in.",users:"80K+ users",rating:4.6,ratingCount:"420",url:"https://neuronwriter.com",trial:"yes",api:"no",price:"$23mo",featured:false},
@@ -2039,7 +2029,7 @@ async function runAI(){
   if(!p){toast('Enter a prompt first.','err');return;}
   const o=document.getElementById('ai-o');o.textContent='Generating…';
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:'You are a content assistant for My AI Tools Finder, a curated AI tools directory. Write clean, professional content for solopreneurs and freelancers.',messages:[{role:'user',content:p}]})});
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:'You are a content assistant for MyAI ToolsFinder, a curated AI tools directory. Write clean, professional content for solopreneurs and freelancers.',messages:[{role:'user',content:p}]})});
     const d=await r.json();
     o.textContent=d.content?.find(b=>b.type==='text')?.text||'No response.';
   }catch(e){o.textContent='Connection error. Try again.';}
