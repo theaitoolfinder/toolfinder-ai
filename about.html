@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — MyAI ToolsFinder</title>
+<meta name="description" content="MyAI ToolsFinder is an independent AI tools directory built by solopreneurs for solopreneurs. Honest reviews, no bias.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff;--bg-off:#f7f8fa;--navy:#0d1f33;--navy2:#162d47;
+  --gold:#8a6d1f;--gold-a:#b8942d;--gold-bg:#fdf8ee;--gold-b:#ddc46a;
+  --gray:#4a5568;--gray2:#718096;--gray-m:#a0aec0;
+  --border:#e2e8f0;--shadow-sm:0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+  --r:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Poppins',sans-serif;cursor:pointer;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
+.logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}
+.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.nav-a.active{color:var(--navy);font-weight:600;}
+.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;
+  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+
+/* HERO */
+.about-hero{padding:110px 20px 72px;text-align:center;border-bottom:1px solid var(--border);background:var(--bg-off);}
+.about-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:16px;}
+.about-hero p{font-size:16px;color:var(--gray);max-width:560px;margin:0 auto 32px;line-height:1.75;}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-a);margin-bottom:10px;}
+
+/* SECTIONS */
+.page-body{max-width:860px;margin:0 auto;padding:72px 20px;}
+.section-block{margin-bottom:64px;}
+.section-block h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:16px;}
+.section-block p{font-size:14.5px;color:var(--gray);line-height:1.8;margin-bottom:14px;}
+.section-block ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.section-block ul li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--gray);line-height:1.6;}
+.section-block ul li::before{content:'✓';color:var(--gold-a);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.val-card{background:var(--bg-off);border:1px solid var(--border);border-radius:var(--r);padding:22px;}
+.val-icon{font-size:1.6rem;margin-bottom:10px;}
+.val-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.val-desc{font-size:13px;color:var(--gray2);line-height:1.6;}
+
+/* TEAM */
+.team-card{background:var(--bg-off);border:1px solid var(--border);border-radius:var(--r);
+  padding:28px;display:flex;gap:20px;align-items:flex-start;}
+.team-avatar{width:60px;height:60px;border-radius:50%;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.team-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.team-role{font-size:12px;color:var(--gold-a);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+.team-bio{font-size:13.5px;color:var(--gray);line-height:1.65;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0;}
+.stat-box{background:var(--navy);color:#fff;border-radius:var(--r);padding:22px;text-align:center;}
+.stat-num{font-size:2rem;font-weight:700;color:var(--gold-b);line-height:1;letter-spacing:-0.03em;}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,0.5);margin-top:5px;letter-spacing:0.05em;text-transform:uppercase;}
+
+/* CONTACT */
+.contact-box{background:var(--navy);border-radius:var(--r);padding:36px;text-align:center;color:#fff;}
+.contact-box h3{font-size:1.4rem;font-weight:700;margin-bottom:10px;}
+.contact-box p{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:24px;line-height:1.7;}
+.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.contact-link{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 20px;
+  font-size:13.5px;font-weight:600;color:#fff;transition:all 0.18s;}
+.contact-link:hover{background:rgba(255,255,255,0.16);}
+
+/* SOCIAL */
+.social-links{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.social-link{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;
+  font-size:15px;transition:all 0.15s;}
+.social-link:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px);}
+
+/* NL BANNER */
+.nl-banner{background:var(--gold-bg);border:1.5px solid var(--gold-b);border-radius:var(--r);
+  padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.nl-banner-text h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.nl-banner-text p{font-size:13px;color:var(--gray);line-height:1.6;}
+
+/* FOOTER */
+footer{background:var(--bg-off);border-top:1px solid var(--border);padding:40px 20px 24px;text-align:center;}
+footer p{font-size:12.5px;color:var(--gray-m);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links .nav-a:not(.active){display:none;}
+  .values-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .team-card{flex-direction:column;}
+  .nl-banner{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-name">MyAI ToolsFinder</span>
+      <span class="logo-sub">AI Tools Directory</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#tools" class="nav-a">Directory</a>
+    <a href="articles.html" class="nav-a">Articles</a>
+    <a href="about.html" class="nav-a active">About</a>
+    <a href="index.html#nl" class="nav-a">Newsletter</a>
+    <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="eyebrow">About Us</div>
+  <h1>Built by solopreneurs,<br>for solopreneurs.</h1>
+  <p>We got tired of biased AI tool reviews written by people who never actually used them. So we built the directory we always wished existed — honest, independent, and updated every single week.</p>
+</div>
+
+<div class="page-body">
+
+  <!-- MISSION -->
+  <div class="section-block">
+    <div class="eyebrow">Our Mission</div>
+    <h2>Cut through the AI noise.</h2>
+    <p>There are thousands of AI tools launching every month. Most of them aren't worth your time. The ones that are worth it can genuinely transform how you work — saving hours, automating repetitive tasks, and helping you do more with less.</p>
+    <p>Our mission is simple: test every significant AI tool, give you an honest verdict, and help you find exactly what fits your workflow — without the sponsored fluff.</p>
+
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">100+</div><div class="stat-lbl">Tools Reviewed</div></div>
+      <div class="stat-box"><div class="stat-num">1K+</div><div class="stat-lbl">Subscribers</div></div>
+      <div class="stat-box"><div class="stat-num">14</div><div class="stat-lbl">Categories</div></div>
+      <div class="stat-box"><div class="stat-num">52</div><div class="stat-lbl">Issues per Year</div></div>
+    </div>
+  </div>
+
+  <!-- HOW WE REVIEW -->
+  <div class="section-block">
+    <div class="eyebrow">Our Process</div>
+    <h2>How we review AI tools.</h2>
+    <p>Every tool in our directory goes through the same review process before it's listed. No exceptions — not even for tools that offer us sponsorships.</p>
+    <ul>
+      <li>We sign up for the actual product and test it with real workflows</li>
+      <li>We check Google ratings, app store reviews and community feedback</li>
+      <li>We document pricing, free tier limits, API access and integrations</li>
+      <li>We run head-to-head comparisons with similar tools in the same category</li>
+      <li>We re-review tools quarterly as they release major updates</li>
+      <li>We remove tools that deteriorate in quality or shut down</li>
+    </ul>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section-block">
+    <div class="eyebrow">Our Values</div>
+    <h2>What we stand for.</h2>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon">🎯</div>
+        <div class="val-title">Honest Above All</div>
+        <div class="val-desc">We say when a tool is overhyped. We say when a free tier isn't actually free. We don't sugarcoat.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🔄</div>
+        <div class="val-title">Always Updated</div>
+        <div class="val-desc">AI moves fast. We update our directory every week so you're never reading stale information.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🔒</div>
+        <div class="val-title">Privacy First</div>
+        <div class="val-desc">No tracking pixels, no data selling, no ad networks. Your visit is yours. Full stop.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">💡</div>
+        <div class="val-title">Practical Focus</div>
+        <div class="val-desc">We care about tools that save you real time and money — not impressive demos that don't work in practice.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">⚖️</div>
+        <div class="val-title">Fair Comparisons</div>
+        <div class="val-desc">Our comparison tool lets you see exactly how tools stack up. No cherry-picking. All the data, side by side.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🤝</div>
+        <div class="val-title">Community Driven</div>
+        <div class="val-desc">Our 1,000+ subscribers tell us what tools to review next. The community shapes the directory.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-block">
+    <div class="eyebrow">The Team</div>
+    <h2>Who's behind this.</h2>
+    <p style="margin-bottom:24px">MyAI ToolsFinder is run by an independent team of solopreneurs, freelancers and creators. We prefer to let the work speak for itself rather than put faces to names.</p>
+    <div class="team-card">
+      <div class="team-avatar">🧑‍💻</div>
+      <div>
+        <div class="team-name">The MyAI ToolsFinder Team</div>
+        <div class="team-role">Researchers · Writers · Tool Testers</div>
+        <div class="team-bio">We're a small independent team based across multiple countries. Some of us come from marketing, some from tech, some from content creation. What we share is a genuine obsession with finding AI tools that actually work — and an allergy to hype. We use every tool we recommend in our own daily work.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLOSURE -->
+  <div class="section-block">
+    <div class="eyebrow">Transparency</div>
+    <h2>How we stay independent.</h2>
+    <p>Some links in our directory are affiliate links. If you click a link and sign up for a tool, we may earn a small commission at no extra cost to you. This is how we keep the directory free.</p>
+    <ul>
+      <li>Affiliate relationships never influence our ratings or recommendations</li>
+      <li>We review tools the same way whether or not they have an affiliate program</li>
+      <li>Tools with poor reviews stay with poor reviews regardless of commission rates</li>
+      <li>We clearly label featured placements that are paid promotions</li>
+    </ul>
+    <p>If you ever feel a review doesn't match your experience with a tool, email us. We take that feedback seriously and re-test regularly.</p>
+  </div>
+
+  <!-- NEWSLETTER BANNER -->
+  <div class="nl-banner">
+    <div class="nl-banner-text">
+      <h3>Get the AI Toolbox Newsletter — Free</h3>
+      <p>Every Friday: 5 new tools, 1 deep comparison, 1 actionable tip. Join 1,000+ solopreneurs.</p>
+    </div>
+    <a href="index.html#nl" class="btn-navy">Subscribe Free →</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-block" style="margin-top:48px;">
+    <div class="contact-box">
+      <h3>Get in Touch</h3>
+      <p>Have a tool you'd like us to review? Found an error? Want to discuss a sponsorship? We read every email.</p>
+      <div class="contact-links">
+        <a href="mailto:hello@myaitoolsfinder.com" class="contact-link">📧 hello@myaitoolsfinder.com</a>
+        <a href="index.html#nl" class="contact-link">📬 Subscribe to Newsletter</a>
+      </div>
+      <div class="social-links" id="about-socials"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 MyAI ToolsFinder · <a href="index.html" style="color:var(--gold-a)">Directory</a> · <a href="articles.html" style="color:var(--gold-a)">Articles</a> · <a href="#" style="color:var(--gold-a)">Privacy Policy</a></p>
+</footer>
+
+<script>
+/* Load social links from localStorage (shared with main site) */
+function get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}
+
+function renderSocials(elId){
+  const el=document.getElementById(elId);
+  if(!el) return;
+  const s=get('socials',{});
+  const links=[];
+  if(s.twitter)   links.push(`<a class="social-link" href="https://twitter.com/${s.twitter.replace('@','')}" target="_blank" title="Twitter/X">𝕏</a>`);
+  if(s.linkedin)  links.push(`<a class="social-link" href="${s.linkedin.startsWith('http')?s.linkedin:'https://'+s.linkedin}" target="_blank" title="LinkedIn"><span style="font-size:11px;font-weight:700">in</span></a>`);
+  if(s.reddit)    links.push(`<a class="social-link" href="${s.reddit.startsWith('http')?s.reddit:'https://reddit.com/'+s.reddit}" target="_blank" title="Reddit"><span style="font-size:11px;font-weight:700">r/</span></a>`);
+  if(s.youtube)   links.push(`<a class="social-link" href="${s.youtube.startsWith('http')?s.youtube:'https://'+s.youtube}" target="_blank" title="YouTube">▶</a>`);
+  if(s.instagram) links.push(`<a class="social-link" href="https://instagram.com/${s.instagram.replace('@','')}" target="_blank" title="Instagram">📷</a>`);
+  if(s.tiktok)    links.push(`<a class="social-link" href="https://tiktok.com/@${s.tiktok.replace('@','')}" target="_blank" title="TikTok">🎵</a>`);
+  el.innerHTML=links.join('');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderSocials('about-socials');
+});
+</script>
+</body>
+</html>
