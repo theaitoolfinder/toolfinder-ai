@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles — MyAI ToolsFinder</title>
+<meta name="description" content="In-depth AI tools reviews, comparisons and guides. Updated every week by the MyAI ToolsFinder team.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff;--bg-off:#f7f8fa;--navy:#0d1f33;--navy2:#162d47;
+  --gold:#8a6d1f;--gold-a:#b8942d;--gold-bg:#fdf8ee;--gold-b:#ddc46a;
+  --gray:#4a5568;--gray2:#718096;--gray-m:#a0aec0;
+  --border:#e2e8f0;--r:14px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Poppins',sans-serif;cursor:pointer;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
+.logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}
+.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.nav-a.active{color:var(--navy);font-weight:600;}
+.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;
+  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+
+/* HERO */
+.art-hero{padding:100px 20px 60px;border-bottom:1px solid var(--border);background:var(--bg-off);}
+.art-hero-inner{max-width:1080px;margin:0 auto;}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-a);margin-bottom:10px;}
+.art-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;}
+.art-hero p{font-size:15px;color:var(--gray2);max-width:520px;line-height:1.7;}
+
+/* FILTERS */
+.art-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;}
+.art-pill{padding:7px 16px;border-radius:980px;border:1.5px solid var(--border);background:#fff;
+  color:var(--gray);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.art-pill:hover{border-color:var(--navy);color:var(--navy);}
+.art-pill.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600;}
+
+/* FEATURED ARTICLE */
+.featured-art{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;margin:40px auto;max-width:1080px;}
+.featured-art-img{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  display:flex;align-items:center;justify-content:center;font-size:5rem;min-height:280px;position:relative;}
+.featured-art-badge{position:absolute;top:16px;left:16px;background:var(--gold-a);color:#fff;
+  font-size:10px;font-weight:700;padding:4px 12px;border-radius:980px;letter-spacing:0.05em;text-transform:uppercase;}
+.featured-art-body{padding:36px;display:flex;flex-direction:column;justify-content:center;background:#fff;}
+.featured-art-cat{font-size:11px;font-weight:700;color:var(--gold-a);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+.featured-art-title{font-size:1.4rem;font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;line-height:1.35;}
+.featured-art-excerpt{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:20px;}
+.featured-art-meta{font-size:12px;color:var(--gray-m);margin-bottom:16px;}
+.btn-read{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;
+  border:none;border-radius:980px;padding:10px 22px;font-family:'Poppins',sans-serif;
+  font-size:13px;font-weight:600;transition:all 0.18s;}
+.btn-read:hover{background:var(--navy2);transform:translateY(-1px);}
+
+/* ARTICLES GRID */
+.art-section{max-width:1080px;margin:0 auto;padding:0 20px 80px;}
+.art-section-title{font-size:1.1rem;font-weight:700;color:var(--navy);margin:40px 0 20px;
+  display:flex;align-items:center;gap:10px;}
+.art-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.art-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;transition:all 0.18s;display:flex;flex-direction:column;}
+.art-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--navy);}
+.art-card-img{height:130px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;}
+.art-card-cat{position:absolute;top:10px;left:10px;background:var(--gold-a);color:#fff;
+  font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:980px;letter-spacing:0.05em;text-transform:uppercase;}
+.art-card-body{padding:18px;flex:1;display:flex;flex-direction:column;}
+.art-card-title{font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px;letter-spacing:-0.01em;}
+.art-card-excerpt{font-size:12.5px;color:var(--gray2);line-height:1.6;flex:1;margin-bottom:12px;}
+.art-card-footer{display:flex;align-items:center;justify-content:space-between;
+  padding-top:12px;border-top:1px solid var(--border);}
+.art-card-meta{font-size:11px;color:var(--gray-m);}
+.art-card-read{font-size:12px;font-weight:600;color:var(--gold-a);display:flex;align-items:center;gap:3px;transition:gap 0.15s;}
+.art-card:hover .art-card-read{gap:7px;}
+
+/* NL BANNER */
+.nl-banner{background:var(--navy);border-radius:var(--r);padding:36px;text-align:center;
+  margin:48px 0;color:#fff;}
+.nl-banner h3{font-size:1.3rem;font-weight:700;margin-bottom:8px;}
+.nl-banner p{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:22px;line-height:1.7;}
+.btn-gold{background:var(--gold-a);color:#fff;border:none;border-radius:980px;
+  padding:11px 28px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;transition:all 0.18s;}
+.btn-gold:hover{background:var(--gold);transform:translateY(-1px);}
+
+/* FOOTER */
+footer{background:var(--bg-off);border-top:1px solid var(--border);padding:36px 20px 24px;text-align:center;}
+footer p{font-size:12.5px;color:var(--gray-m);}
+
+/* MOBILE */
+@media(max-width:900px){.art-grid{grid-template-columns:repeat(2,1fr);}.featured-art{grid-template-columns:1fr;}.featured-art-img{min-height:180px;}}
+@media(max-width:600px){
+  nav{padding:0 16px;}
+  .nav-links .nav-a{display:none;}
+  .nav-links .nav-a.active,.nav-links .btn-navy{display:flex;}
+  .art-grid{grid-template-columns:1fr;}
+  .art-hero{padding:88px 16px 48px;}
+  .art-section{padding:0 16px 60px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-name">MyAI ToolsFinder</span>
+      <span class="logo-sub">AI Tools Directory</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#tools" class="nav-a">Directory</a>
+    <a href="articles.html" class="nav-a active">Articles</a>
+    <a href="about.html" class="nav-a">About</a>
+    <a href="index.html#nl" class="nav-a">Newsletter</a>
+    <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <div class="eyebrow">AI Tools Intelligence</div>
+    <h1>Articles & Deep Dives</h1>
+    <p>In-depth reviews, head-to-head comparisons and practical guides — written by our team and updated every week.</p>
+    <div class="art-filters">
+      <button class="art-pill on" onclick="filterArts('all',this)">All</button>
+      <button class="art-pill" onclick="filterArts('comparison',this)">Comparisons</button>
+      <button class="art-pill" onclick="filterArts('review',this)">Reviews</button>
+      <button class="art-pill" onclick="filterArts('guide',this)">Guides</button>
+      <button class="art-pill" onclick="filterArts('writing',this)">Writing</button>
+      <button class="art-pill" onclick="filterArts('seo',this)">SEO</button>
+      <button class="art-pill" onclick="filterArts('design',this)">Design</button>
+      <button class="art-pill" onclick="filterArts('video',this)">Video</button>
+      <button class="art-pill" onclick="filterArts('free',this)">Free Tools</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div style="max-width:1080px;margin:0 auto;padding:0 20px;">
+  <a href="articles/chatgpt-vs-claude-vs-gemini.html" class="featured-art" style="margin-top:40px;text-decoration:none;display:grid;">
+    <div class="featured-art-img">🤖<span class="featured-art-badge">⭐ Featured</span></div>
+    <div class="featured-art-body">
+      <div class="featured-art-cat">Comparison · May 2026</div>
+      <div class="featured-art-title">ChatGPT vs Claude vs Gemini — Which AI Assistant Actually Wins in 2026?</div>
+      <div class="featured-art-excerpt">We ran 50 real-world tasks across all three major AI assistants — writing, coding, research, analysis and creative work. The results were surprising. Here's our definitive verdict with side-by-side data.</div>
+      <div class="featured-art-meta">📅 May 11, 2026 · 10 min read · 4 tools compared</div>
+      <span class="btn-read">Read Full Article →</span>
+    </div>
+  </a>
+</div>
+
+<!-- ARTICLES -->
+<div class="art-section">
+
+  <div class="art-section-title">Latest This Week</div>
+  <div class="art-grid" id="art-grid">
+
+    <a href="articles/best-ai-writing-tools-2026.html" class="art-card" data-cat="writing review">
+      <div class="art-card-img">✍️<span class="art-card-cat">Writing</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">10 Best AI Writing Tools in 2026 — Ranked by 30M+ Users</div>
+        <div class="art-card-excerpt">From Grammarly to Jasper, we tested every major AI writing tool. Here's exactly which ones are worth your time and money.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 May 2026 · 8 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/free-ai-tools-2026.html" class="art-card" data-cat="free guide">
+      <div class="art-card-img">🆓<span class="art-card-cat">Free Tools</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">15 Best Free AI Tools That Actually Work in 2026</div>
+        <div class="art-card-excerpt">No trials, no hidden paywalls. These are the best AI tools you can use completely free — forever. Tested and verified.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 May 2026 · 7 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/best-ai-seo-tools.html" class="art-card" data-cat="seo review">
+      <div class="art-card-img">📈<span class="art-card-cat">SEO</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">Semrush vs Ahrefs vs Surfer SEO — The Complete 2026 Comparison</div>
+        <div class="art-card-excerpt">Three of the most powerful SEO platforms go head to head. We tested all three for 30 days. Here's the honest verdict.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 May 2026 · 12 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/ai-tools-solopreneurs.html" class="art-card" data-cat="guide review">
+      <div class="art-card-img">🚀<span class="art-card-cat">Guide</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">How Solopreneurs Are Using AI to Save 10 Hours a Week</div>
+        <div class="art-card-excerpt">Real workflows from real solopreneurs. We interviewed 20 one-person businesses about their AI tool stacks. Here's what they use.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 May 2026 · 9 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/midjourney-vs-dalle-vs-leonardo.html" class="art-card" data-cat="design comparison">
+      <div class="art-card-img">🎨<span class="art-card-cat">Design</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">Midjourney vs DALL-E 3 vs Leonardo — Best AI Image Generator 2026</div>
+        <div class="art-card-excerpt">We generated 200+ images across all three platforms using identical prompts. The quality differences are stark. See the results.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 May 2026 · 11 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/best-ai-video-tools.html" class="art-card" data-cat="video review">
+      <div class="art-card-img">🎬<span class="art-card-cat">Video</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">7 Best AI Video Tools in 2026 — From Creation to Editing</div>
+        <div class="art-card-excerpt">Whether you're creating videos from scratch or editing existing footage, these are the AI tools that actually deliver professional results.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 Apr 2026 · 8 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/grammarly-review-2026.html" class="art-card" data-cat="writing review">
+      <div class="art-card-img">✅<span class="art-card-cat">Review</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">Grammarly Review 2026 — Still Worth It After 10 Years?</div>
+        <div class="art-card-excerpt">Grammarly has 30M+ users but is it still the best AI writing assistant? We compared it against newer alternatives. Honest verdict inside.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 Apr 2026 · 6 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/zapier-vs-make-automation.html" class="art-card" data-cat="guide comparison">
+      <div class="art-card-img">⚙️<span class="art-card-cat">Automation</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">Zapier vs Make — Which Automation Platform Wins in 2026?</div>
+        <div class="art-card-excerpt">Both platforms let you automate without code. But they're very different products for very different use cases. Here's how to choose.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 Apr 2026 · 10 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/elevenlabs-review.html" class="art-card" data-cat="review">
+      <div class="art-card-img">🔊<span class="art-card-cat">Audio</span></div>
+      <div class="art-card-body">
+        <div class="art-card-title">ElevenLabs Review 2026 — The Most Realistic AI Voice Tool?</div>
+        <div class="art-card-excerpt">ElevenLabs claims to be the most realistic AI voice generator. After testing it for 3 weeks across 50+ voice samples, here's our verdict.</div>
+        <div class="art-card-footer">
+          <div class="art-card-meta">📅 Apr 2026 · 7 min</div>
+          <span class="art-card-read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- NL BANNER -->
+  <div class="nl-banner">
+    <h3>Get 5 New Articles Every Week — Free</h3>
+    <p>Subscribe to The AI Toolbox newsletter. Every Friday: new tool reviews, comparisons and one actionable tip. Join 1,000+ subscribers.</p>
+    <a href="index.html#nl" class="btn-gold">Subscribe Free →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 MyAI ToolsFinder · <a href="index.html" style="color:var(--gold-a)">Directory</a> · <a href="about.html" style="color:var(--gold-a)">About</a> · <a href="#" style="color:var(--gold-a)">Privacy Policy</a></p>
+</footer>
+
+<script>
+function filterArts(cat, btn){
+  document.querySelectorAll('.art-pill').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.art-card').forEach(card=>{
+    if(cat==='all'){card.style.display='flex';return;}
+    const cats=(card.dataset.cat||'').split(' ');
+    card.style.display=cats.includes(cat)?'flex':'none';
+  });
+}
+</script>
+</body>
+</html>
