@@ -2,120 +2,216 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Articles — MyAI ToolsFinder</title>
 <meta name="description" content="In-depth AI tools reviews, comparisons and guides. Updated every week by the MyAI ToolsFinder team.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fff;--bg-off:#f7f8fa;--navy:#0d1f33;--navy2:#162d47;
-  --gold:#8a6d1f;--gold-a:#b8942d;--gold-bg:#fdf8ee;--gold-b:#ddc46a;
+  --bg:#eef2f7;--navy:#0d1f33;--navy2:#162d47;
+  --gold-a:#b8942d;--gold-bg:rgba(253,248,238,0.9);--gold-b:#ddc46a;
   --gray:#4a5568;--gray2:#718096;--gray-m:#a0aec0;
-  --border:#e2e8f0;--r:14px;
-  --shadow-sm:0 1px 4px rgba(0,0,0,0.06);
-  --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --green:#38a169;
+  --glass:rgba(255,255,255,0.58);
+  --glass-strong:rgba(255,255,255,0.82);
+  --border:rgba(255,255,255,0.72);
+  --blur:blur(24px) saturate(200%);
+  --blur-sm:blur(14px) saturate(160%);
+  --sh:0 8px 32px rgba(13,31,51,0.10),0 1px 0 rgba(255,255,255,0.85) inset;
+  --sh-lg:0 20px 60px rgba(13,31,51,0.16),0 1px 0 rgba(255,255,255,0.9) inset;
+  --sh-gold:0 4px 24px rgba(184,148,45,0.40);
+  --r:20px;--r-sm:14px;--r-xs:9px;--r-pill:980px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 10%,rgba(184,148,45,0.08) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 60% at 90% 90%,rgba(13,31,51,0.06) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 60% at 50% 0%,rgba(100,160,255,0.05) 0%,transparent 50%);
+  background-attachment:fixed;
+  color:var(--gray);font-size:15px;line-height:1.65;
+}
 a{text-decoration:none;color:inherit;}
 button{font-family:'Poppins',sans-serif;cursor:pointer;}
+img{display:block;max-width:100%;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
-  background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:62px;
+  background:rgba(255,255,255,0.75);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border-bottom:1px solid rgba(255,255,255,0.85);
+  box-shadow:0 1px 0 rgba(13,31,51,0.05),0 4px 24px rgba(13,31,51,0.05);
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+}
 .logo{display:flex;align-items:center;gap:10px;}
-.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#1e4a7a,#0d1f33);box-shadow:0 4px 14px rgba(13,31,51,0.45),0 1px 0 rgba(255,255,255,0.18) inset;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
 .logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
 .nav-links{display:flex;align-items:center;gap:6px;}
-.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}
-.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 13px;border-radius:var(--r-xs);transition:all 0.18s;}
+.nav-a:hover{color:var(--navy);background:rgba(255,255,255,0.7);}
 .nav-a.active{color:var(--navy);font-weight:600;}
-.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;
-  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
-.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+.btn-navy{background:linear-gradient(135deg,#1e4a7a,var(--navy));color:#fff;border:none;border-radius:var(--r-pill);padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(13,31,51,0.3);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
+.btn-navy:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(13,31,51,0.4);}
 
 /* HERO */
-.art-hero{padding:100px 20px 60px;border-bottom:1px solid var(--border);background:var(--bg-off);}
-.art-hero-inner{max-width:1080px;margin:0 auto;}
+.art-hero{
+  padding:110px 20px 70px;
+  position:relative;overflow:hidden;
+}
+.art-hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(135deg,#0d1f33 0%,#162d47 60%,#1a3a5c 100%);
+}
+.art-hero-bg-img{
+  position:absolute;inset:0;z-index:1;
+  background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1800&q=60&auto=format&fit=crop');
+  background-size:cover;background-position:center;
+  opacity:0.12;mix-blend-mode:luminosity;
+}
+.art-hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;}
 .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-a);margin-bottom:10px;}
-.art-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;}
-.art-hero p{font-size:15px;color:var(--gray2);max-width:520px;line-height:1.7;}
+.art-hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.1;}
+.art-hero p{font-size:15px;color:rgba(255,255,255,0.55);max-width:520px;line-height:1.75;}
 
-/* FILTERS */
-.art-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;}
-.art-pill{padding:7px 16px;border-radius:980px;border:1.5px solid var(--border);background:#fff;
-  color:var(--gray);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;transition:all 0.15s;}
-.art-pill:hover{border-color:var(--navy);color:var(--navy);}
-.art-pill.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600;}
+/* FILTER PILLS */
+.art-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;}
+.art-pill{
+  padding:8px 18px;border-radius:var(--r-pill);
+  background:rgba(255,255,255,0.1);backdrop-filter:var(--blur-sm);
+  border:1.5px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.7);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;
+  cursor:pointer;transition:all 0.18s;
+}
+.art-pill:hover{background:rgba(255,255,255,0.2);color:#fff;}
+.art-pill.on{background:linear-gradient(135deg,#d4a843,var(--gold-a));color:#fff;border-color:transparent;box-shadow:var(--sh-gold);}
 
-/* FEATURED ARTICLE */
-.featured-art{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;margin:40px auto;max-width:1080px;}
-.featured-art-img{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
-  display:flex;align-items:center;justify-content:center;font-size:5rem;min-height:280px;position:relative;}
-.featured-art-badge{position:absolute;top:16px;left:16px;background:var(--gold-a);color:#fff;
-  font-size:10px;font-weight:700;padding:4px 12px;border-radius:980px;letter-spacing:0.05em;text-transform:uppercase;}
-.featured-art-body{padding:36px;display:flex;flex-direction:column;justify-content:center;background:#fff;}
-.featured-art-cat{font-size:11px;font-weight:700;color:var(--gold-a);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
-.featured-art-title{font-size:1.4rem;font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;line-height:1.35;}
-.featured-art-excerpt{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:20px;}
-.featured-art-meta{font-size:12px;color:var(--gray-m);margin-bottom:16px;}
-.btn-read{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;
-  border:none;border-radius:980px;padding:10px 22px;font-family:'Poppins',sans-serif;
-  font-size:13px;font-weight:600;transition:all 0.18s;}
-.btn-read:hover{background:var(--navy2);transform:translateY(-1px);}
+/* FEATURED */
+.featured-wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+.featured-card{
+  display:grid;grid-template-columns:1.4fr 1fr;
+  border-radius:var(--r);overflow:hidden;margin-top:-30px;
+  box-shadow:var(--sh-lg);
+  background:var(--glass-strong);backdrop-filter:var(--blur);
+  border:1px solid var(--border);
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.featured-card:hover{transform:translateY(-4px);box-shadow:0 28px 80px rgba(13,31,51,0.2);}
+.featured-img{position:relative;overflow:hidden;min-height:320px;}
+.featured-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.featured-card:hover .featured-img img{transform:scale(1.05);}
+.featured-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,51,0.3),transparent);}
+.featured-badge{position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#d4a843,var(--gold-a));color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:var(--r-pill);letter-spacing:0.06em;text-transform:uppercase;box-shadow:var(--sh-gold);}
+.featured-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center;}
+.featured-cat{font-size:11px;font-weight:700;color:var(--gold-a);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+.featured-title{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:800;color:var(--navy);letter-spacing:-0.025em;margin-bottom:14px;line-height:1.25;}
+.featured-excerpt{font-size:13.5px;color:var(--gray);line-height:1.75;margin-bottom:22px;}
+.featured-meta{font-size:12px;color:var(--gray-m);margin-bottom:18px;display:flex;gap:14px;flex-wrap:wrap;}
+.btn-read{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#1e4a7a,var(--navy));color:#fff;
+  border:none;border-radius:var(--r-pill);padding:11px 24px;
+  font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;
+  box-shadow:0 4px 16px rgba(13,31,51,0.25);transition:all 0.2s;cursor:pointer;
+  align-self:flex-start;
+}
+.btn-read:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(13,31,51,0.35);}
 
 /* ARTICLES GRID */
-.art-section{max-width:1080px;margin:0 auto;padding:0 20px 80px;}
-.art-section-title{font-size:1.1rem;font-weight:700;color:var(--navy);margin:40px 0 20px;
-  display:flex;align-items:center;gap:10px;}
-.art-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
-.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.art-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);
-  overflow:hidden;transition:all 0.18s;display:flex;flex-direction:column;}
-.art-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--navy);}
-.art-card-img{height:130px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
-  display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;}
-.art-card-cat{position:absolute;top:10px;left:10px;background:var(--gold-a);color:#fff;
-  font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:980px;letter-spacing:0.05em;text-transform:uppercase;}
-.art-card-body{padding:18px;flex:1;display:flex;flex-direction:column;}
-.art-card-title{font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px;letter-spacing:-0.01em;}
-.art-card-excerpt{font-size:12.5px;color:var(--gray2);line-height:1.6;flex:1;margin-bottom:12px;}
-.art-card-footer{display:flex;align-items:center;justify-content:space-between;
-  padding-top:12px;border-top:1px solid var(--border);}
-.art-card-meta{font-size:11px;color:var(--gray-m);}
-.art-card-read{font-size:12px;font-weight:600;color:var(--gold-a);display:flex;align-items:center;gap:3px;transition:gap 0.15s;}
-.art-card:hover .art-card-read{gap:7px;}
+.art-section{max-width:1080px;margin:0 auto;padding:56px 20px 80px;}
+.art-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+.art-section-title{font-size:1.2rem;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px;}
+.art-section-title::after{content:'';flex:1;min-width:30px;height:1px;background:linear-gradient(90deg,rgba(13,31,51,0.12),transparent);}
+.art-count{font-size:12px;color:var(--gray-m);font-weight:500;}
 
-/* NL BANNER */
-.nl-banner{background:var(--navy);border-radius:var(--r);padding:36px;text-align:center;
-  margin:48px 0;color:#fff;}
-.nl-banner h3{font-size:1.3rem;font-weight:700;margin-bottom:8px;}
-.nl-banner p{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:22px;line-height:1.7;}
-.btn-gold{background:var(--gold-a);color:#fff;border:none;border-radius:980px;
-  padding:11px 28px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;transition:all 0.18s;}
-.btn-gold:hover{background:var(--gold);transform:translateY(-1px);}
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.art-card{
+  background:var(--glass-strong);backdrop-filter:var(--blur);
+  border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  display:flex;flex-direction:column;box-shadow:var(--sh);
+  position:relative;
+}
+.art-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.9),transparent);}
+.art-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:var(--sh-lg);}
+.art-card-img{height:180px;position:relative;overflow:hidden;}
+.art-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.art-card:hover .art-card-img img{transform:scale(1.07);}
+.art-card-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,31,51,0.05) 0%,rgba(13,31,51,0.55) 100%);}
+.art-card-cat{
+  position:absolute;top:12px;left:12px;
+  background:rgba(255,255,255,0.88);backdrop-filter:var(--blur-sm);
+  color:var(--navy);font-size:9.5px;font-weight:700;
+  padding:4px 11px;border-radius:var(--r-pill);letter-spacing:0.05em;text-transform:uppercase;
+  box-shadow:0 2px 10px rgba(13,31,51,0.12);
+}
+.art-card-read-time{
+  position:absolute;bottom:10px;right:12px;
+  background:rgba(13,31,51,0.7);backdrop-filter:var(--blur-sm);
+  color:rgba(255,255,255,0.85);font-size:10px;font-weight:600;
+  padding:3px 10px;border-radius:var(--r-pill);
+}
+.art-card-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.art-card-title{font-size:14.5px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:10px;letter-spacing:-0.01em;}
+.art-card-excerpt{font-size:12.5px;color:var(--gray2);line-height:1.65;flex:1;margin-bottom:14px;}
+.art-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(13,31,51,0.07);}
+.art-card-date{font-size:11px;color:var(--gray-m);}
+.art-card-arrow{
+  display:flex;align-items:center;gap:4px;
+  font-size:12.5px;font-weight:600;color:var(--gold-a);
+  transition:gap 0.2s;
+}
+.art-card:hover .art-card-arrow{gap:8px;}
+
+/* NEWSLETTER BANNER */
+.nl-banner{
+  background:linear-gradient(135deg,var(--navy) 0%,#162d47 50%,#1a3a5c 100%);
+  border-radius:var(--r);padding:48px;text-align:center;
+  margin:48px 0;position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(13,31,51,0.25);
+}
+.nl-banner::before{
+  content:'';position:absolute;top:-50%;left:-10%;width:120%;height:200%;
+  background:radial-gradient(ellipse 50% 40% at 30% 50%,rgba(184,148,45,0.14) 0%,transparent 60%);
+  pointer-events:none;
+}
+.nl-banner h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.025em;margin-bottom:10px;position:relative;}
+.nl-banner p{font-size:14.5px;color:rgba(255,255,255,0.5);margin-bottom:26px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto;position:relative;}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#d4a843,var(--gold-a));color:#fff;
+  border:none;border-radius:var(--r-pill);padding:13px 30px;
+  font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:600;
+  box-shadow:var(--sh-gold);transition:all 0.2s;cursor:pointer;position:relative;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,148,45,0.5);}
 
 /* FOOTER */
-footer{background:var(--bg-off);border-top:1px solid var(--border);padding:36px 20px 24px;text-align:center;}
-footer p{font-size:12.5px;color:var(--gray-m);}
+footer{background:rgba(13,31,51,0.97);padding:48px 20px 28px;text-align:center;}
+footer p{font-size:12.5px;color:rgba(255,255,255,0.3);}
+footer a{color:var(--gold-a);transition:color 0.15s;}
+footer a:hover{color:#e2c06a;}
 
-/* MOBILE */
-@media(max-width:900px){.art-grid{grid-template-columns:repeat(2,1fr);}.featured-art{grid-template-columns:1fr;}.featured-art-img{min-height:180px;}}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .art-grid{grid-template-columns:repeat(2,1fr);}
+  .featured-card{grid-template-columns:1fr;}
+  .featured-img{min-height:240px;}
+}
 @media(max-width:600px){
   nav{padding:0 16px;}
   .nav-links .nav-a{display:none;}
   .nav-links .nav-a.active,.nav-links .btn-navy{display:flex;}
+  .art-hero{padding:90px 16px 56px;}
+  .featured-body{padding:24px 20px;}
+  .art-section{padding:40px 16px 60px;}
   .art-grid{grid-template-columns:1fr;}
-  .art-hero{padding:88px 16px 48px;}
-  .art-section{padding:0 16px 60px;}
+  .nl-banner{padding:32px 20px;}
+  .featured-wrap{padding:0 16px;}
 }
 </style>
 </head>
@@ -138,186 +234,257 @@ footer p{font-size:12.5px;color:var(--gray-m);}
     </div>
   </a>
   <div class="nav-links">
-    <a href="index.html#tools" class="nav-a">Directory</a>
+    <a href="index.html#tools" class="nav-a">AI Tools</a>
     <a href="articles.html" class="nav-a active">Articles</a>
     <a href="about.html" class="nav-a">About</a>
     <a href="index.html#nl" class="nav-a">Newsletter</a>
-    <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
+    <a href="index.html" class="btn-navy">⚔️ AI Tools Comparo</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="art-hero">
+  <div class="art-hero-bg"></div>
+  <div class="art-hero-bg-img"></div>
   <div class="art-hero-inner">
-    <div class="eyebrow">AI Tools Intelligence</div>
-    <h1>Articles & Deep Dives</h1>
-    <p>In-depth reviews, head-to-head comparisons and practical guides — written by our team and updated every week.</p>
+    <div class="eyebrow" style="color:rgba(221,196,106,0.8)">AI Tools Intelligence</div>
+    <h1>Deep Dives &<br>Honest Reviews</h1>
+    <p>In-depth comparisons, tool reviews and practical guides — written by our team and updated every single week.</p>
     <div class="art-filters">
-      <button class="art-pill on" onclick="filterArts('all',this)">All</button>
-      <button class="art-pill" onclick="filterArts('comparison',this)">Comparisons</button>
-      <button class="art-pill" onclick="filterArts('review',this)">Reviews</button>
-      <button class="art-pill" onclick="filterArts('guide',this)">Guides</button>
-      <button class="art-pill" onclick="filterArts('writing',this)">Writing</button>
-      <button class="art-pill" onclick="filterArts('seo',this)">SEO</button>
-      <button class="art-pill" onclick="filterArts('design',this)">Design</button>
-      <button class="art-pill" onclick="filterArts('video',this)">Video</button>
-      <button class="art-pill" onclick="filterArts('free',this)">Free Tools</button>
+      <button class="art-pill on" onclick="filterArts('all',this)">All Articles</button>
+      <button class="art-pill" onclick="filterArts('comparison',this)">⚔️ Comparisons</button>
+      <button class="art-pill" onclick="filterArts('review',this)">🔍 Reviews</button>
+      <button class="art-pill" onclick="filterArts('guide',this)">📖 Guides</button>
+      <button class="art-pill" onclick="filterArts('writing',this)">✍️ Writing</button>
+      <button class="art-pill" onclick="filterArts('seo',this)">📈 SEO</button>
+      <button class="art-pill" onclick="filterArts('design',this)">🎨 Design</button>
+      <button class="art-pill" onclick="filterArts('video',this)">🎬 Video</button>
+      <button class="art-pill" onclick="filterArts('free',this)">🆓 Free Tools</button>
     </div>
   </div>
 </div>
 
-<!-- FEATURED -->
-<div style="max-width:1080px;margin:0 auto;padding:0 20px;">
-  <a href="articles/chatgpt-vs-claude-vs-gemini.html" class="featured-art" style="margin-top:40px;text-decoration:none;display:grid;">
-    <div class="featured-art-img">🤖<span class="featured-art-badge">⭐ Featured</span></div>
-    <div class="featured-art-body">
-      <div class="featured-art-cat">Comparison · May 2026</div>
-      <div class="featured-art-title">ChatGPT vs Claude vs Gemini — Which AI Assistant Actually Wins in 2026?</div>
-      <div class="featured-art-excerpt">We ran 50 real-world tasks across all three major AI assistants — writing, coding, research, analysis and creative work. The results were surprising. Here's our definitive verdict with side-by-side data.</div>
-      <div class="featured-art-meta">📅 May 11, 2026 · 10 min read · 4 tools compared</div>
+<!-- FEATURED ARTICLE -->
+<div class="featured-wrap">
+  <a href="articles/chatgpt-vs-claude-vs-gemini.html" class="featured-card">
+    <div class="featured-img">
+      <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&q=85&auto=format&fit=crop" alt="ChatGPT vs Claude vs Gemini comparison">
+      <div class="featured-img-overlay"></div>
+      <span class="featured-badge">⭐ Featured Article</span>
+    </div>
+    <div class="featured-body">
+      <div class="featured-cat">⚔️ Comparison · May 2026</div>
+      <div class="featured-title">ChatGPT vs Claude vs Gemini — Which AI Assistant Actually Wins in 2026?</div>
+      <div class="featured-excerpt">We ran 50 real-world tasks across all three major AI assistants — writing, coding, research and analysis. The results were surprising. Here's our definitive verdict backed by real data.</div>
+      <div class="featured-meta">
+        <span>📅 May 11, 2026</span>
+        <span>⏱ 10 min read</span>
+        <span>🔧 3 tools compared</span>
+      </div>
       <span class="btn-read">Read Full Article →</span>
     </div>
   </a>
 </div>
 
-<!-- ARTICLES -->
+<!-- ARTICLES GRID -->
 <div class="art-section">
 
-  <div class="art-section-title">Latest This Week</div>
+  <div class="art-section-header">
+    <div class="art-section-title">Latest Articles</div>
+    <div class="art-count" id="art-count">9 articles</div>
+  </div>
+
   <div class="art-grid" id="art-grid">
 
     <a href="articles/best-ai-writing-tools-2026.html" class="art-card" data-cat="writing review">
-      <div class="art-card-img">✍️<span class="art-card-cat">Writing</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80&auto=format&fit=crop" alt="AI Writing Tools">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">✍️ Writing</span>
+        <span class="art-card-read-time">8 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">10 Best AI Writing Tools in 2026 — Ranked by 30M+ Users</div>
-        <div class="art-card-excerpt">From Grammarly to Jasper, we tested every major AI writing tool. Here's exactly which ones are worth your time and money.</div>
+        <div class="art-card-excerpt">From Grammarly to Jasper — we tested every major AI writing tool so you don't have to. Here's exactly which ones are worth your time and money.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 May 2026 · 8 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/free-ai-tools-2026.html" class="art-card" data-cat="free guide">
-      <div class="art-card-img">🆓<span class="art-card-cat">Free Tools</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop" alt="Free AI Tools">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">🆓 Free Tools</span>
+        <span class="art-card-read-time">7 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">15 Best Free AI Tools That Actually Work in 2026</div>
-        <div class="art-card-excerpt">No trials, no hidden paywalls. These are the best AI tools you can use completely free — forever. Tested and verified.</div>
+        <div class="art-card-excerpt">No trials, no hidden paywalls. These are the best AI tools you can use completely free — forever. Tested and verified by our team.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 May 2026 · 7 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
-    <a href="articles/best-ai-seo-tools.html" class="art-card" data-cat="seo review">
-      <div class="art-card-img">📈<span class="art-card-cat">SEO</span></div>
+    <a href="articles/best-ai-seo-tools.html" class="art-card" data-cat="seo review comparison">
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80&auto=format&fit=crop" alt="AI SEO Tools">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">📈 SEO</span>
+        <span class="art-card-read-time">12 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">Semrush vs Ahrefs vs Surfer SEO — The Complete 2026 Comparison</div>
-        <div class="art-card-excerpt">Three of the most powerful SEO platforms go head to head. We tested all three for 30 days. Here's the honest verdict.</div>
+        <div class="art-card-excerpt">Three of the most powerful SEO platforms go head to head. We tested all three for 30 days. Here's the honest verdict with real data.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 May 2026 · 12 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
-    <a href="articles/ai-tools-solopreneurs.html" class="art-card" data-cat="guide review">
-      <div class="art-card-img">🚀<span class="art-card-cat">Guide</span></div>
+    <a href="articles/ai-tools-solopreneurs.html" class="art-card" data-cat="guide">
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80&auto=format&fit=crop" alt="Solopreneur with laptop">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">📖 Guide</span>
+        <span class="art-card-read-time">9 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">How Solopreneurs Are Using AI to Save 10 Hours a Week</div>
-        <div class="art-card-excerpt">Real workflows from real solopreneurs. We interviewed 20 one-person businesses about their AI tool stacks. Here's what they use.</div>
+        <div class="art-card-excerpt">Real workflows from real one-person businesses. We interviewed 20 solopreneurs about their AI tool stacks. Here's what they actually use.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 May 2026 · 9 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/midjourney-vs-dalle-vs-leonardo.html" class="art-card" data-cat="design comparison">
-      <div class="art-card-img">🎨<span class="art-card-cat">Design</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80&auto=format&fit=crop" alt="AI Image Generation">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">🎨 Design</span>
+        <span class="art-card-read-time">11 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">Midjourney vs DALL-E 3 vs Leonardo — Best AI Image Generator 2026</div>
-        <div class="art-card-excerpt">We generated 200+ images across all three platforms using identical prompts. The quality differences are stark. See the results.</div>
+        <div class="art-card-excerpt">We generated 200+ images across all three platforms using identical prompts. The quality differences are stark — see the real results.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 May 2026 · 11 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/best-ai-video-tools.html" class="art-card" data-cat="video review">
-      <div class="art-card-img">🎬<span class="art-card-cat">Video</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1536240478700-b869ad10e2f1?w=600&q=80&auto=format&fit=crop" alt="AI Video Tools">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">🎬 Video</span>
+        <span class="art-card-read-time">8 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">7 Best AI Video Tools in 2026 — From Creation to Editing</div>
-        <div class="art-card-excerpt">Whether you're creating videos from scratch or editing existing footage, these are the AI tools that actually deliver professional results.</div>
+        <div class="art-card-excerpt">Whether creating from scratch or editing existing footage, these AI tools deliver professional results without the learning curve.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 Apr 2026 · 8 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/grammarly-review-2026.html" class="art-card" data-cat="writing review">
-      <div class="art-card-img">✅<span class="art-card-cat">Review</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80&auto=format&fit=crop" alt="Writing and editing">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">🔍 Review</span>
+        <span class="art-card-read-time">6 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">Grammarly Review 2026 — Still Worth It After 10 Years?</div>
-        <div class="art-card-excerpt">Grammarly has 30M+ users but is it still the best AI writing assistant? We compared it against newer alternatives. Honest verdict inside.</div>
+        <div class="art-card-excerpt">Grammarly has 30M+ users — but is it still the best AI writing assistant? We compared it head-to-head against newer alternatives.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 Apr 2026 · 6 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/zapier-vs-make-automation.html" class="art-card" data-cat="guide comparison">
-      <div class="art-card-img">⚙️<span class="art-card-cat">Automation</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80&auto=format&fit=crop" alt="Automation workflow">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">⚙️ Automation</span>
+        <span class="art-card-read-time">10 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">Zapier vs Make — Which Automation Platform Wins in 2026?</div>
-        <div class="art-card-excerpt">Both platforms let you automate without code. But they're very different products for very different use cases. Here's how to choose.</div>
+        <div class="art-card-excerpt">Both let you automate without code — but they're very different for different use cases. Here's the definitive guide to choosing.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 Apr 2026 · 10 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
     <a href="articles/elevenlabs-review.html" class="art-card" data-cat="review">
-      <div class="art-card-img">🔊<span class="art-card-cat">Audio</span></div>
+      <div class="art-card-img">
+        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=80&auto=format&fit=crop" alt="AI Voice Generation">
+        <div class="art-card-overlay"></div>
+        <span class="art-card-cat">🔊 Audio</span>
+        <span class="art-card-read-time">7 min read</span>
+      </div>
       <div class="art-card-body">
         <div class="art-card-title">ElevenLabs Review 2026 — The Most Realistic AI Voice Tool?</div>
-        <div class="art-card-excerpt">ElevenLabs claims to be the most realistic AI voice generator. After testing it for 3 weeks across 50+ voice samples, here's our verdict.</div>
+        <div class="art-card-excerpt">ElevenLabs claims to produce the most realistic AI voices. After 3 weeks and 50+ voice samples, here's our honest assessment.</div>
         <div class="art-card-footer">
-          <div class="art-card-meta">📅 Apr 2026 · 7 min</div>
-          <span class="art-card-read">Read →</span>
+          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
   </div>
 
-  <!-- NL BANNER -->
+  <!-- NEWSLETTER BANNER -->
   <div class="nl-banner">
     <h3>Get 5 New Articles Every Week — Free</h3>
-    <p>Subscribe to The AI Toolbox newsletter. Every Friday: new tool reviews, comparisons and one actionable tip. Join 1,000+ subscribers.</p>
+    <p>Subscribe to The AI Toolbox newsletter. Every Friday: tool reviews, honest comparisons and one immediately actionable tip.</p>
     <a href="index.html#nl" class="btn-gold">Subscribe Free →</a>
   </div>
 
 </div>
 
 <footer>
-  <p>© 2026 MyAI ToolsFinder · <a href="index.html" style="color:var(--gold-a)">Directory</a> · <a href="about.html" style="color:var(--gold-a)">About</a> · <a href="#" style="color:var(--gold-a)">Privacy Policy</a></p>
+  <p style="margin-bottom:10px;">
+    <a href="index.html">Directory</a> &nbsp;·&nbsp;
+    <a href="articles.html">Articles</a> &nbsp;·&nbsp;
+    <a href="about.html">About</a> &nbsp;·&nbsp;
+    <a href="index.html#nl">Newsletter</a> &nbsp;·&nbsp;
+    <a href="#">Privacy Policy</a>
+  </p>
+  <p>© 2026 MyAI ToolsFinder. All rights reserved.</p>
 </footer>
 
 <script>
 function filterArts(cat, btn){
   document.querySelectorAll('.art-pill').forEach(p=>p.classList.remove('on'));
   btn.classList.add('on');
-  document.querySelectorAll('.art-card').forEach(card=>{
-    if(cat==='all'){card.style.display='flex';return;}
+  const cards=document.querySelectorAll('.art-card');
+  let visible=0;
+  cards.forEach(card=>{
+    if(cat==='all'){card.style.display='flex';visible++;return;}
     const cats=(card.dataset.cat||'').split(' ');
-    card.style.display=cats.includes(cat)?'flex':'none';
+    const show=cats.includes(cat);
+    card.style.display=show?'flex':'none';
+    if(show) visible++;
   });
+  document.getElementById('art-count').textContent=`${visible} article${visible!==1?'s':''}`;
 }
 </script>
 </body>
