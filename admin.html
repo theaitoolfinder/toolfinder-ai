@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Admin · MyAI ToolsFinder</title>
+<style>
+  :root{
+    --bg:#0c0f14; --bg-soft:#11151c; --card:#161b24; --border:#222a36;
+    --text:#e7ebf2; --text-dim:#9aa3b2; --accent:#ffd24a; --ok:#5fd38b; --danger:#ef5b5b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 80px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:12px;flex-wrap:wrap}
+  h1{font-size:22px;margin:0}
+  .sub{color:var(--text-dim);font-size:13px}
+  .danger-banner{background:rgba(239,91,91,.08);border:1px solid rgba(239,91,91,.35);color:#ffb6b6;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
+  .info-banner{background:rgba(255,210,74,.08);border:1px solid rgba(255,210,74,.35);color:#ffe6a1;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
+
+  /* gate */
+  .gate{max-width:420px;margin:80px auto;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px}
+  .gate h1{margin:0 0 6px;font-size:20px}
+  .gate p{color:var(--text-dim);margin:0 0 18px;font-size:13.5px}
+  .gate input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0}
+  .gate input:focus{border-color:var(--accent)}
+  .gate .err{color:var(--danger);font-size:12.5px;min-height:18px;margin-top:6px}
+
+  /* tabs */
+  .tabs{display:flex;gap:6px;border-bottom:1px solid var(--border);margin-bottom:20px;overflow-x:auto}
+  .tab{background:transparent;border:0;color:var(--text-dim);padding:10px 14px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
+  .tab.active{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
+
+  /* tool card */
+  .tool{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
+  .tool .hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px}
+  .tool .hd .name{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .tool .hd .name .cat{font-size:11px;color:var(--text-dim);font-weight:400;background:var(--bg-soft);padding:2px 8px;border-radius:999px;border:1px solid var(--border)}
+  .tool .hd .name .aff{font-size:10.5px;color:var(--accent);background:rgba(255,210,74,.12);border:1px solid rgba(255,210,74,.35);padding:1px 6px;border-radius:999px;font-weight:600}
+  .tool .hd .toggle{color:var(--text-dim);font-size:18px;user-select:none}
+  .tool .body{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+  .tool.open .body{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tool .full{grid-column:1 / -1}
+  label{display:block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin:0 0 4px}
+  input[type=text],input[type=url],input[type=number],textarea,select{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:8px;font-size:13px;outline:0;font-family:inherit}
+  input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+  textarea{resize:vertical;min-height:60px}
+  .checkbox{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);margin-top:18px}
+  .checkbox input{accent-color:var(--accent);width:16px;height:16px}
+
+  /* site config */
+  .siteform{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .siteform .full{grid-column:1 / -1}
+
+  /* buttons / footer */
+  .bar{position:sticky;bottom:0;background:rgba(12,15,20,.95);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:14px 0;margin:24px -20px 0;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .bar .grow{flex:1;color:var(--text-dim);font-size:12.5px;align-self:center;text-align:left;min-width:200px}
+  .btn{padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;cursor:pointer;white-space:nowrap}
+  .btn.primary{background:var(--accent);color:#0c0f14;border-color:var(--accent);font-weight:600}
+  .btn.danger{color:var(--danger);border-color:var(--danger)}
+
+  /* export */
+  .export{margin-top:18px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+  pre.code{background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:8px;font:12px/1.5 ui-monospace,Menlo,monospace;color:var(--text-dim);white-space:pre;max-height:380px;overflow:auto;margin:0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .stat b{display:block;font-size:22px;color:var(--accent);margin-bottom:2px}
+  .stat span{font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
+
+  @media (max-width:700px){
+    .tool.open .body{grid-template-columns:1fr}
+    .siteform{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Password gate ===== -->
+<div id="gate" class="gate">
+  <h1>🔒 Admin access</h1>
+  <p>This page lets you edit affiliate URLs, tool data and site settings for <b>MyAI ToolsFinder</b>.</p>
+  <input id="pw" type="password" placeholder="Enter passphrase" autocomplete="off" />
+  <div class="err" id="err"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:14px">
+    <button class="btn primary" onclick="unlock()">Unlock</button>
+  </div>
+  <p style="margin-top:18px;font-size:11.5px;line-height:1.6;color:var(--text-dim)">
+    ⚠️ <b>Security note:</b> This site is hosted on GitHub Pages (static, no backend), so the passphrase below is stored in this file's source code. Anyone who reads the page source can find it. Treat it as friction, not real security. For real protection, host the admin behind real auth (Vercel/Netlify functions + Auth0/Clerk, or self-host with Nginx basic-auth).
+  </p>
+</div>
+
+<!-- ===== Admin app ===== -->
+<div id="app" class="wrap" style="display:none">
+  <header>
+    <div>
+      <h1>⚙️ MyAI ToolsFinder · Admin</h1>
+      <div class="sub">Edit affiliate URLs, tool data and site settings. Changes preview live in your browser. Export the JS code and paste it back into <code>index.html</code> to deploy.</div>
+    </div>
+    <div>
+      <a href="/" class="btn">← View site</a>
+      <button class="btn danger" onclick="logout()">Lock</button>
+    </div>
+  </header>
+
+  <div class="info-banner">
+    💡 <b>Workflow:</b> edit anything below → preview at <a href="/" target="_blank">myaitoolsfinder.com</a> → when happy, hit <b>Export</b> at the bottom, copy the code block, and paste it over the matching block in <code>index.html</code> on GitHub. Commit, and your changes go live within seconds.
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="stat-total">0</b><span>Total tools</span></div>
+    <div class="stat"><b id="stat-aff">0</b><span>With affiliate URL</span></div>
+    <div class="stat"><b id="stat-verified">0</b><span>Verified</span></div>
+    <div class="stat"><b id="stat-trending">0</b><span>Trending ≥85</span></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="tools">🧰 Tools</button>
+    <button class="tab" data-tab="site">🌐 Site settings</button>
+    <button class="tab" data-tab="export">📦 Export</button>
+  </div>
+
+  <!-- TOOLS TAB -->
+  <div id="tab-tools">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+      <input type="search" id="search" placeholder="🔎 Filter tools by name, category, job…" style="flex:1;min-width:200px" />
+      <button class="btn" onclick="expandAll(true)">Expand all</button>
+      <button class="btn" onclick="expandAll(false)">Collapse all</button>
+      <button class="btn primary" onclick="addTool()">+ Add tool</button>
+    </div>
+    <div id="tool-list"></div>
+  </div>
+
+  <!-- SITE TAB -->
+  <div id="tab-site" style="display:none">
+    <div class="siteform">
+      <div class="full">
+        <label>Brand name</label>
+        <input type="text" id="cfg-brand" />
+      </div>
+      <div class="full">
+        <label>Hero headline (HTML allowed — wrap accent in &lt;em&gt;)</label>
+        <input type="text" id="cfg-hero-title" />
+      </div>
+      <div class="full">
+        <label>Hero subheading</label>
+        <textarea id="cfg-hero-sub" rows="2"></textarea>
+      </div>
+      <div>
+        <label>Eyebrow text (above headline)</label>
+        <input type="text" id="cfg-eyebrow" />
+      </div>
+      <div>
+        <label>Curator line</label>
+        <input type="text" id="cfg-curator" />
+      </div>
+      <div class="full">
+        <label>Affiliate disclosure banner text</label>
+        <input type="text" id="cfg-disclosure" />
+      </div>
+      <div>
+        <label>Newsletter heading</label>
+        <input type="text" id="cfg-news-title" />
+      </div>
+      <div>
+        <label>Newsletter subtext</label>
+        <input type="text" id="cfg-news-sub" />
+      </div>
+      <div>
+        <label>Contact email (footer)</label>
+        <input type="email" id="cfg-email" />
+      </div>
+      <div>
+        <label>Copyright line</label>
+        <input type="text" id="cfg-copy" />
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPORT TAB -->
+  <div id="tab-export" style="display:none">
+    <div class="export">
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+        <button class="btn primary" onclick="renderExport('tools')">Generate TOOLS code</button>
+        <button class="btn" onclick="renderExport('site')">Generate SITE config code</button>
+        <button class="btn" onclick="copyExport()">📋 Copy</button>
+        <button class="btn" onclick="downloadExport()">⬇️ Download .txt</button>
+      </div>
+      <pre class="code" id="export-out">Click "Generate TOOLS code" above to produce the snippet to paste back into index.html.</pre>
+      <div class="info-banner" style="margin-top:14px;margin-bottom:0">
+        <b>Where to paste:</b> In <code>index.html</code>, find the line <code>const TOOLS = [</code> and replace from there through the closing <code>];</code> with the generated code. Commit on the <code>main</code> branch and GitHub Pages will redeploy in ~30 seconds.
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="grow">💾 Changes auto-save to your browser. Export when ready to deploy.</div>
+    <button class="btn danger" onclick="resetAll()">Reset all to defaults</button>
+    <button class="btn primary" onclick="document.querySelector('.tab[data-tab=&quot;export&quot;]').click()">Go to Export →</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   ADMIN — change this passphrase to whatever you want.
+   It's stored in the source code (visible to anyone who
+   views the page source), so this is obscurity, not real
+   security. For real auth, use a backend.
+   ========================================================= */
+const ADMIN_PASS = "changeme";   // ← CHANGE THIS
+
+const LS_AUTH       = "myai_admin_auth_v1";
+const LS_OVERRIDES  = "myai_admin_overrides_v1";  // shared with index.html
+const LS_SITECONFIG = "myai_site_config_v1";
+
+/* Defaults — keep in sync with index.html TOOLS array.
+   The admin only needs the same length and field shape; the
+   actual deployed data is whatever you paste back into index.html. */
+const DEFAULT_TOOLS = [
+  {name:"ChatGPT",        tag:"Most popular AI assistant for writing, coding, research.", pill:"Free + Pro",  url:"https://chat.openai.com",          affiliate_url:"", jobs:["Solopreneur","Content Creator","Developer","Marketer","Student"], needs:["Write faster","Brainstorm ideas","Code faster"], trending:98, verified:true, cat:"Chatbot"},
+  {name:"Claude",         tag:"Nuanced AI assistant for long docs and careful thinking.", pill:"Free + Pro",  url:"https://claude.ai",                affiliate_url:"", jobs:["Solopreneur","Researcher","Writer","Developer"],                  needs:["Write faster","Summarize long docs","Code faster"], trending:96, verified:true, cat:"Chatbot"},
+  {name:"Gemini",         tag:"Google's multimodal AI across Workspace and Android.",     pill:"Free",        url:"https://gemini.google.com",        affiliate_url:"", jobs:["Marketer","Solopreneur","Student"],                                needs:["Write faster","Search the web","Brainstorm ideas"], trending:88, verified:false, cat:"Chatbot"},
+  {name:"Grammarly",      tag:"AI writing assistant — grammar, tone, clarity, everywhere.",pill:"Free + Pro", url:"https://grammarly.com",            affiliate_url:"", jobs:["Writer","Marketer","Solopreneur","Student"],                       needs:["Write faster","Improve writing"], trending:75, verified:true, cat:"Writing"},
+  {name:"Jasper AI",      tag:"Marketing-focused AI for blogs, ads and campaigns.",       pill:"7-Day Trial", url:"https://jasper.ai",                affiliate_url:"", jobs:["Marketer","Content Creator","Founder"],                            needs:["Write faster","Run marketing"], trending:60, verified:true, cat:"Writing"},
+  {name:"Writesonic",     tag:"SEO-optimised articles, ads and landing pages in minutes.",pill:"Free Trial", url:"https://writesonic.com",           affiliate_url:"", jobs:["Marketer","Content Creator","Solopreneur"],                        needs:["Write faster","Rank higher on Google"], trending:62, verified:false, cat:"Writing"},
+  {name:"DeepL",          tag:"Most accurate AI translator across 30+ languages.",        pill:"Free + Pro",  url:"https://deepl.com",                affiliate_url:"", jobs:["Writer","Marketer","Solopreneur"],                                 needs:["Translate","Write faster"], trending:65, verified:false, cat:"Writing"},
+  {name:"Canva",          tag:"Design anything in minutes with Magic AI.",                pill:"Free + Pro",  url:"https://canva.com",                affiliate_url:"", jobs:["Freelance Designer","Marketer","Solopreneur","Content Creator"],   needs:["Design without a designer","Make social posts"], trending:90, verified:true, cat:"Design"},
+  {name:"Midjourney",     tag:"State-of-the-art AI image generation.",                    pill:"$10/mo",      url:"https://midjourney.com",           affiliate_url:"", jobs:["Freelance Designer","Content Creator"],                            needs:["Generate images","Design without a designer"], trending:92, verified:true, cat:"Image"},
+  {name:"Leonardo",       tag:"AI image generation with fine-grained control.",           pill:"Free Tier",   url:"https://leonardo.ai",              affiliate_url:"", jobs:["Freelance Designer","Content Creator"],                            needs:["Generate images"], trending:70, verified:false, cat:"Image"},
+  {name:"DALL·E 3",       tag:"Image generation built into ChatGPT.",                     pill:"In ChatGPT",  url:"https://openai.com/dall-e-3",      affiliate_url:"", jobs:["Freelance Designer","Marketer"],                                   needs:["Generate images"], trending:72, verified:false, cat:"Image"},
+  {name:"RankMath AI",    tag:"WordPress SEO with AI content + schema suggestions.",      pill:"Free + Pro",  url:"https://rankmath.com",             affiliate_url:"", jobs:["SEO Consultant","Marketer","Founder"],                             needs:["Rank higher on Google"], trending:64, verified:true, cat:"SEO"},
+  {name:"Surfer SEO",     tag:"Content-grader and SERP analyser for ranking pages.",      pill:"Save 20%",    url:"https://surferseo.com",            affiliate_url:"", jobs:["SEO Consultant","Content Creator","Marketer"],                     needs:["Rank higher on Google","Improve writing"], trending:68, verified:false, cat:"SEO"},
+  {name:"Ahrefs",         tag:"Backlinks, keywords, site audits — the SEO gold standard.",pill:"From $99",    url:"https://ahrefs.com",               affiliate_url:"", jobs:["SEO Consultant","Marketer"],                                       needs:["Rank higher on Google","Research competitors"], trending:74, verified:false, cat:"SEO"},
+  {name:"Semrush",        tag:"All-in-one marketing toolkit with AI assistants.",         pill:"Free Trial",  url:"https://semrush.com",              affiliate_url:"", jobs:["SEO Consultant","Marketer","Founder"],                             needs:["Rank higher on Google","Run marketing"], trending:78, verified:false, cat:"SEO"},
+  {name:"Runway",         tag:"AI video generation and editing for creators.",            pill:"Free Tier",   url:"https://runwayml.com",             affiliate_url:"", jobs:["Content Creator","Freelance Designer"],                            needs:["Edit video","Generate video"], trending:85, verified:true, cat:"Video"},
+  {name:"Descript",       tag:"Edit video and podcasts by editing the transcript.",       pill:"Free + Pro",  url:"https://descript.com",             affiliate_url:"", jobs:["Content Creator","Marketer"],                                      needs:["Edit video","Edit audio"], trending:71, verified:false, cat:"Video"},
+  {name:"ElevenLabs",     tag:"Lifelike AI voices for videos, podcasts and apps.",        pill:"Free Tier",   url:"https://elevenlabs.io",            affiliate_url:"", jobs:["Content Creator","Developer"],                                     needs:["Generate voice","Edit audio"], trending:86, verified:true, cat:"Audio"},
+  {name:"Notion AI",      tag:"AI inside Notion docs, wikis and project pages.",          pill:"Add-on",      url:"https://notion.so/product/ai",     affiliate_url:"", jobs:["Solopreneur","Founder","Marketer","Writer"],                       needs:["Write faster","Organize work"], trending:80, verified:true, cat:"Productivity"},
+  {name:"Motion",         tag:"AI planner for tasks, calendars and meetings.",            pill:"33% Off",     url:"https://usemotion.com",            affiliate_url:"", jobs:["Founder","Solopreneur","Manager"],                                 needs:["Organize work","Save time"], trending:69, verified:false, cat:"Productivity"},
+  {name:"Granola",        tag:"AI notepad that captures meeting context automatically.",  pill:"3 Months Pro",url:"https://granola.ai",               affiliate_url:"", jobs:["Founder","Manager","Solopreneur"],                                 needs:["Take notes","Save time"], trending:91, verified:true, cat:"Productivity"},
+  {name:"Cursor",         tag:"AI-native code editor built on VS Code.",                  pill:"Free + Pro",  url:"https://cursor.com",               affiliate_url:"", jobs:["Developer","Founder"],                                             needs:["Code faster","Ship faster"], trending:97, verified:true, cat:"Coding"},
+  {name:"GitHub Copilot", tag:"AI pair-programmer right inside your editor.",             pill:"$10/mo",      url:"https://github.com/features/copilot", affiliate_url:"", jobs:["Developer"],                                                    needs:["Code faster"], trending:84, verified:false, cat:"Coding"},
+  {name:"Make.com",       tag:"Visual automation for your apps and AI workflows.",        pill:"Free Tier",   url:"https://make.com",                 affiliate_url:"", jobs:["Solopreneur","Marketer","Founder"],                                needs:["Automate repetitive work"], trending:73, verified:false, cat:"Automation"}
+];
+
+const DEFAULT_SITE = {
+  brand: "MyAI ToolsFinder",
+  eyebrow: "AI Tools Directory · Curated Weekly",
+  hero_title: "Find the AI tools that <em>fit your work.</em>",
+  hero_sub: "Skip the noise. Pick how you want to browse — by your job, by the problem you're solving, or by what's trending right now.",
+  curator: "Curated by <b>MyAI ToolsFinder</b> · 1,000+ subscribers · every Friday",
+  disclosure: "This site contains affiliate links — we may earn a commission at no extra cost to you.",
+  news_title: "Stop guessing. Start knowing.",
+  news_sub: "Every Friday: 5 hand-picked AI tools, 1 honest comparison, 1 tip that saves you real time.",
+  email: "hello@myaitoolsfinder.com",
+  copy: "© 2026 MyAI ToolsFinder"
+};
+
+/* ===== Auth ===== */
+function unlock(){
+  const v = document.getElementById('pw').value;
+  if (v !== ADMIN_PASS) { document.getElementById('err').textContent = 'Wrong passphrase.'; return; }
+  sessionStorage.setItem(LS_AUTH, '1');
+  showApp();
+}
+function logout(){ sessionStorage.removeItem(LS_AUTH); location.reload(); }
+function isAuthed(){ return sessionStorage.getItem(LS_AUTH) === '1'; }
+function showApp(){
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderToolList();
+  renderSiteForm();
+  refreshStats();
+}
+
+/* ===== Data helpers ===== */
+function loadOverrides(){ try{return JSON.parse(localStorage.getItem(LS_OVERRIDES))||{};}catch(e){return {};} }
+function saveOverrides(o){ localStorage.setItem(LS_OVERRIDES, JSON.stringify(o)); refreshStats(); }
+function loadSite(){ try{return Object.assign({}, DEFAULT_SITE, JSON.parse(localStorage.getItem(LS_SITECONFIG))||{});}catch(e){return Object.assign({}, DEFAULT_SITE);} }
+function saveSite(c){ localStorage.setItem(LS_SITECONFIG, JSON.stringify(c)); }
+function effectiveTools(){
+  const ov = loadOverrides();
+  return DEFAULT_TOOLS.map((t,i)=>Object.assign({}, t, ov[i]||{}));
+}
+
+/* ===== Stats ===== */
+function refreshStats(){
+  const t = effectiveTools();
+  document.getElementById('stat-total').textContent = t.length;
+  document.getElementById('stat-aff').textContent = t.filter(x=>x.affiliate_url && x.affiliate_url.trim()).length;
+  document.getElementById('stat-verified').textContent = t.filter(x=>x.verified).length;
+  document.getElementById('stat-trending').textContent = t.filter(x=>x.trending>=85).length;
+}
+
+/* ===== Tool list ===== */
+let search = "";
+function renderToolList(){
+  const tools = effectiveTools();
+  const filter = search.toLowerCase();
+  const $list = document.getElementById('tool-list');
+  $list.innerHTML = tools.map((t,i)=>{
+    const hay = (t.name+' '+t.cat+' '+t.tag+' '+t.jobs.join(' ')+' '+t.needs.join(' ')).toLowerCase();
+    if (filter && !hay.includes(filter)) return '';
+    const hasAff = !!(t.affiliate_url && t.affiliate_url.trim());
+    return `
+    <div class="tool" data-idx="${i}">
+      <div class="hd" onclick="toggleTool(${i})">
+        <div class="name">
+          ${escapeHtml(t.name)}
+          <span class="cat">${escapeHtml(t.cat)}</span>
+          ${hasAff?'<span class="aff">Affiliate</span>':''}
+          ${t.verified?'<span class="cat" style="color:var(--ok)">✓ Verified</span>':''}
+        </div>
+        <span class="toggle">+</span>
+      </div>
+      <div class="body">
+        <div><label>Name</label><input type="text" data-f="name" value="${escapeAttr(t.name)}"></div>
+        <div><label>Category</label><input type="text" data-f="cat" value="${escapeAttr(t.cat)}"></div>
+        <div class="full"><label>One-line tagline</label><input type="text" data-f="tag" value="${escapeAttr(t.tag)}"></div>
+        <div><label>Pill / badge text</label><input type="text" data-f="pill" value="${escapeAttr(t.pill)}"></div>
+        <div><label>Trending score (0–100)</label><input type="number" min="0" max="100" data-f="trending" value="${t.trending}"></div>
+        <div class="full"><label>Plain URL (fallback if affiliate is empty)</label><input type="url" data-f="url" value="${escapeAttr(t.url)}"></div>
+        <div class="full"><label>🪙 Affiliate URL — your tracked link</label><input type="url" data-f="affiliate_url" placeholder="https://your-affiliate-link.com/?ref=..." value="${escapeAttr(t.affiliate_url||'')}"></div>
+        <div class="full"><label>Jobs (comma-separated)</label><input type="text" data-f="jobs" value="${escapeAttr(t.jobs.join(', '))}"></div>
+        <div class="full"><label>Needs (comma-separated)</label><input type="text" data-f="needs" value="${escapeAttr(t.needs.join(', '))}"></div>
+        <div class="checkbox"><input type="checkbox" data-f="verified" ${t.verified?'checked':''}><span>Verified vendor</span></div>
+        <div style="text-align:right;align-self:center"><button class="btn danger" onclick="deleteTool(${i})">Delete tool</button></div>
+      </div>
+    </div>`;
+  }).join('') || '<div class="info-banner" style="margin:0">No tools match "'+escapeHtml(search)+'".</div>';
+
+  // wire inputs
+  document.querySelectorAll('#tool-list .tool').forEach(el=>{
+    const idx = +el.dataset.idx;
+    el.querySelectorAll('input[data-f]').forEach(inp=>{
+      inp.addEventListener('input',()=>updateField(idx, inp));
+      inp.addEventListener('change',()=>updateField(idx, inp));
+    });
+  });
+}
+function toggleTool(i){
+  const el = document.querySelector('.tool[data-idx="'+i+'"]');
+  if (!el) return;
+  el.classList.toggle('open');
+  el.querySelector('.toggle').textContent = el.classList.contains('open') ? '−' : '+';
+}
+function expandAll(open){
+  document.querySelectorAll('.tool').forEach(el=>{
+    el.classList.toggle('open', open);
+    el.querySelector('.toggle').textContent = open ? '−' : '+';
+  });
+}
+function updateField(idx, inp){
+  const ov = loadOverrides();
+  ov[idx] = ov[idx] || {};
+  let val = inp.value;
+  if (inp.dataset.f === 'jobs' || inp.dataset.f === 'needs') {
+    val = val.split(',').map(s=>s.trim()).filter(Boolean);
+  } else if (inp.dataset.f === 'verified') {
+    val = inp.checked;
+  } else if (inp.dataset.f === 'trending') {
+    val = Math.max(0, Math.min(100, Number(val)||0));
+  }
+  ov[idx][inp.dataset.f] = val;
+  saveOverrides(ov);
+}
+function deleteTool(idx){
+  if (!confirm('Remove this tool from your site?')) return;
+  const ov = loadOverrides();
+  ov[idx] = ov[idx] || {};
+  ov[idx]._deleted = true;
+  saveOverrides(ov);
+  alert('Marked for deletion — it will be removed from the exported TOOLS code.');
+  renderToolList();
+}
+function addTool(){
+  alert('To add brand new tools, append a row to the DEFAULT_TOOLS array in admin.html (this is the source of truth for the editor). Once you do that and reload, it will appear here and in the export. Tip: easier to add them directly to TOOLS in index.html.');
+}
+
+/* ===== Site config ===== */
+function renderSiteForm(){
+  const s = loadSite();
+  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy'};
+  Object.entries(map).forEach(([k,id])=>{
+    const el = document.getElementById(id);
+    if (el) {
+      el.value = s[k] || '';
+      el.addEventListener('input', ()=>{ const c = loadSite(); c[k] = el.value; saveSite(c); });
+    }
+  });
+}
+
+/* ===== Export ===== */
+function renderExport(which){
+  const out = document.getElementById('export-out');
+  if (which === 'tools') {
+    const ov = loadOverrides();
+    const merged = DEFAULT_TOOLS
+      .map((t,i)=>{
+        const o = Object.assign({}, ov[i]||{});
+        if (o._deleted) return null;
+        delete o._deleted;
+        return Object.assign({}, t, o);
+      })
+      .filter(Boolean);
+    out.textContent = "const TOOLS = " + JSON.stringify(merged, null, 2) + ";";
+  } else {
+    const s = loadSite();
+    out.textContent = "/* Site config — paste these strings into the matching spots in index.html */\nconst SITE = " + JSON.stringify(s, null, 2) + ";";
+  }
+}
+function copyExport(){
+  const txt = document.getElementById('export-out').textContent;
+  navigator.clipboard.writeText(txt).then(()=>alert('Copied!')).catch(()=>alert('Auto-copy blocked — select the text manually and copy.'));
+}
+function downloadExport(){
+  const blob = new Blob([document.getElementById('export-out').textContent], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'tools-export.txt';
+  a.click();
+}
+
+/* ===== Misc ===== */
+function resetAll(){
+  if(!confirm('Clear ALL admin overrides (tools + site config)? This cannot be undone.')) return;
+  localStorage.removeItem(LS_OVERRIDES);
+  localStorage.removeItem(LS_SITECONFIG);
+  renderToolList(); renderSiteForm(); refreshStats();
+  alert('Reset done.');
+}
+function escapeHtml(s){return String(s||'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+
+/* ===== Tab + search wiring ===== */
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x===b));
+  ['tools','site','export'].forEach(name=>{
+    document.getElementById('tab-'+name).style.display = (name===b.dataset.tab)?'block':'none';
+  });
+}));
+document.getElementById('pw').addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); });
+document.getElementById('search').addEventListener('input',e=>{ search = e.target.value; renderToolList(); });
+
+/* Auto-resume if already authed in this session */
+if (isAuthed()) showApp();
+else document.getElementById('pw').focus();
+</script>
+</body>
+</html>
