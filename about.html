@@ -114,10 +114,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
 footer{background:var(--bg-off);border-top:1px solid var(--border);padding:40px 20px 24px;text-align:center;}
 footer p{font-size:12.5px;color:var(--gray-m);}
 
+/* BURGER */
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;background:none;border:none;gap:5px;cursor:pointer;border-radius:8px;transition:background 0.15s;}
+.burger:hover{background:var(--bg-off);}
+.burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all 0.25s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* MOBILE MENU */
+.mob-menu{position:fixed;top:0;right:-300px;width:280px;height:100vh;z-index:400;
+  background:var(--bg);border-left:1px solid var(--border);box-shadow:-4px 0 32px rgba(0,0,0,0.1);
+  transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;}
+.mob-menu.open{right:0;}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;
+  border-bottom:1px solid var(--border);}
+.mob-close{background:none;border:none;font-size:20px;color:var(--gray);cursor:pointer;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  border-radius:7px;transition:background 0.15s;}
+.mob-close:hover{background:var(--bg-off);}
+.mob-nav{display:flex;flex-direction:column;padding:16px 12px;gap:4px;flex:1;}
+.mob-nav a{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;
+  font-size:14px;font-weight:500;color:var(--gray);transition:all 0.15s;}
+.mob-nav a:hover{background:var(--bg-off);color:var(--navy);}
+.mob-cta{background:var(--navy)!important;color:#fff!important;margin-top:8px;justify-content:center;font-weight:600!important;}
+.mob-cta:hover{background:var(--navy2)!important;}
+.mob-admin{color:var(--gray-m)!important;font-size:12px!important;margin-top:auto;}
+.mob-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.35);
+  opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.mob-overlay.open{opacity:1;pointer-events:all;}
+
 /* MOBILE */
 @media(max-width:768px){
   nav{padding:0 16px;}
-  .nav-links .nav-a:not(.active){display:none;}
+  .nav-links .nav-a{display:none;}
+  .nav-links .btn-navy{display:none;}
+  .burger{display:flex;}
   .values-grid{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .team-card{flex-direction:column;}
@@ -153,7 +186,36 @@ footer p{font-size:12.5px;color:var(--gray-m);}
     <a href="index.html#nl" class="nav-a">Newsletter</a>
     <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
   </div>
+  <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-head">
+    <a href="index.html" class="logo">
+      <div class="logo-mark" style="width:28px;height:28px;border-radius:7px;">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <circle cx="6" cy="6" r="2.8" fill="white"/>
+          <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        </svg>
+      </div>
+      <span class="logo-name" style="font-size:13px;">MyAI ToolsFinder</span>
+    </a>
+    <button class="mob-close" onclick="toggleMenu()">✕</button>
+  </div>
+  <div class="mob-nav">
+    <a href="index.html">🔧 AI Tools Directory</a>
+    <a href="articles.html">📰 Articles</a>
+    <a href="about.html">👋 About</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+    <a href="index.html#nl" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
+    <a href="admin.html" class="mob-admin">⚙️ Admin</a>
+  </div>
+</div>
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 
 <!-- HERO -->
 <div class="about-hero">
@@ -290,6 +352,15 @@ footer p{font-size:12.5px;color:var(--gray-m);}
 </footer>
 
 <script>
+function toggleMenu(){
+  const m=document.getElementById('mob-menu'),
+        o=document.getElementById('mob-overlay'),
+        b=document.getElementById('burger');
+  m.classList.toggle('open');
+  o.classList.toggle('open');
+  b.classList.toggle('open');
+}
+
 /* Load social links from localStorage (shared with main site) */
 function get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}
 

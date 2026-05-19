@@ -1,209 +1,154 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>MyAI ToolsFinder — Find the AI tools that fit your work</title>
-<meta name="description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse by your job, by the problem you're solving, or by what's trending. Honest reviews, no fluff." />
-<link rel="canonical" href="https://myaitoolsfinder.com/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="MyAI ToolsFinder" />
-<meta property="og:title" content="MyAI ToolsFinder — AI tools that fit your work" />
-<meta property="og:description" content="Curated AI tools directory. Browse by job, need, or what's trending." />
-<meta property="og:url" content="https://myaitoolsfinder.com/" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse by your job, by the problem you're solving, or by what's trending."/>
+<link rel="canonical" href="https://myaitoolsfinder.com/"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <script type="application/ld+json" id="ldjson"></script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-  /* ===== Brand palette (light) ===== */
-  :root{
-    --bg:#fafbfc;
-    --bg-2:#ffffff;
-    --surface:#ffffff;
-    --surface-2:#f5f7fa;
-    --border:#e1e6ec;
-    --border-soft:#edf0f4;
-    --text:#1a202c;
-    --text-2:#4a5568;
-    --text-dim:#718096;
-    --accent:#ffb800;
-    --accent-2:#ff7a59;
-    --ok:#22c55e;
-    --star:#f59e0b;
-    --danger:#ef4444;
-    --shadow:0 4px 16px rgba(15,23,42,.06);
-    --shadow-lg:0 10px 30px rgba(15,23,42,.10);
-    --radius:14px;
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:15px/1.55 "Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  body{overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
-  button{font:inherit}
-  .container{max-width:1180px;margin:0 auto;padding:0 20px}
-
-  /* ===== Disclosure ===== */
-  .disclosure{background:linear-gradient(90deg,rgba(255,184,0,.10),rgba(255,122,89,.08));border-bottom:1px solid var(--border-soft);color:var(--text-2);font-size:12.5px;text-align:center;padding:9px 16px}
-  .disclosure a{color:#b45309;text-decoration:underline;font-weight:500}
-
-  /* ===== Header ===== */
-  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border-soft)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
-  .brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;flex-shrink:0;box-shadow:0 4px 12px rgba(255,184,0,.30)}
-  .brand-mark span{display:block;line-height:1}
-  .nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;color:var(--text-2);font-size:14px}
-  .nav ul a{padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
-  .nav ul a:hover{color:var(--text);border-bottom-color:var(--accent)}
-  .nav .cta{padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;font-size:13px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(255,184,0,.25)}
-  .nav .cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,184,0,.35)}
-
-  /* ===== Hero ===== */
-  .hero{padding:72px 0 36px;text-align:center;position:relative}
-  .hero::before{content:"";position:absolute;inset:-40px 0 auto 0;height:380px;background:radial-gradient(60% 60% at 50% 0%,rgba(255,184,0,.18),transparent 70%),radial-gradient(40% 40% at 80% 10%,rgba(255,122,89,.14),transparent 70%);pointer-events:none;z-index:-1}
-  .eyebrow{display:inline-block;font-size:11.5px;letter-spacing:.22em;color:var(--text-dim);text-transform:uppercase;margin-bottom:16px;padding:7px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-weight:600}
-  .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:0 0 14px;font-weight:800;letter-spacing:-.025em}
-  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p{color:var(--text-2);max-width:640px;margin:0 auto 26px;font-size:17px}
-  .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .15s,background .15s}
-  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 6px 18px rgba(255,184,0,.30)}
-  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(255,184,0,.40)}
-  .btn-secondary{background:var(--surface);color:var(--text);border-color:var(--border)}
-  .btn-secondary:hover{background:var(--surface-2);border-color:var(--text-dim)}
-
-  /* ===== Stats strip ===== */
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:720px;margin:30px auto 0}
-  .stat{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
-  .stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-  .stat b{display:block;font-size:26px;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;line-height:1}
-  .stat span{display:block;font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-top:6px}
-
-  /* ===== Controls (search + lens + chips) ===== */
-  .controls{margin:48px 0 8px}
-  .search{display:flex;gap:8px;max-width:560px;margin:0 auto 18px;background:var(--surface);border:1px solid var(--border);padding:6px 6px 6px 18px;border-radius:999px;align-items:center;box-shadow:var(--shadow);transition:border-color .15s,box-shadow .15s}
-  .search:focus-within{border-color:var(--accent);box-shadow:var(--shadow-lg),0 0 0 3px rgba(255,184,0,.12)}
-  .search svg{flex:0 0 auto;color:var(--text-dim)}
-  .search input{flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:10px 8px;font-size:14.5px;font-family:inherit}
-  .search input::placeholder{color:var(--text-dim)}
-  .lens-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-  .lens-tab{padding:9px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
-  .lens-tab:hover{color:var(--text);border-color:var(--text-dim)}
-  .lens-tab.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;font-weight:600;box-shadow:0 4px 12px rgba(255,184,0,.25)}
-  .chip-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-  .chip{padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-2);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .15s}
-  .chip:hover{color:var(--text);border-color:var(--text-dim)}
-  .chip.active{background:#fff7e0;color:#b45309;border-color:var(--accent);font-weight:600}
-  .lens-note{text-align:center;color:var(--text-dim);font-size:13px;margin-top:10px;min-height:18px}
-
-  /* ===== Rows / cards ===== */
-  .row{padding:30px 0 8px}
-  .row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;gap:10px}
-  .row-head h2{margin:0;font-size:22px;letter-spacing:-.01em;font-weight:700}
-  .row-head .more{color:var(--text-dim);font-size:13px;white-space:nowrap}
-  .scroll{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:16px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory;scrollbar-width:thin;scroll-padding:4px}
-  .scroll::-webkit-scrollbar{height:8px}
-  .scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
-
-  .card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;scroll-snap-align:start;transition:transform .18s,border-color .18s,box-shadow .18s;position:relative;box-shadow:var(--shadow)}
-  .card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
-  .card.featured{border-color:rgba(255,184,0,.45);background:linear-gradient(180deg,#fffbed,var(--surface) 50%)}
-  .card .top{display:flex;align-items:center;gap:12px}
-  .logo{width:44px;height:44px;border-radius:11px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border-soft);overflow:hidden;flex-shrink:0}
-  .logo img{width:28px;height:28px;border-radius:6px;object-fit:contain}
-  .logo .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#b45309;background:linear-gradient(135deg,#fff7e0,#ffe9d6);font-size:14px}
-  .card .top .meta{flex:1;min-width:0}
-  .card h3{margin:0;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:6px}
-  .badges{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
-  .cat-badge{font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-  .feat-badge{font-size:10px;color:#b45309;background:#fff7e0;border:1px solid rgba(255,184,0,.5);padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-  .aff-mark{font-size:9.5px;color:#c2410c;background:#ffeede;border:1px solid rgba(255,122,89,.45);padding:2px 7px;border-radius:999px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-  .verified-mark{font-size:10px;color:#15803d;background:#dcfce7;border:1px solid #86efac;padding:2px 7px;border-radius:999px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:3px}
-  .ratings{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--text-2);flex-wrap:wrap}
-  .stars{display:inline-flex;align-items:center;gap:3px;color:var(--star)}
-  .stars b{color:var(--text);font-weight:600}
-  .users{color:var(--text-dim)}
-  .users b{color:var(--text-2);font-weight:600}
-  .tag{font-size:13.5px;color:var(--text-2);min-height:40px;line-height:1.5}
-  .pill{display:inline-block;padding:4px 11px;background:#fff7e0;color:#b45309;border:1px solid rgba(255,184,0,.4);border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.01em}
-  .actions{display:flex;gap:8px;margin-top:auto;padding-top:6px}
-  .visit{flex:1;text-align:center;padding:10px 12px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;font-size:13px;letter-spacing:-.01em;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(255,184,0,.25)}
-  .visit:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,184,0,.35)}
-  .compare-btn{padding:10px 12px;border-radius:9px;background:var(--surface);color:var(--text-2);border:1px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:color .15s,border-color .15s,background .15s}
-  .compare-btn:hover{color:#b45309;border-color:var(--accent);background:#fff7e0}
-
-  .empty{padding:36px;text-align:center;color:var(--text-dim);border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface-2)}
-
-  /* ===== Newsletter (Brevo-ready) ===== */
-  .newsletter{margin:70px 0 0;padding:48px 30px;background:linear-gradient(135deg,#fffbed,#ffeede);border:1px solid rgba(255,184,0,.25);border-radius:20px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-  .newsletter::before{content:"";position:absolute;top:-60%;right:-20%;width:380px;height:380px;background:radial-gradient(circle,rgba(255,184,0,.18),transparent 65%);pointer-events:none}
-  .newsletter::after{content:"";position:absolute;bottom:-50%;left:-15%;width:320px;height:320px;background:radial-gradient(circle,rgba(255,122,89,.12),transparent 65%);pointer-events:none}
-  .newsletter > *{position:relative;z-index:1}
-  .newsletter h2{font-size:clamp(24px,3vw,32px);margin:8px 0 10px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
-  .newsletter p{color:var(--text-2);max-width:540px;margin:0 auto 24px;font-size:15.5px}
-  .brevo-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:18px;border-radius:16px;box-shadow:var(--shadow)}
-  .brevo-wrap iframe{display:block;width:100%;border:0;min-height:280px}
-  .brevo-wrap form{margin:0}
-  .brevo-wrap input[type="email"],.brevo-wrap input[type="text"]{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font:14px/1.4 "Poppins",sans-serif;outline:0;margin-bottom:10px;color:var(--text);background:#fff}
-  .brevo-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,184,0,.15)}
-  .brevo-wrap button,.brevo-wrap input[type="submit"]{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:0;border-radius:10px;padding:12px 20px;font:600 14px/1.4 "Poppins",sans-serif;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(255,184,0,.30)}
-  .brevo-wrap button:hover,.brevo-wrap input[type="submit"]:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,184,0,.40)}
-  /* fallback signup if no brevo embed pasted yet */
-  .signup{display:flex;gap:8px;max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:6px;border-radius:999px;position:relative;z-index:1;box-shadow:var(--shadow)}
-  .signup input{flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:11px 16px;font:14px/1.4 "Poppins",sans-serif}
-  .signup button{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:0;border-radius:999px;padding:12px 22px;font-weight:600;cursor:pointer;font:600 13.5px/1.4 "Poppins",sans-serif;box-shadow:0 4px 12px rgba(255,184,0,.25)}
-
-  /* ===== Disclosure body ===== */
-  #disclosure-text{margin-top:60px;color:var(--text-2);font-size:13.5px;line-height:1.75;padding:28px;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);box-shadow:var(--shadow)}
-  #disclosure-text h3{color:var(--text);font-size:16px;margin:0 0 12px;font-weight:700}
-  #disclosure-text p{margin:0 0 8px}
-  #disclosure-text p:last-child{margin:0}
-
-  /* ===== Footer ===== */
-  footer.site{margin-top:70px;padding:48px 0 60px;border-top:1px solid var(--border-soft);color:var(--text-dim);font-size:13px;background:var(--surface)}
-  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:24px}
-  footer h4{color:var(--text);font-size:13px;margin:0 0 12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
-  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-  footer a{transition:color .15s}
-  footer a:hover{color:var(--text)}
-  .copy{display:flex;justify-content:space-between;border-top:1px solid var(--border-soft);padding-top:20px;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--text-dim)}
-
-  /* ===== Mobile ===== */
-  @media (max-width:760px){
-    .nav{height:60px}
-    .nav ul{display:none}
-    .hero{padding:46px 0 30px}
-    .hero p{font-size:15.5px}
-    .stats{grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
-    .stat{padding:14px 10px}
-    .stat b{font-size:20px}
-    .controls{margin:32px 0 8px}
-    .scroll{grid-auto-columns:78vw;gap:12px;padding-bottom:12px;scroll-padding:20px;margin:0 -20px;padding-left:20px;padding-right:20px}
-    .row{padding:22px 0 6px}
-    .row-head h2{font-size:18px}
-    .card{padding:16px}
-    .logo{width:40px;height:40px}
-    .newsletter{padding:32px 20px;border-radius:14px}
-    footer .cols{grid-template-columns:1fr 1fr}
-  }
+:root{--bg:#fafbfc;--surface:#ffffff;--surface-2:#f5f7fa;--border:#e1e6ec;--border-soft:#edf0f4;--text:#1a202c;--text-2:#4a5568;--text-dim:#718096;--navy:#0d1f33;--navy2:#162d47;--accent:#b8942d;--accent-2:#ddc46a;--ok:#22c55e;--star:#f59e0b;--danger:#ef4444;--shadow:0 4px 16px rgba(15,23,42,.06);--shadow-lg:0 10px 30px rgba(15,23,42,.10);--radius:14px;}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit}.container{max-width:1180px;margin:0 auto;padding:0 20px}
+/* Disclosure subtle */
+.disclosure{background:rgba(184,148,45,.07);border-bottom:1px solid rgba(184,148,45,.15);color:var(--text-dim);font-size:11px;text-align:center;padding:5px 16px}
+.disclosure a{color:var(--accent);text-decoration:underline;font-weight:500}
+/* Header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--navy);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,31,51,.28)}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;color:var(--text-2);font-size:14px}
+.nav ul a{padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav ul a:hover{color:var(--text);border-bottom-color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav .cta{padding:9px 18px;border-radius:999px;background:var(--navy);color:#fff;font-weight:600;font-size:13px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(13,31,51,.25)}
+.nav .cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(13,31,51,.35)}
+/* Burger */
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .22s,opacity .22s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{position:fixed;top:0;right:-290px;width:280px;height:100vh;background:var(--surface);z-index:300;transition:right .25s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(15,23,42,.10);display:flex;flex-direction:column}
+.mob-menu.open{right:0}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-soft)}
+.mob-close{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;font-size:17px;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;justify-content:center}
+.mob-nav{padding:16px 12px;display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto}
+.mob-nav a{padding:13px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--text-2);display:block;transition:all .15s}
+.mob-nav a:hover{background:var(--surface-2);color:var(--text)}
+.mob-cta{margin-top:10px;background:var(--navy)!important;color:#fff!important;text-align:center;font-weight:600!important;border-radius:999px!important}
+.mob-admin{margin-top:auto!important;color:var(--text-dim)!important;font-size:12px!important;padding:8px 14px!important}
+.mob-overlay{position:fixed;inset:0;background:rgba(15,23,42,.40);z-index:299;display:none}
+.mob-overlay.open{display:block}
+/* Hero */
+.hero{padding:72px 0 36px;text-align:center;position:relative}
+.hero::before{content:"";position:absolute;inset:-40px 0 auto 0;height:380px;background:radial-gradient(60% 60% at 50% 0%,rgba(13,31,51,.05),transparent 70%);pointer-events:none;z-index:-1}
+.eyebrow{display:inline-block;font-size:11.5px;letter-spacing:.22em;color:var(--text-dim);text-transform:uppercase;margin-bottom:16px;padding:7px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-weight:600}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:0 0 14px;font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--navy),#1e4a7a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--text-2);max-width:640px;margin:0 auto 26px;font-size:17px}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .15s}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 6px 18px rgba(13,31,51,.25)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(13,31,51,.35)}
+.btn-secondary{background:var(--surface);color:var(--text);border-color:var(--border)}
+.btn-secondary:hover{background:var(--surface-2)}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:720px;margin:30px auto 0}
+.stat{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);transition:transform .15s}
+.stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.stat b{display:block;font-size:26px;background:linear-gradient(135deg,var(--navy),#1e4a7a);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;line-height:1}
+.stat span{display:block;font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-top:6px}
+/* Controls */
+.controls{margin:48px 0 8px}
+.search{display:flex;gap:8px;max-width:560px;margin:0 auto 18px;background:var(--surface);border:1px solid var(--border);padding:6px 6px 6px 18px;border-radius:999px;align-items:center;box-shadow:var(--shadow);transition:border-color .15s,box-shadow .15s}
+.search:focus-within{border-color:var(--navy);box-shadow:var(--shadow-lg),0 0 0 3px rgba(13,31,51,.08)}
+.search svg{flex:0 0 auto;color:var(--text-dim)}
+.search input{flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:10px 8px;font-size:14.5px;font-family:inherit}
+.search input::placeholder{color:var(--text-dim)}
+.lens-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.lens-tab{padding:9px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.lens-tab:hover{color:var(--text);border-color:var(--text-dim)}
+.lens-tab.active{background:var(--navy);color:#fff;border-color:transparent;font-weight:600;box-shadow:0 4px 12px rgba(13,31,51,.20)}
+.chip-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.chip{padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-2);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .15s}
+.chip:hover{color:var(--text);border-color:var(--text-dim)}
+.chip.active{background:#eef2ff;color:var(--navy);border-color:var(--navy);font-weight:600}
+.lens-note{text-align:center;color:var(--text-dim);font-size:13px;margin-top:10px;min-height:18px}
+/* Cards */
+.row{padding:30px 0 8px}.row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;gap:10px}
+.row-head h2{margin:0;font-size:22px;letter-spacing:-.01em;font-weight:700}
+.row-head .more{color:var(--text-dim);font-size:13px;white-space:nowrap}
+.scroll{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:16px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.scroll::-webkit-scrollbar{height:8px}.scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
+.card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;scroll-snap-align:start;transition:transform .18s,border-color .18s,box-shadow .18s;box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-3px);border-color:rgba(13,31,51,.20);box-shadow:var(--shadow-lg)}
+.card.featured{border-color:rgba(184,148,45,.35);background:linear-gradient(180deg,#fdf9f0,var(--surface) 50%)}
+.card .top{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:11px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border-soft);overflow:hidden;flex-shrink:0}
+.logo img{width:28px;height:28px;border-radius:6px;object-fit:contain}
+.logo .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);background:linear-gradient(135deg,#e8eef8,#d4dff5);font-size:14px}
+.card .top .meta{flex:1;min-width:0}.card h3{margin:0;font-size:15.5px;font-weight:700}
+.badges{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
+.cat-badge{font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.feat-badge{font-size:10px;color:var(--navy);background:#e8eef8;border:1px solid rgba(13,31,51,.18);padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.aff-mark{font-size:9.5px;color:#7c5c0a;background:#fdf3d6;border:1px solid rgba(184,148,45,.4);padding:2px 7px;border-radius:999px;font-weight:700;text-transform:uppercase}
+.verified-mark{font-size:10px;color:#15803d;background:#dcfce7;border:1px solid #86efac;padding:2px 7px;border-radius:999px;font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;gap:3px}
+.ratings{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--text-2);flex-wrap:wrap}
+.stars{display:inline-flex;align-items:center;gap:3px;color:var(--star)}
+.stars b{color:var(--text);font-weight:600}.users{color:var(--text-dim)}.users b{color:var(--text-2);font-weight:600}
+.tag{font-size:13.5px;color:var(--text-2);min-height:40px;line-height:1.5}
+.pill{display:inline-block;padding:4px 11px;background:#eef2ff;color:var(--navy);border:1px solid rgba(13,31,51,.12);border-radius:999px;font-size:12px;font-weight:600}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.visit{flex:1;text-align:center;padding:10px 12px;border-radius:9px;background:var(--navy);color:#fff;font-weight:600;font-size:13px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(13,31,51,.22)}
+.visit:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(13,31,51,.32)}
+.compare-btn{padding:10px 12px;border-radius:9px;background:var(--surface);color:var(--text-2);border:1px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.compare-btn:hover{color:var(--navy);border-color:var(--navy);background:#eef2ff}
+.empty{padding:36px;text-align:center;color:var(--text-dim);border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface-2)}
+/* Newsletter */
+.newsletter{margin:70px 0 0;padding:48px 30px;background:linear-gradient(135deg,#eef2ff,#e8eef8);border:1px solid rgba(13,31,51,.08);border-radius:20px;text-align:center;box-shadow:var(--shadow)}
+.newsletter h2{font-size:clamp(24px,3vw,32px);margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
+.newsletter p{color:var(--text-2);max-width:540px;margin:0 auto 24px;font-size:15.5px}
+.brevo-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:18px;border-radius:16px;box-shadow:var(--shadow)}
+.brevo-wrap iframe{display:block;width:100%;border:0;min-height:280px}
+/* Disclosure text */
+#disclosure-text{margin-top:60px;color:var(--text-2);font-size:13.5px;line-height:1.75;padding:28px;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);box-shadow:var(--shadow)}
+#disclosure-text h3{color:var(--text);font-size:16px;margin:0 0 12px;font-weight:700}
+#disclosure-text p{margin:0 0 8px}#disclosure-text p:last-child{margin:0}
+/* Footer */
+footer.site{margin-top:70px;padding:48px 0 60px;border-top:1px solid var(--border-soft);color:var(--text-dim);font-size:13px;background:var(--surface)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:24px}
+footer h4{color:var(--text);font-size:13px;margin:0 0 12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+footer a:hover{color:var(--text)}
+.copy{display:flex;justify-content:space-between;border-top:1px solid var(--border-soft);padding-top:20px;flex-wrap:wrap;gap:10px;font-size:12.5px}
+/* Mobile */
+@media(max-width:760px){
+  .nav{height:60px}.nav ul{display:none}.nav .cta{display:none}.burger{display:flex}
+  .hero{padding:46px 0 30px}.hero p{font-size:15.5px}
+  .stats{gap:10px;margin-top:24px}.stat{padding:14px 10px}.stat b{font-size:20px}
+  .controls{margin:32px 0 8px}
+  .scroll{grid-auto-columns:78vw;gap:12px;padding-bottom:12px;margin:0 -20px;padding-left:20px;padding-right:20px}
+  .row{padding:22px 0 6px}.row-head h2{font-size:18px}.card{padding:16px}.logo{width:40px;height:40px}
+  .newsletter{padding:32px 20px;border-radius:14px}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
-
-<div class="disclosure">
-  This site contains affiliate links — we may earn a commission at no extra cost to you.
-  <a href="#disclosure-text" onclick="document.getElementById('disclosure-text').scrollIntoView({behavior:'smooth'});return false;">Read full disclosure</a>
-</div>
-
+<div class="disclosure">Affiliate links on this site — we may earn a small commission at no cost to you. <a href="#disclosure-text" onclick="document.getElementById('disclosure-text').scrollIntoView({behavior:'smooth'});return false;">Learn more</a></div>
 <header class="site">
   <div class="container nav">
     <a href="/" class="brand">
-      <span class="brand-mark"><span>M</span></span>
+      <span class="brand-mark"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
       MyAI ToolsFinder
     </a>
     <ul>
@@ -211,359 +156,261 @@
       <li><a href="articles.html">Articles</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
-    <a href="#newsletter" class="cta">Get Weekly Digest</a>
+    <div class="nav-right">
+      <a href="#newsletter" class="cta">Get Weekly Digest</a>
+      <button class="burger" id="burger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-head">
+    <a href="/" class="brand" style="font-size:15px"><span class="brand-mark" style="width:28px;height:28px"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>MyAI ToolsFinder</a>
+    <button class="mob-close" onclick="toggleMenu()">&#x2715;</button>
+  </div>
+  <div class="mob-nav">
+    <a href="/">&#x1F527; AI Tools Directory</a>
+    <a href="articles.html">&#x1F4F0; Articles</a>
+    <a href="about.html">&#x1F44B; About</a>
+    <a href="#newsletter" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
+    <a href="admin.html" class="mob-admin">&#x2699;&#xFE0F; Admin</a>
+  </div>
+</div>
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 <main>
-
   <section class="hero container">
-    <div class="eyebrow">AI Tools Directory · Curated Weekly</div>
+    <div class="eyebrow">AI Tools Directory &middot; 100+ Tools &middot; Curated Weekly</div>
     <h1>Find the AI tools that <em>fit your work.</em></h1>
-    <p>Skip the noise. Pick how you want to browse — by your job, by the problem you're solving, or by what's trending right now.</p>
+    <p>Skip the noise. Browse by your job, by the problem you need to solve, or by what&rsquo;s trending &mdash; then click straight through to the best deal.</p>
     <div class="hero-cta">
-      <a class="btn-primary" href="#tools" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});return false;">Explore Tools →</a>
+      <a class="btn-primary" href="#tools" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});return false;">Explore 100+ Tools &rarr;</a>
       <a class="btn-secondary" href="#newsletter">Get Weekly Digest</a>
     </div>
-
     <div class="stats">
       <div class="stat"><b id="stat-tools">0</b><span>AI Tools</span></div>
       <div class="stat"><b id="stat-cats">0</b><span>Categories</span></div>
       <div class="stat"><b>1K+</b><span>Subscribers</span></div>
     </div>
   </section>
-
   <section class="container controls" id="tools">
     <div class="search">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      <input id="search" type="search" placeholder="Search tools (e.g. writing, video, SEO)…" />
+      <input id="search" type="search" placeholder="Search 100+ AI tools (e.g. writing, video, SEO)&hellip;"/>
     </div>
     <div class="lens-tabs" id="lens-tabs" role="tablist">
-      <button class="lens-tab active" data-lens="job" role="tab">By Job</button>
-      <button class="lens-tab" data-lens="need" role="tab">By Need</button>
-      <button class="lens-tab" data-lens="trend" role="tab">Trending</button>
+      <button class="lens-tab active" data-lens="job">By Job</button>
+      <button class="lens-tab" data-lens="need">By Need</button>
+      <button class="lens-tab" data-lens="trend">Trending</button>
     </div>
     <div class="chip-row" id="chip-row"></div>
     <div class="lens-note" id="lens-note"></div>
   </section>
-
   <div class="container" id="rows"></div>
-
   <section class="container newsletter" id="newsletter">
     <div class="eyebrow">The AI Toolbox Newsletter</div>
     <h2>Stop guessing. Start knowing.</h2>
-    <p>Every Friday: 5 hand-picked AI tools, 1 honest comparison, 1 tip that saves you real time.</p>
-
-    <!-- ================================================================
-         BREVO FORM SLOT — paste your Brevo embed code inside this div.
-         The .brevo-wrap container styles iframe/form/inputs/buttons
-         to match the site automatically (light theme + Poppins).
-         Replace the fallback <form> below with your Brevo embed.
-         ================================================================ -->
-    <div class="brevo-wrap" id="brevo-form-slot">
-      <iframe width="540" height="305" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
-      <form class="signup" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';" style="box-shadow:none;margin:0">
-        <input type="email" placeholder="you@work.com" required />
-        <button type="submit">Join Free</button>
-      </form>
+    <p>Every Friday: 5 hand-picked AI tools, 1 honest comparison, 1 tip that saves you real time &mdash; free forever.</p>
+    <div class="brevo-wrap">
+      <iframe width="540" height="305" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%"></iframe>
     </div>
   </section>
-
   <section class="container" id="disclosure-text">
     <h3>Affiliate Disclosure</h3>
-    <p>MyAI ToolsFinder participates in affiliate programs. When you click a "Visit" link and make a purchase, we may earn a small commission at no additional cost to you. This helps us keep the site free and the reviews honest.</p>
-    <p>We only recommend tools we genuinely believe are useful. Commissions never influence which tools are featured or how they are ranked.</p>
+    <p>MyAI ToolsFinder participates in affiliate programmes. When you click a &ldquo;Try Now for Free&rdquo; button and sign up or make a purchase, we may earn a small commission at no additional cost to you. This is how we keep the directory completely free.</p>
+    <p>We only feature tools we genuinely believe are useful. Commissions never influence which tools are listed, how they are ranked, or the star ratings shown. Tools without affiliate programmes are treated identically to those with them.</p>
   </section>
-
 </main>
-
 <footer class="site">
   <div class="container">
     <div class="cols">
       <div>
-        <a href="/" class="brand" style="font-size:15px;margin-bottom:10px">
-          <span class="brand-mark"><span>M</span></span>
-          MyAI ToolsFinder
-        </a>
-        <div style="margin-top:10px;line-height:1.7">A curated AI tools directory for solopreneurs, freelancers and creators who want to work smarter — not louder.</div>
+        <a href="/" class="brand" style="font-size:15px;margin-bottom:10px"><span class="brand-mark" style="width:28px;height:28px"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>MyAI ToolsFinder</a>
+        <div style="margin-top:10px;line-height:1.7">A curated AI tools directory for solopreneurs, freelancers and creators who want to work smarter.</div>
       </div>
-      <div>
-        <h4>Directory</h4>
-        <ul>
-          <li><a href="/">All AI Tools</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="#newsletter">Newsletter</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browse</h4>
-        <ul>
-          <li><a href="#" data-quick="job:Freelance Designer">For designers</a></li>
-          <li><a href="#" data-quick="job:Content Creator">For creators</a></li>
-          <li><a href="#" data-quick="need:Write faster">Writing tools</a></li>
-          <li><a href="#" data-quick="need:Rank higher on Google">SEO tools</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#disclosure-text">Disclosure</a></li>
-          <li><a href="mailto:hello@myaitoolsfinder.com">Contact</a></li>
-        </ul>
-      </div>
+      <div><h4>Directory</h4><ul><li><a href="/">All AI Tools</a></li><li><a href="articles.html">Articles</a></li><li><a href="#newsletter">Newsletter</a></li></ul></div>
+      <div><h4>Browse</h4><ul>
+        <li><a href="#" data-quick="job:Freelance Designer">For designers</a></li>
+        <li><a href="#" data-quick="job:Content Creator">For creators</a></li>
+        <li><a href="#" data-quick="need:Write faster">Writing tools</a></li>
+        <li><a href="#" data-quick="need:Rank higher on Google">SEO tools</a></li>
+      </ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="#disclosure-text">Disclosure</a></li>
+        <li><a href="mailto:hello@myaitoolsfinder.com">Contact</a></li>
+        <li><a href="admin.html" style="font-size:11.5px;color:var(--text-dim)">Admin &#x2197;</a></li>
+      </ul></div>
     </div>
-    <div class="copy"><span>© 2026 MyAI ToolsFinder</span><span>Built for solopreneurs, by solopreneurs.</span></div>
+    <div class="copy"><span>&copy; 2026 MyAI ToolsFinder</span><span>Built for solopreneurs, by solopreneurs.</span></div>
   </div>
 </footer>
-
 <script>
-/* ============================================================
-   TOOL DATA — edit affiliate URLs in /admin.html (passphrase
-   gated) and paste the exported snippet back here.
-   ============================================================ */
-const TOOLS = [
-  {name:"ChatGPT",        domain:"chat.openai.com",         tag:"World's most popular AI assistant for writing, coding, research and problem solving.", pill:"Free + Pro",  url:"https://chat.openai.com",          affiliate_url:"", rating:4.9, reviews:"2.1M",  users:"180M+", featured:true,  verified:true,  jobs:["Solopreneur","Content Creator","Developer","Marketer","Student"], needs:["Write faster","Brainstorm ideas","Code faster"], trending:98, cat:"Chatbot"},
-  {name:"Claude",         domain:"claude.ai",               tag:"Anthropic's AI known for nuanced understanding, long documents and safe reliable responses.", pill:"Free + Pro",  url:"https://claude.ai",                affiliate_url:"", rating:4.8, reviews:"320K",  users:"10M+",  featured:true,  verified:true,  jobs:["Solopreneur","Researcher","Writer","Developer"],                  needs:["Write faster","Summarize long docs","Code faster"], trending:96, cat:"Chatbot"},
-  {name:"Gemini",         domain:"gemini.google.com",       tag:"Google's multimodal AI integrated across Workspace and Android with real-time web access.", pill:"Free",        url:"https://gemini.google.com",        affiliate_url:"", rating:4.7, reviews:"890K",  users:"50M+",                                  jobs:["Marketer","Solopreneur","Student"],                                needs:["Write faster","Search the web","Brainstorm ideas"], trending:88, cat:"Chatbot"},
-  {name:"Grammarly",      domain:"grammarly.com",           tag:"AI writing assistant checking grammar, tone and clarity in real-time across all apps.", pill:"Free + Pro",  url:"https://grammarly.com",            affiliate_url:"", rating:4.7, reviews:"1.2M",  users:"30M+",  featured:true, verified:true,  jobs:["Writer","Marketer","Solopreneur","Student"],                       needs:["Write faster","Improve writing"], trending:75, cat:"Writing"},
-  {name:"Jasper AI",      domain:"jasper.ai",               tag:"AI writing assistant built for marketing teams. Generates converting blog posts and ad copy.", pill:"7-Day Trial", url:"https://jasper.ai",                affiliate_url:"", rating:4.7, reviews:"1.8K",  users:"105K+", featured:true,  verified:true,  jobs:["Marketer","Content Creator","Founder"],                            needs:["Write faster","Run marketing"], trending:60, cat:"Writing"},
-  {name:"Writesonic",     domain:"writesonic.com",          tag:"AI writer producing SEO-optimized articles, ads and landing pages in minutes.", pill:"Free Trial", url:"https://writesonic.com",           affiliate_url:"", rating:4.7, reviews:"1.9K",  users:"1M+",                                   jobs:["Marketer","Content Creator","Solopreneur"],                        needs:["Write faster","Rank higher on Google"], trending:62, cat:"Writing"},
-  {name:"DeepL",          domain:"deepl.com",               tag:"World's most accurate AI translator trusted by professionals in 200+ countries.", pill:"Free + Pro",  url:"https://deepl.com",                affiliate_url:"", rating:4.7, reviews:"890K",  users:"100M+",                                 jobs:["Writer","Marketer","Solopreneur"],                                 needs:["Translate","Write faster"], trending:65, cat:"Writing"},
-  {name:"Canva",          domain:"canva.com",               tag:"World's most popular design platform with Magic AI. Design anything in minutes.", pill:"Free + Pro",  url:"https://canva.com",                affiliate_url:"", rating:4.7, reviews:"3.2M",  users:"170M+", featured:true,  verified:true,  jobs:["Freelance Designer","Marketer","Solopreneur","Content Creator"],   needs:["Design without a designer","Make social posts"], trending:90, cat:"Design"},
-  {name:"Midjourney",     domain:"midjourney.com",          tag:"State-of-the-art AI image generation with photoreal output and incredible style range.", pill:"$10/mo",      url:"https://midjourney.com",           affiliate_url:"", rating:4.8, reviews:"450K",  users:"20M+",  featured:true,  verified:true,  jobs:["Freelance Designer","Content Creator"],                            needs:["Generate images","Design without a designer"], trending:92, cat:"Image"},
-  {name:"Leonardo",       domain:"leonardo.ai",             tag:"AI image generation with fine-grained control, custom models and consistent characters.", pill:"Free Tier",   url:"https://leonardo.ai",              affiliate_url:"", rating:4.6, reviews:"42K",   users:"5M+",                                   jobs:["Freelance Designer","Content Creator"],                            needs:["Generate images"], trending:70, cat:"Image"},
-  {name:"DALL·E 3",       domain:"openai.com",              tag:"Image generation built directly into ChatGPT with natural-language prompting.", pill:"In ChatGPT",  url:"https://openai.com/dall-e-3",      affiliate_url:"", rating:4.5, reviews:"180K",  users:"30M+",                                  jobs:["Freelance Designer","Marketer"],                                   needs:["Generate images"], trending:72, cat:"Image"},
-  {name:"RankMath AI",    domain:"rankmath.com",            tag:"WordPress SEO plugin with AI content suggestions, schema markup and keyword optimization.", pill:"Free + Pro",  url:"https://rankmath.com",             affiliate_url:"", rating:4.9, reviews:"5.1K",  users:"2M+",   verified:true,  jobs:["SEO Consultant","Marketer","Founder"],                             needs:["Rank higher on Google"], trending:64, cat:"SEO"},
-  {name:"Surfer SEO",     domain:"surferseo.com",           tag:"Content-grader and SERP analyser for ranking pages, with AI content briefs.", pill:"Save 20%",    url:"https://surferseo.com",            affiliate_url:"", rating:4.8, reviews:"3.1K",  users:"200K+",                                jobs:["SEO Consultant","Content Creator","Marketer"],                     needs:["Rank higher on Google","Improve writing"], trending:68, cat:"SEO"},
-  {name:"Ahrefs",         domain:"ahrefs.com",              tag:"Backlinks, keywords, site audits — the SEO gold standard used by 44% of Fortune 500.", pill:"From $99",    url:"https://ahrefs.com",               affiliate_url:"", rating:4.7, reviews:"12K",   users:"500K+",                                jobs:["SEO Consultant","Marketer"],                                       needs:["Rank higher on Google","Research competitors"], trending:74, cat:"SEO"},
-  {name:"Semrush",        domain:"semrush.com",             tag:"All-in-one marketing toolkit with AI assistants, SERP tracking and content audits.", pill:"Free Trial",  url:"https://semrush.com",              affiliate_url:"", rating:4.6, reviews:"21K",   users:"1M+",                                   jobs:["SEO Consultant","Marketer","Founder"],                             needs:["Rank higher on Google","Run marketing"], trending:78, cat:"SEO"},
-  {name:"Runway",         domain:"runwayml.com",            tag:"AI video generation and editing — Gen-3, motion brush, lipsync and inpainting.", pill:"Free Tier",   url:"https://runwayml.com",             affiliate_url:"", rating:4.7, reviews:"35K",   users:"3M+",   verified:true,  jobs:["Content Creator","Freelance Designer"],                            needs:["Edit video","Generate video"], trending:85, cat:"Video"},
-  {name:"Descript",       domain:"descript.com",            tag:"Edit video and podcasts by editing the transcript. Overdub, studio sound, screen recording.", pill:"Free + Pro",  url:"https://descript.com",             affiliate_url:"", rating:4.6, reviews:"6.4K",  users:"3M+",                                   jobs:["Content Creator","Marketer"],                                      needs:["Edit video","Edit audio"], trending:71, cat:"Video"},
-  {name:"ElevenLabs",     domain:"elevenlabs.io",           tag:"Lifelike AI voices for videos, podcasts and apps. 29 languages, voice cloning included.", pill:"Free Tier",   url:"https://elevenlabs.io",            affiliate_url:"", rating:4.8, reviews:"18K",   users:"5M+",   verified:true,  jobs:["Content Creator","Developer"],                                     needs:["Generate voice","Edit audio"], trending:86, cat:"Audio"},
-  {name:"Notion AI",      domain:"notion.so",               tag:"AI inside Notion docs, wikis and project pages. Summarize, draft, brainstorm in place.", pill:"Add-on",      url:"https://notion.so/product/ai",     affiliate_url:"", rating:4.7, reviews:"110K",  users:"35M+",  verified:true,  jobs:["Solopreneur","Founder","Marketer","Writer"],                       needs:["Write faster","Organize work"], trending:80, cat:"Productivity"},
-  {name:"Motion",         domain:"usemotion.com",           tag:"AI planner that automatically schedules your tasks, calendars and meetings.", pill:"33% Off",     url:"https://usemotion.com",            affiliate_url:"", rating:4.5, reviews:"2.8K",  users:"150K+",                                jobs:["Founder","Solopreneur","Manager"],                                 needs:["Organize work","Save time"], trending:69, cat:"Productivity"},
-  {name:"Granola",        domain:"granola.ai",              tag:"AI notepad that captures meeting context automatically without bots in the call.", pill:"3 Months Pro",url:"https://granola.ai",               affiliate_url:"", rating:4.9, reviews:"4.2K",  users:"100K+", verified:true,  jobs:["Founder","Manager","Solopreneur"],                                 needs:["Take notes","Save time"], trending:91, cat:"Productivity"},
-  {name:"Cursor",         domain:"cursor.com",              tag:"AI-native code editor built on VS Code — the fastest way to ship with AI pair-programming.", pill:"Free + Pro",  url:"https://cursor.com",               affiliate_url:"", rating:4.8, reviews:"22K",   users:"1M+",   featured:true,  verified:true,  jobs:["Developer","Founder"],                                             needs:["Code faster","Ship faster"], trending:97, cat:"Coding"},
-  {name:"GitHub Copilot", domain:"github.com",              tag:"AI pair-programmer right inside your editor. Code, chat, and PR review in one.", pill:"$10/mo",      url:"https://github.com/features/copilot", affiliate_url:"", rating:4.6, reviews:"180K",  users:"15M+",                                 jobs:["Developer"],                                                       needs:["Code faster"], trending:84, cat:"Coding"},
-  {name:"Make.com",       domain:"make.com",                tag:"Visual automation for your apps and AI workflows. 1,500+ integrations included.", pill:"Free Tier",   url:"https://make.com",                 affiliate_url:"", rating:4.7, reviews:"800",   users:"500K+",                                jobs:["Solopreneur","Marketer","Founder"],                                needs:["Automate repetitive work"], trending:73, cat:"Automation"}
+
+const TOOLS=[
+  {name:"ChatGPT",domain:"chat.openai.com",tag:"World's most popular AI assistant for writing, coding, research and problem solving.",pill:"Free + Pro",url:"https://chat.openai.com",affiliate_url:"",rating:4.9,reviews:"2.1M",users:"180M+",featured:true,verified:true,jobs:["Solopreneur","Content Creator","Developer","Marketer","Student","Writer"],needs:["Write faster","Brainstorm ideas","Code faster","Summarize long docs"],trending:98,cat:"Chatbot"},
+  {name:"Claude",domain:"claude.ai",tag:"Anthropic's AI known for nuanced understanding, long documents and safe reliable responses.",pill:"Free + Pro",url:"https://claude.ai",affiliate_url:"",rating:4.8,reviews:"320K",users:"10M+",featured:true,verified:true,jobs:["Solopreneur","Researcher","Writer","Developer","Founder"],needs:["Write faster","Summarize long docs","Code faster","Brainstorm ideas"],trending:96,cat:"Chatbot"},
+  {name:"Gemini",domain:"gemini.google.com",tag:"Google's multimodal AI integrated across Workspace and Android with real-time web access.",pill:"Free",url:"https://gemini.google.com",affiliate_url:"",rating:4.7,reviews:"890K",users:"50M+",jobs:["Marketer","Solopreneur","Student","Researcher"],needs:["Write faster","Search the web","Brainstorm ideas"],trending:88,cat:"Chatbot"},
+  {name:"Perplexity AI",domain:"perplexity.ai",tag:"AI-powered answer engine that searches the web in real-time and cites every source.",pill:"Free + Pro",url:"https://perplexity.ai",affiliate_url:"",rating:4.7,reviews:"110K",users:"15M+",verified:true,jobs:["Researcher","Student","Writer","Marketer","Solopreneur"],needs:["Search the web","Research competitors","Summarize long docs"],trending:89,cat:"Chatbot"},
+  {name:"Microsoft Copilot",domain:"copilot.microsoft.com",tag:"Microsoft's AI built into Windows, Office 365, Teams and the Edge browser.",pill:"Free + Pro",url:"https://copilot.microsoft.com",affiliate_url:"",rating:4.5,reviews:"210K",users:"30M+",jobs:["Manager","Solopreneur","Marketer","Developer"],needs:["Write faster","Organize work","Summarize long docs"],trending:82,cat:"Chatbot"},
+  {name:"Grok",domain:"grok.com",tag:"xAI's real-time AI assistant built into X with an unfiltered, direct perspective.",pill:"X Premium",url:"https://grok.com",affiliate_url:"",rating:4.4,reviews:"45K",users:"5M+",jobs:["Content Creator","Marketer","Solopreneur"],needs:["Write faster","Search the web","Brainstorm ideas"],trending:78,cat:"Chatbot"},
+  {name:"DeepSeek",domain:"chat.deepseek.com",tag:"Open-source AI model rivaling GPT-4 at a fraction of the cost — huge in developer circles.",pill:"Free + API",url:"https://chat.deepseek.com",affiliate_url:"",rating:4.6,reviews:"85K",users:"8M+",verified:true,jobs:["Developer","Researcher","Student"],needs:["Code faster","Write faster","Brainstorm ideas"],trending:91,cat:"Chatbot"},
+  {name:"Poe",domain:"poe.com",tag:"Quora's AI hub — access ChatGPT, Claude, Gemini and 100+ bots in one place.",pill:"Free + Pro",url:"https://poe.com",affiliate_url:"",rating:4.5,reviews:"42K",users:"3M+",jobs:["Solopreneur","Student","Writer","Researcher"],needs:["Write faster","Brainstorm ideas","Summarize long docs"],trending:72,cat:"Chatbot"},
+  {name:"Character.ai",domain:"character.ai",tag:"Create and chat with AI personas and characters for creative writing and entertainment.",pill:"Free + Plus",url:"https://character.ai",affiliate_url:"",rating:4.4,reviews:"180K",users:"20M+",jobs:["Content Creator","Student","Writer"],needs:["Brainstorm ideas","Write faster"],trending:74,cat:"Chatbot"},
+  {name:"Meta AI",domain:"meta.ai",tag:"Meta's AI assistant embedded in WhatsApp, Instagram, Facebook and Messenger.",pill:"Free",url:"https://meta.ai",affiliate_url:"",rating:4.3,reviews:"75K",users:"40M+",jobs:["Marketer","Content Creator","Solopreneur"],needs:["Write faster","Brainstorm ideas","Make social posts"],trending:79,cat:"Chatbot"},
+  {name:"Mistral AI",domain:"mistral.ai",tag:"European open-weight AI models delivering top performance with privacy and control.",pill:"Free + API",url:"https://mistral.ai",affiliate_url:"",rating:4.5,reviews:"22K",users:"2M+",jobs:["Developer","Researcher","Founder"],needs:["Code faster","Write faster"],trending:76,cat:"Chatbot"},
+  {name:"Pi",domain:"pi.ai",tag:"Personal AI companion focused on empathetic conversations, coaching and support.",pill:"Free",url:"https://pi.ai",affiliate_url:"",rating:4.3,reviews:"18K",users:"1M+",jobs:["Solopreneur","Student"],needs:["Brainstorm ideas","Write faster"],trending:60,cat:"Chatbot"},
+  {name:"Grammarly",domain:"grammarly.com",tag:"AI writing assistant checking grammar, tone and clarity in real-time across all apps.",pill:"Free + Pro",url:"https://grammarly.com",affiliate_url:"",rating:4.7,reviews:"1.2M",users:"30M+",featured:true,verified:true,jobs:["Writer","Marketer","Solopreneur","Student"],needs:["Write faster","Improve writing"],trending:75,cat:"Writing"},
+  {name:"Jasper AI",domain:"jasper.ai",tag:"AI writing assistant built for marketing teams — generates converting blogs, ads and emails.",pill:"7-Day Trial",url:"https://jasper.ai",affiliate_url:"",rating:4.7,reviews:"1.8K",users:"105K+",featured:true,verified:true,jobs:["Marketer","Content Creator","Founder"],needs:["Write faster","Run marketing"],trending:60,cat:"Writing"},
+  {name:"Writesonic",domain:"writesonic.com",tag:"AI writer producing SEO-optimized articles, landing pages and ad copy in minutes.",pill:"Free Trial",url:"https://writesonic.com",affiliate_url:"",rating:4.7,reviews:"1.9K",users:"1M+",jobs:["Marketer","Content Creator","Solopreneur"],needs:["Write faster","Rank higher on Google"],trending:62,cat:"Writing"},
+  {name:"DeepL",domain:"deepl.com",tag:"World's most accurate AI translator trusted by professionals in 200+ countries.",pill:"Free + Pro",url:"https://deepl.com",affiliate_url:"",rating:4.7,reviews:"890K",users:"100M+",jobs:["Writer","Marketer","Solopreneur"],needs:["Translate","Write faster"],trending:65,cat:"Writing"},
+  {name:"Copy.ai",domain:"copy.ai",tag:"AI marketing copy generator for ads, emails, landing pages and social media content.",pill:"Free + Pro",url:"https://copy.ai",affiliate_url:"",rating:4.5,reviews:"6.2K",users:"10M+",verified:true,jobs:["Marketer","Content Creator","Solopreneur","Founder"],needs:["Write faster","Run marketing","Make social posts"],trending:63,cat:"Writing"},
+  {name:"Rytr",domain:"rytr.me",tag:"Budget-friendly AI writing tool for blogs, emails, social posts and product descriptions.",pill:"Free + Saver",url:"https://rytr.me",affiliate_url:"",rating:4.4,reviews:"3.2K",users:"3M+",jobs:["Content Creator","Solopreneur","Marketer","Student"],needs:["Write faster","Make social posts"],trending:52,cat:"Writing"},
+  {name:"QuillBot",domain:"quillbot.com",tag:"AI paraphrasing, summarizing and grammar checking used by 35M+ students and writers.",pill:"Free + Premium",url:"https://quillbot.com",affiliate_url:"",rating:4.6,reviews:"280K",users:"35M+",verified:true,jobs:["Student","Writer","Content Creator"],needs:["Write faster","Improve writing","Summarize long docs"],trending:70,cat:"Writing"},
+  {name:"Wordtune",domain:"wordtune.com",tag:"AI writing companion that instantly rewrites, rephrases and summarises your text.",pill:"Free + Premium",url:"https://wordtune.com",affiliate_url:"",rating:4.4,reviews:"2.1K",users:"2M+",jobs:["Writer","Student","Marketer"],needs:["Write faster","Improve writing","Summarize long docs"],trending:56,cat:"Writing"},
+  {name:"Sudowrite",domain:"sudowrite.com",tag:"AI writing partner built specifically for fiction writers — novels, short stories, scripts.",pill:"From $19",url:"https://sudowrite.com",affiliate_url:"",rating:4.5,reviews:"1.1K",users:"80K+",jobs:["Writer","Content Creator"],needs:["Write faster","Brainstorm ideas"],trending:55,cat:"Writing"},
+  {name:"ProWritingAid",domain:"prowritingaid.com",tag:"Deep writing analysis for grammar, style, clarity and pacing — loved by serious authors.",pill:"Free + Pro",url:"https://prowritingaid.com",affiliate_url:"",rating:4.6,reviews:"4.4K",users:"2M+",jobs:["Writer","Student","Content Creator"],needs:["Improve writing","Write faster"],trending:54,cat:"Writing"},
+  {name:"Hemingway Editor",domain:"hemingwayapp.com",tag:"Makes your writing bold and clear — highlights complexity, adverbs and passive voice.",pill:"Free + $20",url:"https://hemingwayapp.com",affiliate_url:"",rating:4.4,reviews:"3.8K",users:"500K+",jobs:["Writer","Content Creator","Marketer"],needs:["Improve writing","Write faster"],trending:48,cat:"Writing"},
+  {name:"Hyperwrite",domain:"hyperwrite.ai",tag:"Personal AI assistant that learns your style and automates repetitive writing tasks.",pill:"Free + Premium",url:"https://hyperwrite.ai",affiliate_url:"",rating:4.3,reviews:"890",users:"300K+",jobs:["Writer","Marketer","Solopreneur"],needs:["Write faster","Automate repetitive work"],trending:49,cat:"Writing"},
+  {name:"Midjourney",domain:"midjourney.com",tag:"State-of-the-art AI image generation with photoreal output and incredible style range.",pill:"$10/mo",url:"https://midjourney.com",affiliate_url:"",rating:4.8,reviews:"450K",users:"20M+",featured:true,verified:true,jobs:["Freelance Designer","Content Creator"],needs:["Generate images","Design without a designer"],trending:92,cat:"Image"},
+  {name:"Adobe Firefly",domain:"firefly.adobe.com",tag:"Adobe's generative AI for images, vectors and text effects — commercially safe to use.",pill:"Free + Pro",url:"https://firefly.adobe.com",affiliate_url:"",rating:4.6,reviews:"38K",users:"10M+",verified:true,jobs:["Freelance Designer","Marketer","Content Creator"],needs:["Generate images","Design without a designer"],trending:80,cat:"Image"},
+  {name:"Leonardo.ai",domain:"leonardo.ai",tag:"AI image generation with fine-grained control, custom models and consistent characters.",pill:"Free Tier",url:"https://leonardo.ai",affiliate_url:"",rating:4.6,reviews:"42K",users:"5M+",jobs:["Freelance Designer","Content Creator","Marketer"],needs:["Generate images","Design without a designer"],trending:70,cat:"Image"},
+  {name:"DALL-E 3",domain:"openai.com",tag:"OpenAI's image generation built directly into ChatGPT with natural-language prompting.",pill:"In ChatGPT",url:"https://openai.com/dall-e-3",affiliate_url:"",rating:4.5,reviews:"180K",users:"30M+",jobs:["Freelance Designer","Marketer","Content Creator"],needs:["Generate images"],trending:72,cat:"Image"},
+  {name:"Ideogram",domain:"ideogram.ai",tag:"AI image generator that excels at accurate text rendering inside images.",pill:"Free + Pro",url:"https://ideogram.ai",affiliate_url:"",rating:4.5,reviews:"12K",users:"1M+",jobs:["Freelance Designer","Marketer"],needs:["Generate images","Make social posts"],trending:69,cat:"Image"},
+  {name:"Kling AI",domain:"klingai.com",tag:"Kuaishou's powerful AI for generating and animating photorealistic images and video clips.",pill:"Free + Pro",url:"https://klingai.com",affiliate_url:"",rating:4.5,reviews:"9.2K",users:"2M+",jobs:["Content Creator","Freelance Designer"],needs:["Generate images","Generate video"],trending:77,cat:"Image"},
+  {name:"Playground AI",domain:"playground.com",tag:"Free AI image generator with powerful editing tools and a commercial-use licence.",pill:"Free + Pro",url:"https://playground.com",affiliate_url:"",rating:4.4,reviews:"15K",users:"2M+",jobs:["Freelance Designer","Content Creator","Marketer"],needs:["Generate images","Design without a designer"],trending:64,cat:"Image"},
+  {name:"Stable Diffusion",domain:"stability.ai",tag:"Open-source AI image generation — run locally or via API with complete creative control.",pill:"Open Source",url:"https://stability.ai",affiliate_url:"",rating:4.4,reviews:"95K",users:"8M+",jobs:["Developer","Freelance Designer","Content Creator"],needs:["Generate images"],trending:68,cat:"Image"},
+  {name:"NightCafe",domain:"nightcafe.studio",tag:"AI art generator with community features, daily challenges and multiple generation models.",pill:"Free Credits",url:"https://nightcafe.studio",affiliate_url:"",rating:4.3,reviews:"8.5K",users:"1M+",jobs:["Freelance Designer","Content Creator"],needs:["Generate images"],trending:53,cat:"Image"},
+  {name:"Flux AI",domain:"blackforestlabs.ai",tag:"Next-generation open image model by Black Forest Labs — stunningly photorealistic output.",pill:"API + Apps",url:"https://blackforestlabs.ai",affiliate_url:"",rating:4.6,reviews:"5.4K",users:"500K+",jobs:["Developer","Freelance Designer"],needs:["Generate images"],trending:74,cat:"Image"},
+  {name:"Canva",domain:"canva.com",tag:"World's most popular design platform with Magic AI. Design anything in minutes.",pill:"Free + Pro",url:"https://canva.com",affiliate_url:"",rating:4.7,reviews:"3.2M",users:"170M+",featured:true,verified:true,jobs:["Freelance Designer","Marketer","Solopreneur","Content Creator"],needs:["Design without a designer","Make social posts","Create presentations"],trending:90,cat:"Design"},
+  {name:"Figma AI",domain:"figma.com",tag:"The industry standard design tool — now with AI to generate UIs, auto-layouts and copy.",pill:"Free + Pro",url:"https://figma.com",affiliate_url:"",rating:4.7,reviews:"145K",users:"8M+",verified:true,jobs:["Freelance Designer","Developer","Founder"],needs:["Design without a designer","Ship faster"],trending:82,cat:"Design"},
+  {name:"Framer AI",domain:"framer.com",tag:"Build stunning websites with AI — write a prompt, get a full responsive site instantly.",pill:"Free + Pro",url:"https://framer.com",affiliate_url:"",rating:4.6,reviews:"12K",users:"1M+",jobs:["Freelance Designer","Founder","Solopreneur"],needs:["Design without a designer","Ship faster"],trending:73,cat:"Design"},
+  {name:"Uizard",domain:"uizard.io",tag:"AI design tool that turns sketches or text prompts into wireframes and app mockups.",pill:"Free + Pro",url:"https://uizard.io",affiliate_url:"",rating:4.3,reviews:"2.8K",users:"400K+",jobs:["Founder","Freelance Designer","Developer"],needs:["Design without a designer","Ship faster"],trending:58,cat:"Design"},
+  {name:"Looka",domain:"looka.com",tag:"AI-powered logo and brand identity maker for entrepreneurs and small businesses.",pill:"Pay per use",url:"https://looka.com",affiliate_url:"",rating:4.4,reviews:"14K",users:"2M+",jobs:["Solopreneur","Founder","Marketer"],needs:["Design without a designer"],trending:55,cat:"Design"},
+  {name:"Designs.ai",domain:"designs.ai",tag:"All-in-one AI creative suite for logos, videos, mockups and social media creatives.",pill:"From $29",url:"https://designs.ai",affiliate_url:"",rating:4.2,reviews:"2.1K",users:"300K+",jobs:["Marketer","Solopreneur","Freelance Designer"],needs:["Design without a designer","Make social posts"],trending:47,cat:"Design"},
+  {name:"Runway",domain:"runwayml.com",tag:"AI video generation and editing — Gen-3, motion brush, lipsync and inpainting.",pill:"Free Tier",url:"https://runwayml.com",affiliate_url:"",rating:4.7,reviews:"35K",users:"3M+",verified:true,jobs:["Content Creator","Freelance Designer"],needs:["Edit video","Generate video"],trending:85,cat:"Video"},
+  {name:"HeyGen",domain:"heygen.com",tag:"AI video generator with talking avatars, voice cloning and 175+ language dubbing.",pill:"Free + Pro",url:"https://heygen.com",affiliate_url:"",rating:4.6,reviews:"5.2K",users:"500K+",verified:true,jobs:["Content Creator","Marketer","Solopreneur"],needs:["Generate video","Run marketing"],trending:83,cat:"Video"},
+  {name:"Synthesia",domain:"synthesia.io",tag:"Create professional AI videos with realistic avatars in 130+ languages — no camera needed.",pill:"From $29",url:"https://synthesia.io",affiliate_url:"",rating:4.7,reviews:"8.9K",users:"50K+",verified:true,jobs:["Marketer","Content Creator","Founder"],needs:["Generate video","Run marketing"],trending:78,cat:"Video"},
+  {name:"Descript",domain:"descript.com",tag:"Edit video and podcasts by editing the transcript. Overdub, studio sound, screen recording.",pill:"Free + Pro",url:"https://descript.com",affiliate_url:"",rating:4.6,reviews:"6.4K",users:"3M+",jobs:["Content Creator","Marketer","Podcaster"],needs:["Edit video","Edit audio"],trending:71,cat:"Video"},
+  {name:"Veed.io",domain:"veed.io",tag:"Browser-based video editor with AI subtitles, translation, avatars and screen recording.",pill:"Free + Pro",url:"https://veed.io",affiliate_url:"",rating:4.5,reviews:"9.8K",users:"5M+",verified:true,jobs:["Content Creator","Marketer","Solopreneur"],needs:["Edit video","Make social posts"],trending:74,cat:"Video"},
+  {name:"Invideo AI",domain:"invideo.io",tag:"Turn a text prompt into a polished video with voiceover, stock footage and captions.",pill:"Free + Pro",url:"https://invideo.io",affiliate_url:"",rating:4.4,reviews:"4.1K",users:"7M+",jobs:["Content Creator","Marketer","Solopreneur"],needs:["Generate video","Make social posts"],trending:68,cat:"Video"},
+  {name:"Pictory",domain:"pictory.ai",tag:"Automatically convert blog posts and scripts into short branded video clips.",pill:"Free Trial",url:"https://pictory.ai",affiliate_url:"",rating:4.4,reviews:"2.9K",users:"400K+",jobs:["Marketer","Content Creator"],needs:["Edit video","Run marketing"],trending:59,cat:"Video"},
+  {name:"Lumen5",domain:"lumen5.com",tag:"Turn any article or blog post into an engaging social media video in minutes.",pill:"Free + Pro",url:"https://lumen5.com",affiliate_url:"",rating:4.3,reviews:"3.3K",users:"800K+",jobs:["Marketer","Content Creator"],needs:["Generate video","Make social posts"],trending:56,cat:"Video"},
+  {name:"ElevenLabs",domain:"elevenlabs.io",tag:"Lifelike AI voices for videos, podcasts and apps. 29 languages, voice cloning included.",pill:"Free Tier",url:"https://elevenlabs.io",affiliate_url:"",rating:4.8,reviews:"18K",users:"5M+",verified:true,jobs:["Content Creator","Developer","Podcaster"],needs:["Generate voice","Edit audio"],trending:86,cat:"Audio"},
+  {name:"Murf AI",domain:"murf.ai",tag:"Professional AI voiceovers for videos, presentations and podcasts in 20+ languages.",pill:"Free + Pro",url:"https://murf.ai",affiliate_url:"",rating:4.5,reviews:"4.2K",users:"400K+",jobs:["Content Creator","Marketer","Podcaster"],needs:["Generate voice","Edit audio"],trending:63,cat:"Audio"},
+  {name:"Suno",domain:"suno.com",tag:"Create original full songs with vocals, instruments and lyrics from a simple text prompt.",pill:"Free + Pro",url:"https://suno.com",affiliate_url:"",rating:4.6,reviews:"14K",users:"2M+",jobs:["Content Creator","Marketer"],needs:["Edit audio","Generate voice"],trending:81,cat:"Audio"},
+  {name:"Udio",domain:"udio.com",tag:"AI music generation creating professional-quality tracks across genres in seconds.",pill:"Free + Pro",url:"https://udio.com",affiliate_url:"",rating:4.4,reviews:"4.8K",users:"500K+",jobs:["Content Creator","Marketer"],needs:["Edit audio"],trending:66,cat:"Audio"},
+  {name:"Adobe Podcast",domain:"podcast.adobe.com",tag:"AI audio enhancement — remove background noise and get studio-quality sound in browser.",pill:"Free",url:"https://podcast.adobe.com",affiliate_url:"",rating:4.6,reviews:"7.1K",users:"1M+",jobs:["Podcaster","Content Creator"],needs:["Edit audio"],trending:67,cat:"Audio"},
+  {name:"Otter.ai",domain:"otter.ai",tag:"Real-time meeting transcription, notes and summaries for Zoom, Google Meet and Teams.",pill:"Free + Pro",url:"https://otter.ai",affiliate_url:"",rating:4.5,reviews:"22K",users:"3M+",verified:true,jobs:["Manager","Founder","Solopreneur","Podcaster"],needs:["Take notes","Transcribe meetings","Save time"],trending:72,cat:"Audio"},
+  {name:"Resemble AI",domain:"resemble.ai",tag:"Custom AI voice cloning and synthesis for apps, games, media and brand experiences.",pill:"Free Trial",url:"https://resemble.ai",affiliate_url:"",rating:4.4,reviews:"1.2K",users:"100K+",jobs:["Developer","Content Creator"],needs:["Generate voice"],trending:58,cat:"Audio"},
+  {name:"RankMath AI",domain:"rankmath.com",tag:"WordPress SEO plugin with AI content suggestions, schema markup and keyword optimization.",pill:"Free + Pro",url:"https://rankmath.com",affiliate_url:"",rating:4.9,reviews:"5.1K",users:"2M+",verified:true,jobs:["SEO Consultant","Marketer","Founder"],needs:["Rank higher on Google"],trending:64,cat:"SEO"},
+  {name:"Surfer SEO",domain:"surferseo.com",tag:"Content-grader and SERP analyser for ranking pages, with AI content briefs.",pill:"Save 20%",url:"https://surferseo.com",affiliate_url:"",rating:4.8,reviews:"3.1K",users:"200K+",jobs:["SEO Consultant","Content Creator","Marketer"],needs:["Rank higher on Google","Improve writing"],trending:68,cat:"SEO"},
+  {name:"Ahrefs",domain:"ahrefs.com",tag:"Backlinks, keywords, site audits — the SEO gold standard used by 44% of Fortune 500.",pill:"From $99",url:"https://ahrefs.com",affiliate_url:"",rating:4.7,reviews:"12K",users:"500K+",jobs:["SEO Consultant","Marketer"],needs:["Rank higher on Google","Research competitors"],trending:74,cat:"SEO"},
+  {name:"Semrush",domain:"semrush.com",tag:"All-in-one marketing toolkit with AI assistants, SERP tracking and content audits.",pill:"Free Trial",url:"https://semrush.com",affiliate_url:"",rating:4.6,reviews:"21K",users:"1M+",jobs:["SEO Consultant","Marketer","Founder"],needs:["Rank higher on Google","Run marketing"],trending:78,cat:"SEO"},
+  {name:"Clearscope",domain:"clearscope.io",tag:"AI content optimization tool that grades your content and suggests terms to include.",pill:"From $170",url:"https://clearscope.io",affiliate_url:"",rating:4.6,reviews:"1.4K",users:"40K+",jobs:["SEO Consultant","Content Creator","Marketer"],needs:["Rank higher on Google","Write faster"],trending:60,cat:"SEO"},
+  {name:"NeuronWriter",domain:"neuronwriter.com",tag:"SERP-driven content editor with AI writing and competitor NLP analysis in one tool.",pill:"From $23",url:"https://neuronwriter.com",affiliate_url:"",rating:4.5,reviews:"1.8K",users:"60K+",jobs:["SEO Consultant","Content Creator"],needs:["Rank higher on Google","Write faster"],trending:55,cat:"SEO"},
+  {name:"MarketMuse",domain:"marketmuse.com",tag:"AI content strategy and planning — find topic gaps and optimize content coverage.",pill:"Free + Pro",url:"https://marketmuse.com",affiliate_url:"",rating:4.5,reviews:"890",users:"30K+",jobs:["SEO Consultant","Content Creator","Marketer"],needs:["Rank higher on Google","Run marketing"],trending:52,cat:"SEO"},
+  {name:"Cursor",domain:"cursor.com",tag:"AI-native code editor built on VS Code — the fastest way to ship with AI pair-programming.",pill:"Free + Pro",url:"https://cursor.com",affiliate_url:"",rating:4.8,reviews:"22K",users:"1M+",featured:true,verified:true,jobs:["Developer","Founder"],needs:["Code faster","Ship faster"],trending:97,cat:"Coding"},
+  {name:"GitHub Copilot",domain:"github.com",tag:"AI pair-programmer right inside your editor. Code, chat, and PR review in one place.",pill:"$10/mo",url:"https://github.com/features/copilot",affiliate_url:"",rating:4.6,reviews:"180K",users:"15M+",jobs:["Developer"],needs:["Code faster"],trending:84,cat:"Coding"},
+  {name:"Bolt.new",domain:"bolt.new",tag:"Build and deploy full-stack web apps in the browser with one prompt — no setup required.",pill:"Free + Pro",url:"https://bolt.new",affiliate_url:"",rating:4.7,reviews:"8.4K",users:"1M+",verified:true,jobs:["Developer","Founder","Solopreneur"],needs:["Ship faster","Code faster"],trending:90,cat:"Coding"},
+  {name:"Windsurf",domain:"codeium.com/windsurf",tag:"Agentic AI IDE that understands your entire codebase and writes multi-file changes itself.",pill:"Free + Pro",url:"https://codeium.com/windsurf",affiliate_url:"",rating:4.6,reviews:"3.9K",users:"300K+",jobs:["Developer","Founder"],needs:["Code faster","Ship faster"],trending:88,cat:"Coding"},
+  {name:"Lovable",domain:"lovable.dev",tag:"Build full-stack apps in minutes — AI writes the code, deploys it and explains everything.",pill:"Free + Pro",url:"https://lovable.dev",affiliate_url:"",rating:4.6,reviews:"2.4K",users:"200K+",jobs:["Founder","Solopreneur","Developer"],needs:["Ship faster","Code faster"],trending:87,cat:"Coding"},
+  {name:"v0 by Vercel",domain:"v0.dev",tag:"Generate production-ready React and Tailwind UI from a simple text or image prompt.",pill:"Free + Pro",url:"https://v0.dev",affiliate_url:"",rating:4.6,reviews:"6.1K",users:"500K+",jobs:["Developer","Founder","Freelance Designer"],needs:["Design without a designer","Code faster","Ship faster"],trending:82,cat:"Coding"},
+  {name:"Replit AI",domain:"replit.com",tag:"Browser-based IDE with AI coding, deployment and real-time collaboration for any language.",pill:"Free + Core",url:"https://replit.com",affiliate_url:"",rating:4.5,reviews:"14K",users:"20M+",jobs:["Developer","Student","Founder"],needs:["Code faster","Ship faster"],trending:75,cat:"Coding"},
+  {name:"Tabnine",domain:"tabnine.com",tag:"Privacy-first AI code completion that runs on your own server — no data leaves your systems.",pill:"Free + Pro",url:"https://tabnine.com",affiliate_url:"",rating:4.4,reviews:"8.2K",users:"1M+",jobs:["Developer"],needs:["Code faster"],trending:65,cat:"Coding"},
+  {name:"Codeium",domain:"codeium.com",tag:"Free AI code completion and chat for 70+ languages and 40+ editors — no credit card needed.",pill:"Free",url:"https://codeium.com",affiliate_url:"",rating:4.5,reviews:"5.6K",users:"500K+",jobs:["Developer","Student"],needs:["Code faster"],trending:71,cat:"Coding"},
+  {name:"Notion AI",domain:"notion.so",tag:"AI inside Notion docs, wikis and project pages. Summarize, draft, brainstorm in place.",pill:"Add-on",url:"https://notion.so/product/ai",affiliate_url:"",rating:4.7,reviews:"110K",users:"35M+",verified:true,jobs:["Solopreneur","Founder","Marketer","Writer"],needs:["Write faster","Organize work"],trending:80,cat:"Productivity"},
+  {name:"Granola",domain:"granola.ai",tag:"AI notepad that captures meeting context automatically without bots in the call.",pill:"3 Months Pro",url:"https://granola.ai",affiliate_url:"",rating:4.9,reviews:"4.2K",users:"100K+",verified:true,jobs:["Founder","Manager","Solopreneur"],needs:["Take notes","Save time"],trending:91,cat:"Productivity"},
+  {name:"Motion",domain:"usemotion.com",tag:"AI planner that automatically schedules your tasks, calendars and meetings.",pill:"33% Off",url:"https://usemotion.com",affiliate_url:"",rating:4.5,reviews:"2.8K",users:"150K+",jobs:["Founder","Solopreneur","Manager"],needs:["Organize work","Save time"],trending:69,cat:"Productivity"},
+  {name:"Fireflies.ai",domain:"fireflies.ai",tag:"AI meeting assistant that records, transcribes, summarizes and tracks action items.",pill:"Free + Pro",url:"https://fireflies.ai",affiliate_url:"",rating:4.5,reviews:"9.4K",users:"500K+",verified:true,jobs:["Manager","Founder","Solopreneur"],needs:["Take notes","Transcribe meetings","Save time"],trending:74,cat:"Productivity"},
+  {name:"Reclaim AI",domain:"reclaim.ai",tag:"Smart scheduling assistant that finds the best meeting times and protects focus blocks.",pill:"Free + Pro",url:"https://reclaim.ai",affiliate_url:"",rating:4.5,reviews:"2.2K",users:"200K+",jobs:["Manager","Founder","Solopreneur"],needs:["Organize work","Save time"],trending:65,cat:"Productivity"},
+  {name:"Taskade",domain:"taskade.com",tag:"AI-powered task manager and team workspace with built-in AI agents for any workflow.",pill:"Free + Pro",url:"https://taskade.com",affiliate_url:"",rating:4.4,reviews:"1.4K",users:"500K+",jobs:["Solopreneur","Founder","Manager"],needs:["Organize work","Automate repetitive work"],trending:60,cat:"Productivity"},
+  {name:"Krisp",domain:"krisp.ai",tag:"AI noise cancellation for calls — removes background noise, echo and unwanted voices.",pill:"Free + Pro",url:"https://krisp.ai",affiliate_url:"",rating:4.5,reviews:"6.8K",users:"2M+",jobs:["Manager","Solopreneur","Podcaster"],needs:["Save time","Edit audio"],trending:63,cat:"Productivity"},
+  {name:"Mem.ai",domain:"mem.ai",tag:"Self-organizing AI workspace that automatically surfaces relevant notes when you need them.",pill:"Free + Pro",url:"https://mem.ai",affiliate_url:"",rating:4.4,reviews:"1.8K",users:"100K+",jobs:["Solopreneur","Researcher","Writer"],needs:["Organize work","Take notes"],trending:57,cat:"Productivity"},
+  {name:"Magical",domain:"getmagical.com",tag:"AI text expander that auto-fills repetitive messages and forms across any website.",pill:"Free",url:"https://getmagical.com",affiliate_url:"",rating:4.4,reviews:"3.2K",users:"500K+",jobs:["Solopreneur","Marketer","Manager"],needs:["Automate repetitive work","Save time"],trending:58,cat:"Productivity"},
+  {name:"Reflect",domain:"reflect.app",tag:"AI-powered networked note-taking app that connects ideas with a smart backlink graph.",pill:"$10/mo",url:"https://reflect.app",affiliate_url:"",rating:4.5,reviews:"1.1K",users:"50K+",jobs:["Researcher","Writer","Solopreneur"],needs:["Take notes","Organize work"],trending:54,cat:"Productivity"},
+  {name:"AdCreative.ai",domain:"adcreative.ai",tag:"Generate conversion-focused ad creatives and banners using AI trained on top performers.",pill:"Free Trial",url:"https://adcreative.ai",affiliate_url:"",rating:4.5,reviews:"2.4K",users:"500K+",jobs:["Marketer","Solopreneur","Founder"],needs:["Run marketing","Make social posts","Design without a designer"],trending:67,cat:"Marketing"},
+  {name:"Beehiiv",domain:"beehiiv.com",tag:"Newsletter platform with AI writing, growth tools and monetization built for creators.",pill:"Free + Scale",url:"https://beehiiv.com",affiliate_url:"",rating:4.7,reviews:"3.8K",users:"100K+",verified:true,jobs:["Content Creator","Solopreneur","Marketer"],needs:["Write faster","Run marketing"],trending:79,cat:"Marketing"},
+  {name:"HubSpot AI",domain:"hubspot.com",tag:"CRM with AI tools for writing emails, generating reports and predicting deal outcomes.",pill:"Free + Pro",url:"https://hubspot.com",affiliate_url:"",rating:4.5,reviews:"42K",users:"5M+",verified:true,jobs:["Marketer","Founder","Solopreneur"],needs:["Run marketing","Organize work"],trending:73,cat:"Marketing"},
+  {name:"Mailchimp AI",domain:"mailchimp.com",tag:"AI-powered email marketing with subject-line optimizer and content suggestions.",pill:"Free + Paid",url:"https://mailchimp.com",affiliate_url:"",rating:4.4,reviews:"28K",users:"11M+",jobs:["Marketer","Solopreneur","Founder"],needs:["Run marketing","Write faster"],trending:64,cat:"Marketing"},
+  {name:"Instantly AI",domain:"instantly.ai",tag:"Cold email platform with AI personalization, unlimited sending accounts and warm-up.",pill:"From $37",url:"https://instantly.ai",affiliate_url:"",rating:4.6,reviews:"2.1K",users:"30K+",jobs:["Marketer","Solopreneur","Founder"],needs:["Run marketing","Write faster"],trending:69,cat:"Marketing"},
+  {name:"Predis.ai",domain:"predis.ai",tag:"AI social media content generator creating posts, reels and carousels with one click.",pill:"Free + Pro",url:"https://predis.ai",affiliate_url:"",rating:4.4,reviews:"1.9K",users:"300K+",jobs:["Marketer","Content Creator","Solopreneur"],needs:["Make social posts","Run marketing"],trending:61,cat:"Marketing"},
+  {name:"Pencil",domain:"trypencil.com",tag:"AI ad generator and creative tester for Facebook, Instagram, TikTok and Google Ads.",pill:"Free Trial",url:"https://trypencil.com",affiliate_url:"",rating:4.3,reviews:"680",users:"50K+",jobs:["Marketer","Founder"],needs:["Run marketing","Design without a designer"],trending:50,cat:"Marketing"},
+  {name:"Make.com",domain:"make.com",tag:"Visual automation for your apps and AI workflows. 1,500+ integrations included.",pill:"Free Tier",url:"https://make.com",affiliate_url:"",rating:4.7,reviews:"800",users:"500K+",jobs:["Solopreneur","Marketer","Founder"],needs:["Automate repetitive work"],trending:73,cat:"Automation"},
+  {name:"Zapier",domain:"zapier.com",tag:"Connect 7,000+ apps and automate workflows without writing a single line of code.",pill:"Free + Paid",url:"https://zapier.com",affiliate_url:"",rating:4.6,reviews:"18K",users:"2M+",verified:true,jobs:["Solopreneur","Marketer","Founder","Manager"],needs:["Automate repetitive work","Save time"],trending:76,cat:"Automation"},
+  {name:"n8n",domain:"n8n.io",tag:"Open-source workflow automation with AI nodes — self-host or cloud, 400+ integrations.",pill:"Free + Cloud",url:"https://n8n.io",affiliate_url:"",rating:4.6,reviews:"3.2K",users:"100K+",jobs:["Developer","Founder","Solopreneur"],needs:["Automate repetitive work","Code faster"],trending:74,cat:"Automation"},
+  {name:"Bardeen",domain:"bardeen.ai",tag:"AI browser automation — scrape data and automate repetitive tasks in any web app.",pill:"Free + Pro",url:"https://bardeen.ai",affiliate_url:"",rating:4.4,reviews:"1.1K",users:"200K+",jobs:["Solopreneur","Marketer","Researcher"],needs:["Automate repetitive work","Save time"],trending:62,cat:"Automation"},
+  {name:"Activepieces",domain:"activepieces.com",tag:"Open-source Zapier alternative with AI pieces for ChatGPT, Claude and more.",pill:"Free + Cloud",url:"https://activepieces.com",affiliate_url:"",rating:4.4,reviews:"420",users:"30K+",jobs:["Developer","Solopreneur","Founder"],needs:["Automate repetitive work"],trending:56,cat:"Automation"},
+  {name:"Elicit",domain:"elicit.com",tag:"AI research assistant that finds academic papers, extracts key data and synthesizes findings.",pill:"Free + Plus",url:"https://elicit.com",affiliate_url:"",rating:4.6,reviews:"4.8K",users:"500K+",jobs:["Researcher","Student","Writer"],needs:["Research competitors","Summarize long docs","Search the web"],trending:68,cat:"Research"},
+  {name:"Consensus",domain:"consensus.app",tag:"Search engine for peer-reviewed research — get evidence-based answers with citations.",pill:"Free + Premium",url:"https://consensus.app",affiliate_url:"",rating:4.5,reviews:"2.1K",users:"200K+",jobs:["Researcher","Student"],needs:["Research competitors","Summarize long docs"],trending:64,cat:"Research"},
+  {name:"Scite",domain:"scite.ai",tag:"Find and evaluate scientific papers — see how research has been cited and contested.",pill:"From $20",url:"https://scite.ai",affiliate_url:"",rating:4.4,reviews:"890",users:"100K+",jobs:["Researcher","Student"],needs:["Research competitors","Summarize long docs"],trending:57,cat:"Research"},
+  {name:"Scholarcy",domain:"scholarcy.com",tag:"AI tool that reads academic papers and turns them into digestible flashcard summaries.",pill:"Free + Pro",url:"https://scholarcy.com",affiliate_url:"",rating:4.3,reviews:"640",users:"80K+",jobs:["Researcher","Student"],needs:["Summarize long docs"],trending:49,cat:"Research"},
+  {name:"Gamma",domain:"gamma.app",tag:"Create polished presentations, docs and webpages from a text prompt in under a minute.",pill:"Free + Plus",url:"https://gamma.app",affiliate_url:"",rating:4.6,reviews:"8.9K",users:"2M+",verified:true,jobs:["Marketer","Founder","Solopreneur","Student"],needs:["Create presentations","Write faster"],trending:80,cat:"Presentation"},
+  {name:"Beautiful.ai",domain:"beautiful.ai",tag:"AI presentation maker that auto-designs slides as you type — zero design skills needed.",pill:"Free + Pro",url:"https://beautiful.ai",affiliate_url:"",rating:4.5,reviews:"5.4K",users:"1M+",jobs:["Marketer","Solopreneur","Founder","Student"],needs:["Create presentations","Design without a designer"],trending:66,cat:"Presentation"},
+  {name:"Tome",domain:"tome.app",tag:"AI-native storytelling platform for building compelling presentations and narratives.",pill:"Free + Pro",url:"https://tome.app",affiliate_url:"",rating:4.4,reviews:"3.8K",users:"500K+",jobs:["Marketer","Founder","Solopreneur"],needs:["Create presentations","Write faster"],trending:61,cat:"Presentation"},
+  {name:"SlidesAI",domain:"slidesai.io",tag:"Google Slides add-on that transforms any text into a professional presentation instantly.",pill:"Free + Pro",url:"https://slidesai.io",affiliate_url:"",rating:4.3,reviews:"1.4K",users:"200K+",jobs:["Student","Marketer","Solopreneur"],needs:["Create presentations"],trending:52,cat:"Presentation"},
+  {name:"Tidio",domain:"tidio.com",tag:"AI live chat and support platform — Lyro AI handles 70% of customer queries automatically.",pill:"Free + Pro",url:"https://tidio.com",affiliate_url:"",rating:4.6,reviews:"8.2K",users:"300K+",jobs:["Solopreneur","Founder","Marketer"],needs:["Automate repetitive work","Save time"],trending:67,cat:"Support"},
+  {name:"Intercom AI",domain:"intercom.com",tag:"Customer support platform with Fin AI resolving 50%+ of conversations without human help.",pill:"From $39",url:"https://intercom.com",affiliate_url:"",rating:4.5,reviews:"4.1K",users:"25K+",jobs:["Founder","Marketer","Manager"],needs:["Automate repetitive work","Save time"],trending:63,cat:"Support"},
+  {name:"Zendesk AI",domain:"zendesk.com",tag:"Enterprise customer service platform with AI agents, summarization and intent detection.",pill:"From $55",url:"https://zendesk.com",affiliate_url:"",rating:4.4,reviews:"15K",users:"100K+",jobs:["Manager","Founder"],needs:["Automate repetitive work","Save time"],trending:60,cat:"Support"}
 ];
 
-const LENSES = {
-  job: {
-    label:"By Job",
-    note:"Pick what you do — we'll re-shuffle the rows below to match.",
-    options:["Solopreneur","Freelance Designer","Content Creator","SEO Consultant","Marketer","Founder","Developer","Writer"],
-    rowsFor(value){
-      return [
-        {title:`Top picks for ${value.toLowerCase()}s`, filter:t => t.jobs.includes(value)},
-        {title:"Trending this week",                   filter:t => t.trending >= 80},
-        {title:"Verified vendors",                     filter:t => t.verified}
-      ];
-    }
+const LENSES={
+  job:{label:"By Job",note:"Pick what you do — we'll re-shuffle the rows to match your workflow.",
+    options:["Solopreneur","Freelance Designer","Content Creator","SEO Consultant","Marketer","Founder","Developer","Writer","Podcaster","Researcher","Student","Manager"],
+    rowsFor(v){return[{title:"Top picks for "+v.toLowerCase()+"s",filter:t=>t.jobs.includes(v)},{title:"Trending this week",filter:t=>t.trending>=80},{title:"Verified vendors",filter:t=>t.verified}];}
   },
-  need: {
-    label:"By Need",
-    note:"What problem are you trying to solve right now?",
-    options:["Write faster","Rank higher on Google","Design without a designer","Edit video","Code faster","Automate repetitive work","Generate images","Organize work"],
-    rowsFor(value){
-      return [
-        {title:`Best for "${value}"`,    filter:t => t.needs.includes(value)},
-        {title:"Trending this week",    filter:t => t.trending >= 80},
-        {title:"Free or free-tier",     filter:t => /Free/i.test(t.pill)}
-      ];
-    }
+  need:{label:"By Need",note:"What problem are you trying to solve right now?",
+    options:["Write faster","Rank higher on Google","Design without a designer","Edit video","Code faster","Automate repetitive work","Generate images","Organize work","Generate voice","Run marketing","Brainstorm ideas","Create presentations","Save time","Translate"],
+    rowsFor(v){return[{title:'Best for "'+v+'"',filter:t=>t.needs.includes(v)},{title:"Trending this week",filter:t=>t.trending>=80},{title:"Free or free-tier",filter:t=>/Free/i.test(t.pill)}];}
   },
-  trend: {
-    label:"Trending",
-    note:"What everyone is talking about — refreshed weekly.",
+  trend:{label:"Trending",note:"What everyone is talking about — refreshed weekly.",
     options:["This week","New & rising","Free tier","Featured"],
-    rowsFor(value){
-      if(value==="New & rising") return [{title:"New & rising",       filter:t => t.trending >= 85 && t.trending < 95}];
-      if(value==="Free tier")    return [{title:"Free or free-tier",  filter:t => /Free/i.test(t.pill)}];
-      if(value==="Featured")     return [{title:"Featured tools",     filter:t => t.featured}];
-      return [
-        {title:"Trending this week", filter:t => t.trending >= 85},
-        {title:"Editor's picks",     filter:t => t.featured},
-        {title:"Worth a look",       filter:t => t.trending < 75}
-      ];
+    rowsFor(v){
+      if(v==="New & rising")return[{title:"New & rising",filter:t=>t.trending>=85&&t.trending<95}];
+      if(v==="Free tier")return[{title:"Free or free-tier",filter:t=>/Free/i.test(t.pill)}];
+      if(v==="Featured")return[{title:"Featured tools",filter:t=>t.featured}];
+      return[{title:"Trending this week",filter:t=>t.trending>=85},{title:"Editor's picks",filter:t=>t.featured},{title:"Worth a look",filter:t=>t.trending>=60&&t.trending<80}];
     }
   }
 };
-
-/* ===== Admin overrides (live preview from /admin.html localStorage) ===== */
-const LS_KEY = "myai_admin_overrides_v1";
-function loadOverrides(){ try{return JSON.parse(localStorage.getItem(LS_KEY))||{};}catch(e){return {};} }
-function tool(i){
-  const o = loadOverrides()[i] || {};
-  if (o._deleted) return null;
-  return Object.assign({}, TOOLS[i], o);
-}
-function activeUrl(t){ return (t.affiliate_url && t.affiliate_url.trim()) ? t.affiliate_url : t.url; }
-function isAffiliate(t){ return !!(t.affiliate_url && t.affiliate_url.trim()); }
-
-/* ===== State ===== */
-let currentLens  = "job";
-let currentValue = LENSES.job.options[0];
-let searchQuery  = "";
-
-const $chips = document.getElementById("chip-row");
-const $rows  = document.getElementById("rows");
-const $note  = document.getElementById("lens-note");
-
-function initials(name){return name.replace(/[^A-Za-z0-9 ]/g,'').split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();}
-function favicon(domain){ return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`; }
-
-function starHTML(rating){
-  const r = Number(rating)||0;
-  const full = Math.round(r);
-  const stars = '★'.repeat(full) + '☆'.repeat(Math.max(0,5-full));
-  return stars;
-}
-
+const LS_KEY="myai_admin_overrides_v1";
+function loadOverrides(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{};}catch(e){return{};}}
+function tool(i){const o=loadOverrides()[i]||{};if(o._deleted)return null;return Object.assign({},TOOLS[i],o);}
+function activeUrl(t){return(t.affiliate_url&&t.affiliate_url.trim())?t.affiliate_url:t.url;}
+function isAffiliate(t){return!!(t.affiliate_url&&t.affiliate_url.trim());}
+let currentLens="job",currentValue=LENSES.job.options[0],searchQuery="";
+const $chips=document.getElementById("chip-row"),$rows=document.getElementById("rows"),$note=document.getElementById("lens-note");
+function initials(n){return n.replace(/[^A-Za-z0-9 ]/g,'').split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();}
+function favicon(d){return"https://www.google.com/s2/favicons?domain="+encodeURIComponent(d)+"&sz=64";}
+function starHTML(r){const f=Math.round(Number(r)||0);return"\u2605".repeat(f)+"\u2606".repeat(Math.max(0,5-f));}
 function cardHTML(i){
-  const t = tool(i);
-  if (!t) return '';
-  const url = activeUrl(t);
-  const aff = isAffiliate(t);
-  const rel = aff ? 'sponsored noopener nofollow' : 'noopener nofollow';
-  const featClass = t.featured ? ' featured' : '';
-  const ratingsRow = (t.rating || t.users) ? `
-    <div class="ratings">
-      ${t.rating ? `<span class="stars">${starHTML(t.rating)}<b>&nbsp;${t.rating}</b>${t.reviews?` <span style="color:var(--text-dim);font-weight:400">(${t.reviews})</span>`:''}</span>` : ''}
-      ${t.users ? `<span class="users"><b>${t.users}</b> users</span>` : ''}
-    </div>` : '';
-  return `
-    <article class="card${featClass}" data-tool="${i}">
-      <div class="top">
-        <div class="logo">
-          <img src="${favicon(t.domain||'')}" alt="${t.name} logo" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>${initials(t.name)}</div>')">
-        </div>
-        <div class="meta">
-          <h3>${t.name}</h3>
-          <div class="badges">
-            <span class="cat-badge">${t.cat}</span>
-            ${t.featured ? '<span class="feat-badge">Featured</span>' : ''}
-            ${aff ? '<span class="aff-mark">Affiliate</span>' : ''}
-            ${t.verified ? '<span class="verified-mark">Verified</span>' : ''}
-          </div>
-        </div>
-      </div>
-      ${ratingsRow}
-      <div class="tag">${t.tag}</div>
-      <div><span class="pill">${t.pill}</span></div>
-      <div class="actions">
-        <a class="visit" href="${url}" target="_blank" rel="${rel}" data-idx="${i}" onclick="trackVisit(${i})">Visit →</a>
-        <button class="compare-btn" type="button" onclick="alert('Compare queued: ${t.name.replace(/'/g,"&#39;")}')">Compare</button>
-      </div>
-    </article>`;
+  const t=tool(i);if(!t)return"";
+  const url=activeUrl(t),aff=isAffiliate(t),rel=aff?"sponsored noopener nofollow":"noopener nofollow";
+  const rr=(t.rating||t.users)?"<div class=\"ratings\">"+( t.rating?"<span class=\"stars\">"+starHTML(t.rating)+"<b>&nbsp;"+t.rating+"</b>"+(t.reviews?" <span style=\"color:var(--text-dim);font-weight:400\">("+t.reviews+")</span>":"")+"</span>":"")+( t.users?" <span class=\"users\"><b>"+t.users+"</b> users</span>":"")+"</div>":"";
+  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(aff?"<span class=\"aff-mark\">Affiliate</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+url+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now for Free &rarr;</a><button class=\"compare-btn\" onclick=\"alert('Compare: "+t.name.replace(/'/g,"&#39;")+"')\">Compare</button></div></article>";
 }
-
-function rowHTML({title, items}){
-  if(!items.length) return `<section class="row"><div class="row-head"><h2>${title}</h2></div><div class="empty">No tools match — try another option or clear the search.</div></section>`;
-  return `<section class="row"><div class="row-head"><h2>${title}</h2><span class="more">${items.length} ${items.length===1?'tool':'tools'}</span></div><div class="scroll">${items.map(i=>cardHTML(i)).join("")}</div></section>`;
+function rowHTML(r){
+  if(!r.items.length)return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2></div><div class=\"empty\">No tools match — try another option.</div></section>";
+  return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2><span class=\"more\">"+r.items.length+" "+(r.items.length===1?"tool":"tools")+"</span></div><div class=\"scroll\">"+r.items.map(i=>cardHTML(i)).join("")+"</div></section>";
 }
-
-function filterIndices(predicate){
-  return TOOLS.map((_,i)=>i).filter(i => {
-    const t = tool(i);
-    if (!t) return false;
-    if (searchQuery) {
-      const hay = (t.name + ' ' + t.tag + ' ' + t.cat + ' ' + t.needs.join(' ') + ' ' + t.jobs.join(' ')).toLowerCase();
-      if (!hay.includes(searchQuery)) return false;
-    }
-    return predicate(t);
-  });
-}
-
-function renderChips(){
-  const opts = LENSES[currentLens].options;
-  $chips.innerHTML = opts.map(o=>`<button class="chip ${o===currentValue?'active':''}" data-value="${o}">${o}</button>`).join("");
-}
-function renderRows(){
-  $note.textContent = LENSES[currentLens].note;
-  const rows = LENSES[currentLens].rowsFor(currentValue).map(r=>({title:r.title, items:filterIndices(r.filter)}));
-  $rows.innerHTML = rows.map(rowHTML).join("");
-}
-function syncHash(){
-  history.replaceState(null,"",`#${currentLens}:${encodeURIComponent(currentValue)}`);
-}
-function setLens(lens){
-  currentLens  = lens;
-  currentValue = LENSES[lens].options[0];
-  document.querySelectorAll(".lens-tab").forEach(b=>b.classList.toggle("active", b.dataset.lens===lens));
-  renderChips(); renderRows(); syncHash();
-}
-function setValue(v){
-  currentValue = v;
-  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active", c.dataset.value===v));
-  renderRows(); syncHash();
-}
-
-/* Wire up */
+function filterIndices(pred){return TOOLS.map((_,i)=>i).filter(i=>{const t=tool(i);if(!t)return false;if(searchQuery){const h=(t.name+" "+t.tag+" "+t.cat+" "+t.needs.join(" ")+" "+t.jobs.join(" ")).toLowerCase();if(!h.includes(searchQuery))return false;}return pred(t);});}
+function renderChips(){$chips.innerHTML=LENSES[currentLens].options.map(o=>"<button class=\"chip "+(o===currentValue?"active":"")+"\" data-value=\""+o+"\">"+o+"</button>").join("");}
+function renderRows(){$note.textContent=LENSES[currentLens].note;$rows.innerHTML=LENSES[currentLens].rowsFor(currentValue).map(r=>rowHTML({title:r.title,items:filterIndices(r.filter)})).join("");}
+function syncHash(){history.replaceState(null,"","#"+currentLens+":"+encodeURIComponent(currentValue));}
+function setLens(l){currentLens=l;currentValue=LENSES[l].options[0];document.querySelectorAll(".lens-tab").forEach(b=>b.classList.toggle("active",b.dataset.lens===l));renderChips();renderRows();syncHash();}
+function setValue(v){currentValue=v;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.value===v));renderRows();syncHash();}
 document.getElementById("lens-tabs").addEventListener("click",e=>{const b=e.target.closest(".lens-tab");if(b)setLens(b.dataset.lens);});
 $chips.addEventListener("click",e=>{const c=e.target.closest(".chip");if(c)setValue(c.dataset.value);});
-document.getElementById("search").addEventListener("input",e=>{ searchQuery = e.target.value.trim().toLowerCase(); renderRows(); });
-document.querySelectorAll('[data-quick]').forEach(a=>{
-  a.addEventListener('click',ev=>{
-    ev.preventDefault();
-    const [lens,val] = a.dataset.quick.split(':');
-    setLens(lens);
-    if(LENSES[lens].options.includes(val)) setValue(val);
-    document.getElementById('tools').scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
+document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderRows();});
+document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();const[l,v]=a.dataset.quick.split(":");setLens(l);if(LENSES[l].options.includes(v))setValue(v);document.getElementById("tools").scrollIntoView({behavior:"smooth",block:"start"});}));
+function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){setLens(l);if(LENSES[l].options.includes(v))setValue(v);}}
+window.dataLayer=window.dataLayer||[];
+function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event:"tool_click",tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),destination:activeUrl(t)});try{const c=JSON.parse(localStorage.getItem("myai_clicks_v1")||"{}");c[t.name]=(c[t.name]||0)+1;localStorage.setItem("myai_clicks_v1",JSON.stringify(c));}catch(e){}}
+function renderStats(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));document.getElementById("stat-tools").textContent=v.length+"+";document.getElementById("stat-cats").textContent=cats.size;}
+function renderLdJson(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean);try{document.getElementById("ldjson").textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"AI Tools curated by MyAI ToolsFinder","numberOfItems":v.length,"itemListElement":v.map((t,i)=>({"@type":"ListItem","position":i+1,"item":{"@type":"SoftwareApplication","name":t.name,"applicationCategory":t.cat,"description":t.tag,"url":t.url}}))});}catch(e){}}
+function toggleMenu(){const m=document.getElementById("mob-menu"),o=document.getElementById("mob-overlay"),b=document.getElementById("burger");m.classList.toggle("open");o.classList.toggle("open");b.classList.toggle("open");}
+renderChips();renderRows();renderStats();renderLdJson();
+window.addEventListener("hashchange",readHash);readHash();
 
-function readHash(){
-  const h = decodeURIComponent(location.hash.replace(/^#/,''));
-  if (h === "admin") { location.href = "/admin.html"; return; }
-  if (!h.includes(':')) return;
-  const [lens,val] = h.split(':');
-  if (LENSES[lens]) {
-    setLens(lens);
-    if (LENSES[lens].options.includes(val)) setValue(val);
-  }
-}
-
-/* ===== Click tracking (GA4 dataLayer-ready) ===== */
-window.dataLayer = window.dataLayer || [];
-function trackVisit(i){
-  const t = tool(i); if (!t) return;
-  window.dataLayer.push({
-    event: 'tool_click',
-    tool_name: t.name,
-    tool_category: t.cat,
-    is_affiliate: isAffiliate(t),
-    destination: activeUrl(t)
-  });
-  try{
-    const c = JSON.parse(localStorage.getItem('myai_clicks_v1')||'{}');
-    c[t.name] = (c[t.name]||0)+1;
-    localStorage.setItem('myai_clicks_v1', JSON.stringify(c));
-  }catch(e){}
-}
-
-/* ===== Stats + JSON-LD ===== */
-function renderStats(){
-  const valid = TOOLS.map((_,i)=>tool(i)).filter(Boolean);
-  const cats = new Set(valid.map(t=>t.cat));
-  document.getElementById('stat-tools').textContent = valid.length + '+';
-  document.getElementById('stat-cats').textContent = cats.size;
-}
-function renderLdJson(){
-  const valid = TOOLS.map((_,i)=>tool(i)).filter(Boolean);
-  document.getElementById('ldjson').textContent = JSON.stringify({
-    "@context":"https://schema.org","@type":"ItemList",
-    "name":"AI Tools curated by MyAI ToolsFinder",
-    "numberOfItems": valid.length,
-    "itemListElement": valid.map((t,i)=>({"@type":"ListItem","position":i+1,"item":{"@type":"SoftwareApplication","name":t.name,"applicationCategory":t.cat,"description":t.tag,"url":t.url,"aggregateRating":t.rating?{"@type":"AggregateRating","ratingValue":t.rating,"reviewCount":(String(t.reviews||'').match(/[\d.]+/)||['0'])[0]}:undefined}}))
-  });
-}
-
-/* ===== Init ===== */
-renderChips(); renderRows(); renderStats(); renderLdJson();
-window.addEventListener('hashchange', readHash);
-readHash();
 </script>
 </body>
 </html>

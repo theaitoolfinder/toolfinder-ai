@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SZQYFK19QN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — MyAI ToolsFinder</title>
+<meta name="description" content="Privacy Policy for MyAI ToolsFinder — how we collect, use and protect your information.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff;--bg-off:#f7f8fa;--navy:#0d1f33;--navy2:#162d47;
+  --gold:#8a6d1f;--gold-a:#b8942d;--gold-bg:#fdf8ee;--gold-b:#ddc46a;
+  --gray:#4a5568;--gray2:#718096;--gray-m:#a0aec0;
+  --border:#e2e8f0;--shadow-sm:0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --r:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Poppins',sans-serif;cursor:pointer;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
+.logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}
+.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;
+  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+
+/* BURGER */
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;background:none;border:none;gap:5px;cursor:pointer;border-radius:8px;transition:background 0.15s;}
+.burger:hover{background:var(--bg-off);}
+.burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all 0.25s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* MOBILE MENU */
+.mob-menu{position:fixed;top:0;right:-300px;width:280px;height:100vh;z-index:400;
+  background:var(--bg);border-left:1px solid var(--border);box-shadow:-4px 0 32px rgba(0,0,0,0.1);
+  transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;}
+.mob-menu.open{right:0;}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;
+  border-bottom:1px solid var(--border);}
+.mob-close{background:none;border:none;font-size:20px;color:var(--gray);cursor:pointer;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  border-radius:7px;transition:background 0.15s;}
+.mob-close:hover{background:var(--bg-off);}
+.mob-nav{display:flex;flex-direction:column;padding:16px 12px;gap:4px;flex:1;}
+.mob-nav a{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;
+  font-size:14px;font-weight:500;color:var(--gray);transition:all 0.15s;}
+.mob-nav a:hover{background:var(--bg-off);color:var(--navy);}
+.mob-cta{background:var(--navy)!important;color:#fff!important;margin-top:8px;justify-content:center;font-weight:600!important;}
+.mob-cta:hover{background:var(--navy2)!important;}
+.mob-admin{color:var(--gray-m)!important;font-size:12px!important;margin-top:auto;}
+.mob-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.35);
+  opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.mob-overlay.open{opacity:1;pointer-events:all;}
+
+/* HERO */
+.priv-hero{padding:100px 20px 56px;text-align:center;border-bottom:1px solid var(--border);background:var(--bg-off);}
+.priv-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;}
+.priv-hero p{font-size:14.5px;color:var(--gray2);max-width:540px;margin:0 auto;}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-a);margin-bottom:10px;}
+
+/* BODY */
+.page-body{max-width:780px;margin:0 auto;padding:64px 20px 80px;}
+.toc-box{background:var(--bg-off);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin-bottom:48px;}
+.toc-box h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.05em;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.toc-list li a{font-size:13.5px;color:var(--gold-a);display:flex;align-items:center;gap:6px;}
+.toc-list li a:hover{text-decoration:underline;}
+.toc-list li a::before{content:'#';font-weight:700;font-size:12px;opacity:0.6;}
+
+.section{margin-bottom:52px;}
+.section h2{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--navy);letter-spacing:-0.015em;margin-bottom:14px;padding-top:8px;}
+.section p{font-size:14px;color:var(--gray);line-height:1.85;margin-bottom:12px;}
+.section ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.section ul li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--gray);line-height:1.7;}
+.section ul li::before{content:'•';color:var(--gold-a);font-weight:700;flex-shrink:0;margin-top:2px;}
+
+.highlight-box{background:var(--gold-bg);border:1.5px solid #e8d08a;border-radius:var(--r);padding:20px 24px;margin:16px 0;}
+.highlight-box p{font-size:13.5px;color:#6b5316;margin-bottom:0!important;line-height:1.75;}
+.highlight-box strong{color:#5a450d;}
+
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0;}
+.info-card{background:var(--bg-off);border:1px solid var(--border);border-radius:12px;padding:18px;}
+.info-card .ic-icon{font-size:1.4rem;margin-bottom:8px;}
+.info-card .ic-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.info-card .ic-desc{font-size:12.5px;color:var(--gray2);line-height:1.6;}
+
+.rights-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
+.right-chip{background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-align:center;}
+.right-chip .rc-icon{font-size:1.3rem;margin-bottom:6px;}
+.right-chip .rc-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);}
+
+/* CONTACT BOX */
+.contact-box{background:var(--navy);border-radius:var(--r);padding:32px;text-align:center;color:#fff;margin-top:16px;}
+.contact-box h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;}
+.contact-box p{font-size:13.5px;color:rgba(255,255,255,0.55);margin-bottom:20px;}
+.contact-box a{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:10px 22px;
+  font-size:13.5px;font-weight:600;color:#fff;transition:all 0.18s;}
+.contact-box a:hover{background:rgba(255,255,255,0.18);}
+
+.last-updated{font-size:12px;color:var(--gray-m);text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--border);}
+
+/* FOOTER */
+footer{background:var(--bg-off);border-top:1px solid var(--border);padding:36px 20px 24px;text-align:center;}
+footer p{font-size:12.5px;color:var(--gray-m);}
+footer a{color:var(--gold-a);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links .nav-a{display:none;}
+  .nav-links .btn-navy{display:none;}
+  .burger{display:flex;}
+  .info-grid{grid-template-columns:1fr;}
+  .rights-row{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:480px){
+  .rights-row{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-name">MyAI ToolsFinder</span>
+      <span class="logo-sub">AI Tools Directory</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#tools" class="nav-a">Directory</a>
+    <a href="articles.html" class="nav-a">Articles</a>
+    <a href="about.html" class="nav-a">About</a>
+    <a href="index.html#nl" class="nav-a">Newsletter</a>
+    <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
+  </div>
+  <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-head">
+    <a href="index.html" class="logo">
+      <div class="logo-mark" style="width:28px;height:28px;border-radius:7px;">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <circle cx="6" cy="6" r="2.8" fill="white"/>
+          <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+          <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        </svg>
+      </div>
+      <span class="logo-name" style="font-size:13px;">MyAI ToolsFinder</span>
+    </a>
+    <button class="mob-close" onclick="toggleMenu()">✕</button>
+  </div>
+  <div class="mob-nav">
+    <a href="index.html">🔧 AI Tools Directory</a>
+    <a href="articles.html">📰 Articles</a>
+    <a href="about.html">👋 About</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+    <a href="index.html#nl" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
+    <a href="admin.html" class="mob-admin">⚙️ Admin</a>
+  </div>
+</div>
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
+
+<!-- HERO -->
+<div class="priv-hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p>We believe in transparency. Here's exactly what data we collect, why we collect it, and how it's used — in plain English.</p>
+</div>
+
+<div class="page-body">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc-box">
+    <h3>Contents</h3>
+    <ol class="toc-list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data-collected">What Data We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Data</a></li>
+      <li><a href="#affiliate-disclosure">Affiliate Links Disclosure</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#data-storage">Data Storage &amp; Security</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. OVERVIEW -->
+  <div class="section" id="overview">
+    <div class="eyebrow">Section 1</div>
+    <h2>Overview</h2>
+    <p>MyAI ToolsFinder ("we", "our", "us") operates the website <strong>myaitoolsfinder.com</strong> (the "Site"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+    <p>This Privacy Policy explains what information we collect when you visit our Site, how we use that information, and your rights regarding your personal data. By using our Site, you agree to the practices described in this policy.</p>
+    <div class="highlight-box">
+      <p><strong>Short version:</strong> We collect minimal data, mainly through Google Analytics to understand traffic patterns. We never sell your data. Affiliate links help keep the directory free — we disclose all of them.</p>
+    </div>
+  </div>
+
+  <!-- 2. DATA COLLECTED -->
+  <div class="section" id="data-collected">
+    <div class="eyebrow">Section 2</div>
+    <h2>What Data We Collect</h2>
+    <p>We collect two types of information: information you voluntarily provide, and information automatically collected during your visit.</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-icon">📧</div>
+        <div class="ic-title">Email Address</div>
+        <div class="ic-desc">Only if you subscribe to our newsletter. Stored securely with our email provider (Brevo). You can unsubscribe at any time.</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">📊</div>
+        <div class="ic-title">Analytics Data</div>
+        <div class="ic-desc">Anonymised page views, session duration, browser type, device type and approximate geographic region — via Google Analytics 4.</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">🖱️</div>
+        <div class="ic-title">Click Events</div>
+        <div class="ic-desc">When you click an affiliate link, we log the tool name and timestamp in your browser's localStorage to improve recommendations.</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">🌐</div>
+        <div class="ic-title">Technical Data</div>
+        <div class="ic-desc">IP address (anonymised), referring URL, and browser language — standard information collected by web servers and analytics platforms.</div>
+      </div>
+    </div>
+
+    <p>We do <strong>not</strong> collect: your name, payment information, social security numbers, government IDs, or any other sensitive personal data unless you explicitly provide it when contacting us.</p>
+  </div>
+
+  <!-- 3. HOW WE USE -->
+  <div class="section" id="how-we-use">
+    <div class="eyebrow">Section 3</div>
+    <h2>How We Use Your Data</h2>
+    <p>Data we collect is used solely to operate, improve and communicate about our service:</p>
+    <ul>
+      <li>To deliver the weekly AI Toolbox newsletter to subscribers</li>
+      <li>To analyse which tools, categories and articles are most useful to visitors</li>
+      <li>To improve site performance and fix technical issues</li>
+      <li>To understand traffic sources and geographic reach</li>
+      <li>To detect and prevent abuse or bot traffic</li>
+      <li>To respond to enquiries you send us via email</li>
+    </ul>
+    <p>We do <strong>not</strong> use your data to serve personalised advertising, build behavioural profiles, or sell to third parties. Ever.</p>
+  </div>
+
+  <!-- 4. AFFILIATE DISCLOSURE -->
+  <div class="section" id="affiliate-disclosure">
+    <div class="eyebrow">Section 4</div>
+    <h2>Affiliate Links Disclosure</h2>
+    <div class="highlight-box">
+      <p><strong>Important disclosure:</strong> MyAI ToolsFinder participates in affiliate marketing programs. Some links on this site are affiliate links — if you click one and make a purchase or sign up for a service, we may earn a commission at <strong>no additional cost to you</strong>.</p>
+    </div>
+    <p>Here's how our affiliate program works and how we keep it honest:</p>
+    <ul>
+      <li>Affiliate relationships are disclosed at the top of every page that contains them</li>
+      <li>Our ratings, reviews and rankings are <strong>never</strong> influenced by affiliate commission rates</li>
+      <li>We give the same honest treatment to free tools, paid tools, and tools with no affiliate program</li>
+      <li>A tool with a low rating keeps its low rating regardless of any affiliate relationship</li>
+      <li>Paid placements and "Featured" spots are clearly labelled as such</li>
+      <li>When you click an affiliate link, you may be redirected through a tracking URL before reaching the tool's website</li>
+    </ul>
+    <p>Affiliate commissions are the primary way we fund the operation of this directory and keep it free for users. We appreciate your support.</p>
+    <p>In compliance with the FTC's guidelines concerning the use of endorsements and testimonials in advertising (16 CFR Part 255), we disclose that some links are affiliate links.</p>
+  </div>
+
+  <!-- 5. COOKIES -->
+  <div class="section" id="cookies">
+    <div class="eyebrow">Section 5</div>
+    <h2>Cookies &amp; Tracking</h2>
+    <p>We use a minimal set of cookies and browser storage mechanisms:</p>
+    <ul>
+      <li><strong>Google Analytics cookies (_ga, _gid, _gat):</strong> Used to distinguish users and throttle request rates. These cookies contain randomly generated IDs and no personally identifiable information. They expire within 2 years (_ga) or 24 hours (_gid).</li>
+      <li><strong>Newsletter preference cookie:</strong> If you dismiss the newsletter banner, a small flag is stored in localStorage so we don't show it again.</li>
+      <li><strong>Admin overrides (localStorage):</strong> If you use our admin interface, affiliate URL overrides are stored in your browser's localStorage only — this data never leaves your device.</li>
+      <li><strong>Click history (localStorage):</strong> Tool clicks are stored locally in your browser to power the "recently viewed" feature. This data is never transmitted to our servers.</li>
+    </ul>
+    <p>You can control cookies through your browser settings. Disabling cookies may affect some functionality of the Site, particularly analytics features. You can also opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" style="color:var(--gold-a);">Google Analytics Opt-out Browser Add-on</a>.</p>
+  </div>
+
+  <!-- 6. THIRD PARTIES -->
+  <div class="section" id="third-parties">
+    <div class="eyebrow">Section 6</div>
+    <h2>Third-Party Services</h2>
+    <p>We use a small number of trusted third-party services to operate this site:</p>
+    <ul>
+      <li><strong>Google Analytics 4</strong> — Web analytics platform. Data is anonymised before transmission. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold-a);">Google Privacy Policy →</a></li>
+      <li><strong>Brevo (formerly Sendinblue)</strong> — Newsletter delivery. Stores subscriber email addresses and send history. <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener" style="color:var(--gold-a);">Brevo Privacy Policy →</a></li>
+      <li><strong>GitHub Pages</strong> — Static site hosting. Serves our HTML/CSS/JS files. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener" style="color:var(--gold-a);">GitHub Privacy Policy →</a></li>
+      <li><strong>Google Fonts</strong> — Loads the Poppins typeface. Google may log the request. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold-a);">Google Privacy Policy →</a></li>
+      <li><strong>Unsplash</strong> — Stock photography for article thumbnails. Images are loaded from Unsplash CDN servers. <a href="https://unsplash.com/privacy" target="_blank" rel="noopener" style="color:var(--gold-a);">Unsplash Privacy Policy →</a></li>
+    </ul>
+    <p>When you click an affiliate link and visit a third-party tool's website, that site's privacy policy governs how they handle your data. We encourage you to review the privacy policies of any tools you sign up for.</p>
+    <p>We are not responsible for the privacy practices of third-party websites linked from our directory.</p>
+  </div>
+
+  <!-- 7. DATA STORAGE -->
+  <div class="section" id="data-storage">
+    <div class="eyebrow">Section 7</div>
+    <h2>Data Storage &amp; Security</h2>
+    <p>This website is a static HTML site hosted on GitHub Pages. We do not operate a backend database or server that stores personal user data. This by design minimises the risk of data breaches.</p>
+    <ul>
+      <li>Newsletter subscriber data is stored with Brevo under their security standards</li>
+      <li>Analytics data is stored with Google under their security standards</li>
+      <li>No passwords, payment cards or sensitive personal data are collected or stored by us</li>
+      <li>All data transmitted between your browser and our site is encrypted via HTTPS/TLS</li>
+      <li>Browser localStorage data (click history, admin overrides) never leaves your device</li>
+    </ul>
+    <p>In the event of any security incident involving data held by our service providers, we will notify affected users as required by applicable law.</p>
+  </div>
+
+  <!-- 8. YOUR RIGHTS -->
+  <div class="section" id="your-rights">
+    <div class="eyebrow">Section 8</div>
+    <h2>Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+    <div class="rights-row">
+      <div class="right-chip"><div class="rc-icon">👁️</div><div class="rc-label">Access</div></div>
+      <div class="right-chip"><div class="rc-icon">✏️</div><div class="rc-label">Correction</div></div>
+      <div class="right-chip"><div class="rc-icon">🗑️</div><div class="rc-label">Deletion</div></div>
+      <div class="right-chip"><div class="rc-icon">📦</div><div class="rc-label">Data Portability</div></div>
+      <div class="right-chip"><div class="rc-icon">🚫</div><div class="rc-label">Opt-Out</div></div>
+      <div class="right-chip"><div class="rc-icon">⚖️</div><div class="rc-label">Complain</div></div>
+    </div>
+    <p>To exercise any of these rights, contact us at <a href="mailto:hello@myaitoolsfinder.com" style="color:var(--gold-a);">hello@myaitoolsfinder.com</a>. We will respond within 30 days.</p>
+    <p>For newsletter subscribers: you can unsubscribe at any time using the unsubscribe link in any newsletter email. Unsubscribing removes your email from our mailing list within 48 hours.</p>
+    <p>For browser-stored data (localStorage): you can clear this at any time through your browser's settings under "Clear site data" or "Clear browsing data."</p>
+    <p><strong>California residents (CCPA):</strong> We do not sell personal information. You have the right to know what personal information we have collected and request its deletion.</p>
+    <p><strong>EU/UK residents (GDPR/UK GDPR):</strong> Our legal basis for processing analytics data is legitimate interests (understanding how people use our site). Our legal basis for processing newsletter subscriber data is consent. You may withdraw consent at any time.</p>
+  </div>
+
+  <!-- 9. CHILDREN -->
+  <div class="section" id="children">
+    <div class="eyebrow">Section 9</div>
+    <h2>Children's Privacy</h2>
+    <p>Our Site is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal data, please contact us at <a href="mailto:hello@myaitoolsfinder.com" style="color:var(--gold-a);">hello@myaitoolsfinder.com</a> and we will promptly delete that information.</p>
+  </div>
+
+  <!-- 10. CHANGES -->
+  <div class="section" id="changes">
+    <div class="eyebrow">Section 10</div>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational or regulatory reasons. When we make material changes, we will update the "Last Updated" date at the bottom of this page.</p>
+    <p>We encourage you to review this page periodically. Your continued use of the Site after any changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <!-- 11. CONTACT -->
+  <div class="section" id="contact">
+    <div class="eyebrow">Section 11</div>
+    <h2>Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, want to exercise your data rights, or want to report a concern, please contact us:</p>
+    <div class="contact-box">
+      <h3>Privacy Questions?</h3>
+      <p>We take privacy seriously and respond to all enquiries within 30 days.</p>
+      <a href="mailto:hello@myaitoolsfinder.com">📧 hello@myaitoolsfinder.com</a>
+    </div>
+  </div>
+
+  <div class="last-updated">Last updated: May 2026 &nbsp;·&nbsp; <a href="index.html" style="color:var(--gold-a);">← Back to AI Tools Directory</a></div>
+
+</div>
+
+<footer>
+  <p>© 2026 MyAI ToolsFinder &nbsp;·&nbsp; <a href="index.html">Directory</a> &nbsp;·&nbsp; <a href="articles.html">Articles</a> &nbsp;·&nbsp; <a href="about.html">About</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mob-menu'),
+        o=document.getElementById('mob-overlay'),
+        b=document.getElementById('burger');
+  m.classList.toggle('open');
+  o.classList.toggle('open');
+  b.classList.toggle('open');
+}
+</script>
+</body>
+</html>
