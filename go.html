@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Redirecting… · MyAI ToolsFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#f0f6ff;color:#0d1f3c;font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:0}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:#0d1f3c;text-decoration:none;margin-bottom:32px}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#1a56db,#1e3a8a);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.28)}
+.card{background:#fff;border:1px solid #c9d9f5;border-radius:20px;padding:40px 36px;max-width:460px;width:100%;box-shadow:0 8px 28px rgba(26,86,219,.10)}
+.tool-logo{width:64px;height:64px;border-radius:16px;background:#e8f2ff;border:1px solid #dce9ff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;overflow:hidden}
+.tool-logo img{width:40px;height:40px;object-fit:contain;border-radius:8px}
+.tool-name{font-size:20px;font-weight:800;color:#0d1f3c;letter-spacing:-.02em;margin:0 0 6px}
+.redirect-text{font-size:14px;color:#5c7799;margin:0 0 24px;line-height:1.55}
+.progress-wrap{width:100%;background:#e8f2ff;border-radius:999px;height:6px;overflow:hidden;margin-bottom:24px}
+.progress-bar{height:100%;background:linear-gradient(90deg,#1a56db,#60a5fa);border-radius:999px;width:0%;transition:width 3s linear}
+.counter{font-size:13px;color:#1a56db;font-weight:600;margin-bottom:20px}
+.proceed-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 4px 16px rgba(217,119,6,.30);transition:all .18s;border:none;font-family:inherit;cursor:pointer}
+.proceed-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(217,119,6,.42)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:9px 18px;border-radius:999px;background:none;border:1.5px solid #c9d9f5;color:#1e3a5f;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .15s}
+.back-btn:hover{border-color:#1a56db;color:#1a56db;background:#dbeafe}
+.note{font-size:11.5px;color:#5c7799;margin-top:20px;opacity:.7;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="/" class="brand">
+    <span class="brand-mark"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    MyAI ToolsFinder
+  </a>
+  <div class="card">
+    <div class="tool-logo">
+      <img id="tool-img" src="" alt="" onerror="this.style.display='none'">
+    </div>
+    <div id="tool-name" class="tool-name"></div>
+    <p class="redirect-text">You're being redirected to the official website.<br>You can come straight back after you're done.</p>
+    <div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="counter" id="counter">Redirecting in 3…</div>
+    <a id="proceed-now" href="#" class="proceed-btn" target="_blank" rel="noopener nofollow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Go Now
+    </a>
+    <br>
+    <a href="/" class="back-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to MyAI ToolsFinder
+    </a>
+    <p class="note">Some links on this site may be affiliate links &mdash; we may earn a small commission at no extra cost to you.</p>
+  </div>
+</div>
+<script>
+(function(){
+  const params=new URLSearchParams(location.search);
+  const url=params.get('url')||'';
+  const name=params.get('name')||'the tool';
+  const domain=url?new URL(url).hostname.replace(/^www\./,''):'';
+
+  document.getElementById('tool-name').textContent=name;
+  document.title=`Visiting ${name} · MyAI ToolsFinder`;
+
+  const img=document.getElementById('tool-img');
+  if(domain){img.src=`https://www.google.com/s2/favicons?domain=${domain}&sz=64`;img.alt=name;}
+  else{img.style.display='none';}
+
+  const proceedBtn=document.getElementById('proceed-now');
+  if(url){proceedBtn.href=url;}
+
+  if(!url){
+    document.getElementById('counter').textContent='No destination URL found.';
+    return;
+  }
+
+  let secs=3;
+  const bar=document.getElementById('progress-bar');
+  const counter=document.getElementById('counter');
+  setTimeout(()=>bar.style.width='100%',50);
+
+  const tick=setInterval(()=>{
+    secs--;
+    if(secs<=0){
+      clearInterval(tick);
+      counter.textContent='Opening '+name+'…';
+      window.open(url,'_blank','noopener,nofollow');
+    } else {
+      counter.textContent='Redirecting in '+secs+'…';
+    }
+  },1000);
+})();
+</script>
+</body>
+</html>

@@ -7,8 +7,8 @@
 <title>Admin · MyAI ToolsFinder</title>
 <style>
   :root{
-    --bg:#0c0f14; --bg-soft:#11151c; --card:#161b24; --border:#222a36;
-    --text:#e7ebf2; --text-dim:#9aa3b2; --accent:#ffd24a; --ok:#5fd38b; --danger:#ef5b5b;
+    --bg:#f5f7fa; --bg-soft:#eef1f7; --card:#ffffff; --border:#d1d9e6;
+    --text:#1a2235; --text-dim:#6b7a99; --accent:#1a56db; --ok:#16a34a; --danger:#ef4444;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
@@ -17,8 +17,8 @@
   header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:12px;flex-wrap:wrap}
   h1{font-size:22px;margin:0}
   .sub{color:var(--text-dim);font-size:13px}
-  .danger-banner{background:rgba(239,91,91,.08);border:1px solid rgba(239,91,91,.35);color:#ffb6b6;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
-  .info-banner{background:rgba(255,210,74,.08);border:1px solid rgba(255,210,74,.35);color:#ffe6a1;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
+  .danger-banner{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);color:#b91c1c;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
+  .info-banner{background:rgba(26,86,219,.07);border:1px solid rgba(26,86,219,.2);color:#1e3a8a;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
 
   /* gate */
   .gate{max-width:420px;margin:80px auto;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px}
@@ -38,7 +38,7 @@
   .tool .hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px}
   .tool .hd .name{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
   .tool .hd .name .cat{font-size:11px;color:var(--text-dim);font-weight:400;background:var(--bg-soft);padding:2px 8px;border-radius:999px;border:1px solid var(--border)}
-  .tool .hd .name .aff{font-size:10.5px;color:var(--accent);background:rgba(255,210,74,.12);border:1px solid rgba(255,210,74,.35);padding:1px 6px;border-radius:999px;font-weight:600}
+  .tool .hd .name .aff{font-size:10.5px;color:var(--accent);background:rgba(26,86,219,.1);border:1px solid rgba(26,86,219,.25);padding:1px 6px;border-radius:999px;font-weight:600}
   .tool .hd .toggle{color:var(--text-dim);font-size:18px;user-select:none}
   .tool .body{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
   .tool.open .body{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -55,11 +55,11 @@
   .siteform .full{grid-column:1 / -1}
 
   /* buttons / footer */
-  .bar{position:sticky;bottom:0;background:rgba(12,15,20,.95);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:14px 0;margin:24px -20px 0;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .bar{position:sticky;bottom:0;background:rgba(245,247,250,.97);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:14px 0;margin:24px -20px 0;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
   .bar .grow{flex:1;color:var(--text-dim);font-size:12.5px;align-self:center;text-align:left;min-width:200px}
-  .btn{padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;cursor:pointer;white-space:nowrap}
-  .btn.primary{background:var(--accent);color:#0c0f14;border-color:var(--accent);font-weight:600}
-  .btn.danger{color:var(--danger);border-color:var(--danger)}
+  .btn{padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);font-size:13px;cursor:pointer;white-space:nowrap}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+  .btn.danger{color:var(--danger);border-color:var(--danger);background:#fff6f6}
 
   /* export */
   .export{margin-top:18px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
@@ -175,6 +175,33 @@
       <div>
         <label>Copyright line</label>
         <input type="text" id="cfg-copy" />
+      </div>
+      <div class="full" style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px">
+        <label style="font-size:13px;font-weight:700;text-transform:none;letter-spacing:0;color:var(--text);margin-bottom:12px">Social Media Links (leave blank to hide)</label>
+      </div>
+      <div>
+        <label>Twitter / X URL</label>
+        <input type="url" id="cfg-social-twitter" placeholder="https://twitter.com/yourhandle" />
+      </div>
+      <div>
+        <label>Facebook URL</label>
+        <input type="url" id="cfg-social-facebook" placeholder="https://facebook.com/yourpage" />
+      </div>
+      <div>
+        <label>Instagram URL</label>
+        <input type="url" id="cfg-social-instagram" placeholder="https://instagram.com/yourhandle" />
+      </div>
+      <div>
+        <label>YouTube URL</label>
+        <input type="url" id="cfg-social-youtube" placeholder="https://youtube.com/@yourchannel" />
+      </div>
+      <div>
+        <label>LinkedIn URL</label>
+        <input type="url" id="cfg-social-linkedin" placeholder="https://linkedin.com/company/..." />
+      </div>
+      <div>
+        <label>TikTok URL</label>
+        <input type="url" id="cfg-social-tiktok" placeholder="https://tiktok.com/@yourhandle" />
       </div>
     </div>
   </div>
@@ -345,7 +372,13 @@ const DEFAULT_SITE = {
   news_title: "Stop guessing. Start knowing.",
   news_sub: "Every Friday: 5 hand-picked AI tools, 1 honest comparison, 1 tip that saves you real time.",
   email: "hello@myaitoolsfinder.com",
-  copy: "© 2026 MyAI ToolsFinder"
+  copy: "© 2026 MyAI ToolsFinder",
+  social_twitter: "",
+  social_facebook: "",
+  social_instagram: "",
+  social_youtube: "",
+  social_linkedin: "",
+  social_tiktok: ""
 };
 
 /* ===== Auth ===== */
@@ -387,10 +420,13 @@ function refreshStats(){
 /* ===== Tool list ===== */
 let search = "";
 function renderToolList(){
-  const tools = effectiveTools();
+  const rawTools = effectiveTools();
   const filter = search.toLowerCase();
+  /* Sort alphabetically by name, preserving original index for overrides */
+  const tools = rawTools.map((t,i)=>({...t,_i:i})).sort((a,b)=>a.name.localeCompare(b.name));
   const $list = document.getElementById('tool-list');
-  $list.innerHTML = tools.map((t,i)=>{
+  $list.innerHTML = tools.map((t)=>{
+    const i = t._i;
     const hay = (t.name+' '+t.cat+' '+t.tag+' '+t.jobs.join(' ')+' '+t.needs.join(' ')).toLowerCase();
     if (filter && !hay.includes(filter)) return '';
     const hasAff = !!(t.affiliate_url && t.affiliate_url.trim());
@@ -473,7 +509,7 @@ function addTool(){
 /* ===== Site config ===== */
 function renderSiteForm(){
   const s = loadSite();
-  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy'};
+  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy', social_twitter:'cfg-social-twitter', social_facebook:'cfg-social-facebook', social_instagram:'cfg-social-instagram', social_youtube:'cfg-social-youtube', social_linkedin:'cfg-social-linkedin', social_tiktok:'cfg-social-tiktok'};
   Object.entries(map).forEach(([k,id])=>{
     const el = document.getElementById(id);
     if (el) {
