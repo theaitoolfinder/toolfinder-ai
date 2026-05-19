@@ -19,17 +19,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f7ff;--navy:#4f46e5;--navy2:#3730a3;
+  --bg:#f0f6ff;--navy:#1a56db;--navy2:#1e3a8a;
   --gold-a:#d97706;--gold-bg:#fef3c7;--gold-b:#fbbf24;
-  --gray:#374151;--gray2:#6b7280;--gray-m:#9ca3af;
+  --gray:#1e3a5f;--gray2:#5c7799;--gray-m:#9ca3af;
   --green:#16a34a;
   --glass:rgba(255,255,255,0.75);
   --glass-strong:rgba(255,255,255,0.92);
   --border:rgba(255,255,255,0.88);
   --blur:blur(24px) saturate(200%);
   --blur-sm:blur(14px) saturate(160%);
-  --sh:0 4px 20px rgba(79,70,229,0.08),0 1px 0 rgba(255,255,255,0.9) inset;
-  --sh-lg:0 16px 48px rgba(79,70,229,0.14),0 1px 0 rgba(255,255,255,0.95) inset;
+  --sh:0 4px 20px rgba(26,86,219,0.08),0 1px 0 rgba(255,255,255,0.9) inset;
+  --sh-lg:0 16px 48px rgba(26,86,219,0.14),0 1px 0 rgba(255,255,255,0.95) inset;
   --sh-gold:0 4px 24px rgba(217,119,6,0.35);
   --r:20px;--r-sm:14px;--r-xs:9px;--r-pill:980px;
 }
@@ -53,19 +53,19 @@ img{display:block;max-width:100%;}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;height:62px;
   background:rgba(255,255,255,0.94);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
-  border-bottom:1px solid rgba(79,70,229,0.10);
+  border-bottom:1px solid rgba(26,86,219,0.10);
   box-shadow:0 1px 0 rgba(13,31,51,0.05),0 4px 24px rgba(13,31,51,0.05);
   display:flex;align-items:center;justify-content:space-between;padding:0 28px;
 }
 .logo{display:flex;align-items:center;gap:10px;}
-.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#3730a3);box-shadow:0 4px 14px rgba(79,70,229,0.40),0 1px 0 rgba(255,255,255,0.18) inset;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a56db,#1e3a8a);box-shadow:0 4px 14px rgba(26,86,219,0.40),0 1px 0 rgba(255,255,255,0.18) inset;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
 .logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
 .nav-links{display:flex;align-items:center;gap:6px;}
 .nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 13px;border-radius:var(--r-xs);transition:all 0.18s;}
 .nav-a:hover{color:var(--navy);background:rgba(255,255,255,0.7);}
 .nav-a.active{color:var(--navy);font-weight:600;}
-.btn-navy{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:none;border-radius:var(--r-pill);padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(79,70,229,0.30);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
+.btn-navy{background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:var(--r-pill);padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(26,86,219,0.30);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
 .btn-navy:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(13,31,51,0.4);}
 
 /* HERO */
@@ -75,7 +75,7 @@ nav{
 }
 .art-hero-bg{
   position:absolute;inset:0;z-index:0;
-  background:linear-gradient(135deg,#3730a3 0%,#4f46e5 60%,#6366f1 100%);
+  background:linear-gradient(135deg,#1e3a8a 0%,#1a56db 60%,#2563eb 100%);
 }
 .art-hero-bg-img{
   position:absolute;inset:0;z-index:1;
@@ -98,7 +98,7 @@ nav{
   cursor:pointer;transition:all 0.18s;
 }
 .art-pill:hover{background:rgba(255,255,255,0.2);color:#fff;}
-.art-pill.on{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(79,70,229,.35);}
+.art-pill.on{background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(26,86,219,.35);}
 
 /* FEATURED */
 .featured-wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
@@ -115,7 +115,7 @@ nav{
 .featured-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
 .featured-card:hover .featured-img img{transform:scale(1.05);}
 .featured-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,51,0.3),transparent);}
-.featured-badge{position:absolute;top:16px;left:16px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:var(--r-pill);letter-spacing:0.06em;text-transform:uppercase;box-shadow:var(--sh-gold);}
+.featured-badge{position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:var(--r-pill);letter-spacing:0.06em;text-transform:uppercase;box-shadow:var(--sh-gold);}
 .featured-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center;}
 .featured-cat{font-size:11px;font-weight:700;color:var(--gold-a);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
 .featured-title{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:800;color:var(--navy);letter-spacing:-0.025em;margin-bottom:14px;line-height:1.25;}
@@ -179,7 +179,7 @@ nav{
 
 /* NEWSLETTER BANNER */
 .nl-banner{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 50%,#312e81 100%);
+  background:linear-gradient(135deg,#1a56db 0%,#1e3a8a 50%,#1e3a8a 100%);
   border-radius:var(--r);padding:48px;text-align:center;
   margin:48px 0;position:relative;overflow:hidden;
   box-shadow:0 20px 60px rgba(13,31,51,0.25);
@@ -201,7 +201,7 @@ nav{
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,148,45,0.5);}
 
 /* FOOTER */
-footer{background:rgba(55,48,163,0.96);padding:48px 20px 28px;text-align:center;}
+footer{background:rgba(26,86,219,0.96);padding:48px 20px 28px;text-align:center;}
 footer p{font-size:12.5px;color:rgba(255,255,255,0.3);}
 footer a{color:var(--gold-a);transition:color 0.15s;}
 footer a:hover{color:#e2c06a;}
@@ -240,6 +240,23 @@ footer a:hover{color:#e2c06a;}
 .mob-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.35);
   opacity:0;pointer-events:none;transition:opacity 0.3s;}
 .mob-overlay.open{opacity:1;pointer-events:all;}
+
+/* EXCLUSIVE ARTICLES */
+.exclusive-section{margin-top:48px;padding-top:40px;border-top:1px solid rgba(26,86,219,.12)}
+.exclusive-title{display:flex;align-items:center;gap:8px;color:var(--navy)}
+.exclusive-badge{background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;font-size:10.5px;font-weight:700;padding:3px 12px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.exclusive-desc{font-size:14px;color:var(--gray2);margin:6px 0 20px}
+.exclusive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.exclusive-card{cursor:pointer;position:relative}
+.exclusive-lock{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--navy);background:rgba(26,86,219,.08);padding:5px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+.subscribe-gate{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
+.subscribe-gate.hidden{display:none}
+.subscribe-gate-box{background:#fff;border-radius:20px;width:100%;max-width:450px;padding:36px 30px 28px;position:relative;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.25)}
+.subscribe-gate-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--gray-m);display:flex}
+.subscribe-gate-icon{width:56px;height:56px;border-radius:14px;background:var(--gold-bg);color:var(--gold-a);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.subscribe-gate-box h3{font-size:20px;font-weight:800;color:var(--navy);margin:0 0 8px}
+.subscribe-gate-box p{font-size:13.5px;color:var(--gray2);margin:0 0 18px;line-height:1.6}
+@media(max-width:760px){.exclusive-grid{grid-template-columns:1fr}}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -284,7 +301,7 @@ footer a:hover{color:#e2c06a;}
     <a href="articles.html" class="nav-a active">Articles</a>
     <a href="about.html" class="nav-a">About</a>
     <a href="index.html#nl" class="nav-a">Newsletter</a>
-    <a href="index.html" class="btn-navy">⚔️ AI Tools Comparo</a>
+    <a href="index.html" class="btn-navy">AI Tools Comparo</a>
   </div>
   <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -307,12 +324,12 @@ footer a:hover{color:#e2c06a;}
     <button class="mob-close" onclick="toggleMenu()">✕</button>
   </div>
   <div class="mob-nav">
-    <a href="index.html">🔧 AI Tools Directory</a>
-    <a href="articles.html">📰 Articles</a>
-    <a href="about.html">👋 About</a>
-    <a href="privacy.html">🔒 Privacy Policy</a>
-    <a href="index.html#nl" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
-    <a href="admin.html" class="mob-admin">⚙️ Admin</a>
+    <a href="index.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> AI Tools Directory</a>
+    <a href="articles.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
+    <a href="about.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
+    <a href="index.html#compare" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare</a>
+    <a href="index.html#newsletter" onclick="toggleMenu()" class="mob-cta" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+    <a href="admin.html" class="mob-admin" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Admin</a>
   </div>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
@@ -327,14 +344,14 @@ footer a:hover{color:#e2c06a;}
     <p>In-depth comparisons, tool reviews and practical guides — written by our team and updated every single week.</p>
     <div class="art-filters">
       <button class="art-pill on" onclick="filterArts('all',this)">All Articles</button>
-      <button class="art-pill" onclick="filterArts('comparison',this)">⚔️ Comparisons</button>
-      <button class="art-pill" onclick="filterArts('review',this)">🔍 Reviews</button>
-      <button class="art-pill" onclick="filterArts('guide',this)">📖 Guides</button>
-      <button class="art-pill" onclick="filterArts('writing',this)">✍️ Writing</button>
-      <button class="art-pill" onclick="filterArts('seo',this)">📈 SEO</button>
-      <button class="art-pill" onclick="filterArts('design',this)">🎨 Design</button>
-      <button class="art-pill" onclick="filterArts('video',this)">🎬 Video</button>
-      <button class="art-pill" onclick="filterArts('free',this)">🆓 Free Tools</button>
+      <button class="art-pill" onclick="filterArts('comparison',this)">Comparisons</button>
+      <button class="art-pill" onclick="filterArts('review',this)">Reviews</button>
+      <button class="art-pill" onclick="filterArts('guide',this)">Guides</button>
+      <button class="art-pill" onclick="filterArts('writing',this)">Writing</button>
+      <button class="art-pill" onclick="filterArts('seo',this)">SEO</button>
+      <button class="art-pill" onclick="filterArts('design',this)">Design</button>
+      <button class="art-pill" onclick="filterArts('video',this)">Video</button>
+      <button class="art-pill" onclick="filterArts('free',this)">Free Tools</button>
     </div>
   </div>
 </div>
@@ -345,16 +362,16 @@ footer a:hover{color:#e2c06a;}
     <div class="featured-img">
       <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&q=85&auto=format&fit=crop" alt="ChatGPT vs Claude vs Gemini comparison">
       <div class="featured-img-overlay"></div>
-      <span class="featured-badge">⭐ Featured Article</span>
+      <span class="featured-badge">Featured Article</span>
     </div>
     <div class="featured-body">
-      <div class="featured-cat">⚔️ Comparison · May 2026</div>
+      <div class="featured-cat">Comparison · May 2026</div>
       <div class="featured-title">ChatGPT vs Claude vs Gemini — Which AI Assistant Actually Wins in 2026?</div>
       <div class="featured-excerpt">We ran 50 real-world tasks across all three major AI assistants — writing, coding, research and analysis. The results were surprising. Here's our definitive verdict backed by real data.</div>
       <div class="featured-meta">
-        <span>📅 May 11, 2026</span>
-        <span>⏱ 10 min read</span>
-        <span>🔧 3 tools compared</span>
+        <span>May 11, 2026</span>
+        <span>10 min read</span>
+        <span>3 tools compared</span>
       </div>
       <span class="btn-read">Read Full Article →</span>
     </div>
@@ -377,14 +394,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop" alt="AI Tools Digest — May 19, 2026: What's Trending This Week" loading="lazy">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">📰 Daily Digest</span>
+        <span class="art-card-cat">Daily Digest</span>
         <span class="art-card-read-time">4 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">AI Tools Digest — May 19, 2026: What's Trending This Week</div>
         <div class="art-card-excerpt">No trending AI stories found in the last 24 hours. Check back tomorrow for your daily digest.…</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -393,14 +410,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80&auto=format&fit=crop" alt="AI Writing Tools">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">✍️ Writing</span>
+        <span class="art-card-cat">Writing</span>
         <span class="art-card-read-time">8 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">10 Best AI Writing Tools in 2026 — Ranked by 30M+ Users</div>
         <div class="art-card-excerpt">From Grammarly to Jasper — we tested every major AI writing tool so you don't have to. Here's exactly which ones are worth your time and money.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -410,14 +427,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop" alt="Free AI Tools">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">🆓 Free Tools</span>
+        <span class="art-card-cat">Free Tools</span>
         <span class="art-card-read-time">7 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">15 Best Free AI Tools That Actually Work in 2026</div>
         <div class="art-card-excerpt">No trials, no hidden paywalls. These are the best AI tools you can use completely free — forever. Tested and verified by our team.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -427,14 +444,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80&auto=format&fit=crop" alt="AI SEO Tools">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">📈 SEO</span>
+        <span class="art-card-cat">SEO</span>
         <span class="art-card-read-time">12 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">Semrush vs Ahrefs vs Surfer SEO — The Complete 2026 Comparison</div>
         <div class="art-card-excerpt">Three of the most powerful SEO platforms go head to head. We tested all three for 30 days. Here's the honest verdict with real data.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -444,14 +461,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80&auto=format&fit=crop" alt="Solopreneur with laptop">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">📖 Guide</span>
+        <span class="art-card-cat">Guide</span>
         <span class="art-card-read-time">9 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">How Solopreneurs Are Using AI to Save 10 Hours a Week</div>
         <div class="art-card-excerpt">Real workflows from real one-person businesses. We interviewed 20 solopreneurs about their AI tool stacks. Here's what they actually use.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -461,14 +478,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80&auto=format&fit=crop" alt="AI Image Generation">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">🎨 Design</span>
+        <span class="art-card-cat">Design</span>
         <span class="art-card-read-time">11 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">Midjourney vs DALL-E 3 vs Leonardo — Best AI Image Generator 2026</div>
         <div class="art-card-excerpt">We generated 200+ images across all three platforms using identical prompts. The quality differences are stark — see the real results.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 May 2026</span>
+          <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -478,14 +495,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1536240478700-b869ad10e2f1?w=600&q=80&auto=format&fit=crop" alt="AI Video Tools">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">🎬 Video</span>
+        <span class="art-card-cat">Video</span>
         <span class="art-card-read-time">8 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">7 Best AI Video Tools in 2026 — From Creation to Editing</div>
         <div class="art-card-excerpt">Whether creating from scratch or editing existing footage, these AI tools deliver professional results without the learning curve.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-date">Apr 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -495,14 +512,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80&auto=format&fit=crop" alt="Writing and editing">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">🔍 Review</span>
+        <span class="art-card-cat">Review</span>
         <span class="art-card-read-time">6 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">Grammarly Review 2026 — Still Worth It After 10 Years?</div>
         <div class="art-card-excerpt">Grammarly has 30M+ users — but is it still the best AI writing assistant? We compared it head-to-head against newer alternatives.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-date">Apr 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -512,14 +529,14 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80&auto=format&fit=crop" alt="Automation workflow">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">⚙️ Automation</span>
+        <span class="art-card-cat">Automation</span>
         <span class="art-card-read-time">10 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">Zapier vs Make — Which Automation Platform Wins in 2026?</div>
         <div class="art-card-excerpt">Both let you automate without code — but they're very different for different use cases. Here's the definitive guide to choosing.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-date">Apr 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
@@ -529,19 +546,108 @@ footer a:hover{color:#e2c06a;}
       <div class="art-card-img">
         <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=80&auto=format&fit=crop" alt="AI Voice Generation">
         <div class="art-card-overlay"></div>
-        <span class="art-card-cat">🔊 Audio</span>
+        <span class="art-card-cat">Audio</span>
         <span class="art-card-read-time">7 min read</span>
       </div>
       <div class="art-card-body">
         <div class="art-card-title">ElevenLabs Review 2026 — The Most Realistic AI Voice Tool?</div>
         <div class="art-card-excerpt">ElevenLabs claims to produce the most realistic AI voices. After 3 weeks and 50+ voice samples, here's our honest assessment.</div>
         <div class="art-card-footer">
-          <span class="art-card-date">📅 Apr 2026</span>
+          <span class="art-card-date">Apr 2026</span>
           <span class="art-card-arrow">Read more →</span>
         </div>
       </div>
     </a>
 
+  </div>
+
+  <!-- EXCLUSIVE ARTICLES -->
+  <div class="art-section exclusive-section">
+    <div class="art-section-header">
+      <div class="art-section-title exclusive-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Exclusive Articles
+      </div>
+      <div class="exclusive-badge">Subscribers Only</div>
+    </div>
+    <p class="exclusive-desc">In-depth guides and research available exclusively to newsletter subscribers.</p>
+    <div class="exclusive-grid" id="exclusive-grid">
+      <div class="art-card exclusive-card" onclick="showSubscribeGate()">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&auto=format&fit=crop" alt="Exclusive" loading="lazy">
+          <div class="art-card-overlay"></div>
+          <span class="art-card-cat">Deep Dive</span>
+          <span class="art-card-read-time">12 min read</span>
+        </div>
+        <div class="art-card-body">
+          <div class="exclusive-lock">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Subscribers Only
+          </div>
+          <div class="art-card-title" style="filter:blur(4px);user-select:none">The Complete 2026 AI Stack for Solopreneurs: 14 Tools, Zero Fluff</div>
+          <div class="art-card-excerpt" style="filter:blur(3px);user-select:none">A practical breakdown of the exact tools and workflows that top solopreneurs use daily to replace entire teams...</div>
+          <div class="art-card-footer">
+            <span class="art-card-date">May 2026</span>
+            <span class="art-card-arrow">Subscribe to read →</span>
+          </div>
+        </div>
+      </div>
+      <div class="art-card exclusive-card" onclick="showSubscribeGate()">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop" alt="Exclusive" loading="lazy">
+          <div class="art-card-overlay"></div>
+          <span class="art-card-cat">Comparison</span>
+          <span class="art-card-read-time">9 min read</span>
+        </div>
+        <div class="art-card-body">
+          <div class="exclusive-lock">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Subscribers Only
+          </div>
+          <div class="art-card-title" style="filter:blur(4px);user-select:none">ChatGPT vs Claude vs Gemini: The Honest 2026 Verdict After 6 Months</div>
+          <div class="art-card-excerpt" style="filter:blur(3px);user-select:none">We tested all three on 200+ real tasks. Here are the results, the surprises, and the one clear winner for each use case...</div>
+          <div class="art-card-footer">
+            <span class="art-card-date">May 2026</span>
+            <span class="art-card-arrow">Subscribe to read →</span>
+          </div>
+        </div>
+      </div>
+      <div class="art-card exclusive-card" onclick="showSubscribeGate()">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="Exclusive" loading="lazy">
+          <div class="art-card-overlay"></div>
+          <span class="art-card-cat">Strategy</span>
+          <span class="art-card-read-time">8 min read</span>
+        </div>
+        <div class="art-card-body">
+          <div class="exclusive-lock">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Subscribers Only
+          </div>
+          <div class="art-card-title" style="filter:blur(4px);user-select:none">How to Build a $10K/mo Content Business with 5 AI Tools</div>
+          <div class="art-card-excerpt" style="filter:blur(3px);user-select:none">The exact system — prompts, workflows, tools, pricing — that three solopreneurs used to scale their content business...</div>
+          <div class="art-card-footer">
+            <span class="art-card-date">May 2026</span>
+            <span class="art-card-arrow">Subscribe to read →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribe gate modal -->
+  <div id="subscribe-gate" class="subscribe-gate hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+    <div class="subscribe-gate-box">
+      <button class="subscribe-gate-close" onclick="document.getElementById('subscribe-gate').classList.add('hidden')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="subscribe-gate-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3>Exclusive Subscriber Content</h3>
+      <p>This article is available to newsletter subscribers. Join free to unlock all exclusive guides and comparisons.</p>
+      <iframe width="100%" height="230" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;border-radius:8px"></iframe>
+    </div>
   </div>
 
   <!-- NEWSLETTER BANNER -->
@@ -591,5 +697,10 @@ function filterArts(cat, btn){
 </script>
 <script src="js/tools-data.js"></script>
 <script src="js/affiliate.js"></script>
+<script>
+function showSubscribeGate(){
+  document.getElementById('subscribe-gate').classList.remove('hidden');
+}
+</script>
 </body>
 </html>

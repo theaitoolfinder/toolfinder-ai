@@ -117,9 +117,9 @@
   </div>
 
   <div class="tabs">
-    <button class="tab active" data-tab="tools">🧰 Tools</button>
-    <button class="tab" data-tab="site">🌐 Site settings</button>
-    <button class="tab" data-tab="export">📦 Export</button>
+    <button class="tab active" data-tab="tools">Tools</button>
+    <button class="tab" data-tab="site">Site settings</button>
+    <button class="tab" data-tab="github">GitHub Sync</button>
   </div>
 
   <!-- TOOLS TAB -->
@@ -179,28 +179,36 @@
     </div>
   </div>
 
-  <!-- EXPORT TAB -->
-  <div id="tab-export" style="display:none">
-    <div class="export">
-      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-        <button class="btn primary" onclick="renderExport('tools')">Generate TOOLS code</button>
-        <button class="btn" onclick="renderExport('site')">Generate SITE config code</button>
-        <button class="btn" style="background:linear-gradient(135deg,#4f46e5,#3730a3);color:#fff;border:none;" onclick="renderExport('affmap')">🔗 Export tools-data.js</button>
-        <button class="btn" onclick="copyExport()">📋 Copy</button>
-        <button class="btn" onclick="downloadExport()">⬇️ Download .txt</button>
+  <!-- GITHUB TAB -->
+  <div id="tab-github" style="display:none">
+    <div class="export" style="margin-bottom:18px">
+      <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text)">GitHub Auto-Deploy</h3>
+      <p style="font-size:13.5px;color:var(--text-dim);margin:0 0 16px;line-height:1.6">Connect your GitHub repository so every Save automatically commits to your live site. Changes deploy within ~30 seconds.</p>
+      <div style="display:grid;gap:12px;margin-bottom:16px">
+        <div>
+          <label style="display:block;font-size:11.5px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Repository (owner/repo)</label>
+          <input id="gh-repo" type="text" value="theaitoolfinder/toolfinder-ai" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid var(--border);font-family:inherit;font-size:14px;outline:none;background:var(--bg);color:var(--text)" placeholder="owner/repo">
+        </div>
+        <div>
+          <label style="display:block;font-size:11.5px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Personal Access Token</label>
+          <input id="gh-token" type="password" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid var(--border);font-family:inherit;font-size:14px;outline:none;background:var(--bg);color:var(--text)" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+          <div style="font-size:12px;color:var(--text-dim);margin-top:5px">Create a token at github.com/settings/tokens with <b>Contents: Write</b> permission. Stored in your browser only.</div>
+        </div>
       </div>
-      <pre class="code" id="export-out">Click "Generate TOOLS code" above to produce the snippet to paste back into index.html.</pre>
-      <div class="info-banner" style="margin-top:14px;margin-bottom:0">
-        <b>Where to paste:</b> In <code>index.html</code>, find the line <code>const TOOLS = [</code> and replace from there through the closing <code>];</code> with the generated code. Commit on the <code>main</code> branch and GitHub Pages will redeploy in ~30 seconds.<br><br>
-        <b>For affiliate auto-links:</b> Click <b>🔗 Export tools-data.js</b>, copy the output, and paste it over the full contents of <code>js/tools-data.js</code> in your GitHub repo. This updates affiliate URLs for ALL visitors automatically.
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn primary" onclick="saveGHSettings()">Save GitHub Settings</button>
+        <button class="btn" onclick="testGHConnection()">Test Connection</button>
       </div>
+      <div id="gh-status" style="margin-top:10px;font-size:13px"></div>
+    </div>
+    <div class="info-banner">
+      <b>How it works:</b> After saving your GitHub token, every time you click <b>Save</b> on a tool or the site config, changes are automatically committed to <code>js/tools-data.js</code> and <code>index.html</code> in your repo. Your site updates within 30 seconds — no copy-paste needed.
     </div>
   </div>
 
   <div class="bar">
-    <div class="grow">💾 Changes auto-save to your browser. Export when ready to deploy.</div>
+    <div class="grow">Changes auto-save locally and deploy to GitHub when connected.</div>
     <button class="btn danger" onclick="resetAll()">Reset all to defaults</button>
-    <button class="btn primary" onclick="document.querySelector('.tab[data-tab=&quot;export&quot;]').click()">Go to Export →</button>
   </div>
 </div>
 
@@ -447,6 +455,7 @@ function updateField(idx, inp){
   }
   ov[idx][inp.dataset.f] = val;
   saveOverrides(ov);
+  autoCommitAfterSave();
 }
 function deleteTool(idx){
   if (!confirm('Remove this tool from your site?')) return;
@@ -469,7 +478,7 @@ function renderSiteForm(){
     const el = document.getElementById(id);
     if (el) {
       el.value = s[k] || '';
-      el.addEventListener('input', ()=>{ const c = loadSite(); c[k] = el.value; saveSite(c); });
+      el.addEventListener('input', ()=>{ const c = loadSite(); c[k] = el.value; saveSite(c); autoCommitAfterSave(); });
     }
   });
 }
@@ -550,7 +559,7 @@ function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,
 /* ===== Tab + search wiring ===== */
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x===b));
-  ['tools','site','export'].forEach(name=>{
+  ['tools','site','github'].forEach(name=>{
     document.getElementById('tab-'+name).style.display = (name===b.dataset.tab)?'block':'none';
   });
 }));
@@ -560,6 +569,73 @@ document.getElementById('search').addEventListener('input',e=>{ search = e.targe
 /* Auto-resume if already authed in this session */
 if (isAuthed()) showApp();
 else document.getElementById('pw').focus();
+
+/* ── GitHub Auto-Deploy ── */
+function saveGHSettings(){
+  const repo=document.getElementById('gh-repo').value.trim();
+  const token=document.getElementById('gh-token').value.trim();
+  if(!repo||!token){alert('Please fill in both fields.');return;}
+  localStorage.setItem('myai_gh_repo',repo);
+  localStorage.setItem('myai_gh_token',token);
+  document.getElementById('gh-status').innerHTML='<span style="color:#16a34a">Settings saved. Click Test Connection to verify.</span>';
+}
+
+async function testGHConnection(){
+  const repo=localStorage.getItem('myai_gh_repo')||document.getElementById('gh-repo').value.trim();
+  const token=localStorage.getItem('myai_gh_token')||document.getElementById('gh-token').value.trim();
+  const statusEl=document.getElementById('gh-status');
+  statusEl.innerHTML='Testing...';
+  try{
+    const res=await fetch(`https://api.github.com/repos/${repo}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
+    const data=await res.json();
+    if(data.name){statusEl.innerHTML=`<span style="color:#16a34a">Connected to <b>${data.full_name}</b>. Auto-deploy is active.</span>`;}
+    else{statusEl.innerHTML=`<span style="color:#ef4444">Failed: ${data.message||'Check token and repo name.'}</span>`;}
+  }catch(e){statusEl.innerHTML=`<span style="color:#ef4444">Error: ${e.message}</span>`;}
+}
+
+async function commitToGitHub(filePath,newContent,commitMsg){
+  const repo=localStorage.getItem('myai_gh_repo');
+  const token=localStorage.getItem('myai_gh_token');
+  if(!repo||!token)return false;
+  try{
+    const getRes=await fetch(`https://api.github.com/repos/${repo}/contents/${encodeURIComponent(filePath)}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
+    const fileData=await getRes.json();
+    if(!fileData.sha)return false;
+    const encoded=btoa(unescape(encodeURIComponent(newContent)));
+    const putRes=await fetch(`https://api.github.com/repos/${repo}/contents/${encodeURIComponent(filePath)}`,{method:'PUT',headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:commitMsg,content:encoded,sha:fileData.sha})});
+    const result=await putRes.json();
+    return !!result.commit;
+  }catch(e){console.error('GitHub commit failed:',e);return false;}
+}
+
+function buildToolsDataJs(){
+  const ov=loadOverrides();
+  const merged=DEFAULT_TOOLS.map((t,i)=>{const o=Object.assign({},ov[i]||{});if(o._deleted)return null;delete o._deleted;return Object.assign({},t,o);}).filter(Boolean);
+  const map={};
+  merged.forEach(t=>{const key=t.name.toLowerCase();const url=(t.affiliate_url&&t.affiliate_url.trim())?t.affiliate_url.trim():t.url;map[key]=url;if(key.endsWith(' ai')){const alias=key.slice(0,-3);if(alias.length>=3&&!map[alias])map[alias]=url;}});
+  const lines=Object.keys(map).sort().map(k=>{const pad=' '.repeat(Math.max(1,22-k.length));return`  "${k}":${pad}"${map[k]}"`;});
+  return `/**\n * tools-data.js — MyAI ToolsFinder\n * Auto-generated. Do not edit manually.\n */\nwindow.MYAI_AFF_MAP = {\n${lines.join(',\n')}\n};\n`;
+}
+
+function showAdminToast(msg){
+  let t=document.getElementById('admin-toast');
+  if(!t){t=document.createElement('div');t.id='admin-toast';t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0d1f3c;color:#fff;padding:12px 24px;border-radius:999px;font-size:13.5px;font-weight:500;box-shadow:0 8px 28px rgba(0,0,0,.22);z-index:9999;transition:opacity .3s;opacity:0';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',3500);
+}
+
+async function autoCommitAfterSave(){
+  const toolsDataContent=buildToolsDataJs();
+  const committed=await commitToGitHub('js/tools-data.js',toolsDataContent,'Admin: update affiliate URLs');
+  if(committed){showAdminToast('Saved & deployed to GitHub.');}
+}
+
+// Load saved GH settings into inputs
+(function(){
+  const savedRepo=localStorage.getItem('myai_gh_repo');
+  const savedToken=localStorage.getItem('myai_gh_token');
+  if(savedRepo&&document.getElementById('gh-repo'))document.getElementById('gh-repo').value=savedRepo;
+  if(savedToken&&document.getElementById('gh-token'))document.getElementById('gh-token').value=savedToken;
+})();
 </script>
 </body>
 </html>

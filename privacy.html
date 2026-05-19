@@ -18,11 +18,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f7ff;--bg-off:#eef2ff;--navy:#4f46e5;--navy2:#3730a3;
+  --bg:#f0f6ff;--bg-off:#e8f2ff;--navy:#1a56db;--navy2:#1e3a8a;
   --gold:#b45309;--gold-a:#d97706;--gold-bg:#fef3c7;--gold-b:#fbbf24;
-  --gray:#374151;--gray2:#6b7280;--gray-m:#9ca3af;
-  --border:#dde3f0;--shadow-sm:0 1px 4px rgba(79,70,229,0.06);
-  --shadow-md:0 4px 20px rgba(79,70,229,0.08);
+  --gray:#1e3a5f;--gray2:#5c7799;--gray-m:#9ca3af;
+  --border:#c9d9f5;--shadow-sm:0 1px 4px rgba(26,86,219,0.06);
+  --shadow-md:0 4px 20px rgba(26,86,219,0.08);
   --r:14px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
 .nav-a:hover{color:var(--navy);background:var(--bg-off);}
 .btn-navy{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:none;border-radius:980px;
   padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
-.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,70,229,.35);}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,219,.35);}
 
 /* BURGER */
 .burger{display:none;flex-direction:column;justify-content:center;align-items:center;
@@ -117,7 +117,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
 .right-chip .rc-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);}
 
 /* CONTACT BOX */
-.contact-box{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--r);padding:32px;text-align:center;color:#fff;margin-top:16px;box-shadow:0 8px 28px rgba(79,70,229,.22);}
+.contact-box{background:linear-gradient(135deg,#1a56db,#1e3a8a);border-radius:var(--r);padding:32px;text-align:center;color:#fff;margin-top:16px;box-shadow:0 8px 28px rgba(26,86,219,.22);}
 .contact-box h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;}
 .contact-box p{font-size:13.5px;color:rgba(255,255,255,0.55);margin-bottom:20px;}
 .contact-box a{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);
@@ -169,7 +169,7 @@ footer a{color:var(--gold-a);}
     <a href="articles.html" class="nav-a">Articles</a>
     <a href="about.html" class="nav-a">About</a>
     <a href="index.html#nl" class="nav-a">Newsletter</a>
-    <a href="index.html" class="btn-navy">⚖️ AI Tools Comparo</a>
+    <a href="index.html" class="btn-navy">AI Tools Comparo</a>
   </div>
   <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -192,11 +192,11 @@ footer a{color:var(--gold-a);}
     <button class="mob-close" onclick="toggleMenu()">✕</button>
   </div>
   <div class="mob-nav">
-    <a href="index.html">🔧 AI Tools Directory</a>
-    <a href="articles.html">📰 Articles</a>
-    <a href="about.html">👋 About</a>
-    <a href="privacy.html">🔒 Privacy Policy</a>
-    <a href="index.html#nl" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
+    <a href="index.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> AI Tools Directory</a>
+    <a href="articles.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
+    <a href="about.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
+    <a href="index.html#compare" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare</a>
+    <a href="index.html#newsletter" onclick="toggleMenu()" class="mob-cta" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
     <a href="admin.html" class="mob-admin">⚙️ Admin</a>
   </div>
 </div>
