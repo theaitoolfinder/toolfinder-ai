@@ -77,7 +77,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-select svg{flex-shrink:0;opacity:.6}
 .dd-arrow{transition:transform .2s}
 .filter-select.open .dd-arrow{transform:rotate(180deg)}
-.filter-dd{position:absolute;top:calc(100% + 6px);left:0;z-index:100;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:200px;padding:6px;display:flex;flex-direction:column;gap:2px}
+.filter-dd{position:absolute;top:calc(100% + 6px);left:0;z-index:100;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:320px;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:2px}
 .filter-dd.hidden{display:none}
 .filter-dd-item{padding:8px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;text-align:left;background:none;border:none;font-family:inherit;transition:all .12s;width:100%}
 .filter-dd-item:hover{background:var(--primary-light);color:var(--primary)}
@@ -299,7 +299,6 @@ footer a:hover{color:var(--primary)}
 </style>
 </head>
 <body>
-<div class="disclosure">Affiliate links on this site — we may earn a small commission at no cost to you. <a href="#disclosure-text" onclick="document.getElementById('disclosure-text').scrollIntoView({behavior:'smooth'});return false;">Learn more</a></div>
 <header class="site">
   <div class="container nav">
     <a href="/" class="brand">
@@ -369,6 +368,14 @@ footer a:hover{color:var(--primary)}
             <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="filter-dd hidden" id="dd-purpose"></div>
+        </div>
+        <div class="filter-group" id="fg-category">
+          <button class="filter-select" onclick="toggleDD('category')" id="fsel-category">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
+            <span id="flabel-category">Category</span>
+            <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="filter-dd hidden" id="dd-category"></div>
         </div>
         <div class="filter-group" id="fg-trending">
           <button class="filter-select" onclick="toggleDD('trending')" id="fsel-trending">
@@ -446,11 +453,6 @@ footer a:hover{color:var(--primary)}
     </div>
   </section>
 
-  <section class="container" id="disclosure-text">
-    <h3>Affiliate Disclosure</h3>
-    <p>MyAI ToolsFinder participates in affiliate programmes. When you click a &ldquo;Try Now for Free&rdquo; button and sign up or make a purchase, we may earn a small commission at no additional cost to you. This is how we keep the directory completely free.</p>
-    <p>We only feature tools we genuinely believe are useful. Commissions never influence which tools are listed, how they are ranked, or the star ratings shown. Tools without affiliate programmes are treated identically to those with them.</p>
-  </section>
 </main>
 <footer class="site">
   <div class="container">
@@ -469,12 +471,12 @@ footer a:hover{color:var(--primary)}
       <div><h4>Company</h4><ul>
         <li><a href="about.html">About</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="#disclosure-text">Disclosure</a></li>
         <li><a href="mailto:hello@myaitoolsfinder.com">Contact</a></li>
         <li><a href="admin.html" style="font-size:11.5px;color:var(--text-dim)">Admin &#x2197;</a></li>
       </ul></div>
     </div>
     <div class="copy"><span>&copy; 2026 MyAI ToolsFinder</span><span>Built for solopreneurs, by solopreneurs.</span></div>
+    <div style="margin-top:10px;font-size:10.5px;color:var(--text-dim);opacity:.55;text-align:center">Some links on this site may earn us a small commission. See our <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a> for details.</div>
   </div>
 </footer>
 <!-- ── Compare tray (fixed bottom) ── -->
@@ -648,24 +650,43 @@ const TOOLS=[
 ];
 
 const LENSES={
-  job:{label:"Profession",note:"Pick what you do — we'll re-shuffle the rows to match your workflow.",
-    options:["Solopreneur","Freelance Designer","Content Creator","SEO Consultant","Marketer","Founder","Developer","Writer","Podcaster","Researcher","Student","Manager"],
-    rowsFor(v){return[{title:"Top picks for "+v.toLowerCase()+"s",filter:t=>t.jobs.includes(v)},{title:"Trending this week",filter:t=>t.trending>=80},{title:"Verified vendors",filter:t=>t.verified}];}
-  },
-  need:{label:"Purpose",note:"What problem are you trying to solve right now?",
-    options:["Write faster","Rank higher on Google","Design without a designer","Edit video","Code faster","Automate repetitive work","Generate images","Organize work","Generate voice","Run marketing","Brainstorm ideas","Create presentations","Save time","Translate"],
-    rowsFor(v){return[{title:'Best for "'+v+'"',filter:t=>t.needs.includes(v)},{title:"Trending this week",filter:t=>t.trending>=80},{title:"Free or free-tier",filter:t=>/Free/i.test(t.pill)}];}
-  },
-  trend:{label:"Trending",note:"What everyone is talking about — refreshed weekly.",
-    options:["This week","New & rising","Free tier","Featured"],
+  job:{label:"Profession",note:"Pick your profession — tools are filtered to match your daily workflow.",
+    options:["Business Analyst","Content Creator","Copywriter","Customer Support","Developer","E-commerce Owner","Educator","Email Marketer","Entrepreneur","Founder","Freelance Designer","Graphic Designer","HR Professional","Journalist","Legal Professional","Manager","Marketer","Photographer","Podcaster","Product Manager","Researcher","SEO Consultant","Social Media Manager","Solopreneur","Student","Video Creator","Virtual Assistant","Writer","YouTuber"],
     rowsFor(v){
-      if(v==="New & rising")return[{title:"New & rising",filter:t=>t.trending>=85&&t.trending<95}];
-      if(v==="Free tier")return[{title:"Free or free-tier",filter:t=>/Free/i.test(t.pill)}];
-      if(v==="Featured")return[{title:"Featured tools",filter:t=>t.featured}];
+      const direct=TOOLS.map((_,i)=>i).filter(i=>{const t=tool(i);return t&&t.jobs.includes(v);});
+      const rows=[];
+      if(direct.length)rows.push({title:"Top picks for "+v,filter:t=>t.jobs.includes(v)});
+      rows.push({title:"Trending right now",filter:t=>t.trending>=80});
+      rows.push({title:"Verified tools",filter:t=>t.verified});
+      return rows;
+    }
+  },
+  need:{label:"Purpose",note:"What are you trying to accomplish? We'll surface the best tools for it.",
+    options:["Automate repetitive work","Brainstorm ideas","Build a website","Build an app","Code faster","Create a logo","Create presentations","Create social content","Design without a designer","Edit audio","Edit video","Generate images","Generate video","Generate voice","Handle customer queries","Improve writing","Make social posts","Manage a team","Manage email","Organize work","Plan projects","Rank higher on Google","Research competitors","Run marketing","Save time","Schedule smarter","Search the web","Ship faster","Summarize long docs","Take notes","Transcribe meetings","Translate","Write faster","Write marketing copy"],
+    rowsFor(v){
+      const rows=[];
+      rows.push({title:'Best for "'+v+'"',filter:t=>t.needs.includes(v)});
+      rows.push({title:"Also popular for this goal",filter:t=>t.trending>=80&&!t.needs.includes(v)});
+      rows.push({title:"Free tools that help",filter:t=>/Free/i.test(t.pill)&&t.needs.includes(v)});
+      return rows;
+    }
+  },
+  cat:{label:"Category",note:"Browse all tools within a specific AI category.",
+    options:["Audio","Automation","Chatbot","Coding","Design","Image","Marketing","Presentation","Productivity","Research","SEO","Support","Video","Writing"],
+    rowsFor(v){return[{title:v+" Tools",filter:t=>t.cat===v},{title:"Also trending",filter:t=>t.cat!==v&&t.trending>=85}];}
+  },
+  trend:{label:"Trending",note:"What the AI world is buzzing about — updated weekly.",
+    options:["This week","New & rising","Free tier","Featured","Most reviewed","Highest rated"],
+    rowsFor(v){
+      if(v==="New & rising")return[{title:"New & rising",filter:t=>t.trending>=85&&t.trending<95},{title:"Worth watching",filter:t=>t.trending>=70&&t.trending<85}];
+      if(v==="Free tier")return[{title:"Free or free-tier tools",filter:t=>/Free/i.test(t.pill)},{title:"Freemium with paid upgrade",filter:t=>/\+/.test(t.pill)}];
+      if(v==="Featured")return[{title:"Editor's featured picks",filter:t=>t.featured},{title:"Verified vendors",filter:t=>t.verified&&!t.featured}];
+      if(v==="Most reviewed")return[{title:"Most reviewed by users",filter:t=>{const n=parseInt((t.reviews||"0").replace(/[^0-9.]/g,""));return n>100000;}},{title:"Growing in reviews",filter:t=>{const n=parseInt((t.reviews||"0").replace(/[^0-9.]/g,""));return n>=10000&&n<=100000;}}];
+      if(v==="Highest rated")return[{title:"Highest rated (4.7+)",filter:t=>t.rating>=4.7},{title:"Highly rated (4.5+)",filter:t=>t.rating>=4.5&&t.rating<4.7}];
       return[{title:"Trending this week",filter:t=>t.trending>=85},{title:"Editor's picks",filter:t=>t.featured},{title:"Worth a look",filter:t=>t.trending>=60&&t.trending<80}];
     }
   },
-  all:{label:"All AI Tools",note:"All AI tools in our directory — sorted by popularity.",
+  all:{label:"All AI Tools",note:"Every AI tool in our directory, organized by category.",
     options:["All"],
     rowsFor(v){
       const cats=[...new Set(TOOLS.map((_,i)=>{const t=tool(i);return t?t.cat:null}).filter(Boolean))].sort();
@@ -688,7 +709,7 @@ function cardHTML(i){
   const t=tool(i);if(!t)return"";
   const url=activeUrl(t),aff=isAffiliate(t),rel=aff?"sponsored noopener nofollow":"noopener nofollow";
   const rr=(t.rating||t.users)?"<div class=\"ratings\">"+( t.rating?"<span class=\"stars\">"+starHTML(t.rating)+"<b>&nbsp;"+t.rating+"</b>"+(t.reviews?" <span style=\"color:var(--text-dim);font-weight:400\">("+t.reviews+")</span>":"")+"</span>":"")+( t.users?" <span class=\"users\"><b>"+t.users+"</b> users</span>":"")+"</div>":"";
-  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(aff?"<span class=\"aff-mark\">Affiliate</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+url+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now for Free &rarr;</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2295; Compare</button></div></article>";
+  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+url+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now for Free &rarr;</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2295; Compare</button></div></article>";
 }
 function rowHTML(r){
   if(!r.items.length)return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2></div><div class=\"empty\">No tools match — try another option.</div></section>";
@@ -697,8 +718,9 @@ function rowHTML(r){
 function filterIndices(pred){return TOOLS.map((_,i)=>i).filter(i=>{const t=tool(i);if(!t)return false;if(searchQuery){const h=(t.name+" "+t.tag+" "+t.cat+" "+t.needs.join(" ")+" "+t.jobs.join(" ")).toLowerCase();if(!h.includes(searchQuery))return false;}return pred(t);});}
 function renderChips(){}
 function buildDDs(){
-  ['profession','purpose','trending'].forEach(ddId=>{
-    const lensKey=ddId==='profession'?'job':ddId==='purpose'?'need':'trend';
+  const ddMap={profession:'job',purpose:'need',category:'cat',trending:'trend'};
+  Object.keys(ddMap).forEach(ddId=>{
+    const lensKey=ddMap[ddId];
     const lens=LENSES[lensKey];
     const dd=document.getElementById('dd-'+ddId);
     if(!dd)return;
@@ -726,7 +748,7 @@ function setFilter(lens,value){
   } else {
     currentFilter={lens,value:value||LENSES[lens].options[0]};
     document.getElementById('filter-all-btn').classList.remove('active');
-    const map={job:'profession',need:'purpose',trend:'trending'};
+    const map={job:'profession',need:'purpose',cat:'category',trend:'trending'};
     const ddId=map[lens];
     const lbl=document.getElementById('flabel-'+ddId);
     if(lbl)lbl.textContent=value||LENSES[lens].label;
