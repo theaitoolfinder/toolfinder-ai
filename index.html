@@ -130,6 +130,116 @@ footer a:hover{color:var(--primary)}
   .newsletter{padding:32px 20px;border-radius:14px}
   footer .cols{grid-template-columns:1fr 1fr}
 }
+
+/* ══════════════════════════════════════════════
+   COMPARE SYSTEM
+══════════════════════════════════════════════ */
+
+/* nav login btn */
+.nav-login{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-2);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;margin-right:6px}
+.nav-login:hover{border-color:var(--primary);color:var(--primary)}
+
+/* compare button selected */
+.compare-btn.on{background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
+
+/* ── Compare tray ── */
+.cmp-tray{position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(49,41,163,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 -4px 28px rgba(79,70,229,.35);transition:transform .28s cubic-bezier(.4,0,.2,1);flex-wrap:wrap}
+.cmp-tray.hidden{transform:translateY(100%);pointer-events:none}
+.cmp-tray-tools{display:flex;gap:8px;flex:1;flex-wrap:wrap;align-items:center}
+.tray-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 10px 6px 8px;font-size:12.5px;color:#fff;font-weight:500}
+.tray-chip img{width:16px;height:16px;border-radius:3px}
+.tray-chip-rm{background:none;border:none;color:rgba(255,255,255,.55);font-size:15px;line-height:1;cursor:pointer;padding:0 0 0 2px}
+.tray-chip-rm:hover{color:#fff}
+.cmp-tray-info{font-size:12px;color:rgba(255,255,255,.55);white-space:nowrap}
+.cmp-tray-btns{display:flex;gap:8px}
+.cmp-go-btn{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:999px;padding:10px 22px;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 4px 14px rgba(217,119,6,.4);transition:all .18s}
+.cmp-go-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(217,119,6,.5)}
+.cmp-clear-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.75);border-radius:999px;padding:9px 16px;font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;transition:all .15s}
+.cmp-clear-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+
+/* ── Compare modal ── */
+.cmp-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:flex-start;justify-content:center;padding:20px 16px 20px;overflow-y:auto}
+.cmp-overlay.hidden{display:none}
+.cmp-box{background:#fff;border-radius:20px;width:100%;max-width:960px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.28)}
+.cmp-modal-head{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
+.cmp-modal-head h2{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.cmp-modal-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.cmp-modal-close:hover{background:rgba(255,255,255,.32)}
+.cmp-tbl-wrap{overflow-x:auto;padding:24px 20px 28px}
+.cmp-tbl{width:100%;border-collapse:collapse;min-width:480px}
+.cmp-tbl thead th{padding:16px 14px;text-align:center;vertical-align:top}
+.cmp-tbl thead th:first-child{text-align:left;width:110px}
+.cmp-tbl thead th img{width:34px;height:34px;border-radius:9px;margin:0 auto 8px;display:block;object-fit:contain}
+.cmp-tbl-name{font-size:14.5px;font-weight:700;color:var(--text)}
+.cmp-tbl-cat{font-size:11px;color:var(--text-dim);margin-top:3px}
+.cmp-tbl tbody td{padding:11px 14px;font-size:13.5px;color:var(--text-2);text-align:center;border-top:1px solid var(--border-soft)}
+.cmp-tbl tbody td:first-child{font-size:11.5px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;text-align:left;background:var(--bg);padding-left:16px}
+.cmp-try-btn{display:inline-block;padding:8px 18px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:700;font-size:13px;text-decoration:none;transition:all .15s}
+.cmp-try-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(217,119,6,.4)}
+.cmp-win-badge{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:4px;vertical-align:middle}
+
+/* ── Compare AI Tools module section ── */
+.cmp-section{margin:60px 0 0;padding:50px 32px 40px;background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);border:1px solid rgba(79,70,229,.13);border-radius:20px;box-shadow:var(--shadow)}
+.cmp-section-head{text-align:center;margin-bottom:28px}
+.cmp-section-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.025em;margin-bottom:8px}
+.cmp-section-head p{color:var(--text-2);font-size:14.5px;max-width:520px;margin:0 auto}
+.cmp-search-wrap{display:flex;justify-content:center;margin-bottom:20px}
+.cmp-mod-search{width:100%;max-width:420px;padding:12px 20px;border-radius:999px;border:1.5px solid rgba(79,70,229,.2);font-family:'Poppins',sans-serif;font-size:14px;background:#fff;outline:none;transition:border-color .15s;box-shadow:0 2px 8px rgba(79,70,229,.07)}
+.cmp-mod-search:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
+.cmp-mod-grid{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:24px;max-height:200px;overflow-y:auto;padding:4px 0}
+.cmp-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .15s;user-select:none}
+.cmp-chip img{width:14px;height:14px;border-radius:3px}
+.cmp-chip:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.cmp-chip.on{border-color:var(--primary);background:var(--primary);color:#fff}
+.cmp-chip.on img{filter:brightness(10)}
+.cmp-selected-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:38px;align-items:center;margin-bottom:16px}
+.cmp-slot{display:inline-flex;align-items:center;gap:6px;padding:7px 12px 7px 10px;border-radius:999px;background:var(--primary);color:#fff;font-size:12.5px;font-weight:600;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.cmp-slot img{width:14px;height:14px;border-radius:3px;filter:brightness(10)}
+.cmp-slot-rm{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:50%;width:17px;height:17px;font-size:11px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;line-height:1}
+.cmp-slot-empty{font-size:13.5px;color:var(--text-dim);font-style:italic}
+.cmp-mod-bottom{text-align:center}
+.cmp-start-btn{padding:13px 32px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(217,119,6,.35);transition:all .2s;display:inline-block}
+.cmp-start-btn:hover:not([disabled]){transform:translateY(-1px);box-shadow:0 8px 24px rgba(217,119,6,.45)}
+.cmp-start-btn[disabled]{opacity:.45;cursor:not-allowed}
+.cmp-usage-row{margin-top:12px;font-size:12.5px;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.cmp-dot{width:7px;height:7px;border-radius:50%;display:inline-block;background:#16a34a}
+.cmp-dot.red{background:#ef4444}
+.cmp-link-btn{background:none;border:none;font-family:'Poppins',sans-serif;font-size:inherit;color:var(--primary);cursor:pointer;text-decoration:underline;padding:0}
+.cmp-divider{margin:28px 0 0;border-top:1px solid rgba(79,70,229,.1);padding-top:22px;text-align:center;font-size:13px;color:var(--text-dim)}
+.cmp-divider strong{color:var(--text-2)}
+
+/* ── Auth modal ── */
+.auth-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-overlay.hidden{display:none}
+.auth-box{background:#fff;border-radius:20px;width:100%;max-width:420px;padding:36px 30px 28px;box-shadow:0 28px 80px rgba(0,0,0,.25);position:relative}
+.auth-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:var(--text-dim);cursor:pointer;line-height:1;padding:0}
+.auth-close:hover{color:var(--text)}
+.auth-icon{font-size:32px;margin-bottom:10px}
+.auth-title{font-size:21px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:5px}
+.auth-sub{font-size:13.5px;color:var(--text-dim);line-height:1.55;margin-bottom:8px}
+.auth-msg{font-size:13px;color:var(--primary);background:var(--primary-light);border-radius:9px;padding:8px 13px;margin-bottom:14px;font-weight:500;line-height:1.45}
+.auth-msg:empty{display:none}
+.auth-field{margin-bottom:13px}
+.auth-field label{display:block;font-size:11.5px;font-weight:700;color:var(--text-2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
+.auth-field input{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);font-family:'Poppins',sans-serif;font-size:14px;outline:none;transition:border-color .15s;background:#fafbff}
+.auth-field input:focus{border-color:var(--primary);background:#fff}
+.auth-err{color:#ef4444;font-size:12.5px;margin:4px 0 8px;min-height:16px}
+.auth-submit{width:100%;padding:13px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.35);transition:all .2s;margin-top:4px}
+.auth-submit:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(79,70,229,.45)}
+.auth-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.auth-switch{text-align:center;margin-top:14px;font-size:13px;color:var(--text-dim)}
+.auth-link-btn{background:none;border:none;font-family:'Poppins',sans-serif;font-size:inherit;color:var(--primary);cursor:pointer;text-decoration:underline;padding:0}
+
+/* ── Toast ── */
+.cmp-toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--text);color:#fff;padding:12px 24px;border-radius:999px;font-size:13.5px;font-weight:500;box-shadow:0 8px 28px rgba(0,0,0,.22);opacity:0;transition:all .28s;z-index:700;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center}
+.cmp-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:600px){
+  .cmp-tray{padding:12px 16px;gap:10px}
+  .cmp-section{padding:36px 18px 28px}
+  .auth-box{padding:28px 20px 22px}
+  .cmp-mod-grid{max-height:160px}
+}
 </style>
 </head>
 <body>
@@ -142,10 +252,12 @@ footer a:hover{color:var(--primary)}
     </a>
     <ul>
       <li><a href="/">AI Tools</a></li>
+      <li><a href="#compare" onclick="document.getElementById('compare').scrollIntoView({behavior:'smooth'});return false;">Compare</a></li>
       <li><a href="articles.html">Articles</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
     <div class="nav-right">
+      <button class="nav-login" id="nav-login-btn" onclick="handleNavLogin()">Log In</button>
       <a href="#newsletter" class="cta">Get Weekly Digest</a>
       <button class="burger" id="burger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
     </div>
@@ -161,7 +273,9 @@ footer a:hover{color:var(--primary)}
     <a href="articles.html">&#x1F4F0; Articles</a>
     <a href="about.html">&#x1F44B; About</a>
     <a href="#newsletter" onclick="toggleMenu()" class="mob-cta">Get Weekly Digest</a>
+    <a href="#compare" onclick="toggleMenu();document.getElementById('compare').scrollIntoView({behavior:'smooth'})">⚖️ Compare Tools</a>
     <a href="admin.html" class="mob-admin">&#x2699;&#xFE0F; Admin</a>
+    <button onclick="toggleMenu();handleNavLogin()" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:15px;color:var(--primary);text-align:left;padding:13px 20px;cursor:pointer;font-weight:600" id="mob-login-btn">👤 Log In</button>
   </div>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
@@ -202,6 +316,30 @@ footer a:hover{color:var(--primary)}
       <iframe width="540" height="305" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%"></iframe>
     </div>
   </section>
+  <!-- ── Compare AI Tools Module ── -->
+  <section class="container cmp-section" id="compare">
+    <div class="cmp-section-head">
+      <h2>⚖️ Compare AI Tools Side by Side</h2>
+      <p>Select tools below to compare ratings, user base, features and more in one table. Free for up to 2 tools &amp; 3 comparisons daily — register for unlimited.</p>
+    </div>
+    <div class="cmp-search-wrap">
+      <input type="search" id="cmp-mod-search" class="cmp-mod-search" placeholder="🔍 Search tools to compare…" oninput="cmpModSearch=this.value;renderCmpModule()">
+    </div>
+    <div id="cmp-mod-grid" class="cmp-mod-grid"></div>
+    <div id="cmp-selected-row" class="cmp-selected-row">
+      <span class="cmp-slot-empty">Select at least 2 tools above to compare</span>
+    </div>
+    <div class="cmp-mod-bottom">
+      <button id="cmp-start-btn" class="cmp-start-btn" disabled onclick="startModuleComparison()">Select 2+ tools to compare</button>
+      <div id="cmp-usage-row" class="cmp-usage-row"></div>
+    </div>
+    <div class="cmp-divider">
+      <strong>Guest limit:</strong> 2 tools at a time · 3 comparisons per 24 h &nbsp;|&nbsp;
+      <button class="cmp-link-btn" onclick="showAuthModal('register','Register free to unlock unlimited comparisons!')">Register free</button> for unlimited &nbsp;·&nbsp;
+      <button class="cmp-link-btn" onclick="showAuthModal('login')">Already registered? Log in</button>
+    </div>
+  </section>
+
   <section class="container" id="disclosure-text">
     <h3>Affiliate Disclosure</h3>
     <p>MyAI ToolsFinder participates in affiliate programmes. When you click a &ldquo;Try Now for Free&rdquo; button and sign up or make a purchase, we may earn a small commission at no additional cost to you. This is how we keep the directory completely free.</p>
@@ -233,6 +371,67 @@ footer a:hover{color:var(--primary)}
     <div class="copy"><span>&copy; 2026 MyAI ToolsFinder</span><span>Built for solopreneurs, by solopreneurs.</span></div>
   </div>
 </footer>
+<!-- ── Compare tray (fixed bottom) ── -->
+<div id="cmp-tray" class="cmp-tray hidden">
+  <div id="cmp-tray-tools" class="cmp-tray-tools"></div>
+  <span id="cmp-tray-info" class="cmp-tray-info"></span>
+  <div class="cmp-tray-btns">
+    <button class="cmp-clear-btn" onclick="clearCompare()">Clear</button>
+    <button class="cmp-go-btn" onclick="runComparison()">Compare Now →</button>
+  </div>
+</div>
+
+<!-- ── Compare result modal ── -->
+<div id="cmp-overlay" class="cmp-overlay hidden" onclick="if(event.target===this)closeCmpModal()">
+  <div class="cmp-box">
+    <div class="cmp-modal-head">
+      <h2 id="cmp-modal-title">Comparing Tools</h2>
+      <button class="cmp-modal-close" onclick="closeCmpModal()">&#x2715;</button>
+    </div>
+    <div class="cmp-tbl-wrap">
+      <table class="cmp-tbl" id="cmp-tbl"></table>
+    </div>
+  </div>
+</div>
+
+<!-- ── Auth modal ── -->
+<div id="auth-overlay" class="auth-overlay hidden" onclick="if(event.target===this)closeAuthModal()">
+  <div class="auth-box">
+    <button class="auth-close" onclick="closeAuthModal()">&#x2715;</button>
+    <div class="auth-icon" id="auth-icon">🔓</div>
+    <div class="auth-title" id="auth-title">Unlock Unlimited Comparisons</div>
+    <div class="auth-sub" id="auth-sub">Register free — compare any number of tools, unlimited times per day.</div>
+    <div class="auth-msg" id="auth-msg"></div>
+    <input type="hidden" id="auth-mode" value="register">
+    <div id="auth-reg-fields">
+      <div class="auth-field">
+        <label>Full Name</label>
+        <input type="text" id="auth-name" placeholder="Your full name" autocomplete="name">
+      </div>
+      <div class="auth-field">
+        <label>Location (City / Country)</label>
+        <input type="text" id="auth-location" placeholder="e.g. Manila, Philippines" autocomplete="country">
+      </div>
+      <div class="auth-field">
+        <label>Mobile Number</label>
+        <input type="tel" id="auth-mobile" placeholder="+63 912 345 6789" autocomplete="tel">
+      </div>
+    </div>
+    <div class="auth-field">
+      <label>Email Address</label>
+      <input type="email" id="auth-email" placeholder="you@example.com" autocomplete="email">
+    </div>
+    <div class="auth-err" id="auth-err"></div>
+    <button class="auth-submit" id="auth-submit" onclick="submitAuth()">Create Free Account →</button>
+    <div class="auth-switch" id="auth-switch">
+      Already registered? <button class="auth-link-btn" onclick="setAuthMode('login')">Log In</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="cmp-toast" id="cmp-toast"></div>
+
 <script>
 
 const TOOLS=[
@@ -375,7 +574,7 @@ function cardHTML(i){
   const t=tool(i);if(!t)return"";
   const url=activeUrl(t),aff=isAffiliate(t),rel=aff?"sponsored noopener nofollow":"noopener nofollow";
   const rr=(t.rating||t.users)?"<div class=\"ratings\">"+( t.rating?"<span class=\"stars\">"+starHTML(t.rating)+"<b>&nbsp;"+t.rating+"</b>"+(t.reviews?" <span style=\"color:var(--text-dim);font-weight:400\">("+t.reviews+")</span>":"")+"</span>":"")+( t.users?" <span class=\"users\"><b>"+t.users+"</b> users</span>":"")+"</div>":"";
-  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(aff?"<span class=\"aff-mark\">Affiliate</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+url+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now for Free &rarr;</a><button class=\"compare-btn\" onclick=\"alert('Compare: "+t.name.replace(/'/g,"&#39;")+"')\">Compare</button></div></article>";
+  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(aff?"<span class=\"aff-mark\">Affiliate</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+url+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now for Free &rarr;</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2295; Compare</button></div></article>";
 }
 function rowHTML(r){
   if(!r.items.length)return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2></div><div class=\"empty\">No tools match — try another option.</div></section>";
@@ -397,6 +596,365 @@ function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event
 function renderStats(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));document.getElementById("stat-tools").textContent=v.length+"+";document.getElementById("stat-cats").textContent=cats.size;}
 function renderLdJson(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean);try{document.getElementById("ldjson").textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"AI Tools curated by MyAI ToolsFinder","numberOfItems":v.length,"itemListElement":v.map((t,i)=>({"@type":"ListItem","position":i+1,"item":{"@type":"SoftwareApplication","name":t.name,"applicationCategory":t.cat,"description":t.tag,"url":t.url}}))});}catch(e){}}
 function toggleMenu(){const m=document.getElementById("mob-menu"),o=document.getElementById("mob-overlay"),b=document.getElementById("burger");m.classList.toggle("open");o.classList.toggle("open");b.classList.toggle("open");}
+
+/* ══════════════════════════════════════════
+   COMPARE + AUTH SYSTEM
+   ══════════════════════════════════════════ */
+
+/* ── Config (optional Google Apps Script URL for real DB) ──
+   Set window.COMPARE_GAS_URL = "https://script.google.com/macros/s/.../exec"
+   in a separate <script> tag if you've deployed the backend.
+   Without it, the system uses localStorage-only mode (fully functional). */
+const COMPARE_GAS_URL = window.COMPARE_GAS_URL || "";
+
+const LS_USER    = "myai_user_v1";    // logged-in session
+const LS_USERS   = "myai_users_v1";   // local user DB (localStorage mode)
+const LS_USAGE   = "myai_cmp_usage_v1"; // comparison usage tracker
+const GUEST_MAX_TOOLS = 2;            // max tools per comparison (guest)
+const GUEST_MAX_DAILY = 3;            // max comparisons per 24 h (guest)
+
+let cmpSel = [];                      // currently selected tool indices (global)
+let cmpModSearch = "";                // module search query
+
+/* ── Session ── */
+function getUser(){ try{return JSON.parse(localStorage.getItem(LS_USER)||"null");}catch(e){return null;} }
+function setUser(u){ localStorage.setItem(LS_USER,JSON.stringify(u)); }
+function clearUser(){ localStorage.removeItem(LS_USER); }
+function isPro(){ return !!getUser(); }
+
+/* ── Usage ── */
+function getUsage(){
+  try{
+    const u=JSON.parse(localStorage.getItem(LS_USAGE)||"{}");
+    if(!u.resetAt||Date.now()-u.resetAt>86400000) return{count:0,resetAt:Date.now()};
+    return u;
+  }catch(e){return{count:0,resetAt:Date.now()};}
+}
+function bumpUsage(){ const u=getUsage();u.count++;localStorage.setItem(LS_USAGE,JSON.stringify(u)); }
+
+/* ── Toggle compare selection ── */
+function toggleCompare(idx){
+  const user=getUser();
+  const max=user?99:GUEST_MAX_TOOLS;
+  const pos=cmpSel.indexOf(idx);
+  if(pos>-1){
+    cmpSel.splice(pos,1);
+  } else {
+    if(cmpSel.length>=max){
+      if(!user) showAuthModal("register","You've reached the "+GUEST_MAX_TOOLS+"-tool limit. Register free to compare up to 8 tools at once!");
+      return;
+    }
+    cmpSel.push(idx);
+  }
+  updateTray();
+  updateCmpButtons();
+  renderCmpModule();
+}
+
+function clearCompare(){
+  cmpSel=[];
+  updateTray();
+  updateCmpButtons();
+  renderCmpModule();
+}
+
+function updateCmpButtons(){
+  document.querySelectorAll(".compare-btn").forEach(btn=>{
+    const idx=parseInt(btn.dataset.idx);
+    const on=cmpSel.includes(idx);
+    btn.classList.toggle("on",on);
+    btn.innerHTML=on?"&#x2713; Selected":"&#x2295; Compare";
+  });
+}
+
+/* ── Compare tray ── */
+function updateTray(){
+  const tray=document.getElementById("cmp-tray");
+  const toolsEl=document.getElementById("cmp-tray-tools");
+  const infoEl=document.getElementById("cmp-tray-info");
+  if(!tray)return;
+  if(cmpSel.length===0){tray.classList.add("hidden");return;}
+  tray.classList.remove("hidden");
+  const user=getUser();
+  const usage=getUsage();
+  const rem=user?"∞":Math.max(0,GUEST_MAX_DAILY-usage.count);
+  toolsEl.innerHTML=cmpSel.map(idx=>{
+    const t=tool(idx);if(!t)return"";
+    return`<div class="tray-chip">
+      <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=24" alt="${t.name}" onerror="this.style.display='none'">
+      <span>${t.name}</span>
+      <button class="tray-chip-rm" onclick="toggleCompare(${idx})" title="Remove">&#x2715;</button>
+    </div>`;
+  }).join("");
+  infoEl.textContent=user?`Unlimited · ${user.name.split(" ")[0]}`:`${rem} comparison${rem!=="∞"&&rem!==1?"s":""} left today`;
+}
+
+/* ── Run comparison ── */
+function runComparison(){
+  if(cmpSel.length<2){showToast("Select at least 2 tools to compare.");return;}
+  const user=getUser();
+  if(!user){
+    const usage=getUsage();
+    if(usage.count>=GUEST_MAX_DAILY){
+      showAuthModal("register","You've used all "+GUEST_MAX_DAILY+" free daily comparisons. Register free for unlimited!");
+      return;
+    }
+  }
+  bumpUsage();
+  showCmpModal(cmpSel);
+  renderCmpModule(); // refresh usage count
+}
+
+/* ── Compare modal ── */
+function showCmpModal(indices){
+  const tools_=indices.map(i=>tool(i)).filter(Boolean);
+  if(!tools_.length)return;
+  const tbl=document.getElementById("cmp-tbl");
+  document.getElementById("cmp-modal-title").textContent="Comparing "+tools_.length+" AI Tool"+(tools_.length!==1?"s":"");
+
+  const rows=[
+    {label:"Category",    fn:t=>t.cat},
+    {label:"Rating",      fn:t=>t.rating?"⭐ "+t.rating:"—"},
+    {label:"Reviews",     fn:t=>t.reviews||"—"},
+    {label:"Users",       fn:t=>t.users||"—"},
+    {label:"Best For",    fn:t=>(t.jobs||[]).slice(0,3).join(", ")||"—"},
+    {label:"Features",    fn:t=>(t.needs||[]).slice(0,4).join(", ")||"—"},
+    {label:"Trending",    fn:t=>t.trending&&t.trending>75?"🔥 Trending":"—"},
+    {label:"Verified",    fn:t=>t.verified?"✓ Yes":"—"},
+    {label:"Pricing",     fn:t=>t.pill||"—"},
+  ];
+
+  /* find "best" for rating to highlight winner */
+  const maxRating=Math.max(...tools_.map(t=>t.rating||0));
+
+  tbl.innerHTML=`
+    <thead>
+      <tr>
+        <th></th>
+        ${tools_.map(t=>`
+          <th>
+            <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
+            <div class="cmp-tbl-name">${t.name}${t.rating===maxRating&&tools_.length>1?'<span class="cmp-win-badge">Top Rated</span>':''}</div>
+            <div class="cmp-tbl-cat">${t.cat}</div>
+          </th>
+        `).join("")}
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.map(r=>`
+        <tr>
+          <td>${r.label}</td>
+          ${tools_.map(t=>`<td>${r.fn(t)}</td>`).join("")}
+        </tr>
+      `).join("")}
+      <tr>
+        <td>Try Now</td>
+        ${tools_.map(t=>`<td><a href="${activeUrl(t)}" target="_blank" rel="noopener nofollow" class="cmp-try-btn">Try ${t.name} →</a></td>`).join("")}
+      </tr>
+    </tbody>`;
+
+  document.getElementById("cmp-overlay").classList.remove("hidden");
+  document.body.style.overflow="hidden";
+}
+function closeCmpModal(){
+  document.getElementById("cmp-overlay").classList.add("hidden");
+  document.body.style.overflow="";
+}
+
+/* ── Compare module ── */
+function renderCmpModule(){
+  const grid=document.getElementById("cmp-mod-grid");
+  const selRow=document.getElementById("cmp-selected-row");
+  const usageRow=document.getElementById("cmp-usage-row");
+  const startBtn=document.getElementById("cmp-start-btn");
+  if(!grid)return;
+
+  const q=cmpModSearch.toLowerCase();
+  const filtered=TOOLS.map((_,i)=>i).filter(i=>{
+    const t=tool(i);if(!t)return false;
+    return !q||(t.name+" "+t.cat+" "+t.tag).toLowerCase().includes(q);
+  }).slice(0,40);
+
+  grid.innerHTML=filtered.map(i=>{
+    const t=tool(i);
+    const on=cmpSel.includes(i);
+    return`<button class="cmp-chip${on?" on":""}" onclick="toggleCompare(${i})" data-idx="${i}">
+      <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=16" alt="${t.name}" onerror="this.style.display='none'">
+      ${t.name}${on?' <span style="font-size:10px">✓</span>':""}
+    </button>`;
+  }).join("");
+
+  /* selected slots */
+  if(cmpSel.length===0){
+    selRow.innerHTML=`<span class="cmp-slot-empty">Select at least 2 tools above to compare</span>`;
+  } else {
+    selRow.innerHTML=cmpSel.map(i=>{
+      const t=tool(i);if(!t)return"";
+      return`<div class="cmp-slot">
+        <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=16" alt="${t.name}" onerror="this.style.display='none'">
+        ${t.name}
+        <button class="cmp-slot-rm" onclick="toggleCompare(${i})">&#x2715;</button>
+      </div>`;
+    }).join("");
+  }
+
+  /* start button */
+  const ready=cmpSel.length>=2;
+  startBtn.disabled=!ready;
+  startBtn.textContent=ready?"Compare "+cmpSel.length+" Tools →":"Select 2+ tools to compare";
+
+  /* usage info */
+  const user=getUser();
+  const usage=getUsage();
+  if(user){
+    usageRow.innerHTML=`<span class="cmp-dot"></span> Unlimited comparisons · Logged in as <strong>${user.name}</strong> &nbsp;·&nbsp; <button class="cmp-link-btn" onclick="logoutUser()">Log Out</button>`;
+  } else {
+    const rem=Math.max(0,GUEST_MAX_DAILY-usage.count);
+    const dotClass=rem===0?"cmp-dot red":"cmp-dot";
+    usageRow.innerHTML=`<span class="${dotClass}"></span> ${usage.count}/${GUEST_MAX_DAILY} comparisons used today &nbsp;·&nbsp; <button class="cmp-link-btn" onclick="showAuthModal('register','Register free to unlock unlimited comparisons!')">Register free for unlimited</button>`;
+  }
+}
+
+function startModuleComparison(){
+  if(cmpSel.length<2)return;
+  runComparison();
+}
+
+/* ── Auth modal ── */
+function showAuthModal(mode="register",msg=""){
+  mode=mode||"register";
+  document.getElementById("auth-msg").textContent=msg||"";
+  setAuthMode(mode);
+  document.getElementById("auth-overlay").classList.remove("hidden");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>{
+    const f=mode==="login"?document.getElementById("auth-email"):document.getElementById("auth-name");
+    if(f)f.focus();
+  },120);
+}
+function closeAuthModal(){
+  document.getElementById("auth-overlay").classList.add("hidden");
+  document.body.style.overflow="";
+}
+function setAuthMode(mode){
+  document.getElementById("auth-mode").value=mode;
+  const isReg=mode==="register";
+  document.getElementById("auth-reg-fields").style.display=isReg?"":"none";
+  document.getElementById("auth-icon").textContent=isReg?"🔓":"👋";
+  document.getElementById("auth-title").textContent=isReg?"Unlock Unlimited Comparisons":"Welcome Back";
+  document.getElementById("auth-sub").textContent=isReg
+    ?"Register free — compare any number of tools, unlimited times."
+    :"Enter your registered email to log back in.";
+  document.getElementById("auth-submit").textContent=isReg?"Create Free Account →":"Log In →";
+  document.getElementById("auth-switch").innerHTML=isReg
+    ?`Already registered? <button class="auth-link-btn" onclick="setAuthMode('login')">Log In</button>`
+    :`No account yet? <button class="auth-link-btn" onclick="setAuthMode('register')">Register Free</button>`;
+  document.getElementById("auth-err").textContent="";
+}
+
+async function submitAuth(){
+  const mode=document.getElementById("auth-mode").value;
+  const email=(document.getElementById("auth-email").value||"").trim();
+  const name=(document.getElementById("auth-name").value||"").trim();
+  const location=(document.getElementById("auth-location").value||"").trim();
+  const mobile=(document.getElementById("auth-mobile").value||"").trim();
+  const errEl=document.getElementById("auth-err");
+  const btn=document.getElementById("auth-submit");
+  errEl.textContent="";
+
+  if(!email||!/\S+@\S+\.\S+/.test(email)){errEl.textContent="Please enter a valid email address.";return;}
+  if(mode==="register"){
+    if(!name){errEl.textContent="Please enter your full name.";return;}
+    if(!location){errEl.textContent="Please enter your location.";return;}
+    if(!mobile){errEl.textContent="Please enter your mobile number.";return;}
+  }
+
+  const origText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent=mode==="register"?"Creating account…":"Logging in…";
+
+  try{
+    let userData=null;
+
+    if(COMPARE_GAS_URL){
+      /* ── Backend mode (Google Apps Script) ── */
+      const payload=mode==="register"
+        ?{action:"register",name,email,location,mobile}
+        :{action:"login",email};
+      const res=await fetch(COMPARE_GAS_URL,{method:"POST",body:JSON.stringify(payload)});
+      const data=await res.json();
+      if(!data.ok){errEl.textContent=data.error||"Something went wrong. Please try again.";return;}
+      userData={name:data.user.name||name,email:data.user.email||email,location:data.user.location||location};
+    } else {
+      /* ── localStorage-only mode (no backend configured) ── */
+      let users=[];
+      try{users=JSON.parse(localStorage.getItem(LS_USERS)||"[]");}catch(e){}
+      if(mode==="register"){
+        if(users.find(u=>u.email===email)){errEl.textContent="Email already registered. Please log in.";return;}
+        const newUser={name,email,location,mobile,registeredAt:new Date().toISOString()};
+        users.push(newUser);
+        localStorage.setItem(LS_USERS,JSON.stringify(users));
+        userData={name,email,location};
+      } else {
+        const found=users.find(u=>u.email===email);
+        if(!found){errEl.textContent="Email not found. Please register first.";return;}
+        userData={name:found.name,email:found.email,location:found.location};
+      }
+    }
+
+    setUser(userData);
+    closeAuthModal();
+    updateNavAuth();
+    renderCmpModule();
+    updateTray();
+    showToast((mode==="register"?"Welcome, ":"Welcome back, ")+userData.name+"! 🎉 Unlimited comparisons unlocked.");
+  }catch(e){
+    errEl.textContent="Connection error. Please try again.";
+  }finally{
+    btn.disabled=false;
+    btn.textContent=origText;
+  }
+}
+
+function logoutUser(){
+  clearUser();
+  updateNavAuth();
+  renderCmpModule();
+  updateTray();
+  showToast("Logged out successfully.");
+}
+
+function handleNavLogin(){
+  const user=getUser();
+  if(user){logoutUser();}
+  else{showAuthModal("login");}
+}
+
+function updateNavAuth(){
+  const user=getUser();
+  const navBtn=document.getElementById("nav-login-btn");
+  const mobBtn=document.getElementById("mob-login-btn");
+  if(navBtn) navBtn.textContent=user?"👤 "+user.name.split(" ")[0]:"Log In";
+  if(mobBtn) mobBtn.textContent=user?"👤 Log Out":"👤 Log In";
+}
+
+/* ── Toast ── */
+function showToast(msg,ms=3800){
+  const el=document.getElementById("cmp-toast");
+  if(!el)return;
+  el.textContent=msg;
+  el.classList.add("show");
+  clearTimeout(el._t);
+  el._t=setTimeout(()=>el.classList.remove("show"),ms);
+}
+
+/* initialise compare system */
+updateNavAuth();
+renderCmpModule();
+updateTray();
+
+/* ── End Compare System ── */
+
 renderChips();renderRows();renderStats();renderLdJson();
 window.addEventListener("hashchange",readHash);readHash();
 
