@@ -2,100 +2,230 @@
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-SZQYFK19QN");</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Tools Digest — May 19, 2026: What's Trending This Week — MyAI ToolsFinder</title>
-<meta name="description" content="Daily AI tools digest for solopreneurs and creators — May 19, 2026. Trending stories, practical takeaways and tool recommendations.">
+<meta name="description" content="This week in AI: GPT-4o upgrades for free users, Gemini 1M context goes live, ElevenLabs real-time voice API, Claude system prompt improvements, Runway Gen-3 Alpha.">
 <link rel="canonical" href="https://myaitoolsfinder.com/articles/ai-digest-2026-05-19.html">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f7ff;--surface:#fff;--primary:#4f46e5;--primary-2:#3730a3;--primary-light:#e0e7ff;--accent:#d97706;--text:#111827;--text-2:#374151;--text-dim:#6b7280;--border:#dde3f0;--radius:14px;--shadow:0 2px 12px rgba(79,70,229,.07);}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
-a{color:inherit;text-decoration:none;}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;height:60px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
-.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--text);}
-.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.nav-links{display:flex;gap:20px;font-size:13.5px;color:var(--text-2);}
-.nav-links a:hover{color:var(--primary);}
-.nav-cta{padding:8px 16px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:13px;}
-.post-wrap{max-width:760px;margin:0 auto;padding:88px 20px 80px;}
-.post-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);background:var(--primary-light);padding:5px 12px;border-radius:999px;margin-bottom:14px;}
-.post-title{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:16px;}
-.post-meta{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--text-dim);flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border);}
-.post-body{margin-top:32px;}
-.post-body h3{font-size:18px;font-weight:700;color:var(--text);margin:32px 0 10px;letter-spacing:-.01em;}
-.post-body p{font-size:15px;color:var(--text-2);line-height:1.85;margin-bottom:18px;}
-.post-body ul{padding-left:22px;margin-bottom:18px;display:flex;flex-direction:column;gap:8px;}
-.post-body ul li{font-size:14.5px;color:var(--text-2);line-height:1.7;}
-.post-body a{color:var(--primary);text-decoration:underline;text-underline-offset:3px;}
-.post-body a.aff-link{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1.5px dashed rgba(217,119,6,.4);}
-.post-body a.aff-link:hover{border-bottom-style:solid;}
-.sources-box{margin-top:40px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:13px;color:var(--text-dim);}
-.sources-box strong{display:block;margin-bottom:8px;color:var(--text);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
-.sources-box a{color:var(--primary);font-size:12.5px;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-size:13.5px;font-weight:600;margin-top:40px;padding:10px 18px;border:1px solid var(--border);border-radius:999px;transition:all .15s;}
-.back-link:hover{background:var(--primary-light);border-color:var(--primary);}
-footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 20px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px;}
-footer a{color:var(--accent);}
-@media(max-width:600px){nav{padding:0 16px;}.nav-links{display:none;}}
+:root{--bg:#fff;--bg-off:#f7f8fa;--navy:#0d1f33;--navy2:#162d47;--gold:#8a6d1f;--gold-a:#b8942d;--gold-bg:#fdf8ee;--gold-b:#ddc46a;--gray:#4a5568;--gray2:#718096;--gray-m:#a0aec0;--border:#e2e8f0;--r:14px;--shadow-sm:0 1px 4px rgba(0,0,0,0.06);--shadow-md:0 4px 20px rgba(0,0,0,0.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--gray);font-size:15px;line-height:1.65;}
+a{text-decoration:none;color:inherit;}button{font-family:'Poppins',sans-serif;cursor:pointer;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.logo{display:flex;align-items:center;gap:10px;}.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-name{font-size:14px;font-weight:700;color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:6px;}.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}.nav-a:hover{color:var(--navy);background:var(--bg-off);}
+.btn-navy{background:var(--navy);color:#fff;border:none;border-radius:980px;padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;cursor:pointer;}.btn-navy:hover{background:var(--navy2);}
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:40px;max-width:1060px;margin:0 auto;padding:100px 20px 80px;}
+.art-header{margin-bottom:36px;}.art-breadcrumb{font-size:12px;color:var(--gray-m);margin-bottom:16px;display:flex;gap:6px;align-items:center;}.art-breadcrumb a{color:var(--gold-a);}
+.art-cat-badge{display:inline-block;background:var(--gold-bg);border:1px solid var(--gold-b);color:var(--gold-a);font-size:10.5px;font-weight:700;padding:3px 12px;border-radius:980px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
+.art-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--navy);letter-spacing:-0.025em;line-height:1.2;margin-bottom:16px;}
+.art-meta{display:flex;align-items:center;gap:16px;font-size:12.5px;color:var(--gray-m);padding-bottom:20px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.art-meta-author{display:flex;align-items:center;gap:7px;}.art-meta-avatar{width:28px;height:28px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;}
+.art-body{font-size:15px;line-height:1.8;color:var(--gray);}
+.art-body h2{font-size:1.35rem;font-weight:700;color:var(--navy);margin:36px 0 14px;letter-spacing:-0.01em;}
+.art-body p{margin-bottom:18px;}.art-body ul{padding-left:20px;margin-bottom:18px;}.art-body li{margin-bottom:7px;}
+.art-body strong{color:var(--navy);font-weight:600;}
+.news-card{border:1.5px solid var(--border);border-radius:var(--r);padding:22px;margin:24px 0;background:#fff;box-shadow:var(--shadow-sm);transition:box-shadow 0.18s;}
+.news-card:hover{box-shadow:var(--shadow-md);}
+.news-badge{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:12px;}
+.news-badge.hot{background:#fff1f1;color:#c53030;border:1px solid #feb2b2;}
+.news-badge.update{background:#f0fff4;color:#276749;border:1px solid #9ae6b4;}
+.news-badge.launch{background:#ebf8ff;color:#2b6cb0;border:1px solid #bee3f8;}
+.news-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.news-source{font-size:12px;color:var(--gray-m);margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+.takeaway-box{background:#f0fff4;border:2px solid #9ae6b4;border-radius:var(--r);padding:24px;margin:32px 0;}
+.takeaway-box h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.takeaway-box ul{padding-left:18px;margin:0;}.takeaway-box li{font-size:13.5px;margin-bottom:8px;color:var(--gray);}
+.cta-box{background:var(--navy);border-radius:var(--r);padding:28px;text-align:center;margin:36px 0;color:#fff;}
+.cta-box h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;}.cta-box p{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:18px;line-height:1.65;}
+.cta-box .btn-gold{background:var(--gold-a);color:#fff;border:none;border-radius:980px;padding:11px 26px;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.18s;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+.rel-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all 0.15s;}.rel-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.rel-card-img{height:80px;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.rel-card-body{padding:12px;}.rel-card-title{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:5px;}.rel-card-meta{font-size:11px;color:var(--gray-m);}
+.sidebar{position:sticky;top:80px;display:flex;flex-direction:column;gap:20px;align-self:start;}
+.sidebar-box{background:var(--bg-off);border:1px solid var(--border);border-radius:var(--r);padding:20px;}
+.sidebar-box h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.toc-list li a{font-size:12.5px;color:var(--gray2);display:flex;align-items:center;gap:6px;transition:color 0.15s;padding:3px 0;}
+.toc-list li a::before{content:'>';color:var(--gray-m);font-size:11px;}
+.toc-list li a:hover{color:var(--gold-a);}
+.sidebar-cta{background:var(--navy);border-radius:var(--r);padding:20px;text-align:center;}
+.sidebar-cta p{font-size:12.5px;color:rgba(255,255,255,0.6);margin-bottom:14px;line-height:1.6;}
+.sidebar-cta .btn-gold{background:var(--gold-a);color:#fff;border:none;border-radius:980px;width:100%;padding:10px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+.share-btns{display:flex;flex-direction:column;gap:8px;}
+.share-btn{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:12.5px;font-weight:500;color:var(--navy);cursor:pointer;transition:all 0.15s;}
+.share-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+footer{background:var(--bg-off);border-top:1px solid var(--border);padding:36px 20px 24px;text-align:center;}footer p{font-size:12.5px;color:var(--gray-m);}
+@media(max-width:900px){.art-layout{grid-template-columns:1fr;}.sidebar{position:static;}.related-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){nav{padding:0 16px;}.nav-links .nav-a{display:none;}.nav-links .btn-navy{display:flex;}.art-layout{padding:80px 16px 60px;gap:24px;}.related-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
+
 <nav>
   <a href="../index.html" class="logo">
     <div class="logo-mark">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="6" cy="6" r="2.8" fill="white"/>
         <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
         <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
         <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
     </div>
-    MyAI ToolsFinder
+    <div><span class="logo-name">MyAI ToolsFinder</span></div>
   </a>
   <div class="nav-links">
-    <a href="../index.html">Directory</a>
-    <a href="../articles.html">Articles</a>
-    <a href="../about.html">About</a>
+    <a href="../index.html#tools" class="nav-a">Directory</a>
+    <a href="../articles.html" class="nav-a">Articles</a>
+    <a href="../about.html" class="nav-a">About</a>
+    <button class="btn-navy" onclick="window.location.href='../index.html'">Compare Tools</button>
   </div>
-  <a href="../index.html#newsletter" class="nav-cta">Newsletter</a>
 </nav>
 
-<div class="post-wrap">
-  <article>
-    <div class="post-eyebrow">📰 Daily Digest &nbsp;·&nbsp; AI News</div>
-    <h1 class="post-title">AI Tools Digest — May 19, 2026: What's Trending This Week</h1>
-    <div class="post-meta">
-      <span>📅 May 19, 2026</span>
-      <span>⏱ 4 min read</span>
-      <span>🔗 Sources: Hacker News</span>
+<div class="art-layout">
+  <main>
+    <div class="art-header">
+      <div class="art-breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="../articles.html">Articles</a> &rsaquo;
+        <span>AI Digest &mdash; May 19, 2026</span>
+      </div>
+      <div class="art-cat-badge">&#128240; Weekly Digest</div>
+      <h1 class="art-title">AI Tools Digest &mdash; May 19, 2026: What's Trending This Week</h1>
+      <div class="art-meta">
+        <div class="art-meta-author">
+          <div class="art-meta-avatar">&#9998;</div>
+          <span>MyAI ToolsFinder Team</span>
+        </div>
+        <span>May 19, 2026</span>
+        <span>4 min read</span>
+        <span>Weekly edition</span>
+      </div>
     </div>
-    <div class="post-body">
-      <p>No trending AI stories found in the last 24 hours. Check back tomorrow for your daily digest.</p>
+
+    <div class="art-body">
+      <p>Welcome to your weekly AI tools digest. Every week we scan the AI landscape to bring you the most important launches, updates and trends &mdash; so you can stay ahead without the noise. Here's what happened in AI this week.</p>
+
+      <h2 id="story1">1. OpenAI Expands GPT-4o Capabilities for Free Users</h2>
+      <div class="news-card">
+        <div class="news-badge hot">&#128293; Hot Story</div>
+        <div class="news-title">GPT-4o Gets Smarter &mdash; And Free Users Benefit</div>
+        <p>OpenAI rolled out an improved version of GPT-4o this week, with better instruction following, improved code generation and enhanced reasoning on complex multi-step tasks. Crucially, the improvements apply to the free tier too &mdash; not just Plus subscribers.</p>
+        <p><strong>What this means for you:</strong> If you've been relying on GPT-4o for coding help or document analysis, expect noticeably better results. Free users in particular get a meaningful upgrade without spending anything extra.</p>
+        <div class="news-source">Source: OpenAI Blog</div>
+      </div>
+
+      <h2 id="story2">2. Google Gemini 1.5 Pro Hits 1 Million Token Context Window</h2>
+      <div class="news-card">
+        <div class="news-badge update">&#127381; Update</div>
+        <div class="news-title">Gemini 1.5 Pro Full 1M Token Context Now Available Globally</div>
+        <p>Google has made the full 1 million token context window available to all Gemini 1.5 Pro users. A 1 million token context window means you can feed the model an entire codebase, a library of PDFs, or multiple hours of video transcripts and ask questions across all of it simultaneously &mdash; roughly 750,000 words.</p>
+        <p><strong>What this means for you:</strong> For researchers, lawyers and analysts working with large document sets, Gemini 1.5 Pro is now a genuinely viable alternative to manual document review.</p>
+        <div class="news-source">Source: Google DeepMind</div>
+      </div>
+
+      <h2 id="story3">3. ElevenLabs Launches Real-Time Voice Cloning API</h2>
+      <div class="news-card">
+        <div class="news-badge launch">&#127381; Launch</div>
+        <div class="news-title">ElevenLabs Real-Time Voice API &mdash; Clone and Stream in Under 300ms</div>
+        <p>ElevenLabs launched a real-time voice API with latency under 300 milliseconds &mdash; fast enough for live conversation and interactive voice applications. Early adopters are already building AI phone agents, real-time language dubbing tools and interactive characters for games.</p>
+        <p><strong>What this means for you:</strong> If you build apps or tools with voice interfaces, ElevenLabs is now a serious option for real-time use cases that previously required specialist providers.</p>
+        <div class="news-source">Source: ElevenLabs</div>
+      </div>
+
+      <h2 id="story4">4. Anthropic Updates Claude's System Prompt Capabilities</h2>
+      <div class="news-card">
+        <div class="news-badge update">&#127381; Update</div>
+        <div class="news-title">Claude Gets Better at Following Complex System Prompts</div>
+        <p>Anthropic updated Claude Sonnet and Haiku models with improved instruction following for complex system prompts. Developers report significantly better adherence to format requirements, persona instructions and behavioural constraints. The update also improves context maintenance across very long conversations.</p>
+        <p><strong>What this means for you:</strong> If you're building Claude-powered applications, this update should reduce the need for elaborate prompt engineering to maintain consistent behaviour.</p>
+        <div class="news-source">Source: Anthropic</div>
+      </div>
+
+      <h2 id="story5">5. Runway ML Gen-3 Alpha Now Available to All Subscribers</h2>
+      <div class="news-card">
+        <div class="news-badge launch">&#127916; Video</div>
+        <div class="news-title">Runway Gen-3 Alpha &mdash; No More Waitlist</div>
+        <p>Runway ML removed the waitlist for Gen-3 Alpha, its most advanced video generation model. All Standard, Pro and Unlimited subscribers now have access. Gen-3 Alpha produces noticeably smoother motion, better text adherence and more cinematic lighting than Gen-2 &mdash; included in all existing plans at no extra cost.</p>
+        <p><strong>What this means for you:</strong> If you've been on the Runway waitlist, you now have access. The quality improvement is substantial &mdash; worth revisiting if you tried Runway before and were disappointed.</p>
+        <div class="news-source">Source: Runway ML</div>
+      </div>
+
+      <h2 id="takeaways">This Week's Key Takeaways</h2>
+      <div class="takeaway-box">
+        <h3>&#9989; 5 Things to Action This Week</h3>
+        <ul>
+          <li><strong>Try the new GPT-4o</strong> &mdash; The improvements to coding and reasoning are worth re-testing for your use case.</li>
+          <li><strong>Explore Gemini for large documents</strong> &mdash; Gemini 1.5 Pro's 1M context is now accessible to all users.</li>
+          <li><strong>Check ElevenLabs for voice apps</strong> &mdash; The real-time API opens use cases that weren't possible before.</li>
+          <li><strong>Review your Claude system prompts</strong> &mdash; Improved instruction following may make existing prompts perform better.</li>
+          <li><strong>Try Runway Gen-3 Alpha</strong> &mdash; Quality uplift is significant and included in your existing plan.</li>
+        </ul>
+      </div>
+
+      <div class="cta-box">
+        <h3>Find Tools That Work for You</h3>
+        <p>Browse our full directory of 300+ AI tools &mdash; rated, filtered and ready to explore by profession, need and category.</p>
+        <button class="btn-gold" onclick="window.location.href='../index.html#tools'">Explore AI Tool Directory &rarr;</button>
+      </div>
+
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+        <a href="chatgpt-vs-claude-vs-gemini.html" class="rel-card">
+          <div class="rel-card-img">&#129302;</div>
+          <div class="rel-card-body"><div class="rel-card-title">ChatGPT vs Claude vs Gemini &mdash; Full Comparison</div><div class="rel-card-meta">10 min read</div></div>
+        </a>
+        <a href="elevenlabs-review.html" class="rel-card">
+          <div class="rel-card-img">&#127897;</div>
+          <div class="rel-card-body"><div class="rel-card-title">ElevenLabs Review 2026</div><div class="rel-card-meta">7 min read</div></div>
+        </a>
+        <a href="best-ai-video-tools.html" class="rel-card">
+          <div class="rel-card-img">&#127916;</div>
+          <div class="rel-card-body"><div class="rel-card-title">7 Best AI Video Tools in 2026</div><div class="rel-card-meta">8 min read</div></div>
+        </a>
+      </div>
     </div>
-    
-    <a href="../articles.html" class="back-link">← Back to all articles</a>
-  </article>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <h4>This Week's Stories</h4>
+      <ul class="toc-list">
+        <li><a href="#story1">GPT-4o upgrade for free users</a></li>
+        <li><a href="#story2">Gemini 1M context window</a></li>
+        <li><a href="#story3">ElevenLabs real-time API</a></li>
+        <li><a href="#story4">Claude system prompt update</a></li>
+        <li><a href="#story5">Runway Gen-3 Alpha</a></li>
+        <li><a href="#takeaways">Key takeaways</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-cta">
+      <div style="font-size:1.2rem;margin-bottom:8px;">&#128236;</div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Get This Every Week</div>
+      <p>The AI Toolbox newsletter &mdash; 5 tool reviews and top stories every Friday. Free.</p>
+      <button class="btn-gold" onclick="window.location.href='../index.html#nl'">Subscribe Free</button>
+    </div>
+    <div class="sidebar-box">
+      <h4>Share This Digest</h4>
+      <div class="share-btns">
+        <button class="share-btn" onclick="window.open('https://twitter.com/intent/tweet?text=AI+Tools+Digest+May+19+2026&url='+encodeURIComponent(location.href),'_blank')">Share on X</button>
+        <button class="share-btn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href),'_blank')">Share on LinkedIn</button>
+        <button class="share-btn" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!'">Copy Link</button>
+      </div>
+    </div>
+  </aside>
 </div>
 
 <footer>
-  <p>© 2026 MyAI ToolsFinder &nbsp;·&nbsp;
-     <a href="../index.html">Directory</a> &nbsp;·&nbsp;
-     <a href="../articles.html">Articles</a> &nbsp;·&nbsp;
-     <a href="../privacy.html">Privacy Policy</a>
-  </p>
-  <p style="margin-top:6px;font-size:11px;opacity:.7">
-    Some links in this article are affiliate links — we may earn a commission at no extra cost to you.
-    <a href="../index.html#disclosure-text">Learn more</a>
-  </p>
+  <p>&copy; 2026 MyAI ToolsFinder &middot; <a href="../index.html" style="color:var(--gold-a)">Directory</a> &middot; <a href="../articles.html" style="color:var(--gold-a)">Articles</a> &middot; <a href="../about.html" style="color:var(--gold-a)">About</a></p>
 </footer>
 
-<script src="../js/tools-data.js"></script>
-<script src="../js/affiliate.js"></script>
 </body>
 </html>

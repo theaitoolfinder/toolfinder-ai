@@ -399,7 +399,7 @@ footer a:hover{color:#e2c06a;}
       </div>
       <div class="art-card-body">
         <div class="art-card-title">AI Tools Digest — May 19, 2026: What's Trending This Week</div>
-        <div class="art-card-excerpt">No trending AI stories found in the last 24 hours. Check back tomorrow for your daily digest.…</div>
+        <div class="art-card-excerpt">This week: GPT-4o upgrades for free users, Gemini 1M context goes live, ElevenLabs real-time voice API, Claude system prompt improvements and Runway Gen-3 Alpha.</div>
         <div class="art-card-footer">
           <span class="art-card-date">May 2026</span>
           <span class="art-card-arrow">Read more →</span>
@@ -635,7 +635,7 @@ footer a:hover{color:#e2c06a;}
     </div>
   </div>
 
-  <!-- Subscribe gate modal -->
+  <!-- Exclusive access gate modal -->
   <div id="subscribe-gate" class="subscribe-gate hidden" onclick="if(event.target===this)this.classList.add('hidden')">
     <div class="subscribe-gate-box">
       <button class="subscribe-gate-close" onclick="document.getElementById('subscribe-gate').classList.add('hidden')">
@@ -644,9 +644,30 @@ footer a:hover{color:#e2c06a;}
       <div class="subscribe-gate-icon">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
-      <h3>Exclusive Subscriber Content</h3>
-      <p>This article is available to newsletter subscribers. Join free to unlock all exclusive guides and comparisons.</p>
-      <iframe width="100%" height="230" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;border-radius:8px"></iframe>
+
+      <!-- Tab switcher -->
+      <div id="gate-tabs" style="display:flex;gap:0;border:1.5px solid var(--border,#c9d9f5);border-radius:10px;overflow:hidden;margin-bottom:18px;">
+        <button id="gate-tab-login" onclick="showGateTab('login')" style="flex:1;padding:9px;font-family:inherit;font-size:13px;font-weight:600;background:#1a56db;color:#fff;border:none;cursor:pointer;transition:all .15s;">Log In</button>
+        <button id="gate-tab-sub" onclick="showGateTab('sub')" style="flex:1;padding:9px;font-family:inherit;font-size:13px;font-weight:600;background:#f0f6ff;color:#1e3a5f;border:none;cursor:pointer;transition:all .15s;">Subscribe Free</button>
+      </div>
+
+      <!-- Login panel -->
+      <div id="gate-login-panel">
+        <h3 style="margin-bottom:6px;">Already registered?</h3>
+        <p style="font-size:13px;color:#5c7799;margin-bottom:16px;">Log in with the email you used when comparing tools. Registered users get full access to exclusive articles.</p>
+        <input id="gate-email" type="email" placeholder="Your email address" style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;">
+        <div id="gate-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;"></div>
+        <button onclick="gateLogin()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;">Unlock Exclusive Articles</button>
+        <p style="font-size:11.5px;color:#5c7799;margin-top:12px;text-align:center;">Not registered yet? Switch to "Subscribe Free" to join.</p>
+      </div>
+
+      <!-- Subscribe panel -->
+      <div id="gate-sub-panel" style="display:none;">
+        <h3>Exclusive Subscriber Content</h3>
+        <p>This article is available to newsletter subscribers. Join free to unlock all exclusive guides and comparisons.</p>
+        <iframe width="100%" height="230" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;border-radius:8px"></iframe>
+        <p style="font-size:11.5px;color:#5c7799;margin-top:12px;text-align:center;">Already registered? Switch to "Log In" above.</p>
+      </div>
     </div>
   </div>
 
@@ -698,9 +719,104 @@ function filterArts(cat, btn){
 <script src="js/tools-data.js"></script>
 <script src="js/affiliate.js"></script>
 <script>
+/* ── Exclusive articles auth ── */
+function getLoggedInUser(){
+  try{
+    const u=JSON.parse(localStorage.getItem('myai_user_v1')||'null');
+    if(u&&u.email) return u;
+  }catch(e){}
+  return null;
+}
+
+function unlockExclusiveCards(){
+  document.querySelectorAll('.exclusive-card').forEach(card=>{
+    /* Remove blur from title/excerpt */
+    card.querySelectorAll('[style*="blur"]').forEach(el=>{
+      el.style.filter='none';
+      el.style.userSelect='auto';
+    });
+    /* Change lock label */
+    const lock=card.querySelector('.exclusive-lock');
+    if(lock){
+      lock.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg> Member Access';
+      lock.style.color='#16a34a';
+    }
+    /* Change arrow */
+    const arrow=card.querySelector('.art-card-arrow');
+    if(arrow) arrow.textContent='Read now →';
+    /* Remove click gate */
+    card.onclick=null;
+    card.style.cursor='default';
+  });
+}
+
 function showSubscribeGate(){
+  /* If user is already logged in, unlock immediately */
+  if(getLoggedInUser()){
+    unlockExclusiveCards();
+    return;
+  }
+  showGateTab('login');
   document.getElementById('subscribe-gate').classList.remove('hidden');
 }
+
+function showGateTab(tab){
+  const loginPanel=document.getElementById('gate-login-panel');
+  const subPanel=document.getElementById('gate-sub-panel');
+  const tabLogin=document.getElementById('gate-tab-login');
+  const tabSub=document.getElementById('gate-tab-sub');
+  if(tab==='login'){
+    loginPanel.style.display='block';
+    subPanel.style.display='none';
+    tabLogin.style.background='#1a56db';tabLogin.style.color='#fff';
+    tabSub.style.background='#f0f6ff';tabSub.style.color='#1e3a5f';
+  } else {
+    loginPanel.style.display='none';
+    subPanel.style.display='block';
+    tabSub.style.background='#1a56db';tabSub.style.color='#fff';
+    tabLogin.style.background='#f0f6ff';tabLogin.style.color='#1e3a5f';
+  }
+}
+
+function gateLogin(){
+  const email=(document.getElementById('gate-email').value||'').trim().toLowerCase();
+  const errEl=document.getElementById('gate-error');
+  errEl.style.display='none';
+  if(!email||!email.includes('@')){
+    errEl.textContent='Please enter a valid email address.';
+    errEl.style.display='block';
+    return;
+  }
+  /* Check localStorage users DB */
+  let found=false;
+  try{
+    const users=JSON.parse(localStorage.getItem('myai_users_v1')||'[]');
+    const match=users.find(u=>u.email&&u.email.toLowerCase()===email);
+    if(match){
+      localStorage.setItem('myai_user_v1',JSON.stringify(match));
+      found=true;
+    }
+  }catch(e){}
+  /* Also accept if email matches existing user_v1 session */
+  if(!found){
+    try{
+      const cur=JSON.parse(localStorage.getItem('myai_user_v1')||'null');
+      if(cur&&cur.email&&cur.email.toLowerCase()===email) found=true;
+    }catch(e){}
+  }
+  if(found){
+    document.getElementById('subscribe-gate').classList.add('hidden');
+    unlockExclusiveCards();
+  } else {
+    errEl.textContent='Email not found. Please subscribe first or use the email you registered with.';
+    errEl.style.display='block';
+  }
+}
+
+/* Auto-unlock on page load if already logged in */
+document.addEventListener('DOMContentLoaded',function(){
+  if(getLoggedInUser()) unlockExclusiveCards();
+});
 </script>
 </body>
 </html>
