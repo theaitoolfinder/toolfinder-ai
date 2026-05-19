@@ -96,7 +96,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .row{padding:30px 0 8px}.row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;gap:10px}
 .row-head h2{margin:0;font-size:22px;letter-spacing:-.01em;font-weight:700;color:var(--text)}
 .row-head .more{color:var(--text-dim);font-size:13px;white-space:nowrap}
-.scroll{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:16px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.scroll{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:16px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x proximity;scrollbar-width:thin;-webkit-overflow-scrolling:touch;will-change:scroll-position}
 .scroll::-webkit-scrollbar{height:6px}.scroll::-webkit-scrollbar-thumb{background:rgba(79,70,229,.2);border-radius:8px}
 .card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;scroll-snap-align:start;transition:transform .18s,border-color .18s,box-shadow .18s;box-shadow:var(--shadow)}
 .card:hover{transform:translateY(-3px);border-color:rgba(26,86,219,.22);box-shadow:var(--shadow-lg)}
@@ -153,12 +153,12 @@ footer a:hover{color:var(--primary)}
 /* ══════════════════════════════════════════════
    FULL DIRECTORY SECTION
 ══════════════════════════════════════════════ */
-.dir-section{margin:60px 0 0;padding:48px 0 0}
+.dir-section{margin:60px 0 0;padding:48px 0 60px}
 .dir-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
 .dir-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
 .dir-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
 .dir-sub{color:var(--text-2);font-size:14.5px;margin:0}
-.dir-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.dir-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;padding:0 4px}
 .dir-tab{padding:7px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .14s;font-weight:500}
 .dir-tab:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 .dir-tab.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600}
@@ -816,12 +816,41 @@ const LENSES={
       {group:"Freelance & Services",items:["Freelance Designer","Freelance Writer","SEO Consultant","Translator","Web Developer"]}
     ],
     get options(){return this.groups.flatMap(g=>g.items);},
+    /* Job-to-category mapping so every profession has relevant tools */
+    _catMap:{
+      "Data Scientist":["Analytics","Research","Coding"],
+      "DevOps Engineer":["Coding","Automation"],
+      "UX Designer":["Design"],
+      "Brand Manager":["Marketing","Design"],
+      "Digital Marketer":["Marketing","SEO"],
+      "Sales Professional":["Sales","Marketing"],
+      "Academic":["Research","Education"],
+      "Trainer":["Education"],
+      "Finance Professional":["Finance","Analytics"],
+      "HR Professional":["HR"],
+      "Project Manager":["Productivity","Automation"],
+      "Virtual Assistant":["Productivity","Automation"],
+      "Legal Professional":["Productivity","Writing"],
+      "Translator":["Writing"],
+      "Freelance Writer":["Writing","SEO"],
+      "Web Developer":["Coding","Design"],
+    },
     rowsFor(v){
       const direct=TOOLS.map((_,i)=>i).filter(i=>{const t=tool(i);return t&&t.jobs.includes(v);});
       const rows=[];
-      if(direct.length)rows.push({title:"Top picks for "+v,filter:t=>t.jobs.includes(v)});
-      rows.push({title:"Trending right now",filter:t=>t.trending>=80});
-      rows.push({title:"Verified tools",filter:t=>t.verified});
+      if(direct.length){
+        rows.push({title:"Top picks for "+v,filter:t=>t.jobs.includes(v)});
+      } else {
+        /* Fallback: show tools from related categories */
+        const cats=this._catMap[v]||[];
+        if(cats.length){
+          rows.push({title:"Recommended tools for "+v,filter:t=>cats.includes(t.cat)});
+        } else {
+          rows.push({title:"Popular tools for "+v,filter:t=>t.trending>=80});
+        }
+      }
+      rows.push({title:"Trending this week",filter:t=>t.trending>=80});
+      rows.push({title:"Verified & trusted",filter:t=>t.verified});
       return rows;
     }
   },
@@ -951,7 +980,13 @@ document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",
 function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){if(l==='all')setFilter('all');else{setFilter(l,LENSES[l].options.includes(v)?v:LENSES[l].options[0]);}}}
 window.dataLayer=window.dataLayer||[];
 function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event:"tool_click",tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),destination:activeUrl(t)});try{const c=JSON.parse(localStorage.getItem("myai_clicks_v1")||"{}");c[t.name]=(c[t.name]||0)+1;localStorage.setItem("myai_clicks_v1",JSON.stringify(c));}catch(e){}}
-function renderStats(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));document.getElementById("stat-tools").textContent=v.length+"+";document.getElementById("stat-cats").textContent=cats.size;}
+function renderStats(){
+  const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));
+  /* Round down to nearest 50 so "300+" is shown when we have 250-299 */
+  const rounded=Math.floor(v.length/50)*50;
+  document.getElementById("stat-tools").textContent=rounded+"+";
+  document.getElementById("stat-cats").textContent=cats.size;
+}
 function renderLdJson(){const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean);try{document.getElementById("ldjson").textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"AI Tools curated by MyAI ToolsFinder","numberOfItems":v.length,"itemListElement":v.map((t,i)=>({"@type":"ListItem","position":i+1,"item":{"@type":"SoftwareApplication","name":t.name,"applicationCategory":t.cat,"description":t.tag,"url":t.url}}))});}catch(e){}}
 function toggleMenu(){const m=document.getElementById("mob-menu"),o=document.getElementById("mob-overlay"),b=document.getElementById("burger");m.classList.toggle("open");o.classList.toggle("open");b.classList.toggle("open");}
 
