@@ -8,17 +8,16 @@ Schedule (Philippine Time, PHT = UTC+8):
   Friday   ×5     Exclusive articles → deep dive / workflow / strategy
 
 Sources rotated to avoid repetition:
-  hackernews  · reddit  · devto  · venturebeat  · verge  · techcrunch
+  hackernews · reddit · devto · venturebeat · verge · techcrunch
 
 Article types rotated (tracked in article_log.json, 14-day dedup window):
   comparison · roundup · tutorial · news_digest · deep_dive · workflow · strategy
 
-SETUP:
-  No required setup — works without an API key (template fallback).
-  Add ANTHROPIC_API_KEY to GitHub Actions secrets for Claude-written articles.
+Every article: minimum 1,200 words. Topics + angles tracked per article to
+prevent ANY repetition across title, topic, tool pair, and angle.
 """
 
-import os, re, sys, json, random, textwrap, requests
+import os, re, sys, json, random, textwrap, requests, hashlib
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -65,109 +64,167 @@ TOOLS = [
 
 # ── Hero images — 20 varied tech/AI visuals ───────────────────────────────────
 HERO_IMAGES = [
-    "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",   # AI abstract blue
-    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",   # neural network
-    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",   # chat interface
-    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85&auto=format&fit=crop",   # robot head
-    "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=85&auto=format&fit=crop",      # code on screen
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",   # circuit board
-    "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=85&auto=format&fit=crop",   # futuristic data
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=85&auto=format&fit=crop",   # tech workspace
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",   # globe / data
-    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",   # matrix code
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",      # cybersecurity
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",   # server room
-    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",   # smartphone AI
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&auto=format&fit=crop",   # person + tech
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",      # dark keyboard
-    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",   # abstract purple
-    "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",   # AI chip
-    "https://images.unsplash.com/photo-1655720831417-c7f2c4e9a028?w=800&q=85&auto=format&fit=crop",   # data flow
-    "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=85&auto=format&fit=crop",   # neon AI art
-    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",   # laptop + coffee
+    "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1655720831417-c7f2c4e9a028?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
 ]
 
 def pick_hero(index_offset=0):
-    """Rotate hero images by day-of-year + slot offset — never the same image twice in a row."""
     day_num     = NOW.timetuple().tm_yday + index_offset
     slot_offset = {"lunch": 0, "dinner": 7, "exclusive": 13}.get(SLOT, 0)
     return HERO_IMAGES[(day_num + slot_offset) % len(HERO_IMAGES)]
 
-# ── Article type definitions ───────────────────────────────────────────────────
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ARTICLE TYPES  — all require ≥1,200 words from Claude
+# ══════════════════════════════════════════════════════════════════════════════
+
 ARTICLE_TYPES = {
     "comparison": {
         "label": "Comparison", "cat": "comparison review", "read_time": "8 min",
-        "prompt": """Write a ~700-word AI tools COMPARISON article.
-Structure:
-- Engaging intro (why this comparison matters right now, 2–3 sentences)
-- For each tool: <h3> tool name → key strengths, pricing, ideal user (3–4 sentences)
-- Head-to-head verdict: one clear winner per use case
-- Final recommendation: who should pick which tool
-Use <h3> for tool/section headings, <p> for paragraphs, <ul><li> for lists.
-Pick 2–3 real AI tools to compare — choose from the provided context or our tools list.""",
+        "prompt": """Write a THOROUGH AI TOOLS COMPARISON article of AT LEAST 1,200 words.
+
+REQUIRED STRUCTURE (do not skip sections):
+1. Intro (150+ words): Hook readers with WHY this comparison matters RIGHT NOW — a specific real-world scenario where a wrong tool choice costs time or money. Paint the problem vividly.
+2. Quick Verdict Box: A 3-row bullet summary (<ul>) — Best for X, Best for Y, Best if budget-tight. Put it early so skimmers get value.
+3. Tool A Deep Dive (<h3>): 200+ words covering — core strengths (with a specific use-case example), weaknesses you've actually noticed, pricing tiers and what each unlocks, who the ideal user is.
+4. Tool B Deep Dive (<h3>): Same depth as Tool A.
+5. Tool C (optional but preferred if relevant): 150+ words.
+6. Head-to-Head Breakdown (<h3>): Compare across 4–5 dimensions (speed, output quality, price/value, learning curve, integrations). Use a plain-text comparison grid or <ul> with ✓/✗.
+7. Real-World Use Cases (<h3>): 2–3 specific scenarios showing which tool wins and why.
+8. Final Verdict (<h3>): Clear, opinionated recommendation. Name ONE winner for most users. Acknowledge who should choose the alternative.
+9. FAQ (<h3>): 3 questions a reader would actually Google before buying.
+
+STYLE: Conversational but authoritative. Cite real pricing. Mention specific features by name. No vague superlatives.""",
     },
     "roundup": {
-        "label": "Guide", "cat": "guide review", "read_time": "7 min",
-        "prompt": """Write a ~650-word AI tools BEST-OF ROUNDUP.
-Structure:
-- Intro: who this is for and how we selected these tools (2–3 sentences)
-- 5–7 tools, each as <h3> tool name → one-line description, key feature, pricing, best for
-- Editor's Pick: one clear top recommendation with a reason
-- Closing: the single next action the reader should take
-Use <h3> for tool names, <p> for body text, <ul><li> for feature lists.""",
+        "label": "Guide", "cat": "guide review", "read_time": "8 min",
+        "prompt": """Write a COMPREHENSIVE BEST-OF ROUNDUP article of AT LEAST 1,200 words.
+
+REQUIRED STRUCTURE:
+1. Intro (100+ words): Who this list is for, what criteria you used to select tools, and one surprising finding from your research.
+2. Selection Criteria (<h3>): 4–5 criteria you used (accuracy, pricing, ease of use, integrations, support). Brief but specific.
+3. Tools 1–8 (each as its own <h3>): Per tool — 120+ words covering: what it does uniquely, the ONE killer feature, real pricing, best-fit user, one limitation. Be honest about weaknesses.
+4. Comparison at a Glance (<h3>): A <ul> grid — each tool, its price tier, and its #1 use case.
+5. How to Choose (<h3>): 3–4 decision paths: "If you X, pick Y because Z." Make this opinionated.
+6. Editor's Pick (<h3>): One clear winner with a 100-word explanation of why it beats everything else for most readers.
+7. Alternatives Worth Watching (<h3>): 2–3 tools that didn't make the main list but deserve mention.
+8. Closing (60+ words): The #1 action to take today — not "try them all" but a specific starting point.
+
+STYLE: Direct. Opinionated. Cite real feature names and real pricing.""",
     },
     "tutorial": {
-        "label": "Tutorial", "cat": "guide tutorial", "read_time": "6 min",
-        "prompt": """Write a ~600-word practical HOW-TO TUTORIAL.
-Structure:
-- Problem hook: state the pain in 1–2 sentences
-- Step-by-step: 4–6 numbered <h3> steps, each specific and actionable
-- Recommended tools for each step (from our list)
-- Quick wins: 3 things the reader can do TODAY (<ul>)
-- Closing: the #1 first action to take
-Keep every step concrete — no vague advice.""",
+        "label": "Tutorial", "cat": "guide tutorial", "read_time": "9 min",
+        "prompt": """Write a DETAILED STEP-BY-STEP TUTORIAL of AT LEAST 1,200 words.
+
+REQUIRED STRUCTURE:
+1. Problem Hook (100+ words): Describe the before-state — what this task looks like WITHOUT the AI workflow. Make readers feel the pain: time wasted, quality lost, frustration.
+2. What You'll Achieve (50+ words): After-state. Be specific — "In 45 minutes you'll have X, Y, Z."
+3. What You'll Need (<h3>): Tools, accounts, any prerequisites. Link by name.
+4. Steps 1–6 (<h3> per step, 150+ words each): Each step must include —
+   a) The exact action to take  b) WHY this step matters  c) The specific tool/prompt to use
+   d) What the output should look like  e) Common mistake to avoid at this step
+5. Sample Prompts (<h3>): At least 3 copy-pasteable prompts in <em> tags, with explanation of why each word choice matters.
+6. Time & Cost Breakdown (<h3>): Realistic estimate of how long each step takes and what it costs.
+7. Troubleshooting (<h3>): 3 things that commonly go wrong and exact fixes.
+8. Quick-Win Checklist (<h3>): 5 things the reader can do TODAY to start, in <ul> format.
+9. Next Steps (60+ words): Where to go deeper once they've completed this workflow.
+
+STYLE: Precise. Numbered steps. No vague advice — every sentence should be actionable.""",
     },
     "news_digest": {
-        "label": "Daily Digest", "cat": "review guide", "read_time": "4 min",
-        "prompt": """Write a ~550-word AI NEWS DIGEST based on the trending stories provided.
-Structure:
-- Opening hook: 1–2 punchy sentences on why right now matters for AI
-- 3–4 story sections: <h3> headline → 2-sentence summary → 1 practical takeaway for the reader
-- "Bottom Line" section: one clear action this week
-Tone: conversational, direct, zero fluff — these are busy professionals.""",
+        "label": "Daily Digest", "cat": "review guide", "read_time": "6 min",
+        "prompt": """Write an AI NEWS DIGEST article of AT LEAST 1,200 words.
+
+REQUIRED STRUCTURE:
+1. Opening Context (150+ words): Set the scene for why THIS WEEK specifically is important for AI. What's the broader shift happening? What does it mean for everyday AI users — solopreneurs, creators, freelancers?
+2. Story 1 (<h3> — most important): 200+ words. Explain the story, why it matters, and the SPECIFIC practical impact on someone using AI tools today. Include at least one concrete example.
+3. Story 2 (<h3>): 180+ words. Same depth. Different angle.
+4. Story 3 (<h3>): 180+ words. Focus on a tool update, price change, or workflow improvement.
+5. Story 4 (<h3> — optional): A "under the radar" story that most people missed.
+6. What This Means for You (<h3>, 150+ words): Synthesize the week's themes into 3 actionable takeaways. Not generic — specific to your audience of AI power users.
+7. Tool Spotlight (<h3>, 100+ words): One specific tool that's relevant to this week's news. What it does, what's new, and whether it's worth trying.
+8. This Week's Action (<h3>): One specific thing to do this week based on everything above. Be directive.
+9. Looking Ahead (60+ words): What to watch next week or in the coming month.
+
+STYLE: Journalistic but warm. Direct. Zero hype. Treat readers as smart professionals.""",
     },
     "deep_dive": {
-        "label": "Deep Dive", "cat": "guide deep-dive", "read_time": "12 min",
-        "prompt": """Write a ~900-word EXCLUSIVE IN-DEPTH GUIDE (premium subscriber content).
-Structure:
-- Strong problem/opportunity intro (3–4 sentences — make the reader feel the stakes)
-- 4–5 detailed sections with <h3> headings, real examples, specific tools, and hard numbers
-- Include actual estimates: time saved, cost difference, ROI where relevant
-- Implementation checklist: 5 specific, sequential action items (<ul>)
-- Closing: first, second, third thing to do — no vague "get started" advice
-This is premium content: go significantly deeper than a standard article. Be specific and practical.""",
+        "label": "Deep Dive", "cat": "guide deep-dive", "read_time": "14 min",
+        "prompt": """Write an EXCLUSIVE IN-DEPTH GUIDE of AT LEAST 1,500 words (premium subscriber content).
+
+REQUIRED STRUCTURE:
+1. Opening Stakes (200+ words): Don't ease in — open with a specific, startling fact or scenario that makes the reader feel the urgency. What does ignoring this cost in real dollars or real hours? Make them feel the opportunity they're missing.
+2. The Core Insight (<h3>, 150+ words): The central idea most people get wrong. Explain the misconception first, then the correction.
+3. Section 1 (<h3>, 200+ words): Deep dive with real examples, specific tool names, real pricing, actual workflows. Include a specific case study or scenario.
+4. Section 2 (<h3>, 200+ words): Goes deeper. Include hard numbers where possible — hours saved, percentage improvements, cost comparisons.
+5. Section 3 (<h3>, 200+ words): Implementation detail. What does this actually look like in practice?
+6. Section 4 (<h3>, 150+ words): Edge cases, limitations, and when this approach doesn't work.
+7. Advanced Tips (<h3>): 4–5 power-user techniques in <ul> format that 90% of people don't know.
+8. The Economics (<h3>, 100+ words): Break down the ROI. What does this cost vs. what does it save?
+9. Implementation Roadmap (<h3>): Week 1, Week 2, Week 3, Week 4 action plan in <ul>.
+10. Pitfalls to Avoid (<h3>): 4 mistakes that kill results, each explained with WHY it fails.
+11. Closing (100+ words): First action, second action, third action. No "get started" vagueness.
+
+STYLE: Premium. Expert. Specific. This reader is paying for depth — deliver it.""",
     },
     "workflow": {
-        "label": "Workflow", "cat": "guide workflow", "read_time": "10 min",
-        "prompt": """Write a ~800-word EXCLUSIVE WORKFLOW GUIDE (premium subscriber content).
-Structure:
-- Intro: paint the before/after picture — what this workflow changes
-- 5–7 workflow steps as <h3> headings, each with: specific tool, how to use it, time estimate
-- Exact prompt templates in <em> tags for key AI tools (at least 3 prompts)
-- Common mistakes section: 3 mistakes people make and how to avoid them
-- Getting started: first 3 actions, each taking <10 minutes
-This is premium content: include copy-pasteable prompts and real workflow detail.""",
+        "label": "Workflow", "cat": "guide workflow", "read_time": "12 min",
+        "prompt": """Write an EXCLUSIVE WORKFLOW GUIDE of AT LEAST 1,400 words (premium subscriber content).
+
+REQUIRED STRUCTURE:
+1. Before/After Hook (150+ words): Before — painful, slow, expensive. After — fast, automated, scalable. Make the contrast visceral and specific.
+2. Workflow Overview (<h3>): The full workflow in one paragraph + a simple numbered list of all steps.
+3. Step 1–7 (<h3> per step, 150+ words each): For each step —
+   a) The specific tool and WHY this tool for this step (not just any AI)
+   b) Exact configuration/settings to use
+   c) Copy-pasteable prompt template in <em> tags
+   d) What the output looks like + what to look for
+   e) Time estimate and how to speed it up further
+4. Prompt Templates Section (<h3>): Collect all prompts in one place. At least 5 complete, copy-pasteable prompts with explanations.
+5. Integration Glue (<h3>, 100+ words): How the steps connect — what passes between tools, what format works best.
+6. Time + Cost Reality Check (<h3>): Honest breakdown: how long does this really take? What does it cost per month?
+7. Common Mistakes (<h3>): 4 mistakes with specific fixes, not generic warnings.
+8. Scaling It Up (<h3>, 100+ words): How to handle 2×, 5×, 10× the volume.
+9. Your First Week (<h3>): Day 1, Day 3, Day 7 milestones.
+
+STYLE: Practical. Prescriptive. Every section gives the reader something they can use immediately.""",
     },
     "strategy": {
-        "label": "Strategy", "cat": "guide strategy", "read_time": "10 min",
-        "prompt": """Write a ~850-word EXCLUSIVE STRATEGIC GUIDE (premium subscriber content).
-Structure:
-- Market context: what has changed and why it matters NOW (not general AI talk)
-- Core insight: the key strategy in 3–4 main <h3> sections
-- Implementation: step-by-step with specific tools and pricing
-- 30-day action plan: week 1, week 2, week 3, week 4 (<ul>)
-- Pitfalls: 3 common mistakes that kill results
-This is premium content: give real strategic depth, not surface-level advice.""",
+        "label": "Strategy", "cat": "guide strategy", "read_time": "12 min",
+        "prompt": """Write an EXCLUSIVE STRATEGIC GUIDE of AT LEAST 1,400 words (premium subscriber content).
+
+REQUIRED STRUCTURE:
+1. The Shift (200+ words): What has fundamentally changed in the last 6–12 months that makes this strategy possible NOW? Ground it in specific developments — model capabilities, price drops, new tools, market changes.
+2. Why Most People Get It Wrong (<h3>, 150+ words): The common approach and why it fails. Be direct.
+3. The Core Strategy (<h3>, 200+ words): The central approach explained clearly, with a real-world analogy that makes it click.
+4. Implementation: Phase 1 (<h3>, 150+ words): First 30 days. Specific tools, specific steps, specific outcomes to measure.
+5. Implementation: Phase 2 (<h3>, 150+ words): Days 31–60. What to add, what to optimize.
+6. Implementation: Phase 3 (<h3>, 100+ words): Days 61–90. Scale and systematize.
+7. The Stack (<h3>): Exact tools for this strategy with pricing and what each does in the system.
+8. Metrics That Matter (<h3>, 100+ words): What to measure, what numbers indicate success, what's a red flag.
+9. 30-Day Sprint Plan (<h3>): Week 1, Week 2, Week 3, Week 4 — specific actions, not themes.
+10. What Can Go Wrong (<h3>): 4 failure modes with specific prevention tactics.
+11. The Unfair Advantage (100+ words): Why this approach, done properly, creates a compounding advantage competitors can't easily copy.
+
+STYLE: Strategic but grounded. Every point needs supporting logic, not just assertion.""",
     },
 }
 
@@ -178,7 +235,7 @@ SLOT_TYPE_PREFS = {
     "exclusive": ["deep_dive", "workflow", "strategy", "comparison", "roundup", "tutorial"],
 }
 
-# Title bank for non-news types (avoids needing Claude just for the title)
+# ── Expanded title banks ───────────────────────────────────────────────────────
 TITLE_BANK = {
     "comparison": [
         ("ChatGPT", "Claude"),
@@ -196,95 +253,179 @@ TITLE_BANK = {
         ("Claude", "Gemini"),
         ("Bolt.new", "Lovable"),
         ("DeepSeek", "ChatGPT"),
+        ("Runway", "Descript"),
+        ("Motion", "Notion AI"),
+        ("Beehiiv", "ConvertKit"),
+        ("Apollo.io", "Clay"),
+        ("Semrush", "Ahrefs"),
+        ("n8n", "Zapier"),
+        ("Replit AI", "Cursor"),
+        ("Suno", "ElevenLabs"),
+        ("Canva AI", "Adobe Firefly"),
+        ("Instantly AI", "Apollo.io"),
+        ("Gamma", "Beautiful.ai"),
+        ("OpusClip", "Descript"),
+        ("HubSpot AI", "Instantly AI"),
+        ("Fireflies.ai", "Otter.ai"),
+        ("Leonardo.ai", "Midjourney"),
     ],
     "roundup": [
-        ("AI Tools", "Solopreneurs"),
-        ("Free AI Tools", "Anyone"),
-        ("AI Coding Tools", "Developers"),
         ("AI Writing Tools", "Content Creators"),
-        ("AI Tools", "Students"),
+        ("Free AI Tools", "Solopreneurs"),
+        ("AI Coding Tools", "Developers"),
         ("AI Image Generators", "Designers"),
         ("AI Video Tools", "Creators"),
         ("AI Productivity Tools", "Remote Workers"),
         ("AI Marketing Tools", "Marketers"),
         ("AI SEO Tools", "Bloggers"),
         ("AI Automation Tools", "Freelancers"),
-        ("AI Tools", "Founders"),
+        ("AI Research Tools", "Researchers"),
+        ("AI Meeting Tools", "Managers"),
+        ("AI Audio Tools", "Podcasters"),
+        ("AI Sales Tools", "Sales Teams"),
+        ("AI Design Tools", "Non-Designers"),
+        ("AI Email Tools", "Founders"),
+        ("AI Social Media Tools", "Influencers"),
+        ("AI Analytics Tools", "Data Teams"),
+        ("AI Customer Support Tools", "Startups"),
+        ("AI Tools", "Students"),
+        ("AI Tools", "Educators"),
+        ("AI Finance Tools", "Freelancers"),
+        ("AI Legal Tools", "Small Business Owners"),
+        ("AI HR Tools", "People Teams"),
+        ("AI Presentation Tools", "Consultants"),
+        ("Affordable AI Tools", "Budget-Conscious Creators"),
     ],
     "tutorial": [
-        "Build a Content Calendar with AI in Under an Hour",
-        "Automate Your Email Outreach with AI Tools",
-        "Create Professional Videos with AI — No Camera Needed",
-        "Write SEO Articles 10× Faster Using AI",
-        "Set Up AI Customer Support for Your Business",
-        "Build a Newsletter with AI Tools [Zero to First 1,000 Subs]",
-        "Generate Qualified Leads Using AI in 30 Minutes a Day",
-        "Repurpose One Blog Post Into 10 Pieces of Content with AI",
-        "Use AI to Research Competitors in 20 Minutes",
-        "Build Your First AI Automation Without Coding",
+        "How to Build a Full Content Calendar with AI in One Afternoon",
+        "The Step-by-Step AI Email Outreach System That Books 10+ Meetings a Week",
+        "Create Scroll-Stopping Videos with AI — Full Workflow, No Camera Needed",
+        "Write SEO Articles 10× Faster: The Exact AI Workflow",
+        "Set Up AI Customer Support That Handles 80% of Queries Automatically",
+        "Build a Newsletter from Zero to 1,000 Subscribers Using AI Tools",
+        "Generate Qualified Leads Every Day with AI in Under 30 Minutes",
+        "Turn One Piece of Content Into 20 with This AI Repurposing Workflow",
+        "Competitive Research in 20 Minutes: The AI Method That Beats Manual Work",
+        "Build Your First No-Code AI Automation (Step-by-Step for Beginners)",
+        "The AI Podcast Workflow: Record, Edit, Transcribe, Clip — All Automated",
+        "Create a Professional Brand Identity with AI for Under $50",
+        "Use AI to Write a Week of Social Media Posts in 60 Minutes",
+        "The AI-Powered Client Onboarding System for Freelancers",
+        "Build a Personal Knowledge Base with AI That Actually Saves You Time",
+        "How to Automate Your Weekly Report with AI in 4 Steps",
+        "Use AI to Proofread, Rewrite, and Improve Any Document in Minutes",
+        "The AI Research Workflow: Go from Question to Insight in 30 Minutes",
+        "Create a Professional Slide Deck with AI (Gamma + ChatGPT Method)",
+        "The AI Video Editing Workflow: From Raw Footage to Published in 2 Hours",
     ],
     "deep_dive": [
-        f"The Complete {YEAR} AI Stack for Solopreneurs: 12 Tools, Zero Fluff",
-        f"How to Replace a $5,000/mo Agency with 6 AI Tools in {YEAR}",
-        "ChatGPT Prompting Secrets: 20 Power Prompts for Content Creators",
-        "The AI Automation Playbook: How to Save 15+ Hours a Week",
-        f"Hidden AI Features Most Users Miss — and How to Use Them in {YEAR}",
-        "The Real Cost of AI Tools: What You Should Actually Be Paying",
-        "How Top 1% Creators Use AI: Inside Their Actual Workflows",
+        f"The Real {YEAR} AI Stack for Solopreneurs: 12 Tools, Zero Fluff, Real Results",
+        f"How to Cut Your Agency Bill in Half Using 6 AI Tools in {YEAR}",
+        "ChatGPT Power Prompts: 25 Templates That Actually Produce Great Output",
+        "The AI Automation Playbook: 15+ Hours Saved Per Week — Here's How",
+        f"Hidden AI Features Most Users Never Find — and How to Unlock Them in {YEAR}",
+        "The Real Cost of AI Subscriptions: What You Should Pay vs. What Most People Do",
+        "How Top Creators Use AI: Inside 5 Real Workflows (With Screenshots)",
+        "The Complete Guide to AI Agents: What They Are and How to Build One Today",
+        f"Context Windows, Models, and Pricing: The {YEAR} Buyer's Guide to AI APIs",
+        "How to Build an AI-Powered Business That Runs While You Sleep",
+        "The Truth About AI Writing: What It Can Do, What It Can't, and Where It Shines",
+        f"The Creator's AI Toolkit for {YEAR}: 20 Tools Ranked by ROI",
+        "AI Productivity Myths Debunked: What Actually Saves Time vs. What Wastes It",
+        f"Prompt Engineering for Real Work: The {YEAR} Practical Guide",
     ],
     "workflow": [
-        f"The 5-Tool AI Workflow That's Replacing Marketing Teams in {YEAR}",
-        "From Brief to Published: The AI Content Workflow That Takes 45 Minutes",
-        f"The Complete Freelancer AI Workflow: Save 20 Hours a Week",
-        "Morning AI Routine: The 30-Minute Setup That Powers Your Whole Day",
-        "How to Produce a Week of Content in One Afternoon Using AI",
-        "The AI Sales Workflow: From Lead to Close in Half the Time",
+        f"The 5-Tool AI Workflow That Replaced a Marketing Team in {YEAR}",
+        "From Brief to Published: The AI Content Workflow That Runs in 45 Minutes",
+        f"The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
+        "The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day",
+        "How to Produce an Entire Month of Content in One Weekend with AI",
+        "The AI Sales Workflow: Lead to Close in Half the Normal Time",
+        "The AI Customer Support Workflow: 200 Tickets a Day, One Person",
+        "The YouTube-to-Everything AI Workflow: One Video, 15 Pieces of Content",
+        "The AI Research Workflow That Replaces 4 Hours of Manual Work",
+        "Build a Weekly Newsletter in 90 Minutes Using This AI Workflow",
+        "The AI Hiring Workflow: Screen 100 Applicants in an Afternoon",
+        "The AI Bookkeeping Workflow for Freelancers (No Accountant Needed)",
+        f"The {YEAR} Content Repurposing Workflow: One Post, Every Platform",
+        "The AI Client-Getting Workflow: From Cold Outreach to Signed Contract",
     ],
     "strategy": [
-        f"From $10K to $100K/mo: The AI Business Strategy That Works in {YEAR}",
-        f"Why Most People Use AI Wrong — and the Right Strategy for {YEAR}",
-        "The Unfair Advantage: How AI Lets One Person Do the Work of Five",
-        f"The Creator Economy AI Playbook for {YEAR}: Build Once, Earn Forever",
-        "How to Position Your Business for the AI-First Era",
+        f"From $10K to $100K: The AI Business Strategy That Scales in {YEAR}",
+        f"Why 95% of People Use AI Wrong — and the Right Approach for {YEAR}",
+        "The Unfair Advantage: How AI Lets One Person Outcompete a 10-Person Team",
+        f"The Creator Economy AI Playbook for {YEAR}: Build Once, Earn Repeatedly",
+        f"How to Position Your Business for the AI-First Economy in {YEAR}",
+        "The AI Pricing Strategy: How to Charge More by Delivering Faster with AI",
+        f"The No-Code AI Business Blueprint for {YEAR}: Build Without Engineers",
+        "How to Build a Moat Around Your Business Using AI Before Competitors Do",
+        f"The Solopreneur's AI Competitive Strategy for {YEAR}",
+        "How to Use AI to Enter a New Market 10× Faster Than Traditional Methods",
+        f"The AI-First Agency Model: How to Run a $500K Agency with 2 People in {YEAR}",
+        "The Long Game: How to Build AI Into Your Business as a Lasting Advantage",
     ],
 }
 
 def build_title(article_type, log):
-    """Build a title that hasn't been used in the last 30 articles."""
-    recent_titles = {e.get("title", "") for e in log.get("generated", [])[-30:]}
+    """Build a unique title not used in the last 45 articles."""
+    recent = log.get("generated", [])[-45:]
+    recent_titles   = {e.get("title", "").lower() for e in recent}
+    recent_pairs    = {e.get("pair", "") for e in recent}
+    recent_topics   = {e.get("topic", "") for e in recent}
 
     if article_type == "news_digest":
         slot_label = "Lunch Edition" if SLOT == "lunch" else "Evening Edition"
         return f"AI Tools Digest — {DATE_STR} ({slot_label})"
 
     if article_type == "comparison":
-        pairs = [p for p in TITLE_BANK["comparison"]
-                 if f"{p[0]} vs {p[1]}" not in " ".join(recent_titles)]
-        if not pairs:
-            pairs = TITLE_BANK["comparison"]
-        a, b = random.choice(pairs)
+        unused = [
+            p for p in TITLE_BANK["comparison"]
+            if f"{p[0]} vs {p[1]}" not in recent_pairs
+            and f"{p[0]}".lower() not in " ".join(recent_topics)
+        ]
+        if not unused:
+            unused = TITLE_BANK["comparison"]
+        a, b = random.choice(unused)
         return f"{a} vs {b}: The Honest {YEAR} Verdict"
 
     if article_type == "roundup":
-        options = [o for o in TITLE_BANK["roundup"]
-                   if o[0] not in " ".join(recent_titles)]
-        if not options:
-            options = TITLE_BANK["roundup"]
-        cat, aud = random.choice(options)
-        n = random.choice([7, 8, 9, 10, 12])
-        return f"{n} Best {cat} for {aud} in {YEAR} — Ranked"
+        unused = [
+            o for o in TITLE_BANK["roundup"]
+            if o[0].lower() not in " ".join(recent_topics)
+        ]
+        if not unused:
+            unused = TITLE_BANK["roundup"]
+        cat, aud = random.choice(unused)
+        n = random.choice([7, 8, 9, 10, 11, 12])
+        return f"{n} Best {cat} for {aud} in {YEAR} — Ranked and Tested"
 
     if article_type == "tutorial":
-        opts = [t for t in TITLE_BANK["tutorial"] if t not in recent_titles]
-        if not opts:
-            opts = TITLE_BANK["tutorial"]
-        return random.choice(opts)
+        unused = [t for t in TITLE_BANK["tutorial"]
+                  if t.lower() not in recent_titles]
+        if not unused:
+            unused = TITLE_BANK["tutorial"]
+        return random.choice(unused)
 
-    bank = TITLE_BANK.get(article_type, [])
-    opts = [t for t in bank if t not in recent_titles]
-    if not opts:
-        opts = bank if bank else [f"The Ultimate AI Guide — {DATE_STR}"]
-    return random.choice(opts)
+    bank  = TITLE_BANK.get(article_type, [])
+    unused = [t for t in bank if t.lower() not in recent_titles]
+    if not unused:
+        unused = bank if bank else [f"The AI Advantage You're Not Using Yet — {DATE_STR}"]
+    return random.choice(unused)
+
+
+def extract_topic(title, article_type):
+    """Derive a short topic tag from the title for dedup tracking."""
+    clean = re.sub(r"[^\w\s]", "", title.lower())
+    words = clean.split()
+    stop  = {"the","a","an","and","or","of","for","in","to","vs","how","best",
+              "with","your","this","that","what","why","when","is","are","you",
+              "we","our","their","its","by","on","at","from","into","about","can",
+              "will","have","has","been","get","my","most","all","not","just",
+              "use","using","make","build","create","guide","review","ranked",
+              "tested","honest","verdict","complete","real","right","wrong","do",
+              "does","did","was","were","be","am","s","t","ve","ll","re","d"}
+    keywords = [w for w in words if w not in stop and len(w) > 3][:4]
+    return " ".join(keywords)
 
 
 # ── Log management ─────────────────────────────────────────────────────────────
@@ -298,15 +439,25 @@ def load_log():
 
 def save_log(log, entry):
     log.setdefault("generated", []).append(entry)
-    log["generated"] = log["generated"][-60:]    # keep last 60
+    log["generated"] = log["generated"][-60:]
     LOG_PATH.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
 
-def recent_values(log, key, n=6):
+def recent_values(log, key, n=8):
     return [e[key] for e in log.get("generated", [])[-n:] if key in e]
+
+def build_recent_summary(log):
+    """Build a plain-text summary of the last 10 articles to tell Claude what NOT to repeat."""
+    recent = log.get("generated", [])[-10:]
+    if not recent:
+        return "No previous articles yet."
+    lines = []
+    for e in recent:
+        lines.append(f"  • [{e.get('date','')}] {e.get('title','?')} (type: {e.get('type','?')})")
+    return "\n".join(lines)
 
 # ── Pick article type ──────────────────────────────────────────────────────────
 def pick_article_type(log):
-    recent = recent_values(log, "type", 4)
+    recent = recent_values(log, "type", 5)
     for t in SLOT_TYPE_PREFS[SLOT]:
         if t not in recent:
             return t
@@ -316,7 +467,7 @@ def pick_article_type(log):
 ALL_SOURCES = ["hackernews", "reddit", "devto", "venturebeat", "verge", "techcrunch"]
 
 def pick_source(log):
-    recent = recent_values(log, "source", 3)
+    recent = recent_values(log, "source", 4)
     available = [s for s in ALL_SOURCES if s not in recent]
     return random.choice(available if available else ALL_SOURCES)
 
@@ -349,20 +500,21 @@ def is_ai_story(title):
     tl = title.lower()
     return any(k in tl for k in AI_KW)
 
-def fetch_hackernews(n=7):
+def fetch_hackernews(n=8):
     stories, seen = [], set()
     queries = [
         "AI tools LLM GPT Claude Gemini automation",
         "OpenAI Anthropic Google DeepMind AI model release",
         "AI startup tools solopreneur productivity workflow",
+        "machine learning AI application product launch",
     ]
-    since = int((NOW - timedelta(hours=48)).timestamp())
-    for q in queries[:2]:
+    since = int((NOW - timedelta(hours=72)).timestamp())
+    for q in queries[:3]:
         try:
             url = (f"https://hn.algolia.com/api/v1/search"
                    f"?query={requests.utils.quote(q)}"
-                   f"&tags=story&numericFilters=created_at_i>{since},points>3"
-                   f"&hitsPerPage=25")
+                   f"&tags=story&numericFilters=created_at_i>{since},points>2"
+                   f"&hitsPerPage=30")
             hits = requests.get(url, timeout=12).json().get("hits", [])
             for h in hits:
                 oid = h.get("objectID", "")
@@ -381,12 +533,12 @@ def fetch_hackernews(n=7):
     print(f"[INFO] HN: {len(stories[:n])} stories", file=sys.stderr)
     return stories[:n]
 
-def fetch_reddit(n=7):
+def fetch_reddit(n=8):
     stories = []
-    subs = ["artificial", "MachineLearning", "ChatGPT", "singularity"]
-    for sub in subs[:3]:
+    subs = ["artificial", "MachineLearning", "ChatGPT", "singularity", "AItools"]
+    for sub in subs[:4]:
         try:
-            url = f"https://www.reddit.com/r/{sub}/hot.json?limit=20&t=week"
+            url = f"https://www.reddit.com/r/{sub}/hot.json?limit=25&t=week"
             posts = requests.get(url, headers=HDR, timeout=12).json()
             for item in posts.get("data", {}).get("children", []):
                 p = item.get("data", {})
@@ -405,22 +557,22 @@ def fetch_reddit(n=7):
     print(f"[INFO] Reddit: {len(stories[:n])} posts", file=sys.stderr)
     return stories[:n]
 
-def fetch_devto(n=7):
+def fetch_devto(n=8):
     stories = []
-    tags = ["ai", "artificialintelligence", "machinelearning", "chatgpt"]
-    for tag in tags[:3]:
+    tags = ["ai", "artificialintelligence", "machinelearning", "chatgpt", "llm"]
+    for tag in tags[:4]:
         try:
-            url = f"https://dev.to/api/articles?tag={tag}&per_page=8&top=1"
+            url = f"https://dev.to/api/articles?tag={tag}&per_page=10&top=1"
             items = requests.get(url, headers=HDR, timeout=12).json()
             for item in items:
                 t = item.get("title", "")
-                if is_ai_story(t) or tag in ("ai", "chatgpt"):
+                if is_ai_story(t) or tag in ("ai", "chatgpt", "llm"):
                     stories.append({
                         "title": t,
                         "url": item.get("url", ""),
                         "points": item.get("positive_reactions_count", 0),
                         "comments": item.get("comments_count", 0),
-                        "excerpt": re.sub(r"<[^>]+>", "", item.get("description") or "")[:200],
+                        "excerpt": re.sub(r"<[^>]+>", "", item.get("description") or "")[:250],
                         "source_label": "DEV.to",
                     })
         except Exception as e:
@@ -435,14 +587,14 @@ RSS_FEEDS = {
     "techcrunch":  ("https://techcrunch.com/category/artificial-intelligence/feed/", "TechCrunch"),
 }
 
-def fetch_rss(source_key, n=7):
+def fetch_rss(source_key, n=8):
     feed_url, label = RSS_FEEDS[source_key]
     stories = []
     try:
         r = requests.get(feed_url, headers=HDR, timeout=15)
         r.raise_for_status()
         root = ET.fromstring(r.content)
-        for item in root.findall(".//item")[:20]:
+        for item in root.findall(".//item")[:25]:
             title_el = item.find("title")
             link_el  = item.find("link")
             desc_el  = item.find("description")
@@ -450,7 +602,7 @@ def fetch_rss(source_key, n=7):
                 continue
             title = re.sub(r"<[^>]+>", "", (title_el.text or "")).strip()
             link  = (link_el.text or "").strip()
-            desc  = re.sub(r"<[^>]+>|\s+", " ", (desc_el.text or "")).strip()[:200] if desc_el is not None else ""
+            desc  = re.sub(r"<[^>]+>|\s+", " ", (desc_el.text or "")).strip()[:250] if desc_el is not None else ""
             if not title or not link:
                 continue
             stories.append({
@@ -478,22 +630,26 @@ def fetch_stories(source_name):
         return fetch_rss(source_name)
     return fetch_hackernews()
 
-def ensure_stories(stories, min_n=4):
-    """Supplement from HN if a source returned too few results."""
+def ensure_stories(stories, min_n=5):
+    """Supplement from multiple sources if primary returned too few."""
     if len(stories) >= min_n:
         return stories
-    print(f"[WARN] Only {len(stories)} stories — supplementing from HN", file=sys.stderr)
+    print(f"[WARN] Only {len(stories)} stories — supplementing", file=sys.stderr)
     seen  = {s["title"] for s in stories}
     extra = [s for s in fetch_hackernews() if s["title"] not in seen]
-    return (stories + extra)[:max(min_n, 6)]
+    result = (stories + extra)
+    if len(result) < min_n:
+        extra2 = [s for s in fetch_reddit() if s["title"] not in seen]
+        result = (result + extra2)
+    return result[:max(min_n, 6)]
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ARTICLE GENERATION
 # ══════════════════════════════════════════════════════════════════════════════
 
-def generate_with_claude(stories, article_type, title):
-    """Use Anthropic Claude to write a high-quality article body."""
+def generate_with_claude(stories, article_type, title, log):
+    """Use Anthropic Claude to write a high-quality 1,200+ word article body."""
     try:
         import anthropic
     except ImportError:
@@ -501,55 +657,94 @@ def generate_with_claude(stories, article_type, title):
     if not ANTHROPIC_API_KEY:
         return None
 
-    type_cfg    = ARTICLE_TYPES[article_type]
-    tools_pick  = ", ".join(random.sample(TOOLS, min(22, len(TOOLS))))
-    is_excl     = SLOT == "exclusive"
-    excl_note   = ("\n\nIMPORTANT: This is EXCLUSIVE subscriber-only content. "
-                   "Go significantly deeper, include specific prompts/examples, "
-                   "and be more detailed than a typical article.") if is_excl else ""
+    type_cfg       = ARTICLE_TYPES[article_type]
+    tools_pick     = ", ".join(random.sample(TOOLS, min(25, len(TOOLS))))
+    is_excl        = SLOT == "exclusive"
+    recent_summary = build_recent_summary(log)
 
     headlines = "\n".join(
-        f"  {i+1}. [{s.get('source_label','?')}] {s['title']} "
-        f"({s.get('points',0)} engagements)"
-        for i, s in enumerate(stories[:6])
+        f"  {i+1}. [{s.get('source_label','?')}] {s['title']}"
+        + (f"\n     Excerpt: {s['excerpt'][:180]}" if s.get("excerpt") else "")
+        for i, s in enumerate(stories[:7])
     )
 
+    excl_note = ""
+    if is_excl:
+        excl_note = (
+            "\n\nIMPORTANT — EXCLUSIVE SUBSCRIBER CONTENT: "
+            "This article is behind a paywall for paying subscribers. "
+            "Go significantly deeper than any free article would. Include specific prompts, "
+            "real numbers, step-by-step implementation, and insider insights. "
+            "Subscribers expect premium depth — deliver it."
+        )
+
     prompt = textwrap.dedent(f"""
-        You are a senior writer for MyAI ToolsFinder — an AI tools directory for
-        solopreneurs, freelancers and creators who use AI daily.
+        You are the lead writer for MyAI ToolsFinder — an AI tools directory trusted by
+        solopreneurs, freelancers, content creators, and professionals who use AI every day.
 
         TODAY: {DATE_STR}
         ARTICLE TYPE: {article_type.upper()}
         ARTICLE TITLE: {title}
         {excl_note}
 
-        TRENDING SOURCES (use for inspiration and grounding):
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        CRITICAL REQUIREMENT — READ FIRST:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        Your article MUST be AT LEAST 1,200 words (1,400+ for exclusive content).
+        Short articles will be rejected. Count your words before finishing.
+        Every section in the structure below is MANDATORY — do not skip any.
+
+        NON-REPETITION RULE:
+        The following articles were recently published — you MUST write about a
+        COMPLETELY DIFFERENT angle, topic, or approach. DO NOT repeat any theme,
+        example, or key point from these recent articles:
+        {recent_summary}
+
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        TRENDING CONTEXT (use for grounding and inspiration):
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         {headlines}
 
-        WRITING INSTRUCTIONS:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        WRITING INSTRUCTIONS FOR THIS ARTICLE TYPE:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         {type_cfg['prompt']}
 
-        STYLE RULES:
-        - Tone: conversational, honest, practical — never hype-y or click-bait
-        - Naturally mention 3–5 tools where genuinely relevant (from: {tools_pick})
-        - HTML only: <p>, <h3>, <ul>, <li>, <strong>, <em>, <a href="...">
-        - NO h1, h2, html, head, body, nav, script or structural tags
-        - Every paragraph must be actionable — no filler sentences
-        - Ground everything in real AI industry knowledge
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        STYLE RULES (non-negotiable):
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        - Tone: Conversational, honest, practical. Confident but not arrogant.
+        - Voice: Write like a knowledgeable friend, not a marketing brochure.
+        - Naturally mention 4–6 specific tools where genuinely relevant. Use: {tools_pick}
+        - HTML ONLY: use <p>, <h3>, <ul>, <li>, <strong>, <em>, <a href="...">.
+        - NEVER use: h1, h2, html, head, body, nav, script, style, or layout tags.
+        - Every paragraph must move the reader forward — zero filler sentences.
+        - Include at least ONE specific example, case study, or scenario with real detail.
+        - Use real pricing where you know it. Estimate ranges where you don't.
+        - Be opinionated — readers want recommendations, not "it depends" answers.
+        - End with specific next steps, not vague encouragement.
 
-        Return ONLY the article body HTML. No preamble, no markdown.
+        Return ONLY the article body HTML. No preamble, no markdown, no explanation.
+        Start directly with the first <p> tag of the article body.
     """).strip()
 
     try:
         client  = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-        max_tok = 2400 if is_excl else 1900
+        # Higher token limits ensure full 1,200+ word articles
+        max_tok = 5000 if is_excl else 4000
         msg = client.messages.create(
             model="claude-opus-4-5",
             max_tokens=max_tok,
             messages=[{"role": "user", "content": prompt}]
         )
         text = msg.content[0].text.strip()
-        print(f"[OK] Claude generated article ({len(text)} chars)", file=sys.stderr)
+        word_count = len(re.sub(r"<[^>]+>", " ", text).split())
+        print(f"[OK] Claude generated ~{word_count} words ({len(text)} chars)", file=sys.stderr)
+
+        # Warn if too short — but still use it rather than falling back to template
+        if word_count < 800:
+            print(f"[WARN] Article may be too short ({word_count} words)", file=sys.stderr)
+
         return text
     except Exception as e:
         print(f"[WARN] Claude API error: {e}", file=sys.stderr)
@@ -557,35 +752,208 @@ def generate_with_claude(stories, article_type, title):
 
 
 def generate_fallback(stories, article_type, title):
-    """Structured template fallback when Claude API is unavailable."""
-    type_cfg = ARTICLE_TYPES[article_type]
-    html = (f"<p><strong>{title}</strong> — here's what's worth knowing right now, "
-            f"and exactly what you can do about it.</p>\n\n")
+    """
+    Rich template fallback when Claude API is unavailable.
+    Produces a structured, readable article of ~800+ words using story context.
+    """
+    type_cfg   = ARTICLE_TYPES[article_type]
+    tools_mentioned = random.sample(TOOLS, 6)
+    t1, t2, t3 = tools_mentioned[0], tools_mentioned[1], tools_mentioned[2]
+    t4, t5, t6 = tools_mentioned[3], tools_mentioned[4], tools_mentioned[5]
 
-    for i, s in enumerate(stories[:5], 1):
-        t   = s.get("title", "Untitled")
-        url = s.get("url", "")
-        src = s.get("source_label", "Source")
-        pts = s.get("points", 0)
-        exc = re.sub(r"<[^>]+>", "", s.get("excerpt", "")).strip()
+    # Intro paragraph — vary by article type
+    intros = {
+        "comparison": (
+            f"<p>Choosing the right AI tool isn't just a preference — it's a business decision "
+            f"that affects your output quality, your time, and your monthly bill. In this comparison, "
+            f"we break down <strong>{title.split(' vs ')[0] if ' vs ' in title else t1}</strong> and "
+            f"<strong>{title.split(' vs ')[1].split(':')[0] if ' vs ' in title else t2}</strong> "
+            f"across the dimensions that actually matter to working professionals: real output quality, "
+            f"pricing transparency, learning curve, and long-term value. We skip the marketing language "
+            f"and give you the honest verdict.</p>"
+        ),
+        "roundup": (
+            f"<p>The AI tools landscape changes fast — what was the best option three months ago may "
+            f"have been leapfrogged by something better, cheaper, or more focused. This roundup cuts "
+            f"through the noise to give you the tools that are actually delivering results right now. "
+            f"We tested each one against real workflows — not demo conditions — and these are the ones "
+            f"that made the cut.</p>"
+        ),
+        "tutorial": (
+            f"<p>Most AI tutorials show you the tool. This one shows you the workflow. There's a "
+            f"meaningful difference: knowing that <strong>{t1}</strong> exists doesn't help you if you "
+            f"don't know exactly how to fit it into your process. That's what this guide does. By the "
+            f"end, you'll have a repeatable, step-by-step system you can run in under an hour.</p>"
+        ),
+        "news_digest": (
+            f"<p>The AI industry never slows down — and this week was no exception. Between new model "
+            f"releases, pricing changes, and tool updates that affect your daily workflow, there's a lot "
+            f"to process. This digest cuts straight to what matters for people who use AI as a core part "
+            f"of their work: the developments worth acting on, and the ones you can safely ignore.</p>"
+        ),
+        "deep_dive": (
+            f"<p>There's a version of using AI tools that costs you $200 a month and saves you two hours "
+            f"a week. And there's another version that costs $80 a month and saves you fifteen hours. The "
+            f"difference isn't which tools you pick — it's how you use them. This deep dive is about the "
+            f"second version. We're going beyond the surface features to show you what's actually possible "
+            f"when you build AI into your work systematically.</p>"
+        ),
+        "workflow": (
+            f"<p>The difference between an AI user and an AI power user isn't the number of tools they "
+            f"subscribe to — it's whether those tools are connected into a workflow or used in isolation. "
+            f"This guide covers the exact workflow, in the exact order, using the exact tools that "
+            f"consistently deliver results. Copy it wholesale or adapt it to your needs.</p>"
+        ),
+        "strategy": (
+            f"<p>Most people use AI reactively — they open a chat window when they're stuck on something. "
+            f"That's not a strategy; that's a habit. The professionals seeing the biggest gains from AI "
+            f"are the ones who've built it into their systems intentionally. This guide covers what that "
+            f"looks like in practice and how to get there in the next 30 days.</p>"
+        ),
+    }
 
-        html += f"<h3>{i}. {t}</h3>\n<p>"
-        if url:
-            html += f'<a href="{url}" target="_blank" rel="noopener"><strong>Full story →</strong></a> '
-        if exc:
-            html += exc[:130] + " "
-        else:
-            html += f"This story from <strong>{src}</strong> is gaining traction across AI communities. "
-        if pts > 10:
-            html += f"<strong>{pts}+ engagements</strong>. "
-        html += "The practical takeaway: stay current, test one new thing this week, measure the impact.</p>\n\n"
+    html = intros.get(article_type, intros["news_digest"]) + "\n\n"
 
-    html += ("<h3>Bottom Line</h3>\n"
-             "<p>The AI tools that consistently deliver value haven't changed much — "
-             "a reliable writing assistant like <strong>Grammarly</strong> or <strong>Jasper AI</strong>, "
-             "an image generator like <strong>Midjourney</strong>, and an automation layer like "
-             "<strong>Zapier</strong> or <strong>Make.com</strong>. "
-             "Focus on your current stack first. Then layer in whatever's genuinely new.</p>\n")
+    # Key context from trending stories
+    if stories:
+        html += f"<h3>What's Happening in AI Right Now</h3>\n"
+        html += (f"<p>This article draws on trending developments across the AI space — from community "
+                 f"discussions on Hacker News and Reddit to coverage from TechCrunch and VentureBeat. "
+                 f"Here's what's shaping the current landscape:</p>\n<ul>\n")
+        for s in stories[:5]:
+            t   = s.get("title", "")
+            url = s.get("url", "")
+            src = s.get("source_label", "")
+            exc = re.sub(r"<[^>]+>", "", s.get("excerpt", "")).strip()[:120]
+            if t:
+                link = f'<a href="{url}" target="_blank" rel="noopener">{t}</a>' if url else t
+                note = f" — {exc}" if exc else f" (via {src})"
+                html += f"<li>{link}{note}</li>\n"
+        html += "</ul>\n\n"
+
+    # Main content sections — vary by type
+    if article_type in ("comparison",):
+        html += (
+            f"<h3>How We Evaluated These Tools</h3>\n"
+            f"<p>We looked at four things: output quality on real tasks (not cherry-picked demos), "
+            f"pricing transparency (are the costs predictable?), integration with common workflows "
+            f"(does it fit into how people actually work?), and the learning curve (how long before "
+            f"you're getting real value?). The tools that score well on all four are genuinely worth "
+            f"your money. The ones that score well on only one or two are worth knowing about but "
+            f"not necessarily worth subscribing to.</p>\n\n"
+            f"<h3>Tool Deep Dive: {t1}</h3>\n"
+            f"<p><strong>{t1}</strong> has carved out a clear position in the market by doing a "
+            f"specific set of things exceptionally well. Its core strength is consistency — you get "
+            f"reliable output without needing to spend twenty minutes crafting the perfect prompt. "
+            f"For anyone who needs to produce work quickly without babysitting an AI, that reliability "
+            f"has genuine value. Pricing starts at a level that's reasonable for individual users, "
+            f"with team plans that scale without punishing you for growing.</p>\n"
+            f"<p>The limitation worth knowing: it handles standard use cases beautifully but can feel "
+            f"constrained when you need something highly specific or outside its sweet spot. Power users "
+            f"sometimes find themselves working around its guardrails rather than with them.</p>\n\n"
+            f"<h3>Tool Deep Dive: {t2}</h3>\n"
+            f"<p><strong>{t2}</strong> takes a different approach — it prioritizes flexibility over "
+            f"consistency. That's a real trade-off: you can get better output when you know what you're "
+            f"doing, but it takes more effort to get there reliably. The pricing model is different too, "
+            f"which matters depending on your usage pattern. Heavy users often find it more economical; "
+            f"occasional users sometimes pay more than they expect.</p>\n"
+            f"<p>Where it clearly wins: complex, multi-step tasks that require following detailed "
+            f"instructions, maintaining context across long conversations, and handling edge cases "
+            f"gracefully. If your work involves nuanced, specialized tasks, this is worth the learning "
+            f"investment.</p>\n\n"
+        )
+    elif article_type == "tutorial":
+        steps = [
+            (f"Step 1: Set Up Your Workspace",
+             f"Before you touch any AI tool, spend five minutes getting organized. Open a fresh "
+             f"document, write down your goal in one sentence, and list the three outputs you need "
+             f"by the end of this session. This sounds trivial but it's the single biggest factor "
+             f"in getting useful output from AI — you can't get a great answer to a vague question. "
+             f"<strong>{t1}</strong> works best when your input is precise."),
+            (f"Step 2: Draft with AI, Refine with Judgment",
+             f"Use <strong>{t2}</strong> to generate the first draft. The key is to treat this as "
+             f"raw material, not finished work. Paste your goal, add any relevant context, and ask "
+             f"for a structured first pass. Then — and this is critical — read it as an editor, not "
+             f"a proofreader. You're looking for structure and argument, not typos."),
+            (f"Step 3: Verify and Enrich",
+             f"AI output is a starting point, not a finished product. Before you do anything with "
+             f"what you've generated, verify any facts, statistics, or claims that matter. Use "
+             f"<strong>{t3}</strong> or a quick search to confirm the key points. This step takes "
+             f"five minutes and prevents the kind of embarrassing errors that erode trust."),
+            (f"Step 4: Format for Your Audience",
+             f"The same content works differently in different formats. A detailed brief that works "
+             f"for a client presentation is overwhelming in an email. A quick summary that works for "
+             f"Slack is too thin for a report. Use <strong>{t4}</strong> to adapt your output to "
+             f"the format — paste what you have, describe the format you need, and let it handle "
+             f"the restructuring."),
+            (f"Step 5: Review the Final Output",
+             f"Never publish, send, or share AI-assisted work without reading it in full yourself. "
+             f"Not because AI makes obvious mistakes (though it does), but because your name is on "
+             f"it. Read it once for accuracy, once for tone, and once for whether it actually says "
+             f"what you intended. Fix what needs fixing — this is faster than writing from scratch "
+             f"but still requires your judgment."),
+        ]
+        for h, body in steps:
+            html += f"<h3>{h}</h3>\n<p>{body}</p>\n\n"
+    else:
+        # Generic but substantive sections for other types
+        html += (
+            f"<h3>The Tools That Are Delivering Real Results Right Now</h3>\n"
+            f"<p>Not every AI tool earns its subscription fee. The ones that consistently show up "
+            f"in power users' workflows tend to share a few qualities: they do one thing very well "
+            f"rather than trying to do everything adequately, they integrate with the tools you "
+            f"already use, and they save time in ways that compound — meaning the more you use them, "
+            f"the more efficient your workflow becomes.</p>\n"
+            f"<p>Right now, the tools getting the most traction among the solopreneurs and freelancers "
+            f"we track include <strong>{t1}</strong> for writing and ideation, "
+            f"<strong>{t2}</strong> for structured research, and "
+            f"<strong>{t3}</strong> for automating the repetitive parts of creative work. The pattern "
+            f"is consistent: people who get the most value pick tools that match a specific bottleneck "
+            f"in their workflow, not tools that sound impressive in a demo.</p>\n\n"
+            f"<h3>How to Evaluate New AI Tools Without Wasting Your Time</h3>\n"
+            f"<p>The AI tools market is noisy. New products launch every week, and many of them are "
+            f"genuinely interesting — but interesting and useful are different things. A practical "
+            f"evaluation framework: spend 20 minutes on a real task you already need to do, not a "
+            f"test prompt. If the output requires less editing than your current approach and takes "
+            f"less time, it earns a 30-day trial. If not, move on.</p>\n"
+            f"<p>The tools that fail this test most often: ones that are impressive on generic "
+            f"prompts but struggle with your specific context. The ones that pass most often: "
+            f"tools with a narrow focus, good documentation, and active communities where you can "
+            f"learn from people already using them for your exact use case.</p>\n\n"
+            f"<h3>What's Actually Worth Paying For</h3>\n"
+            f"<p>Free tiers are useful for evaluation, not for production work. The tools worth "
+            f"paying for fall into two categories: those that directly produce revenue (by helping "
+            f"you create better work faster) and those that save time you can redirect to revenue "
+            f"activity. Everything else is a nice-to-have.</p>\n"
+            f"<p><strong>{t4}</strong> and <strong>{t5}</strong> consistently earn their place in "
+            f"the paid column for most users — not because they're flashy, but because the ROI is "
+            f"calculable. You know what you're paying and you can see what you're getting. "
+            f"<strong>{t6}</strong> is worth watching if your workflow involves the specific "
+            f"problems it solves, but verify before you commit.</p>\n\n"
+        )
+
+    # Practical takeaways section (always included)
+    html += (
+        f"<h3>Three Things to Do This Week</h3>\n"
+        f"<ul>\n"
+        f"<li><strong>Audit your current stack.</strong> List every AI tool you're paying for. "
+        f"For each one, write down the specific workflow it supports. If you can't name it, "
+        f"cancel it.</li>\n"
+        f"<li><strong>Identify your biggest time bottleneck.</strong> Not a vague category — a "
+        f"specific task that takes longer than it should. Then search specifically for AI tools "
+        f"that solve that exact problem.</li>\n"
+        f"<li><strong>Run a 20-minute trial on one new tool.</strong> Use a real task, not a "
+        f"demo prompt. Measure the time and quality of output. Decide whether it earns a "
+        f"longer evaluation.</li>\n"
+        f"</ul>\n\n"
+        f"<h3>The Bottom Line</h3>\n"
+        f"<p>The AI tools that deliver lasting value aren't the ones with the most features or "
+        f"the most funding — they're the ones that fit cleanly into your specific workflow and "
+        f"make a measurable difference to the work you're already doing. The market is noisy, "
+        f"but the signal is clear: focus on bottlenecks, measure results, and don't pay for "
+        f"tools you can't justify with time saved or quality improved. The rest is just FOMO.</p>\n"
+    )
+
     return html
 
 
@@ -601,7 +969,6 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
     eyebrow_fg = "#d97706" if is_excl else "#1a56db"
     read_time  = type_cfg["read_time"]
 
-    # Sources box
     src_links = []
     for s in stories[:4]:
         u, lbl, t = s.get("url",""), s.get("source_label",""), s.get("title","")[:55]
@@ -626,7 +993,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} — MyAI ToolsFinder</title>
-<meta name="description" content="{re.sub(chr(34),'',title)} — AI tools insight for solopreneurs, creators and professionals. {DATE_STR}.">
+<meta name="description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight for solopreneurs, creators and professionals. {DATE_STR}.">
 <meta property="og:title" content="{title}">
 <meta property="og:image" content="{hero_url}">
 <meta property="og:type" content="article">
@@ -646,19 +1013,19 @@ nav{{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(
 .nav-links{{display:flex;gap:20px;font-size:13.5px;color:var(--text-2);}}
 .nav-links a:hover{{color:var(--primary);}}
 .nav-cta{{padding:8px 16px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:13px;}}
-.post-wrap{{max-width:760px;margin:0 auto;padding:88px 20px 80px;}}
-.hero-img{{width:100%;height:280px;object-fit:cover;border-radius:16px;margin-bottom:24px;box-shadow:0 8px 28px rgba(26,86,219,.12);}}
+.post-wrap{{max-width:780px;margin:0 auto;padding:88px 20px 80px;}}
+.hero-img{{width:100%;height:300px;object-fit:cover;border-radius:16px;margin-bottom:28px;box-shadow:0 8px 28px rgba(26,86,219,.12);}}
 .post-eyebrow{{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:{eyebrow_fg};background:{eyebrow_bg};padding:5px 12px;border-radius:999px;margin-bottom:14px;}}
-.post-title{{font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:16px;}}
+.post-title{{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:16px;}}
 .post-meta{{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--text-dim);flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border-soft);}}
 .post-body{{margin-top:32px;}}
-.post-body h3{{font-size:18px;font-weight:700;color:var(--text);margin:32px 0 10px;letter-spacing:-.01em;}}
-.post-body p{{font-size:15px;color:var(--text-2);line-height:1.85;margin-bottom:18px;}}
-.post-body ul{{padding-left:22px;margin-bottom:18px;display:flex;flex-direction:column;gap:8px;}}
-.post-body ul li{{font-size:14.5px;color:var(--text-2);line-height:1.7;}}
+.post-body h3{{font-size:19px;font-weight:700;color:var(--text);margin:36px 0 12px;letter-spacing:-.01em;}}
+.post-body p{{font-size:15.5px;color:var(--text-2);line-height:1.9;margin-bottom:20px;}}
+.post-body ul{{padding-left:24px;margin-bottom:20px;display:flex;flex-direction:column;gap:10px;}}
+.post-body ul li{{font-size:15px;color:var(--text-2);line-height:1.75;}}
 .post-body a{{color:var(--primary);text-decoration:underline;text-underline-offset:3px;}}
 .post-body strong{{color:var(--text);}}
-.post-body em{{color:var(--text-2);font-style:italic;}}
+.post-body em{{color:var(--text-2);font-style:italic;background:var(--primary-light);padding:2px 6px;border-radius:4px;font-size:14px;display:block;margin:10px 0;}}
 .sources-box{{margin-top:40px;padding:18px 22px;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);font-size:13px;color:var(--text-dim);}}
 .sources-box strong{{display:block;margin-bottom:8px;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;}}
 .sources-box a{{color:var(--primary);font-size:12.5px;}}
@@ -667,7 +1034,7 @@ nav{{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(
 .share-btn:hover{{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}}
 footer{{background:var(--surface);border-top:1px solid var(--border-soft);padding:32px 20px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px;}}
 footer a{{color:var(--primary);}}
-@media(max-width:600px){{nav{{padding:0 16px;}}.nav-links{{display:none;}}.hero-img{{height:180px;}}}}
+@media(max-width:600px){{nav{{padding:0 16px;}}.nav-links{{display:none;}}.hero-img{{height:200px;}}}}
 </style>
 </head>
 <body>
@@ -729,7 +1096,7 @@ footer a{{color:var(--primary);}}
 </div>
 
 <footer>
-  <p>© 2026 MyAI ToolsFinder &nbsp;·&nbsp;
+  <p>© {YEAR} MyAI ToolsFinder &nbsp;·&nbsp;
      <a href="../index.html">Directory</a> &nbsp;·&nbsp;
      <a href="../articles.html">Articles</a> &nbsp;·&nbsp;
      <a href="../privacy.html">Privacy</a>
@@ -804,7 +1171,6 @@ def update_articles_html(slug, title, excerpt, hero_url, article_type):
         if marker in content:
             content = content.replace(marker, marker + "\n" + card)
         else:
-            # Fallback: insert at top of exclusive-grid
             grid_tag = '<div class="exclusive-grid" id="exclusive-grid">'
             content  = content.replace(grid_tag, grid_tag + "\n" + card)
     else:
@@ -813,11 +1179,9 @@ def update_articles_html(slug, title, excerpt, hero_url, article_type):
         if marker in content:
             content = content.replace(marker, marker + "\n" + card)
         else:
-            # Fallback: insert at top of art-grid
             grid_tag = '<div class="art-grid" id="art-grid">'
             content  = content.replace(grid_tag, grid_tag + "\n" + card)
 
-    # Update article count display
     m = re.search(r'id="art-count">(\d+) articles?', content)
     if m:
         new_count = int(m.group(1)) + 1
@@ -862,7 +1226,7 @@ def main():
     hero_url = pick_hero(index_offset=excl_offset)
 
     # ── Generate body ──────────────────────────────────────────────────────────
-    body_html = generate_with_claude(stories, article_type, title)
+    body_html = generate_with_claude(stories, article_type, title, log)
     if not body_html:
         print("[INFO] Falling back to template generation.", file=sys.stderr)
         body_html = generate_fallback(stories, article_type, title)
@@ -870,7 +1234,8 @@ def main():
     # ── Save article file ──────────────────────────────────────────────────────
     html = build_article_html(slug, title, body_html, stories, hero_url, article_type)
     output_path.write_text(html, encoding="utf-8")
-    print(f"[OK] Saved: {output_path.name}", file=sys.stderr)
+    word_count = len(re.sub(r"<[^>]+>", " ", body_html).split())
+    print(f"[OK] Saved: {output_path.name} (~{word_count} words)", file=sys.stderr)
 
     # ── Extract excerpt for card ───────────────────────────────────────────────
     m = re.search(r"<p>(.*?)</p>", body_html, re.DOTALL)
@@ -880,7 +1245,13 @@ def main():
     # ── Update articles.html index ─────────────────────────────────────────────
     update_articles_html(slug, title, excerpt, hero_url, article_type)
 
-    # ── Save log ───────────────────────────────────────────────────────────────
+    # ── Extract comparison pair for dedup ─────────────────────────────────────
+    pair = ""
+    if article_type == "comparison" and " vs " in title:
+        parts = title.split(" vs ")
+        pair  = f"{parts[0].strip()} vs {parts[1].split(':')[0].strip()}"
+
+    # ── Save log (with topic + pair for dedup) ────────────────────────────────
     save_log(log, {
         "date":   DATE_SLUG,
         "slot":   SLOT,
@@ -889,6 +1260,9 @@ def main():
         "type":   article_type,
         "source": source_name,
         "hero":   hero_url,
+        "topic":  extract_topic(title, article_type),
+        "pair":   pair,
+        "words":  word_count,
     })
     print("[DONE] All steps complete.", file=sys.stderr)
 
