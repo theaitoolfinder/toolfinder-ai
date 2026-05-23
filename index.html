@@ -91,7 +91,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-search-input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
 /* ── TFM horizontal filter bar (toolfinder.com style — single scrollable strip) ── */
 .tfm-sticky-wrap{background:var(--bg);padding:8px 0 10px;transition:box-shadow .2s}
-.tfm-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:48;padding:8px 20px 10px;box-shadow:0 4px 18px rgba(0,0,0,.09);-webkit-transform:translateZ(0);transform:translateZ(0)}
+.tfm-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:48;padding:8px 20px 10px;box-shadow:0 4px 18px rgba(0,0,0,.09)}
 @media(max-width:700px){.tfm-sticky-wrap.is-fixed{top:var(--header-h,55px);padding:8px 16px 10px}}
 .tfm-outer{display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:0;position:relative}
 .tfm-outer:focus-within{border-color:var(--primary)}
@@ -209,7 +209,7 @@ footer a:hover{color:var(--primary)}
 .dir-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
 .dir-sub{color:var(--text-2);font-size:14.5px;margin:0}
 .dir-sticky-wrap{padding:0 0 0;transition:box-shadow .2s}
-.dir-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:47;background:var(--surface);border-bottom:1px solid var(--border-soft);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:8px 0;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.dir-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:47;background:var(--surface);border-bottom:1px solid var(--border-soft);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:8px 0}
 .dir-sticky-wrap.is-fixed .dir-tabs{max-width:1180px;margin:0 auto;padding:4px 28px 6px}
 @media(max-width:700px){.dir-sticky-wrap.is-fixed{top:var(--header-h,55px)}.dir-sticky-wrap.is-fixed .dir-tabs{padding:4px 16px 6px}}
 .dir-tabs{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:22px;padding:0 2px 4px}
@@ -1764,6 +1764,9 @@ function renderSocialFooter(){
 }
 setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();
 /* Init TFM filter */
+// Move dropdowns to <body> — position:fixed inside a transformed/overflow:hidden
+// ancestor is broken on iOS Safari. Body-level ensures viewport-relative positioning.
+document.querySelectorAll('.tfm-dd').forEach(d=>document.body.appendChild(d));
 buildTfmDDs();
 setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
 window.addEventListener("hashchange",readHash);readHash();
