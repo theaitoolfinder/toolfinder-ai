@@ -90,7 +90,10 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-search-wrap svg{flex-shrink:0;color:var(--text-dim)}
 .filter-search-input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
 /* ── TFM horizontal filter bar (toolfinder.com style — single scrollable strip) ── */
-.tfm-outer{display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;position:relative}
+.tfm-sticky-wrap{background:var(--bg);padding:8px 0 10px;transition:box-shadow .2s}
+.tfm-sticky-wrap.is-fixed{position:fixed;top:65px;left:0;right:0;z-index:48;padding:8px 20px 10px;box-shadow:0 4px 18px rgba(0,0,0,.09)}
+@media(max-width:700px){.tfm-sticky-wrap.is-fixed{top:55px;padding:8px 16px 10px}}
+.tfm-outer{display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:0;position:relative}
 .tfm-outer:focus-within{border-color:var(--primary)}
 .tfm-search-fixed{display:flex;align-items:center;gap:8px;padding:10px 14px;border-right:1px solid var(--border-soft);flex-shrink:0;min-width:170px;max-width:210px;background:var(--surface)}
 .tfm-search-fixed svg{flex-shrink:0;color:var(--text-dim)}
@@ -406,7 +409,10 @@ footer a:hover{color:var(--primary)}
     </div>
   </section>
   <section class="container controls" id="tools">
+    <!-- sentinel: IntersectionObserver fires when this exits viewport → bar is stuck -->
+    <div id="tfm-sentinel" style="height:1px;margin-bottom:-1px;pointer-events:none"></div>
     <!-- TFM FILTER BAR (single scrollable strip — toolfinder.com style) -->
+    <div class="tfm-sticky-wrap" id="tfm-sticky-wrap">
     <div class="tfm-outer">
       <!-- Fixed search -->
       <div class="tfm-search-fixed">
@@ -463,6 +469,7 @@ footer a:hover{color:var(--primary)}
         <button id="tfm-clear" class="tfm-clear" style="display:none" onclick="clearTfmFilters()">✕ Clear</button>
       </div>
     </div>
+    </div><!-- /tfm-sticky-wrap -->
     <!-- Hidden legacy element needed by internal JS -->
     <button id="filter-all-btn" style="display:none" onclick="setFilter('all')"></button>
     <div class="top-searched" id="top-searched">
@@ -1730,6 +1737,33 @@ setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();r
 buildTfmDDs();
 setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
 window.addEventListener("hashchange",readHash);readHash();
+// Sticky filter bar — fixed below header when scrolled past
+(function(){
+  const sentinel=document.getElementById('tfm-sentinel');
+  const wrap=document.getElementById('tfm-sticky-wrap');
+  if(!sentinel||!wrap)return;
+  const headerEl=document.querySelector('header.site');
+  let spacer=null;
+  let isFixed=false;
+  function checkSticky(){
+    const headerH=headerEl?headerEl.offsetHeight:65;
+    const rect=sentinel.getBoundingClientRect();
+    const shouldFix=rect.top<headerH;
+    if(shouldFix===isFixed)return;
+    isFixed=shouldFix;
+    if(shouldFix){
+      const h=wrap.offsetHeight;
+      if(!spacer){spacer=document.createElement('div');spacer.id='tfm-spacer';sentinel.parentNode.insertBefore(spacer,wrap);}
+      spacer.style.height=h+'px';
+      wrap.classList.add('is-fixed');
+    } else {
+      if(spacer)spacer.style.height='0';
+      wrap.classList.remove('is-fixed');
+    }
+  }
+  window.addEventListener('scroll',checkSticky,{passive:true});
+  checkSticky();
+})();
 
 </script>
 
