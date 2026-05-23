@@ -1,0 +1,83 @@
+name: Article Generator
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Schedule (all times in Philippine Time, PHT = UTC+8)
+#
+#  Mon–Thu  12:00 PHT  → Lunch article    (04:00 UTC)  comparison / tutorial / roundup
+#  Mon–Thu  18:00 PHT  → Dinner article   (10:00 UTC)  news digest / roundup / comparison
+#
+#  Friday   10:00 PHT  → Exclusive #1     (02:00 UTC)
+#  Friday   12:00 PHT  → Exclusive #2     (04:00 UTC)
+#  Friday   14:00 PHT  → Exclusive #3     (06:00 UTC)
+#  Friday   16:00 PHT  → Exclusive #4     (08:00 UTC)
+#  Friday   18:00 PHT  → Exclusive #5     (10:00 UTC)
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    # Mon–Thu Lunch  (12:00 PHT = 04:00 UTC)
+    - cron: '0 4 * * 1-4'
+    # Mon–Thu Dinner (18:00 PHT = 10:00 UTC)
+    - cron: '0 10 * * 1-4'
+    # Friday Exclusive × 5 (every 2 hrs: 02–10 UTC = 10am–6pm PHT)
+    - cron: '0 2 * * 5'
+    - cron: '0 4 * * 5'
+    - cron: '0 6 * * 5'
+    - cron: '0 8 * * 5'
+    - cron: '0 10 * * 5'
+
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Force slot (lunch | dinner | exclusive). Leave blank to auto-detect.'
+        required: false
+        default: ''
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+          if [ -n "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            pip install anthropic
+          fi
+
+      - name: Generate article
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ARTICLE_SLOT: ${{ github.event.inputs.slot }}
+        run: python .github/scripts/generate_article.py
+
+      - name: Commit and push
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add articles/ articles.html .github/scripts/article_log.json
+          if git diff --staged --quiet; then
+            echo "Nothing to commit — article may already exist for this slot."
+          else
+            MSG="Auto-article: $(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT')"
+            git commit -m "$MSG"
+            # Pull rebase to handle rare concurrent Friday runs, then push
+            git pull --rebase origin main || true
+            git push
+            echo "✅ Article published."
+          fi

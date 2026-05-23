@@ -558,6 +558,9 @@ footer a:hover{color:#e2c06a;}
     </div>
     <p class="exclusive-desc">In-depth guides and research available exclusively to newsletter subscribers.</p>
     <div class="exclusive-grid" id="exclusive-grid">
+
+      <!-- EXCLUSIVE_INSERT -->
+
       <div class="art-card exclusive-card" onclick="showSubscribeGate()">
         <div class="art-card-img">
           <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&auto=format&fit=crop" alt="Exclusive" loading="lazy">
@@ -794,10 +797,18 @@ function unlockExclusiveCards(){
     }
     /* Change arrow */
     const arrow=card.querySelector('.art-card-arrow');
-    if(arrow) arrow.textContent='Read now →';
-    /* Remove click gate */
-    card.onclick=null;
-    card.style.cursor='default';
+    /* Enable navigation if card has a data-href (auto-generated exclusive articles) */
+    const href=card.dataset.href;
+    if(href){
+      if(arrow) arrow.textContent='Read now →';
+      card.onclick=function(){ location.href=href; };
+      card.style.cursor='pointer';
+    } else {
+      /* Legacy hardcoded exclusive cards — no article file yet */
+      if(arrow) arrow.textContent='Coming soon →';
+      card.onclick=null;
+      card.style.cursor='default';
+    }
   });
 }
 
