@@ -434,35 +434,35 @@ footer a:hover{color:var(--primary)}
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-cats" onclick="toggleTfmDD('cats')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
-            Category <span id="tfm-cats-sign">+</span>
+            <span id="tfm-cats-label">Category</span> <span id="tfm-cats-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-cats"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-pricing" onclick="toggleTfmDD('pricing')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9"/></svg>
-            Pricing <span id="tfm-pricing-sign">+</span>
+            <span id="tfm-pricing-label">Pricing</span> <span id="tfm-pricing-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-pricing"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-job" onclick="toggleTfmDD('job')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-            Profession <span id="tfm-job-sign">+</span>
+            <span id="tfm-job-label">Profession</span> <span id="tfm-job-sign">+</span>
           </button>
           <div class="tfm-dd tfm-dd-wide" id="tfm-dd-job"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-need" onclick="toggleTfmDD('need')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Purpose <span id="tfm-need-sign">+</span>
+            <span id="tfm-need-label">Purpose</span> <span id="tfm-need-sign">+</span>
           </button>
           <div class="tfm-dd tfm-dd-wide" id="tfm-dd-need"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-trend" onclick="toggleTfmDD('trend')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            Trending <span id="tfm-trend-sign">+</span>
+            <span id="tfm-trend-label">Trending</span> <span id="tfm-trend-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-trend"></div>
         </div>
@@ -1208,17 +1208,31 @@ function toggleTfmJob(job){if(tfmJobs.has(job))tfmJobs.delete(job);else tfmJobs.
 function toggleTfmNeed(need){if(tfmNeeds.has(need))tfmNeeds.delete(need);else tfmNeeds.add(need);syncTfmState();}
 function setTfmTrend(trend){tfmTrend=(tfmTrend===trend)?'':trend;syncTfmState();}
 function syncTfmState(){
-  /* Update button active states and ± signs */
-  const pairs=[
-    ['tfm-btn-cats','tfm-cats-sign',tfmCats.size>0],
-    ['tfm-btn-pricing','tfm-pricing-sign',tfmPricing.size>0],
-    ['tfm-btn-job','tfm-job-sign',tfmJobs.size>0],
-    ['tfm-btn-need','tfm-need-sign',tfmNeeds.size>0],
-    ['tfm-btn-trend','tfm-trend-sign',!!tfmTrend],
+  const pLabels={free:'Free',paid:'Paid',onetime:'One-Time'};
+  function btnLabel(defaultText,items,max=1){
+    const arr=[...items];
+    if(!arr.length)return defaultText;
+    if(arr.length===1)return arr[0];
+    return defaultText+' · '+arr.length;
+  }
+  /* Update button labels, active states and ± signs */
+  const configs=[
+    {btn:'tfm-btn-cats',sign:'tfm-cats-sign',lbl:'tfm-cats-label',
+     active:tfmCats.size>0,label:btnLabel('Category',tfmCats)},
+    {btn:'tfm-btn-pricing',sign:'tfm-pricing-sign',lbl:'tfm-pricing-label',
+     active:tfmPricing.size>0,label:btnLabel('Pricing',new Set([...tfmPricing].map(k=>pLabels[k]||k)))},
+    {btn:'tfm-btn-job',sign:'tfm-job-sign',lbl:'tfm-job-label',
+     active:tfmJobs.size>0,label:btnLabel('Profession',tfmJobs)},
+    {btn:'tfm-btn-need',sign:'tfm-need-sign',lbl:'tfm-need-label',
+     active:tfmNeeds.size>0,label:btnLabel('Purpose',tfmNeeds)},
+    {btn:'tfm-btn-trend',sign:'tfm-trend-sign',lbl:'tfm-trend-label',
+     active:!!tfmTrend,label:tfmTrend||'Trending'},
   ];
-  pairs.forEach(([btnId,signId,on])=>{
-    document.getElementById(btnId).classList.toggle('active',on);
-    document.getElementById(signId).textContent=on?'—':'+';
+  configs.forEach(({btn,sign,lbl,active,label})=>{
+    document.getElementById(btn).classList.toggle('active',active);
+    document.getElementById(sign).textContent=active?'✕':'+';
+    const lblEl=document.getElementById(lbl);
+    if(lblEl)lblEl.textContent=label;
   });
   buildTfmDDs();
   renderTfmView();
