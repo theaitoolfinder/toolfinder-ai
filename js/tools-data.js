@@ -285,5 +285,9 @@ window.MYAI_AFF_MAP = {
   "xembly":                "https://xembly.com",
   "zapier":                "https://zapier.com",
   "zendesk":               "https://zendesk.com",
-  "zendesk ai":            "https://zendesk.com"
+  "zendesk ai":            "https://zendesk.com",
+  "luma dream machine": "https://lumalabs.ai/dream-machine",
+  "recraft": "https://recraft.ai",
+  "wordware": "https://wordware.ai",
+  "fal.ai": "https://fal.ai"
 };
