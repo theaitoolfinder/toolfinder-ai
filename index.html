@@ -89,6 +89,33 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-search-wrap:focus-within{border-color:var(--primary)}
 .filter-search-wrap svg{flex-shrink:0;color:var(--text-dim)}
 .filter-search-input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
+/* ── TFM horizontal filter bar (toolfinder.com style) ── */
+.tfm-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tfm-search-wrap{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);min-width:160px;flex:1;max-width:260px;transition:border-color .15s}
+.tfm-search-wrap:focus-within{border-color:var(--primary)}
+.tfm-search-wrap svg{flex-shrink:0;color:var(--text-dim)}
+.tfm-sort{display:flex;gap:3px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:3px;flex-shrink:0}
+.tfm-sort-btn{padding:6px 13px;border-radius:7px;border:none;background:none;font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
+.tfm-sort-btn.active{background:var(--primary);color:#fff;font-weight:600}
+.tfm-filters{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tfm-filter-group{position:relative}
+.tfm-filter-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
+.tfm-filter-btn:hover{border-color:var(--primary);color:var(--primary)}
+.tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
+.tfm-dd{position:absolute;top:calc(100% + 6px);left:0;z-index:200;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;padding:6px;flex-direction:column;gap:3px;display:none}
+.tfm-dd.open{display:flex}
+.tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
+.tfm-dd-item:hover{background:var(--primary-light)}
+.tfm-dd-item.checked{color:var(--primary);font-weight:600}
+.tfm-check{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .12s;background:#fff}
+.tfm-dd-item.checked .tfm-check{background:var(--primary);border-color:var(--primary);color:#fff}
+.tfm-count-wrap{display:flex;align-items:center;gap:7px;margin-left:auto;font-size:13px;color:var(--text-dim);white-space:nowrap;flex-shrink:0}
+.tfm-count-wrap svg{flex-shrink:0}
+.tfm-clear{background:none;border:none;color:var(--primary);font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;padding:0;text-decoration:underline}
+/* Flat tool grid (used when filter/sort is active) */
+.tool-flat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding-bottom:32px}
+.tool-flat-grid.hidden{display:none}
+@media(max-width:700px){.tfm-bar{gap:7px}.tfm-search-wrap{max-width:100%;flex:none;width:100%}.tfm-sort{width:100%;justify-content:center}.tfm-count-wrap{margin-left:0}}
 .top-searched{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .ts-label{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .ts-chip{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .12s}
@@ -363,51 +390,45 @@ footer a:hover{color:var(--primary)}
     </div>
   </section>
   <section class="container controls" id="tools">
-    <!-- FILTER BAR -->
-    <div class="filter-bar">
-      <div class="filter-dropdowns">
-        <div class="filter-group" id="fg-profession">
-          <button class="filter-select" onclick="toggleDD('profession')" id="fsel-profession">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-            <span id="flabel-profession">Profession</span>
-            <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="filter-dd hidden" id="dd-profession"></div>
-        </div>
-        <div class="filter-group" id="fg-purpose">
-          <button class="filter-select" onclick="toggleDD('purpose')" id="fsel-purpose">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <span id="flabel-purpose">Purpose</span>
-            <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="filter-dd hidden" id="dd-purpose"></div>
-        </div>
-        <div class="filter-group" id="fg-category">
-          <button class="filter-select" onclick="toggleDD('category')" id="fsel-category">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
-            <span id="flabel-category">Category</span>
-            <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="filter-dd hidden" id="dd-category"></div>
-        </div>
-        <div class="filter-group" id="fg-trending">
-          <button class="filter-select" onclick="toggleDD('trending')" id="fsel-trending">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            <span id="flabel-trending">Trending</span>
-            <svg class="dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="filter-dd hidden" id="dd-trending"></div>
-        </div>
-        <button class="filter-all-btn" id="filter-all-btn" onclick="setFilter('all')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          All AI Tools
-        </button>
-      </div>
-      <div class="filter-search-wrap">
+    <!-- TFM FILTER BAR (toolfinder.com style) -->
+    <div class="tfm-bar">
+      <!-- Search -->
+      <div class="tfm-search-wrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <input id="search" type="search" class="filter-search-input" placeholder="Search 300+ AI tools&hellip;"/>
+        <input id="search" type="search" class="filter-search-input" placeholder="Search 225+ AI tools&hellip;"/>
+      </div>
+      <!-- Sort tabs -->
+      <div class="tfm-sort" id="tfm-sort-tabs">
+        <button class="tfm-sort-btn active" onclick="setTfmSort('popular')">&#128293; Popular</button>
+        <button class="tfm-sort-btn" onclick="setTfmSort('deals')">&#127991; Deals</button>
+        <button class="tfm-sort-btn" onclick="setTfmSort('new')">&#10024; New</button>
+      </div>
+      <!-- Filter dropdowns -->
+      <div class="tfm-filters">
+        <div class="tfm-filter-group">
+          <button class="tfm-filter-btn" id="tfm-btn-cats" onclick="toggleTfmDD('cats')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
+            Categories <span id="tfm-cats-sign">+</span>
+          </button>
+          <div class="tfm-dd" id="tfm-dd-cats"></div>
+        </div>
+        <div class="tfm-filter-group">
+          <button class="tfm-filter-btn" id="tfm-btn-pricing" onclick="toggleTfmDD('pricing')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Pricing <span id="tfm-pricing-sign">+</span>
+          </button>
+          <div class="tfm-dd" id="tfm-dd-pricing"></div>
+        </div>
+      </div>
+      <!-- Result count + Clear -->
+      <div class="tfm-count-wrap">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <span id="tfm-count">225</span>
+        <button id="tfm-clear" class="tfm-clear" style="display:none" onclick="clearTfmFilters()">Clear</button>
       </div>
     </div>
+    <!-- Hidden legacy element needed by internal JS -->
+    <button id="filter-all-btn" style="display:none" onclick="setFilter('all')"></button>
     <div class="top-searched" id="top-searched">
       <span class="ts-label">Top searched</span>
       <button class="ts-chip" onclick="quickSearch('ChatGPT')">ChatGPT</button>
@@ -418,6 +439,7 @@ footer a:hover{color:var(--primary)}
     </div>
     <div class="lens-note" id="lens-note"></div>
   </section>
+  <div class="container tool-flat-grid hidden" id="tool-flat-grid"></div>
   <div class="container" id="rows"></div>
   <section class="container newsletter" id="newsletter">
     <div class="eyebrow">The AI Toolbox Newsletter</div>
@@ -963,7 +985,7 @@ function setFilter(lens,value){
 function quickSearch(term){
   document.getElementById('search').value=term;
   searchQuery=term.toLowerCase();
-  setFilter('all');
+  renderTfmView();
 }
 function renderRows(){
   $note.textContent=currentFilter.lens==='all'?LENSES.all.note:LENSES[currentFilter.lens].note;
@@ -975,7 +997,91 @@ function renderRows(){
 function syncHash(){history.replaceState(null,'','#'+currentFilter.lens+':'+encodeURIComponent(currentFilter.value));}
 function setLens(l){setFilter(l,LENSES[l]?LENSES[l].options[0]:'All');}
 function setValue(v){setFilter(currentFilter.lens,v);}
-document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderRows();});
+document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderTfmView();});
+/* ══════════════════════════════════════════
+   TFM FILTER SYSTEM (toolfinder.com style)
+══════════════════════════════════════════ */
+let tfmSort='popular';
+let tfmCats=new Set();
+let tfmPricing=new Set();
+function pricingType(pill){
+  if(!pill)return'paid';
+  const p=pill.toLowerCase().trim();
+  if(p.includes('lifetime'))return'onetime';
+  if(p==='open source')return'free';
+  if(p.startsWith('free')&&p!=='free trial')return'free';
+  return'paid';
+}
+function tfmHasActiveFilter(){return tfmCats.size>0||tfmPricing.size>0||searchQuery||tfmSort!=='popular';}
+function tfmGetFilteredTools(){
+  const idxs=TOOLS.map((_,i)=>i).filter(i=>{
+    const t=tool(i);if(!t)return false;
+    if(searchQuery){const h=(t.name+' '+t.tag+' '+t.cat+' '+(t.needs||[]).join(' ')+' '+(t.jobs||[]).join(' ')).toLowerCase();if(!h.includes(searchQuery))return false;}
+    if(tfmCats.size>0&&!tfmCats.has(t.cat))return false;
+    if(tfmPricing.size>0&&!tfmPricing.has(pricingType(t.pill)))return false;
+    return true;
+  });
+  if(tfmSort==='popular')idxs.sort((a,b)=>(tool(b).trending||0)-(tool(a).trending||0));
+  else if(tfmSort==='deals')idxs.sort((a,b)=>{const ta=tool(a),tb=tool(b);const da=(ta.featured?1:0)+(pricingType(ta.pill)==='free'?1:0),db=(tb.featured?1:0)+(pricingType(tb.pill)==='free'?1:0);return db!==da?db-da:(tb.trending||0)-(ta.trending||0);});
+  else if(tfmSort==='new')idxs.reverse();
+  return idxs;
+}
+function renderTfmView(){
+  const flatGrid=document.getElementById('tool-flat-grid');
+  const rowsEl=document.getElementById('rows');
+  const noteEl=document.getElementById('lens-note');
+  if(!tfmHasActiveFilter()){
+    flatGrid.classList.add('hidden');
+    rowsEl.style.display='';
+    renderRows();
+    document.getElementById('tfm-count').textContent=TOOLS.map((_,i)=>tool(i)).filter(Boolean).length;
+    document.getElementById('tfm-clear').style.display='none';
+    noteEl.style.display='';
+    return;
+  }
+  rowsEl.style.display='none';
+  noteEl.style.display='none';
+  flatGrid.classList.remove('hidden');
+  const idxs=tfmGetFilteredTools();
+  document.getElementById('tfm-count').textContent=idxs.length;
+  document.getElementById('tfm-clear').style.display=(tfmCats.size>0||tfmPricing.size>0)?'':'none';
+  if(!idxs.length){
+    flatGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-dim)"><div style="font-size:40px;margin-bottom:12px">&#128269;</div><div style="font-size:17px;font-weight:600;margin-bottom:8px">No tools match your filters</div><div>Try removing some filters or <button class="tfm-clear" onclick="clearTfmFilters()" style="font-size:inherit">clearing all</button>.</div></div>';
+    return;
+  }
+  flatGrid.innerHTML=idxs.map(i=>cardHTML(i)).join('');
+}
+function buildTfmDDs(){
+  const cats=[...new Set(TOOLS.map((_,i)=>{const t=tool(i);return t?t.cat:null}).filter(Boolean))].sort();
+  document.getElementById('tfm-dd-cats').innerHTML=cats.map(c=>`<button class="tfm-dd-item ${tfmCats.has(c)?'checked':''}" onclick="toggleTfmCat('${c.replace(/'/g,"\\'")}')" ><span class="tfm-check">${tfmCats.has(c)?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>':''}</span>${c}</button>`).join('');
+  const pOpts=[{key:'free',label:'Free (has free tier)'},{key:'paid',label:'Paid / Subscription'},{key:'onetime',label:'One-Time / Lifetime'}];
+  document.getElementById('tfm-dd-pricing').innerHTML=pOpts.map(p=>`<button class="tfm-dd-item ${tfmPricing.has(p.key)?'checked':''}" onclick="toggleTfmPricing('${p.key}')"><span class="tfm-check">${tfmPricing.has(p.key)?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>':''}</span>${p.label}</button>`).join('');
+}
+function toggleTfmCat(cat){if(tfmCats.has(cat))tfmCats.delete(cat);else tfmCats.add(cat);syncTfmState();}
+function toggleTfmPricing(key){if(tfmPricing.has(key))tfmPricing.delete(key);else tfmPricing.add(key);syncTfmState();}
+function syncTfmState(){
+  const cBtn=document.getElementById('tfm-btn-cats'),pBtn=document.getElementById('tfm-btn-pricing');
+  document.getElementById('tfm-cats-sign').textContent=tfmCats.size>0?'—':'+';
+  document.getElementById('tfm-pricing-sign').textContent=tfmPricing.size>0?'—':'+';
+  if(tfmCats.size>0)cBtn.classList.add('active');else cBtn.classList.remove('active');
+  if(tfmPricing.size>0)pBtn.classList.add('active');else pBtn.classList.remove('active');
+  buildTfmDDs();
+  renderTfmView();
+}
+function clearTfmFilters(){tfmCats.clear();tfmPricing.clear();syncTfmState();}
+function toggleTfmDD(name){
+  const dd=document.getElementById('tfm-dd-'+name);
+  const isOpen=dd.classList.contains('open');
+  document.querySelectorAll('.tfm-dd').forEach(d=>d.classList.remove('open'));
+  if(!isOpen){buildTfmDDs();dd.classList.add('open');}
+}
+function setTfmSort(sort){
+  tfmSort=sort;
+  const btns=document.querySelectorAll('#tfm-sort-tabs .tfm-sort-btn');
+  ['popular','deals','new'].forEach((s,i)=>btns[i]&&btns[i].classList.toggle('active',s===sort));
+  renderTfmView();
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.tfm-filter-group'))document.querySelectorAll('.tfm-dd').forEach(d=>d.classList.remove('open'));});
 document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();const[l,v]=a.dataset.quick.split(":");setLens(l);if(LENSES[l].options.includes(v))setValue(v);document.getElementById("tools").scrollIntoView({behavior:"smooth",block:"start"});}));
 function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){if(l==='all')setFilter('all');else{setFilter(l,LENSES[l].options.includes(v)?v:LENSES[l].options[0]);}}}
 window.dataLayer=window.dataLayer||[];
@@ -1469,6 +1575,9 @@ function renderSocialFooter(){
     </a>`).join('');
 }
 setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();
+/* Init TFM filter dropdowns and count */
+buildTfmDDs();
+(function(){const total=TOOLS.map((_,i)=>tool(i)).filter(Boolean).length;document.getElementById('tfm-count').textContent=total;})();
 window.addEventListener("hashchange",readHash);readHash();
 
 </script>
