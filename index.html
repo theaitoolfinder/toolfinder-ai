@@ -89,20 +89,24 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-search-wrap:focus-within{border-color:var(--primary)}
 .filter-search-wrap svg{flex-shrink:0;color:var(--text-dim)}
 .filter-search-input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
-/* ── TFM horizontal filter bar (toolfinder.com style) ── */
-.tfm-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.tfm-search-wrap{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);min-width:160px;flex:1;max-width:260px;transition:border-color .15s}
-.tfm-search-wrap:focus-within{border-color:var(--primary)}
-.tfm-search-wrap svg{flex-shrink:0;color:var(--text-dim)}
-.tfm-sort{display:flex;gap:3px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:3px;flex-shrink:0}
-.tfm-sort-btn{padding:6px 13px;border-radius:7px;border:none;background:none;font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
-.tfm-sort-btn.active{background:var(--primary);color:#fff;font-weight:600}
-.tfm-filters{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.tfm-filter-group{position:relative}
-.tfm-filter-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
-.tfm-filter-btn:hover{border-color:var(--primary);color:var(--primary)}
+/* ── TFM horizontal filter bar (toolfinder.com style — single scrollable strip) ── */
+.tfm-outer{display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;position:relative}
+.tfm-outer:focus-within{border-color:var(--primary)}
+.tfm-search-fixed{display:flex;align-items:center;gap:8px;padding:10px 14px;border-right:1px solid var(--border-soft);flex-shrink:0;min-width:170px;max-width:210px;background:var(--surface)}
+.tfm-search-fixed svg{flex-shrink:0;color:var(--text-dim)}
+.tfm-search-fixed input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
+.tfm-search-fixed input::placeholder{color:var(--text-dim)}
+.tfm-strip{display:flex;align-items:center;gap:6px;padding:7px 10px;overflow-x:auto;flex:1;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+.tfm-strip::-webkit-scrollbar{display:none}
+.tfm-sort{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--border-soft);border-radius:8px;padding:2px;flex-shrink:0}
+.tfm-sort-btn{padding:5px 11px;border-radius:6px;border:none;background:none;font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
+.tfm-sort-btn.active{background:var(--primary);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(26,86,219,.25)}
+.tfm-vsep{width:1px;height:24px;background:var(--border-soft);flex-shrink:0;margin:0 2px}
+.tfm-filter-group{position:relative;flex-shrink:0}
+.tfm-filter-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
+.tfm-filter-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 .tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
-.tfm-dd{position:absolute;top:calc(100% + 6px);left:0;z-index:200;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;padding:6px;flex-direction:column;gap:3px;display:none}
+.tfm-dd{position:absolute;top:calc(100% + 8px);left:0;z-index:300;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;padding:6px;flex-direction:column;gap:3px;display:none}
 .tfm-dd.open{display:flex}
 .tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
 .tfm-dd-item:hover{background:var(--primary-light)}
@@ -111,13 +115,22 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .tfm-dd-item.checked .tfm-check{background:var(--primary);border-color:var(--primary);color:#fff}
 .tfm-dd-wide{min-width:260px}
 .tfm-dd-group{font-size:10.5px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.09em;padding:8px 12px 3px;margin-top:4px;pointer-events:none}
-.tfm-count-wrap{display:flex;align-items:center;gap:7px;margin-left:auto;font-size:13px;color:var(--text-dim);white-space:nowrap;flex-shrink:0}
-.tfm-count-wrap svg{flex-shrink:0}
-.tfm-clear{background:none;border:none;color:var(--primary);font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;padding:0;text-decoration:underline}
+.tfm-count-wrap{display:flex;align-items:center;gap:6px;padding:8px 12px;border-left:1px solid var(--border-soft);font-size:12.5px;color:var(--text-dim);white-space:nowrap;flex-shrink:0;background:var(--surface)}
+.tfm-count-wrap b{color:var(--text);font-weight:700}
+.tfm-clear{background:none;border:none;color:var(--primary);font-size:12.5px;font-family:inherit;cursor:pointer;font-weight:600;padding:0;text-decoration:underline}
 /* Flat tool grid (used when filter/sort is active) */
 .tool-flat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding-bottom:32px}
 .tool-flat-grid.hidden{display:none}
-@media(max-width:700px){.tfm-bar{gap:7px}.tfm-search-wrap{max-width:100%;flex:none;width:100%}.tfm-sort{width:100%;justify-content:center}.tfm-count-wrap{margin-left:0}}
+/* legacy classes kept for compat */
+.tfm-bar{display:none}
+.tfm-search-wrap{display:none}
+.tfm-filters{display:none}
+@media(max-width:700px){
+  .tfm-outer{flex-direction:column;border-radius:12px;align-items:stretch}
+  .tfm-search-fixed{border-right:none;border-bottom:1px solid var(--border-soft);max-width:100%;min-width:0;padding:10px 14px}
+  .tfm-strip{padding:8px 10px}
+  .tfm-count-wrap{border-left:none;border-top:1px solid var(--border-soft);padding:8px 12px}
+}
 .top-searched{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .ts-label{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .ts-chip{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .12s}
@@ -187,8 +200,9 @@ footer a:hover{color:var(--primary)}
 .dir-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
 .dir-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
 .dir-sub{color:var(--text-2);font-size:14.5px;margin:0}
-.dir-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;padding:0 4px}
-.dir-tab{padding:7px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .14s;font-weight:500}
+.dir-tabs{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:22px;padding:0 2px 4px}
+.dir-tabs::-webkit-scrollbar{display:none}
+.dir-tab{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .14s;font-weight:500;white-space:nowrap;flex-shrink:0}
 .dir-tab:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 .dir-tab.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600}
 .dir-cat-block{margin-bottom:40px}
@@ -392,62 +406,61 @@ footer a:hover{color:var(--primary)}
     </div>
   </section>
   <section class="container controls" id="tools">
-    <!-- TFM FILTER BAR (toolfinder.com style) -->
-    <div class="tfm-bar">
-      <!-- Search -->
-      <div class="tfm-search-wrap">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <input id="search" type="search" class="filter-search-input" placeholder="Search 225+ AI tools&hellip;"/>
+    <!-- TFM FILTER BAR (single scrollable strip — toolfinder.com style) -->
+    <div class="tfm-outer">
+      <!-- Fixed search -->
+      <div class="tfm-search-fixed">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="search" type="search" placeholder="Search AI tools…"/>
       </div>
-      <!-- Sort tabs -->
-      <div class="tfm-sort" id="tfm-sort-tabs">
-        <button class="tfm-sort-btn active" onclick="setTfmSort('popular')">&#128293; Popular</button>
-        <button class="tfm-sort-btn" onclick="setTfmSort('deals')">&#127991; Deals</button>
-        <button class="tfm-sort-btn" onclick="setTfmSort('new')">&#10024; New</button>
-      </div>
-      <!-- Filter dropdowns -->
-      <div class="tfm-filters">
+      <!-- Scrollable strip: sort + filters -->
+      <div class="tfm-strip" id="tfm-strip">
+        <div class="tfm-sort" id="tfm-sort-tabs">
+          <button class="tfm-sort-btn active" onclick="setTfmSort('popular')">🔥 Popular</button>
+          <button class="tfm-sort-btn" onclick="setTfmSort('deals')">🏷️ Deals</button>
+          <button class="tfm-sort-btn" onclick="setTfmSort('new')">✨ New</button>
+        </div>
+        <div class="tfm-vsep"></div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-cats" onclick="toggleTfmDD('cats')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
-            Categories <span id="tfm-cats-sign">+</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
+            Category <span id="tfm-cats-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-cats"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-pricing" onclick="toggleTfmDD('pricing')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9"/></svg>
             Pricing <span id="tfm-pricing-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-pricing"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-job" onclick="toggleTfmDD('job')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-            By Profession <span id="tfm-job-sign">+</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+            Profession <span id="tfm-job-sign">+</span>
           </button>
           <div class="tfm-dd tfm-dd-wide" id="tfm-dd-job"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-need" onclick="toggleTfmDD('need')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            By Purpose <span id="tfm-need-sign">+</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Purpose <span id="tfm-need-sign">+</span>
           </button>
           <div class="tfm-dd tfm-dd-wide" id="tfm-dd-need"></div>
         </div>
         <div class="tfm-filter-group">
           <button class="tfm-filter-btn" id="tfm-btn-trend" onclick="toggleTfmDD('trend')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            By Trending <span id="tfm-trend-sign">+</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Trending <span id="tfm-trend-sign">+</span>
           </button>
           <div class="tfm-dd" id="tfm-dd-trend"></div>
         </div>
       </div>
-      <!-- Result count + Clear -->
+      <!-- Fixed count + clear -->
       <div class="tfm-count-wrap">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-        <span id="tfm-count">225</span>
-        <button id="tfm-clear" class="tfm-clear" style="display:none" onclick="clearTfmFilters()">Clear</button>
+        <b id="tfm-count">0</b>&nbsp;tools
+        <button id="tfm-clear" class="tfm-clear" style="display:none" onclick="clearTfmFilters()">✕ Clear</button>
       </div>
     </div>
     <!-- Hidden legacy element needed by internal JS -->
@@ -865,23 +878,55 @@ const LENSES={
       {group:"Freelance & Services",items:["Freelance Designer","Freelance Writer","SEO Consultant","Translator","Web Developer"]}
     ],
     get options(){return this.groups.flatMap(g=>g.items);},
-    /* Job-to-category mapping so every profession has relevant tools */
+    /* Job-to-category mapping — covers ALL professions so filter always returns results */
     _catMap:{
+      /* Creative & Media */
+      "Content Creator":["Writing","Marketing","Design","Video","Image"],
+      "Copywriter":["Writing","Marketing","SEO"],
+      "Graphic Designer":["Design","Image"],
+      "Photographer":["Image","Design"],
+      "Podcaster":["Audio","Writing"],
+      "Video Creator":["Video","Design","Image"],
+      "Writer":["Writing","Education"],
+      "YouTuber":["Video","Writing","Marketing"],
+      /* Technology */
+      "Business Analyst":["Analytics","Research","Productivity"],
       "Data Scientist":["Analytics","Research","Coding"],
+      "Developer":["Coding","Automation"],
       "DevOps Engineer":["Coding","Automation"],
-      "UX Designer":["Design"],
+      "Product Manager":["Productivity","Analytics","Research"],
+      "UX Designer":["Design","Research"],
+      /* Business & Marketing */
       "Brand Manager":["Marketing","Design"],
       "Digital Marketer":["Marketing","SEO"],
+      "E-commerce Owner":["Marketing","Sales","SEO"],
+      "Email Marketer":["Marketing","Writing"],
+      "Entrepreneur":["Marketing","Productivity","Finance"],
+      "Founder":["Marketing","Productivity","Finance"],
+      "Marketer":["Marketing","SEO","Writing"],
       "Sales Professional":["Sales","Marketing"],
+      "Social Media Manager":["Marketing","Writing","Design"],
+      "Solopreneur":["Marketing","Productivity","Writing"],
+      /* Education & Research */
       "Academic":["Research","Education"],
-      "Trainer":["Education"],
+      "Educator":["Education","Writing","Productivity"],
+      "Journalist":["Writing","Research","SEO"],
+      "Researcher":["Research","Analytics","Writing"],
+      "Student":["Education","Writing","Research"],
+      "Trainer":["Education","Productivity"],
+      /* Operations & Support */
+      "Customer Support":["Support","Chatbot","Automation"],
       "Finance Professional":["Finance","Analytics"],
-      "HR Professional":["HR"],
-      "Project Manager":["Productivity","Automation"],
-      "Virtual Assistant":["Productivity","Automation"],
+      "HR Professional":["HR","Productivity"],
       "Legal Professional":["Productivity","Writing"],
-      "Translator":["Writing"],
+      "Manager":["Productivity","Automation","HR"],
+      "Project Manager":["Productivity","Automation"],
+      "Virtual Assistant":["Productivity","Automation","Writing"],
+      /* Freelance & Services */
+      "Freelance Designer":["Design","Image","Marketing"],
       "Freelance Writer":["Writing","SEO"],
+      "SEO Consultant":["SEO","Marketing","Analytics"],
+      "Translator":["Writing"],
       "Web Developer":["Coding","Design"],
     },
     rowsFor(v){
@@ -1042,9 +1087,38 @@ function pricingType(pill){
   if(p.startsWith('free')&&p!=='free trial')return'free';
   return'paid';
 }
+/* Purpose→category fallback so needs with few/no tagged tools still return results */
+const NEEDS_CAT_MAP={
+  "Handle customer queries":["Support","Chatbot"],
+  "Manage a team":["Productivity","HR","Automation"],
+  "Manage email":["Productivity","Automation"],
+  "Create social content":["Marketing","Design","Writing"],
+  "Build an app":["Coding"],
+  "Build a website":["Coding","Design"],
+  "Create a logo":["Design","Image"],
+  "Plan projects":["Productivity","Automation"],
+  "Write marketing copy":["Writing","Marketing"],
+  "Schedule smarter":["Productivity","Automation"],
+  "Transcribe meetings":["Audio","Productivity"],
+  "Translate":["Writing"],
+  "Create presentations":["Presentation","Design"],
+  "Improve writing":["Writing"],
+  "Search the web":["Research","Chatbot"],
+  "Brainstorm ideas":["Writing","Research","Chatbot"],
+  "Ship faster":["Coding","Automation","Productivity"],
+};
 function tfmJobMatch(t,job){
+  /* 1. direct tag on tool */
   if(t.jobs&&t.jobs.includes(job))return true;
+  /* 2. category fallback */
   const cats=LENSES.job._catMap[job]||[];
+  return cats.length>0&&cats.includes(t.cat);
+}
+function tfmNeedMatch(t,need){
+  /* 1. exact match in tool's needs array */
+  if((t.needs||[]).includes(need))return true;
+  /* 2. category fallback for needs with few/no direct matches */
+  const cats=NEEDS_CAT_MAP[need]||[];
   return cats.length>0&&cats.includes(t.cat);
 }
 function tfmTrendMatch(t,trend){
@@ -1060,7 +1134,7 @@ function tfmGetFilteredTools(){
     if(tfmCats.size>0&&!tfmCats.has(t.cat))return false;
     if(tfmPricing.size>0&&!tfmPricing.has(pricingType(t.pill)))return false;
     if(tfmJobs.size>0&&![...tfmJobs].some(j=>tfmJobMatch(t,j)))return false;
-    if(tfmNeeds.size>0&&![...tfmNeeds].some(n=>(t.needs||[]).includes(n)))return false;
+    if(tfmNeeds.size>0&&![...tfmNeeds].some(n=>tfmNeedMatch(t,n)))return false;
     if(tfmTrend&&!tfmTrendMatch(t,tfmTrend))return false;
     return true;
   });
@@ -1069,27 +1143,29 @@ function tfmGetFilteredTools(){
   else if(tfmSort==='new')idxs.reverse();
   return idxs;
 }
+function setTfmCount(n){const el=document.getElementById('tfm-count');if(el)el.textContent=n;}
 function renderTfmView(){
   const flatGrid=document.getElementById('tool-flat-grid');
   const rowsEl=document.getElementById('rows');
   const noteEl=document.getElementById('lens-note');
+  const clearBtn=document.getElementById('tfm-clear');
   if(!tfmHasActiveFilter()){
     flatGrid.classList.add('hidden');
     rowsEl.style.display='';
     renderRows();
-    document.getElementById('tfm-count').textContent=TOOLS.map((_,i)=>tool(i)).filter(Boolean).length;
-    document.getElementById('tfm-clear').style.display='none';
-    noteEl.style.display='';
+    setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
+    if(clearBtn)clearBtn.style.display='none';
+    if(noteEl)noteEl.style.display='';
     return;
   }
   rowsEl.style.display='none';
-  noteEl.style.display='none';
+  if(noteEl)noteEl.style.display='none';
   flatGrid.classList.remove('hidden');
   const idxs=tfmGetFilteredTools();
-  document.getElementById('tfm-count').textContent=idxs.length;
-  document.getElementById('tfm-clear').style.display=tfmHasExplicitFilter()?'':'none';
+  setTfmCount(idxs.length);
+  if(clearBtn)clearBtn.style.display=tfmHasExplicitFilter()?'':'none';
   if(!idxs.length){
-    flatGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-dim)"><div style="font-size:40px;margin-bottom:12px">&#128269;</div><div style="font-size:17px;font-weight:600;margin-bottom:8px">No tools match your filters</div><div>Try removing some filters or <button class="tfm-clear" onclick="clearTfmFilters()" style="font-size:inherit">clearing all</button>.</div></div>';
+    flatGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-dim)"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-size:17px;font-weight:600;margin-bottom:8px">No tools match your filters</div><div style="font-size:14px">Try removing some filters or <button class="tfm-clear" onclick="clearTfmFilters()" style="font-size:inherit">clearing all</button>.</div></div>';
     return;
   }
   flatGrid.innerHTML=idxs.map(i=>cardHTML(i)).join('');
@@ -1146,7 +1222,10 @@ function setTfmSort(sort){
   ['popular','deals','new'].forEach((s,i)=>btns[i]&&btns[i].classList.toggle('active',s===sort));
   renderTfmView();
 }
-document.addEventListener('click',e=>{if(!e.target.closest('.tfm-filter-group'))document.querySelectorAll('.tfm-dd').forEach(d=>d.classList.remove('open'));});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.tfm-filter-group')&&!e.target.closest('.tfm-strip'))
+    document.querySelectorAll('.tfm-dd').forEach(d=>d.classList.remove('open'));
+});
 document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();const[l,v]=a.dataset.quick.split(":");setLens(l);if(LENSES[l].options.includes(v))setValue(v);document.getElementById("tools").scrollIntoView({behavior:"smooth",block:"start"});}));
 function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){if(l==='all')setFilter('all');else{setFilter(l,LENSES[l].options.includes(v)?v:LENSES[l].options[0]);}}}
 window.dataLayer=window.dataLayer||[];
@@ -1552,53 +1631,52 @@ updateTray();
 /* ── End Compare System ── */
 
 /* ── Full Directory ── */
-const DIR_SHOW=9;
-let dirExpanded={};
-let dirActiveCat='All';
+const DIR_SHOW=12;
+let dirExpanded=false;
+let dirActiveCat='';   // set to first real category on init
 function renderDirectoryTabs(){
   const tabsEl=document.getElementById('dir-tabs');
   if(!tabsEl)return;
+  /* Only include categories that actually have tools */
   const cats=[...new Set(TOOLS.map((_,i)=>{const t=tool(i);return t?t.cat:null}).filter(Boolean))].sort();
-  tabsEl.innerHTML=
-    `<button class="dir-tab${dirActiveCat==='All'?' active':''}" onclick="setDirCat('All')">All (${TOOLS.filter((_,i)=>tool(i)).length})</button>`+
-    cats.map(cat=>{
-      const count=TOOLS.filter((_,i)=>{const t=tool(i);return t&&t.cat===cat;}).length;
-      return`<button class="dir-tab${dirActiveCat===cat?' active':''}" onclick="setDirCat('${cat.replace(/'/g,"\\'")}')">${cat} (${count})</button>`;
-    }).join('');
+  if(!dirActiveCat&&cats.length)dirActiveCat=cats[0]; // default to first category
+  tabsEl.innerHTML=cats.map(cat=>{
+    const count=TOOLS.filter((_,i)=>{const t=tool(i);return t&&t.cat===cat;}).length;
+    if(!count)return''; // skip empty categories
+    return`<button class="dir-tab${dirActiveCat===cat?' active':''}" onclick="setDirCat('${cat.replace(/'/g,"\\'")}')">${cat}</button>`;
+  }).filter(Boolean).join('');
 }
-function setDirCat(cat){dirActiveCat=cat;dirExpanded={};renderDirectoryTabs();renderDirectory();}
+function setDirCat(cat){dirActiveCat=cat;dirExpanded=false;renderDirectoryTabs();renderDirectory();}
 function renderDirectory(){
   const content=document.getElementById('dir-content');
   if(!content)return;
-  const cats={};
-  TOOLS.forEach((_,i)=>{const t=tool(i);if(!t)return;if(!cats[t.cat])cats[t.cat]=[];cats[t.cat].push(i);});
-  const catsToShow=dirActiveCat==='All'?Object.keys(cats).sort():[dirActiveCat].filter(c=>cats[c]);
-  content.innerHTML=catsToShow.map(cat=>{
-    const indices=cats[cat]||[];
-    const expanded=dirExpanded[cat];
-    const visible=expanded?indices:indices.slice(0,DIR_SHOW);
-    const cards=visible.map(i=>{
-      const t=tool(i);
-      return`<a href="go.html?url=${encodeURIComponent(activeUrl(t))}&name=${encodeURIComponent(t.name)}" target="_blank" rel="noopener nofollow" class="dir-card${t.verified?' verified':''}" onclick="trackVisit(${i})">
-        <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
-        <div class="dir-card-info">
-          <div class="dir-card-name">${t.name}</div>
-          <div class="dir-card-cat">${t.tag.length>55?t.tag.slice(0,55)+'…':t.tag}</div>
-        </div>
-        <span class="dir-card-pill">${t.pill}</span>
-      </a>`;
-    }).join('');
-    const hasMore=indices.length>DIR_SHOW;
-    return`<div class="dir-cat-block">
-      <div class="dir-cat-head">
-        <div class="dir-cat-name">${cat} <span class="dir-cat-count">${indices.length}</span></div>
-        ${hasMore?`<button class="dir-see-all" onclick="toggleDirCat('${cat.replace(/'/g,"\\'")}')">${expanded?'Show less':'See all '+indices.length}</button>`:''}
+  /* Build per-category index from actual tool data */
+  const catMap={};
+  TOOLS.forEach((_,i)=>{const t=tool(i);if(!t)return;if(!catMap[t.cat])catMap[t.cat]=[];catMap[t.cat].push(i);});
+  const indices=(catMap[dirActiveCat]||[]);
+  if(!indices.length){content.innerHTML='<div class="empty">No tools in this category yet.</div>';return;}
+  const visible=dirExpanded?indices:indices.slice(0,DIR_SHOW);
+  const hasMore=indices.length>DIR_SHOW;
+  const cards=visible.map(i=>{
+    const t=tool(i);
+    return`<a href="go.html?url=${encodeURIComponent(activeUrl(t))}&name=${encodeURIComponent(t.name)}" target="_blank" rel="noopener nofollow" class="dir-card${t.verified?' verified':''}" onclick="trackVisit(${i})">
+      <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
+      <div class="dir-card-info">
+        <div class="dir-card-name">${t.name}</div>
+        <div class="dir-card-cat">${t.tag.length>60?t.tag.slice(0,60)+'…':t.tag}</div>
       </div>
-      <div class="dir-grid">${cards}</div>
-    </div>`;
+      <span class="dir-card-pill">${t.pill}</span>
+    </a>`;
   }).join('');
+  content.innerHTML=`<div class="dir-cat-block">
+    <div class="dir-cat-head">
+      <div class="dir-cat-name">${dirActiveCat} <span class="dir-cat-count">${indices.length} tools</span></div>
+      ${hasMore?`<button class="dir-see-all" onclick="toggleDirExpand()">${dirExpanded?'Show fewer':'See all '+indices.length}</button>`:''}
+    </div>
+    <div class="dir-grid">${cards}</div>
+  </div>`;
 }
-function toggleDirCat(cat){dirExpanded[cat]=!dirExpanded[cat];renderDirectory();}
+function toggleDirExpand(){dirExpanded=!dirExpanded;renderDirectory();}
 
 /* ── Brevo scroll popup ── */
 (function(){
@@ -1640,9 +1718,9 @@ function renderSocialFooter(){
     </a>`).join('');
 }
 setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();
-/* Init TFM filter dropdowns and count */
+/* Init TFM filter */
 buildTfmDDs();
-(function(){const total=TOOLS.map((_,i)=>tool(i)).filter(Boolean).length;document.getElementById('tfm-count').textContent=total;})();
+setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
 window.addEventListener("hashchange",readHash);readHash();
 
 </script>
