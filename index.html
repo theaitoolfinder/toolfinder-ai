@@ -134,6 +134,11 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
   .tfm-strip{padding:8px 10px}
   .tfm-count-wrap{border-left:none;border-top:1px solid var(--border-soft);padding:8px 12px}
 }
+.tfm-active-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.tfm-active-chips:empty{display:none;margin:0}
+.tfm-active-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 8px 5px 12px;border-radius:999px;background:var(--primary);color:#fff;font-size:12.5px;font-weight:600;white-space:nowrap}
+.tfm-active-chip button{background:none;border:none;color:rgba(255,255,255,.75);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;display:flex;align-items:center;transition:color .12s}
+.tfm-active-chip button:hover{color:#fff}
 .top-searched{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .ts-label{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .ts-chip{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .12s}
@@ -473,6 +478,8 @@ footer a:hover{color:var(--primary)}
         <button id="tfm-clear" class="tfm-clear" style="display:none" onclick="clearTfmFilters()">✕ Clear</button>
       </div>
     </div>
+      <!-- Active filter chips shown below bar -->
+      <div id="tfm-active-chips" class="tfm-active-chips"></div>
     </div><!-- /tfm-sticky-wrap -->
     <!-- Hidden legacy element needed by internal JS -->
     <button id="filter-all-btn" style="display:none" onclick="setFilter('all')"></button>
@@ -1209,31 +1216,29 @@ function toggleTfmNeed(need){if(tfmNeeds.has(need))tfmNeeds.delete(need);else tf
 function setTfmTrend(trend){tfmTrend=(tfmTrend===trend)?'':trend;syncTfmState();}
 function syncTfmState(){
   const pLabels={free:'Free',paid:'Paid',onetime:'One-Time'};
-  function btnLabel(defaultText,items,max=1){
-    const arr=[...items];
-    if(!arr.length)return defaultText;
-    if(arr.length===1)return arr[0];
-    return defaultText+' · '+arr.length;
-  }
-  /* Update button labels, active states and ± signs */
-  const configs=[
-    {btn:'tfm-btn-cats',sign:'tfm-cats-sign',lbl:'tfm-cats-label',
-     active:tfmCats.size>0,label:btnLabel('Category',tfmCats)},
-    {btn:'tfm-btn-pricing',sign:'tfm-pricing-sign',lbl:'tfm-pricing-label',
-     active:tfmPricing.size>0,label:btnLabel('Pricing',new Set([...tfmPricing].map(k=>pLabels[k]||k)))},
-    {btn:'tfm-btn-job',sign:'tfm-job-sign',lbl:'tfm-job-label',
-     active:tfmJobs.size>0,label:btnLabel('Profession',tfmJobs)},
-    {btn:'tfm-btn-need',sign:'tfm-need-sign',lbl:'tfm-need-label',
-     active:tfmNeeds.size>0,label:btnLabel('Purpose',tfmNeeds)},
-    {btn:'tfm-btn-trend',sign:'tfm-trend-sign',lbl:'tfm-trend-label',
-     active:!!tfmTrend,label:tfmTrend||'Trending'},
+  /* Restore button active states + signs (labels stay static) */
+  const pairs=[
+    ['tfm-btn-cats','tfm-cats-sign',tfmCats.size>0],
+    ['tfm-btn-pricing','tfm-pricing-sign',tfmPricing.size>0],
+    ['tfm-btn-job','tfm-job-sign',tfmJobs.size>0],
+    ['tfm-btn-need','tfm-need-sign',tfmNeeds.size>0],
+    ['tfm-btn-trend','tfm-trend-sign',!!tfmTrend],
   ];
-  configs.forEach(({btn,sign,lbl,active,label})=>{
-    document.getElementById(btn).classList.toggle('active',active);
-    document.getElementById(sign).textContent=active?'✕':'+';
-    const lblEl=document.getElementById(lbl);
-    if(lblEl)lblEl.textContent=label;
+  pairs.forEach(([btnId,signId,on])=>{
+    document.getElementById(btnId).classList.toggle('active',on);
+    document.getElementById(signId).textContent=on?'—':'+';
   });
+  /* Render active-filter chips below bar */
+  const chipsEl=document.getElementById('tfm-active-chips');
+  if(chipsEl){
+    const chips=[];
+    tfmCats.forEach(c=>chips.push(`<span class="tfm-active-chip">${c}<button onclick="toggleTfmCat('${c.replace(/'/g,"\\'")}')">✕</button></span>`));
+    tfmPricing.forEach(k=>chips.push(`<span class="tfm-active-chip">${pLabels[k]||k}<button onclick="toggleTfmPricing('${k}')">✕</button></span>`));
+    tfmJobs.forEach(j=>chips.push(`<span class="tfm-active-chip">${j}<button onclick="toggleTfmJob('${j.replace(/'/g,"\\'")}')">✕</button></span>`));
+    tfmNeeds.forEach(n=>chips.push(`<span class="tfm-active-chip">${n}<button onclick="toggleTfmNeed('${n.replace(/'/g,"\\'")}')">✕</button></span>`));
+    if(tfmTrend)chips.push(`<span class="tfm-active-chip">${tfmTrend}<button onclick="setTfmTrend('${tfmTrend.replace(/'/g,"\\'")}')">✕</button></span>`);
+    chipsEl.innerHTML=chips.join('');
+  }
   buildTfmDDs();
   renderTfmView();
 }
@@ -1779,12 +1784,16 @@ window.addEventListener("hashchange",readHash);readHash();
       isFixed=shouldFix;
       if(shouldFix){
         if(!spacer){spacer=document.createElement('div');spacer.id=spacerId;sentinel.parentNode.insertBefore(spacer,wrap);}
-        spacer.style.height=barH+'px';
+        spacer.style.height=wrap.offsetHeight+'px';
         wrap.classList.add('is-fixed');
       } else {
         if(spacer)spacer.style.height='0';
         wrap.classList.remove('is-fixed');
       }
+    }
+    // Keep spacer in sync when bar height changes (e.g. chips added/removed)
+    if('ResizeObserver' in window){
+      new ResizeObserver(()=>{if(isFixed&&spacer)spacer.style.height=wrap.offsetHeight+'px';}).observe(wrap);
     }
     window.addEventListener('scroll',check,{passive:true});
     check();
