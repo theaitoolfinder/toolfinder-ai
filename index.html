@@ -16,7 +16,7 @@
 :root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--accent-2:#fbbf24;--ok:#16a34a;--star:#f59e0b;--danger:#ef4444;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;}
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{overflow-x:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit}.container{max-width:1180px;margin:0 auto;padding:0 20px}
+html{overflow-x:hidden}body{-webkit-overflow-scrolling:touch}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;touch-action:manipulation}.container{max-width:1180px;margin:0 auto;padding:0 20px}
 .disclosure{background:rgba(26,86,219,.06);border-bottom:1px solid rgba(26,86,219,.12);color:var(--text-dim);font-size:11px;text-align:center;padding:5px 16px}
 .disclosure a{color:var(--primary);text-decoration:underline;font-weight:500}
 header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border-soft)}
@@ -91,15 +91,15 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .filter-search-input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
 /* ── TFM horizontal filter bar (toolfinder.com style — single scrollable strip) ── */
 .tfm-sticky-wrap{background:var(--bg);padding:8px 0 10px;transition:box-shadow .2s}
-.tfm-sticky-wrap.is-fixed{position:fixed;top:65px;left:0;right:0;z-index:48;padding:8px 20px 10px;box-shadow:0 4px 18px rgba(0,0,0,.09)}
-@media(max-width:700px){.tfm-sticky-wrap.is-fixed{top:55px;padding:8px 16px 10px}}
+.tfm-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:48;padding:8px 20px 10px;box-shadow:0 4px 18px rgba(0,0,0,.09);-webkit-transform:translateZ(0);transform:translateZ(0)}
+@media(max-width:700px){.tfm-sticky-wrap.is-fixed{top:var(--header-h,55px);padding:8px 16px 10px}}
 .tfm-outer{display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:0;position:relative}
 .tfm-outer:focus-within{border-color:var(--primary)}
 .tfm-search-fixed{display:flex;align-items:center;gap:8px;padding:10px 14px;border-right:1px solid var(--border-soft);flex-shrink:0;min-width:170px;max-width:210px;background:var(--surface)}
 .tfm-search-fixed svg{flex-shrink:0;color:var(--text-dim)}
 .tfm-search-fixed input{border:none;outline:none;font:inherit;font-size:13.5px;color:var(--text);background:none;width:100%;min-width:0}
 .tfm-search-fixed input::placeholder{color:var(--text-dim)}
-.tfm-strip{display:flex;align-items:center;gap:6px;padding:7px 10px;overflow-x:auto;flex:1;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+.tfm-strip{display:flex;align-items:center;gap:6px;padding:7px 10px;overflow-x:auto;flex:1;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x;flex-wrap:nowrap}
 .tfm-strip::-webkit-scrollbar{display:none}
 .tfm-sort{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--border-soft);border-radius:8px;padding:2px;flex-shrink:0}
 .tfm-sort-btn{padding:5px 11px;border-radius:6px;border:none;background:none;font-family:inherit;font-size:12.5px;color:var(--text-2);cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
@@ -109,7 +109,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .tfm-filter-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
 .tfm-filter-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 .tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
-.tfm-dd{position:fixed;top:0;left:0;z-index:9999;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;padding:6px;flex-direction:column;gap:3px;display:none}
+.tfm-dd{position:fixed;top:0;left:0;z-index:9999;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
 .tfm-dd.open{display:flex}
 .tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
 .tfm-dd-item:hover{background:var(--primary-light)}
@@ -209,9 +209,9 @@ footer a:hover{color:var(--primary)}
 .dir-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
 .dir-sub{color:var(--text-2);font-size:14.5px;margin:0}
 .dir-sticky-wrap{padding:0 0 0;transition:box-shadow .2s}
-.dir-sticky-wrap.is-fixed{position:fixed;top:65px;left:0;right:0;z-index:47;background:var(--surface);border-bottom:1px solid var(--border-soft);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:8px 0}
+.dir-sticky-wrap.is-fixed{position:fixed;top:var(--header-h,65px);left:0;right:0;z-index:47;background:var(--surface);border-bottom:1px solid var(--border-soft);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:8px 0;-webkit-transform:translateZ(0);transform:translateZ(0)}
 .dir-sticky-wrap.is-fixed .dir-tabs{max-width:1180px;margin:0 auto;padding:4px 28px 6px}
-@media(max-width:700px){.dir-sticky-wrap.is-fixed{top:55px}.dir-sticky-wrap.is-fixed .dir-tabs{padding:4px 16px 6px}}
+@media(max-width:700px){.dir-sticky-wrap.is-fixed{top:var(--header-h,55px)}.dir-sticky-wrap.is-fixed .dir-tabs{padding:4px 16px 6px}}
 .dir-tabs{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:22px;padding:0 2px 4px}
 .dir-tabs::-webkit-scrollbar{display:none}
 .dir-tab{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .14s;font-weight:500;white-space:nowrap;flex-shrink:0}
@@ -1252,8 +1252,12 @@ function toggleTfmDD(name){
     buildTfmDDs();
     const r=btn.getBoundingClientRect();
     const ddW=dd.classList.contains('tfm-dd-wide')?260:210;
-    dd.style.top=(r.bottom+8)+'px';
-    dd.style.left=Math.min(r.left,window.innerWidth-ddW-8)+'px';
+    // iOS visual viewport offset (shifts when keyboard opens)
+    const vpTop=(window.visualViewport?window.visualViewport.offsetTop:0);
+    const vpLeft=(window.visualViewport?window.visualViewport.offsetLeft:0);
+    const vw=window.visualViewport?window.visualViewport.width:window.innerWidth;
+    dd.style.top=(r.bottom+8-vpTop)+'px';
+    dd.style.left=Math.min(r.left-vpLeft,vw-ddW-8)+'px';
     dd.classList.add('open');
   }
 }
@@ -1766,6 +1770,14 @@ window.addEventListener("hashchange",readHash);readHash();
 // Generic sticky bar — locks below header, releases when next section enters view
 (function(){
   const headerEl=document.querySelector('header.site');
+  // Set --header-h CSS variable so fixed bars use the real measured height
+  function updateHeaderVar(){
+    const h=headerEl?headerEl.offsetHeight:65;
+    document.documentElement.style.setProperty('--header-h',h+'px');
+  }
+  updateHeaderVar();
+  window.addEventListener('resize',updateHeaderVar,{passive:true});
+
   function initSticky(sentinelId,wrapperId,releaseId,spacerId){
     const sentinel=document.getElementById(sentinelId);
     const wrap=document.getElementById(wrapperId);
@@ -1777,7 +1789,6 @@ window.addEventListener("hashchange",readHash);readHash();
       const headerH=headerEl?headerEl.offsetHeight:65;
       const sentTop=sentinel.getBoundingClientRect().top;
       const barH=wrap.offsetHeight;
-      // Release when next section's top enters the bar area
       const releaseTop=releaseEl?releaseEl.getBoundingClientRect().top:Infinity;
       const shouldFix=sentTop<headerH&&releaseTop>(headerH+barH);
       if(shouldFix===isFixed)return;
@@ -1791,11 +1802,14 @@ window.addEventListener("hashchange",readHash);readHash();
         wrap.classList.remove('is-fixed');
       }
     }
-    // Keep spacer in sync when bar height changes (e.g. chips added/removed)
+    // Keep spacer in sync when bar height changes (chips added/removed)
     if('ResizeObserver' in window){
       new ResizeObserver(()=>{if(isFixed&&spacer)spacer.style.height=wrap.offsetHeight+'px';}).observe(wrap);
     }
+    // iOS Safari: scroll events don't fire during momentum — add touch listeners
     window.addEventListener('scroll',check,{passive:true});
+    window.addEventListener('touchmove',check,{passive:true});
+    window.addEventListener('touchend',function(){requestAnimationFrame(check);},{passive:true});
     check();
   }
   // Tools filter bar — releases when newsletter section enters
