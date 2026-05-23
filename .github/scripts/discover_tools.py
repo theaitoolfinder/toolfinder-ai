@@ -666,14 +666,18 @@ def inject_tools_into_array(content, array_name, new_tools):
         return content
 
     insert_pos = bounds[1] - 1  # position of closing `]`
-    # Ensure trailing comma on last existing item
+    # Strip trailing whitespace from the array body
     chunk_before = content[bounds[0]:insert_pos].rstrip()
+    # Ensure the last existing item ends with a comma so the new items don't break JS syntax
+    if chunk_before and not chunk_before.endswith(','):
+        chunk_before += ','
     # Build new lines
     new_lines = ""
     for t in new_tools:
         new_lines += "\n  " + tool_to_js(t) + ","
+    # Remove trailing comma from very last item (optional style — trailing commas are valid JS)
     # Insert before the `]`
-    updated = content[:bounds[0]] + content[bounds[0]:insert_pos].rstrip() + new_lines + "\n" + content[insert_pos:]
+    updated = content[:bounds[0]] + chunk_before + new_lines + "\n" + content[insert_pos:]
     print(f"[OK] Injected {len(new_tools)} tools into {array_name}.", file=sys.stderr)
     return updated
 
