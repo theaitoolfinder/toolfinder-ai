@@ -248,6 +248,8 @@ footer a:hover{color:#e2c06a;}
 .exclusive-desc{font-size:14px;color:var(--gray2);margin:6px 0 20px}
 .exclusive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .exclusive-card{cursor:pointer;position:relative}
+/* block affiliate.js links and any child clicks — bubble up to parent onclick */
+.exclusive-card .art-card-img,.exclusive-card .art-card-body,.exclusive-card .art-card-body *{pointer-events:none}
 .exclusive-lock{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--navy);background:rgba(26,86,219,.08);padding:5px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
 .subscribe-gate{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
 .subscribe-gate.hidden{display:none}
@@ -692,7 +694,7 @@ footer a:hover{color:#e2c06a;}
 
   </div>
 
-  <!-- Exclusive access gate modal -->
+  <!-- Exclusive access gate modal — single form, saves locally + forwards to Brevo -->
   <div id="subscribe-gate" class="subscribe-gate hidden" onclick="if(event.target===this)this.classList.add('hidden')">
     <div class="subscribe-gate-box">
       <button class="subscribe-gate-close" onclick="document.getElementById('subscribe-gate').classList.add('hidden')">
@@ -701,30 +703,21 @@ footer a:hover{color:#e2c06a;}
       <div class="subscribe-gate-icon">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
-
-      <!-- Tab switcher -->
-      <div id="gate-tabs" style="display:flex;gap:0;border:1.5px solid var(--border,#c9d9f5);border-radius:10px;overflow:hidden;margin-bottom:18px;">
-        <button id="gate-tab-login" onclick="showGateTab('login')" style="flex:1;padding:9px;font-family:inherit;font-size:13px;font-weight:600;background:#1a56db;color:#fff;border:none;cursor:pointer;transition:all .15s;">Log In</button>
-        <button id="gate-tab-sub" onclick="showGateTab('sub')" style="flex:1;padding:9px;font-family:inherit;font-size:13px;font-weight:600;background:#f0f6ff;color:#1e3a5f;border:none;cursor:pointer;transition:all .15s;">Subscribe Free</button>
-      </div>
-
-      <!-- Login panel -->
-      <div id="gate-login-panel">
-        <h3 style="margin-bottom:6px;">Already registered?</h3>
-        <p style="font-size:13px;color:#5c7799;margin-bottom:16px;">Log in with the email you used when comparing tools. Registered users get full access to exclusive articles.</p>
-        <input id="gate-email" type="email" placeholder="Your email address" style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;">
-        <div id="gate-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;"></div>
-        <button onclick="gateLogin()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;">Unlock Exclusive Articles</button>
-        <p style="font-size:11.5px;color:#5c7799;margin-top:12px;text-align:center;">Not registered yet? Switch to "Subscribe Free" to join.</p>
-      </div>
-
-      <!-- Subscribe panel -->
-      <div id="gate-sub-panel" style="display:none;">
-        <h3>Exclusive Subscriber Content</h3>
-        <p>This article is available to newsletter subscribers. Join free to unlock all exclusive guides and comparisons.</p>
-        <iframe width="100%" height="230" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;border-radius:8px"></iframe>
-        <p style="font-size:11.5px;color:#5c7799;margin-top:12px;text-align:center;">Already registered? Switch to "Log In" above.</p>
-      </div>
+      <h3>Unlock Exclusive Articles</h3>
+      <p>Enter your name and email for free instant access. Already subscribed? Just enter your email.</p>
+      <input id="gate-name" type="text" placeholder="Your name (optional)" autocomplete="name"
+        style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;">
+      <input id="gate-email" type="email" placeholder="Your email address" autocomplete="email"
+        style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;"
+        onkeydown="if(event.key==='Enter')gateSubmit()">
+      <div id="gate-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;padding:8px 12px;background:#fff5f5;border-radius:8px;border:1px solid #fed7d7;text-align:left;"></div>
+      <button id="gate-btn" onclick="gateSubmit()"
+        style="width:100%;padding:13px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:opacity .15s;">
+        Get Instant Access &rarr;
+      </button>
+      <p style="font-size:11.5px;color:#5c7799;margin-top:14px;line-height:1.5;">
+        We'll also send you our free weekly AI tools digest.<br>No spam — unsubscribe any time.
+      </p>
     </div>
   </div>
 
@@ -818,57 +811,50 @@ function showSubscribeGate(){
   document.getElementById('subscribe-gate').classList.remove('hidden');
 }
 
-function showGateTab(tab){
-  const loginPanel=document.getElementById('gate-login-panel');
-  const subPanel=document.getElementById('gate-sub-panel');
-  const tabLogin=document.getElementById('gate-tab-login');
-  const tabSub=document.getElementById('gate-tab-sub');
-  if(tab==='login'){
-    loginPanel.style.display='block';
-    subPanel.style.display='none';
-    tabLogin.style.background='#1a56db';tabLogin.style.color='#fff';
-    tabSub.style.background='#f0f6ff';tabSub.style.color='#1e3a5f';
-  } else {
-    loginPanel.style.display='none';
-    subPanel.style.display='block';
-    tabSub.style.background='#1a56db';tabSub.style.color='#fff';
-    tabLogin.style.background='#f0f6ff';tabLogin.style.color='#1e3a5f';
-  }
-}
-
-function gateLogin(){
+async function gateSubmit(){
+  const name=(document.getElementById('gate-name').value||'').trim();
   const email=(document.getElementById('gate-email').value||'').trim().toLowerCase();
   const errEl=document.getElementById('gate-error');
+  const btn=document.getElementById('gate-btn');
   errEl.style.display='none';
   if(!email||!email.includes('@')){
     errEl.textContent='Please enter a valid email address.';
     errEl.style.display='block';
     return;
   }
-  /* Check localStorage users DB */
-  let found=false;
+  btn.textContent='Saving…';btn.style.opacity='0.7';btn.disabled=true;
+  /* Save to local DB */
+  const user={name:name||'Subscriber',email,ts:Date.now()};
   try{
     const users=JSON.parse(localStorage.getItem('myai_users_v1')||'[]');
-    const match=users.find(u=>u.email&&u.email.toLowerCase()===email);
-    if(match){
-      localStorage.setItem('myai_user_v1',JSON.stringify(match));
-      found=true;
+    const idx=users.findIndex(u=>(u.email||'').toLowerCase()===email);
+    if(idx>=0){users[idx]=Object.assign({},users[idx],user);}else{users.push(user);}
+    localStorage.setItem('myai_users_v1',JSON.stringify(users));
+    localStorage.setItem('myai_user_v1',JSON.stringify(user));
+  }catch(e){}
+  /* Forward to Brevo — non-blocking */
+  try{
+    const cfg=JSON.parse(localStorage.getItem('myai_site_config_v1')||'{}');
+    const apiKey=cfg.brevo_api_key||'';
+    const listId=parseInt(cfg.brevo_list_id||'0');
+    if(apiKey){
+      const parts=(name||'').split(' ').filter(Boolean);
+      await fetch('https://api.brevo.com/v3/contacts',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','api-key':apiKey},
+        body:JSON.stringify({
+          email,
+          attributes:{FIRSTNAME:parts[0]||'',LASTNAME:parts.slice(1).join(' ')||''},
+          listIds:listId?[listId]:[],
+          updateEnabled:true
+        })
+      });
     }
   }catch(e){}
-  /* Also accept if email matches existing user_v1 session */
-  if(!found){
-    try{
-      const cur=JSON.parse(localStorage.getItem('myai_user_v1')||'null');
-      if(cur&&cur.email&&cur.email.toLowerCase()===email) found=true;
-    }catch(e){}
-  }
-  if(found){
-    document.getElementById('subscribe-gate').classList.add('hidden');
-    unlockExclusiveCards();
-  } else {
-    errEl.textContent='Email not found. Please subscribe first or use the email you registered with.';
-    errEl.style.display='block';
-  }
+  /* Unlock and close */
+  btn.textContent='Get Instant Access →';btn.style.opacity='1';btn.disabled=false;
+  document.getElementById('subscribe-gate').classList.add('hidden');
+  unlockExclusiveCards();
 }
 
 /* Auto-unlock on page load if already logged in */

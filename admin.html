@@ -204,6 +204,19 @@
         <input type="url" id="cfg-social-tiktok" placeholder="https://tiktok.com/@yourhandle" />
       </div>
     </div>
+
+    <h3 style="margin:24px 0 12px;font-size:15px;font-weight:700;color:var(--text)">Email / Brevo Integration</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin:0 0 14px;line-height:1.6">Used by the exclusive-article subscribe gate to add new subscribers to your Brevo list automatically.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <label>Brevo API Key</label>
+        <input type="text" id="cfg-brevo-api-key" placeholder="xkeysib-…" autocomplete="off" />
+      </div>
+      <div>
+        <label>Brevo List ID</label>
+        <input type="number" id="cfg-brevo-list-id" placeholder="e.g. 3" min="0" />
+      </div>
+    </div>
   </div>
 
   <!-- GITHUB TAB -->
@@ -519,7 +532,9 @@ const DEFAULT_SITE = {
   social_instagram: "",
   social_youtube: "",
   social_linkedin: "",
-  social_tiktok: ""
+  social_tiktok: "",
+  brevo_api_key: "",
+  brevo_list_id: ""
 };
 
 /* ===== Auth ===== */
@@ -650,7 +665,7 @@ function addTool(){
 /* ===== Site config ===== */
 function renderSiteForm(){
   const s = loadSite();
-  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy', social_twitter:'cfg-social-twitter', social_facebook:'cfg-social-facebook', social_instagram:'cfg-social-instagram', social_youtube:'cfg-social-youtube', social_linkedin:'cfg-social-linkedin', social_tiktok:'cfg-social-tiktok'};
+  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy', social_twitter:'cfg-social-twitter', social_facebook:'cfg-social-facebook', social_instagram:'cfg-social-instagram', social_youtube:'cfg-social-youtube', social_linkedin:'cfg-social-linkedin', social_tiktok:'cfg-social-tiktok', brevo_api_key:'cfg-brevo-api-key', brevo_list_id:'cfg-brevo-list-id'};
   Object.entries(map).forEach(([k,id])=>{
     const el = document.getElementById(id);
     if (el) {

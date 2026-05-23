@@ -982,8 +982,8 @@ window.dataLayer=window.dataLayer||[];
 function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event:"tool_click",tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),destination:activeUrl(t)});try{const c=JSON.parse(localStorage.getItem("myai_clicks_v1")||"{}");c[t.name]=(c[t.name]||0)+1;localStorage.setItem("myai_clicks_v1",JSON.stringify(c));}catch(e){}}
 function renderStats(){
   const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));
-  /* Round down to nearest 50 so "300+" is shown when we have 250-299 */
-  const rounded=Math.floor(v.length/50)*50;
+  /* Round down to nearest 25 for a more accurate display */
+  const rounded=Math.floor(v.length/25)*25;
   document.getElementById("stat-tools").textContent=rounded+"+";
   document.getElementById("stat-cats").textContent=cats.size;
 }
