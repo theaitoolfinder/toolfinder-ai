@@ -1,0 +1,43 @@
+name: Tool Discovery
+
+on:
+  schedule:
+    - cron: '0 6 * * 3'   # Wednesday 14:00 PHT (06:00 UTC)
+    - cron: '0 6 * * 6'   # Saturday  14:00 PHT (06:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  discover-tools:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests anthropic
+
+      - name: Discover and add new AI tools
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VALIDATE_DOMAINS: '0'
+        run: python .github/scripts/discover_tools.py
+
+      - name: Commit new tools
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add index.html admin.html js/tools-data.js .github/scripts/tool_discovery_log.json
+          if git diff --staged --quiet; then
+            echo "No new tools added today."
+          else
+            git commit -m "Auto-discover: $(TZ='Asia/Manila' date +'%b %d %Y') — new AI tools added"
+            git pull --rebase origin main || true
+            git push
+          fi
