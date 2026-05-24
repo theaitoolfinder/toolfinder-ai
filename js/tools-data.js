@@ -289,5 +289,8 @@ window.MYAI_AFF_MAP = {
   "luma dream machine": "https://lumalabs.ai/dream-machine",
   "recraft": "https://recraft.ai",
   "wordware": "https://wordware.ai",
-  "fal.ai": "https://fal.ai"
+  "fal.ai": "https://fal.ai",
+  "sora": "https://sora.com",
+  "convergence proxy": "https://convergence.ai",
+  "wispr flow": "https://wispr.ai"
 };

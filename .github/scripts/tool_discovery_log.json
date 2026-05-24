@@ -9,6 +9,15 @@
         "Fal.ai"
       ],
       "count": 4
+    },
+    {
+      "date": "2026-05-24",
+      "tools": [
+        "Sora",
+        "Convergence Proxy",
+        "Wispr Flow"
+      ],
+      "count": 3
     }
   ]
 }
