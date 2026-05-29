@@ -104,6 +104,18 @@
       "topic": "people approach 2026",
       "pair": "",
       "words": 608
+    },
+    {
+      "date": "2026-05-29",
+      "slot": "exclusive",
+      "slug": "exclusive-2026-05-29-4",
+      "title": "ElevenLabs vs Murf AI: The Honest 2026 Verdict",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs murf 2026",
+      "pair": "ElevenLabs vs Murf AI",
+      "words": 537
     }
   ]
 }
