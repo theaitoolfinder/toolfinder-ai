@@ -1690,9 +1690,13 @@ async function commitReviews(){
     alert('Set up your GitHub token in the GitHub Sync tab first.');
     return;
   }
-  // Only commit approved reviews
+  // Guard: don't allow saving if reviews haven't loaded yet
+  if(!_reviewsData.length && !confirm('No reviews are loaded — this will save an empty list and wipe all existing reviews. Are you sure?')){
+    return;
+  }
+  // Only commit approved reviews — wrap in {"reviews":[...]} so index.html reads it correctly
   const approved = _reviewsData.filter(r=>r.approved===true);
-  const jsonStr  = JSON.stringify(approved, null, 2);
+  const jsonStr  = JSON.stringify({reviews: approved}, null, 2);
   const btn = document.querySelector('button[onclick="commitReviews()"]');
   if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
   const ok = await commitToGitHub('data/reviews.json', jsonStr,
