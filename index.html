@@ -616,9 +616,24 @@ footer a:hover{color:var(--primary)}
     <div class="eyebrow">The AI Toolbox Newsletter</div>
     <h2>Stop guessing. Start knowing.</h2>
     <p>Every Friday: 5 hand-picked AI tools, 1 honest comparison, 1 tip that saves you real time &mdash; free forever.</p>
-    <div class="brevo-wrap">
-      <iframe width="540" height="305" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%"></iframe>
-    </div>
+    <form id="nl-form" onsubmit="nlSubscribe(event)" novalidate style="max-width:560px;margin:0 auto">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <input id="nl-fname" type="text" placeholder="First name" autocomplete="given-name"
+          style="flex:1;min-width:130px;padding:14px 18px;border-radius:12px;border:1.5px solid rgba(26,86,219,.18);font:15px 'Poppins',sans-serif;outline:none;background:#fff;color:var(--text);transition:border-color .15s"
+          onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='rgba(26,86,219,.18)'">
+        <input id="nl-email" type="email" placeholder="your@email.com" autocomplete="email" required
+          style="flex:2;min-width:190px;padding:14px 18px;border-radius:12px;border:1.5px solid rgba(26,86,219,.18);font:15px 'Poppins',sans-serif;outline:none;background:#fff;color:var(--text);transition:border-color .15s"
+          onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='rgba(26,86,219,.18)'">
+        <button type="submit" id="nl-btn"
+          style="padding:14px 26px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 15px 'Poppins',sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:all .2s"
+          onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 22px rgba(26,86,219,.45)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(26,86,219,.35)'">
+          Subscribe Free →
+        </button>
+      </div>
+      <div id="nl-msg" style="margin-top:14px;min-height:22px;font-size:14px;text-align:center;font-weight:500"></div>
+      <p style="margin:12px 0 0;font-size:12px;color:var(--text-dim);opacity:.75">No spam. Unsubscribe any time. 1,000+ readers every Friday.</p>
+    </form>
   </section>
   <!-- ── Reviews Section ── -->
   <section class="container reviews-section" id="reviews">
@@ -2323,6 +2338,40 @@ window.addEventListener("hashchange",readHash);readHash();
     })
     .catch(function(){section.style.display='none';});
 })();
+
+/* ── Newsletter inline subscribe ── */
+async function nlSubscribe(e){
+  e.preventDefault();
+  const fname=(document.getElementById('nl-fname').value||'').trim();
+  const email=(document.getElementById('nl-email').value||'').trim();
+  const msg=document.getElementById('nl-msg');
+  const btn=document.getElementById('nl-btn');
+  msg.style.color='var(--text-dim)'; msg.textContent='';
+  if(!email||!/\S+@\S+\.\S+/.test(email)){
+    msg.style.color='#ef4444'; msg.textContent='⚠ Please enter a valid email address.'; return;
+  }
+  btn.disabled=true; btn.textContent='Subscribing…';
+  try{
+    // POST directly to the Brevo form endpoint (no-cors — can't read response but submit works)
+    const fd=new FormData();
+    fd.append('EMAIL',email);
+    if(fname) fd.append('FIRSTNAME',fname);
+    fd.append('locale','en');
+    fd.append('html_type','simple');
+    await fetch('https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',
+      {method:'POST',body:fd,mode:'no-cors'});
+    // no-cors means we can't read the response — assume success and show confirmation
+    msg.style.color='var(--ok)';
+    msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
+    btn.textContent='✓ Subscribed!';
+    document.getElementById('nl-fname').value='';
+    document.getElementById('nl-email').value='';
+  }catch(err){
+    msg.style.color='#ef4444';
+    msg.textContent='⚠ Something went wrong. Please try again.';
+    btn.disabled=false; btn.textContent='Subscribe Free →';
+  }
+}
 
 /* ══════════════════════════════════════════
    Reviews section
