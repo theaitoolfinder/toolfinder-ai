@@ -62,7 +62,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 .stat b{display:block;font-size:26px;background:linear-gradient(135deg,var(--primary),#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;line-height:1}
 .stat span{display:block;font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-top:6px}
-.controls{margin:60px 0 8px}
+.controls{margin:60px auto 8px}
 .search{display:flex;gap:8px;max-width:560px;margin:0 auto 18px;background:var(--surface);border:1px solid var(--border);padding:6px 6px 6px 18px;border-radius:999px;align-items:center;box-shadow:var(--shadow);transition:border-color .15s,box-shadow .15s}
 .search:focus-within{border-color:var(--primary);box-shadow:var(--shadow-lg),0 0 0 3px rgba(26,86,219,.10)}
 .search svg{flex:0 0 auto;color:var(--text-dim)}
@@ -172,7 +172,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .compare-btn{padding:10px 12px;border-radius:9px;background:var(--surface);color:var(--text-2);border:1px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .compare-btn:hover{color:var(--primary);border-color:var(--primary);background:var(--primary-light)}
 .empty{padding:36px;text-align:center;color:var(--text-dim);border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface-2)}
-.newsletter{margin:60px 0 0;padding:48px 30px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(26,86,219,.14);border-radius:20px;text-align:center;box-shadow:var(--shadow)}
+.newsletter{margin:60px auto 0;padding:48px 30px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(26,86,219,.14);border-radius:20px;text-align:center;box-shadow:var(--shadow)}
 .newsletter h2{font-size:clamp(24px,3vw,32px);margin:8px 0 10px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .newsletter p{color:var(--text-2);max-width:540px;margin:0 auto 24px;font-size:15.5px}
 .brevo-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:18px;border-radius:16px;box-shadow:var(--shadow)}
@@ -189,21 +189,46 @@ footer a:hover{color:var(--primary)}
 .social-icons{display:flex;gap:10px;margin-top:14px}
 .social-icon{width:34px;height:34px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-soft);display:inline-flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all .15s}
 .social-icon:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
+
+/* ══ Articles Carousel ══════════════════════════════════════════════════════ */
+.art-carousel-section{margin:60px auto 0}
+.art-carousel-section .eyebrow{display:block;text-align:center;margin-bottom:8px}
+.art-carousel-section h2{text-align:center;font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
+.art-carousel-section .carousel-sub{text-align:center;color:var(--text-2);font-size:15px;margin:0 0 28px}
+.art-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 8px}
+.art-carousel::-webkit-scrollbar{display:none}
+.art-carousel-card{flex:0 0 290px;border-radius:16px;background:var(--surface);border:1px solid var(--border-soft);box-shadow:var(--shadow);overflow:hidden;scroll-snap-align:start;text-decoration:none;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.art-carousel-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.art-carousel-card img{width:100%;height:160px;object-fit:cover;display:block;flex-shrink:0}
+.art-carousel-img-placeholder{width:100%;height:160px;background:linear-gradient(135deg,var(--primary-light),var(--surface-2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.art-carousel-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.art-carousel-cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary);margin-bottom:7px}
+.art-carousel-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.45;margin-bottom:auto;padding-bottom:12px;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-carousel-meta{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-dim);border-top:1px solid var(--border-soft);padding-top:10px;margin-top:0}
+.art-carousel-arrow{font-size:12px;color:var(--primary);font-weight:600}
+.art-carousel-nav{display:flex;justify-content:center;gap:10px;margin-top:22px;align-items:center}
+.art-carousel-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:50%;width:38px;height:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:all .15s;font-size:16px;flex-shrink:0}
+.art-carousel-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.art-carousel-btn:disabled{opacity:.35;cursor:default}
+.art-carousel-all{padding:9px 24px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:13.5px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(26,86,219,.28);white-space:nowrap}
+.art-carousel-all:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,86,219,.38)}
+
 @media(max-width:760px){
   .nav{height:60px}.nav ul{display:none}.nav .cta{display:none}.burger{display:flex}
   .hero{padding:46px 0 30px}.hero p{font-size:15.5px}
   .stats{gap:10px;margin-top:24px}.stat{padding:14px 10px}.stat b{font-size:20px}
-  .controls{margin:32px 0 8px}
+  .controls{margin:32px auto 8px}
   .scroll{grid-auto-columns:78vw;gap:12px;padding-bottom:12px;margin:0 -20px;padding-left:20px;padding-right:20px}
   .row{padding:22px 0 6px}.row-head h2{font-size:18px}.card{padding:16px}.logo{width:40px;height:40px}
   .newsletter{padding:32px 20px;border-radius:14px}
+  .art-carousel-card{flex:0 0 260px}
   footer .cols{grid-template-columns:1fr 1fr}
 }
 
 /* ══════════════════════════════════════════════
    FULL DIRECTORY SECTION
 ══════════════════════════════════════════════ */
-.dir-section{margin:60px 0 0;padding:48px 28px 64px;background:var(--surface);border-radius:24px;border:1px solid var(--border-soft);box-shadow:var(--shadow)}
+.dir-section{margin:60px auto 0;padding:48px 28px 64px;background:var(--surface);border-radius:24px;border:1px solid var(--border-soft);box-shadow:var(--shadow)}
 .dir-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
 .dir-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
 .dir-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
@@ -290,7 +315,7 @@ footer a:hover{color:var(--primary)}
 .cmp-unlock-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,86,219,.38)}
 
 /* ── Compare AI Tools module section ── */
-.cmp-section{margin:60px 0 0;padding:50px 32px 40px;background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);border:1px solid rgba(26,86,219,.13);border-radius:20px;box-shadow:var(--shadow)}
+.cmp-section{margin:60px auto 0;padding:50px 32px 40px;background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);border:1px solid rgba(26,86,219,.13);border-radius:20px;box-shadow:var(--shadow)}
 .cmp-section-head{text-align:center;margin-bottom:28px}
 .cmp-section-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.025em;margin-bottom:8px}
 .cmp-section-head p{color:var(--text-2);font-size:14.5px;max-width:520px;margin:0 auto}
@@ -495,6 +520,21 @@ footer a:hover{color:var(--primary)}
   </section>
   <div class="container tool-flat-grid hidden" id="tool-flat-grid"></div>
   <div class="container" id="rows"></div>
+  <!-- ── Articles Carousel ── -->
+  <section class="container art-carousel-section" id="articles-preview">
+    <div class="eyebrow">From the Blog</div>
+    <h2>Latest AI Insights</h2>
+    <p class="carousel-sub">Fresh articles published 3× daily — comparisons, tutorials, and tool guides.</p>
+    <div class="art-carousel" id="art-carousel">
+      <!-- populated by JS -->
+    </div>
+    <div class="art-carousel-nav">
+      <button class="art-carousel-btn" id="art-carousel-prev" aria-label="Previous articles">&#8592;</button>
+      <a href="articles.html" class="art-carousel-all">View All Articles</a>
+      <button class="art-carousel-btn" id="art-carousel-next" aria-label="Next articles">&#8594;</button>
+    </div>
+  </section>
+
   <section class="container newsletter" id="newsletter">
     <div class="eyebrow">The AI Toolbox Newsletter</div>
     <h2>Stop guessing. Start knowing.</h2>
@@ -1818,10 +1858,66 @@ window.addEventListener("hashchange",readHash);readHash();
     window.addEventListener('touchend',function(){requestAnimationFrame(check);},{passive:true});
     check();
   }
-  // Tools filter bar — releases when newsletter section enters
-  initSticky('tfm-sentinel','tfm-sticky-wrap','newsletter','tfm-spacer');
+  // Tools filter bar — releases when articles-preview section enters
+  initSticky('tfm-sentinel','tfm-sticky-wrap','articles-preview','tfm-spacer');
   // Directory tabs — releases when compare section enters
   initSticky('dir-sentinel','dir-sticky-wrap','compare','dir-spacer');
+})();
+
+// ── Articles Carousel ──────────────────────────────────────────────────────
+(function(){
+  const carousel=document.getElementById('art-carousel');
+  const section=document.getElementById('articles-preview');
+  if(!carousel||!section)return;
+
+  function buildCarousel(cards){
+    if(!cards.length){section.style.display='none';return;}
+    carousel.innerHTML=cards.map(function(card){
+      const href=card.getAttribute('href')||'articles.html';
+      const img=card.querySelector('img');
+      const imgSrc=img?img.getAttribute('src'):'';
+      const cat=card.querySelector('.art-card-cat');
+      const title=card.querySelector('.art-card-title');
+      const date=card.querySelector('.art-card-date');
+      const catTxt=cat?cat.textContent.trim():'';
+      const titleTxt=title?title.textContent.trim():'';
+      const dateTxt=date?date.textContent.trim():'';
+      const imgHtml=imgSrc
+        ?'<img src="'+imgSrc+'" alt="'+titleTxt.replace(/"/g,'&quot;')+'" loading="lazy">'
+        :'<div class="art-carousel-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(26,86,219,.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>';
+      return '<a href="'+href+'" class="art-carousel-card">'+imgHtml
+        +'<div class="art-carousel-body">'
+        +(catTxt?'<div class="art-carousel-cat">'+catTxt+'</div>':'')
+        +'<div class="art-carousel-title">'+titleTxt+'</div>'
+        +'<div class="art-carousel-meta"><span>'+dateTxt+'</span><span class="art-carousel-arrow">Read →</span></div>'
+        +'</div></a>';
+    }).join('');
+    // Scroll buttons
+    var prev=document.getElementById('art-carousel-prev');
+    var next=document.getElementById('art-carousel-next');
+    var cardW=300;
+    function updateBtns(){
+      if(prev)prev.disabled=carousel.scrollLeft<=4;
+      if(next)next.disabled=carousel.scrollLeft>=carousel.scrollWidth-carousel.clientWidth-4;
+    }
+    if(prev)prev.addEventListener('click',function(){carousel.scrollBy({left:-cardW,behavior:'smooth'});setTimeout(updateBtns,320);});
+    if(next)next.addEventListener('click',function(){carousel.scrollBy({left:cardW,behavior:'smooth'});setTimeout(updateBtns,320);});
+    carousel.addEventListener('scroll',updateBtns,{passive:true});
+    updateBtns();
+  }
+
+  // Try fetching articles.html to pull live article cards
+  fetch('articles.html')
+    .then(function(r){return r.text();})
+    .then(function(html){
+      var tmp=document.createElement('div');
+      tmp.innerHTML=html;
+      var cards=Array.from(tmp.querySelectorAll('#art-grid .art-card')).filter(function(c){
+        return !c.classList.contains('exclusive-card');
+      }).slice(0,8);
+      buildCarousel(cards);
+    })
+    .catch(function(){section.style.display='none';});
 })();
 
 </script>

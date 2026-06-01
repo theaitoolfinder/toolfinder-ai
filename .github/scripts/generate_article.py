@@ -3,8 +3,9 @@
 generate_article.py — MyAI ToolsFinder Automated Article Generator
 ═══════════════════════════════════════════════════════════════════
 Schedule (Philippine Time, PHT = UTC+8):
-  Mon–Thu  12:00  Lunch article   → comparison / tutorial / roundup
-  Mon–Thu  18:00  Dinner article  → news digest / roundup / comparison
+  Mon–Sun   8:00  Morning article   → comparison / tutorial / roundup
+  Mon–Sun  13:00  Afternoon article → roundup / tutorial / comparison
+  Mon–Sun  19:00  Evening article   → news digest / roundup / comparison
   Friday   ×5     Exclusive articles → deep dive / workflow / strategy
 
 Sources rotated to avoid repetition:
@@ -32,6 +33,8 @@ ARTICLES_DIR.mkdir(exist_ok=True)
 # ── Runtime ────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 SLOT_OVERRIDE     = os.environ.get("ARTICLE_SLOT", "").strip().lower()
+# Accept legacy names
+_SLOT_ALIAS = {"lunch": "morning", "dinner": "evening"}
 NOW               = datetime.now(timezone.utc)
 DATE_SLUG         = NOW.strftime("%Y-%m-%d")
 DATE_STR          = NOW.strftime("%B %d, %Y")
@@ -39,11 +42,18 @@ YEAR              = NOW.strftime("%Y")
 
 # ── Determine slot from time + weekday ────────────────────────────────────────
 def determine_slot():
-    if SLOT_OVERRIDE in ("lunch", "dinner", "exclusive"):
-        return SLOT_OVERRIDE
-    if NOW.weekday() == 4:      # Friday
+    # Accept new names + legacy aliases
+    _valid = ("morning", "afternoon", "evening", "exclusive", "lunch", "dinner")
+    if SLOT_OVERRIDE in _valid:
+        return _SLOT_ALIAS.get(SLOT_OVERRIDE, SLOT_OVERRIDE)
+    # Friday exclusives fire at 02,04,06,08,10 UTC — regular slots at 00,05,11
+    if NOW.weekday() == 4 and NOW.hour in (2, 4, 6, 8, 10):
         return "exclusive"
-    return "lunch" if NOW.hour < 7 else "dinner"
+    if NOW.hour == 5:
+        return "afternoon"
+    if NOW.hour >= 11:
+        return "evening"
+    return "morning"
 
 SLOT = determine_slot()
 
@@ -88,7 +98,8 @@ HERO_IMAGES = [
 
 def pick_hero(index_offset=0):
     day_num     = NOW.timetuple().tm_yday + index_offset
-    slot_offset = {"lunch": 0, "dinner": 7, "exclusive": 13}.get(SLOT, 0)
+    slot_offset = {"morning": 0, "afternoon": 5, "evening": 10, "exclusive": 15,
+                   "lunch": 0, "dinner": 10}.get(SLOT, 0)
     return HERO_IMAGES[(day_num + slot_offset) % len(HERO_IMAGES)]
 
 
@@ -230,9 +241,13 @@ STYLE: Strategic but grounded. Every point needs supporting logic, not just asse
 
 # Slot → preferred type order
 SLOT_TYPE_PREFS = {
+    "morning":   ["comparison", "tutorial", "roundup", "workflow"],
+    "afternoon": ["roundup", "tutorial", "comparison", "workflow"],
+    "evening":   ["news_digest", "roundup", "comparison", "tutorial"],
+    "exclusive": ["deep_dive", "workflow", "strategy", "comparison", "roundup", "tutorial"],
+    # Legacy aliases kept for backward compatibility
     "lunch":     ["comparison", "tutorial", "roundup", "workflow"],
     "dinner":    ["news_digest", "comparison", "roundup", "tutorial"],
-    "exclusive": ["deep_dive", "workflow", "strategy", "comparison", "roundup", "tutorial"],
 }
 
 # ── Expanded title banks ───────────────────────────────────────────────────────
@@ -374,7 +389,9 @@ def build_title(article_type, log):
     recent_topics   = {e.get("topic", "") for e in recent}
 
     if article_type == "news_digest":
-        slot_label = "Lunch Edition" if SLOT == "lunch" else "Evening Edition"
+        slot_label_map = {"morning": "Morning Edition", "afternoon": "Afternoon Edition",
+                          "evening": "Evening Edition", "lunch": "Morning Edition", "dinner": "Evening Edition"}
+        slot_label = slot_label_map.get(SLOT, "Daily Edition")
         return f"AI Tools Digest — {DATE_STR} ({slot_label})"
 
     if article_type == "comparison":
@@ -478,7 +495,8 @@ def get_slug(log):
                       if e.get("date") == DATE_SLUG and e.get("slot") == "exclusive"]
         n = len(today_excl) + 1
         return f"exclusive-{DATE_SLUG}-{n}"
-    suffix = "am" if SLOT == "lunch" else "pm"
+    suffix_map = {"morning": "am", "lunch": "am", "afternoon": "pm", "evening": "eve", "dinner": "pm"}
+    suffix = suffix_map.get(SLOT, "pm")
     return f"article-{DATE_SLUG}-{suffix}"
 
 

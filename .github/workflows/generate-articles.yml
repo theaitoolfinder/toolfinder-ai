@@ -3,8 +3,9 @@ name: Article Generator
 # ─────────────────────────────────────────────────────────────────────────────
 # Schedule (all times in Philippine Time, PHT = UTC+8)
 #
-#  Mon–Thu  12:00 PHT  → Lunch article    (04:00 UTC)  comparison / tutorial / roundup
-#  Mon–Thu  18:00 PHT  → Dinner article   (10:00 UTC)  news digest / roundup / comparison
+#  Mon–Sun   8:00 PHT  → Morning article   (00:00 UTC)  comparison / tutorial / roundup
+#  Mon–Sun  13:00 PHT  → Afternoon article (05:00 UTC)  roundup / tutorial / comparison
+#  Mon–Sun  19:00 PHT  → Evening article   (11:00 UTC)  news digest / roundup / comparison
 #
 #  Friday   10:00 PHT  → Exclusive #1     (02:00 UTC)
 #  Friday   12:00 PHT  → Exclusive #2     (04:00 UTC)
@@ -15,10 +16,12 @@ name: Article Generator
 
 on:
   schedule:
-    # Mon–Thu Lunch  (12:00 PHT = 04:00 UTC)
-    - cron: '0 4 * * 1-4'
-    # Mon–Thu Dinner (18:00 PHT = 10:00 UTC)
-    - cron: '0 10 * * 1-4'
+    # Mon–Sun Morning  (08:00 PHT = 00:00 UTC)
+    - cron: '0 0 * * *'
+    # Mon–Sun Afternoon (13:00 PHT = 05:00 UTC)
+    - cron: '0 5 * * *'
+    # Mon–Sun Evening  (19:00 PHT = 11:00 UTC)
+    - cron: '0 11 * * *'
     # Friday Exclusive × 5 (every 2 hrs: 02–10 UTC = 10am–6pm PHT)
     - cron: '0 2 * * 5'
     - cron: '0 4 * * 5'
@@ -29,7 +32,7 @@ on:
   workflow_dispatch:
     inputs:
       slot:
-        description: 'Force slot (lunch | dinner | exclusive). Leave blank to auto-detect.'
+        description: 'Force slot (morning | afternoon | evening | exclusive). Leave blank to auto-detect.'
         required: false
         default: ''
 

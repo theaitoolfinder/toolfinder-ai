@@ -118,6 +118,7 @@
 
   <div class="tabs">
     <button class="tab active" data-tab="tools">Tools</button>
+    <button class="tab" data-tab="subscribers">Subscribers</button>
     <button class="tab" data-tab="site">Site settings</button>
     <button class="tab" data-tab="github">GitHub Sync</button>
   </div>
@@ -243,6 +244,52 @@
     </div>
     <div class="info-banner">
       <b>How it works:</b> After saving your GitHub token, every time you click <b>Save</b> on a tool or the site config, changes are automatically committed to <code>js/tools-data.js</code> and <code>index.html</code> in your repo. Your site updates within 30 seconds — no copy-paste needed.
+    </div>
+  </div>
+
+  <!-- SUBSCRIBERS TAB -->
+  <div id="tab-subscribers" style="display:none">
+    <div id="sub-no-key" style="display:none;background:#fef3c7;border:1px solid #fbbf24;border-radius:10px;padding:18px 22px;margin-bottom:18px">
+      <b style="color:#92400e">⚠ Brevo API key not configured.</b>
+      <span style="color:#78350f;font-size:13.5px"> Go to <a href="#" onclick="switchToTab('site');return false;" style="color:#b45309;font-weight:600;text-decoration:underline">Site Settings</a> and enter your Brevo API Key + List ID to load subscribers.</span>
+    </div>
+    <div id="sub-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+      <div class="stat"><b id="sub-stat-total">—</b><span>Total subscribers</span></div>
+      <div class="stat"><b id="sub-stat-active">—</b><span>Active</span></div>
+      <div class="stat"><b id="sub-stat-unsub">—</b><span>Unsubscribed</span></div>
+      <div class="stat"><b id="sub-stat-new">—</b><span>Added this week</span></div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+      <input type="search" id="sub-search" placeholder="🔎 Search by email or name…" style="flex:1;min-width:200px" oninput="filterSubs()" />
+      <button class="btn primary" onclick="loadSubscribers()">↺ Refresh</button>
+      <button class="btn" onclick="exportSubsCSV()">⬇ Export CSV</button>
+    </div>
+    <div id="sub-loading" style="display:none;text-align:center;padding:32px;color:var(--text-dim)">
+      <div style="font-size:28px;margin-bottom:8px">⏳</div>
+      <div style="font-size:14px">Loading subscribers from Brevo…</div>
+    </div>
+    <div id="sub-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:16px;margin-bottom:16px;font-size:13.5px;color:#991b1b"></div>
+    <div id="sub-table-wrap" style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+      <table id="sub-table" style="width:100%;border-collapse:collapse;font-size:13.5px">
+        <thead>
+          <tr style="background:var(--bg);border-bottom:1.5px solid var(--border)">
+            <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Name</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Email</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Status</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Date Added</th>
+          </tr>
+        </thead>
+        <tbody id="sub-tbody">
+          <tr><td colspan="4" style="padding:36px;text-align:center;color:var(--text-dim)">No subscribers loaded yet — click Refresh.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="sub-pagination" style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap;gap:8px">
+      <div id="sub-page-info" style="font-size:13px;color:var(--text-dim)"></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="sub-prev" onclick="subChangePage(-1)" disabled>← Prev</button>
+        <button class="btn" id="sub-next" onclick="subChangePage(1)" disabled>Next →</button>
+      </div>
     </div>
   </div>
 
@@ -756,12 +803,147 @@ function escapeHtml(s){return String(s||'').replace(/[&<>]/g, c=>({'&':'&amp;','
 function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 
 /* ===== Tab + search wiring ===== */
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x===b));
-  ['tools','site','github'].forEach(name=>{
-    document.getElementById('tab-'+name).style.display = (name===b.dataset.tab)?'block':'none';
+function switchToTab(name){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
+  ['tools','subscribers','site','github'].forEach(n=>{
+    document.getElementById('tab-'+n).style.display = (n===name)?'block':'none';
   });
+  if(name==='subscribers') loadSubscribers();
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  switchToTab(b.dataset.tab);
 }));
+
+/* ===== Subscribers ===== */
+let _subAll=[], _subFiltered=[], _subPage=0;
+const SUB_PAGE_SIZE=50;
+
+async function loadSubscribers(){
+  const cfg=loadSite();
+  const apiKey=(cfg.brevo_api_key||'').trim();
+  const listId=(cfg.brevo_list_id||'').toString().trim();
+  const noKey=document.getElementById('sub-no-key');
+  const loading=document.getElementById('sub-loading');
+  const errEl=document.getElementById('sub-error');
+  const tableWrap=document.getElementById('sub-table-wrap');
+
+  errEl.style.display='none'; errEl.textContent='';
+  if(!apiKey||!listId){
+    noKey.style.display='block'; tableWrap.style.display='none'; loading.style.display='none';
+    return;
+  }
+  noKey.style.display='none';
+  tableWrap.style.display='none'; loading.style.display='block';
+
+  try{
+    // Fetch all contacts in list — Brevo allows up to 500 per request
+    let all=[], offset=0, total=Infinity;
+    while(offset<total){
+      const limit=Math.min(500,total-offset||500);
+      const url=`https://api.brevo.com/v3/contacts?limit=${limit}&offset=${offset}&listId=${listId}&sort=desc`;
+      const r=await fetch(url,{headers:{'api-key':apiKey,'accept':'application/json'}});
+      if(!r.ok){ const t=await r.text(); throw new Error(`Brevo API error ${r.status}: ${t.substring(0,200)}`); }
+      const data=await r.json();
+      total=data.count||0;
+      if(!data.contacts||!data.contacts.length) break;
+      all=all.concat(data.contacts);
+      offset+=data.contacts.length;
+      if(offset>=total) break;
+    }
+    _subAll=all;
+    filterSubs();
+    updateSubStats(all);
+    loading.style.display='none'; tableWrap.style.display='block';
+  }catch(e){
+    loading.style.display='none'; tableWrap.style.display='block';
+    errEl.style.display='block'; errEl.textContent='⚠ '+e.message;
+  }
+}
+
+function filterSubs(){
+  const q=(document.getElementById('sub-search').value||'').toLowerCase().trim();
+  _subFiltered=q ? _subAll.filter(c=>{
+    const name=((c.attributes&&c.attributes.FIRSTNAME)||'') +' '+((c.attributes&&c.attributes.LASTNAME)||'');
+    return c.email.toLowerCase().includes(q) || name.toLowerCase().includes(q);
+  }) : _subAll;
+  _subPage=0;
+  renderSubTable();
+}
+
+function renderSubTable(){
+  const tbody=document.getElementById('sub-tbody');
+  const start=_subPage*SUB_PAGE_SIZE;
+  const slice=_subFiltered.slice(start, start+SUB_PAGE_SIZE);
+  const info=document.getElementById('sub-page-info');
+  const prev=document.getElementById('sub-prev');
+  const next=document.getElementById('sub-next');
+
+  if(!slice.length){
+    tbody.innerHTML='<tr><td colspan="4" style="padding:36px;text-align:center;color:var(--text-dim)">No subscribers found.</td></tr>';
+    info.textContent=''; prev.disabled=true; next.disabled=true; return;
+  }
+
+  tbody.innerHTML=slice.map((c,i)=>{
+    const fn=(c.attributes&&c.attributes.FIRSTNAME)||'';
+    const ln=(c.attributes&&c.attributes.LASTNAME)||'';
+    const name=(fn+' '+ln).trim()||'—';
+    const status=c.emailBlacklisted?'<span style="background:#fef2f2;color:#991b1b;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600">Unsubscribed</span>'
+                                   :'<span style="background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600">Active</span>';
+    const date=c.createdAt ? new Date(c.createdAt).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
+    const bg=(start+i)%2===0?'background:var(--surface)':'background:var(--bg)';
+    return `<tr style="${bg};border-bottom:1px solid var(--border-soft)">
+      <td style="padding:10px 14px;color:var(--text)">${escHtml(name)}</td>
+      <td style="padding:10px 14px;color:var(--text-2)">${escHtml(c.email)}</td>
+      <td style="padding:10px 14px">${status}</td>
+      <td style="padding:10px 14px;color:var(--text-dim)">${date}</td>
+    </tr>`;
+  }).join('');
+
+  const total=_subFiltered.length;
+  const end=Math.min(start+SUB_PAGE_SIZE,total);
+  info.textContent=`Showing ${start+1}–${end} of ${total} subscribers`;
+  prev.disabled=_subPage===0;
+  next.disabled=end>=total;
+}
+
+function subChangePage(dir){
+  const maxPage=Math.ceil(_subFiltered.length/SUB_PAGE_SIZE)-1;
+  _subPage=Math.max(0,Math.min(maxPage,_subPage+dir));
+  renderSubTable();
+  document.getElementById('sub-table-wrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function updateSubStats(all){
+  const now=new Date();
+  const weekAgo=new Date(now-7*24*60*60*1000);
+  const active=all.filter(c=>!c.emailBlacklisted).length;
+  const unsub=all.filter(c=>c.emailBlacklisted).length;
+  const newW=all.filter(c=>c.createdAt&&new Date(c.createdAt)>=weekAgo).length;
+  document.getElementById('sub-stat-total').textContent=all.length.toLocaleString();
+  document.getElementById('sub-stat-active').textContent=active.toLocaleString();
+  document.getElementById('sub-stat-unsub').textContent=unsub.toLocaleString();
+  document.getElementById('sub-stat-new').textContent=newW.toLocaleString();
+}
+
+function exportSubsCSV(){
+  if(!_subAll.length){alert('No subscriber data loaded. Click Refresh first.');return;}
+  const rows=[['Name','Email','Status','Date Added']].concat(_subAll.map(c=>{
+    const fn=(c.attributes&&c.attributes.FIRSTNAME)||'';
+    const ln=(c.attributes&&c.attributes.LASTNAME)||'';
+    const name=(fn+' '+ln).trim()||'';
+    const status=c.emailBlacklisted?'Unsubscribed':'Active';
+    const date=c.createdAt ? new Date(c.createdAt).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '';
+    return [name,c.email,status,date];
+  }));
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='subscribers-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 document.getElementById('pw').addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); });
 document.getElementById('search').addEventListener('input',e=>{ search = e.target.value; renderToolList(); });
 
