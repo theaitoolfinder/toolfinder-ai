@@ -890,29 +890,61 @@ footer a:hover{color:#e2c06a;}
   </div>
 
   <!-- Exclusive access gate modal — single form, saves locally + forwards to Brevo -->
-  <div id="subscribe-gate" class="subscribe-gate hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+  <div id="subscribe-gate" class="subscribe-gate hidden" onclick="if(event.target===this)closeGate()">
     <div class="subscribe-gate-box">
-      <button class="subscribe-gate-close" onclick="document.getElementById('subscribe-gate').classList.add('hidden')">
+      <button class="subscribe-gate-close" onclick="closeGate()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <div class="subscribe-gate-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+      <!-- ── State: check subscriber ── -->
+      <div id="gate-state-check">
+        <div class="subscribe-gate-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Subscribers Only</h3>
+        <p>These articles are exclusive to newsletter subscribers. Enter your email to unlock.</p>
+        <input id="gate-email" type="email" placeholder="your@email.com" autocomplete="email"
+          style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;"
+          onkeydown="if(event.key==='Enter')gateSubmit()">
+        <div id="gate-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;padding:8px 12px;background:#fff5f5;border-radius:8px;border:1px solid #fed7d7;text-align:left;"></div>
+        <button id="gate-btn" onclick="gateSubmit()"
+          style="width:100%;padding:13px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:opacity .15s;">
+          Unlock Exclusive Content &rarr;
+        </button>
+        <p style="font-size:12px;color:#5c7799;margin-top:14px;line-height:1.5;">
+          Not subscribed yet? <a href="#" onclick="showSignUpState(event)" style="color:#1a56db;font-weight:600">Sign up free →</a>
+        </p>
       </div>
-      <h3>Unlock Exclusive Articles</h3>
-      <p>Enter your name and email for free instant access. Already subscribed? Just enter your email.</p>
-      <input id="gate-name" type="text" placeholder="Your name (optional)" autocomplete="name"
-        style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;">
-      <input id="gate-email" type="email" placeholder="Your email address" autocomplete="email"
-        style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;"
-        onkeydown="if(event.key==='Enter')gateSubmit()">
-      <div id="gate-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;padding:8px 12px;background:#fff5f5;border-radius:8px;border:1px solid #fed7d7;text-align:left;"></div>
-      <button id="gate-btn" onclick="gateSubmit()"
-        style="width:100%;padding:13px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:opacity .15s;">
-        Get Instant Access &rarr;
-      </button>
-      <p style="font-size:11.5px;color:#5c7799;margin-top:14px;line-height:1.5;">
-        We'll also send you our free weekly AI tools digest.<br>No spam — unsubscribe any time.
-      </p>
+
+      <!-- ── State: sign up (not in list) ── -->
+      <div id="gate-state-signup" style="display:none">
+        <div class="subscribe-gate-icon" style="background:#f0fdf4;color:#16a34a">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Subscribe for Free Access</h3>
+        <p id="gate-signup-note" style="color:#5c7799">Join the newsletter and unlock all exclusive Friday deep-dives instantly.</p>
+        <input id="gate-signup-name" type="text" placeholder="Your name (optional)" autocomplete="name"
+          style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;">
+        <input id="gate-signup-email" type="email" placeholder="your@email.com" autocomplete="email"
+          style="width:100%;padding:11px 14px;border:1.5px solid #c9d9f5;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px;outline:none;box-sizing:border-box;"
+          onkeydown="if(event.key==='Enter')gateSignUp()">
+        <div id="gate-signup-error" style="font-size:12.5px;color:#ef4444;margin-bottom:10px;display:none;padding:8px 12px;background:#fff5f5;border-radius:8px;border:1px solid #fed7d7;text-align:left;"></div>
+        <button id="gate-signup-btn" onclick="gateSignUp()"
+          style="width:100%;padding:13px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:opacity .15s;">
+          Subscribe &amp; Unlock &rarr;
+        </button>
+        <p style="font-size:12px;color:#5c7799;margin-top:14px;line-height:1.5;">
+          Already subscribed? <a href="#" onclick="showCheckState(event)" style="color:#1a56db;font-weight:600">Enter your email →</a>
+        </p>
+      </div>
+
+      <!-- ── State: verified ── -->
+      <div id="gate-state-success" style="display:none;text-align:center;padding:10px 0">
+        <div style="font-size:48px;margin-bottom:12px">✅</div>
+        <h3 style="color:#16a34a;margin:0 0 8px">You're in!</h3>
+        <p style="color:#5c7799;margin:0">Exclusive articles unlocked. Enjoy!</p>
+      </div>
+
     </div>
   </div>
 
@@ -965,80 +997,141 @@ function filterArts(cat, btn){
 <script src="js/tools-data.js"></script>
 <script src="js/affiliate.js"></script>
 <script>
-/* ── Exclusive articles auth ── */
+/* ═══════════════════════════════════════════════════════
+   Exclusive articles — subscriber gate
+   Checks entered email against /data/subscribers.json
+   (SHA-256 hashed emails, synced hourly from Brevo)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Helpers ── */
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str.trim().toLowerCase()));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
 function getLoggedInUser(){
-  try{
-    const u=JSON.parse(localStorage.getItem('myai_user_v1')||'null');
-    if(u&&u.email) return u;
-  }catch(e){}
+  try{ const u=JSON.parse(localStorage.getItem('myai_user_v1')||'null'); if(u&&u.email) return u; }catch(e){}
   return null;
 }
 
+async function isSubscriber(email){
+  /* Returns true=subscriber, false=not subscriber, null=can't verify (error/offline) */
+  try{
+    const hash=await sha256(email);
+    const r=await fetch('/data/subscribers.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) return null;
+    const d=await r.json();
+    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
+  }catch(e){ return null; }
+}
+
+/* ── Gate state switchers ── */
+function closeGate(){
+  document.getElementById('subscribe-gate').classList.add('hidden');
+}
+function showCheckState(e){
+  if(e) e.preventDefault();
+  document.getElementById('gate-state-check').style.display='block';
+  document.getElementById('gate-state-signup').style.display='none';
+  document.getElementById('gate-state-success').style.display='none';
+  document.getElementById('gate-error').style.display='none';
+}
+function showSignUpState(e){
+  if(e) e.preventDefault();
+  /* Pre-fill email if user typed one in the check field */
+  const checkEmail=(document.getElementById('gate-email').value||'').trim();
+  if(checkEmail) document.getElementById('gate-signup-email').value=checkEmail;
+  document.getElementById('gate-state-check').style.display='none';
+  document.getElementById('gate-state-signup').style.display='block';
+  document.getElementById('gate-state-success').style.display='none';
+  document.getElementById('gate-signup-error').style.display='none';
+}
+function showSuccessState(){
+  document.getElementById('gate-state-check').style.display='none';
+  document.getElementById('gate-state-signup').style.display='none';
+  document.getElementById('gate-state-success').style.display='block';
+  setTimeout(closeGate,2000);
+}
+
+/* ── Unlock exclusive cards ── */
 function unlockExclusiveCards(){
   document.querySelectorAll('.exclusive-card').forEach(card=>{
-    /* Remove blur from title/excerpt */
-    card.querySelectorAll('[style*="blur"]').forEach(el=>{
-      el.style.filter='none';
-      el.style.userSelect='auto';
-    });
-    /* Change lock label */
+    card.querySelectorAll('[style*="blur"]').forEach(el=>{ el.style.filter='none'; el.style.userSelect='auto'; });
     const lock=card.querySelector('.exclusive-lock');
     if(lock){
-      lock.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg> Member Access';
-      lock.style.color='#16a34a';
+      lock.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg> Member Access';
+      lock.style.color='#16a34a'; lock.style.background='#f0fdf4'; lock.style.borderColor='#bbf7d0';
     }
-    /* Change arrow */
     const arrow=card.querySelector('.art-card-arrow');
-    /* Enable navigation if card has a data-href (auto-generated exclusive articles) */
     const href=card.dataset.href;
     if(href){
       if(arrow) arrow.textContent='Read now →';
       card.onclick=function(){ location.href=href; };
       card.style.cursor='pointer';
     } else {
-      /* Legacy hardcoded exclusive cards — no article file yet */
       if(arrow) arrow.textContent='Coming soon →';
-      card.onclick=null;
-      card.style.cursor='default';
+      card.onclick=null; card.style.cursor='default';
     }
   });
 }
 
+/* ── Show gate ── */
 function showSubscribeGate(){
-  /* If user is already logged in, unlock immediately */
-  if(getLoggedInUser()){
-    unlockExclusiveCards();
-    return;
-  }
-  /* Always show gate — default tab is Log In (set in HTML) */
+  const user=getLoggedInUser();
+  if(user){ unlockExclusiveCards(); return; }
+  showCheckState();
   document.getElementById('subscribe-gate').classList.remove('hidden');
 }
 
+/* ── Check existing subscriber ── */
 async function gateSubmit(){
-  const name=(document.getElementById('gate-name').value||'').trim();
   const email=(document.getElementById('gate-email').value||'').trim().toLowerCase();
   const errEl=document.getElementById('gate-error');
   const btn=document.getElementById('gate-btn');
   errEl.style.display='none';
   if(!email||!email.includes('@')){
-    errEl.textContent='Please enter a valid email address.';
-    errEl.style.display='block';
-    return;
+    errEl.textContent='Please enter a valid email address.'; errEl.style.display='block'; return;
   }
-  btn.textContent='Saving…';btn.style.opacity='0.7';btn.disabled=true;
-  /* Save to local DB */
-  const user={name:name||'Subscriber',email,ts:Date.now()};
-  try{
-    const users=JSON.parse(localStorage.getItem('myai_users_v1')||'[]');
-    const idx=users.findIndex(u=>(u.email||'').toLowerCase()===email);
-    if(idx>=0){users[idx]=Object.assign({},users[idx],user);}else{users.push(user);}
-    localStorage.setItem('myai_users_v1',JSON.stringify(users));
-    localStorage.setItem('myai_user_v1',JSON.stringify(user));
-  }catch(e){}
-  /* Forward to Brevo — non-blocking */
+  btn.textContent='Checking…'; btn.style.opacity='0.7'; btn.disabled=true;
+
+  const result=await isSubscriber(email);
+
+  btn.textContent='Unlock Exclusive Content →'; btn.style.opacity='1'; btn.disabled=false;
+
+  if(result===null){
+    errEl.textContent='Could not verify — please check your connection and try again.';
+    errEl.style.display='block'; return;
+  }
+  if(result===true){
+    /* ✅ Verified subscriber — unlock */
+    localStorage.setItem('myai_user_v1',JSON.stringify({email,ts:Date.now()}));
+    showSuccessState();
+    unlockExclusiveCards();
+  } else {
+    /* ❌ Not in list — offer sign-up */
+    document.getElementById('gate-signup-note').textContent=
+      '"'+email+'" isn\'t in our subscriber list yet. Sign up free for instant access.';
+    document.getElementById('gate-signup-email').value=email;
+    showSignUpState();
+  }
+}
+
+/* ── Sign up new subscriber ── */
+async function gateSignUp(){
+  const name=(document.getElementById('gate-signup-name').value||'').trim();
+  const email=(document.getElementById('gate-signup-email').value||'').trim().toLowerCase();
+  const errEl=document.getElementById('gate-signup-error');
+  const btn=document.getElementById('gate-signup-btn');
+  errEl.style.display='none';
+  if(!email||!email.includes('@')){
+    errEl.textContent='Please enter a valid email address.'; errEl.style.display='block'; return;
+  }
+  btn.textContent='Subscribing…'; btn.style.opacity='0.7'; btn.disabled=true;
+
+  /* Add to Brevo */
   try{
     const cfg=JSON.parse(localStorage.getItem('myai_site_config_v1')||'{}');
-    const apiKey=cfg.brevo_api_key||'';
+    const apiKey=(cfg.brevo_api_key||'').trim();
     const listId=parseInt(cfg.brevo_list_id||'0');
     if(apiKey){
       const parts=(name||'').split(' ').filter(Boolean);
@@ -1054,15 +1147,26 @@ async function gateSubmit(){
       });
     }
   }catch(e){}
-  /* Unlock and close */
-  btn.textContent='Get Instant Access →';btn.style.opacity='1';btn.disabled=false;
-  document.getElementById('subscribe-gate').classList.add('hidden');
+
+  /* Grant immediate access (subscriber list syncs hourly, no need to wait) */
+  localStorage.setItem('myai_user_v1',JSON.stringify({email,name:name||'Subscriber',ts:Date.now()}));
+  btn.textContent='Subscribe & Unlock →'; btn.style.opacity='1'; btn.disabled=false;
+  showSuccessState();
   unlockExclusiveCards();
 }
 
-/* Auto-unlock on page load if already logged in */
-document.addEventListener('DOMContentLoaded',function(){
-  if(getLoggedInUser()) unlockExclusiveCards();
+/* ── Auto-verify on page load ── */
+document.addEventListener('DOMContentLoaded',async function(){
+  const user=getLoggedInUser();
+  if(!user) return;
+  const result=await isSubscriber(user.email);
+  if(result===true){
+    unlockExclusiveCards(); /* still subscribed */
+  } else if(result===false){
+    localStorage.removeItem('myai_user_v1'); /* unsubscribed — revoke access */
+  } else {
+    unlockExclusiveCards(); /* offline/error — benefit of the doubt */
+  }
 });
 </script>
 </body>

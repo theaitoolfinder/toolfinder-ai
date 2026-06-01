@@ -1,0 +1,54 @@
+name: Sync Subscriber List
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Runs every hour and whenever triggered manually.
+# Fetches active Brevo contacts, SHA-256 hashes their emails, and writes
+# data/subscribers.json — which articles.html uses for the members gate.
+#
+# Required GitHub secret: BREVO_API_KEY  (your Brevo v3 API key)
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour, on the hour
+  workflow_dispatch:        # allow manual run from GitHub Actions UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync subscriber hashes
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python .github/scripts/sync_subscribers.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add data/subscribers.json
+          if git diff --staged --quiet; then
+            echo "No subscriber changes since last sync."
+          else
+            COUNT=$(python3 -c "import json; d=json.load(open('data/subscribers.json')); print(d['count'])")
+            git commit -m "Sync subscribers: ${COUNT} active ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
+            git pull --rebase origin main || true
+            git push
+            echo "✅ Subscriber list updated."
+          fi
