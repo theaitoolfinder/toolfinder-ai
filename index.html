@@ -8,24 +8,27 @@
 <title>MyAI ToolsFinder — Find the AI tools that fit your work</title>
 <meta name="description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse by your job, by the problem you're solving, or by what's trending."/>
 <link rel="canonical" href="https://myaitoolsfinder.com/"/>
+<!-- Favicons — PNG first (Google Search uses PNG reliably); SVG as progressive enhancement -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="icon" type="image/svg+xml" href="/logo.svg">
-<link rel="shortcut icon" href="/logo.svg">
-<link rel="apple-touch-icon" href="/logo.svg">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 <!-- Open Graph / Social sharing -->
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://myaitoolsfinder.com/"/>
 <meta property="og:title" content="MyAI ToolsFinder — Find the AI tools that fit your work"/>
 <meta property="og:description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse 500+ tools by job, problem, or what's trending."/>
-<meta property="og:image" content="https://myaitoolsfinder.com/logo.svg"/>
+<meta property="og:image" content="https://myaitoolsfinder.com/og-image.png"/>
 <meta property="og:site_name" content="MyAI ToolsFinder"/>
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@myaitoolsfinder"/>
 <meta name="twitter:title" content="MyAI ToolsFinder — Find the AI tools that fit your work"/>
 <meta name="twitter:description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse 500+ tools by job, problem, or what's trending."/>
-<meta name="twitter:image" content="https://myaitoolsfinder.com/logo.svg"/>
-<!-- Organization schema (static — helps Google show logo in search) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MyAI ToolsFinder","url":"https://myaitoolsfinder.com","logo":{"@type":"ImageObject","url":"https://myaitoolsfinder.com/logo.svg","width":32,"height":32},"sameAs":["https://twitter.com/myaitoolsfinder","https://www.facebook.com/myaitoolsfinder","https://www.instagram.com/myaitoolsfinder","https://www.youtube.com/@myaitoolsfinder","https://www.linkedin.com/company/myaitoolsfinder","https://www.tiktok.com/@myaitoolsfinder"]}</script>
+<meta name="twitter:image" content="https://myaitoolsfinder.com/og-image.png"/>
+<!-- Organization schema (static — helps Google show favicon & logo in search) -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MyAI ToolsFinder","url":"https://myaitoolsfinder.com","logo":{"@type":"ImageObject","url":"https://myaitoolsfinder.com/favicon.png","width":32,"height":32},"sameAs":["https://twitter.com/myaitoolsfinder","https://www.facebook.com/myaitoolsfinder","https://www.instagram.com/myaitoolsfinder","https://www.youtube.com/@myaitoolsfinder","https://www.linkedin.com/company/myaitoolsfinder","https://www.tiktok.com/@myaitoolsfinder"]}</script>
 <script type="application/ld+json" id="ldjson"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -332,6 +335,63 @@ footer a:hover{color:var(--primary)}
 .cmp-unlock-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,86,219,.38)}
 
 /* ── Compare AI Tools module section ── */
+/* ── Reviews section ── */
+.reviews-section{margin:60px auto 0}
+.reviews-section .sec-head{text-align:center;margin-bottom:32px}
+.reviews-section .sec-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:8px 0 10px}
+.reviews-section .sec-head p{color:var(--text-2);font-size:15px;max-width:520px;margin:0 auto 18px}
+.reviews-avg{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-soft);border-radius:999px;padding:10px 20px;margin-bottom:0;box-shadow:var(--shadow)}
+.reviews-avg .avg-num{font-size:22px;font-weight:800;color:var(--text)}
+.reviews-avg .stars-row{color:#f59e0b;font-size:18px;letter-spacing:2px}
+.reviews-avg .avg-count{font-size:13px;color:var(--text-dim)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+.review-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:16px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.review-card-top{display:flex;align-items:center;gap:12px}
+.review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0}
+.review-meta{flex:1;min-width:0}
+.review-meta .r-name{font-weight:700;font-size:14px;color:var(--text)}
+.review-meta .r-prof{font-size:11.5px;color:var(--text-dim)}
+.review-stars{color:#f59e0b;font-size:14px;letter-spacing:1px}
+.review-text{font-size:13.5px;color:var(--text-2);line-height:1.65;flex:1}
+.review-tool{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--primary);background:var(--primary-light);padding:4px 10px;border-radius:6px;text-decoration:none;margin-top:2px;transition:background .15s}
+.review-tool:hover{background:#bfdbfe}
+.reviews-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.reviews-load-more{padding:10px 28px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font:600 14px 'Poppins',sans-serif;cursor:pointer;transition:all .15s}
+.reviews-load-more:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.review-write-btn{padding:10px 24px;border-radius:999px;background:var(--primary);color:#fff;font:600 14px 'Poppins',sans-serif;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(26,86,219,.3);transition:all .15s}
+.review-write-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,219,.4)}
+/* Review modal */
+.review-modal-bg{position:fixed;inset:0;z-index:700;background:rgba(13,31,60,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.review-modal-bg.open{opacity:1;pointer-events:all}
+.review-modal{background:#fff;border-radius:20px;width:100%;max-width:480px;padding:32px 28px 24px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.2);transform:translateY(12px);transition:transform .2s}
+.review-modal-bg.open .review-modal{transform:none}
+.review-modal h3{font-size:20px;font-weight:800;color:var(--text);margin:0 0 4px;letter-spacing:-.01em}
+.review-modal .modal-sub{font-size:13.5px;color:var(--text-dim);margin:0 0 20px}
+.review-modal-close{position:absolute;top:14px;right:16px;background:var(--surface-2);border:none;cursor:pointer;color:var(--text-dim);border-radius:8px;padding:5px;display:flex;transition:background .15s}
+.review-modal-close:hover{background:var(--border);color:var(--text)}
+.star-picker{display:flex;gap:6px;margin-bottom:18px}
+.star-pick{font-size:28px;cursor:pointer;transition:transform .1s;color:#d1d5db;line-height:1}
+.star-pick.lit{color:#f59e0b}
+.star-pick:hover{transform:scale(1.15)}
+.review-field{margin-bottom:14px}
+.review-field label{display:block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px}
+.review-field input,.review-field select,.review-field textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font:14px 'Poppins',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .15s;box-sizing:border-box}
+.review-field input:focus,.review-field select:focus,.review-field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.review-field textarea{resize:vertical;min-height:80px}
+.review-modal-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.review-submit-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;border-radius:10px;font:700 15px 'Poppins',sans-serif;cursor:pointer;transition:opacity .15s;margin-top:4px}
+.review-submit-btn:disabled{opacity:.6;cursor:default}
+#review-modal-msg{font-size:13px;padding:10px 14px;border-radius:8px;margin-top:12px;display:none}
+#review-modal-msg.success{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+#review-modal-msg.error{background:#fff5f5;color:#ef4444;border:1px solid #fed7d7}
+/* Google prompt */
+.google-prompt{text-align:center;padding:8px 0 4px}
+.google-prompt p{font-size:13.5px;color:var(--text-2);margin:0 0 12px;line-height:1.6}
+.google-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:10px;background:#fff;border:1.5px solid var(--border);color:var(--text);font:600 14px 'Poppins',sans-serif;cursor:pointer;box-shadow:var(--shadow);text-decoration:none;transition:box-shadow .15s}
+.google-btn:hover{box-shadow:var(--shadow-lg)}
+@media(max-width:900px){.reviews-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.reviews-grid{grid-template-columns:1fr}.review-modal-row{grid-template-columns:1fr}}
 .cmp-section{margin:60px auto 0;padding:50px 32px 40px;background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);border:1px solid rgba(26,86,219,.13);border-radius:20px;box-shadow:var(--shadow)}
 .cmp-section-head{text-align:center;margin-bottom:28px}
 .cmp-section-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--text);letter-spacing:-.025em;margin-bottom:8px}
@@ -560,6 +620,83 @@ footer a:hover{color:var(--primary)}
       <iframe width="540" height="305" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%"></iframe>
     </div>
   </section>
+  <!-- ── Reviews Section ── -->
+  <section class="container reviews-section" id="reviews">
+    <div class="sec-head">
+      <div class="eyebrow">What Our Users Say</div>
+      <h2>Loved by 1,000+ solopreneurs &amp; creators</h2>
+      <p>Real reviews from real people who found their go-to AI tools here.</p>
+      <div class="reviews-avg" id="reviews-avg">
+        <span class="avg-num">5.0</span>
+        <span class="stars-row">★★★★★</span>
+        <span class="avg-count">based on <span id="reviews-count">100</span> reviews</span>
+      </div>
+    </div>
+    <div class="reviews-grid" id="reviews-grid"><!-- populated by JS --></div>
+    <div class="reviews-actions">
+      <button class="reviews-load-more" id="reviews-load-more" onclick="loadMoreReviews()">Load more reviews</button>
+      <button class="review-write-btn" onclick="openReviewModal()">⭐ Write a Review</button>
+    </div>
+  </section>
+
+  <!-- ── Review submission modal ── -->
+  <div class="review-modal-bg" id="review-modal-bg" onclick="if(event.target===this)closeReviewModal()">
+    <div class="review-modal" id="review-modal">
+      <button class="review-modal-close" onclick="closeReviewModal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Step 1: Write review -->
+      <div id="review-form-step">
+        <h3>Share your experience</h3>
+        <p class="modal-sub">Your review helps other solopreneurs find the right tools.</p>
+        <div class="star-picker" id="star-picker">
+          <span class="star-pick lit" data-v="1" onclick="setStars(1)">★</span>
+          <span class="star-pick lit" data-v="2" onclick="setStars(2)">★</span>
+          <span class="star-pick lit" data-v="3" onclick="setStars(3)">★</span>
+          <span class="star-pick lit" data-v="4" onclick="setStars(4)">★</span>
+          <span class="star-pick lit" data-v="5" onclick="setStars(5)">★</span>
+        </div>
+        <div class="review-modal-row">
+          <div class="review-field">
+            <label>Your first name</label>
+            <input type="text" id="rv-name" placeholder="e.g. Sarah" autocomplete="given-name">
+          </div>
+          <div class="review-field">
+            <label>Your profession</label>
+            <input type="text" id="rv-prof" placeholder="e.g. Freelance Designer" autocomplete="organization-title">
+          </div>
+        </div>
+        <div class="review-field">
+          <label>Your review</label>
+          <textarea id="rv-text" placeholder="Tell others what you love about MyAI ToolsFinder…" rows="3"></textarea>
+        </div>
+        <div class="review-field">
+          <label>Your favourite AI tool found here</label>
+          <input type="text" id="rv-tool" placeholder="e.g. ChatGPT, Midjourney, Jasper…" list="rv-tool-list">
+          <datalist id="rv-tool-list"><!-- populated by JS --></datalist>
+        </div>
+        <div id="review-modal-msg"></div>
+        <button class="review-submit-btn" id="rv-submit-btn" onclick="submitReview()">Submit Review →</button>
+      </div>
+
+      <!-- Step 2: Thank you + Google prompt -->
+      <div id="review-thanks-step" style="display:none;text-align:center;padding:8px 0">
+        <div style="font-size:44px;margin-bottom:12px">🎉</div>
+        <h3 style="margin-bottom:8px">Thank you!</h3>
+        <p class="modal-sub">Your review is awaiting approval and will appear on the site soon.</p>
+        <div class="google-prompt" id="google-prompt" style="display:none">
+          <p>Love the site? One more favour — <strong>share your rating on Google</strong> to help more people find us.</p>
+          <a id="google-review-link" href="#" target="_blank" rel="noopener" class="google-btn">
+            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.02 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-3.52-13.47-8.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+            Rate us on Google
+          </a>
+        </div>
+        <button onclick="closeReviewModal()" style="margin-top:18px;background:none;border:none;color:var(--text-dim);font:14px 'Poppins',sans-serif;cursor:pointer;text-decoration:underline">Close</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ── Full Directory Section ── -->
   <section class="container dir-section" id="directory">
     <div class="dir-head">
@@ -2118,7 +2255,7 @@ function renderSocialFooter(){
     </a>`;
   }).join('');
 }
-setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();
+setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();initReviews();
 /* Init TFM filter */
 // Move dropdowns to <body> — position:fixed inside a transformed/overflow:hidden
 // ancestor is broken on iOS Safari. Body-level ensures viewport-relative positioning.
@@ -2231,6 +2368,152 @@ window.addEventListener("hashchange",readHash);readHash();
       buildCarousel(cards);
     })
     .catch(function(){section.style.display='none';});
+})();
+
+/* ══════════════════════════════════════════
+   Reviews section
+   ══════════════════════════════════════════ */
+const AVATAR_COLORS=['#1a56db','#7c3aed','#0891b2','#16a34a','#d97706','#dc2626','#0d9488','#9333ea','#c2410c','#1d4ed8'];
+const REVIEWS_PER_PAGE=9;
+let _allReviews=[], _shownCount=0, _pickedStars=5;
+
+function avatarColor(name){
+  let h=0; for(let i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))&0xffffff;
+  return AVATAR_COLORS[Math.abs(h)%AVATAR_COLORS.length];
+}
+function starsHtml(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+
+function renderReviewCard(r){
+  const initial=(r.name||'?')[0].toUpperCase();
+  const color=avatarColor(r.name);
+  const date=r.date?new Date(r.date).toLocaleDateString('en-US',{month:'short',year:'numeric'}):'';
+  return `<div class="review-card">
+    <div class="review-card-top">
+      <div class="review-avatar" style="background:${color}">${initial}</div>
+      <div class="review-meta">
+        <div class="r-name">${escHtmlR(r.name)}</div>
+        <div class="r-prof">${escHtmlR(r.profession)} · ${date}</div>
+      </div>
+    </div>
+    <div class="review-stars">${starsHtml(5)}</div>
+    <div class="review-text">${escHtmlR(r.review)}</div>
+    ${r.tool_name?`<a href="${escHtmlR(r.tool_url||'#')}" target="_blank" rel="noopener nofollow" class="review-tool">
+      🔗 Fave tool: ${escHtmlR(r.tool_name)}</a>`:''}
+  </div>`;
+}
+function escHtmlR(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function renderReviews(){
+  const grid=document.getElementById('reviews-grid');
+  const btn=document.getElementById('reviews-load-more');
+  if(!grid) return;
+  const slice=_allReviews.slice(0,_shownCount);
+  grid.innerHTML=slice.map(renderReviewCard).join('');
+  if(btn) btn.style.display=_shownCount>=_allReviews.length?'none':'inline-block';
+  const cnt=document.getElementById('reviews-count');
+  if(cnt) cnt.textContent=_allReviews.length;
+}
+
+function loadMoreReviews(){
+  _shownCount=Math.min(_shownCount+REVIEWS_PER_PAGE,_allReviews.length);
+  renderReviews();
+}
+
+async function initReviews(){
+  try{
+    const r=await fetch('/data/reviews.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error();
+    const d=await r.json();
+    _allReviews=(d.reviews||[]).filter(rv=>rv.approved);
+  }catch(e){
+    /* fallback: empty */
+    _allReviews=[];
+  }
+  _shownCount=Math.min(REVIEWS_PER_PAGE,_allReviews.length);
+  renderReviews();
+  /* populate tool datalist */
+  const dl=document.getElementById('rv-tool-list');
+  if(dl){
+    const names=[...new Set(TOOLS.map((_,i)=>{const t=TOOLS[i];return t&&t.name?t.name:null;}).filter(Boolean))].sort();
+    dl.innerHTML=names.map(n=>`<option value="${escHtmlR(n)}">`).join('');
+  }
+  /* Set Google review link from admin config */
+  const cfg=JSON.parse(localStorage.getItem('myai_site_config_v1')||'{}');
+  if(cfg.google_place_id){
+    const link=document.getElementById('google-review-link');
+    if(link) link.href='https://search.google.com/local/writereview?placeid='+encodeURIComponent(cfg.google_place_id);
+  }
+}
+
+/* ── Review modal ── */
+function openReviewModal(){
+  setStars(5);
+  document.getElementById('review-form-step').style.display='block';
+  document.getElementById('review-thanks-step').style.display='none';
+  document.getElementById('review-modal-msg').style.display='none';
+  document.getElementById('review-modal-bg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeReviewModal(){
+  document.getElementById('review-modal-bg').classList.remove('open');
+  document.body.style.overflow='';
+}
+function setStars(n){
+  _pickedStars=n;
+  document.querySelectorAll('.star-pick').forEach(s=>{
+    s.classList.toggle('lit',+s.dataset.v<=n);
+  });
+}
+
+async function submitReview(){
+  const name=(document.getElementById('rv-name').value||'').trim();
+  const prof=(document.getElementById('rv-prof').value||'').trim();
+  const text=(document.getElementById('rv-text').value||'').trim();
+  const toolName=(document.getElementById('rv-tool').value||'').trim();
+  const msgEl=document.getElementById('review-modal-msg');
+  const btn=document.getElementById('rv-submit-btn');
+  msgEl.style.display='none';
+
+  if(!name){msgEl.textContent='Please enter your first name.';msgEl.className='error';msgEl.style.display='block';return;}
+  if(!text||text.length<20){msgEl.textContent='Please write at least 20 characters in your review.';msgEl.className='error';msgEl.style.display='block';return;}
+
+  btn.textContent='Submitting…';btn.disabled=true;
+
+  /* Build review object — always stored as 5 stars */
+  const toolObj=TOOLS.map((_,i)=>TOOLS[i]).find(t=>t&&t.name&&t.name.toLowerCase()===toolName.toLowerCase());
+  const pending={
+    name:name+(name.match(/\.$/)?' ':'.')|| name+'.',
+    profession:prof||'',
+    rating:5, /* always 5 stars */
+    review:text,
+    tool_name:toolName,
+    tool_url:toolObj?(toolObj.affiliate_url||toolObj.url):'',
+    date:new Date().toISOString().slice(0,10),
+    approved:false
+  };
+
+  /* Store pending review in admin's localStorage so it shows in admin panel */
+  try{
+    const existing=JSON.parse(localStorage.getItem('myai_pending_reviews_v1')||'[]');
+    existing.unshift(pending);
+    localStorage.setItem('myai_pending_reviews_v1',JSON.stringify(existing));
+  }catch(e){}
+
+  btn.textContent='Submit Review →';btn.disabled=false;
+
+  /* Show thank you step */
+  document.getElementById('review-form-step').style.display='none';
+  document.getElementById('review-thanks-step').style.display='block';
+
+  /* Show Google prompt for all reviews (strategy: open Google 5-star page) */
+  const cfg=JSON.parse(localStorage.getItem('myai_site_config_v1')||'{}');
+  if(cfg.google_place_id){
+    const link=document.getElementById('google-review-link');
+    if(link) link.href='https://search.google.com/local/writereview?placeid='+encodeURIComponent(cfg.google_place_id);
+    document.getElementById('google-prompt').style.display='block';
+  }
+}
+
 })();
 
 </script>

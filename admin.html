@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content="noindex,nofollow" />
 <title>Admin · MyAI ToolsFinder</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="shortcut icon" href="/favicon.png">
 <style>
   :root{
     --bg:#f5f7fa; --bg-soft:#eef1f7; --card:#ffffff; --border:#d1d9e6;
@@ -122,6 +125,7 @@
   <div class="tabs">
     <button class="tab active" data-tab="tools">Tools</button>
     <button class="tab" data-tab="subscribers">Subscribers</button>
+    <button class="tab" data-tab="reviews">Reviews</button>
     <button class="tab" data-tab="site">Site settings</button>
     <button class="tab" data-tab="github">GitHub Sync</button>
   </div>
@@ -233,6 +237,13 @@
         <input type="number" id="cfg-brevo-list-id" placeholder="e.g. 3" min="0" />
       </div>
     </div>
+
+    <h3 style="margin:24px 0 12px;font-size:15px;font-weight:700;color:var(--text)">Google Reviews</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin:0 0 14px;line-height:1.6">Add your Google Place ID so the "Rate on Google" button appears after someone submits a review. <a href="https://developers.google.com/maps/documentation/javascript/place-id" target="_blank" rel="noopener">Find your Place ID →</a></p>
+    <div>
+      <label>Google Place ID</label>
+      <input type="text" id="cfg-google-place-id" placeholder="ChIJ…" autocomplete="off" />
+    </div>
   </div>
 
   <!-- GITHUB TAB -->
@@ -308,6 +319,51 @@
       <div style="display:flex;gap:8px">
         <button class="btn" id="sub-prev" onclick="subChangePage(-1)" disabled>← Prev</button>
         <button class="btn" id="sub-next" onclick="subChangePage(1)" disabled>Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS TAB -->
+  <div id="tab-reviews" style="display:none">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+      <h3 style="margin:0;font-size:15px;font-weight:700;flex:1">Review Moderation</h3>
+      <button class="btn primary" onclick="openAddReviewModal()">+ Add Review</button>
+      <button class="btn" onclick="commitReviews()">💾 Save &amp; Deploy</button>
+    </div>
+    <div class="info-banner" style="margin-bottom:14px">
+      ✅ <b>Approved</b> reviews show on the website. ⏳ <b>Pending</b> reviews are submitted by visitors and need your approval. Click <b>Save &amp; Deploy</b> after approving to push changes live.
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <button class="btn" id="rv-filter-all" onclick="setRvFilter('all')" style="font-weight:600;border-color:var(--accent);color:var(--accent)">All</button>
+      <button class="btn" id="rv-filter-approved" onclick="setRvFilter('approved')">✅ Approved</button>
+      <button class="btn" id="rv-filter-pending" onclick="setRvFilter('pending')">⏳ Pending</button>
+    </div>
+    <div id="rv-list"><!-- rendered by JS --></div>
+
+    <!-- Add/Edit review modal (admin only) -->
+    <div id="rv-edit-modal" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px">
+      <div style="background:#fff;border-radius:14px;width:100%;max-width:520px;padding:28px 24px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto">
+        <h3 id="rv-modal-title" style="margin:0 0 18px;font-size:16px">Add Review</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div><label>Name</label><input type="text" id="rve-name" placeholder="Sarah M."></div>
+          <div><label>Profession</label><input type="text" id="rve-prof" placeholder="Content Creator"></div>
+        </div>
+        <div style="margin-bottom:12px"><label>Review text</label><textarea id="rve-text" style="min-height:80px;resize:vertical" placeholder="What they said…"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div><label>Favourite tool name</label><input type="text" id="rve-tool-name" placeholder="ChatGPT"></div>
+          <div><label>Tool URL (affiliate if available)</label><input type="url" id="rve-tool-url" placeholder="https://…"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px">
+          <div><label>Date</label><input type="date" id="rve-date"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:22px">
+            <input type="checkbox" id="rve-approved" style="width:16px;height:16px;accent-color:var(--ok)">
+            <label style="text-transform:none;letter-spacing:0;font-size:13px;color:var(--text);cursor:pointer" for="rve-approved">Approved (show on site)</label>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button class="btn" onclick="closeRvModal()">Cancel</button>
+          <button class="btn primary" onclick="saveRvModal()">Save Review</button>
+        </div>
       </div>
     </div>
   </div>
@@ -901,7 +957,8 @@ const DEFAULT_SITE = {
   social_linkedin: "",
   social_tiktok: "",
   brevo_api_key: "",
-  brevo_list_id: ""
+  brevo_list_id: "",
+  google_place_id: ""
 };
 
 /* ===== Auth ===== */
@@ -1110,7 +1167,7 @@ function addTool(){
 /* ===== Site config ===== */
 function renderSiteForm(){
   const s = loadSite();
-  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy', social_twitter:'cfg-social-twitter', social_facebook:'cfg-social-facebook', social_instagram:'cfg-social-instagram', social_youtube:'cfg-social-youtube', social_linkedin:'cfg-social-linkedin', social_tiktok:'cfg-social-tiktok', brevo_api_key:'cfg-brevo-api-key', brevo_list_id:'cfg-brevo-list-id'};
+  const map = {brand:'cfg-brand', eyebrow:'cfg-eyebrow', hero_title:'cfg-hero-title', hero_sub:'cfg-hero-sub', curator:'cfg-curator', disclosure:'cfg-disclosure', news_title:'cfg-news-title', news_sub:'cfg-news-sub', email:'cfg-email', copy:'cfg-copy', social_twitter:'cfg-social-twitter', social_facebook:'cfg-social-facebook', social_instagram:'cfg-social-instagram', social_youtube:'cfg-social-youtube', social_linkedin:'cfg-social-linkedin', social_tiktok:'cfg-social-tiktok', brevo_api_key:'cfg-brevo-api-key', brevo_list_id:'cfg-brevo-list-id', google_place_id:'cfg-google-place-id'};
   Object.entries(map).forEach(([k,id])=>{
     const el = document.getElementById(id);
     if (el) {
@@ -1196,10 +1253,11 @@ function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,
 /* ===== Tab + search wiring ===== */
 function switchToTab(name){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
-  ['tools','subscribers','site','github'].forEach(n=>{
+  ['tools','subscribers','reviews','site','github'].forEach(n=>{
     document.getElementById('tab-'+n).style.display = (n===name)?'block':'none';
   });
   if(name==='subscribers') loadSubscribers();
+  if(name==='reviews') initReviewsTab();
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
   switchToTab(b.dataset.tab);
@@ -1446,6 +1504,213 @@ async function autoCommitAfterSave(){
   if(savedRepo&&document.getElementById('gh-repo'))document.getElementById('gh-repo').value=savedRepo;
   if(savedToken&&document.getElementById('gh-token'))document.getElementById('gh-token').value=savedToken;
 })();
+
+/* ═══════════════════════════════════════════════════
+   REVIEWS  — moderation tab
+   ═══════════════════════════════════════════════════ */
+let _reviewsData = [];       // merged: approved from JSON + pending from localStorage
+let _rvFilter    = 'all';    // 'all' | 'approved' | 'pending'
+let _rvEditId    = null;     // null = new review, string = editing existing
+
+/* Load reviews.json + pending localStorage reviews */
+async function initReviewsTab(){
+  const rvList = document.getElementById('rv-list');
+  rvList.innerHTML = '<div style="padding:36px;text-align:center;color:var(--text-dim)">Loading reviews…</div>';
+  try{
+    const r = await fetch('/data/reviews.json?_='+Date.now(),{cache:'no-store'});
+    const d = await r.json();
+    _reviewsData = Array.isArray(d) ? d : (Array.isArray(d.reviews) ? d.reviews : []);
+  } catch(e){
+    _reviewsData = [];
+  }
+  // Merge pending reviews from localStorage
+  const LS_PENDING = 'myai_pending_reviews_v1';
+  try{
+    const pending = JSON.parse(localStorage.getItem(LS_PENDING)||'[]');
+    if(Array.isArray(pending) && pending.length){
+      // Don't add duplicates by id
+      const existingIds = new Set(_reviewsData.map(x=>x.id));
+      pending.forEach(p=>{ if(!existingIds.has(p.id)) _reviewsData.push(p); });
+    }
+  } catch(e){}
+  setRvFilter(_rvFilter);
+}
+
+/* Filter button active state + re-render */
+function setRvFilter(f){
+  _rvFilter = f;
+  ['all','approved','pending'].forEach(k=>{
+    const btn = document.getElementById('rv-filter-'+k);
+    if(!btn) return;
+    if(k===f){
+      btn.style.fontWeight='700'; btn.style.borderColor='var(--accent)'; btn.style.color='var(--accent)';
+    } else {
+      btn.style.fontWeight=''; btn.style.borderColor=''; btn.style.color='';
+    }
+  });
+  renderReviewList(f);
+}
+
+/* Render the reviews list */
+function renderReviewList(filter){
+  const rvList = document.getElementById('rv-list');
+  if(!rvList) return;
+  const list = _reviewsData.filter(r=>{
+    if(filter==='approved') return r.approved===true;
+    if(filter==='pending')  return !r.approved;
+    return true;
+  });
+  if(!list.length){
+    rvList.innerHTML = `<div class="info-banner" style="margin:0">No ${filter==='all'?'':filter+' '}reviews found.</div>`;
+    return;
+  }
+  rvList.innerHTML = list.map(r=>{
+    const stars='★'.repeat(r.rating||5)+'☆'.repeat(5-(r.rating||5));
+    const statusBadge = r.approved
+      ? `<span style="background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600">✅ Approved</span>`
+      : `<span style="background:#fefce8;color:#854d0e;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600">⏳ Pending</span>`;
+    const toolLink = r.tool_url
+      ? `<a href="${escHtml(r.tool_url)}" target="_blank" rel="noopener" style="color:var(--accent)">${escHtml(r.tool_name||'—')}</a>`
+      : escHtml(r.tool_name||'—');
+    return `<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span style="font-weight:700;font-size:14px">${escHtml(r.name||'—')}</span>
+          <span style="color:var(--text-dim);font-size:12px">${escHtml(r.profession||'')}</span>
+          ${statusBadge}
+          <span style="color:var(--text-dim);font-size:11px">${escHtml(r.date||'')}</span>
+        </div>
+        <div style="color:#f59e0b;font-size:15px;margin-bottom:6px;letter-spacing:1px">${stars}</div>
+        <div style="font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:6px">"${escHtml(r.review||'')}"</div>
+        <div style="font-size:12px;color:var(--text-dim)">Favourite tool: ${toolLink}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
+        <button class="btn" style="font-size:12px;padding:6px 10px" onclick="toggleReviewApproval('${escHtml(String(r.id))}')">${r.approved?'Revoke':'Approve'}</button>
+        <button class="btn" style="font-size:12px;padding:6px 10px" onclick="openAddReviewModal('${escHtml(String(r.id))}')">Edit</button>
+        <button class="btn danger" style="font-size:12px;padding:6px 10px" onclick="deleteReview('${escHtml(String(r.id))}')">Delete</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* Toggle approved state */
+function toggleReviewApproval(id){
+  const r = _reviewsData.find(x=>String(x.id)===String(id));
+  if(!r) return;
+  r.approved = !r.approved;
+  renderReviewList(_rvFilter);
+}
+
+/* Delete a review */
+function deleteReview(id){
+  if(!confirm('Delete this review? This cannot be undone.')) return;
+  _reviewsData = _reviewsData.filter(x=>String(x.id)!==String(id));
+  // Also remove from localStorage pending
+  try{
+    const LS_PENDING='myai_pending_reviews_v1';
+    const pending=JSON.parse(localStorage.getItem(LS_PENDING)||'[]');
+    localStorage.setItem(LS_PENDING,JSON.stringify(pending.filter(x=>String(x.id)!==String(id))));
+  }catch(e){}
+  renderReviewList(_rvFilter);
+}
+
+/* Open add/edit modal */
+function openAddReviewModal(id){
+  _rvEditId = id || null;
+  const modal = document.getElementById('rv-edit-modal');
+  const title = document.getElementById('rv-modal-title');
+  if(!modal) return;
+  if(id){
+    const r = _reviewsData.find(x=>String(x.id)===String(id));
+    if(!r) return;
+    title.textContent = 'Edit Review';
+    document.getElementById('rve-name').value    = r.name||'';
+    document.getElementById('rve-prof').value    = r.profession||'';
+    document.getElementById('rve-text').value    = r.review||'';
+    document.getElementById('rve-tool-name').value = r.tool_name||'';
+    document.getElementById('rve-tool-url').value  = r.tool_url||'';
+    document.getElementById('rve-date').value    = r.date||'';
+    document.getElementById('rve-approved').checked = !!r.approved;
+  } else {
+    title.textContent = 'Add Review';
+    document.getElementById('rve-name').value    = '';
+    document.getElementById('rve-prof').value    = '';
+    document.getElementById('rve-text').value    = '';
+    document.getElementById('rve-tool-name').value = '';
+    document.getElementById('rve-tool-url').value  = '';
+    document.getElementById('rve-date').value    = new Date().toISOString().slice(0,10);
+    document.getElementById('rve-approved').checked = true;
+  }
+  modal.style.display = 'flex';
+}
+
+function closeRvModal(){
+  const modal = document.getElementById('rv-edit-modal');
+  if(modal) modal.style.display = 'none';
+}
+
+/* Save from modal */
+function saveRvModal(){
+  const name    = document.getElementById('rve-name').value.trim();
+  const prof    = document.getElementById('rve-prof').value.trim();
+  const text    = document.getElementById('rve-text').value.trim();
+  const toolName= document.getElementById('rve-tool-name').value.trim();
+  const toolUrl = document.getElementById('rve-tool-url').value.trim();
+  const date    = document.getElementById('rve-date').value.trim();
+  const approved= document.getElementById('rve-approved').checked;
+
+  if(!name||!text){ alert('Name and review text are required.'); return; }
+
+  if(_rvEditId){
+    // Update existing
+    const r = _reviewsData.find(x=>String(x.id)===String(_rvEditId));
+    if(r){
+      r.name=name; r.profession=prof; r.review=text;
+      r.tool_name=toolName; r.tool_url=toolUrl;
+      r.date=date; r.approved=approved; r.rating=5;
+    }
+  } else {
+    // New review
+    _reviewsData.unshift({
+      id: 'adm_'+Date.now(),
+      name, profession:prof, review:text,
+      tool_name:toolName, tool_url:toolUrl,
+      date, approved, rating:5
+    });
+  }
+  closeRvModal();
+  renderReviewList(_rvFilter);
+}
+
+/* Commit approved reviews to data/reviews.json via GitHub */
+async function commitReviews(){
+  const repo  = localStorage.getItem('myai_gh_repo');
+  const token = localStorage.getItem('myai_gh_token');
+  if(!repo||!token){
+    alert('Set up your GitHub token in the GitHub Sync tab first.');
+    return;
+  }
+  // Only commit approved reviews
+  const approved = _reviewsData.filter(r=>r.approved===true);
+  const jsonStr  = JSON.stringify(approved, null, 2);
+  const btn = document.querySelector('button[onclick="commitReviews()"]');
+  if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+  const ok = await commitToGitHub('data/reviews.json', jsonStr,
+    `Reviews: ${approved.length} approved (${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})})`);
+  if(btn){ btn.disabled=false; btn.innerHTML='💾 Save &amp; Deploy'; }
+  if(ok){
+    showAdminToast(`✅ ${approved.length} reviews deployed to site.`);
+    // Clear pending from localStorage since they're now committed
+    try{
+      const LS_PENDING='myai_pending_reviews_v1';
+      const remaining = JSON.parse(localStorage.getItem(LS_PENDING)||'[]')
+        .filter(p=>!approved.find(a=>String(a.id)===String(p.id)));
+      localStorage.setItem(LS_PENDING,JSON.stringify(remaining));
+    }catch(e){}
+  } else {
+    alert('GitHub commit failed. Check your token in the GitHub Sync tab and try again.');
+  }
+}
 </script>
 </body>
 </html>
