@@ -195,8 +195,8 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .newsletter{margin:60px auto 0;padding:48px 30px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(26,86,219,.14);border-radius:20px;text-align:center;box-shadow:var(--shadow)}
 .newsletter h2{font-size:clamp(24px,3vw,32px);margin:8px 0 10px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .newsletter p{color:var(--text-2);max-width:540px;margin:0 auto 24px;font-size:15.5px}
-.brevo-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:18px;border-radius:16px;box-shadow:var(--shadow)}
-.brevo-wrap iframe{display:block;width:100%;border:0;min-height:280px}
+.brevo-wrap{max-width:540px;margin:0 auto;}
+.brevo-wrap iframe{display:block;width:100%;border:0;min-height:280px;border-radius:12px;overflow:hidden}
 #disclosure-text{margin-top:60px;color:var(--text-2);font-size:13.5px;line-height:1.75;padding:28px;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);box-shadow:var(--shadow)}
 #disclosure-text h3{color:var(--text);font-size:16px;margin:0 0 12px;font-weight:700}
 #disclosure-text p{margin:0 0 8px}#disclosure-text p:last-child{margin:0}
@@ -790,37 +790,22 @@ footer a:hover{color:var(--primary)}
   </div>
 </div>
 
-<!-- ── Auth modal ── -->
+<!-- ── Auth modal — subscriber email gate ── -->
 <div id="auth-overlay" class="auth-overlay hidden" onclick="if(event.target===this)closeAuthModal()">
   <div class="auth-box">
     <button class="auth-close" onclick="closeAuthModal()">&#x2715;</button>
-    <div class="auth-icon" id="auth-icon">🔓</div>
-    <div class="auth-title" id="auth-title">Unlock Unlimited Comparisons</div>
-    <div class="auth-sub" id="auth-sub">Register free — compare any number of tools, unlimited times per day.</div>
+    <div class="auth-icon">🔓</div>
+    <div class="auth-title">Unlock Unlimited Comparisons</div>
+    <div class="auth-sub">Enter your subscriber email to unlock unlimited tool comparisons.</div>
     <div class="auth-msg" id="auth-msg"></div>
-    <input type="hidden" id="auth-mode" value="register">
-    <div id="auth-reg-fields">
-      <div class="auth-field">
-        <label>Full Name</label>
-        <input type="text" id="auth-name" placeholder="Your full name" autocomplete="name">
-      </div>
-      <div class="auth-field">
-        <label>Location (City / Country)</label>
-        <input type="text" id="auth-location" placeholder="e.g. Manila, Philippines" autocomplete="country">
-      </div>
-      <div class="auth-field">
-        <label>Mobile Number</label>
-        <input type="tel" id="auth-mobile" placeholder="+63 912 345 6789" autocomplete="tel">
-      </div>
-    </div>
     <div class="auth-field">
       <label>Email Address</label>
-      <input type="email" id="auth-email" placeholder="you@example.com" autocomplete="email">
+      <input type="email" id="auth-email" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')unlockComparisons()">
     </div>
     <div class="auth-err" id="auth-err"></div>
-    <button class="auth-submit" id="auth-submit" onclick="submitAuth()">Create Free Account →</button>
-    <div class="auth-switch" id="auth-switch">
-      Already registered? <button class="auth-link-btn" onclick="setAuthMode('login')">Log In</button>
+    <button class="auth-submit" id="auth-submit" onclick="unlockComparisons()">Unlock Access →</button>
+    <div class="auth-switch">
+      Not subscribed yet? <a href="#newsletter" onclick="closeAuthModal()" style="color:var(--primary);font-size:13px;text-decoration:underline;cursor:pointer">Subscribe free →</a>
     </div>
   </div>
 </div>
@@ -2032,100 +2017,69 @@ function startModuleComparison(){
 }
 
 /* ── Auth modal ── */
-function showAuthModal(mode="register",msg=""){
-  mode=mode||"register";
-  document.getElementById("auth-msg").textContent=msg||"";
-  setAuthMode(mode);
+/* ── Subscriber SHA-256 helpers (shared with articles.html gate) ── */
+async function sha256cmp(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str.trim().toLowerCase()));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function isSubscriberCmp(email){
+  try{
+    const hash=await sha256cmp(email);
+    const r=await fetch('/data/subscribers.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) return null;
+    const d=await r.json();
+    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
+  }catch(e){ return null; }
+}
+
+function showAuthModal(mode,msg){
+  const msgEl=document.getElementById("auth-msg");
+  const errEl=document.getElementById("auth-err");
+  const btn=document.getElementById("auth-submit");
+  if(msgEl) msgEl.textContent=msg||"";
+  if(errEl) errEl.textContent="";
+  if(btn){ btn.textContent="Unlock Access →"; btn.disabled=false; }
   document.getElementById("auth-overlay").classList.remove("hidden");
   document.body.style.overflow="hidden";
-  setTimeout(()=>{
-    const f=mode==="login"?document.getElementById("auth-email"):document.getElementById("auth-name");
-    if(f)f.focus();
-  },120);
+  setTimeout(()=>{ const f=document.getElementById("auth-email"); if(f)f.focus(); },120);
 }
 function closeAuthModal(){
   document.getElementById("auth-overlay").classList.add("hidden");
   document.body.style.overflow="";
 }
-function setAuthMode(mode){
-  document.getElementById("auth-mode").value=mode;
-  const isReg=mode==="register";
-  document.getElementById("auth-reg-fields").style.display=isReg?"":"none";
-  document.getElementById("auth-icon").textContent=isReg?"🔓":"👋";
-  document.getElementById("auth-title").textContent=isReg?"Unlock Unlimited Comparisons":"Welcome Back";
-  document.getElementById("auth-sub").textContent=isReg
-    ?"Register free — compare any number of tools, unlimited times."
-    :"Enter your registered email to log back in.";
-  document.getElementById("auth-submit").textContent=isReg?"Create Free Account →":"Log In →";
-  document.getElementById("auth-switch").innerHTML=isReg
-    ?`Already registered? <button class="auth-link-btn" onclick="setAuthMode('login')">Log In</button>`
-    :`No account yet? <button class="auth-link-btn" onclick="setAuthMode('register')">Register Free</button>`;
-  document.getElementById("auth-err").textContent="";
-}
 
-async function submitAuth(){
-  const mode=document.getElementById("auth-mode").value;
+async function unlockComparisons(){
   const email=(document.getElementById("auth-email").value||"").trim();
-  const name=(document.getElementById("auth-name").value||"").trim();
-  const location=(document.getElementById("auth-location").value||"").trim();
-  const mobile=(document.getElementById("auth-mobile").value||"").trim();
   const errEl=document.getElementById("auth-err");
   const btn=document.getElementById("auth-submit");
   errEl.textContent="";
-
   if(!email||!/\S+@\S+\.\S+/.test(email)){errEl.textContent="Please enter a valid email address.";return;}
-  if(mode==="register"){
-    if(!name){errEl.textContent="Please enter your full name.";return;}
-    if(!location){errEl.textContent="Please enter your location.";return;}
-    if(!mobile){errEl.textContent="Please enter your mobile number.";return;}
-  }
-
-  const origText=btn.textContent;
-  btn.disabled=true;
-  btn.textContent=mode==="register"?"Creating account…":"Logging in…";
-
-  try{
-    let userData=null;
-
-    if(COMPARE_GAS_URL){
-      /* ── Backend mode (Google Apps Script) ── */
-      const payload=mode==="register"
-        ?{action:"register",name,email,location,mobile}
-        :{action:"login",email};
-      const res=await fetch(COMPARE_GAS_URL,{method:"POST",body:JSON.stringify(payload)});
-      const data=await res.json();
-      if(!data.ok){errEl.textContent=data.error||"Something went wrong. Please try again.";return;}
-      userData={name:data.user.name||name,email:data.user.email||email,location:data.user.location||location};
-    } else {
-      /* ── localStorage-only mode (no backend configured) ── */
-      let users=[];
-      try{users=JSON.parse(localStorage.getItem(LS_USERS)||"[]");}catch(e){}
-      if(mode==="register"){
-        if(users.find(u=>u.email===email)){errEl.textContent="Email already registered. Please log in.";return;}
-        const newUser={name,email,location,mobile,registeredAt:new Date().toISOString()};
-        users.push(newUser);
-        localStorage.setItem(LS_USERS,JSON.stringify(users));
-        userData={name,email,location};
-      } else {
-        const found=users.find(u=>u.email===email);
-        if(!found){errEl.textContent="Email not found. Please register first.";return;}
-        userData={name:found.name,email:found.email,location:found.location};
-      }
-    }
-
-    setUser(userData);
+  btn.disabled=true; btn.textContent="Checking…";
+  const subscribed=await isSubscriberCmp(email);
+  if(subscribed===true){
+    const name=email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    setUser({name,email});
     closeAuthModal();
     updateNavAuth();
     renderCmpModule();
     updateTray();
-    showToast((mode==="register"?"Welcome, ":"Welcome back, ")+userData.name+"! 🎉 Unlimited comparisons unlocked.");
-  }catch(e){
-    errEl.textContent="Connection error. Please try again.";
-  }finally{
-    btn.disabled=false;
-    btn.textContent=origText;
+    showToast("Welcome, "+name+"! 🎉 Unlimited comparisons unlocked.");
+  } else if(subscribed===false){
+    errEl.textContent="Email not found in our subscriber list.";
+    const msgEl=document.getElementById("auth-msg");
+    if(msgEl) msgEl.textContent="Not subscribed yet? Sign up free below to unlock unlimited comparisons.";
+    btn.disabled=false; btn.textContent="Unlock Access →";
+  } else {
+    errEl.textContent="Could not verify — please try again.";
+    btn.disabled=false; btn.textContent="Unlock Access →";
   }
 }
+
+/* kept for backward compat — no longer used */
+async function submitAuth(){
+  return unlockComparisons();
+}
+function setAuthMode(){}
 
 function logoutUser(){
   clearUser();
