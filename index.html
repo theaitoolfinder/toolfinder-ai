@@ -8,7 +8,24 @@
 <title>MyAI ToolsFinder — Find the AI tools that fit your work</title>
 <meta name="description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse by your job, by the problem you're solving, or by what's trending."/>
 <link rel="canonical" href="https://myaitoolsfinder.com/"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="shortcut icon" href="/logo.svg">
+<link rel="apple-touch-icon" href="/logo.svg">
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://myaitoolsfinder.com/"/>
+<meta property="og:title" content="MyAI ToolsFinder — Find the AI tools that fit your work"/>
+<meta property="og:description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse 500+ tools by job, problem, or what's trending."/>
+<meta property="og:image" content="https://myaitoolsfinder.com/logo.svg"/>
+<meta property="og:site_name" content="MyAI ToolsFinder"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@myaitoolsfinder"/>
+<meta name="twitter:title" content="MyAI ToolsFinder — Find the AI tools that fit your work"/>
+<meta name="twitter:description" content="Curated AI tools directory for solopreneurs, freelancers and creators. Browse 500+ tools by job, problem, or what's trending."/>
+<meta name="twitter:image" content="https://myaitoolsfinder.com/logo.svg"/>
+<!-- Organization schema (static — helps Google show logo in search) -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MyAI ToolsFinder","url":"https://myaitoolsfinder.com","logo":{"@type":"ImageObject","url":"https://myaitoolsfinder.com/logo.svg","width":32,"height":32},"sameAs":["https://twitter.com/myaitoolsfinder","https://www.facebook.com/myaitoolsfinder","https://www.instagram.com/myaitoolsfinder","https://www.youtube.com/@myaitoolsfinder","https://www.linkedin.com/company/myaitoolsfinder","https://www.tiktok.com/@myaitoolsfinder"]}</script>
 <script type="application/ld+json" id="ldjson"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -2087,17 +2104,19 @@ function renderSocialFooter(){
   if(!el)return;
   let cfg={};try{cfg=JSON.parse(localStorage.getItem('myai_site_config_v1')||'{}');}catch(e){}
   const icons=[
-    {key:'social_twitter',   label:'Twitter/X',  svg:'<path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><text x="12" y="14" font-size="10" text-anchor="middle" fill="currentColor" font-weight="700">X</text>',viewBox:'0 0 24 24'},
-    {key:'social_facebook',  label:'Facebook',   svg:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" fill="none"/>',viewBox:'0 0 24 24'},
-    {key:'social_instagram', label:'Instagram',  svg:'<rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>',viewBox:'0 0 24 24'},
-    {key:'social_youtube',   label:'YouTube',    svg:'<path d="M22.5 6.5a2.5 2.5 0 0 0-1.8-1.8C19 4.3 12 4.3 12 4.3s-7 0-8.7.4A2.5 2.5 0 0 0 1.5 6.5C1 8.2 1 12 1 12s0 3.8.5 5.5a2.5 2.5 0 0 0 1.8 1.8C5 19.7 12 19.7 12 19.7s7 0 8.7-.4a2.5 2.5 0 0 0 1.8-1.8c.5-1.7.5-5.5.5-5.5s0-3.8-.5-5.5z" stroke="currentColor" stroke-width="1.5" fill="none"/><polygon points="10,8.5 16,12 10,15.5" fill="currentColor"/>',viewBox:'0 0 24 24'},
-    {key:'social_linkedin',  label:'LinkedIn',   svg:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>',viewBox:'0 0 24 24'},
-    {key:'social_tiktok',    label:'TikTok',     svg:'<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',viewBox:'0 0 24 24'},
+    {key:'social_twitter',   label:'Twitter/X',  def:'https://twitter.com/myaitoolsfinder',  svg:'<path d="M18 4L13.5 9.5L18.5 16H15.5L12 11.5L8 16H5L9.5 10L4.5 4H7.5L11 8.5L15 4H18Z" fill="currentColor"/>',viewBox:'0 0 22 22'},
+    {key:'social_facebook',  label:'Facebook',   def:'https://www.facebook.com/myaitoolsfinder', svg:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" fill="none"/>',viewBox:'0 0 24 24'},
+    {key:'social_instagram', label:'Instagram',  def:'https://www.instagram.com/myaitoolsfinder', svg:'<rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>',viewBox:'0 0 24 24'},
+    {key:'social_youtube',   label:'YouTube',    def:'https://www.youtube.com/@myaitoolsfinder', svg:'<path d="M22.5 6.5a2.5 2.5 0 0 0-1.8-1.8C19 4.3 12 4.3 12 4.3s-7 0-8.7.4A2.5 2.5 0 0 0 1.5 6.5C1 8.2 1 12 1 12s0 3.8.5 5.5a2.5 2.5 0 0 0 1.8 1.8C5 19.7 12 19.7 12 19.7s7 0 8.7-.4a2.5 2.5 0 0 0 1.8-1.8c.5-1.7.5-5.5.5-5.5s0-3.8-.5-5.5z" stroke="currentColor" stroke-width="1.5" fill="none"/><polygon points="10,8.5 16,12 10,15.5" fill="currentColor"/>',viewBox:'0 0 24 24'},
+    {key:'social_linkedin',  label:'LinkedIn',   def:'https://www.linkedin.com/company/myaitoolsfinder', svg:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>',viewBox:'0 0 24 24'},
+    {key:'social_tiktok',    label:'TikTok',     def:'https://www.tiktok.com/@myaitoolsfinder', svg:'<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',viewBox:'0 0 24 24'},
   ];
-  el.innerHTML=icons.filter(ic=>cfg[ic.key]).map(ic=>`
-    <a href="${cfg[ic.key]}" target="_blank" rel="noopener nofollow" class="social-icon" title="${ic.label}">
+  el.innerHTML=icons.map(ic=>{
+    const url=cfg[ic.key]||ic.def;
+    return `<a href="${url}" target="_blank" rel="noopener nofollow" class="social-icon" title="${ic.label}">
       <svg width="16" height="16" viewBox="${ic.viewBox}" fill="none">${ic.svg}</svg>
-    </a>`).join('');
+    </a>`;
+  }).join('');
 }
 setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();
 /* Init TFM filter */
