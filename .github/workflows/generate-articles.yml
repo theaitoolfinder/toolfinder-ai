@@ -35,6 +35,12 @@ on:
     # Hourly catchup — fires at :30 every hour, no-ops if nothing is missing
     - cron: '30 * * * *'
 
+  # Also fires whenever the subscriber-sync workflow completes — that runs every
+  # hour reliably and acts as a second heartbeat for article generation.
+  workflow_run:
+    workflows: ["Sync Subscriber List"]
+    types: [completed]
+
   workflow_dispatch:
     inputs:
       slot:
