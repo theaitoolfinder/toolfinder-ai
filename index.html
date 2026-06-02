@@ -456,13 +456,13 @@ footer a:hover{color:var(--primary)}
 }
 
 /* ── Techy background ── */
-body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(26,86,219,.07) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
-.bg-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:radial-gradient(circle,rgba(26,86,219,.07) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
+.bg-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
 .bg-orb-1{width:640px;height:640px;background:rgba(96,165,250,.10);top:-220px;right:-80px;animation-delay:0s}
 .bg-orb-2{width:540px;height:540px;background:rgba(26,86,219,.07);bottom:-160px;left:-130px;animation-delay:-10s}
 .bg-orb-3{width:320px;height:320px;background:rgba(30,58,138,.06);top:45%;right:18%;animation-delay:-5s}
 @keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.05)}}
-main{position:relative;z-index:1}
+/* background is z-index:-1; no z-index override needed on main */
 
 /* ── Tools marquee ── */
 .tools-marquee-section{padding:6px 0 22px;overflow:hidden;mask:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
