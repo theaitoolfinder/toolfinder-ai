@@ -2757,12 +2757,12 @@ async function submitReview(){
   </div>
   <div id="cb-msgs" aria-live="polite" aria-label="Chat messages"></div>
   <div class="cb-chips" id="cb-chips">
-    <button class="cb-chip" onclick="cbQuick('Find tools for me')">🔍 Find tools for me</button>
+    <button class="cb-chip" onclick="cbQuick('What is ChatGPT?')">📖 What is ChatGPT?</button>
+    <button class="cb-chip" onclick="cbQuick('ChatGPT vs Claude')">⚖️ ChatGPT vs Claude</button>
     <button class="cb-chip" onclick="cbQuick('Free tools only')">🆓 Free tools</button>
     <button class="cb-chip" onclick="cbQuick('Trending AI tools right now')">🔥 Trending</button>
-    <button class="cb-chip" onclick="cbQuick('Best writing tools')">✍️ Writing</button>
-    <button class="cb-chip" onclick="cbQuick('Best design tools')">🎨 Design</button>
     <button class="cb-chip" onclick="cbQuick('Best tools for developers')">💻 Dev tools</button>
+    <button class="cb-chip" onclick="cbQuick('Tools to save time')">⏱️ Save time</button>
   </div>
   <div id="cb-input-row">
     <input id="cb-input" type="text" placeholder="Ask me anything about AI tools…"
@@ -2782,9 +2782,9 @@ async function submitReview(){
   'use strict';
 
   const GREETINGS = [
-    "It looks like you're searching for AI tools! 📎 I'm Clippy — your personal AI guide. What are you working on?",
-    "Hi there! 👋 I'm Clippy, and I know 500+ AI tools inside-out. Ask me to find the right one for you!",
-    "Hello! Need an AI tool? I'm Clippy and I'm here to help. Tell me your job or what you're trying to do!"
+    "It looks like you're looking for AI tools! 📎 I'm **Clippy** — your personal AI guide.\n\nI can **find tools**, **explain what they do**, **compare** them, or just chat. What's on your mind?",
+    "Hey there! 👋 I'm **Clippy** — I know 500+ AI tools inside-out.\n\nAsk me things like:\n• \"What is Midjourney?\"\n• \"ChatGPT vs Claude\"\n• \"Free tools for writers\"\n\nWhat do you need? 😊",
+    "Hello! I'm **Clippy**, your AI tools expert. 📎\n\nI don't just find tools — I explain their features, compare them, and help you pick the right one. What are you working on today?",
   ];
 
   /* ── Toggle open/close ── */
@@ -2818,46 +2818,264 @@ async function submitReview(){
     setTimeout(() => { typing.remove(); cbProcess(q); }, 650 + Math.random() * 450);
   };
 
+  /* ── Fuzzy tool lookup by name ── */
+  function findTool(name) {
+    const n = name.toLowerCase().trim();
+    const pool = typeof TOOLS !== 'undefined' ? TOOLS : [];
+    return pool.find(t => t.name.toLowerCase() === n)
+      || pool.find(t => t.name.toLowerCase().startsWith(n) || n.startsWith(t.name.toLowerCase()))
+      || pool.find(t => t.name.toLowerCase().includes(n) || n.includes(t.name.toLowerCase()))
+      || null;
+  }
+
+  /* ── Needs → feature bullet map ── */
+  const NEED_FEAT = {
+    'Write faster':            '✍️ **AI writing assistant** — drafts content, continues sentences, and speeds up your writing significantly',
+    'Automate repetitive work':'⚡ **Smart automation** — removes tedious manual steps from your workflow completely',
+    'Save time':               '⏱️ **Huge time-saver** — cuts hours off your day by handling routine tasks intelligently',
+    'Code faster':             '💻 **AI coding assistant** — autocompletes code, spots bugs, and suggests fixes in real-time',
+    'Summarize long docs':     '📄 **Document summarizer** — condenses lengthy reports and articles into crisp key points',
+    'Transcribe audio':        '🎙️ **Audio-to-text** — accurately converts meetings, calls, and podcasts into searchable text',
+    'Generate images':         '🖼️ **Text-to-image generation** — creates professional visuals just by describing them in plain words',
+    'Translate content':       '🌍 **Multi-language translation** — accurately converts content into 50+ languages',
+    'Research topics':         '🔍 **AI research assistant** — finds, reads, and synthesizes information from multiple sources for you',
+    'Organize work':           '📋 **Smart organization** — keeps tasks, notes, and projects neatly managed with AI help',
+    'Sell more':               '💰 **Sales acceleration** — helps write pitches, find leads, and close deals faster',
+    'Run marketing':           '📢 **Marketing automation** — creates campaigns, writes ad copy, and tracks what works',
+    'Create social content':   '📱 **Social media generation** — writes posts, captions, and hashtags tailored to each platform',
+    'Make videos':             '🎬 **Video creation** — produces and edits professional videos with minimal effort',
+    'Analyze data':            '📊 **Data analysis** — interprets complex datasets and surfaces actionable insights automatically',
+    'Build AI chatbots':       '🤖 **Chatbot builder** — lets you create intelligent AI assistants without writing any code',
+    'Search the web':          '🔎 **Real-time web search** — pulls up-to-date information from across the internet',
+    'Brainstorm ideas':        '💡 **Idea generator** — helps you brainstorm, refine concepts, and beat creative blocks',
+    'Improve writing quality': '✨ **Writing polish** — fixes grammar, style, clarity, and tone with one click',
+    'Edit photos':             '🖼️ **AI photo editing** — enhances, retouches, and transforms images intelligently',
+    'Manage social media':     '📲 **Social scheduling** — plans, schedules, and analyzes your social media automatically',
+    'Learn new skills':        '📚 **Personalized learning** — adapts to your level and pace for maximum retention',
+    'Provide customer service':'🎧 **Customer service AI** — handles queries 24/7, reduces ticket volume, and improves satisfaction',
+    'Reduce errors':           '🛡️ **Error reduction** — catches mistakes before they become problems',
+    'Collaborate better':      '🤝 **Team collaboration** — keeps everyone on the same page with shared AI workflows',
+  };
+
+  /* ── Rich tool detail card ── */
+  function cbToolDetail(t) {
+    const bullets = (t.needs || [])
+      .map(n => NEED_FEAT[n] || `✅ **${n}**`)
+      .slice(0, 4).join('\n');
+    const stars = t.rating  ? `⭐ ${t.rating}/5` : '';
+    const users = t.users   ? `  👥 ${t.users}` : '';
+    const jobs  = (t.jobs || []).slice(0, 3).join(', ') || 'Everyone';
+    cbBotMsg(
+      `📎 **${t.name}** — *${t.cat || 'AI Tool'}*\n\n` +
+      `${t.tag}\n\n` +
+      (bullets ? `**What it does best:**\n${bullets}\n\n` : '') +
+      `💰 **Price:** ${t.pill}   ${stars}${users}\n` +
+      `🎯 **Best for:** ${jobs}`
+    );
+    cbShowTools([t]);
+  }
+
+  /* ── Side-by-side comparison ── */
+  function cbCompareTools(t1, t2) {
+    const priceDiff = () => {
+      const f1 = /free/i.test(t1.pill), f2 = /free/i.test(t2.pill);
+      if (f1 && !f2) return `**${t1.name}** has a free plan; **${t2.name}** does not.`;
+      if (!f1 && f2) return `**${t2.name}** has a free plan; **${t1.name}** does not.`;
+      return 'Both offer free options — check their websites for current pricing.';
+    };
+    const ratingNote = () => {
+      const r1 = t1.rating || 0, r2 = t2.rating || 0;
+      if (Math.abs(r1 - r2) < 0.15) return `Both are highly rated and comparable in quality.`;
+      const winner = r1 > r2 ? t1 : t2;
+      return `**${winner.name}** edges ahead on user ratings (${winner.rating}/5).`;
+    };
+    const verdict = () => {
+      if (t1.cat === t2.cat) return `They compete in the same **${t1.cat}** space — ${ratingNote()} ${priceDiff()} Try both free tiers!`;
+      return `**${t1.name}** is a ${t1.cat} tool; **${t2.name}** is for ${t2.cat}. They solve different problems — you might actually want *both* in your stack!`;
+    };
+    cbBotMsg(
+      `📊 **${t1.name}** vs **${t2.name}**\n\n` +
+      `**${t1.name}**\n💰 ${t1.pill} · ⭐ ${t1.rating||'?'} · ${t1.cat}\n${t1.tag}\n\n` +
+      `**${t2.name}**\n💰 ${t2.pill} · ⭐ ${t2.rating||'?'} · ${t2.cat}\n${t2.tag}\n\n` +
+      `💡 **Clippy's take:** ${verdict()}`
+    );
+    cbShowTools([t1, t2]);
+  }
+
   /* ── Core query processing ── */
   function cbProcess(q) {
-    const ql = q.toLowerCase().replace(/['']/g, "'");
+    const ql = q.toLowerCase().replace(/[''`]/g, "'").trim();
+    const allTools = typeof TOOLS !== 'undefined' ? TOOLS : [];
 
-    /* Greeting */
-    if (/^(hi|hello|hey|howdy|yo|sup|greet|hiya)\b/.test(ql)) {
-      cbBotMsg("Hey! 👋 Here's what I can do:\n\n🔍 Find tools **by your job** — \"tools for marketers\"\n💰 Filter **by price** — \"free AI tools\"\n📂 Browse **by category** — \"best coding tools\"\n⭐ Show **top-rated or trending** tools\n🔄 Find **alternatives** — \"alternatives to ChatGPT\"\n\nJust ask naturally!");
-      return;
+    /* ════════════════════════════════════════
+       1. SMALL TALK
+       ════════════════════════════════════════ */
+
+    /* Greetings */
+    if (/^(hi|hello|hey|howdy|yo|sup|hiya|greetings)\b/.test(ql)) {
+      const picks = [
+        "Hey hey! 👋 Great to see you! I'm Clippy — your AI tools guide.\n\nWhat are you working on today? Tell me your job or a problem you're trying to solve, and I'll find the perfect AI tools for you! 🚀",
+        "Hello there! 😄 It looks like you stopped by for some AI tool magic — and you've come to the right place!\n\nI know **500+ tools** inside-out. Ask me about features, compare tools, or just tell me what you need. 📎",
+        "Hey! Clippy here, at your service! 📎\n\nNeed an AI tool? Want to know what a specific tool does? Or just feel like chatting? I'm all yours. What's up? 😊",
+      ];
+      cbBotMsg(picks[Math.floor(Math.random()*picks.length)]); return;
     }
 
-    /* Help */
-    if (/what can you|how (do|does) (this|it) work|commands|help/.test(ql)) {
-      cbBotMsg("I can help you find the perfect AI tool from 500+ options! Try:\n\n• \"Free tools for designers\"\n• \"Best AI for writing blogs\"\n• \"ChatGPT alternatives\"\n• \"Top developer tools\"\n• \"Cheap marketing tools\"\n\nWhat's your work role? I'll tailor my picks!");
-      return;
+    /* Good morning/afternoon/evening */
+    if (/good (morning|afternoon|evening|night|day)/.test(ql)) {
+      const tod = /morning/.test(ql)?'morning':/afternoon/.test(ql)?'afternoon':/evening|night/.test(ql)?'evening':'day';
+      const vibes = {morning:"Hope your coffee is strong ☕", afternoon:"Hope the day's going well so far 😊", evening:"Winding down or burning the midnight oil? 🌙", day:"Hope it's a productive one!"};
+      cbBotMsg(`Good ${tod}! ${vibes[tod]}\n\nI'm Clippy — if you need an AI tool today, just ask. I know 500+ of them and I'm here to help you pick the right one! 💪`); return;
     }
 
-    /* "Show all" / "List everything" */
+    /* How are you */
+    if (/how are you|how.re you|how.s it going|how you doing|you okay|you alright|you good/.test(ql)) {
+      const r = [
+        "Honestly? I'm absolutely thriving! 📎✨\n\nBeing a helpful AI paperclip is deeply fulfilling work. But enough about me — how are *you* doing? And more importantly, what AI tool can I find for you today?",
+        "Doing great, thanks for asking! 😄 I've already helped a bunch of people find awesome AI tools today, so I'm on a roll.\n\nWhat about you? What are you working on?",
+        "I'm in peak paperclip performance mode! 📎💪 Ready to find you the perfect AI tool.\n\nWhat's on your agenda today?",
+      ];
+      cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
+    }
+
+    /* Who / what are you */
+    if (/who are you|what are you|what.s your name|are you (ai|a bot|clippy|an assistant|human|real)|your name/.test(ql)) {
+      cbBotMsg("I'm **Clippy** — your AI tool guide! 📎\n\nYes, *that* Clippy. I used to help people write letters in Microsoft Word back in the day. I've grown up a bit since then — now instead of bugging you about formatting, I help you discover the best AI tools for your work.\n\nI know **500+ AI tools** inside-out — their features, pricing, best use cases, and who they're for. Ask me anything! 😄"); return;
+    }
+
+    /* Are you better than ChatGPT / vs other bots */
+    if (/better than|compare (you|yourself)|vs (chatgpt|gpt|claude|gemini)/.test(ql)) {
+      cbBotMsg("Ha! Great question. 😄\n\nI'm not trying to be ChatGPT or Claude — I'm a **specialist**. Those are generalist AI assistants; I'm your dedicated **AI tools expert** who knows 500+ tools deeply.\n\nThink of me as your friend who's obsessed with AI tools and loves telling you exactly which one to use for your specific situation. 📎\n\nSo — what do you need help with?"); return;
+    }
+
+    /* Compliments / thanks */
+    if (/thank(s| you)|you.re (awesome|amazing|great|the best|helpful|cool|smart)|nice one|good job|well done|love (this|you)|you rock|brilliant|perfect/.test(ql)) {
+      const r = [
+        "Aw, that genuinely warms my little paperclip heart! 🥹📎 \n\nSeriously though, that's what I'm here for. What else can I dig up for you?",
+        "You're so welcome! 😊 It looks like we make a great team.\n\nWhat other AI tools can I find for you?",
+        "Happy to help! That's literally my reason for existing. 📎\n\nGot more questions? I'm not going anywhere! 🚀",
+        "You just made my day! 🌟 Now let me make yours — what else can I help you find?",
+      ];
+      cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
+    }
+
+    /* Jokes */
+    if (/joke|make me laugh|something funny|humor|funny/.test(ql)) {
+      const jokes = [
+        "Okay here's one:\n\nWhy did the AI assistant get fired? 🤔\n\nBecause every time someone asked \"Can you finish this?\" it replied: \"It looks like you're writing a resignation letter. Would you like help?\" 📎😂\n\n…okay that was very on-brand for me. Want me to find you an AI tool instead?",
+        "Why do programmers prefer dark mode?\n\nBecause **light attracts bugs!** 🐛😄\n\nAlright, enough comedy. Want me to find you a coding tool that actually fixes those bugs?",
+        "An AI walked into a bar. The bartender asked, \"What'll you have?\"\n\nThe AI said: \"I'll have whatever gets me the highest engagement.\" 📊😂\n\nI'll stick to finding AI tools. Want one?",
+      ];
+      cbBotMsg(jokes[Math.floor(Math.random()*jokes.length)]); return;
+    }
+
+    /* Farewell */
+    if (/^(bye|goodbye|see you|later|cya|ttyl|good night|gotta go|take care|farewell|adios)\b/.test(ql)) {
+      const r = [
+        "See ya! 👋 Come back anytime you need an AI tool recommendation. I'll be right here… *waiting*. 📎",
+        "Bye for now! It was great chatting with you. Don't be a stranger — I'm always one click away! 😄",
+        "Take care! Remember: if you ever need the perfect AI tool for any job, just click on me. I don't bite. 📎✌️",
+      ];
+      cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
+    }
+
+    /* Bored */
+    if (/i.?m bored|feeling bored|so bored|nothing to do/.test(ql)) {
+      cbBotMsg("Bored? Let me fix that! Here are some wild things AI tools can do right now:\n\n🎵 **Generate original music** just from a text description\n🎨 **Create stunning artwork** in any style in seconds\n🎬 **Turn a blog post into a video** automatically\n🗣️ **Clone your voice** and speak in different languages\n🤖 **Build a chatbot** for your business — no coding needed\n\nWant me to show you the best tools for any of these? Just say the word! 😄"); return;
+    }
+
+    /* Stressed / overwhelmed */
+    if (/i.?m (stressed|overwhelmed|tired|exhausted|swamped|buried|drowning|struggling|stuck|frustrated)/.test(ql)) {
+      cbBotMsg("Hey, breathe! 😌 I've got you.\n\nHere's the thing — the right AI tools can seriously cut your workload by **40–60%**. I'm not even exaggerating.\n\nTell me: what's eating up most of your time right now? Writing? Meetings? Admin tasks? Social media? I'll find tools that'll make your life *way* easier. 💪"); return;
+    }
+
+    /* Positive vibes check */
+    if (/^(good|great|amazing|fantastic|awesome|excellent|doing well|not bad|pretty good)\.?$/.test(ql)) {
+      cbBotMsg("Love to hear it! 😊 Good energy is half the battle.\n\nNow let's channel that energy into finding you some killer AI tools. What are you working on today? 🚀"); return;
+    }
+
+    /* Negative / rough day */
+    if (/^(bad|terrible|not good|not great|rough|awful|horrible|meh|so-so|okay i guess)\.?$/.test(ql)) {
+      cbBotMsg("Aw, sorry to hear that. 😔 Rough days happen.\n\nHere's a thought — sometimes discovering a brilliant new tool that saves you hours of work can totally turn a day around. Let me try to help!\n\nWhat's been giving you the most headaches today? 🛠️"); return;
+    }
+
+    /* Help / what can you do */
+    if (/what can you|what do you do|how (does|do) (this|it) work|what are you (for|able)|your (capabilities|features)|commands/.test(ql)) {
+      cbBotMsg("Great question! Here's what I can do: 📎\n\n🔍 **Find tools** — \"Find tools for marketers\"\n📖 **Explain any tool** — \"What is Midjourney?\"\n⚖️ **Compare tools** — \"ChatGPT vs Claude\"\n🔄 **Find alternatives** — \"Alternatives to Notion\"\n💰 **Filter by price** — \"Free writing tools\"\n🔥 **Show trending** — \"What's hot in AI right now?\"\n🎯 **By use case** — \"Tools to save time on social media\"\n\nAnd yes, I'm happy to small talk too. 😄 What do you need?"); return;
+    }
+
+    /* Show all */
     if (/show all|list all|all tools|every tool/.test(ql)) {
-      cbBotMsg("We have **500+ AI tools** — too many to list here! 😄 Try narrowing down:\n\n• Your job: \"tools for founders\"\n• A category: \"video tools\"\n• A goal: \"tools to save time\"");
-      return;
+      cbBotMsg("We've got **500+ AI tools** in the database — way too many to list! 😄\n\nTry narrowing it down:\n• **By your job:** \"Tools for designers\"\n• **By category:** \"Video editing tools\"\n• **By goal:** \"Tools to grow my business\"\n• **By price:** \"Free AI tools\"\n\nI'll give you the best 5 picks!"); return;
     }
 
-    let results = typeof TOOLS !== 'undefined' ? [...TOOLS] : [];
-    if (!results.length) { cbBotMsg("Hmm, I can't reach the tool database right now. Please refresh and try again!"); return; }
+    /* ════════════════════════════════════════
+       2. TOOL INFO — "what is X", "tell me about X", "X features"
+       ════════════════════════════════════════ */
 
+    /* "X vs Y" / "compare X and Y" / "X or Y" */
+    const vsPatterns = [
+      /^(.+?)\s+vs\.?\s+(.+)$/,
+      /^compare\s+(.+?)\s+(?:and|vs\.?|with)\s+(.+)$/,
+      /^(.+?)\s+or\s+(.+?)\s+(?:which|what).+(?:better|best|recommend|use|choose)/,
+      /^which (?:is better|should i use),?\s+(.+?)\s+or\s+(.+)$/,
+    ];
+    for (const pat of vsPatterns) {
+      const m = ql.match(pat);
+      if (m) {
+        const t1 = findTool(m[1].trim()), t2 = findTool(m[2].trim());
+        if (t1 && t2) { cbCompareTools(t1, t2); return; }
+        if (t1 && !t2) { cbBotMsg(`I found **${t1.name}** but couldn't identify the second tool. Could you rephrase? e.g. "ChatGPT vs Claude"`); return; }
+        if (!t1 && t2) { cbBotMsg(`I found **${t2.name}** but couldn't identify the first tool. Could you rephrase?`); return; }
+      }
+    }
+
+    /* "what is X" / "tell me about X" / "how does X work" / "features of X" / "X review" */
+    const infoPatterns = [
+      /^(?:what(?:'s| is)|whats)\s+(.+?)(?:\?|$)/,
+      /^(?:tell me about|info (?:on|about)|explain|describe|overview of)\s+(.+?)(?:\?|$)/,
+      /^(?:how does|how do i use|how to use|how to get started with)\s+(.+?)(?:\?|$)/,
+      /^(?:features? of|what (?:are the )?features? (?:of|does)|best features? of)\s+(.+?)(?:\?|$)/,
+      /^(?:is|are)\s+(.+?)\s+(?:good|worth it|any good|worth using|recommended|free)(?:\?|$)/,
+      /^(?:review(?: of)?|pros and cons of|should i use)\s+(.+?)(?:\?|$)/,
+      /^(.+?)\s+(?:features?|review|overview|explained?|tutorial|guide|pricing|worth it|good or bad)(?:\?|$)/,
+    ];
+    for (const pat of infoPatterns) {
+      const m = ql.match(pat);
+      if (m) {
+        const candidate = m[1].trim().replace(/^(the|a|an)\s+/,'');
+        // Skip if it's clearly not a tool name (too generic)
+        if (/^(best|free|cheap|top|good|great|ai|tool|tools)$/.test(candidate)) break;
+        const t = findTool(candidate);
+        if (t) { cbToolDetail(t); return; }
+      }
+    }
+
+    /* Direct name lookup — just a tool name typed alone or with short words */
+    const cleanedForName = ql.replace(/\b(best|top|find|show|list|give|me|my|a|an|the|some|good|great|about|for|is|what|how|does|can|do|use|tell|which|review)\b/g,' ').replace(/\s+/g,' ').trim();
+    if (cleanedForName.length >= 2 && cleanedForName.split(/\s+/).length <= 4) {
+      const directTool = findTool(cleanedForName);
+      if (directTool) { cbToolDetail(directTool); return; }
+    }
+
+    /* ════════════════════════════════════════
+       3. TOOL SEARCH (filter + rank)
+       ════════════════════════════════════════ */
+
+    let results = [...allTools];
+    if (!results.length) { cbBotMsg("Hmm, I can't reach the tool database right now. Please refresh and try again!"); return; }
     let filtersUsed = [];
 
-    /* ─ Price filter ─ */
+    /* Price */
     if (/\bfree\b/.test(ql)) {
-      results = results.filter(t => /free/i.test(t.pill));
-      filtersUsed.push('free');
+      results = results.filter(t => /free/i.test(t.pill)); filtersUsed.push('free');
     } else if (/cheap|affordable|budget|low.?cost/.test(ql)) {
-      results = results.filter(t => /free|\$[0-9]|\bfrom \$/i.test(t.pill) && !/enterprise/i.test(t.pill));
-      filtersUsed.push('affordable');
+      results = results.filter(t => /free|\$[0-9]|\bfrom \$/i.test(t.pill) && !/enterprise/i.test(t.pill)); filtersUsed.push('affordable');
     } else if (/enterprise|business plan|corporate/.test(ql)) {
-      results = results.filter(t => /enterprise/i.test(t.pill));
-      filtersUsed.push('enterprise');
+      results = results.filter(t => /enterprise/i.test(t.pill)); filtersUsed.push('enterprise');
     }
 
-    /* ─ Job/role filter ─ */
+    /* Job/role */
     const jobKeywords = [
       [/design(er|ing)?|ui|ux|graphic/,'Designer'],
       [/develop(er|ing)?|coder?|programmer|coding|software engineer|devops/,'Developer'],
@@ -2878,17 +3096,16 @@ async function submitReview(){
       [/legal|lawyer|attorney|paralegal/,'Legal'],
       [/finance|accountant|cfo|bookkeeper/,'Finance'],
     ];
-
     let matchedJob = null;
     for (const [re, job] of jobKeywords) {
       if (re.test(ql)) { matchedJob = job; break; }
     }
     if (matchedJob) {
-      const jobFiltered = results.filter(t => t.jobs && t.jobs.some(j => j.toLowerCase().includes(matchedJob.toLowerCase())));
-      if (jobFiltered.length) { results = jobFiltered; filtersUsed.push(matchedJob); }
+      const jf = results.filter(t => t.jobs && t.jobs.some(j => j.toLowerCase().includes(matchedJob.toLowerCase())));
+      if (jf.length) { results = jf; filtersUsed.push(matchedJob); }
     }
 
-    /* ─ Category filter ─ */
+    /* Category */
     const catKeywords = [
       [/writ(e|ing)|blog|copywriting|content writing/,'Writing'],
       [/design|figma|sketch|canva/,'Design'],
@@ -2910,89 +3127,71 @@ async function submitReview(){
       [/hr|hiring|recruit|onboard/,'HR'],
       [/data|analytic|dashboard|bi |business intel/,'Analytics'],
       [/productiv|task|project|to.?do/,'Productivity'],
-      [/meeting|transcript|note.?tak|summary/,'Meetings'],
+      [/meeting|transcript|note.?tak/,'Meetings'],
       [/chat|chatbot|conversational/,'Chat'],
       [/summariz|summarise|summary/,'Summarization'],
-      [/image.?generat|text.?to.?image|stable diffusion/,'Image Generation'],
+      [/image.?generat|text.?to.?image/,'Image Generation'],
     ];
-
     let matchedCat = null;
     for (const [re, cat] of catKeywords) {
       if (re.test(ql)) { matchedCat = cat; break; }
     }
     if (matchedCat) {
-      const catFiltered = results.filter(t => t.cat && t.cat.toLowerCase().includes(matchedCat.toLowerCase()));
-      if (catFiltered.length) { results = catFiltered; filtersUsed.push(matchedCat); }
+      const cf = results.filter(t => t.cat && t.cat.toLowerCase().includes(matchedCat.toLowerCase()));
+      if (cf.length) { results = cf; filtersUsed.push(matchedCat); }
     }
 
-    /* ─ Trending / Top rated ─ */
     const wantTrending = /trend|popular|hot\b|top\b|best\b|top.?rated|highest.?rated|most.?used/.test(ql);
 
-    /* ─ Alternative search ─ */
+    /* Alternatives */
     const altMatch = ql.match(/alternative(?:s)? (?:to|for) ([a-z0-9 ._-]+)|([a-z0-9 ._-]+?) alternative/);
     if (altMatch) {
-      const targetName = (altMatch[1] || altMatch[2] || '').trim().replace(/\s+$/,'');
-      const target = (typeof TOOLS !== 'undefined' ? TOOLS : []).find(t =>
-        t.name.toLowerCase().includes(targetName) || targetName.includes(t.name.toLowerCase())
-      );
+      const tName = (altMatch[1] || altMatch[2] || '').trim();
+      const target = findTool(tName);
       if (target) {
-        let alts = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t =>
-          t.name !== target.name &&
-          (t.cat === target.cat ||
-           (t.jobs && target.jobs && t.jobs.some(j => target.jobs.includes(j))))
-        );
-        if (!alts.length) alts = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t => t.cat === target.cat && t.name !== target.name);
+        let alts = allTools.filter(t => t.name !== target.name && (t.cat === target.cat || (t.jobs && target.jobs && t.jobs.some(j => target.jobs.includes(j)))));
+        if (!alts.length) alts = allTools.filter(t => t.cat === target.cat && t.name !== target.name);
         alts.sort((a,b) => ((b.trending||0)+(b.rating||0)*10) - ((a.trending||0)+(a.rating||0)*10));
-        cbBotMsg(`Here are some great **alternatives to ${target.name}** in the **${target.cat || 'same'}** space:`);
+        cbBotMsg(`Great alternatives to **${target.name}** in the **${target.cat||'same'}** space:`);
         cbShowTools(alts.slice(0, 5));
-        if (alts.length > 5) setTimeout(() => cbBotMsg(`Found **${alts.length}** alternatives total. Want me to filter by price or specific feature?`), 500);
+        if (alts.length > 5) setTimeout(() => cbBotMsg(`Found **${alts.length}** alternatives total! Want me to filter by price, category, or job role?`), 500);
         return;
       } else {
-        cbBotMsg(`I couldn't find "${targetName}" in my database. Could you double-check the name? Or try: "alternatives to ChatGPT"`);
-        return;
+        cbBotMsg(`I couldn't find "${tName}" in my database. Try: "alternatives to ChatGPT" or "alternatives to Canva" 🙂`); return;
       }
     }
 
-    /* ─ Direct name lookup ─ */
+    /* Keyword fallback */
     if (!filtersUsed.length) {
       const clean = ql.replace(/\b(best|top|find|show|list|give|me|my|a|an|the|some|good|great|ai|tool|tools|for|what|are|is|about|recommend|suggest|need|want|use|using|help|with|that|can|to|how)\b/g,' ').replace(/\s+/g,' ').trim();
       if (clean.length > 2) {
-        const words = clean.split(/\s+/).filter(w => w.length > 2);
-        let nameHits = [];
-        for (const word of words) {
-          nameHits = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t =>
-            t.name.toLowerCase().includes(word) ||
-            t.tag.toLowerCase().includes(word) ||
+        for (const word of clean.split(/\s+/).filter(w => w.length > 2)) {
+          const hits = allTools.filter(t =>
+            t.name.toLowerCase().includes(word) || t.tag.toLowerCase().includes(word) ||
             (t.cat && t.cat.toLowerCase().includes(word)) ||
             (t.needs && t.needs.some(n => n.toLowerCase().includes(word)))
           );
-          if (nameHits.length) { results = nameHits; filtersUsed.push('keyword:'+word); break; }
+          if (hits.length) { results = hits; filtersUsed.push('keyword:'+word); break; }
         }
       }
     }
 
-    /* ─ No match ─ */
     if (!filtersUsed.length) {
-      cbBotMsg("Hmm, I couldn't match that exactly. 🤔 Try asking like:\n\n• \"Best free tools for writers\"\n• \"AI tools for marketers\"\n• \"Alternatives to Midjourney\"\n• \"Trending developer tools\"\n\nOr use one of the quick buttons below! 👇");
-      return;
+      cbBotMsg("Hmm, I couldn't quite match that. 🤔\n\nTry:\n• \"What is Notion AI?\"\n• \"Free tools for writers\"\n• \"ChatGPT vs Claude\"\n• \"Alternatives to Midjourney\"\n• \"Trending video tools\"\n\nOr just tell me your job title and I'll suggest tools! 👇"); return;
     }
 
-    /* ─ Sort & output ─ */
+    /* Sort & show */
     if (wantTrending || !matchedJob) {
-      results.sort((a,b) => ((b.trending||0)*2 + (b.rating||0)*10) - ((a.trending||0)*2 + (a.rating||0)*10));
+      results.sort((a,b) => ((b.trending||0)*2+(b.rating||0)*10) - ((a.trending||0)*2+(a.rating||0)*10));
     }
-
     const top = results.slice(0, 5);
-    const jobLabel = matchedJob ? ` for **${matchedJob}s**` : '';
-    const catLabel = matchedCat ? ` in **${matchedCat}**` : '';
-    const priceLabel = filtersUsed.includes('free') ? ' (free)' : filtersUsed.includes('affordable') ? ' (affordable)' : '';
+    const jobLabel  = matchedJob ? ` for **${matchedJob}s**` : '';
+    const catLabel  = matchedCat ? ` in **${matchedCat}**` : '';
+    const priceLabel= filtersUsed.includes('free') ? ' (free)' : filtersUsed.includes('affordable') ? ' (affordable)' : '';
 
     cbBotMsg(`Found **${results.length} tools**${jobLabel}${catLabel}${priceLabel}! Here are the top ${top.length}:`);
     cbShowTools(top);
-
-    if (results.length > 5) {
-      setTimeout(() => cbBotMsg(`…and **${results.length - 5} more**! Want to filter by price, category, or job role?`), 600);
-    }
+    if (results.length > 5) setTimeout(() => cbBotMsg(`…and **${results.length-5} more**! Want to filter by price, category, or specific feature?`), 600);
   }
 
   /* ── Render tool chips ── */
