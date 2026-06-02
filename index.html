@@ -503,6 +503,55 @@ body::before{
 .brevo-popup-dismiss{background:none;border:none;font-family:inherit;font-size:12.5px;color:var(--text-dim);cursor:pointer;margin-top:12px;text-decoration:underline;padding:0}
 .brevo-popup-dismiss:hover{color:var(--text)}
 @media(max-width:500px){.brevo-popup-box{padding:28px 20px 22px}}
+
+/* ── AI Chatbot ── */
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:600;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#7c3aed);border:none;cursor:pointer;box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 0 rgba(26,86,219,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;animation:cbPulse 2.8s ease-in-out infinite}
+#cb-btn:hover{transform:scale(1.08);box-shadow:0 12px 36px rgba(26,86,219,.55)}
+@keyframes cbPulse{0%,100%{box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 0 rgba(26,86,219,.35)}50%{box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 12px rgba(26,86,219,0)}}
+#cb-btn.open{animation:none;box-shadow:0 8px 28px rgba(26,86,219,.45)}
+#cb-win{position:fixed;bottom:96px;right:24px;z-index:600;width:380px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 110px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
+#cb-win.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+#cb-head{padding:16px 18px 14px;border-bottom:1px solid rgba(26,86,219,.08);display:flex;align-items:center;gap:10px;flex-shrink:0}
+#cb-head-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a56db,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.30)}
+#cb-head-text h4{margin:0;font-size:14px;font-weight:700;color:var(--text)}
+#cb-head-text p{margin:0;font-size:11.5px;color:var(--text-dim)}
+#cb-close{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--text-dim);padding:4px;border-radius:6px;display:flex;transition:background .15s}
+#cb-close:hover{background:var(--surface-2);color:var(--text)}
+#cb-msgs{flex:1;overflow-y:auto;padding:14px 14px 6px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+#cb-msgs::-webkit-scrollbar{width:4px}
+#cb-msgs::-webkit-scrollbar-track{background:transparent}
+#cb-msgs::-webkit-scrollbar-thumb{background:rgba(26,86,219,.18);border-radius:4px}
+.cb-msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.cb-msg.bot{align-self:flex-start}
+.cb-msg.user{align-self:flex-end}
+.cb-bubble{padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.55}
+.cb-msg.bot .cb-bubble{background:rgba(255,255,255,.85);border:1px solid rgba(26,86,219,.10);color:var(--text);border-bottom-left-radius:4px;box-shadow:0 2px 10px rgba(26,86,219,.06)}
+.cb-msg.user .cb-bubble{background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;border-bottom-right-radius:4px;box-shadow:0 4px 14px rgba(26,86,219,.30)}
+.cb-tool-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(219,234,254,.7);border:1px solid rgba(26,86,219,.14);border-radius:8px;font-size:12.5px;color:var(--primary);font-weight:600;margin:2px 0;cursor:pointer;transition:all .15s;text-decoration:none}
+.cb-tool-chip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.cb-tool-chip img{width:16px;height:16px;border-radius:3px}
+.cb-chips{padding:6px 14px 8px;display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;border-top:1px solid rgba(26,86,219,.06)}
+.cb-chip{padding:6px 11px;border-radius:999px;border:1.5px solid rgba(26,86,219,.18);background:rgba(219,234,254,.5);font-size:12px;font-weight:500;color:var(--primary);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
+.cb-chip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+#cb-input-row{padding:10px 12px 12px;display:flex;gap:8px;align-items:center;flex-shrink:0;border-top:1px solid rgba(26,86,219,.06)}
+#cb-input{flex:1;border:1.5px solid var(--border);border-radius:999px;padding:10px 16px;font:14px/1 "Poppins",sans-serif;color:var(--text);background:rgba(255,255,255,.8);outline:none;transition:border-color .15s}
+#cb-input:focus{border-color:var(--primary)}
+#cb-send{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#7c3aed);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.30);transition:transform .15s}
+#cb-send:hover{transform:scale(1.08)}
+.cb-typing{display:flex;gap:4px;align-items:center;padding:12px 14px}
+.cb-typing span{width:7px;height:7px;border-radius:50%;background:var(--text-dim);animation:cbDot .9s ease-in-out infinite}
+.cb-typing span:nth-child(2){animation-delay:.18s}
+.cb-typing span:nth-child(3){animation-delay:.36s}
+@keyframes cbDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+/* Clippy SVG styling */
+#clippy-svg{width:30px;height:30px;transition:transform .3s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 2px 6px rgba(255,255,255,.25))}
+#cb-btn:not(.open):hover #clippy-svg{transform:rotate(-10deg) scale(1.1)}
+#cb-btn.open #clippy-svg{transform:scale(0.9) rotate(5deg)}
+#cb-eye-l,#cb-eye-r{transform-box:fill-box;transform-origin:50% 50%}
+@keyframes clippyIdleBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+#cb-btn:not(.open) #clippy-svg{animation:clippyIdleBob 2.4s ease-in-out infinite}
+#cb-btn.open #clippy-svg,#cb-btn:hover #clippy-svg{animation:none}
+.cb-tool-chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 </style>
 </head>
 <body>
@@ -2618,5 +2667,378 @@ async function submitReview(){
     <button class="brevo-popup-dismiss" onclick="dismissBrevoPopup()">No thanks, I'll miss out</button>
   </div>
 </div>
+
+<!-- ── Clippy AI Chatbot ── -->
+<button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Clippy — AI Tool Finder">
+  <!-- Modernized Clippy: bent paperclip with eyes and smile -->
+  <svg id="clippy-svg" viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Outer loop of the paperclip -->
+    <path d="M8,41 C3,41 1,35 1,26 C1,11 7,2 15,2 C23,2 29,11 29,26 C29,35 27,41 22,41"
+      stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Inner fold that crosses back through -->
+    <path d="M22,41 C22,33 21,25 18,20 C16.2,16.8 13.8,16.8 12,20 C9,25 8,32 8,37 L8,41"
+      stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Left eye -->
+    <ellipse id="cb-eye-l" cx="11.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
+    <!-- Right eye -->
+    <ellipse id="cb-eye-r" cx="18.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
+    <!-- Pupils -->
+    <circle cx="12.1" cy="27.6" r="1" fill="#1e3a8a"/>
+    <circle cx="19.1" cy="27.6" r="1" fill="#1e3a8a"/>
+    <!-- Smile -->
+    <path d="M11,32.5 Q15,36 19,32.5" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </svg>
+</button>
+
+<div id="cb-win" role="dialog" aria-modal="true" aria-label="Clippy AI Tool Finder chat">
+  <div id="cb-head">
+    <div id="cb-head-icon">
+      <!-- Tiny Clippy in header -->
+      <svg viewBox="0 0 30 44" fill="none" width="20" height="20" aria-hidden="true">
+        <path d="M8,41 C3,41 1,35 1,26 C1,11 7,2 15,2 C23,2 29,11 29,26 C29,35 27,41 22,41" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22,41 C22,33 21,25 18,20 C16.2,16.8 13.8,16.8 12,20 C9,25 8,32 8,37 L8,41" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <ellipse cx="11.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
+        <ellipse cx="18.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
+        <circle cx="12.1" cy="27.6" r="1" fill="#7c3aed"/>
+        <circle cx="19.1" cy="27.6" r="1" fill="#7c3aed"/>
+      </svg>
+    </div>
+    <div id="cb-head-text">
+      <h4>Clippy — AI Tool Finder</h4>
+      <p>I'm here to help you find the perfect AI tool!</p>
+    </div>
+    <button id="cb-close" onclick="cbToggle()" aria-label="Close chat">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <div id="cb-msgs" aria-live="polite" aria-label="Chat messages"></div>
+  <div class="cb-chips" id="cb-chips">
+    <button class="cb-chip" onclick="cbQuick('Find tools for me')">🔍 Find tools for me</button>
+    <button class="cb-chip" onclick="cbQuick('Free tools only')">🆓 Free tools</button>
+    <button class="cb-chip" onclick="cbQuick('Trending AI tools right now')">🔥 Trending</button>
+    <button class="cb-chip" onclick="cbQuick('Best writing tools')">✍️ Writing</button>
+    <button class="cb-chip" onclick="cbQuick('Best design tools')">🎨 Design</button>
+    <button class="cb-chip" onclick="cbQuick('Best tools for developers')">💻 Dev tools</button>
+  </div>
+  <div id="cb-input-row">
+    <input id="cb-input" type="text" placeholder="Ask me anything about AI tools…"
+      autocomplete="off" inputmode="text"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();cbSend();}"/>
+    <button id="cb-send" onclick="cbSend()" aria-label="Send message">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ── Clippy Chatbot Logic ── */
+(function(){
+  'use strict';
+
+  const GREETINGS = [
+    "It looks like you're searching for AI tools! 📎 I'm Clippy — your personal AI guide. What are you working on?",
+    "Hi there! 👋 I'm Clippy, and I know 500+ AI tools inside-out. Ask me to find the right one for you!",
+    "Hello! Need an AI tool? I'm Clippy and I'm here to help. Tell me your job or what you're trying to do!"
+  ];
+
+  /* ── Toggle open/close ── */
+  window.cbToggle = function() {
+    const btn = document.getElementById('cb-btn');
+    const win = document.getElementById('cb-win');
+    const isOpen = win.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    if (isOpen) {
+      if (!document.getElementById('cb-msgs').children.length) {
+        cbBotMsg(GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
+      }
+      setTimeout(() => document.getElementById('cb-input').focus(), 320);
+    }
+  };
+
+  /* ── Quick chip clicked ── */
+  window.cbQuick = function(q) {
+    document.getElementById('cb-input').value = q;
+    cbSend();
+  };
+
+  /* ── Send user message ── */
+  window.cbSend = function() {
+    const inp = document.getElementById('cb-input');
+    const q = inp.value.trim();
+    if (!q) return;
+    cbUserMsg(q);
+    inp.value = '';
+    const typing = cbTypingIndicator();
+    setTimeout(() => { typing.remove(); cbProcess(q); }, 650 + Math.random() * 450);
+  };
+
+  /* ── Core query processing ── */
+  function cbProcess(q) {
+    const ql = q.toLowerCase().replace(/['']/g, "'");
+
+    /* Greeting */
+    if (/^(hi|hello|hey|howdy|yo|sup|greet|hiya)\b/.test(ql)) {
+      cbBotMsg("Hey! 👋 Here's what I can do:\n\n🔍 Find tools **by your job** — \"tools for marketers\"\n💰 Filter **by price** — \"free AI tools\"\n📂 Browse **by category** — \"best coding tools\"\n⭐ Show **top-rated or trending** tools\n🔄 Find **alternatives** — \"alternatives to ChatGPT\"\n\nJust ask naturally!");
+      return;
+    }
+
+    /* Help */
+    if (/what can you|how (do|does) (this|it) work|commands|help/.test(ql)) {
+      cbBotMsg("I can help you find the perfect AI tool from 500+ options! Try:\n\n• \"Free tools for designers\"\n• \"Best AI for writing blogs\"\n• \"ChatGPT alternatives\"\n• \"Top developer tools\"\n• \"Cheap marketing tools\"\n\nWhat's your work role? I'll tailor my picks!");
+      return;
+    }
+
+    /* "Show all" / "List everything" */
+    if (/show all|list all|all tools|every tool/.test(ql)) {
+      cbBotMsg("We have **500+ AI tools** — too many to list here! 😄 Try narrowing down:\n\n• Your job: \"tools for founders\"\n• A category: \"video tools\"\n• A goal: \"tools to save time\"");
+      return;
+    }
+
+    let results = typeof TOOLS !== 'undefined' ? [...TOOLS] : [];
+    if (!results.length) { cbBotMsg("Hmm, I can't reach the tool database right now. Please refresh and try again!"); return; }
+
+    let filtersUsed = [];
+
+    /* ─ Price filter ─ */
+    if (/\bfree\b/.test(ql)) {
+      results = results.filter(t => /free/i.test(t.pill));
+      filtersUsed.push('free');
+    } else if (/cheap|affordable|budget|low.?cost/.test(ql)) {
+      results = results.filter(t => /free|\$[0-9]|\bfrom \$/i.test(t.pill) && !/enterprise/i.test(t.pill));
+      filtersUsed.push('affordable');
+    } else if (/enterprise|business plan|corporate/.test(ql)) {
+      results = results.filter(t => /enterprise/i.test(t.pill));
+      filtersUsed.push('enterprise');
+    }
+
+    /* ─ Job/role filter ─ */
+    const jobKeywords = [
+      [/design(er|ing)?|ui|ux|graphic/,'Designer'],
+      [/develop(er|ing)?|coder?|programmer|coding|software engineer|devops/,'Developer'],
+      [/market(er|ing)?/,'Marketer'],
+      [/writ(er|ing)|copywriter|blogger|journalist/,'Writer'],
+      [/founder|startup|entrepreneur|ceo|solopreneur/,'Founder'],
+      [/manager|management|team lead|executive/,'Manager'],
+      [/researcher?|scientist|academic/,'Researcher'],
+      [/student|learner|education|teacher|instructor/,'Student'],
+      [/freelancer|consultant|contractor/,'Freelancer'],
+      [/creator|youtuber|influencer|content creator/,'Creator'],
+      [/photographer|photo editor/,'Photographer'],
+      [/video.?(maker|editor|creator)|filmmaker|videographer/,'Video Creator'],
+      [/data analyst?|analytics|statistician/,'Data Analyst'],
+      [/hr|human resources|recruiter|hiring/,'HR'],
+      [/sales(person)?|account executive|bdr|sdr/,'Sales'],
+      [/customer.?support|support agent|helpdesk/,'Support'],
+      [/legal|lawyer|attorney|paralegal/,'Legal'],
+      [/finance|accountant|cfo|bookkeeper/,'Finance'],
+    ];
+
+    let matchedJob = null;
+    for (const [re, job] of jobKeywords) {
+      if (re.test(ql)) { matchedJob = job; break; }
+    }
+    if (matchedJob) {
+      const jobFiltered = results.filter(t => t.jobs && t.jobs.some(j => j.toLowerCase().includes(matchedJob.toLowerCase())));
+      if (jobFiltered.length) { results = jobFiltered; filtersUsed.push(matchedJob); }
+    }
+
+    /* ─ Category filter ─ */
+    const catKeywords = [
+      [/writ(e|ing)|blog|copywriting|content writing/,'Writing'],
+      [/design|figma|sketch|canva/,'Design'],
+      [/cod(e|ing)|program|developer tool|ide|debug/,'Coding'],
+      [/video(s)?|edit video|film/,'Video'],
+      [/audio|voice|speech|podcast|music/,'Audio'],
+      [/image|photo|art|illustration|generat.+image|dall/,'Image'],
+      [/seo|search engine|rank|keyword/,'SEO'],
+      [/automat|workflow|zapier|no.?code|low.?code/,'Automation'],
+      [/research|literature|paper|citations/,'Research'],
+      [/social media|instagram|twitter|linkedin|tiktok|facebook/,'Social Media'],
+      [/email|newsletter|inbox/,'Email'],
+      [/present|slides?|deck|powerpoint/,'Presentation'],
+      [/translat|language|multilingual/,'Translation'],
+      [/customer.?support|helpdesk|ticket|support/,'Customer Support'],
+      [/sales|crm|lead.?gen/,'Sales'],
+      [/legal|contract|compliance/,'Legal'],
+      [/financ|account|invoic|budget/,'Finance'],
+      [/hr|hiring|recruit|onboard/,'HR'],
+      [/data|analytic|dashboard|bi |business intel/,'Analytics'],
+      [/productiv|task|project|to.?do/,'Productivity'],
+      [/meeting|transcript|note.?tak|summary/,'Meetings'],
+      [/chat|chatbot|conversational/,'Chat'],
+      [/summariz|summarise|summary/,'Summarization'],
+      [/image.?generat|text.?to.?image|stable diffusion/,'Image Generation'],
+    ];
+
+    let matchedCat = null;
+    for (const [re, cat] of catKeywords) {
+      if (re.test(ql)) { matchedCat = cat; break; }
+    }
+    if (matchedCat) {
+      const catFiltered = results.filter(t => t.cat && t.cat.toLowerCase().includes(matchedCat.toLowerCase()));
+      if (catFiltered.length) { results = catFiltered; filtersUsed.push(matchedCat); }
+    }
+
+    /* ─ Trending / Top rated ─ */
+    const wantTrending = /trend|popular|hot\b|top\b|best\b|top.?rated|highest.?rated|most.?used/.test(ql);
+
+    /* ─ Alternative search ─ */
+    const altMatch = ql.match(/alternative(?:s)? (?:to|for) ([a-z0-9 ._-]+)|([a-z0-9 ._-]+?) alternative/);
+    if (altMatch) {
+      const targetName = (altMatch[1] || altMatch[2] || '').trim().replace(/\s+$/,'');
+      const target = (typeof TOOLS !== 'undefined' ? TOOLS : []).find(t =>
+        t.name.toLowerCase().includes(targetName) || targetName.includes(t.name.toLowerCase())
+      );
+      if (target) {
+        let alts = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t =>
+          t.name !== target.name &&
+          (t.cat === target.cat ||
+           (t.jobs && target.jobs && t.jobs.some(j => target.jobs.includes(j))))
+        );
+        if (!alts.length) alts = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t => t.cat === target.cat && t.name !== target.name);
+        alts.sort((a,b) => ((b.trending||0)+(b.rating||0)*10) - ((a.trending||0)+(a.rating||0)*10));
+        cbBotMsg(`Here are some great **alternatives to ${target.name}** in the **${target.cat || 'same'}** space:`);
+        cbShowTools(alts.slice(0, 5));
+        if (alts.length > 5) setTimeout(() => cbBotMsg(`Found **${alts.length}** alternatives total. Want me to filter by price or specific feature?`), 500);
+        return;
+      } else {
+        cbBotMsg(`I couldn't find "${targetName}" in my database. Could you double-check the name? Or try: "alternatives to ChatGPT"`);
+        return;
+      }
+    }
+
+    /* ─ Direct name lookup ─ */
+    if (!filtersUsed.length) {
+      const clean = ql.replace(/\b(best|top|find|show|list|give|me|my|a|an|the|some|good|great|ai|tool|tools|for|what|are|is|about|recommend|suggest|need|want|use|using|help|with|that|can|to|how)\b/g,' ').replace(/\s+/g,' ').trim();
+      if (clean.length > 2) {
+        const words = clean.split(/\s+/).filter(w => w.length > 2);
+        let nameHits = [];
+        for (const word of words) {
+          nameHits = (typeof TOOLS !== 'undefined' ? TOOLS : []).filter(t =>
+            t.name.toLowerCase().includes(word) ||
+            t.tag.toLowerCase().includes(word) ||
+            (t.cat && t.cat.toLowerCase().includes(word)) ||
+            (t.needs && t.needs.some(n => n.toLowerCase().includes(word)))
+          );
+          if (nameHits.length) { results = nameHits; filtersUsed.push('keyword:'+word); break; }
+        }
+      }
+    }
+
+    /* ─ No match ─ */
+    if (!filtersUsed.length) {
+      cbBotMsg("Hmm, I couldn't match that exactly. 🤔 Try asking like:\n\n• \"Best free tools for writers\"\n• \"AI tools for marketers\"\n• \"Alternatives to Midjourney\"\n• \"Trending developer tools\"\n\nOr use one of the quick buttons below! 👇");
+      return;
+    }
+
+    /* ─ Sort & output ─ */
+    if (wantTrending || !matchedJob) {
+      results.sort((a,b) => ((b.trending||0)*2 + (b.rating||0)*10) - ((a.trending||0)*2 + (a.rating||0)*10));
+    }
+
+    const top = results.slice(0, 5);
+    const jobLabel = matchedJob ? ` for **${matchedJob}s**` : '';
+    const catLabel = matchedCat ? ` in **${matchedCat}**` : '';
+    const priceLabel = filtersUsed.includes('free') ? ' (free)' : filtersUsed.includes('affordable') ? ' (affordable)' : '';
+
+    cbBotMsg(`Found **${results.length} tools**${jobLabel}${catLabel}${priceLabel}! Here are the top ${top.length}:`);
+    cbShowTools(top);
+
+    if (results.length > 5) {
+      setTimeout(() => cbBotMsg(`…and **${results.length - 5} more**! Want to filter by price, category, or job role?`), 600);
+    }
+  }
+
+  /* ── Render tool chips ── */
+  function cbShowTools(tools) {
+    const msgs = document.getElementById('cb-msgs');
+    const wrap = document.createElement('div');
+    wrap.className = 'cb-msg bot';
+    const inner = document.createElement('div');
+    inner.style.cssText = 'display:flex;flex-direction:column;gap:5px';
+    tools.forEach(t => {
+      const a = document.createElement('a');
+      a.className = 'cb-tool-chip';
+      a.href = t.affiliate_url || t.url || '#';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      const stars = t.rating ? ` ⭐ ${t.rating}` : '';
+      a.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" width="16" height="16" alt="" loading="lazy" style="border-radius:3px;flex-shrink:0"><span><b>${t.name}</b> — ${t.pill}${stars}</span>`;
+      inner.appendChild(a);
+    });
+    wrap.appendChild(inner);
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  /* ── Add bot message ── */
+  function cbBotMsg(text) {
+    const msgs = document.getElementById('cb-msgs');
+    const wrap = document.createElement('div');
+    wrap.className = 'cb-msg bot';
+    const bubble = document.createElement('div');
+    bubble.className = 'cb-bubble';
+    bubble.innerHTML = text
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+    wrap.appendChild(bubble);
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  /* ── Add user message ── */
+  function cbUserMsg(text) {
+    const msgs = document.getElementById('cb-msgs');
+    const wrap = document.createElement('div');
+    wrap.className = 'cb-msg user';
+    const bubble = document.createElement('div');
+    bubble.className = 'cb-bubble';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  /* ── Typing indicator ── */
+  function cbTypingIndicator() {
+    const msgs = document.getElementById('cb-msgs');
+    const wrap = document.createElement('div');
+    wrap.className = 'cb-msg bot';
+    const bubble = document.createElement('div');
+    bubble.className = 'cb-bubble cb-typing';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
+    wrap.appendChild(bubble);
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+    return wrap;
+  }
+
+  /* ── Clippy eye blink ── */
+  function clippyBlink() {
+    const el = document.getElementById('cb-eye-l');
+    const er = document.getElementById('cb-eye-r');
+    if (!el || !er) return;
+    el.setAttribute('ry', '0.3');
+    er.setAttribute('ry', '0.3');
+    setTimeout(() => { el.setAttribute('ry', '2.4'); er.setAttribute('ry', '2.4'); }, 110);
+  }
+
+  /* ── Double-blink sometimes ── */
+  function scheduleBlink() {
+    const delay = 2800 + Math.random() * 5000;
+    setTimeout(() => {
+      clippyBlink();
+      if (Math.random() > 0.6) setTimeout(clippyBlink, 350);
+      scheduleBlink();
+    }, delay);
+  }
+  scheduleBlink();
+
+})();
+</script>
 </body>
 </html>
