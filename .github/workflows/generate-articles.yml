@@ -12,6 +12,10 @@ name: Article Generator
 #  Friday   14:00 PHT  → Exclusive #3     (06:00 UTC)
 #  Friday   16:00 PHT  → Exclusive #4     (08:00 UTC)
 #  Friday   18:00 PHT  → Exclusive #5     (10:00 UTC)
+#
+#  Hourly catchup (30 * * * *): runs every hour at :30 — if GitHub delayed or
+#  skipped a scheduled run, the script detects the missing slot and generates it.
+#  The script exits early (no-op) when all expected articles are already done.
 # ─────────────────────────────────────────────────────────────────────────────
 
 on:
@@ -28,6 +32,8 @@ on:
     - cron: '0 6 * * 5'
     - cron: '0 8 * * 5'
     - cron: '0 10 * * 5'
+    # Hourly catchup — fires at :30 every hour, no-ops if nothing is missing
+    - cron: '30 * * * *'
 
   workflow_dispatch:
     inputs:

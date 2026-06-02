@@ -42,20 +42,49 @@ YEAR              = NOW.strftime("%Y")
 
 # ── Determine slot from time + weekday ────────────────────────────────────────
 def determine_slot():
-    # Accept new names + legacy aliases
+    # Accept override (manual dispatch or forced slot)
     _valid = ("morning", "afternoon", "evening", "exclusive", "lunch", "dinner")
     if SLOT_OVERRIDE in _valid:
         return _SLOT_ALIAS.get(SLOT_OVERRIDE, SLOT_OVERRIDE)
-    # Friday exclusives fire at 02,04,06,08,10 UTC — regular slots at 00,05,11
-    if NOW.weekday() == 4 and NOW.hour in (2, 4, 6, 8, 10):
-        return "exclusive"
-    if NOW.hour == 5:
+
+    hour = NOW.hour
+    is_friday = NOW.weekday() == 4
+
+    # Load today's already-generated slots from the log (for catchup logic)
+    generated_today: set = set()
+    excl_today = 0
+    if LOG_PATH.exists():
+        try:
+            log = json.loads(LOG_PATH.read_text())
+            for e in log.get("generated", []):
+                if e.get("date") == DATE_SLUG:
+                    generated_today.add(e.get("slot"))
+                    if e.get("slot") == "exclusive":
+                        excl_today += 1
+        except Exception:
+            pass
+
+    # Friday exclusives: each fires at 02,04,06,08,10 UTC (catchup: one per run)
+    if is_friday:
+        excl_due = sum(1 for h in (2, 4, 6, 8, 10) if hour >= h)
+        if excl_due > excl_today:
+            return "exclusive"
+
+    # Regular slots — return the EARLIEST missing slot whose time has passed.
+    # This means a delayed or failed run will catchup on the next hourly tick.
+    if hour >= 0 and "morning" not in generated_today:
+        return "morning"
+    if hour >= 5 and "afternoon" not in generated_today:
         return "afternoon"
-    if NOW.hour >= 11:
+    if hour >= 11 and "evening" not in generated_today:
         return "evening"
-    return "morning"
+
+    return None   # all expected slots are already done for today
 
 SLOT = determine_slot()
+if SLOT is None:
+    print("[INFO] All expected articles for today are already generated — nothing to do.")
+    sys.exit(0)
 
 # ── AI tools list (for natural in-text mentions) ──────────────────────────────
 TOOLS = [
