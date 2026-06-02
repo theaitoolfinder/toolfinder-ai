@@ -504,12 +504,25 @@ body::before{
 .brevo-popup-dismiss:hover{color:var(--text)}
 @media(max-width:500px){.brevo-popup-box{padding:28px 20px 22px}}
 
-/* ── AI Chatbot ── */
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:600;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#7c3aed);border:none;cursor:pointer;box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 0 rgba(26,86,219,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;animation:cbPulse 2.8s ease-in-out infinite}
-#cb-btn:hover{transform:scale(1.08);box-shadow:0 12px 36px rgba(26,86,219,.55)}
-@keyframes cbPulse{0%,100%{box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 0 rgba(26,86,219,.35)}50%{box-shadow:0 8px 28px rgba(26,86,219,.45),0 0 0 12px rgba(26,86,219,0)}}
-#cb-btn.open{animation:none;box-shadow:0 8px 28px rgba(26,86,219,.45)}
-#cb-win{position:fixed;bottom:96px;right:24px;z-index:600;width:380px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 110px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
+/* ── Clippy Speech Bubble ── */
+#clippy-speech{position:fixed;bottom:152px;right:12px;z-index:601;background:white;border:2.5px solid var(--primary);border-radius:14px 14px 4px 14px;padding:11px 14px;font:12.5px/1.5 "Poppins",sans-serif;color:var(--text);max-width:215px;box-shadow:0 6px 26px rgba(26,86,219,.22);cursor:pointer;user-select:none;opacity:0;transform:translateY(12px) scale(.92);pointer-events:none;transition:opacity .38s,transform .38s}
+#clippy-speech.show{opacity:1;transform:none;pointer-events:auto}
+#clippy-speech::after{content:'';position:absolute;bottom:-13px;right:24px;border:7px solid transparent;border-top-color:white}
+#clippy-speech::before{content:'';position:absolute;bottom:-16px;right:23px;border:8px solid transparent;border-top-color:var(--primary)}
+/* ── Clippy Button ── */
+#cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:130px;background:none;border:none;cursor:pointer;padding:0;filter:drop-shadow(0 8px 22px rgba(26,86,219,.42)) drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:filter .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
+#cb-btn:hover{filter:drop-shadow(0 14px 32px rgba(26,86,219,.58)) drop-shadow(0 3px 10px rgba(0,0,0,.2));transform:translateY(-5px) scale(1.04)}
+#cb-btn.open{filter:drop-shadow(0 4px 14px rgba(26,86,219,.3));transform:none}
+#clippy-svg{display:block;width:96px;height:130px;overflow:visible}
+/* Clippy body animations */
+@keyframes clippyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes clippyWave{0%,100%{transform:rotate(0deg)}12%{transform:rotate(-45deg)}30%{transform:rotate(30deg)}50%{transform:rotate(-40deg)}68%{transform:rotate(24deg)}84%{transform:rotate(-12deg)}95%{transform:rotate(5deg)}}
+@keyframes clippyTap{0%,100%{transform:rotate(0deg) translateX(0)}22%{transform:rotate(-8deg) translateX(-5px)}56%{transform:rotate(8deg) translateX(5px)}78%{transform:rotate(-5deg) translateX(-3px)}}
+@keyframes clippyBounce{0%,100%{transform:translateY(0) scaleX(1) scaleY(1)}16%{transform:translateY(-16px) scaleX(.91) scaleY(1.09)}32%{transform:translateY(4px) scaleX(1.09) scaleY(.93)}52%{transform:translateY(-10px) scaleX(.94) scaleY(1.06)}68%{transform:translateY(2px) scaleX(1.05) scaleY(.96)}82%{transform:translateY(-4px) scaleX(.98) scaleY(1.02)}}
+@keyframes clippyExcite{0%,100%{transform:rotate(0deg) scale(1)}25%{transform:rotate(-10deg) scale(1.05)}50%{transform:rotate(10deg) scale(1.05)}75%{transform:rotate(-7deg) scale(1.03)}}
+@keyframes clippyLookSide{0%,100%{transform:translateX(0)}35%,65%{transform:translateX(4px)}}
+/* ── AI Chatbot Window ── */
+#cb-win{position:fixed;bottom:153px;right:10px;z-index:600;width:380px;max-width:calc(100vw - 20px);height:540px;max-height:calc(100vh - 168px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
 #cb-win.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
 #cb-head{padding:16px 18px 14px;border-bottom:1px solid rgba(26,86,219,.08);display:flex;align-items:center;gap:10px;flex-shrink:0}
 #cb-head-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a56db,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.30)}
@@ -530,6 +543,7 @@ body::before{
 .cb-tool-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(219,234,254,.7);border:1px solid rgba(26,86,219,.14);border-radius:8px;font-size:12.5px;color:var(--primary);font-weight:600;margin:2px 0;cursor:pointer;transition:all .15s;text-decoration:none}
 .cb-tool-chip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
 .cb-tool-chip img{width:16px;height:16px;border-radius:3px}
+.cb-tool-chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 .cb-chips{padding:6px 14px 8px;display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;border-top:1px solid rgba(26,86,219,.06)}
 .cb-chip{padding:6px 11px;border-radius:999px;border:1.5px solid rgba(26,86,219,.18);background:rgba(219,234,254,.5);font-size:12px;font-weight:500;color:var(--primary);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
 .cb-chip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
@@ -543,15 +557,6 @@ body::before{
 .cb-typing span:nth-child(2){animation-delay:.18s}
 .cb-typing span:nth-child(3){animation-delay:.36s}
 @keyframes cbDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
-/* Clippy SVG styling */
-#clippy-svg{width:30px;height:30px;transition:transform .3s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 2px 6px rgba(255,255,255,.25))}
-#cb-btn:not(.open):hover #clippy-svg{transform:rotate(-10deg) scale(1.1)}
-#cb-btn.open #clippy-svg{transform:scale(0.9) rotate(5deg)}
-#cb-eye-l,#cb-eye-r{transform-box:fill-box;transform-origin:50% 50%}
-@keyframes clippyIdleBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-#cb-btn:not(.open) #clippy-svg{animation:clippyIdleBob 2.4s ease-in-out infinite}
-#cb-btn.open #clippy-svg,#cb-btn:hover #clippy-svg{animation:none}
-.cb-tool-chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 </style>
 </head>
 <body>
@@ -2668,25 +2673,62 @@ async function submitReview(){
   </div>
 </div>
 
+<!-- ── Clippy Speech Bubble ── -->
+<div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Clippy chat">
+  <span id="clippy-speech-txt">It looks like you're looking for AI tools! 💡</span>
+</div>
+
 <!-- ── Clippy AI Chatbot ── -->
 <button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Clippy — AI Tool Finder">
-  <!-- Modernized Clippy: bent paperclip with eyes and smile -->
-  <svg id="clippy-svg" viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- Outer loop of the paperclip -->
-    <path d="M8,41 C3,41 1,35 1,26 C1,11 7,2 15,2 C23,2 29,11 29,26 C29,35 27,41 22,41"
-      stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Inner fold that crosses back through -->
-    <path d="M22,41 C22,33 21,25 18,20 C16.2,16.8 13.8,16.8 12,20 C9,25 8,32 8,37 L8,41"
-      stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Left eye -->
-    <ellipse id="cb-eye-l" cx="11.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
-    <!-- Right eye -->
-    <ellipse id="cb-eye-r" cx="18.5" cy="27" rx="2.1" ry="2.4" fill="white"/>
-    <!-- Pupils -->
-    <circle cx="12.1" cy="27.6" r="1" fill="#1e3a8a"/>
-    <circle cx="19.1" cy="27.6" r="1" fill="#1e3a8a"/>
-    <!-- Smile -->
-    <path d="M11,32.5 Q15,36 19,32.5" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <svg id="clippy-svg" viewBox="0 0 80 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Ground shadow -->
+    <ellipse cx="40" cy="109" rx="27" ry="4.5" fill="rgba(0,0,0,0.18)"/>
+    <!-- All animated parts in one group for body-level animations -->
+    <g id="clippy-body-g">
+      <!-- ── Wire body: outer large loop ── -->
+      <path d="M18,103 C4,103 4,88 4,72 C4,44 10,14 40,8 C70,14 76,44 76,72 C76,88 74,103 62,103"
+        stroke="#f5c440" stroke-width="6.5" stroke-linecap="round"/>
+      <!-- Sheen line on outer loop (metallic highlight) -->
+      <path d="M22,98 C12,94 8,82 8,68 C8,46 14,22 40,16"
+        stroke="#ffe87a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+      <!-- ── Wire body: inner fold ── -->
+      <path d="M62,103 C62,88 58,76 52,66 C48,58 46,55 40,55 C34,55 32,58 28,66 C22,76 18,88 18,100 L18,103"
+        stroke="#f5c440" stroke-width="6.5" stroke-linecap="round"/>
+      <!-- Sheen on inner fold -->
+      <path d="M58,98 C58,86 55,74 50,64 C47,57 44,55 40,55"
+        stroke="#ffe87a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <!-- ── Waving arm (right side, rotates at origin) ── -->
+      <g id="clippy-arm" style="transform-origin:75px 52px; transform:rotate(0deg)">
+        <path d="M75,52 C79,46 82,40 80,35 C78,31 74,33 72,38 C70,43 72,49 75,52"
+          stroke="#f5c440" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <path d="M75,50 C78,45 80,41 79,37"
+          stroke="#ffe87a" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+      </g>
+      <!-- ── Left eye ── -->
+      <g id="clippy-eye-l" style="transform-box:fill-box;transform-origin:50% 50%">
+        <ellipse cx="29" cy="73" rx="9" ry="10" fill="white"/>
+        <!-- iris + pupil group for look-around -->
+        <g id="clippy-iris-l" style="transform-box:fill-box;transform-origin:50% 50%">
+          <ellipse cx="29" cy="73" rx="5.5" ry="6" fill="#1a56db"/>
+          <ellipse cx="29" cy="73" rx="3" ry="3.3" fill="#081428"/>
+          <circle cx="31.8" cy="70.5" r="1.5" fill="white"/>
+        </g>
+      </g>
+      <!-- ── Right eye ── -->
+      <g id="clippy-eye-r" style="transform-box:fill-box;transform-origin:50% 50%">
+        <ellipse cx="51" cy="73" rx="9" ry="10" fill="white"/>
+        <g id="clippy-iris-r" style="transform-box:fill-box;transform-origin:50% 50%">
+          <ellipse cx="51" cy="73" rx="5.5" ry="6" fill="#1a56db"/>
+          <ellipse cx="51" cy="73" rx="3" ry="3.3" fill="#081428"/>
+          <circle cx="53.8" cy="70.5" r="1.5" fill="white"/>
+        </g>
+      </g>
+      <!-- ── Eyebrows ── -->
+      <path id="clippy-brow-l" d="M20,62 Q29,56 38,62" stroke="#c49200" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <path id="clippy-brow-r" d="M42,62 Q51,56 60,62" stroke="#c49200" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <!-- ── Mouth (smile) ── -->
+      <path id="clippy-mouth" d="M28,88 Q40,97 52,88" stroke="#c49200" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </g>
   </svg>
 </button>
 
@@ -3017,26 +3059,203 @@ async function submitReview(){
     return wrap;
   }
 
-  /* ── Clippy eye blink ── */
-  function clippyBlink() {
-    const el = document.getElementById('cb-eye-l');
-    const er = document.getElementById('cb-eye-r');
-    if (!el || !er) return;
-    el.setAttribute('ry', '0.3');
-    er.setAttribute('ry', '0.3');
-    setTimeout(() => { el.setAttribute('ry', '2.4'); er.setAttribute('ry', '2.4'); }, 110);
+  /* ══════════════════════════════════════════
+     CLIPPY ANIMATION STATE MACHINE
+     ══════════════════════════════════════════ */
+
+  const ANIM_STATES = ['idle','idle','wave','lookAround','bounce','tap','wave','idle','lookAround'];
+  let animIdx = 0;
+  let animTimer = null;
+  let isWinOpen = false;
+
+  function bodyG()  { return document.getElementById('clippy-body-g'); }
+  function arm()    { return document.getElementById('clippy-arm'); }
+  function eyeL()   { return document.getElementById('clippy-eye-l'); }
+  function eyeR()   { return document.getElementById('clippy-eye-r'); }
+  function irisL()  { return document.getElementById('clippy-iris-l'); }
+  function irisR()  { return document.getElementById('clippy-iris-r'); }
+  function browL()  { return document.getElementById('clippy-brow-l'); }
+  function browR()  { return document.getElementById('clippy-brow-r'); }
+  function mouth()  { return document.getElementById('clippy-mouth'); }
+
+  function setBodyAnim(css) {
+    const g = bodyG(); if (g) g.style.animation = css;
+  }
+  function setArmAnim(css) {
+    const a = arm(); if (a) a.style.animation = css;
+  }
+  function resetAnims() {
+    setBodyAnim(''); setArmAnim('');
+    [irisL(), irisR()].forEach(el => { if (el) { el.style.transition=''; el.style.transform=''; } });
+    [browL(), browR()].forEach(el => { if (el) el.style.transform=''; });
+    const m = mouth(); if (m) m.setAttribute('d', 'M28,88 Q40,97 52,88'); // smile
   }
 
-  /* ── Double-blink sometimes ── */
-  function scheduleBlink() {
-    const delay = 2800 + Math.random() * 5000;
+  /* ── Blink ── */
+  function clippyBlink(cb) {
+    const el = eyeL(), er = eyeR();
+    if (!el || !er) { if (cb) cb(); return; }
+    el.style.transition = er.style.transition = 'transform 0.07s';
+    el.style.transform  = er.style.transform  = 'scaleY(0.08)';
     setTimeout(() => {
-      clippyBlink();
-      if (Math.random() > 0.6) setTimeout(clippyBlink, 350);
-      scheduleBlink();
-    }, delay);
+      el.style.transform = er.style.transform = 'scaleY(1)';
+      setTimeout(() => { if (cb) cb(); }, 80);
+    }, 100);
   }
-  scheduleBlink();
+
+  /* ── Look around (pupils translate) ── */
+  function clippyLookAt(dx, dy, then) {
+    [irisL(), irisR()].forEach(el => {
+      if (!el) return;
+      el.style.transition = 'transform 0.35s ease';
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    setTimeout(() => { if (then) then(); }, 500);
+  }
+  function clippyLookReset(cb) {
+    [irisL(), irisR()].forEach(el => {
+      if (!el) return;
+      el.style.transition = 'transform 0.3s ease';
+      el.style.transform = '';
+    });
+    setTimeout(() => { if (cb) cb(); }, 400);
+  }
+
+  /* ── Raise eyebrows (surprised/excited) ── */
+  function clippyRaiseBrows(raise) {
+    const tl = browL(), tr = browR();
+    if (tl) tl.style.transform = raise ? 'translateY(-4px)' : '';
+    if (tr) tr.style.transform = raise ? 'translateY(-4px)' : '';
+  }
+
+  /* ── Next state ── */
+  function nextAnimState() {
+    animIdx = (animIdx + 1) % ANIM_STATES.length;
+    if (animTimer) clearTimeout(animTimer);
+    animTimer = setTimeout(runAnimState, 500);
+  }
+
+  /* ── Run a state ── */
+  function runAnimState() {
+    if (isWinOpen) {
+      // When chat is open, just do a gentle idle bob
+      resetAnims();
+      setBodyAnim('clippyBob 2.6s ease-in-out infinite');
+      animTimer = setTimeout(nextAnimState, 5000 + Math.random() * 3000);
+      return;
+    }
+    const state = ANIM_STATES[animIdx];
+    resetAnims();
+
+    switch (state) {
+      case 'idle':
+        setBodyAnim('clippyBob 2.4s ease-in-out infinite');
+        // Occasionally blink during idle
+        const blinkDelay = 1200 + Math.random() * 2000;
+        setTimeout(() => { clippyBlink(); if (Math.random()>.55) setTimeout(clippyBlink, 400); }, blinkDelay);
+        animTimer = setTimeout(nextAnimState, 4500 + Math.random() * 3500);
+        break;
+
+      case 'wave':
+        setBodyAnim('clippyBob 2.4s ease-in-out infinite');
+        // Arm waves 4 times
+        setArmAnim('clippyWave 1.05s ease-in-out 4');
+        clippyRaiseBrows(true);
+        setTimeout(() => clippyRaiseBrows(false), 1000);
+        setTimeout(() => {
+          resetAnims();
+          nextAnimState();
+        }, 4500);
+        break;
+
+      case 'lookAround':
+        setBodyAnim('clippyBob 2.8s ease-in-out infinite');
+        // Sequence: left → center → right → up → center
+        clippyLookAt(-4.5, 0, () =>
+          setTimeout(() => clippyLookReset(() =>
+            setTimeout(() => clippyLookAt(4.5, 0, () =>
+              setTimeout(() => clippyLookReset(() =>
+                setTimeout(() => clippyLookAt(0, -4, () =>
+                  setTimeout(() => clippyLookReset(() => {
+                    clippyBlink();
+                    setTimeout(nextAnimState, 600);
+                  }), 700)
+                ), 400)
+              ), 600)
+            ), 400)
+          ), 700)
+        );
+        break;
+
+      case 'bounce':
+        clippyRaiseBrows(true);
+        clippyBlink();
+        setBodyAnim('clippyBounce 0.62s ease-in-out 3 forwards');
+        setTimeout(() => clippyRaiseBrows(false), 800);
+        setTimeout(() => { resetAnims(); nextAnimState(); }, 2200);
+        break;
+
+      case 'tap':
+        // Rocks side-to-side to grab attention
+        setBodyAnim('clippyTap 0.48s ease-in-out 5');
+        clippyBlink();
+        setTimeout(() => { resetAnims(); nextAnimState(); }, 2600);
+        break;
+
+      default:
+        setBodyAnim('clippyBob 2.4s ease-in-out infinite');
+        animTimer = setTimeout(nextAnimState, 5000);
+    }
+  }
+
+  /* ── Speech bubble rotation ── */
+  const SPEECH_MSGS = [
+    "It looks like you're looking for AI tools! 💡",
+    "Need help? I know <b>500+ AI tools</b> — ask me anything! 📎",
+    "Psst… I can find the <b>perfect AI tool</b> for your job! 👋",
+    "Looking for free AI tools? I've got you covered! 🆓",
+    "Which AI should you use today? Let me help! 🤖",
+  ];
+  let speechIdx = 0;
+  let speechTimer = null;
+
+  function showSpeech() {
+    if (isWinOpen) { scheduleSpeech(); return; }
+    const el = document.getElementById('clippy-speech');
+    const txt = document.getElementById('clippy-speech-txt');
+    if (!el || !txt) return;
+    txt.innerHTML = SPEECH_MSGS[speechIdx % SPEECH_MSGS.length];
+    speechIdx++;
+    el.classList.add('show');
+    // Hide after 6 seconds
+    setTimeout(() => el.classList.remove('show'), 6000);
+    scheduleSpeech();
+  }
+  function scheduleSpeech() {
+    if (speechTimer) clearTimeout(speechTimer);
+    const delay = 18000 + Math.random() * 14000; // 18–32s between appearances
+    speechTimer = setTimeout(showSpeech, delay);
+  }
+
+  /* ── Patch cbToggle to track open state ── */
+  const _origToggle = window.cbToggle;
+  window.cbToggle = function() {
+    _origToggle();
+    isWinOpen = document.getElementById('cb-win').classList.contains('open');
+    const speech = document.getElementById('clippy-speech');
+    if (isWinOpen && speech) speech.classList.remove('show');
+    // Trigger excited bounce when opening
+    if (isWinOpen) {
+      resetAnims();
+      setBodyAnim('clippyExcite 0.5s ease-in-out 2');
+      setTimeout(() => setBodyAnim('clippyBob 2.4s ease-in-out infinite'), 1200);
+    }
+  };
+
+  /* ── Start everything ── */
+  runAnimState();
+  // First speech bubble after 8 seconds
+  speechTimer = setTimeout(showSpeech, 8000);
 
 })();
 </script>
