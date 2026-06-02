@@ -455,6 +455,26 @@ footer a:hover{color:var(--primary)}
   .cmp-mod-grid{max-height:160px}
 }
 
+/* ── Techy background ── */
+body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(26,86,219,.07) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
+.bg-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
+.bg-orb-1{width:640px;height:640px;background:rgba(96,165,250,.10);top:-220px;right:-80px;animation-delay:0s}
+.bg-orb-2{width:540px;height:540px;background:rgba(26,86,219,.07);bottom:-160px;left:-130px;animation-delay:-10s}
+.bg-orb-3{width:320px;height:320px;background:rgba(30,58,138,.06);top:45%;right:18%;animation-delay:-5s}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.05)}}
+main,header.site,footer,.mob-menu,.mob-overlay,.brevo-popup,.cmp-toast{position:relative;z-index:1}
+
+/* ── Tools marquee ── */
+.tools-marquee-section{padding:6px 0 22px;overflow:hidden;mask:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;align-items:center;width:max-content;animation:marqueeScroll 45s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.m-item{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;color:#92afd4;font-size:13px;font-weight:600;white-space:nowrap;letter-spacing:-.01em;transition:color .2s,opacity .2s;cursor:default}
+.m-item:hover{color:var(--primary);opacity:.85}
+.m-item img{width:18px;height:18px;border-radius:4px;opacity:.4;filter:grayscale(15%);flex-shrink:0;transition:opacity .2s}
+.m-item:hover img{opacity:.75}
+.m-sep{color:rgba(26,86,219,.15);font-size:8px;padding:0 4px;user-select:none}
+
 /* ── Brevo Popup ── */
 .brevo-popup{position:fixed;inset:0;z-index:800;background:rgba(13,31,60,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px}
 .brevo-popup.hidden{display:none}
@@ -470,6 +490,10 @@ footer a:hover{color:var(--primary)}
 </style>
 </head>
 <body>
+<!-- Techy background orbs -->
+<div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-3" aria-hidden="true"></div>
 <header class="site">
   <div class="container nav">
     <a href="/" class="brand">
@@ -520,6 +544,10 @@ footer a:hover{color:var(--primary)}
       <div class="stat"><b>1K+</b><span>Subscribers</span></div>
     </div>
   </section>
+  <!-- ── Crawling AI Tools Logos ── -->
+  <div class="tools-marquee-section" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
   <section class="container controls" id="tools">
     <!-- sentinel: IntersectionObserver fires when this exits viewport → bar is stuck -->
     <div id="tfm-sentinel" style="height:1px;margin-bottom:-1px;pointer-events:none"></div>
@@ -1504,6 +1532,41 @@ let searchQuery="";
 const $rows=document.getElementById("rows"),$note=document.getElementById("lens-note");
 function initials(n){return n.replace(/[^A-Za-z0-9 ]/g,'').split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();}
 function favicon(d){return"https://www.google.com/s2/favicons?domain="+encodeURIComponent(d)+"&sz=64";}
+
+// ── Crawling logos marquee ──
+(function(){
+  const MARQUEE_TOOLS=[
+    {name:"ChatGPT",domain:"chat.openai.com"},
+    {name:"Claude",domain:"claude.ai"},
+    {name:"Gemini",domain:"gemini.google.com"},
+    {name:"Midjourney",domain:"midjourney.com"},
+    {name:"Runway",domain:"runwayml.com"},
+    {name:"Notion AI",domain:"notion.so"},
+    {name:"Grammarly",domain:"grammarly.com"},
+    {name:"Canva",domain:"canva.com"},
+    {name:"Jasper",domain:"jasper.ai"},
+    {name:"Perplexity",domain:"perplexity.ai"},
+    {name:"ElevenLabs",domain:"elevenlabs.io"},
+    {name:"Synthesia",domain:"synthesia.io"},
+    {name:"HeyGen",domain:"heygen.com"},
+    {name:"Suno",domain:"suno.ai"},
+    {name:"Descript",domain:"descript.com"},
+    {name:"Otter.ai",domain:"otter.ai"},
+    {name:"GitHub Copilot",domain:"github.com"},
+    {name:"Cursor",domain:"cursor.sh"},
+    {name:"v0",domain:"v0.dev"},
+    {name:"Lovable",domain:"lovable.dev"},
+    {name:"Make",domain:"make.com"},
+    {name:"Zapier",domain:"zapier.com"},
+    {name:"Copy.ai",domain:"copy.ai"},
+    {name:"Writesonic",domain:"writesonic.com"},
+  ];
+  const track=document.getElementById('marquee-track');
+  if(!track)return;
+  // Build items twice for seamless loop
+  const html=MARQUEE_TOOLS.map(t=>`<span class="m-item"><img src="${favicon(t.domain)}" alt="${t.name}" width="18" height="18" loading="lazy" onerror="this.style.display='none'">${t.name}</span><span class="m-sep">◆</span>`).join('');
+  track.innerHTML=html+html;
+})();
 function starHTML(r){const f=Math.round(Number(r)||0);return"\u2605".repeat(f)+"\u2606".repeat(Math.max(0,5-f));}
 function cardHTML(i){
   const t=tool(i);if(!t)return"";
