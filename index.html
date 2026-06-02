@@ -2674,110 +2674,113 @@ async function submitReview(){
 </div>
 
 <!-- ── Clippy Speech Bubble ── -->
-<div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Clippy chat">
+<div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Bolt chat">
   <span id="clippy-speech-txt">It looks like you're looking for AI tools! 💡</span>
 </div>
 
 <!-- ── Clippy AI Chatbot ── -->
-<button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Clippy — AI Tool Finder">
+<button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Bolt — AI Tool Finder">
   <!--
-    Proper Gem-clip paperclip geometry:
-    4 distinct legs at the bottom (two outer + two inner) with visible "paper slot" gaps.
-    Outer loop:  legs at x=11 (L) and x=69 (R)
-    Inner fold:  legs at x=25 (L) and x=55 (R)   ← the recognisable M-shape
+    Wrench + Nut & Bolt character.
+    Body = open-end wrench: two prongs (jaws) at top + bridge + handle.
+    Right prong is clippy-arm — rotates at its base to "wave".
+    A hex bolt sits in the jaw gap. A hex nut sits on the upper handle.
   -->
-  <svg id="clippy-svg" viewBox="0 0 80 126" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg id="clippy-svg" viewBox="0 0 80 122" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- Ground shadow -->
-    <ellipse cx="40" cy="123" rx="26" ry="4" fill="rgba(0,0,0,0.18)"/>
+    <ellipse cx="40" cy="120" rx="22" ry="4" fill="rgba(0,0,0,0.18)"/>
 
-    <!-- ── ALL ANIMATED PARTS ── -->
-    <g id="clippy-body-g" style="transform-origin:40px 119px">
+    <g id="clippy-body-g" style="transform-origin:40px 116px">
 
-      <!-- ═══ OUTER LOOP (back of the clip) ═══
-           Two straight vertical legs joined by a rounded arch at the top.
-           Left leg: x=11  |  Right leg: x=69                           -->
-      <path d="M 11,120  L 11,34  C 11,10 22,8 40,8  C 58,8 69,10 69,34  L 69,120"
-        stroke="#f5c440" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <!-- Metallic sheen on outer loop -->
-      <path d="M 14,112  L 14,36  C 14,16 24,14 40,14"
-        stroke="#ffe87a" stroke-width="2.2" stroke-linecap="round" opacity="0.55" fill="none"/>
+      <!-- ══ LEFT PRONG (jaw) — holds the left eye ══ -->
+      <rect x="15" y="8" width="18" height="36" rx="9" fill="#f5c440"/>
+      <rect x="18" y="12" width="5"  height="22" rx="2.5" fill="white" opacity="0.2"/>
 
-      <!-- ═══ INNER FOLD (front of the clip, shorter U-shape) ═══
-           Left leg: x=25  |  Right leg: x=55
-           Top of fold sits at y≈42, well below the outer arch (y≈8).
-           The 14-px gap between outer & inner legs on each side = paper slots. -->
-      <path d="M 55,120  L 55,62  C 55,40 47,38 40,38  C 33,38 25,40 25,62  L 25,120"
-        stroke="#f5c440" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <!-- Metallic sheen on inner fold -->
-      <path d="M 52,112  L 52,64  C 52,45 46,42 40,42"
-        stroke="#ffe87a" stroke-width="2" stroke-linecap="round" opacity="0.45" fill="none"/>
-
-      <!-- ═══ WAVING ARM ═══
-           Small bent protrusion off the right outer leg, rotates for waving. -->
-      <g id="clippy-arm" style="transform-origin:69px 54px; transform:rotate(0deg)">
-        <path d="M 69,54  C 73,48 76,42 74,37  C 72,32 68,34 66,39  C 64,44 66,51 69,54"
-          stroke="#f5c440" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-        <path d="M 69,52  C 72,47 74,43 73,39"
-          stroke="#ffe87a" stroke-width="1.8" stroke-linecap="round" opacity="0.5" fill="none"/>
-      </g>
-
-      <!-- ═══ EYES ═══
-           Sit on/just inside the inner fold wires (x≈25 L, x≈55 R) at y≈70.
-           White sclera → blue iris → dark pupil → white sparkle.           -->
-      <!-- Left eye (on the left inner wire) -->
+      <!-- Left eye on the left prong -->
       <g id="clippy-eye-l" style="transform-box:fill-box;transform-origin:50% 50%">
-        <ellipse cx="32" cy="70" rx="8.5" ry="9.5" fill="white"/>
+        <ellipse cx="24" cy="24" rx="6.5" ry="7.5" fill="white"/>
         <g id="clippy-iris-l" style="transform-box:fill-box;transform-origin:50% 50%">
-          <ellipse cx="32" cy="70" rx="5"   ry="5.5" fill="#1a56db"/>
-          <ellipse cx="32" cy="70" rx="2.8" ry="3.1" fill="#081428"/>
-          <circle  cx="34.5" cy="67.5" r="1.4" fill="white"/>
+          <ellipse cx="24" cy="24" rx="4"   ry="4.5" fill="#1a56db"/>
+          <ellipse cx="24" cy="24" rx="2.2" ry="2.5" fill="#081428"/>
+          <circle  cx="26"  cy="22"  r="1.2" fill="white"/>
         </g>
       </g>
-      <!-- Right eye (on the right inner wire) -->
-      <g id="clippy-eye-r" style="transform-box:fill-box;transform-origin:50% 50%">
-        <ellipse cx="48" cy="70" rx="8.5" ry="9.5" fill="white"/>
-        <g id="clippy-iris-r" style="transform-box:fill-box;transform-origin:50% 50%">
-          <ellipse cx="48" cy="70" rx="5"   ry="5.5" fill="#1a56db"/>
-          <ellipse cx="48" cy="70" rx="2.8" ry="3.1" fill="#081428"/>
-          <circle  cx="50.5" cy="67.5" r="1.4" fill="white"/>
-        </g>
-      </g>
-
-      <!-- ═══ EYEBROWS ═══ -->
-      <path id="clippy-brow-l" d="M 23,59  Q 32,53  41,59"
-        stroke="#c49200" stroke-width="3.2" stroke-linecap="round" fill="none"/>
-      <path id="clippy-brow-r" d="M 39,59  Q 48,53  57,59"
-        stroke="#c49200" stroke-width="3.2" stroke-linecap="round" fill="none"/>
-
-      <!-- ═══ MOUTH (smile) ═══ -->
-      <path id="clippy-mouth" d="M 29,85  Q 40,95  51,85"
+      <!-- Left eyebrow -->
+      <path id="clippy-brow-l" d="M15,13 Q24,7 33,13"
         stroke="#c49200" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+
+      <!-- ══ RIGHT PRONG (clippy-arm) — waves by rotating at its base ══ -->
+      <g id="clippy-arm" style="transform-origin:56px 44px; transform:rotate(0deg)">
+        <rect x="47" y="8" width="18" height="36" rx="9" fill="#f5c440"/>
+        <rect x="50" y="12" width="5"  height="22" rx="2.5" fill="white" opacity="0.2"/>
+
+        <!-- Right eye on the right prong -->
+        <g id="clippy-eye-r" style="transform-box:fill-box;transform-origin:50% 50%">
+          <ellipse cx="56" cy="24" rx="6.5" ry="7.5" fill="white"/>
+          <g id="clippy-iris-r" style="transform-box:fill-box;transform-origin:50% 50%">
+            <ellipse cx="56" cy="24" rx="4"   ry="4.5" fill="#1a56db"/>
+            <ellipse cx="56" cy="24" rx="2.2" ry="2.5" fill="#081428"/>
+            <circle  cx="58"  cy="22"  r="1.2" fill="white"/>
+          </g>
+        </g>
+        <!-- Right eyebrow -->
+        <path id="clippy-brow-r" d="M47,13 Q56,7 65,13"
+          stroke="#c49200" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- ══ BOLT HEX in the jaw gap (between prongs, x=33–47) ══ -->
+      <polygon points="40,17 47,21 47,29 40,33 33,29 33,21"
+        fill="#e8a800" stroke="#c49200" stroke-width="1.5"/>
+      <!-- Bolt hole / inner shadow -->
+      <circle cx="40" cy="25" r="4" fill="#c49200" opacity="0.45"/>
+      <!-- Bolt shine -->
+      <ellipse cx="38" cy="20" rx="2" ry="1.2" fill="white" opacity="0.45" transform="rotate(-20,38,20)"/>
+
+      <!-- ══ BRIDGE connecting the two prongs ══ -->
+      <rect x="15" y="40" width="50" height="18" rx="6" fill="#f5c440"/>
+      <rect x="18" y="42" width="8"  height="10" rx="3" fill="white" opacity="0.14"/>
+
+      <!-- ══ MOUTH on the bridge ══ -->
+      <path id="clippy-mouth" d="M22,50 Q40,60 58,50"
+        stroke="#c49200" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+
+      <!-- ══ HANDLE ══ -->
+      <rect x="32" y="54" width="16" height="62" rx="8" fill="#f5c440"/>
+      <rect x="35" y="58" width="4"  height="46" rx="2" fill="white" opacity="0.14"/>
+
+      <!-- ══ NUT on the handle (hex nut threaded on the shaft) ══ -->
+      <polygon points="40,60 48,65 48,75 40,80 32,75 32,65"
+        fill="#e5a000" stroke="#c49200" stroke-width="1.5"/>
+      <circle cx="40" cy="70" r="5" fill="#c49200" opacity="0.5"/>
+      <ellipse cx="38" cy="63" rx="2.2" ry="1.2" fill="white" opacity="0.4" transform="rotate(-15,38,63)"/>
+
+      <!-- ══ GRIP LINES on handle ══ -->
+      <line x1="34" y1="90"  x2="46" y2="90"  stroke="#c49200" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="99"  x2="46" y2="99"  stroke="#c49200" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="108" x2="46" y2="108" stroke="#c49200" stroke-width="2" stroke-linecap="round"/>
 
     </g>
   </svg>
 </button>
 
-<div id="cb-win" role="dialog" aria-modal="true" aria-label="Clippy AI Tool Finder chat">
+<div id="cb-win" role="dialog" aria-modal="true" aria-label="Bolt AI Tool Finder chat">
   <div id="cb-head">
     <div id="cb-head-icon">
-      <!-- Tiny Clippy header icon — proper 4-leg paperclip -->
-      <svg viewBox="0 0 30 46" fill="none" width="22" height="22" aria-hidden="true">
-        <!-- Outer loop: legs at x=4 and x=26 -->
-        <path d="M 4,44 L 4,14 C 4,4 9,3 15,3 C 21,3 26,4 26,14 L 26,44"
-          stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- Inner fold: legs at x=10 and x=20 (6px gap each side = paper slots) -->
-        <path d="M 20,44 L 20,24 C 20,16 18,15 15,15 C 12,15 10,16 10,24 L 10,44"
-          stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- Eyes on inner fold wires -->
-        <ellipse cx="12" cy="26" rx="2.6" ry="2.9" fill="white"/>
-        <ellipse cx="18" cy="26" rx="2.6" ry="2.9" fill="white"/>
-        <circle cx="12.6" cy="26.6" r="1.2" fill="#7c3aed"/>
-        <circle cx="18.6" cy="26.6" r="1.2" fill="#7c3aed"/>
+      <!-- Bolt header icon — wrench + nut -->
+      <svg viewBox="0 0 28 28" fill="none" width="22" height="22" aria-hidden="true">
+        <!-- Wrench handle -->
+        <rect x="11" y="13" width="7" height="13" rx="3.5" fill="white" opacity="0.9"/>
+        <!-- Wrench head (open jaw) -->
+        <rect x="7" y="3" width="7" height="13" rx="3.5" fill="white" opacity="0.9"/>
+        <rect x="14" y="3" width="7" height="13" rx="3.5" fill="white" opacity="0.9"/>
+        <!-- Hex nut in jaw -->
+        <polygon points="14.5,7 17.5,8.7 17.5,12.3 14.5,14 11.5,12.3 11.5,8.7" fill="white"/>
+        <circle cx="14.5" cy="10.5" r="2.2" fill="#1a56db"/>
       </svg>
     </div>
     <div id="cb-head-text">
-      <h4>Clippy — AI Tool Finder</h4>
-      <p>I'm here to help you find the perfect AI tool!</p>
+      <h4>Bolt — AI Tool Finder</h4>
+      <p>Ask me anything about AI tools!</p>
     </div>
     <button id="cb-close" onclick="cbToggle()" aria-label="Close chat">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
@@ -2812,9 +2815,9 @@ async function submitReview(){
   'use strict';
 
   const GREETINGS = [
-    "It looks like you're looking for AI tools! 📎 I'm **Clippy** — your personal AI guide.\n\nI can **find tools**, **explain what they do**, **compare** them, or just chat. What's on your mind?",
-    "Hey there! 👋 I'm **Clippy** — I know 500+ AI tools inside-out.\n\nAsk me things like:\n• \"What is Midjourney?\"\n• \"ChatGPT vs Claude\"\n• \"Free tools for writers\"\n\nWhat do you need? 😊",
-    "Hello! I'm **Clippy**, your AI tools expert. 📎\n\nI don't just find tools — I explain their features, compare them, and help you pick the right one. What are you working on today?",
+    "Hey! I'm **Bolt** 🔧 — your AI tools guide. I know 500+ tools and can find, explain, or compare any of them. What are you working on?",
+    "Hi there! 👋 I'm **Bolt**, your go-to for AI tool recommendations. Ask me about a specific tool, compare two, or just tell me what you need help with.",
+    "Hey! **Bolt** here 🔧 — I live and breathe AI tools. Tell me what you're trying to do and I'll point you to the right ones.",
   ];
 
   /* ── Toggle open/close ── */
@@ -2887,47 +2890,43 @@ async function submitReview(){
     'Collaborate better':      '🤝 **Team collaboration** — keeps everyone on the same page with shared AI workflows',
   };
 
-  /* ── Rich tool detail card ── */
+  /* ── Natural tool detail ── */
   function cbToolDetail(t) {
-    const bullets = (t.needs || [])
-      .map(n => NEED_FEAT[n] || `✅ **${n}**`)
-      .slice(0, 4).join('\n');
-    const stars = t.rating  ? `⭐ ${t.rating}/5` : '';
-    const users = t.users   ? `  👥 ${t.users}` : '';
-    const jobs  = (t.jobs || []).slice(0, 3).join(', ') || 'Everyone';
-    cbBotMsg(
-      `📎 **${t.name}** — *${t.cat || 'AI Tool'}*\n\n` +
-      `${t.tag}\n\n` +
-      (bullets ? `**What it does best:**\n${bullets}\n\n` : '') +
-      `💰 **Price:** ${t.pill}   ${stars}${users}\n` +
-      `🎯 **Best for:** ${jobs}`
-    );
+    const jobs   = (t.jobs  || []).slice(0, 3).join(', ') || 'anyone';
+    const needs  = (t.needs || []).slice(0, 3).join(', ').toLowerCase() || 'boosting productivity';
+    const rating = t.rating ? ` Users rate it ${t.rating}/5.` : '';
+    const price  = t.pill   ? ` Pricing: ${t.pill}.` : '';
+    const feat1  = t.needs && t.needs[0] ? (NEED_FEAT[t.needs[0]] || '').replace(/\*\*/g,'').replace(/^[^ ]+ /,'') : '';
+    let msg = `**${t.name}** is a ${t.cat || 'AI'} tool — ${t.tag}`;
+    if (feat1) msg += ` Its standout feature: ${feat1}.`;
+    msg += `\n\nGreat for ${jobs} who want to ${needs}.${price}${rating}`;
+    cbBotMsg(msg);
     cbShowTools([t]);
   }
 
-  /* ── Side-by-side comparison ── */
+  /* ── Natural comparison ── */
   function cbCompareTools(t1, t2) {
-    const priceDiff = () => {
-      const f1 = /free/i.test(t1.pill), f2 = /free/i.test(t2.pill);
-      if (f1 && !f2) return `**${t1.name}** has a free plan; **${t2.name}** does not.`;
-      if (!f1 && f2) return `**${t2.name}** has a free plan; **${t1.name}** does not.`;
-      return 'Both offer free options — check their websites for current pricing.';
-    };
-    const ratingNote = () => {
-      const r1 = t1.rating || 0, r2 = t2.rating || 0;
-      if (Math.abs(r1 - r2) < 0.15) return `Both are highly rated and comparable in quality.`;
-      const winner = r1 > r2 ? t1 : t2;
-      return `**${winner.name}** edges ahead on user ratings (${winner.rating}/5).`;
-    };
-    const verdict = () => {
-      if (t1.cat === t2.cat) return `They compete in the same **${t1.cat}** space — ${ratingNote()} ${priceDiff()} Try both free tiers!`;
-      return `**${t1.name}** is a ${t1.cat} tool; **${t2.name}** is for ${t2.cat}. They solve different problems — you might actually want *both* in your stack!`;
-    };
+    const r1 = t1.rating || 0, r2 = t2.rating || 0;
+    const f1 = /free/i.test(t1.pill), f2 = /free/i.test(t2.pill);
+    const sameSpace = t1.cat === t2.cat;
+
+    let verdict;
+    if (!sameSpace) {
+      verdict = `They actually solve different problems — **${t1.name}** is for ${t1.cat}, **${t2.name}** covers ${t2.cat}. Depending on what you need, you might want both.`;
+    } else {
+      const ratingLine = Math.abs(r1 - r2) < 0.15
+        ? `They're rated nearly the same, so it's close.`
+        : `**${r1 > r2 ? t1.name : t2.name}** has a slight edge in user ratings.`;
+      const priceLine = f1 && !f2 ? `**${t1.name}** has a free plan; ${t2.name} doesn't.`
+        : !f1 && f2 ? `**${t2.name}** has a free plan; ${t1.name} doesn't.`
+        : `Both have free options.`;
+      verdict = `${ratingLine} ${priceLine} I'd try the free tier of both and see which one clicks.`;
+    }
+
     cbBotMsg(
-      `📊 **${t1.name}** vs **${t2.name}**\n\n` +
-      `**${t1.name}**\n💰 ${t1.pill} · ⭐ ${t1.rating||'?'} · ${t1.cat}\n${t1.tag}\n\n` +
-      `**${t2.name}**\n💰 ${t2.pill} · ⭐ ${t2.rating||'?'} · ${t2.cat}\n${t2.tag}\n\n` +
-      `💡 **Clippy's take:** ${verdict()}`
+      `**${t1.name}** — ${t1.tag} (${t1.pill})\n` +
+      `**${t2.name}** — ${t2.tag} (${t2.pill})\n\n` +
+      `🔧 **Bolt's take:** ${verdict}`
     );
     cbShowTools([t1, t2]);
   }
@@ -2944,9 +2943,9 @@ async function submitReview(){
     /* Greetings */
     if (/^(hi|hello|hey|howdy|yo|sup|hiya|greetings)\b/.test(ql)) {
       const picks = [
-        "Hey hey! 👋 Great to see you! I'm Clippy — your AI tools guide.\n\nWhat are you working on today? Tell me your job or a problem you're trying to solve, and I'll find the perfect AI tools for you! 🚀",
-        "Hello there! 😄 It looks like you stopped by for some AI tool magic — and you've come to the right place!\n\nI know **500+ tools** inside-out. Ask me about features, compare tools, or just tell me what you need. 📎",
-        "Hey! Clippy here, at your service! 📎\n\nNeed an AI tool? Want to know what a specific tool does? Or just feel like chatting? I'm all yours. What's up? 😊",
+        "Hey! 👋 What are you working on today?",
+        "Hello! 😄 I'm Bolt — 500+ AI tools at your fingertips. What do you need?",
+        "Hey there! Got a task, a problem, or just curious about an AI tool? I'm all yours. 🔧",
       ];
       cbBotMsg(picks[Math.floor(Math.random()*picks.length)]); return;
     }
@@ -2954,37 +2953,37 @@ async function submitReview(){
     /* Good morning/afternoon/evening */
     if (/good (morning|afternoon|evening|night|day)/.test(ql)) {
       const tod = /morning/.test(ql)?'morning':/afternoon/.test(ql)?'afternoon':/evening|night/.test(ql)?'evening':'day';
-      const vibes = {morning:"Hope your coffee is strong ☕", afternoon:"Hope the day's going well so far 😊", evening:"Winding down or burning the midnight oil? 🌙", day:"Hope it's a productive one!"};
-      cbBotMsg(`Good ${tod}! ${vibes[tod]}\n\nI'm Clippy — if you need an AI tool today, just ask. I know 500+ of them and I'm here to help you pick the right one! 💪`); return;
+      const vibes = {morning:"Hope the coffee's hitting ☕", afternoon:"Hope the day's treating you well 😊", evening:"Winding down or burning the midnight oil? 🌙", day:"Hope it's a good one!"};
+      cbBotMsg(`Good ${tod}! ${vibes[tod]} What are you working on? I might know just the right tool for it.`); return;
     }
 
     /* How are you */
     if (/how are you|how.re you|how.s it going|how you doing|you okay|you alright|you good/.test(ql)) {
       const r = [
-        "Honestly? I'm absolutely thriving! 📎✨\n\nBeing a helpful AI paperclip is deeply fulfilling work. But enough about me — how are *you* doing? And more importantly, what AI tool can I find for you today?",
-        "Doing great, thanks for asking! 😄 I've already helped a bunch of people find awesome AI tools today, so I'm on a roll.\n\nWhat about you? What are you working on?",
-        "I'm in peak paperclip performance mode! 📎💪 Ready to find you the perfect AI tool.\n\nWhat's on your agenda today?",
+        "Doing well, thanks for asking! 😄 What are you up to today?",
+        "Pretty good! I've been helping people find some solid AI tools — what about you, what are you working on?",
+        "Good! Ready to help. What do you need? 🔧",
       ];
       cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
     }
 
     /* Who / what are you */
-    if (/who are you|what are you|what.s your name|are you (ai|a bot|clippy|an assistant|human|real)|your name/.test(ql)) {
-      cbBotMsg("I'm **Clippy** — your AI tool guide! 📎\n\nYes, *that* Clippy. I used to help people write letters in Microsoft Word back in the day. I've grown up a bit since then — now instead of bugging you about formatting, I help you discover the best AI tools for your work.\n\nI know **500+ AI tools** inside-out — their features, pricing, best use cases, and who they're for. Ask me anything! 😄"); return;
+    if (/who are you|what are you|what.s your name|are you (ai|a bot|bolt|an assistant|human|real)|your name/.test(ql)) {
+      cbBotMsg("I'm **Bolt** 🔧 — an AI tool guide for this site. I know 500+ AI tools — what they do, how they're priced, who they're best for. Think of me as a knowledgeable friend you can ask anything about AI tools. What do you want to know?"); return;
     }
 
     /* Are you better than ChatGPT / vs other bots */
     if (/better than|compare (you|yourself)|vs (chatgpt|gpt|claude|gemini)/.test(ql)) {
-      cbBotMsg("Ha! Great question. 😄\n\nI'm not trying to be ChatGPT or Claude — I'm a **specialist**. Those are generalist AI assistants; I'm your dedicated **AI tools expert** who knows 500+ tools deeply.\n\nThink of me as your friend who's obsessed with AI tools and loves telling you exactly which one to use for your specific situation. 📎\n\nSo — what do you need help with?"); return;
+      cbBotMsg("Different tools, different jobs. ChatGPT and Claude are generalist assistants — I'm a specialist focused entirely on helping you find and understand AI tools. So for that? Yeah, I'm your guy. 😄 What do you need?"); return;
     }
 
     /* Compliments / thanks */
     if (/thank(s| you)|you.re (awesome|amazing|great|the best|helpful|cool|smart)|nice one|good job|well done|love (this|you)|you rock|brilliant|perfect/.test(ql)) {
       const r = [
-        "Aw, that genuinely warms my little paperclip heart! 🥹📎 \n\nSeriously though, that's what I'm here for. What else can I dig up for you?",
-        "You're so welcome! 😊 It looks like we make a great team.\n\nWhat other AI tools can I find for you?",
-        "Happy to help! That's literally my reason for existing. 📎\n\nGot more questions? I'm not going anywhere! 🚀",
-        "You just made my day! 🌟 Now let me make yours — what else can I help you find?",
+        "Happy to help! 😊 What else can I find for you?",
+        "Of course! That's what I'm here for. Any other tools you're curious about?",
+        "Glad that helped! 🙌 Let me know if you need anything else.",
+        "You're welcome! Now what are we tackling next? 🔧",
       ];
       cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
     }
@@ -2992,9 +2991,9 @@ async function submitReview(){
     /* Jokes */
     if (/joke|make me laugh|something funny|humor|funny/.test(ql)) {
       const jokes = [
-        "Okay here's one:\n\nWhy did the AI assistant get fired? 🤔\n\nBecause every time someone asked \"Can you finish this?\" it replied: \"It looks like you're writing a resignation letter. Would you like help?\" 📎😂\n\n…okay that was very on-brand for me. Want me to find you an AI tool instead?",
-        "Why do programmers prefer dark mode?\n\nBecause **light attracts bugs!** 🐛😄\n\nAlright, enough comedy. Want me to find you a coding tool that actually fixes those bugs?",
-        "An AI walked into a bar. The bartender asked, \"What'll you have?\"\n\nThe AI said: \"I'll have whatever gets me the highest engagement.\" 📊😂\n\nI'll stick to finding AI tools. Want one?",
+        "Why do AI models make terrible comedians?\n\nBecause they always finish your jokes before you do. 😂\n\nAlright, what AI tool can I find for you?",
+        "Why do programmers prefer dark mode? Because light attracts bugs! 🐛😄\n\nWant me to find you a tool that actually squashes them?",
+        "An AI walked into a bar. Bartender says \"What'll you have?\" AI replies: \"I'll have whatever maximizes user retention.\" 😂\n\nOkay, back to tools — what do you need?",
       ];
       cbBotMsg(jokes[Math.floor(Math.random()*jokes.length)]); return;
     }
@@ -3002,41 +3001,41 @@ async function submitReview(){
     /* Farewell */
     if (/^(bye|goodbye|see you|later|cya|ttyl|good night|gotta go|take care|farewell|adios)\b/.test(ql)) {
       const r = [
-        "See ya! 👋 Come back anytime you need an AI tool recommendation. I'll be right here… *waiting*. 📎",
-        "Bye for now! It was great chatting with you. Don't be a stranger — I'm always one click away! 😄",
-        "Take care! Remember: if you ever need the perfect AI tool for any job, just click on me. I don't bite. 📎✌️",
+        "See ya! 👋 Come back anytime you need a tool recommendation.",
+        "Take care! I'll be here when you need me. 🔧",
+        "Bye! Good luck with whatever you're building. 😄",
       ];
       cbBotMsg(r[Math.floor(Math.random()*r.length)]); return;
     }
 
     /* Bored */
     if (/i.?m bored|feeling bored|so bored|nothing to do/.test(ql)) {
-      cbBotMsg("Bored? Let me fix that! Here are some wild things AI tools can do right now:\n\n🎵 **Generate original music** just from a text description\n🎨 **Create stunning artwork** in any style in seconds\n🎬 **Turn a blog post into a video** automatically\n🗣️ **Clone your voice** and speak in different languages\n🤖 **Build a chatbot** for your business — no coding needed\n\nWant me to show you the best tools for any of these? Just say the word! 😄"); return;
+      cbBotMsg("Here's something fun — AI can now generate music from a text description, clone your voice, turn a blog post into a video, or build you a chatbot without any code. Which of those sounds interesting? I'll show you the best tools for it. 😄"); return;
     }
 
     /* Stressed / overwhelmed */
     if (/i.?m (stressed|overwhelmed|tired|exhausted|swamped|buried|drowning|struggling|stuck|frustrated)/.test(ql)) {
-      cbBotMsg("Hey, breathe! 😌 I've got you.\n\nHere's the thing — the right AI tools can seriously cut your workload by **40–60%**. I'm not even exaggerating.\n\nTell me: what's eating up most of your time right now? Writing? Meetings? Admin tasks? Social media? I'll find tools that'll make your life *way* easier. 💪"); return;
+      cbBotMsg("The right tools can cut a lot of that overhead — seriously. Tell me what's eating your time the most (writing, meetings, admin, social media?) and I'll find something that helps. 💪"); return;
     }
 
     /* Positive vibes check */
     if (/^(good|great|amazing|fantastic|awesome|excellent|doing well|not bad|pretty good)\.?$/.test(ql)) {
-      cbBotMsg("Love to hear it! 😊 Good energy is half the battle.\n\nNow let's channel that energy into finding you some killer AI tools. What are you working on today? 🚀"); return;
+      cbBotMsg("Nice! 😊 What are you working on today?"); return;
     }
 
     /* Negative / rough day */
     if (/^(bad|terrible|not good|not great|rough|awful|horrible|meh|so-so|okay i guess)\.?$/.test(ql)) {
-      cbBotMsg("Aw, sorry to hear that. 😔 Rough days happen.\n\nHere's a thought — sometimes discovering a brilliant new tool that saves you hours of work can totally turn a day around. Let me try to help!\n\nWhat's been giving you the most headaches today? 🛠️"); return;
+      cbBotMsg("Sorry to hear that. 😔 Sometimes finding a tool that cuts hours off your workload turns things around. What's been the biggest headache today?"); return;
     }
 
     /* Help / what can you do */
     if (/what can you|what do you do|how (does|do) (this|it) work|what are you (for|able)|your (capabilities|features)|commands/.test(ql)) {
-      cbBotMsg("Great question! Here's what I can do: 📎\n\n🔍 **Find tools** — \"Find tools for marketers\"\n📖 **Explain any tool** — \"What is Midjourney?\"\n⚖️ **Compare tools** — \"ChatGPT vs Claude\"\n🔄 **Find alternatives** — \"Alternatives to Notion\"\n💰 **Filter by price** — \"Free writing tools\"\n🔥 **Show trending** — \"What's hot in AI right now?\"\n🎯 **By use case** — \"Tools to save time on social media\"\n\nAnd yes, I'm happy to small talk too. 😄 What do you need?"); return;
+      cbBotMsg("Here's what I can do:\n\n🔍 **Find tools** — \"tools for marketers\"\n📖 **Explain any tool** — \"What is Midjourney?\"\n⚖️ **Compare tools** — \"ChatGPT vs Claude\"\n🔄 **Alternatives** — \"alternatives to Notion\"\n💰 **Filter by price** — \"free writing tools\"\n🔥 **Trending** — \"what's hot in AI right now?\"\n\nWhat do you need?"); return;
     }
 
     /* Show all */
     if (/show all|list all|all tools|every tool/.test(ql)) {
-      cbBotMsg("We've got **500+ AI tools** in the database — way too many to list! 😄\n\nTry narrowing it down:\n• **By your job:** \"Tools for designers\"\n• **By category:** \"Video editing tools\"\n• **By goal:** \"Tools to grow my business\"\n• **By price:** \"Free AI tools\"\n\nI'll give you the best 5 picks!"); return;
+      cbBotMsg("There are 500+ tools in here — too many to list at once! Narrow it down a bit:\n\n• \"Tools for designers\"\n• \"Free writing tools\"\n• \"Best video editing tools\"\n• \"Tools to grow my business\"\n\nI'll show you the top picks."); return;
     }
 
     /* ════════════════════════════════════════
@@ -3207,7 +3206,7 @@ async function submitReview(){
     }
 
     if (!filtersUsed.length) {
-      cbBotMsg("Hmm, I couldn't quite match that. 🤔\n\nTry:\n• \"What is Notion AI?\"\n• \"Free tools for writers\"\n• \"ChatGPT vs Claude\"\n• \"Alternatives to Midjourney\"\n• \"Trending video tools\"\n\nOr just tell me your job title and I'll suggest tools! 👇"); return;
+      cbBotMsg("Hmm, not sure I caught that. You can try:\n\n• \"What is Notion AI?\"\n• \"Free tools for writers\"\n• \"ChatGPT vs Claude\"\n• \"Alternatives to Midjourney\"\n• \"Trending video tools\"\n\nOr just tell me what you're trying to get done and I'll figure it out."); return;
     }
 
     /* Sort & show */
@@ -3219,9 +3218,10 @@ async function submitReview(){
     const catLabel  = matchedCat ? ` in **${matchedCat}**` : '';
     const priceLabel= filtersUsed.includes('free') ? ' (free)' : filtersUsed.includes('affordable') ? ' (affordable)' : '';
 
-    cbBotMsg(`Found **${results.length} tools**${jobLabel}${catLabel}${priceLabel}! Here are the top ${top.length}:`);
+    const countNote = results.length === 1 ? `Found one tool${jobLabel}${catLabel}${priceLabel} — here it is:` : `Here are the top ${top.length}${jobLabel}${catLabel}${priceLabel} (${results.length} total):`;
+    cbBotMsg(countNote);
     cbShowTools(top);
-    if (results.length > 5) setTimeout(() => cbBotMsg(`…and **${results.length-5} more**! Want to filter by price, category, or specific feature?`), 600);
+    if (results.length > 5) setTimeout(() => cbBotMsg(`There are **${results.length - 5} more** matching tools. Want to filter by price, role, or specific feature?`), 600);
   }
 
   /* ── Render tool chips ── */
@@ -3439,11 +3439,11 @@ async function submitReview(){
 
   /* ── Speech bubble rotation ── */
   const SPEECH_MSGS = [
-    "It looks like you're looking for AI tools! 💡",
-    "Need help? I know <b>500+ AI tools</b> — ask me anything! 📎",
-    "Psst… I can find the <b>perfect AI tool</b> for your job! 👋",
-    "Looking for free AI tools? I've got you covered! 🆓",
-    "Which AI should you use today? Let me help! 🤖",
+    "Hey! I'm <b>Bolt</b> 🔧 — need an AI tool recommendation?",
+    "500+ AI tools — ask me anything! 💡",
+    "Psst… I can find the perfect AI tool for you! 👋",
+    "Looking for free AI tools? I've got you. 🆓",
+    "Which AI should you use today? Just ask! 🤖",
   ];
   let speechIdx = 0;
   let speechTimer = null;
