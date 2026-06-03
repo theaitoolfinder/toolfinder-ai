@@ -491,18 +491,7 @@ body::before{
 .m-item:hover img{opacity:.75}
 .m-sep{color:rgba(26,86,219,.15);font-size:8px;padding:0 4px;user-select:none}
 
-/* ── Brevo Popup ── */
-.brevo-popup{position:fixed;inset:0;z-index:800;background:rgba(13,31,60,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px}
-.brevo-popup.hidden{display:none}
-.brevo-popup-box{background:#fff;border-radius:20px;width:100%;max-width:460px;padding:36px 32px 28px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,.25);text-align:center}
-.brevo-popup-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--text-dim);padding:4px;border-radius:6px;display:flex}
-.brevo-popup-close:hover{background:var(--surface-2);color:var(--text)}
-.brevo-popup-icon{width:56px;height:56px;border-radius:14px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.brevo-popup-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin:0 0 8px}
-.brevo-popup-sub{font-size:14px;color:var(--text-dim);margin:0 0 18px;line-height:1.6}
-.brevo-popup-dismiss{background:none;border:none;font-family:inherit;font-size:12.5px;color:var(--text-dim);cursor:pointer;margin-top:12px;text-decoration:underline;padding:0}
-.brevo-popup-dismiss:hover{color:var(--text)}
-@media(max-width:500px){.brevo-popup-box{padding:28px 20px 22px}}
+/* old .brevo-popup removed — replaced by #sub-popup-overlay */
 
 /* ── Clippy Speech Bubble ── */
 #clippy-speech{position:fixed;bottom:118px;right:12px;z-index:601;background:white;border:2.5px solid var(--primary);border-radius:14px 14px 4px 14px;padding:11px 14px;font:12.5px/1.5 "Poppins",sans-serif;color:var(--text);max-width:215px;box-shadow:0 6px 26px rgba(26,86,219,.22);cursor:pointer;user-select:none;opacity:0;transform:translateY(12px) scale(.92);pointer-events:none;transition:opacity .38s,transform .38s}
@@ -2450,26 +2439,7 @@ function renderDirectory(){
 }
 function toggleDirExpand(){dirExpanded=!dirExpanded;renderDirectory();}
 
-/* ── Brevo scroll popup ── */
-(function(){
-  const LS_BREVO='myai_brevo_v1';
-  if(localStorage.getItem(LS_BREVO))return;
-  let scrolled=false,timer=null;
-  function maybeShow(){
-    if(localStorage.getItem(LS_BREVO))return;
-    document.getElementById('brevo-popup').classList.remove('hidden');
-  }
-  window.addEventListener('scroll',function(){
-    if(scrolled)return;
-    scrolled=true;
-    timer=setTimeout(maybeShow,10000);
-  },{passive:true});
-  window.dismissBrevoPopup=function(){
-    document.getElementById('brevo-popup').classList.add('hidden');
-    localStorage.setItem(LS_BREVO,'1');
-    clearTimeout(timer);
-  };
-})();
+/* old Brevo scroll popup removed — replaced by #sub-popup-overlay */
 
 /* ── Social footer ── */
 function renderSocialFooter(){
@@ -2935,21 +2905,7 @@ async function popSubscribe(){
 
 </script>
 
-<!-- ── Brevo Popup ── -->
-<div id="brevo-popup" class="brevo-popup hidden">
-  <div class="brevo-popup-box">
-    <button class="brevo-popup-close" onclick="dismissBrevoPopup()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="brevo-popup-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </div>
-    <h3 class="brevo-popup-title">Stay ahead of AI</h3>
-    <p class="brevo-popup-sub">5 hand-picked tools, 1 honest comparison, 1 time-saving tip — every Friday. Free forever.</p>
-    <iframe width="100%" height="220" src="https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;border-radius:8px;overflow:hidden"></iframe>
-    <button class="brevo-popup-dismiss" onclick="dismissBrevoPopup()">No thanks, I'll miss out</button>
-  </div>
-</div>
+<!-- old #brevo-popup removed — replaced by #sub-popup-overlay -->
 
 <!-- ── Teza Speech Bubble ── -->
 <div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Teza chat">
