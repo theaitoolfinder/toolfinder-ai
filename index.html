@@ -559,24 +559,43 @@ body::before{
 @keyframes cbDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
 
 /* ── Partner Picks section ── */
-.partner-picks{padding:36px 0 12px}
-.partner-picks .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.partner-picks .eyebrow{margin:0}
-.partner-picks .disclosure{font-size:11.5px;color:var(--text-dim);background:rgba(26,86,219,.06);border:1px solid rgba(26,86,219,.10);border-radius:999px;padding:3px 10px}
-.pp-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.pp-scroll::-webkit-scrollbar{height:4px}.pp-scroll::-webkit-scrollbar-track{background:transparent}.pp-scroll::-webkit-scrollbar-thumb{background:rgba(26,86,219,.18);border-radius:4px}
-.pp-card{flex:0 0 220px;scroll-snap-align:start;background:var(--surface);border:1.5px solid rgba(26,86,219,.14);border-radius:18px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s;position:relative;overflow:hidden}
-.pp-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,86,219,.04),transparent 60%);pointer-events:none}
-.pp-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,86,219,.14);border-color:rgba(26,86,219,.28)}
-.pp-card-top{display:flex;align-items:center;gap:10px}
-.pp-logo{width:38px;height:38px;border-radius:10px;overflow:hidden;flex-shrink:0;background:rgba(26,86,219,.06);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--primary)}
-.pp-logo img{width:38px;height:38px;object-fit:cover}
-.pp-name{font-weight:700;font-size:14px;color:var(--text);line-height:1.2}
-.pp-cat{font-size:11px;color:var(--text-dim);margin-top:1px}
-.pp-tag{font-size:12.5px;color:var(--text-2);line-height:1.5;flex:1}
-.pp-btn{display:block;text-align:center;padding:9px 14px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:12.5px;font-weight:700;text-decoration:none;transition:all .15s;box-shadow:0 3px 10px rgba(26,86,219,.25)}
-.pp-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,219,.35)}
-.pp-partner-badge{position:absolute;top:10px;right:10px;font-size:9.5px;font-weight:700;color:rgba(26,86,219,.5);text-transform:uppercase;letter-spacing:.06em;background:rgba(26,86,219,.06);border-radius:4px;padding:2px 5px}
+.partner-picks{padding:40px 0 24px;overflow:hidden}
+.partner-picks-head{text-align:center;margin-bottom:28px}
+.partner-picks-head .eyebrow{background:rgba(254,243,199,.75);border:1px solid rgba(245,158,11,.28);color:#92400e;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 10px rgba(217,119,6,.12)}
+.partner-picks-head h2{margin:10px 0 6px;font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em}
+.partner-picks-head h2 em{font-style:normal;background:linear-gradient(90deg,#d97706,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.partner-picks-head p{color:var(--text-2);font-size:14.5px;margin:0}
+.partner-picks-head .pp-disc{display:inline-block;margin-top:8px;font-size:11px;color:#92400e;background:rgba(254,243,199,.55);border:1px solid rgba(245,158,11,.18);border-radius:999px;padding:2px 10px;opacity:.8}
+/* Marquee track — same pattern as logo marquee */
+.pp-marquee-wrap{overflow:hidden;mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);-webkit-mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;animation:ppScroll 40s linear infinite}
+.pp-track:hover{animation-play-state:paused}
+@keyframes ppScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Gold glass card */
+.pp-card{flex:0 0 250px;border-radius:20px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;cursor:default;
+  background:linear-gradient(148deg,rgba(255,253,245,.96) 0%,rgba(254,243,199,.88) 55%,rgba(255,250,235,.94) 100%);
+  backdrop-filter:blur(22px) saturate(200%);-webkit-backdrop-filter:blur(22px) saturate(200%);
+  border:1px solid rgba(251,191,36,.32);border-top:1px solid rgba(255,255,255,.88);
+  box-shadow:0 8px 32px rgba(217,119,6,.12),0 2px 8px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(245,158,11,.06);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s}
+/* Top sheen highlight */
+.pp-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 40%,rgba(255,255,255,.9) 60%,transparent);pointer-events:none}
+/* Shimmer sweep on hover */
+.pp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-110%);transition:transform .55s ease;pointer-events:none;border-radius:inherit}
+.pp-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(217,119,6,.18),0 4px 16px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.98)}
+.pp-card:hover::after{transform:translateX(110%)}
+.pp-card-top{display:flex;align-items:center;gap:11px}
+.pp-logo{width:42px;height:42px;border-radius:12px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,rgba(254,243,199,.9),rgba(253,230,138,.7));border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#92400e;box-shadow:0 2px 8px rgba(217,119,6,.15)}
+.pp-logo img{width:42px;height:42px;object-fit:cover;border-radius:11px}
+.pp-name{font-weight:800;font-size:14.5px;color:var(--text);line-height:1.2;letter-spacing:-.01em}
+.pp-cat{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.7);border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:1px 7px;margin-top:3px}
+.pp-tag{font-size:12.5px;color:var(--text-2);line-height:1.55;flex:1}
+.pp-btn{display:block;text-align:center;padding:10px 16px;border-radius:12px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.01em;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  box-shadow:0 4px 14px rgba(217,119,6,.32),inset 0 1px 0 rgba(255,255,255,.18);
+  transition:transform .15s,box-shadow .15s}
+.pp-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(217,119,6,.42),inset 0 1px 0 rgba(255,255,255,.2)}
+.pp-badge{position:absolute;top:12px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.8);border:1px solid rgba(245,158,11,.25);border-radius:5px;padding:2px 6px;backdrop-filter:blur(8px)}
 
 /* ── Floating subscribe popup ── */
 #sub-popup{position:fixed;bottom:24px;right:24px;z-index:8888;width:320px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.18),0 4px 16px rgba(26,86,219,.12);border:1.5px solid rgba(26,86,219,.14);padding:22px 22px 20px;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;pointer-events:none}
@@ -658,14 +677,16 @@ body::before{
   </div>
 
   <!-- ── Partner Picks (affiliate tools) — populated by JS if any tools have affiliate_url set ── -->
-  <section class="container partner-picks" id="partner-picks" style="display:none">
-    <div class="sec-label">
+  <section class="partner-picks" id="partner-picks" style="display:none">
+    <div class="partner-picks-head container">
       <div class="eyebrow">Tested &amp; Recommended</div>
-      <span class="disclosure">includes partner tools</span>
+      <h2>AI Tools Our <em>Editors Love</em></h2>
+      <p>Hand-picked tools we've personally tested — partners who help keep this site free.</p>
+      <span class="pp-disc">Includes sponsored tools</span>
     </div>
-    <h2 style="margin:0 0 4px;font-size:clamp(20px,3vw,26px);font-weight:800">AI Tools Our Editors Love</h2>
-    <p style="margin:0 0 18px;color:var(--text-2);font-size:14.5px">Hand-picked tools we've personally tested — including partners who help keep this site free.</p>
-    <div class="pp-scroll" id="pp-scroll"></div>
+    <div class="pp-marquee-wrap">
+      <div class="pp-track" id="pp-track"></div>
+    </div>
   </section>
 
   <section class="container controls" id="tools">
@@ -2729,36 +2750,44 @@ async function submitReview(){
     const partners=(data.tools||[]).filter(p=>p.affiliate_url&&p.name);
     if(!partners.length) return;
 
-    const scroll=document.getElementById('pp-scroll');
-    if(!scroll) return;
+    const track=document.getElementById('pp-track');
+    if(!track) return;
 
-    /* Helper: get tool info from TOOLS array by name match */
     function toolByName(name){
       const nl=name.toLowerCase();
       return TOOLS.map((_,i)=>tool(i)).filter(Boolean).find(t=>t.name.toLowerCase()===nl)||null;
     }
-    function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+    function initials(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function favicon(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
 
-    scroll.innerHTML=partners.map(p=>{
+    function cardHTML(p){
       const t=toolByName(p.name);
       const domain=t?t.domain:'';
       const tag=t?t.tag:'';
       const cat=(p.categories&&p.categories[0])||(t?t.cat:'');
       const goUrl='go.html?url='+encodeURIComponent(p.affiliate_url)+'&name='+encodeURIComponent(p.name);
+      const ini=initials(p.name);
       const logoHtml=domain
-        ?`<img src="${favicon(domain)}" alt="${p.name}" onerror="this.style.display='none';this.parentNode.innerHTML='${initials(p.name)}'">`
-        :initials(p.name);
+        ?`<img src="${favicon(domain)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span>${ini}</span>')">`
+        :`<span>${ini}</span>`;
       return `<div class="pp-card">
-        <span class="pp-partner-badge">Partner</span>
+        <span class="pp-badge">Partner</span>
         <div class="pp-card-top">
           <div class="pp-logo">${logoHtml}</div>
-          <div><div class="pp-name">${p.name}</div><div class="pp-cat">${cat}</div></div>
+          <div><div class="pp-name">${p.name}</div><span class="pp-cat">${cat}</span></div>
         </div>
-        ${tag?`<div class="pp-tag">${tag}</div>`:''}
+        ${tag?`<p class="pp-tag">${tag}</p>`:''}
         <a class="pp-btn" href="${goUrl}" target="_blank" rel="sponsored noopener nofollow">Try Free &rarr;</a>
       </div>`;
-    }).join('');
+    }
+
+    /* Duplicate cards for seamless infinite scroll */
+    const html=partners.map(cardHTML).join('');
+    track.innerHTML=html+html;   /* set 1 + set 2 */
+
+    /* Slow down animation proportionally if few cards (short content scrolls too fast) */
+    const speed=Math.max(20, partners.length*8);
+    track.style.animationDuration=speed+'s';
 
     document.getElementById('partner-picks').style.display='block';
   }catch(e){ /* no affiliate file yet — silently skip */ }
