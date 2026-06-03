@@ -566,16 +566,14 @@ body::before{
 .partner-picks-head h2 em{font-style:normal;background:linear-gradient(90deg,#d97706,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
 .partner-picks-head p{color:var(--text-2);font-size:14.5px;margin:0}
 .partner-picks-head .pp-disc{display:inline-block;margin-top:8px;font-size:11px;color:#92400e;background:rgba(254,243,199,.55);border:1px solid rgba(245,158,11,.18);border-radius:999px;padding:2px 10px;opacity:.8}
-/* Marquee track */
-.pp-marquee-wrap{
-  /* padding gives cards room to lift on hover without being clipped */
-  padding:10px 0 6px;
-  overflow:hidden;
-  mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
-  -webkit-mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
-.pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;animation:ppScroll 50s linear infinite}
-.pp-track:hover{animation-play-state:paused}
-@keyframes ppScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Manual scroll strip */
+.pp-marquee-wrap{padding:10px 0 8px;overflow-x:auto;overflow-y:visible;
+  scrollbar-width:thin;scrollbar-color:rgba(26,86,219,.15) transparent;
+  -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.pp-marquee-wrap::-webkit-scrollbar{height:4px}
+.pp-marquee-wrap::-webkit-scrollbar-track{background:transparent}
+.pp-marquee-wrap::-webkit-scrollbar-thumb{background:rgba(26,86,219,.15);border-radius:4px}
+.pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;padding:0 2px}
 /* ── Shared card base ── */
 .pp-card{flex:0 0 250px;border-radius:20px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:11px;position:relative;overflow:hidden;
   transition:transform .2s ease-out,box-shadow .2s ease-out}
@@ -2865,22 +2863,7 @@ async function submitReview(){
       ...fillerTools.map(regularCard)
     ];
 
-    /* Only duplicate for marquee if we have enough cards to fill the viewport */
-    const totalCards=allCards.length;
-    const needsLoop=totalCards>=6;
-    const html=allCards.join('');
-    track.innerHTML=needsLoop ? html+html : html;
-
-    /* Disable animation when not enough to scroll */
-    if(!needsLoop){
-      track.style.animation='none';
-      track.style.flexWrap='wrap';
-      track.style.justifyContent='center';
-      track.style.width='auto';
-    }else{
-      const speed=Math.max(30, totalCards*5);
-      track.style.animationDuration=speed+'s';
-    }
+    track.innerHTML=allCards.join('');
 
     document.getElementById('partner-picks').style.display='block';
   }catch(e){ /* no affiliate file — silently skip */ }
