@@ -41,6 +41,16 @@ on:
     workflows: ["Sync Subscriber List"]
     types: [completed]
 
+  # Push trigger: any commit to main also runs the catchup check.
+  # The script is idempotent — it exits early if all slots are already done.
+  # Path-ignore prevents bot article-pushes from re-triggering themselves.
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'articles/**'
+      - '.github/scripts/article_log.json'
+      - 'data/**'
+
   workflow_dispatch:
     inputs:
       slot:
