@@ -466,9 +466,9 @@ async function setupPassphrase(){
   const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
   const hash=await sha256(salt+pw1);
   const cfg={v:1,salt,hash};
-  const ok=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: set passphrase hash');
+  const res=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: set passphrase hash');
   if(btn){btn.disabled=false;btn.textContent='Save & Unlock';}
-  if(!ok){err.textContent='Failed to commit config. Check: token is valid, has Contents: Write permission, and repo name is correct (owner/repo).';return;}
+  if(!res.ok){err.textContent=res.msg||'Failed to commit config.';return;}
   _adminCfg=cfg;
   sessionStorage.setItem(LS_AUTH,'1');
   document.getElementById('setup').style.display='none';
@@ -1556,36 +1556,58 @@ async function testGHConnection(){
   const repo=localStorage.getItem('myai_gh_repo')||document.getElementById('gh-repo').value.trim();
   const token=localStorage.getItem('myai_gh_token')||document.getElementById('gh-token').value.trim();
   const statusEl=document.getElementById('gh-status');
-  statusEl.innerHTML='Testing...';
+  statusEl.innerHTML='Testing…';
+  if(!token){statusEl.innerHTML='<span style="color:#ef4444">No token saved — enter your token above and click Save Settings first.</span>';return;}
+  if(!repo||!repo.includes('/')){statusEl.innerHTML='<span style="color:#ef4444">Repository must be owner/repo format.</span>';return;}
   try{
-    const res=await fetch(`https://api.github.com/repos/${repo}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
+    const res=await fetch(`https://api.github.com/repos/${repo}`,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github.v3+json'}});
     const data=await res.json();
-    if(data.name){statusEl.innerHTML=`<span style="color:#16a34a">Connected to <b>${data.full_name}</b>. Auto-deploy is active.</span>`;}
-    else{statusEl.innerHTML=`<span style="color:#ef4444">Failed: ${data.message||'Check token and repo name.'}</span>`;}
-  }catch(e){statusEl.innerHTML=`<span style="color:#ef4444">Error: ${e.message}</span>`;}
+    if(res.status===401){statusEl.innerHTML='<span style="color:#ef4444">❌ Token invalid or expired — create a new one at github.com/settings/tokens</span>';return;}
+    if(res.status===404){statusEl.innerHTML=`<span style="color:#ef4444">❌ Repo not found: <b>${repo}</b> — check owner/repo spelling or token access</span>`;return;}
+    if(res.status===403){statusEl.innerHTML='<span style="color:#ef4444">❌ Permission denied — token needs Contents: Read & Write on this repo</span>';return;}
+    if(data.name){
+      const pushable=data.permissions&&data.permissions.push;
+      statusEl.innerHTML=`<span style="color:#16a34a">✅ Connected to <b>${data.full_name}</b>${pushable?' — write access confirmed':' (read-only — check token Contents: Write permission)'}.</span>`;
+    }else{
+      statusEl.innerHTML=`<span style="color:#ef4444">❌ Unexpected response: ${data.message||'Check token and repo name.'}</span>`;
+    }
+  }catch(e){statusEl.innerHTML=`<span style="color:#ef4444">Network error: ${e.message}</span>`;}
 }
 
+/* Returns {ok:true} on success, or {ok:false, status, msg} on failure */
 async function commitToGitHub(filePath,newContent,commitMsg){
   const repo=localStorage.getItem('myai_gh_repo');
   const token=localStorage.getItem('myai_gh_token');
-  if(!repo||!token)return false;
+  if(!repo||!token)return {ok:false,status:0,msg:'No token or repo stored.'};
   try{
-    const getRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
+    const headers={Authorization:`Bearer ${token}`,Accept:'application/vnd.github.v3+json'};
+    const getRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{headers});
     const encoded=btoa(unescape(encodeURIComponent(newContent)));
     const body={message:commitMsg,content:encoded};
     if(getRes.ok){
       const fileData=await getRes.json();
-      if(fileData.sha)body.sha=fileData.sha; /* update existing file */
-    }else if(getRes.status!==404){
-      /* unexpected error (403, 401, etc.) — bail out */
-      console.error('GitHub GET failed:',getRes.status);return false;
+      if(fileData.sha)body.sha=fileData.sha;
+    }else if(getRes.status===401){
+      return {ok:false,status:401,msg:'Token is invalid or expired — generate a new one at github.com/settings/tokens'};
+    }else if(getRes.status===403){
+      return {ok:false,status:403,msg:'Token lacks permission — needs Contents: Read & Write on this repository'};
+    }else if(getRes.status===404){
+      /* file doesn't exist yet — create it (no sha needed) */
+    }else{
+      const e=await getRes.json().catch(()=>({}));
+      return {ok:false,status:getRes.status,msg:`GitHub error ${getRes.status}: ${e.message||'unknown'}`};
     }
-    /* 404 → file doesn't exist yet → create it (no sha needed) */
-    const putRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{method:'PUT',headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!putRes.ok){const e=await putRes.json().catch(()=>({}));console.error('GitHub PUT failed:',putRes.status,e);return false;}
+    const putRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!putRes.ok){
+      const e=await putRes.json().catch(()=>({}));
+      const hint=putRes.status===404?'Repo not found — check the owner/repo name is exactly right':'';
+      return {ok:false,status:putRes.status,msg:`GitHub ${putRes.status}: ${e.message||'unknown'}. ${hint}`};
+    }
     const result=await putRes.json();
-    return !!result.commit;
-  }catch(e){console.error('GitHub commit failed:',e);return false;}
+    return result.commit?{ok:true}:{ok:false,status:0,msg:'Commit returned no commit object'};
+  }catch(e){
+    return {ok:false,status:0,msg:`Network error: ${e.message}`};
+  }
 }
 
 function buildToolsDataJs(){
@@ -1636,7 +1658,7 @@ async function autoCommitAfterSave(){
     commitToGitHub('data/affiliate_tools.json',affJson,'Admin: sync affiliate partner list'),
     commitToGitHub('data/admin_overrides.json',ovrJson,'Admin: sync settings (cross-device)')
   ]);
-  if(r1||r2||r3){showAdminToast('✅ Saved & deployed to GitHub.');}
+  if(r1.ok||r2.ok||r3.ok){showAdminToast('✅ Saved & deployed to GitHub.');}
   else{showAdminToast('⚠️ GitHub not connected — changes saved locally only.');}
 }
 
@@ -1876,10 +1898,10 @@ async function commitReviews(){
   const jsonStr  = JSON.stringify({reviews: approved}, null, 2);
   const btn = document.querySelector('button[onclick="commitReviews()"]');
   if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
-  const ok = await commitToGitHub('data/reviews.json', jsonStr,
+  const res = await commitToGitHub('data/reviews.json', jsonStr,
     `Reviews: ${approved.length} approved (${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})})`);
   if(btn){ btn.disabled=false; btn.innerHTML='💾 Save &amp; Deploy'; }
-  if(ok){
+  if(res.ok){
     showAdminToast(`✅ ${approved.length} reviews deployed to site.`);
     // Clear pending from localStorage since they're now committed
     try{
@@ -1889,7 +1911,7 @@ async function commitReviews(){
       localStorage.setItem(LS_PENDING,JSON.stringify(remaining));
     }catch(e){}
   } else {
-    alert('GitHub commit failed. Check your token in the GitHub Sync tab and try again.');
+    alert('GitHub commit failed: ' + (res.msg||'Unknown error') + '\n\nCheck your token in the GitHub Sync tab.');
   }
 }
 </script>
