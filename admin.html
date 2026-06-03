@@ -1094,13 +1094,7 @@ const DEFAULT_SITE = {
   google_place_id: ""
 };
 
-/* ===== Auth ===== */
-function unlock(){
-  const v = document.getElementById('pw').value;
-  if (v !== ADMIN_PASS) { document.getElementById('err').textContent = 'Wrong passphrase.'; return; }
-  sessionStorage.setItem(LS_AUTH, '1');
-  showApp();
-}
+/* ===== Auth helpers ===== */
 function logout(){ sessionStorage.removeItem(LS_AUTH); location.reload(); }
 function isAuthed(){ return sessionStorage.getItem(LS_AUTH) === '1'; }
 function showApp(){
@@ -1658,9 +1652,7 @@ function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
 document.getElementById('pw').addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); });
 document.getElementById('search').addEventListener('input',e=>{ search = e.target.value; _toolPage=0; renderToolList(); });
 
-/* Auto-resume if already authed in this session */
-if (isAuthed()) showApp();
-else document.getElementById('pw').focus();
+/* Auth boot is handled by initAdmin() below — do not add sync auth checks here */
 
 /* ── GitHub Auto-Deploy ── */
 function saveGHSettings(){
