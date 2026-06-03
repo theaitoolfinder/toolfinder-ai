@@ -3,15 +3,25 @@ name: Article Generator
 # ─────────────────────────────────────────────────────────────────────────────
 # Schedule (all times in Philippine Time, PHT = UTC+8)
 #
-#  Mon–Sun   8:00 PHT  → Morning article   (00:00 UTC)  comparison / tutorial / roundup
-#  Mon–Sun  13:00 PHT  → Afternoon article (05:00 UTC)  roundup / tutorial / comparison
-#  Mon–Sun  19:00 PHT  → Evening article   (11:00 UTC)  news digest / roundup / comparison
+#  6 regular slots per day (every 4 hours):
+#  Mon–Sun  08:00 PHT → slot: morning    (00:00 UTC)
+#  Mon–Sun  12:00 PHT → slot: midday     (04:00 UTC)
+#  Mon–Sun  16:00 PHT → slot: afternoon  (08:00 UTC)
+#  Mon–Sun  20:00 PHT → slot: evening    (12:00 UTC)
+#  Mon–Sun  00:00 PHT → slot: night      (16:00 UTC)
+#  Mon–Sun  04:00 PHT → slot: latenight  (20:00 UTC)
 #
-#  Friday   10:00 PHT  → Exclusive #1     (02:00 UTC)
-#  Friday   12:00 PHT  → Exclusive #2     (04:00 UTC)
-#  Friday   14:00 PHT  → Exclusive #3     (06:00 UTC)
-#  Friday   16:00 PHT  → Exclusive #4     (08:00 UTC)
-#  Friday   18:00 PHT  → Exclusive #5     (10:00 UTC)
+#  10 Friday exclusives at odd hours (interleaved between regular slots):
+#  09:00 PHT → Exclusive #1   (01:00 UTC)
+#  11:00 PHT → Exclusive #2   (03:00 UTC)
+#  13:00 PHT → Exclusive #3   (05:00 UTC)
+#  15:00 PHT → Exclusive #4   (07:00 UTC)
+#  17:00 PHT → Exclusive #5   (09:00 UTC)
+#  19:00 PHT → Exclusive #6   (11:00 UTC)
+#  21:00 PHT → Exclusive #7   (13:00 UTC)
+#  23:00 PHT → Exclusive #8   (15:00 UTC)
+#  01:00 PHT → Exclusive #9   (17:00 UTC)
+#  03:00 PHT → Exclusive #10  (19:00 UTC)
 #
 #  Hourly catchup (30 * * * *): runs every hour at :30 — if GitHub delayed or
 #  skipped a scheduled run, the script detects the missing slot and generates it.
@@ -20,19 +30,25 @@ name: Article Generator
 
 on:
   schedule:
-    # Mon–Sun Morning  (08:00 PHT = 00:00 UTC)
-    - cron: '0 0 * * *'
-    # Mon–Sun Afternoon (13:00 PHT = 05:00 UTC)
-    - cron: '0 5 * * *'
-    # Mon–Sun Evening  (19:00 PHT = 11:00 UTC)
-    - cron: '0 11 * * *'
-    # Friday Exclusive × 5 (every 2 hrs: 02–10 UTC = 10am–6pm PHT)
-    - cron: '0 2 * * 5'
-    - cron: '0 4 * * 5'
-    - cron: '0 6 * * 5'
-    - cron: '0 8 * * 5'
-    - cron: '0 10 * * 5'
-    # Hourly catchup — fires at :30 every hour, no-ops if nothing is missing
+    # ── 6 regular slots (every 4 hours) ──
+    - cron: '0 0  * * *'   # morning    08:00 PHT
+    - cron: '0 4  * * *'   # midday     12:00 PHT
+    - cron: '0 8  * * *'   # afternoon  16:00 PHT
+    - cron: '0 12 * * *'   # evening    20:00 PHT
+    - cron: '0 16 * * *'   # night      00:00 PHT
+    - cron: '0 20 * * *'   # latenight  04:00 PHT
+    # ── Friday exclusives × 10 (odd hours, interleaved) ──
+    - cron: '0 1  * * 5'
+    - cron: '0 3  * * 5'
+    - cron: '0 5  * * 5'
+    - cron: '0 7  * * 5'
+    - cron: '0 9  * * 5'
+    - cron: '0 11 * * 5'
+    - cron: '0 13 * * 5'
+    - cron: '0 15 * * 5'
+    - cron: '0 17 * * 5'
+    - cron: '0 19 * * 5'
+    # ── Hourly catchup ──
     - cron: '30 * * * *'
 
   # Also fires whenever the subscriber-sync workflow completes — that runs every

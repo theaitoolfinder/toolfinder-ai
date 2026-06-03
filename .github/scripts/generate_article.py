@@ -33,17 +33,36 @@ ARTICLES_DIR.mkdir(exist_ok=True)
 # ── Runtime ────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 SLOT_OVERRIDE     = os.environ.get("ARTICLE_SLOT", "").strip().lower()
-# Accept legacy names
-_SLOT_ALIAS = {"lunch": "morning", "dinner": "evening"}
+# Alias map: legacy → new slot names
+_SLOT_ALIAS = {
+    "lunch":      "morning",
+    "dinner":     "evening",
+    "afternoon":  "afternoon",   # kept for manual dispatch
+}
 NOW               = datetime.now(timezone.utc)
 DATE_SLUG         = NOW.strftime("%Y-%m-%d")
 DATE_STR          = NOW.strftime("%B %d, %Y")
 YEAR              = NOW.strftime("%Y")
 
+# ── 6 regular slots per day (UTC hour thresholds) ─────────────────────────────
+# Slot name          UTC starts   PHT equivalent
+REGULAR_SLOTS = [
+    ( 0, "morning"),    # 00:00 UTC = 08:00 PHT
+    ( 4, "midday"),     # 04:00 UTC = 12:00 PHT
+    ( 8, "afternoon"),  # 08:00 UTC = 16:00 PHT
+    (12, "evening"),    # 12:00 UTC = 20:00 PHT
+    (16, "night"),      # 16:00 UTC = 00:00 PHT
+    (20, "latenight"),  # 20:00 UTC = 04:00 PHT
+]
+
+# 10 Friday exclusive hours (UTC) — odd hours, interleaved with regular slots
+EXCL_HOURS = (1, 3, 5, 7, 9, 11, 13, 15, 17, 19)
+
 # ── Determine slot from time + weekday ────────────────────────────────────────
 def determine_slot():
     # Accept override (manual dispatch or forced slot)
-    _valid = ("morning", "afternoon", "evening", "exclusive", "lunch", "dinner")
+    _valid = {"morning","midday","afternoon","evening","night","latenight",
+              "exclusive","lunch","dinner"}
     if SLOT_OVERRIDE in _valid:
         return _SLOT_ALIAS.get(SLOT_OVERRIDE, SLOT_OVERRIDE)
 
@@ -64,20 +83,17 @@ def determine_slot():
         except Exception:
             pass
 
-    # Friday exclusives: each fires at 02,04,06,08,10 UTC (catchup: one per run)
+    # Friday exclusives: 10 slots at odd hours (catchup: one per run)
     if is_friday:
-        excl_due = sum(1 for h in (2, 4, 6, 8, 10) if hour >= h)
+        excl_due = sum(1 for h in EXCL_HOURS if hour >= h)
         if excl_due > excl_today:
             return "exclusive"
 
     # Regular slots — return the EARLIEST missing slot whose time has passed.
-    # This means a delayed or failed run will catchup on the next hourly tick.
-    if hour >= 0 and "morning" not in generated_today:
-        return "morning"
-    if hour >= 5 and "afternoon" not in generated_today:
-        return "afternoon"
-    if hour >= 11 and "evening" not in generated_today:
-        return "evening"
+    # Catchup logic: a delayed run will catch the earliest missing slot.
+    for min_hour, slot_name in REGULAR_SLOTS:
+        if hour >= min_hour and slot_name not in generated_today:
+            return slot_name
 
     return None   # all expected slots are already done for today
 
@@ -330,8 +346,11 @@ STYLE: Strategic but grounded. Every point needs supporting logic, not just asse
 # Slot → preferred type order
 SLOT_TYPE_PREFS = {
     "morning":   ["comparison", "tutorial", "roundup", "workflow"],
+    "midday":    ["tutorial", "roundup", "comparison", "workflow"],
     "afternoon": ["roundup", "tutorial", "comparison", "workflow"],
     "evening":   ["news_digest", "roundup", "comparison", "tutorial"],
+    "night":     ["comparison", "workflow", "tutorial", "roundup"],
+    "latenight": ["news_digest", "roundup", "workflow", "comparison"],
     "exclusive": ["deep_dive", "workflow", "strategy", "comparison", "roundup", "tutorial"],
     # Legacy aliases kept for backward compatibility
     "lunch":     ["comparison", "tutorial", "roundup", "workflow"],
@@ -477,8 +496,16 @@ def build_title(article_type, log):
     recent_topics   = {e.get("topic", "") for e in recent}
 
     if article_type == "news_digest":
-        slot_label_map = {"morning": "Morning Edition", "afternoon": "Afternoon Edition",
-                          "evening": "Evening Edition", "lunch": "Morning Edition", "dinner": "Evening Edition"}
+        slot_label_map = {
+            "morning":   "Morning Edition",
+            "midday":    "Midday Edition",
+            "afternoon": "Afternoon Edition",
+            "evening":   "Evening Edition",
+            "night":     "Night Edition",
+            "latenight": "Late Night Edition",
+            "lunch":     "Morning Edition",
+            "dinner":    "Evening Edition",
+        }
         slot_label = slot_label_map.get(SLOT, "Daily Edition")
         return f"AI Tools Digest — {DATE_STR} ({slot_label})"
 
@@ -583,7 +610,16 @@ def get_slug(log):
                       if e.get("date") == DATE_SLUG and e.get("slot") == "exclusive"]
         n = len(today_excl) + 1
         return f"exclusive-{DATE_SLUG}-{n}"
-    suffix_map = {"morning": "am", "lunch": "am", "afternoon": "pm", "evening": "eve", "dinner": "pm"}
+    suffix_map = {
+        "morning":   "am",
+        "midday":    "md",
+        "afternoon": "pm",
+        "evening":   "eve",
+        "night":     "nt",
+        "latenight": "ln",
+        "lunch":     "am",
+        "dinner":    "pm",
+    }
     suffix = suffix_map.get(SLOT, "pm")
     return f"article-{DATE_SLUG}-{suffix}"
 
