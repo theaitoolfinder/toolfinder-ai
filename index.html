@@ -513,7 +513,7 @@ body::before{
 #cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:130px;background:none;border:none;cursor:pointer;padding:0;filter:drop-shadow(0 8px 22px rgba(26,86,219,.42)) drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:filter .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
 #cb-btn:hover{filter:drop-shadow(0 14px 32px rgba(26,86,219,.58)) drop-shadow(0 3px 10px rgba(0,0,0,.2));transform:translateY(-5px) scale(1.04)}
 #cb-btn.open{filter:drop-shadow(0 4px 14px rgba(26,86,219,.3));transform:none}
-#teza-canvas{display:block;width:96px;height:130px;border-radius:12px}
+#teza-canvas{display:block;width:96px;height:130px}
 /* Clippy body animations (kept for no-op compatibility) */
 @keyframes clippyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes clippyWave{0%,100%{transform:rotate(0deg)}12%{transform:rotate(-45deg)}30%{transform:rotate(30deg)}50%{transform:rotate(-40deg)}68%{transform:rotate(24deg)}84%{transform:rotate(-12deg)}95%{transform:rotate(5deg)}}
@@ -3573,13 +3573,6 @@ async function submitReview(){
     const t = ts * 0.001;
     ctx.clearRect(0, 0, W, H);
 
-    // Dark pill background so tesseract pops
-    ctx.save();
-    ctx.fillStyle = 'rgba(4, 6, 24, 0.92)';
-    ctx.beginPath();
-    ctx.roundRect(3, 3, W-6, H-6, 14);
-    ctx.fill();
-    ctx.restore();
 
     const cx = W * 0.5, cy = H * 0.46;
 
