@@ -557,6 +557,42 @@ body::before{
 .cb-typing span:nth-child(2){animation-delay:.18s}
 .cb-typing span:nth-child(3){animation-delay:.36s}
 @keyframes cbDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+/* ── Partner Picks section ── */
+.partner-picks{padding:36px 0 12px}
+.partner-picks .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.partner-picks .eyebrow{margin:0}
+.partner-picks .disclosure{font-size:11.5px;color:var(--text-dim);background:rgba(26,86,219,.06);border:1px solid rgba(26,86,219,.10);border-radius:999px;padding:3px 10px}
+.pp-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.pp-scroll::-webkit-scrollbar{height:4px}.pp-scroll::-webkit-scrollbar-track{background:transparent}.pp-scroll::-webkit-scrollbar-thumb{background:rgba(26,86,219,.18);border-radius:4px}
+.pp-card{flex:0 0 220px;scroll-snap-align:start;background:var(--surface);border:1.5px solid rgba(26,86,219,.14);border-radius:18px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s;position:relative;overflow:hidden}
+.pp-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,86,219,.04),transparent 60%);pointer-events:none}
+.pp-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,86,219,.14);border-color:rgba(26,86,219,.28)}
+.pp-card-top{display:flex;align-items:center;gap:10px}
+.pp-logo{width:38px;height:38px;border-radius:10px;overflow:hidden;flex-shrink:0;background:rgba(26,86,219,.06);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--primary)}
+.pp-logo img{width:38px;height:38px;object-fit:cover}
+.pp-name{font-weight:700;font-size:14px;color:var(--text);line-height:1.2}
+.pp-cat{font-size:11px;color:var(--text-dim);margin-top:1px}
+.pp-tag{font-size:12.5px;color:var(--text-2);line-height:1.5;flex:1}
+.pp-btn{display:block;text-align:center;padding:9px 14px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:12.5px;font-weight:700;text-decoration:none;transition:all .15s;box-shadow:0 3px 10px rgba(26,86,219,.25)}
+.pp-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,219,.35)}
+.pp-partner-badge{position:absolute;top:10px;right:10px;font-size:9.5px;font-weight:700;color:rgba(26,86,219,.5);text-transform:uppercase;letter-spacing:.06em;background:rgba(26,86,219,.06);border-radius:4px;padding:2px 5px}
+
+/* ── Floating subscribe popup ── */
+#sub-popup{position:fixed;bottom:24px;right:24px;z-index:8888;width:320px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.18),0 4px 16px rgba(26,86,219,.12);border:1.5px solid rgba(26,86,219,.14);padding:22px 22px 20px;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;pointer-events:none}
+#sub-popup.show{transform:translateY(0);opacity:1;pointer-events:auto}
+#sub-popup .pop-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:18px;color:var(--text-dim);cursor:pointer;line-height:1;padding:2px;opacity:.7;transition:opacity .15s}
+#sub-popup .pop-close:hover{opacity:1}
+#sub-popup .pop-icon{font-size:28px;margin-bottom:8px}
+#sub-popup .pop-title{font-size:16px;font-weight:800;color:var(--text);margin:0 0 4px;line-height:1.2}
+#sub-popup .pop-sub{font-size:12.5px;color:var(--text-2);margin:0 0 14px;line-height:1.5}
+#sub-popup input[type=email]{width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1.5px solid rgba(26,86,219,.18);font:14px 'Poppins',sans-serif;outline:none;color:var(--text);transition:border-color .15s;margin-bottom:9px}
+#sub-popup input[type=email]:focus{border-color:var(--primary)}
+#sub-popup .pop-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 14px 'Poppins',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.30);transition:all .2s}
+#sub-popup .pop-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,86,219,.40)}
+#sub-popup .pop-dismiss{display:block;text-align:center;margin-top:10px;font-size:11.5px;color:var(--text-dim);cursor:pointer;text-decoration:underline}
+#sub-popup .pop-msg{font-size:12.5px;margin-top:8px;min-height:18px;text-align:center;font-weight:500}
+@media(max-width:400px){#sub-popup{right:12px;left:12px;width:auto;bottom:16px}}
 </style>
 </head>
 <body>
@@ -620,6 +656,18 @@ body::before{
   <div class="tools-marquee-section" aria-hidden="true">
     <div class="marquee-track" id="marquee-track"></div>
   </div>
+
+  <!-- ── Partner Picks (affiliate tools) — populated by JS if any tools have affiliate_url set ── -->
+  <section class="container partner-picks" id="partner-picks" style="display:none">
+    <div class="sec-label">
+      <div class="eyebrow">Tested &amp; Recommended</div>
+      <span class="disclosure">includes partner tools</span>
+    </div>
+    <h2 style="margin:0 0 4px;font-size:clamp(20px,3vw,26px);font-weight:800">AI Tools Our Editors Love</h2>
+    <p style="margin:0 0 18px;color:var(--text-2);font-size:14.5px">Hand-picked tools we've personally tested — including partners who help keep this site free.</p>
+    <div class="pp-scroll" id="pp-scroll"></div>
+  </section>
+
   <section class="container controls" id="tools">
     <!-- sentinel: IntersectionObserver fires when this exits viewport → bar is stuck -->
     <div id="tfm-sentinel" style="height:1px;margin-bottom:-1px;pointer-events:none"></div>
@@ -857,6 +905,19 @@ body::before{
   </section>
 
 </main>
+
+<!-- ── Floating Subscribe Popup ── -->
+<div id="sub-popup" role="dialog" aria-label="Subscribe to newsletter">
+  <button class="pop-close" onclick="dismissSubPopup()" aria-label="Close">&#x2715;</button>
+  <div class="pop-icon">📬</div>
+  <p class="pop-title">Get 5 AI tools every Friday</p>
+  <p class="pop-sub">1,000+ readers. Free forever. No spam — just the tools that actually save you time.</p>
+  <input type="email" id="pop-email" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')popSubscribe()">
+  <button class="pop-btn" onclick="popSubscribe()">Subscribe Free →</button>
+  <div class="pop-msg" id="pop-msg"></div>
+  <span class="pop-dismiss" onclick="dismissSubPopup()">No thanks, I'll miss out</span>
+</div>
+
 <footer class="site">
   <div class="container">
     <div class="cols">
@@ -2652,6 +2713,118 @@ async function submitReview(){
     const link=document.getElementById('google-review-link');
     if(link) link.href='https://search.google.com/local/writereview?placeid='+encodeURIComponent(cfg.google_place_id);
     document.getElementById('google-prompt').style.display='block';
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PARTNER PICKS — "AI Tools Our Editors Love"
+   Loads data/affiliate_tools.json and renders
+   a horizontal scroll strip above the directory.
+   ═══════════════════════════════════════════ */
+(async function renderPartnerPicks(){
+  try{
+    const r=await fetch('/data/affiliate_tools.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) return;
+    const data=await r.json();
+    const partners=(data.tools||[]).filter(p=>p.affiliate_url&&p.name);
+    if(!partners.length) return;
+
+    const scroll=document.getElementById('pp-scroll');
+    if(!scroll) return;
+
+    /* Helper: get tool info from TOOLS array by name match */
+    function toolByName(name){
+      const nl=name.toLowerCase();
+      return TOOLS.map((_,i)=>tool(i)).filter(Boolean).find(t=>t.name.toLowerCase()===nl)||null;
+    }
+    function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+    function favicon(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
+
+    scroll.innerHTML=partners.map(p=>{
+      const t=toolByName(p.name);
+      const domain=t?t.domain:'';
+      const tag=t?t.tag:'';
+      const cat=(p.categories&&p.categories[0])||(t?t.cat:'');
+      const goUrl='go.html?url='+encodeURIComponent(p.affiliate_url)+'&name='+encodeURIComponent(p.name);
+      const logoHtml=domain
+        ?`<img src="${favicon(domain)}" alt="${p.name}" onerror="this.style.display='none';this.parentNode.innerHTML='${initials(p.name)}'">`
+        :initials(p.name);
+      return `<div class="pp-card">
+        <span class="pp-partner-badge">Partner</span>
+        <div class="pp-card-top">
+          <div class="pp-logo">${logoHtml}</div>
+          <div><div class="pp-name">${p.name}</div><div class="pp-cat">${cat}</div></div>
+        </div>
+        ${tag?`<div class="pp-tag">${tag}</div>`:''}
+        <a class="pp-btn" href="${goUrl}" target="_blank" rel="sponsored noopener nofollow">Try Free &rarr;</a>
+      </div>`;
+    }).join('');
+
+    document.getElementById('partner-picks').style.display='block';
+  }catch(e){ /* no affiliate file yet — silently skip */ }
+})();
+
+/* ═══════════════════════════════════════════
+   FLOATING SUBSCRIBE POPUP
+   Shows after 8 s. Hidden if user is already
+   a verified subscriber (getUser() != null)
+   or dismissed within the last 14 days.
+   ═══════════════════════════════════════════ */
+(function initSubPopup(){
+  const POPUP_KEY='myai_popup_dismissed_v1';
+  const DISMISS_DAYS=14;
+
+  /* Don't show if already a subscriber */
+  if(getUser()) return;
+
+  /* Don't show if dismissed recently */
+  try{
+    const ts=parseInt(localStorage.getItem(POPUP_KEY)||'0',10);
+    if(ts && Date.now()-ts < DISMISS_DAYS*24*60*60*1000) return;
+  }catch(e){}
+
+  /* Show after 8 seconds */
+  setTimeout(()=>{
+    /* Re-check in case user logged in during those 8 seconds */
+    if(getUser()) return;
+    const popup=document.getElementById('sub-popup');
+    if(popup) popup.classList.add('show');
+  }, 8000);
+})();
+
+function dismissSubPopup(){
+  try{ localStorage.setItem('myai_popup_dismissed_v1', Date.now()); }catch(e){}
+  const popup=document.getElementById('sub-popup');
+  if(popup){ popup.classList.remove('show'); }
+}
+
+async function popSubscribe(){
+  const emailEl=document.getElementById('pop-email');
+  const msgEl=document.getElementById('pop-msg');
+  const btn=document.querySelector('#sub-popup .pop-btn');
+  const email=(emailEl.value||'').trim();
+  msgEl.style.color='var(--text-dim)'; msgEl.textContent='';
+  if(!email||!/\S+@\S+\.\S+/.test(email)){
+    msgEl.style.color='#ef4444'; msgEl.textContent='Please enter a valid email.'; return;
+  }
+  btn.disabled=true; btn.textContent='Subscribing…';
+  try{
+    const fd=new FormData();
+    fd.append('EMAIL',email);
+    fd.append('locale','en');
+    fd.append('html_type','simple');
+    await fetch('https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',
+      {method:'POST',body:fd,mode:'no-cors'});
+    msgEl.style.color='var(--ok)';
+    msgEl.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox Friday.';
+    btn.textContent='✓ Subscribed!';
+    emailEl.value='';
+    /* Auto-close popup after 3 seconds */
+    setTimeout(()=>dismissSubPopup(), 3000);
+  }catch(err){
+    msgEl.style.color='#ef4444';
+    msgEl.textContent='Something went wrong — try again.';
+    btn.disabled=false; btn.textContent='Subscribe Free →';
   }
 }
 
