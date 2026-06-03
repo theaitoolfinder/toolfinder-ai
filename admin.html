@@ -311,20 +311,44 @@
 
     <!-- ── MY DATABASE PANEL ── -->
     <div id="sub-panel-db">
-      <div class="info-banner" style="margin-bottom:20px">
-        📦 <b>My Database</b> is your permanent subscriber list stored in <code>data/subscribers_db.json</code> in your GitHub repo. Subscribers are <b>only ever added, never removed</b>. This list powers the <b>member gate</b> on articles — even if someone later unsubscribes from Brevo they keep access.<br><br>
-        <b>To add new subscribers:</b> switch to the <b>Brevo Live</b> tab and click ↺ Refresh while on a valid IP — new emails are automatically hashed and merged here.
+      <div class="info-banner" style="margin-bottom:16px">
+        📦 <b>My Database</b> is your permanent subscriber list. Subscribers are <b>only ever added, never removed</b> — it powers the member gate on articles.<br>
+        <b>To add new subscribers:</b> switch to <b>Brevo Live</b> and click ↺ Refresh while on a valid IP.
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
-        <div class="stat"><b id="db-stat-total">—</b><span>Total in database</span></div>
-        <div class="stat"><b id="db-stat-brevo">—</b><span>Last Brevo sync count</span></div>
-        <div class="stat"><b id="db-stat-synced">—</b><span>Last synced</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+        <div class="stat"><b id="db-stat-total">—</b><span>Total subscribers</span></div>
+        <div class="stat"><b id="db-stat-brevo">—</b><span>Last Brevo sync</span></div>
+        <div class="stat"><b id="db-stat-synced">—</b><span>Last updated</span></div>
       </div>
-      <div id="db-loading" style="display:none;text-align:center;padding:32px;color:var(--text-dim)">⏳ Loading…</div>
-      <div id="db-error"   style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:14px;font-size:13.5px;color:#991b1b;margin-bottom:12px"></div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <button class="btn primary" onclick="loadSubDB()">↺ Refresh Database</button>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+        <input type="search" id="db-search" placeholder="🔎 Search by email or name…" style="flex:1;min-width:200px" oninput="filterDbSubs()" />
+        <button class="btn primary" onclick="loadSubDB()">↺ Refresh</button>
+        <button class="btn" onclick="exportDbCSV()">⬇ Export CSV</button>
         <span id="db-sync-status" style="font-size:13px;color:var(--text-dim)"></span>
+      </div>
+      <div id="db-loading" style="display:none;text-align:center;padding:32px;color:var(--text-dim)">⏳ Loading database…</div>
+      <div id="db-error"   style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:14px;font-size:13.5px;color:#991b1b;margin-bottom:12px"></div>
+      <div id="db-table-wrap" style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+          <thead>
+            <tr style="background:var(--bg);border-bottom:1.5px solid var(--border)">
+              <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">#</th>
+              <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Email</th>
+              <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Name</th>
+              <th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--text-dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em">Added</th>
+            </tr>
+          </thead>
+          <tbody id="db-tbody">
+            <tr><td colspan="4" style="padding:36px;text-align:center;color:var(--text-dim)">No data yet — click Refresh or sync from Brevo Live.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap;gap:8px">
+        <div id="db-page-info" style="font-size:13px;color:var(--text-dim)"></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="db-prev" onclick="dbChangePage(-1)" disabled>← Prev</button>
+          <button class="btn" id="db-next" onclick="dbChangePage(1)"  disabled>Next →</button>
+        </div>
       </div>
     </div>
 
@@ -1403,26 +1427,50 @@ function switchSubView(view){
   if(view==='db') loadSubDB();
 }
 
-/* ── Load stats from internal subscribers_db.json (no Brevo API needed) ── */
+/* ── DB state for the My Database table ── */
+let _dbAll=[], _dbFiltered=[], _dbPage=0;
+const DB_PAGE_SIZE=50;
+
+/* ── Load full subscriber list from subscribers_db.json ── */
 async function loadSubDB(){
   const repo=localStorage.getItem('myai_gh_repo');
   const loading=document.getElementById('db-loading');
   const errEl=document.getElementById('db-error');
+  const tableWrap=document.getElementById('db-table-wrap');
   errEl.style.display='none';
   if(!repo){
     errEl.textContent='No GitHub repo configured — go to the GitHub Sync tab first.';
     errEl.style.display='block'; return;
   }
   loading.style.display='block';
+  tableWrap.style.display='none';
   try{
     const url=`https://raw.githubusercontent.com/${repo}/main/data/subscribers_db.json?_=${Date.now()}`;
     const r=await fetch(url);
     if(!r.ok) throw new Error(`Could not load database (HTTP ${r.status}). Make sure data/subscribers_db.json exists in your repo.`);
     const db=await r.json();
-    document.getElementById('db-stat-total').textContent=(db.count||db.hashes&&db.hashes.length||0).toLocaleString();
+
+    /* Update stats */
+    const total=db.count||(db.hashes&&db.hashes.length)||0;
+    document.getElementById('db-stat-total').textContent=total.toLocaleString();
     document.getElementById('db-stat-brevo').textContent=(db.brevo_active||0).toLocaleString();
-    const synced=db.last_updated ? new Date(db.last_updated).toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}) : '—';
+    const synced=db.last_updated?new Date(db.last_updated).toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}):'—';
     document.getElementById('db-stat-synced').textContent=synced;
+
+    /* Build rows — use subscribers array if present, else show hashes only */
+    if(Array.isArray(db.subscribers)&&db.subscribers.length){
+      _dbAll=[...db.subscribers].reverse(); /* newest first */
+    }else if(Array.isArray(db.hashes)&&db.hashes.length){
+      /* Fallback: no email records yet — show hashes (will populate after next Brevo sync) */
+      _dbAll=db.hashes.map(h=>({email:'(sync from Brevo to reveal)',name:'—',added:'—',hash:h}));
+    }else{
+      _dbAll=[];
+    }
+
+    _dbFiltered=[..._dbAll];
+    _dbPage=0;
+    renderDbTable();
+    tableWrap.style.display='block';
   }catch(e){
     errEl.textContent='⚠ '+e.message;
     errEl.style.display='block';
@@ -1430,8 +1478,70 @@ async function loadSubDB(){
   loading.style.display='none';
 }
 
-/* ── After a successful Brevo refresh, hash+merge new emails into the DB ─ */
-async function syncToInternalDB(activeContacts){
+function filterDbSubs(){
+  const q=(document.getElementById('db-search').value||'').toLowerCase().trim();
+  _dbFiltered=q?_dbAll.filter(s=>(s.email||'').toLowerCase().includes(q)||(s.name||'').toLowerCase().includes(q)):_dbAll.slice();
+  _dbPage=0;
+  renderDbTable();
+}
+
+function renderDbTable(){
+  const tbody=document.getElementById('db-tbody');
+  const info=document.getElementById('db-page-info');
+  const prev=document.getElementById('db-prev');
+  const next=document.getElementById('db-next');
+  const start=_dbPage*DB_PAGE_SIZE;
+  const slice=_dbFiltered.slice(start,start+DB_PAGE_SIZE);
+
+  if(!slice.length){
+    tbody.innerHTML='<tr><td colspan="4" style="padding:36px;text-align:center;color:var(--text-dim)">No subscribers found.</td></tr>';
+    info.textContent=''; prev.disabled=true; next.disabled=true; return;
+  }
+
+  tbody.innerHTML=slice.map((s,i)=>{
+    const idx=start+i+1;
+    const email=escHtml(s.email||'—');
+    const name=escHtml(s.name||'—');
+    const added=s.added&&s.added!=='—'?new Date(s.added).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'—';
+    const bg=idx%2===0?'background:var(--surface)':'background:var(--bg)';
+    return `<tr style="${bg};border-bottom:1px solid var(--border-soft)">
+      <td style="padding:10px 14px;color:var(--text-dim);font-size:12px">${idx}</td>
+      <td style="padding:10px 14px;color:var(--text-2)">${email}</td>
+      <td style="padding:10px 14px;color:var(--text)">${name}</td>
+      <td style="padding:10px 14px;color:var(--text-dim)">${added}</td>
+    </tr>`;
+  }).join('');
+
+  const total=_dbFiltered.length;
+  const end=Math.min(start+DB_PAGE_SIZE,total);
+  info.textContent=`Showing ${start+1}–${end} of ${total.toLocaleString()} subscribers`;
+  prev.disabled=_dbPage===0;
+  next.disabled=end>=total;
+}
+
+function dbChangePage(dir){
+  const max=Math.ceil(_dbFiltered.length/DB_PAGE_SIZE)-1;
+  _dbPage=Math.max(0,Math.min(max,_dbPage+dir));
+  renderDbTable();
+  document.getElementById('db-table-wrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function exportDbCSV(){
+  if(!_dbAll.length){alert('No data loaded — click Refresh first.');return;}
+  const rows=[['#','Email','Name','Date Added']].concat(_dbAll.map((s,i)=>[
+    i+1, s.email||'', s.name||'',
+    s.added&&s.added!=='—'?new Date(s.added).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):''
+  ]));
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='my-subscribers-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+/* ── After a successful Brevo refresh, merge new subscribers into the DB ─ */
+async function syncToInternalDB(allContacts){
   const repo=localStorage.getItem('myai_gh_repo');
   if(!repo) return;
   const statusEl=document.getElementById('db-sync-status');
@@ -1439,36 +1549,53 @@ async function syncToInternalDB(activeContacts){
   if(syncBanner) syncBanner.style.display='block';
 
   /* 1. Fetch current DB from GitHub raw */
-  let db={v:1,hashes:[],count:0,brevo_active:0,
+  let db={v:1,hashes:[],subscribers:[],count:0,brevo_active:0,
           first_created:new Date().toISOString(),last_updated:new Date().toISOString()};
   try{
     const r=await fetch(`https://raw.githubusercontent.com/${repo}/main/data/subscribers_db.json?_=${Date.now()}`);
     if(r.ok){const d=await r.json();if(d&&Array.isArray(d.hashes))db=d;}
   }catch(e){}
 
+  if(!Array.isArray(db.subscribers)) db.subscribers=[];
   const existingSet=new Set(db.hashes||[]);
+  const existingEmails=new Set((db.subscribers||[]).map(s=>s.email.trim().toLowerCase()));
   const before=existingSet.size;
 
-  /* 2. Hash every active email and add to the set */
-  const active=activeContacts.filter(c=>c.email&&!c.emailBlacklisted);
-  for(const c of active){
-    const h=await sha256(c.email.trim().toLowerCase());
-    existingSet.add(h);
+  /* 2. Process ALL contacts (active + unsubscribed) — everyone who ever signed up goes in DB */
+  const toProcess=allContacts.filter(c=>c.email);
+  for(const c of toProcess){
+    const emailNorm=c.email.trim().toLowerCase();
+    const h=await sha256(emailNorm);
+    /* Add to hash set (used for gate) — active only */
+    if(!c.emailBlacklisted) existingSet.add(h);
+    /* Add to subscriber records if not already there */
+    if(!existingEmails.has(emailNorm)){
+      existingEmails.add(emailNorm);
+      const fn=(c.attributes&&c.attributes.FIRSTNAME)||'';
+      const ln=(c.attributes&&c.attributes.LASTNAME)||'';
+      const name=(fn+' '+ln).trim()||'';
+      db.subscribers.push({
+        email:c.email.trim(),
+        name,
+        added:c.createdAt||new Date().toISOString(),
+        status:c.emailBlacklisted?'unsubscribed':'active'
+      });
+    }
   }
 
   const allHashes=[...existingSet].sort();
   const added=allHashes.length-before;
 
-  /* 3. Build updated DB + gate objects */
+  /* 3. Update DB object */
   db.hashes      =allHashes;
   db.count       =allHashes.length;
   db.last_updated=new Date().toISOString();
-  db.brevo_active=active.length;
+  db.brevo_active=allContacts.filter(c=>!c.emailBlacklisted).length;
   if(!db.first_created) db.first_created=new Date().toISOString();
   const gate={hashes:allHashes,count:allHashes.length,updated:new Date().toISOString()};
 
   /* 4. Commit both files to GitHub */
-  const msg=`Subscribers: ${allHashes.length} total, ${added} new (admin sync)`;
+  const msg=`Subscribers: ${db.subscribers.length} total, ${added} new (admin sync)`;
   const [r1,r2]=await Promise.all([
     commitToGitHub('data/subscribers_db.json',JSON.stringify(db,null,2)+'\n',msg),
     commitToGitHub('data/subscribers.json',JSON.stringify(gate)+'\n',msg)
@@ -1476,8 +1603,10 @@ async function syncToInternalDB(activeContacts){
 
   if(syncBanner) syncBanner.style.display='none';
   if(r1.ok||r2.ok){
-    if(statusEl) statusEl.textContent=`✅ ${allHashes.length} in database (${added} new added)`;
+    if(statusEl) statusEl.textContent=`✅ ${db.subscribers.length} in database (${added} new added)`;
     showAdminToast(`✅ ${added} new subscriber${added===1?'':'s'} added to My Database.`);
+    /* Refresh the DB panel if it's visible */
+    if(document.getElementById('sub-panel-db').style.display!=='none') loadSubDB();
   }else{
     if(statusEl) statusEl.textContent='⚠️ Could not sync to database — check GitHub connection';
   }

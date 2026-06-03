@@ -38,7 +38,7 @@ def load_db() -> dict:
                 return data
         except Exception:
             pass
-    return {"v": 1, "hashes": [], "first_created": _now(), "last_updated": _now(), "count": 0}
+    return {"v": 1, "hashes": [], "subscribers": [], "first_created": _now(), "last_updated": _now(), "count": 0}
 
 
 def _now() -> str:
@@ -92,21 +92,51 @@ def main():
     existing_hashes: set = set(db.get("hashes", []))
     before_count = len(existing_hashes)
 
-    # ── 2. Fetch Brevo contacts and compute hashes ────────────────────────────
+    # ── 2. Fetch Brevo contacts ───────────────────────────────────────────────
     contacts = fetch_brevo_contacts()
-    active = [c for c in contacts if not c.get("emailBlacklisted", False) and c.get("email")]
-    brevo_hashes = {sha256(c["email"]) for c in active}
-    print(f"[Brevo] {len(active)} active contacts fetched.")
+    active   = [c for c in contacts if not c.get("emailBlacklisted", False) and c.get("email")]
+    print(f"[Brevo] {len(active)} active contacts fetched ({len(contacts)} total incl. unsubscribed).")
 
-    # ── 3. Add any new hashes from Brevo that aren't already in the DB ────────
-    new_hashes = brevo_hashes - existing_hashes
+    # ── 3. Build existing email set from subscriber records ───────────────────
+    if not isinstance(db.get("subscribers"), list):
+        db["subscribers"] = []
+    existing_emails = {s["email"].strip().lower() for s in db["subscribers"] if s.get("email")}
+
+    # ── 4. Merge hashes AND subscriber records (accumulative) ─────────────────
+    # Hash set uses active-only contacts (gate should only let active subs through)
+    active_hashes = {sha256(c["email"]) for c in active}
+    new_hashes    = active_hashes - existing_hashes
     if new_hashes:
         existing_hashes.update(new_hashes)
-        print(f"[DB] {len(new_hashes)} new subscriber(s) added to internal database.")
+
+    # Subscriber records include everyone (active + unsubscribed) who ever signed up
+    new_records = 0
+    for c in contacts:
+        if not c.get("email"):
+            continue
+        email_norm = c["email"].strip().lower()
+        if email_norm in existing_emails:
+            continue
+        existing_emails.add(email_norm)
+        attrs = c.get("attributes") or {}
+        first = attrs.get("FIRSTNAME") or ""
+        last  = attrs.get("LASTNAME")  or ""
+        name  = (first + " " + last).strip()
+        db["subscribers"].append({
+            "email":  c["email"].strip(),
+            "name":   name,
+            "added":  c.get("createdAt") or _now(),
+            "status": "unsubscribed" if c.get("emailBlacklisted") else "active",
+        })
+        new_records += 1
+
+    added_count = max(len(new_hashes), new_records)
+    if added_count:
+        print(f"[DB] {added_count} new subscriber(s) added to internal database.")
     else:
         print(f"[DB] No new subscribers — database is already up to date.")
 
-    # ── 4. Write updated DB (accumulative — never shrinks) ────────────────────
+    # ── 5. Write updated DB (accumulative — never shrinks) ────────────────────
     all_hashes = sorted(existing_hashes)   # sorted for stable diffs
     db["hashes"]       = all_hashes
     db["count"]        = len(all_hashes)
@@ -115,7 +145,7 @@ def main():
 
     with open(DB_FILE, "w") as f:
         json.dump(db, f, indent=2)
-    print(f"[DB] {len(all_hashes)} total hashes in internal DB → {DB_FILE}")
+    print(f"[DB] {len(all_hashes)} hashes, {len(db['subscribers'])} subscriber records → {DB_FILE}")
 
     # ── 5. Write subscribers.json (gate file — derived from DB) ───────────────
     gate = {
@@ -127,8 +157,8 @@ def main():
         json.dump(gate, f, separators=(",", ":"))
     print(f"[Gate] {len(all_hashes)} hashes written → {OUT_FILE}")
 
-    added = len(all_hashes) - before_count
-    print(f"✅ Sync complete — {added} new subscriber(s) added this run.")
+    added = max(len(all_hashes) - before_count, new_records)
+    print(f"✅ Sync complete — {added} new subscriber(s) added this run. {len(db['subscribers'])} total records.")
 
 
 if __name__ == "__main__":
