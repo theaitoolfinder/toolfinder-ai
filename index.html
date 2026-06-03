@@ -513,17 +513,14 @@ body::before{
 #cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:130px;background:none;border:none;cursor:pointer;padding:0;filter:drop-shadow(0 8px 22px rgba(26,86,219,.42)) drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:filter .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
 #cb-btn:hover{filter:drop-shadow(0 14px 32px rgba(26,86,219,.58)) drop-shadow(0 3px 10px rgba(0,0,0,.2));transform:translateY(-5px) scale(1.04)}
 #cb-btn.open{filter:drop-shadow(0 4px 14px rgba(26,86,219,.3));transform:none}
-#clippy-svg{display:block;width:96px;height:130px;overflow:visible}
-/* Clippy body animations */
+#teza-canvas{display:block;width:96px;height:130px;border-radius:12px}
+/* Clippy body animations (kept for no-op compatibility) */
 @keyframes clippyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes clippyWave{0%,100%{transform:rotate(0deg)}12%{transform:rotate(-45deg)}30%{transform:rotate(30deg)}50%{transform:rotate(-40deg)}68%{transform:rotate(24deg)}84%{transform:rotate(-12deg)}95%{transform:rotate(5deg)}}
 @keyframes clippyTap{0%,100%{transform:rotate(0deg) translateX(0)}22%{transform:rotate(-8deg) translateX(-5px)}56%{transform:rotate(8deg) translateX(5px)}78%{transform:rotate(-5deg) translateX(-3px)}}
 @keyframes clippyBounce{0%,100%{transform:translateY(0) scaleX(1) scaleY(1)}14%{transform:translateY(-20px) scaleX(.88) scaleY(1.12)}30%{transform:translateY(5px) scaleX(1.12) scaleY(.91)}50%{transform:translateY(-12px) scaleX(.93) scaleY(1.08)}66%{transform:translateY(3px) scaleX(1.07) scaleY(.95)}80%{transform:translateY(-5px) scaleX(.97) scaleY(1.03)}}
 @keyframes clippyExcite{0%,100%{transform:rotate(0deg) scale(1)}20%{transform:rotate(-12deg) scale(1.07)}45%{transform:rotate(12deg) scale(1.07)}70%{transform:rotate(-7deg) scale(1.04)}90%{transform:rotate(4deg) scale(1.02)}}
 @keyframes clippyLookSide{0%,100%{transform:translateX(0)}35%,65%{transform:translateX(4px)}}
-/* Cactus flower sway */
-@keyframes cactusFlowerSway{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
-#cactus-flower{animation:cactusFlowerSway 2.6s ease-in-out infinite}
 /* ── AI Chatbot Window ── */
 #cb-win{position:fixed;bottom:153px;right:10px;z-index:600;width:380px;max-width:calc(100vw - 20px);height:540px;max-height:calc(100vh - 168px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
 #cb-win.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
@@ -2676,192 +2673,45 @@ async function submitReview(){
   </div>
 </div>
 
-<!-- ── Clippy Speech Bubble ── -->
-<div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Cactools chat">
+<!-- ── Teza Speech Bubble ── -->
+<div id="clippy-speech" onclick="cbToggle()" role="button" tabindex="0" aria-label="Open Teza chat">
   <span id="clippy-speech-txt">It looks like you're looking for AI tools! 💡</span>
 </div>
 
-<!-- ── Cactools AI Chatbot ── -->
-<button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Cactools — AI Tool Finder">
-  <!--
-    Cactools — a cute cartoon cactus in a terracotta pot.
-    Pill-shaped green body · cartoon spines · big round eyes · arched brows · warm smile
-    Pink flower on top that always sways · left arm raised static · right arm waves
-  -->
-  <svg id="clippy-svg" viewBox="0 0 80 122" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-
-    <!-- Ground shadow -->
-    <ellipse cx="40" cy="120" rx="24" ry="4" fill="rgba(0,0,0,0.2)"/>
-
-    <g id="clippy-body-g" style="transform-origin:40px 116px">
-
-      <!-- ═══════════════════════════════════
-           TERRACOTTA POT
-           ═══════════════════════════════════ -->
-      <!-- Pot body (trapezoid) -->
-      <path d="M 13,91 Q 40,88 67,91 L 62,117 Q 40,120 18,117 Z" fill="#c1440e"/>
-      <!-- Left highlight -->
-      <path d="M 13,91 Q 15,90 22,90 L 20,116 Q 16,117 14,114 Z" fill="#d95f2b" opacity="0.45"/>
-      <!-- Right shadow -->
-      <path d="M 67,91 Q 65,90 58,90 L 60,116 Q 64,117 66,114 Z" fill="#7a1f00" opacity="0.35"/>
-      <!-- Rim band -->
-      <ellipse cx="40" cy="90" rx="27" ry="5.5" fill="#d95f2b"/>
-      <ellipse cx="40" cy="90" rx="27" ry="5.5" fill="none" stroke="#b03a0a" stroke-width="1.2" opacity="0.5"/>
-      <!-- Soil top -->
-      <ellipse cx="40" cy="88"   rx="24" ry="4.5" fill="#4e342e"/>
-      <ellipse cx="40" cy="87.5" rx="21" ry="3"   fill="#6d4c41"/>
-      <!-- Pot bottom shadow -->
-      <ellipse cx="40" cy="117" rx="22" ry="2.5" fill="#7a1f00" opacity="0.4"/>
-
-      <!-- ═══════════════════════════════════
-           LEFT ARM  (static — behind body)
-           ═══════════════════════════════════ -->
-      <path d="M 17,62 Q 5,62 5,42"
-        stroke="#5cb85c" stroke-width="13" stroke-linecap="round" fill="none"/>
-      <!-- Arm outline/depth -->
-      <path d="M 17,62 Q 5,62 5,42"
-        stroke="#3d8c3d" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.22"/>
-      <!-- Left arm spines -->
-      <line x1="4"  y1="35" x2="0"  y2="29" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="3"  y1="44" x2="0"  y2="47" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="7"  y1="30" x2="2"  y2="26" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-
-      <!-- ═══════════════════════════════════
-           CACTUS BODY
-           ═══════════════════════════════════ -->
-      <!-- Main column body -->
-      <rect x="14" y="14" width="52" height="78" rx="26" fill="#5cb85c"/>
-      <!-- Center-left highlight band (3D roundness) -->
-      <ellipse cx="34" cy="52" rx="11" ry="30" fill="#7dd17d" opacity="0.5"/>
-      <!-- Right depth shadow -->
-      <ellipse cx="55" cy="56" rx="10" ry="26" fill="#3d7a3d" opacity="0.3"/>
-      <!-- Top shine -->
-      <ellipse cx="31" cy="22" rx="8"  ry="6"  fill="#b2f2b2" opacity="0.55"/>
-      <!-- Cartoon outline -->
-      <rect x="14" y="14" width="52" height="78" rx="26"
-        fill="none" stroke="#3d7a3d" stroke-width="1.8"/>
-
-      <!-- Body spines — top -->
-      <line x1="34" y1="15" x2="30" y2="7"  stroke="#2d6e2d" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="40" y1="14" x2="40" y2="5"  stroke="#2d6e2d" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="46" y1="15" x2="50" y2="7"  stroke="#2d6e2d" stroke-width="2.4" stroke-linecap="round"/>
-      <!-- Body spines — left -->
-      <line x1="17" y1="30" x2="10" y2="26" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="15" y1="44" x2="8"  y2="43" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="17" y1="72" x2="10" y2="70" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="18" y1="82" x2="12" y2="85" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <!-- Body spines — right -->
-      <line x1="63" y1="30" x2="70" y2="26" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="65" y1="44" x2="72" y2="43" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="63" y1="72" x2="70" y2="70" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-      <line x1="62" y1="82" x2="68" y2="85" stroke="#2d6e2d" stroke-width="2"   stroke-linecap="round"/>
-
-      <!-- ═══════════════════════════════════
-           PINK FLOWER (continuously swaying via CSS)
-           ═══════════════════════════════════ -->
-      <g id="cactus-flower" style="transform-box:fill-box;transform-origin:50% 72%">
-        <ellipse cx="40" cy="5"  rx="3.5" ry="6.5" fill="#ff7eb3" transform="rotate(0,  40,12)"/>
-        <ellipse cx="40" cy="5"  rx="3.5" ry="6.5" fill="#ffaed6" transform="rotate(72, 40,12)"/>
-        <ellipse cx="40" cy="5"  rx="3.5" ry="6.5" fill="#ff7eb3" transform="rotate(144,40,12)"/>
-        <ellipse cx="40" cy="5"  rx="3.5" ry="6.5" fill="#ffaed6" transform="rotate(216,40,12)"/>
-        <ellipse cx="40" cy="5"  rx="3.5" ry="6.5" fill="#ff7eb3" transform="rotate(288,40,12)"/>
-        <circle cx="40" cy="12" r="5"   fill="#ffd700"/>
-        <circle cx="40" cy="12" r="3"   fill="#ff9800"/>
-        <circle cx="39" cy="11" r="1.2" fill="white" opacity="0.6"/>
-      </g>
-
-      <!-- ═══════════════════════════════════
-           LEFT EYE
-           ═══════════════════════════════════ -->
-      <g id="clippy-eye-l" style="transform-box:fill-box;transform-origin:50% 50%">
-        <ellipse cx="29" cy="52" rx="8"   ry="9"   fill="white"/>
-        <!-- Inner shine on eye white -->
-        <ellipse cx="26" cy="49" rx="3.5" ry="3"   fill="white" opacity="0.5"/>
-        <g id="clippy-iris-l" style="transform-box:fill-box;transform-origin:50% 50%">
-          <ellipse cx="29" cy="53" rx="5"   ry="5.5" fill="#1a2e1a"/>
-          <ellipse cx="29" cy="53" rx="2.8" ry="3.2" fill="#091409"/>
-          <circle  cx="31" cy="51" r="1.6"  fill="white"/>
-          <circle  cx="28" cy="55" r="0.8"  fill="white" opacity="0.5"/>
-        </g>
-      </g>
-
-      <!-- ═══════════════════════════════════
-           RIGHT EYE
-           ═══════════════════════════════════ -->
-      <g id="clippy-eye-r" style="transform-box:fill-box;transform-origin:50% 50%">
-        <ellipse cx="51" cy="52" rx="8"   ry="9"   fill="white"/>
-        <ellipse cx="48" cy="49" rx="3.5" ry="3"   fill="white" opacity="0.5"/>
-        <g id="clippy-iris-r" style="transform-box:fill-box;transform-origin:50% 50%">
-          <ellipse cx="51" cy="53" rx="5"   ry="5.5" fill="#1a2e1a"/>
-          <ellipse cx="51" cy="53" rx="2.8" ry="3.2" fill="#091409"/>
-          <circle  cx="53" cy="51" r="1.6"  fill="white"/>
-          <circle  cx="50" cy="55" r="0.8"  fill="white" opacity="0.5"/>
-        </g>
-      </g>
-
-      <!-- ═══════════════════════════════════
-           EYEBROWS
-           ═══════════════════════════════════ -->
-      <path id="clippy-brow-l" d="M21,41 Q29,35 37,41"
-        stroke="#2d6e2d" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path id="clippy-brow-r" d="M43,41 Q51,35 59,41"
-        stroke="#2d6e2d" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-      <!-- ═══════════════════════════════════
-           SMILE
-           ═══════════════════════════════════ -->
-      <path id="clippy-mouth" d="M27,66 Q40,76 53,66"
-        stroke="#2d6e2d" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-
-      <!-- ═══════════════════════════════════
-           RIGHT ARM (waves — in front of body)
-           ═══════════════════════════════════ -->
-      <g id="clippy-arm" style="transform-origin:63px 62px; transform:rotate(0deg)">
-        <path d="M 63,62 Q 75,62 75,42"
-          stroke="#5cb85c" stroke-width="13" stroke-linecap="round" fill="none"/>
-        <path d="M 63,62 Q 75,62 75,42"
-          stroke="#3d8c3d" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.22"/>
-        <!-- Right arm spines -->
-        <line x1="76" y1="35" x2="80" y2="29" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="77" y1="44" x2="80" y2="47" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="73" y1="31" x2="78" y2="26" stroke="#2d6e2d" stroke-width="2.2" stroke-linecap="round"/>
-      </g>
-
-    </g>
-  </svg>
+<!-- ── Teza AI Chatbot ── -->
+<button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Teza — AI Tool Finder">
+  <!-- Teza: animated 3D tesseract (4D hypercube projection) rendered on canvas -->
+  <canvas id="teza-canvas" width="96" height="130" aria-hidden="true"></canvas>
 </button>
 
-<div id="cb-win" role="dialog" aria-modal="true" aria-label="Cactools AI Tool Finder chat">
+<div id="cb-win" role="dialog" aria-modal="true" aria-label="Teza AI Tool Finder chat">
   <div id="cb-head">
     <div id="cb-head-icon">
-      <!-- Cactools header icon — tiny cactus in pot -->
-      <svg viewBox="0 0 28 34" fill="none" width="20" height="22" aria-hidden="true">
-        <!-- Pot -->
-        <path d="M 6,22 Q 14,20 22,22 L 20,30 Q 14,32 8,30 Z" fill="#d95f2b"/>
-        <ellipse cx="14" cy="21.5" rx="8" ry="2" fill="#ff8a50"/>
-        <!-- Cactus body -->
-        <rect x="8" y="4" width="12" height="19" rx="6" fill="#7dd17d"/>
-        <!-- Cactus outline -->
-        <rect x="8" y="4" width="12" height="19" rx="6" fill="none" stroke="#4a9e4a" stroke-width="1.2"/>
-        <!-- Eyes -->
-        <ellipse cx="11" cy="14" rx="2.2" ry="2.5" fill="white"/>
-        <ellipse cx="17" cy="14" rx="2.2" ry="2.5" fill="white"/>
-        <circle cx="11.5" cy="14.5" r="1" fill="#1a2e1a"/>
-        <circle cx="17.5" cy="14.5" r="1" fill="#1a2e1a"/>
-        <circle cx="12.1" cy="13.8" r="0.5" fill="white"/>
-        <circle cx="18.1" cy="13.8" r="0.5" fill="white"/>
-        <!-- Smile -->
-        <path d="M10,17.5 Q14,20.5 18,17.5" stroke="#2d6e2d" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-        <!-- Flower -->
-        <circle cx="14" cy="5" r="3" fill="#ff9ec3"/>
-        <circle cx="14" cy="5" r="1.5" fill="#ffd700"/>
-        <!-- Spines -->
-        <line x1="8"  y1="10" x2="5"  y2="8"  stroke="#4a9e4a" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="20" y1="10" x2="23" y2="8"  stroke="#4a9e4a" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Teza header icon — tiny tesseract (cube-in-cube) -->
+      <svg viewBox="0 0 28 28" fill="none" width="20" height="20" aria-hidden="true">
+        <defs>
+          <linearGradient id="tg1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff1450"/>
+            <stop offset="35%" stop-color="#ffdc00"/>
+            <stop offset="65%" stop-color="#00b4ff"/>
+            <stop offset="100%" stop-color="#b400ff"/>
+          </linearGradient>
+        </defs>
+        <!-- Outer cube -->
+        <rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="url(#tg1)" stroke-width="1.6"/>
+        <!-- Inner cube -->
+        <rect x="8" y="8" width="12" height="12" rx="1" fill="none" stroke="url(#tg1)" stroke-width="1.3"/>
+        <!-- Connecting lines (corners) -->
+        <line x1="2"  y1="2"  x2="8"  y2="8"  stroke="url(#tg1)" stroke-width="1"/>
+        <line x1="26" y1="2"  x2="20" y2="8"  stroke="url(#tg1)" stroke-width="1"/>
+        <line x1="2"  y1="26" x2="8"  y2="20" stroke="url(#tg1)" stroke-width="1"/>
+        <line x1="26" y1="26" x2="20" y2="20" stroke="url(#tg1)" stroke-width="1"/>
+        <!-- Center glow dot -->
+        <circle cx="14" cy="14" r="2.5" fill="url(#tg1)" opacity="0.9"/>
       </svg>
     </div>
     <div id="cb-head-text">
-      <h4>Cactools — AI Tool Finder</h4>
+      <h4>Teza — AI Tool Finder</h4>
       <p>Ask me anything about AI tools!</p>
     </div>
     <button id="cb-close" onclick="cbToggle()" aria-label="Close chat">
@@ -2897,9 +2747,9 @@ async function submitReview(){
   'use strict';
 
   const GREETINGS = [
-    "Hey! I'm **Cactools** 🌵 — your AI tools guide. I know 500+ tools and can find, explain, or compare any of them. What are you working on?",
-    "Hi there! 👋 I'm **Cactools**, your go-to for AI tool recommendations. Ask me about a specific tool, compare two, or just tell me what you need help with.",
-    "Hey! **Cactools** here 🌵 — I live and breathe AI tools. Tell me what you're trying to do and I'll point you to the right ones.",
+    "Hey! I'm **Teza** ✨ — your AI tools guide. I know 500+ tools and can find, explain, or compare any of them. What are you working on?",
+    "Hi there! 👋 I'm **Teza**, your go-to for AI tool recommendations. Ask me about a specific tool, compare two, or just tell me what you need help with.",
+    "Hey! **Teza** here ✨ — I live and breathe AI tools. Tell me what you're trying to do and I'll point you to the right ones.",
   ];
 
   /* ── Toggle open/close ── */
@@ -3047,7 +2897,7 @@ async function submitReview(){
     cbBotMsg(
       `**${t1.name}** — ${t1.tag} (${t1.pill})\n` +
       `**${t2.name}** — ${t2.tag} (${t2.pill})\n\n` +
-      `🌵 **Cactools' take:** ${verdict}`
+      `✨ **Teza's take:** ${verdict}`
     );
     cbShowTools([t1, t2]);
   }
@@ -3065,8 +2915,8 @@ async function submitReview(){
     if (/^(hi|hello|hey|howdy|yo|sup|hiya|greetings)\b/.test(ql)) {
       const picks = [
         "Hey! 👋 What are you working on today?",
-        "Hello! 😄 I'm Cactools — 500+ AI tools at your fingertips. What do you need?",
-        "Hey there! Got a task, a problem, or just curious about an AI tool? I'm all yours. 🌵",
+        "Hello! 😄 I'm Teza — 500+ AI tools at your fingertips. What do you need?",
+        "Hey there! Got a task, a problem, or just curious about an AI tool? I'm all yours. ✨",
       ];
       cbBotMsg(picks[Math.floor(Math.random()*picks.length)]); return;
     }
@@ -3089,8 +2939,8 @@ async function submitReview(){
     }
 
     /* Who / what are you */
-    if (/who are you|what are you|what.s your name|are you (ai|a bot|cactools|an assistant|human|real)|your name/.test(ql)) {
-      cbBotMsg("I'm **Cactools** 🌵 — a cactus-shaped AI tool guide. A bit prickly on the outside, but genuinely helpful inside. I know 500+ AI tools — what they do, how they're priced, and who they're for. What do you want to know?"); return;
+    if (/who are you|what are you|what.s your name|are you (ai|a bot|teza|an assistant|human|real)|your name/.test(ql)) {
+      cbBotMsg("I'm **Teza** ✨ — a tesseract-shaped AI tool guide. I exist in four dimensions so I can see every angle of the AI landscape. 500+ tools catalogued — what they do, how they're priced, and who they're for. What do you want to know?"); return;
     }
 
     /* Are you better than ChatGPT / vs other bots */
@@ -3601,11 +3451,9 @@ async function submitReview(){
     }
   }
 
-  /* Cactools has fixed cactus colors — no cycling needed */
-
   /* ── Speech bubble rotation ── */
   const SPEECH_MSGS = [
-    "Hey! I'm <b>Cactools</b> 🌵 — need an AI tool recommendation?",
+    "Hey! I'm <b>Teza</b> ✨ — need an AI tool recommendation?",
     "500+ AI tools — ask me anything! 💡",
     "Psst… I can find the perfect AI tool for you! 👋",
     "Looking for free AI tools? I've got you. 🆓",
@@ -3652,6 +3500,191 @@ async function submitReview(){
   // First speech bubble after 8 seconds
   speechTimer = setTimeout(showSpeech, 8000);
 
+})();
+
+/* ══════════════════════════════════════════════════════
+   TEZA — 3D Tesseract Canvas Renderer
+   4D hypercube projected to 2D · supernova glow colors
+   ══════════════════════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('teza-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // Scale canvas for HiDPI / Retina screens
+  const dpr = window.devicePixelRatio || 1;
+  const W = 96, H = 130;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  ctx.scale(dpr, dpr);
+
+  // ── 16 vertices of a tesseract: all ±1 combinations in 4D ──
+  const VERTS = [];
+  for (let i = 0; i < 16; i++) {
+    VERTS.push([
+      (i & 1) ? 1 : -1,
+      (i & 2) ? 1 : -1,
+      (i & 4) ? 1 : -1,
+      (i & 8) ? 1 : -1
+    ]);
+  }
+
+  // ── 32 edges: vertices differing by exactly 1 bit ──
+  const EDGES = [];
+  for (let a = 0; a < 16; a++) {
+    for (let b = a + 1; b < 16; b++) {
+      const xor = a ^ b;
+      if (xor && (xor & (xor - 1)) === 0) EDGES.push([a, b]);
+    }
+  }
+  const N_EDGES = EDGES.length; // 32
+
+  // ── 4D rotation in plane (a, b) by angle ──
+  function rot4(v, a, b, angle) {
+    const r = v.slice();
+    const c = Math.cos(angle), s = Math.sin(angle);
+    r[a] = v[a]*c - v[b]*s;
+    r[b] = v[a]*s + v[b]*c;
+    return r;
+  }
+
+  // ── 4D → 3D perspective projection (w depth) ──
+  function proj4to3(v, wDist) {
+    const d = 1 / (wDist - v[3]);
+    return [v[0]*d, v[1]*d, v[2]*d];
+  }
+
+  // ── 3D → 2D perspective projection ──
+  function proj3to2(v, zDist) {
+    const d = 1 / (zDist - v[2]);
+    return [v[0]*d, v[1]*d];
+  }
+
+  // ── Supernova color palette ──
+  const PAL = [
+    [255,  20,  80],  // solar flare red
+    [255, 100,   0],  // plasma orange
+    [255, 220,   0],  // stellar gold
+    [180,   0, 255],  // deep violet
+    [  0, 180, 255],  // electric blue
+    [  0, 255, 200],  // nebula cyan
+    [255,   0, 180],  // hot magenta
+    [255, 255, 255],  // supernova white
+  ];
+
+  function lerpColor(phase, alpha) {
+    const t = ((phase % 1) + 1) % 1;
+    const n = PAL.length;
+    const i = Math.floor(t * n) % n;
+    const f = t * n - Math.floor(t * n);
+    const c0 = PAL[i], c1 = PAL[(i + 1) % n];
+    const r = Math.round(c0[0] + (c1[0]-c0[0])*f);
+    const g = Math.round(c0[1] + (c1[1]-c0[1])*f);
+    const b = Math.round(c0[2] + (c1[2]-c0[2])*f);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  function drawFrame(ts) {
+    const t = ts * 0.001; // seconds
+
+    ctx.clearRect(0, 0, W, H);
+
+    // ── Ambient nebula radial background (pulses) ──
+    const pulse = 0.5 + Math.sin(t * 0.41) * 0.3;
+    const cx = W * 0.5, cy = H * 0.44;
+    const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, 58);
+    bg.addColorStop(0,   `rgba(70,  0, 110, ${0.22 * pulse})`);
+    bg.addColorStop(0.45,`rgba( 0, 30,  80, ${0.14 * pulse})`);
+    bg.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // ── Rotate all 16 vertices through 5 planes ──
+    // Incommensurate speeds so the motion never exactly repeats
+    const proj2d = VERTS.map(v => {
+      let r = v.slice();
+      r = rot4(r, 0, 3, t * 0.70);  // XW
+      r = rot4(r, 1, 3, t * 0.53);  // YW
+      r = rot4(r, 0, 1, t * 0.34);  // XY
+      r = rot4(r, 2, 3, t * 0.41);  // ZW
+      r = rot4(r, 1, 2, t * 0.22);  // YZ
+
+      // 4D→3D: w-distance morphs (0.28 rad/s) for 4D breathing effect
+      const wDist = 1.85 + Math.sin(t * 0.28) * 0.60;
+      const v3 = proj4to3(r, wDist);
+
+      // 3D→2D: fixed scale, no zoom
+      const scale = 26;
+      const v2 = proj3to2(v3, 3.6);
+
+      return [cx + v2[0]*scale, cy + v2[1]*scale];
+    });
+
+    // ── Draw 32 edges: triple-layer glow ──
+    EDGES.forEach(([a, b], idx) => {
+      // Each edge has its own chromatic phase offset → rainbow swirl
+      const phase = ((idx / N_EDGES) * 0.72 + t * 0.09) % 1;
+      const x0 = proj2d[a][0], y0 = proj2d[a][1];
+      const x1 = proj2d[b][0], y1 = proj2d[b][1];
+
+      ctx.lineCap = 'round';
+
+      // Layer 1 — outer bloom (wide, very transparent)
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.strokeStyle = lerpColor(phase, 0.07);
+      ctx.lineWidth = 10;
+      ctx.shadowBlur = 0;
+      ctx.stroke();
+
+      // Layer 2 — mid glow
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.strokeStyle = lerpColor(phase, 0.38);
+      ctx.lineWidth = 2.8;
+      ctx.shadowColor = lerpColor(phase, 0.85);
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+
+      // Layer 3 — bright core (near white, thin)
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.strokeStyle = lerpColor(phase, 0.92);
+      ctx.lineWidth = 0.75;
+      ctx.shadowColor = '#ffffff';
+      ctx.shadowBlur = 5;
+      ctx.stroke();
+    });
+
+    ctx.shadowBlur = 0;
+
+    // ── Vertex glow dots ──
+    proj2d.forEach((p, i) => {
+      const phase = ((i / 16) * 0.6 + t * 0.06) % 1;
+      ctx.beginPath();
+      ctx.arc(p[0], p[1], 1.9, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.88)';
+      ctx.shadowColor = lerpColor(phase, 1);
+      ctx.shadowBlur = 7;
+      ctx.fill();
+    });
+    ctx.shadowBlur = 0;
+
+    // ── Bottom ambient glow (replaces ground shadow) ──
+    const botPhase = (t * 0.07) % 1;
+    const botGlow = ctx.createRadialGradient(cx, H - 8, 0, cx, H - 8, 34);
+    botGlow.addColorStop(0, lerpColor(botPhase, 0.30 + Math.sin(t*0.5)*0.08));
+    botGlow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = botGlow;
+    ctx.fillRect(cx - 34, H - 24, 68, 24);
+
+    requestAnimationFrame(drawFrame);
+  }
+
+  requestAnimationFrame(drawFrame);
 })();
 </script>
 </body>
