@@ -598,20 +598,36 @@ body::before{
 .pp-badge{position:absolute;top:12px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.8);border:1px solid rgba(245,158,11,.25);border-radius:5px;padding:2px 6px;backdrop-filter:blur(8px)}
 
 /* ── Floating subscribe popup ── */
-#sub-popup{position:fixed;bottom:24px;right:24px;z-index:8888;width:320px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.18),0 4px 16px rgba(26,86,219,.12);border:1.5px solid rgba(26,86,219,.14);padding:22px 22px 20px;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;pointer-events:none}
-#sub-popup.show{transform:translateY(0);opacity:1;pointer-events:auto}
-#sub-popup .pop-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:18px;color:var(--text-dim);cursor:pointer;line-height:1;padding:2px;opacity:.7;transition:opacity .15s}
-#sub-popup .pop-close:hover{opacity:1}
-#sub-popup .pop-icon{font-size:28px;margin-bottom:8px}
-#sub-popup .pop-title{font-size:16px;font-weight:800;color:var(--text);margin:0 0 4px;line-height:1.2}
-#sub-popup .pop-sub{font-size:12.5px;color:var(--text-2);margin:0 0 14px;line-height:1.5}
-#sub-popup input[type=email]{width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1.5px solid rgba(26,86,219,.18);font:14px 'Poppins',sans-serif;outline:none;color:var(--text);transition:border-color .15s;margin-bottom:9px}
-#sub-popup input[type=email]:focus{border-color:var(--primary)}
-#sub-popup .pop-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 14px 'Poppins',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.30);transition:all .2s}
-#sub-popup .pop-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,86,219,.40)}
-#sub-popup .pop-dismiss{display:block;text-align:center;margin-top:10px;font-size:11.5px;color:var(--text-dim);cursor:pointer;text-decoration:underline}
-#sub-popup .pop-msg{font-size:12.5px;margin-top:8px;min-height:18px;text-align:center;font-weight:500}
-@media(max-width:400px){#sub-popup{right:12px;left:12px;width:auto;bottom:16px}}
+/* ── Subscribe popup overlay + modal ── */
+#sub-popup-overlay{position:fixed;inset:0;z-index:8888;background:rgba(13,31,60,.55);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+#sub-popup-overlay.show{opacity:1;pointer-events:auto}
+#sub-popup{width:100%;max-width:440px;border-radius:24px;padding:36px 32px 28px;position:relative;text-align:center;
+  background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:0 32px 80px rgba(13,31,60,.22),0 8px 24px rgba(26,86,219,.12),inset 0 1px 0 rgba(255,255,255,.95);
+  transform:scale(.88) translateY(16px);opacity:0;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .35s ease}
+#sub-popup-overlay.show #sub-popup{transform:scale(1) translateY(0);opacity:1}
+#sub-popup .pop-close{position:absolute;top:14px;right:16px;width:30px;height:30px;border-radius:50%;background:rgba(92,119,153,.10);border:none;font-size:15px;color:var(--text-dim);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+#sub-popup .pop-close:hover{background:rgba(92,119,153,.18);color:var(--text)}
+#sub-popup .pop-icon{font-size:42px;line-height:1;margin-bottom:14px;display:block;filter:drop-shadow(0 4px 12px rgba(26,86,219,.20))}
+#sub-popup .pop-title{font-size:22px;font-weight:800;color:var(--text);margin:0 0 8px;line-height:1.2;letter-spacing:-.02em}
+#sub-popup .pop-title em{font-style:normal;background:linear-gradient(90deg,var(--primary),#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+#sub-popup .pop-sub{font-size:14px;color:var(--text-2);margin:0 0 22px;line-height:1.6}
+#sub-popup .pop-perks{display:flex;justify-content:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+#sub-popup .pop-perk{font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:5px}
+#sub-popup .pop-perk svg{color:var(--ok);flex-shrink:0}
+#sub-popup .pop-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+#sub-popup .pop-fields input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(26,86,219,.15);font:15px 'Poppins',sans-serif;outline:none;color:var(--text);background:rgba(255,255,255,.7);transition:border-color .15s,box-shadow .15s;text-align:left}
+#sub-popup .pop-fields input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,86,219,.10);background:#fff}
+#sub-popup .pop-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 15px 'Poppins',sans-serif;cursor:pointer;box-shadow:0 6px 20px rgba(26,86,219,.32),inset 0 1px 0 rgba(255,255,255,.15);transition:all .2s;letter-spacing:.01em}
+#sub-popup .pop-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,86,219,.42)}
+#sub-popup .pop-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
+#sub-popup .pop-msg{font-size:13px;min-height:20px;text-align:center;font-weight:500;margin-top:10px}
+#sub-popup .pop-dismiss{display:block;text-align:center;margin-top:14px;font-size:12px;color:var(--text-dim);cursor:pointer;opacity:.7;transition:opacity .15s}
+#sub-popup .pop-dismiss:hover{opacity:1}
+#sub-popup .pop-privacy{font-size:11px;color:var(--text-dim);margin-top:8px;opacity:.7}
+@media(max-width:480px){#sub-popup{padding:28px 20px 22px}#sub-popup .pop-title{font-size:19px}}
 </style>
 </head>
 <body>
@@ -927,16 +943,27 @@ body::before{
 
 </main>
 
-<!-- ── Floating Subscribe Popup ── -->
-<div id="sub-popup" role="dialog" aria-label="Subscribe to newsletter">
-  <button class="pop-close" onclick="dismissSubPopup()" aria-label="Close">&#x2715;</button>
-  <div class="pop-icon">📬</div>
-  <p class="pop-title">Get 5 AI tools every Friday</p>
-  <p class="pop-sub">1,000+ readers. Free forever. No spam — just the tools that actually save you time.</p>
-  <input type="email" id="pop-email" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')popSubscribe()">
-  <button class="pop-btn" onclick="popSubscribe()">Subscribe Free →</button>
-  <div class="pop-msg" id="pop-msg"></div>
-  <span class="pop-dismiss" onclick="dismissSubPopup()">No thanks, I'll miss out</span>
+<!-- ── Subscribe Popup Modal ── -->
+<div id="sub-popup-overlay" role="dialog" aria-modal="true" aria-label="Subscribe to newsletter" onclick="if(event.target===this)dismissSubPopup()">
+  <div id="sub-popup">
+    <button class="pop-close" onclick="dismissSubPopup()" aria-label="Close">&#x2715;</button>
+    <span class="pop-icon">📬</span>
+    <h2 class="pop-title">Get <em>5 AI tools</em> every Friday</h2>
+    <p class="pop-sub">Join 1,000+ solopreneurs &amp; creators who find their go-to AI tools here — free, every week.</p>
+    <div class="pop-perks">
+      <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 hand-picked tools</span>
+      <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 honest comparison</span>
+      <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free forever</span>
+    </div>
+    <div class="pop-fields">
+      <input type="text"  id="pop-fname" placeholder="First name (optional)" autocomplete="given-name">
+      <input type="email" id="pop-email" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')popSubscribe()">
+    </div>
+    <button class="pop-btn" onclick="popSubscribe()">Subscribe Free &rarr;</button>
+    <div class="pop-msg" id="pop-msg"></div>
+    <span class="pop-dismiss" onclick="dismissSubPopup()">No thanks, I'll miss out</span>
+    <p class="pop-privacy">No spam. Unsubscribe any time.</p>
+  </div>
 </div>
 
 <footer class="site">
@@ -2802,57 +2829,57 @@ async function submitReview(){
 (function initSubPopup(){
   const POPUP_KEY='myai_popup_dismissed_v1';
   const DISMISS_DAYS=14;
-
-  /* Don't show if already a subscriber */
   if(getUser()) return;
-
-  /* Don't show if dismissed recently */
   try{
     const ts=parseInt(localStorage.getItem(POPUP_KEY)||'0',10);
     if(ts && Date.now()-ts < DISMISS_DAYS*24*60*60*1000) return;
   }catch(e){}
-
-  /* Show after 8 seconds */
   setTimeout(()=>{
-    /* Re-check in case user logged in during those 8 seconds */
     if(getUser()) return;
-    const popup=document.getElementById('sub-popup');
-    if(popup) popup.classList.add('show');
+    const ov=document.getElementById('sub-popup-overlay');
+    if(ov){ ov.classList.add('show'); document.body.style.overflow='hidden'; }
   }, 8000);
 })();
 
 function dismissSubPopup(){
   try{ localStorage.setItem('myai_popup_dismissed_v1', Date.now()); }catch(e){}
-  const popup=document.getElementById('sub-popup');
-  if(popup){ popup.classList.remove('show'); }
+  const ov=document.getElementById('sub-popup-overlay');
+  if(ov){ ov.classList.remove('show'); document.body.style.overflow=''; }
 }
 
+/* Close on Escape key */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') dismissSubPopup(); });
+
 async function popSubscribe(){
+  const fnameEl=document.getElementById('pop-fname');
   const emailEl=document.getElementById('pop-email');
   const msgEl=document.getElementById('pop-msg');
   const btn=document.querySelector('#sub-popup .pop-btn');
   const email=(emailEl.value||'').trim();
+  const fname=(fnameEl&&fnameEl.value||'').trim();
   msgEl.style.color='var(--text-dim)'; msgEl.textContent='';
   if(!email||!/\S+@\S+\.\S+/.test(email)){
-    msgEl.style.color='#ef4444'; msgEl.textContent='Please enter a valid email.'; return;
+    msgEl.style.color='#ef4444'; msgEl.textContent='Please enter a valid email address.';
+    emailEl.focus(); return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
   try{
     const fd=new FormData();
     fd.append('EMAIL',email);
+    if(fname) fd.append('FIRSTNAME',fname);
     fd.append('locale','en');
     fd.append('html_type','simple');
     await fetch('https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',
       {method:'POST',body:fd,mode:'no-cors'});
+    /* no-cors — can't read response, assume success */
     msgEl.style.color='var(--ok)';
-    msgEl.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox Friday.';
+    msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
     btn.textContent='✓ Subscribed!';
-    emailEl.value='';
-    /* Auto-close popup after 3 seconds */
-    setTimeout(()=>dismissSubPopup(), 3000);
+    emailEl.value=''; if(fnameEl) fnameEl.value='';
+    setTimeout(()=>dismissSubPopup(), 3500);
   }catch(err){
     msgEl.style.color='#ef4444';
-    msgEl.textContent='Something went wrong — try again.';
+    msgEl.textContent='Something went wrong — please try again.';
     btn.disabled=false; btn.textContent='Subscribe Free →';
   }
 }
