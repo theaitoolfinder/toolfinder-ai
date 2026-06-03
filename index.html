@@ -566,36 +566,60 @@ body::before{
 .partner-picks-head h2 em{font-style:normal;background:linear-gradient(90deg,#d97706,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
 .partner-picks-head p{color:var(--text-2);font-size:14.5px;margin:0}
 .partner-picks-head .pp-disc{display:inline-block;margin-top:8px;font-size:11px;color:#92400e;background:rgba(254,243,199,.55);border:1px solid rgba(245,158,11,.18);border-radius:999px;padding:2px 10px;opacity:.8}
-/* Marquee track — same pattern as logo marquee */
-.pp-marquee-wrap{overflow:hidden;mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);-webkit-mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
-.pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;animation:ppScroll 40s linear infinite}
+/* Marquee track */
+.pp-marquee-wrap{
+  /* padding gives cards room to lift on hover without being clipped */
+  padding:10px 0 6px;
+  overflow:hidden;
+  mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+  -webkit-mask:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;animation:ppScroll 50s linear infinite}
 .pp-track:hover{animation-play-state:paused}
 @keyframes ppScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* Gold glass card */
-.pp-card{flex:0 0 250px;border-radius:20px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;cursor:default;
+/* ── Shared card base ── */
+.pp-card{flex:0 0 250px;border-radius:20px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:11px;position:relative;overflow:hidden;
+  transition:transform .2s ease-out,box-shadow .2s ease-out}
+.pp-card:hover{transform:translateY(-4px)}
+/* Shimmer sweep on hover */
+.pp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.4) 50%,transparent 65%);transform:translateX(-110%);transition:transform .5s ease;pointer-events:none;border-radius:inherit}
+.pp-card:hover::after{transform:translateX(110%)}
+/* ── Gold premium card (affiliate partners) ── */
+.pp-card.pp-gold{
   background:linear-gradient(148deg,rgba(255,253,245,.96) 0%,rgba(254,243,199,.88) 55%,rgba(255,250,235,.94) 100%);
   backdrop-filter:blur(22px) saturate(200%);-webkit-backdrop-filter:blur(22px) saturate(200%);
   border:1px solid rgba(251,191,36,.32);border-top:1px solid rgba(255,255,255,.88);
-  box-shadow:0 8px 32px rgba(217,119,6,.12),0 2px 8px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(245,158,11,.06);
-  transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s}
-/* Top sheen highlight */
-.pp-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 40%,rgba(255,255,255,.9) 60%,transparent);pointer-events:none}
-/* Shimmer sweep on hover */
-.pp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-110%);transition:transform .55s ease;pointer-events:none;border-radius:inherit}
-.pp-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(217,119,6,.18),0 4px 16px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.98)}
-.pp-card:hover::after{transform:translateX(110%)}
+  box-shadow:0 6px 24px rgba(217,119,6,.12),0 2px 8px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.95)}
+.pp-card.pp-gold::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 40%,rgba(255,255,255,.9) 60%,transparent);pointer-events:none}
+.pp-card.pp-gold:hover{box-shadow:0 14px 36px rgba(217,119,6,.18),0 4px 14px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.98)}
+/* ── Regular card (popular tools filler) ── */
+.pp-card.pp-regular{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  box-shadow:var(--shadow)}
+.pp-card.pp-regular:hover{box-shadow:var(--shadow-lg);border-color:rgba(26,86,219,.18)}
+/* Shared inner elements */
 .pp-card-top{display:flex;align-items:center;gap:11px}
-.pp-logo{width:42px;height:42px;border-radius:12px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,rgba(254,243,199,.9),rgba(253,230,138,.7));border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#92400e;box-shadow:0 2px 8px rgba(217,119,6,.15)}
+.pp-logo{width:42px;height:42px;border-radius:12px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800}
 .pp-logo img{width:42px;height:42px;object-fit:cover;border-radius:11px}
+.pp-card.pp-gold .pp-logo{background:linear-gradient(135deg,rgba(254,243,199,.9),rgba(253,230,138,.7));border:1px solid rgba(245,158,11,.2);color:#92400e;box-shadow:0 2px 8px rgba(217,119,6,.12)}
+.pp-card.pp-regular .pp-logo{background:var(--primary-light);color:var(--primary)}
 .pp-name{font-weight:800;font-size:14.5px;color:var(--text);line-height:1.2;letter-spacing:-.01em}
-.pp-cat{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.7);border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:1px 7px;margin-top:3px}
+.pp-cat{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:1px 7px;margin-top:3px}
+.pp-card.pp-gold .pp-cat{color:#92400e;background:rgba(254,243,199,.7);border:1px solid rgba(245,158,11,.22)}
+.pp-card.pp-regular .pp-cat{color:var(--primary);background:var(--primary-light);border:1px solid rgba(26,86,219,.12)}
 .pp-tag{font-size:12.5px;color:var(--text-2);line-height:1.55;flex:1}
-.pp-btn{display:block;text-align:center;padding:10px 16px;border-radius:12px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.01em;
+/* Gold CTA */
+.pp-btn-gold{display:block;text-align:center;padding:10px 16px;border-radius:12px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.01em;
   background:linear-gradient(135deg,#f59e0b,#d97706);
-  box-shadow:0 4px 14px rgba(217,119,6,.32),inset 0 1px 0 rgba(255,255,255,.18);
-  transition:transform .15s,box-shadow .15s}
-.pp-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(217,119,6,.42),inset 0 1px 0 rgba(255,255,255,.2)}
-.pp-badge{position:absolute;top:12px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.8);border:1px solid rgba(245,158,11,.25);border-radius:5px;padding:2px 6px;backdrop-filter:blur(8px)}
+  box-shadow:0 4px 14px rgba(217,119,6,.28),inset 0 1px 0 rgba(255,255,255,.18);
+  transition:box-shadow .15s}
+.pp-btn-gold:hover{box-shadow:0 8px 22px rgba(217,119,6,.40)}
+/* Regular CTA */
+.pp-btn-regular{display:block;text-align:center;padding:10px 16px;border-radius:12px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  box-shadow:0 4px 12px rgba(26,86,219,.22);transition:box-shadow .15s}
+.pp-btn-regular:hover{box-shadow:0 8px 20px rgba(26,86,219,.34)}
+.pp-badge{position:absolute;top:12px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.85);border:1px solid rgba(245,158,11,.28);border-radius:5px;padding:2px 6px}
 
 /* ── Floating subscribe popup ── */
 /* ── Subscribe popup overlay + modal ── */
@@ -2775,49 +2799,91 @@ async function submitReview(){
     if(!r.ok) return;
     const data=await r.json();
     const partners=(data.tools||[]).filter(p=>p.affiliate_url&&p.name);
+    /* Section only makes sense when there's at least one affiliate tool */
     if(!partners.length) return;
 
     const track=document.getElementById('pp-track');
     if(!track) return;
 
+    const affiliateNameSet=new Set(partners.map(p=>p.name.toLowerCase()));
     function toolByName(name){
       const nl=name.toLowerCase();
       return TOOLS.map((_,i)=>tool(i)).filter(Boolean).find(t=>t.name.toLowerCase()===nl)||null;
     }
-    function initials(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
-    function favicon(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
+    function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
+    function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
 
-    function cardHTML(p){
+    /* Fill up to 10 cards with popular tools (non-affiliate, sorted by trending) */
+    const TARGET=10;
+    const fillerTools=TOOLS
+      .map((_,i)=>tool(i)).filter(Boolean)
+      .filter(t=>!affiliateNameSet.has(t.name.toLowerCase()))
+      .sort((a,b)=>(b.trending||0)-(a.trending||0))
+      .slice(0, Math.max(0, TARGET-partners.length));
+
+    /* ── Gold card for affiliate partners ── */
+    function goldCard(p){
       const t=toolByName(p.name);
       const domain=t?t.domain:'';
       const tag=t?t.tag:'';
       const cat=(p.categories&&p.categories[0])||(t?t.cat:'');
       const goUrl='go.html?url='+encodeURIComponent(p.affiliate_url)+'&name='+encodeURIComponent(p.name);
-      const ini=initials(p.name);
+      const initial=ini(p.name);
       const logoHtml=domain
-        ?`<img src="${favicon(domain)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span>${ini}</span>')">`
-        :`<span>${ini}</span>`;
-      return `<div class="pp-card">
+        ?`<img src="${fav(domain)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span>${initial}</span>')">`
+        :`<span>${initial}</span>`;
+      return `<div class="pp-card pp-gold">
         <span class="pp-badge">Partner</span>
         <div class="pp-card-top">
           <div class="pp-logo">${logoHtml}</div>
           <div><div class="pp-name">${p.name}</div><span class="pp-cat">${cat}</span></div>
         </div>
         ${tag?`<p class="pp-tag">${tag}</p>`:''}
-        <a class="pp-btn" href="${goUrl}" target="_blank" rel="sponsored noopener nofollow">Try Free &rarr;</a>
+        <a class="pp-btn-gold" href="${goUrl}" target="_blank" rel="sponsored noopener nofollow">Try Free &rarr;</a>
       </div>`;
     }
 
-    /* Duplicate cards for seamless infinite scroll */
-    const html=partners.map(cardHTML).join('');
-    track.innerHTML=html+html;   /* set 1 + set 2 */
+    /* ── Regular card for popular filler tools ── */
+    function regularCard(t){
+      const goUrl='go.html?url='+encodeURIComponent(t.url||'')+'&name='+encodeURIComponent(t.name);
+      const initial=ini(t.name);
+      const logoHtml=t.domain
+        ?`<img src="${fav(t.domain)}" alt="${t.name}" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span>${initial}</span>')">`
+        :`<span>${initial}</span>`;
+      return `<div class="pp-card pp-regular">
+        <div class="pp-card-top">
+          <div class="pp-logo">${logoHtml}</div>
+          <div><div class="pp-name">${t.name}</div><span class="pp-cat">${t.cat||''}</span></div>
+        </div>
+        ${t.tag?`<p class="pp-tag">${t.tag}</p>`:''}
+        <a class="pp-btn-regular" href="${goUrl}" target="_blank" rel="noopener nofollow">Try Now &rarr;</a>
+      </div>`;
+    }
 
-    /* Slow down animation proportionally if few cards (short content scrolls too fast) */
-    const speed=Math.max(20, partners.length*8);
-    track.style.animationDuration=speed+'s';
+    const allCards=[
+      ...partners.map(goldCard),
+      ...fillerTools.map(regularCard)
+    ];
+
+    /* Only duplicate for marquee if we have enough cards to fill the viewport */
+    const totalCards=allCards.length;
+    const needsLoop=totalCards>=6;
+    const html=allCards.join('');
+    track.innerHTML=needsLoop ? html+html : html;
+
+    /* Disable animation when not enough to scroll */
+    if(!needsLoop){
+      track.style.animation='none';
+      track.style.flexWrap='wrap';
+      track.style.justifyContent='center';
+      track.style.width='auto';
+    }else{
+      const speed=Math.max(30, totalCards*5);
+      track.style.animationDuration=speed+'s';
+    }
 
     document.getElementById('partner-picks').style.display='block';
-  }catch(e){ /* no affiliate file yet — silently skip */ }
+  }catch(e){ /* no affiliate file — silently skip */ }
 })();
 
 /* ═══════════════════════════════════════════
