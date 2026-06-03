@@ -8,5 +8,19 @@
   "count": 2,
   "brevo_active": 2,
   "first_created": "2026-06-03T00:00:00Z",
-  "last_updated": "2026-06-03T16:45:52.600Z"
+  "last_updated": "2026-06-03T17:36:33.557Z",
+  "subscribers": [
+    {
+      "email": "benjie.gadiaza@gmail.com",
+      "name": "Ben",
+      "added": "2026-05-10T20:36:30.836+02:00",
+      "status": "active"
+    },
+    {
+      "email": "info.myaitoolbox@gmail.com",
+      "name": "Benj Gadiaza",
+      "added": "2026-05-10T19:19:08.557+02:00",
+      "status": "active"
+    }
+  ]
 }
