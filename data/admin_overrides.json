@@ -1,10 +1,17 @@
 {
   "v": 1,
-  "updated": "2026-06-03T16:47:08.867Z",
+  "updated": "2026-06-03T16:47:15.625Z",
   "overrides": {
     "75": {
       "trending": 99,
-      "affiliate_url": "https://go.reclaim.ai/do7hs1jez62m"
+      "affiliate_url": "https://go.reclaim.ai/do7hs1jez62m",
+      "verified": true,
+      "jobs": [
+        "Manager",
+        "Founder",
+        "Solopreneur",
+        "Con"
+      ]
     }
   }
 }
