@@ -84,17 +84,45 @@
 </head>
 <body>
 
+<!-- ===== First-time setup ===== -->
+<div id="setup" class="gate" style="display:none">
+  <h1>🔑 Set up admin access</h1>
+  <p>First-time setup — choose a secure passphrase and connect your GitHub repo. These are stored safely (hash only — never the raw passphrase).</p>
+  <div style="margin-bottom:10px">
+    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">GitHub Personal Access Token</label>
+    <input id="setup-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
+    <div style="font-size:11.5px;color:var(--text-dim);margin-top:4px">Create at github.com/settings/tokens — needs <b>Contents: Write</b> permission. Stored in your browser only.</div>
+  </div>
+  <div style="margin-bottom:10px">
+    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">Repository (owner/repo)</label>
+    <input id="setup-repo" type="text" value="theaitoolfinder/toolfinder-ai" placeholder="owner/repo" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
+  </div>
+  <div style="margin-bottom:8px">
+    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">New passphrase</label>
+    <input id="setup-pw1" type="password" placeholder="At least 8 characters" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
+  </div>
+  <div>
+    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">Confirm passphrase</label>
+    <input id="setup-pw2" type="password" placeholder="Confirm passphrase" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
+  </div>
+  <div class="err" id="setup-err" style="min-height:18px;margin-top:6px"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:14px">
+    <button class="btn primary" onclick="setupPassphrase()">Save &amp; Unlock</button>
+  </div>
+</div>
+
 <!-- ===== Password gate ===== -->
-<div id="gate" class="gate">
+<div id="gate" class="gate" style="display:none">
   <h1>🔒 Admin access</h1>
-  <p>This page lets you edit affiliate URLs, tool data and site settings for <b>MyAI ToolsFinder</b>.</p>
-  <input id="pw" type="password" placeholder="Enter passphrase" autocomplete="off" />
-  <div class="err" id="err"></div>
+  <p>This page lets you edit affiliate URLs, tool data and site settings for <b>MyAI ToolsFinder</b>. Your passphrase is stored as a salted SHA-256 hash — never plain text in source code.</p>
+  <input id="pw" type="password" placeholder="Enter passphrase" autocomplete="off" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0"/>
+  <div class="err" id="err" style="min-height:18px;margin-top:6px"></div>
   <div style="display:flex;justify-content:flex-end;margin-top:14px">
     <button class="btn primary" onclick="unlock()">Unlock</button>
   </div>
-  <p style="margin-top:18px;font-size:11.5px;line-height:1.6;color:var(--text-dim)">
-    ⚠️ <b>Security note:</b> This site is hosted on GitHub Pages (static, no backend), so the passphrase below is stored in this file's source code. Anyone who reads the page source can find it. Treat it as friction, not real security. For real protection, host the admin behind real auth (Vercel/Netlify functions + Auth0/Clerk, or self-host with Nginx basic-auth).
+  <p style="margin-top:14px;font-size:11.5px;line-height:1.6;color:var(--text-dim)">
+    ✅ Settings sync across all your devices via GitHub.<br>
+    🔄 To reset passphrase: delete <code>data/admin_config.json</code> from your repo, then reload this page.
   </p>
 </div>
 
@@ -381,16 +409,83 @@
 
 <script>
 /* =========================================================
-   ADMIN — change this passphrase to whatever you want.
-   It's stored in the source code (visible to anyone who
-   views the page source), so this is obscurity, not real
-   security. For real auth, use a backend.
+   AUTH — passphrase hash stored in data/admin_config.json.
+   No password lives in this source file.
+   First-time setup: the setup form creates admin_config.json.
+   To reset: delete data/admin_config.json from GitHub repo.
    ========================================================= */
-const ADMIN_PASS = "changeme";   // ← CHANGE THIS
-
 const LS_AUTH       = "myai_admin_auth_v1";
 const LS_OVERRIDES  = "myai_admin_overrides_v1";  // shared with index.html
 const LS_SITECONFIG = "myai_site_config_v1";
+
+/* ── SHA-256 via Web Crypto API ────────────────────────── */
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ── Admin config (salted hash in data/admin_config.json) ─ */
+let _adminCfg=null;
+async function fetchAdminConfig(){
+  try{
+    const r=await fetch('/data/admin_config.json?_='+Date.now(),{cache:'no-store'});
+    if(r.ok){_adminCfg=await r.json();return true;}
+  }catch(e){}
+  return false;
+}
+
+/* ── Unlock (login) ──────────────────────────────────────── */
+async function unlock(){
+  const v=document.getElementById('pw').value;
+  if(!v){document.getElementById('err').textContent='Enter your passphrase.';return;}
+  if(!_adminCfg){const ok=await fetchAdminConfig();if(!ok){document.getElementById('err').textContent='Could not load auth config. Check your connection.';return;}}
+  const h=await sha256(_adminCfg.salt+v);
+  if(h!==_adminCfg.hash){document.getElementById('err').textContent='Wrong passphrase.';return;}
+  sessionStorage.setItem(LS_AUTH,'1');
+  await loadOverridesFromGitHub();
+  showApp();
+}
+
+/* ── First-time setup ────────────────────────────────────── */
+async function setupPassphrase(){
+  const token=document.getElementById('setup-token').value.trim();
+  const repo=(document.getElementById('setup-repo').value||'').trim()||'theaitoolfinder/toolfinder-ai';
+  const pw1=document.getElementById('setup-pw1').value;
+  const pw2=document.getElementById('setup-pw2').value;
+  const err=document.getElementById('setup-err');
+  err.textContent='';
+  if(!token){err.textContent='GitHub token is required.';return;}
+  if(!pw1){err.textContent='Passphrase cannot be empty.';return;}
+  if(pw1.length<8){err.textContent='Passphrase must be at least 8 characters.';return;}
+  if(pw1!==pw2){err.textContent='Passphrases do not match.';return;}
+  localStorage.setItem('myai_gh_token',token);
+  localStorage.setItem('myai_gh_repo',repo);
+  const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  const hash=await sha256(salt+pw1);
+  const cfg={v:1,salt,hash};
+  const ok=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: set passphrase hash');
+  if(!ok){err.textContent='Failed to commit config — check token/repo name.';return;}
+  _adminCfg=cfg;
+  sessionStorage.setItem(LS_AUTH,'1');
+  document.getElementById('setup').style.display='none';
+  showApp();
+}
+
+/* ── Load cross-device overrides from GitHub ─────────────── */
+async function loadOverridesFromGitHub(){
+  const repo=localStorage.getItem('myai_gh_repo');
+  const token=localStorage.getItem('myai_gh_token');
+  if(!repo||!token)return;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${repo}/contents/data/admin_overrides.json`,
+      {headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
+    if(!r.ok)return;
+    const data=await r.json();
+    const content=JSON.parse(atob(data.content.replace(/\n/g,'')));
+    if(content&&content.overrides)
+      localStorage.setItem(LS_OVERRIDES,JSON.stringify(content.overrides));
+  }catch(e){}
+}
 
 /* Defaults — keep in sync with index.html TOOLS array.
    The admin only needs the same length and field shape; the
@@ -1496,18 +1591,83 @@ function showAdminToast(msg){
   t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',3500);
 }
 
-async function autoCommitAfterSave(){
-  const toolsDataContent=buildToolsDataJs();
-  const committed=await commitToGitHub('js/tools-data.js',toolsDataContent,'Admin: update affiliate URLs');
-  if(committed){showAdminToast('Saved & deployed to GitHub.');}
+/* Build data/affiliate_tools.json from tools that have affiliate_url set.
+   generate_article.py reads this to prioritize partner tools in articles. */
+function buildAffiliateToolsJson(){
+  const ov=loadOverrides();
+  const merged=DEFAULT_TOOLS.map((t,i)=>{const o=Object.assign({},ov[i]||{});if(o._deleted)return null;delete o._deleted;return Object.assign({},t,o);}).filter(Boolean);
+  const affTools=merged
+    .filter(t=>t.affiliate_url&&t.affiliate_url.trim())
+    .map(t=>({name:t.name,affiliate_url:t.affiliate_url.trim(),categories:[t.cat],priority:1}));
+  return JSON.stringify({
+    _readme:"Auto-generated by admin portal. Do not edit manually — use admin.html.",
+    tools:affTools
+  },null,2)+'\n';
 }
 
-// Load saved GH settings into inputs
+/* Build data/admin_overrides.json for cross-device persistence. */
+function buildAdminOverridesJson(){
+  const ov=loadOverrides();
+  return JSON.stringify({v:1,updated:new Date().toISOString(),overrides:ov},null,2)+'\n';
+}
+
+async function autoCommitAfterSave(){
+  const repo=localStorage.getItem('myai_gh_repo');
+  const token=localStorage.getItem('myai_gh_token');
+  if(!repo||!token)return;
+  const toolsJs=buildToolsDataJs();
+  const affJson=buildAffiliateToolsJson();
+  const ovrJson=buildAdminOverridesJson();
+  // Commit all three files — parallel GETs then parallel PUTs (different files so no SHA conflict)
+  const [r1,r2,r3]=await Promise.all([
+    commitToGitHub('js/tools-data.js',toolsJs,'Admin: update tools & affiliate URLs'),
+    commitToGitHub('data/affiliate_tools.json',affJson,'Admin: sync affiliate partner list'),
+    commitToGitHub('data/admin_overrides.json',ovrJson,'Admin: sync settings (cross-device)')
+  ]);
+  if(r1||r2||r3){showAdminToast('✅ Saved & deployed to GitHub.');}
+  else{showAdminToast('⚠️ GitHub not connected — changes saved locally only.');}
+}
+
+// Load saved GH settings into GitHub-tab inputs
 (function(){
   const savedRepo=localStorage.getItem('myai_gh_repo');
   const savedToken=localStorage.getItem('myai_gh_token');
   if(savedRepo&&document.getElementById('gh-repo'))document.getElementById('gh-repo').value=savedRepo;
   if(savedToken&&document.getElementById('gh-token'))document.getElementById('gh-token').value=savedToken;
+})();
+
+/* ── Page init: decide which panel to show ────────────────────────────────────
+   1. Already authed this session → show app immediately.
+   2. data/admin_config.json exists → show login gate.
+   3. No config file → first-time setup.
+   ─────────────────────────────────────────────────────────────────────────── */
+(async function initAdmin(){
+  // Restore saved GitHub token/repo into setup-repo input if present
+  const savedRepo=localStorage.getItem('myai_gh_repo')||'theaitoolfinder/toolfinder-ai';
+  const savedToken=localStorage.getItem('myai_gh_token')||'';
+  const setupRepo=document.getElementById('setup-repo');
+  const setupToken=document.getElementById('setup-token');
+  if(setupRepo)setupRepo.value=savedRepo;
+  if(setupToken&&savedToken)setupToken.value=savedToken;
+
+  // If already authed this session, show app right away
+  if(sessionStorage.getItem(LS_AUTH)==='1'){
+    await loadOverridesFromGitHub();
+    showApp();
+    return;
+  }
+
+  // Try to fetch admin_config.json from the live site
+  const configFound=await fetchAdminConfig();
+  if(configFound){
+    document.getElementById('gate').style.display='block';
+    // Pre-focus the passphrase input
+    const pwEl=document.getElementById('pw');
+    if(pwEl)setTimeout(()=>pwEl.focus(),50);
+  }else{
+    // No config exists — first-time setup
+    document.getElementById('setup').style.display='block';
+  }
 })();
 
 /* ═══════════════════════════════════════════════════

@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "_readme": "Internal subscriber database. Hashes are only ever added, never removed. Source of truth for subscriber gate.",
+  "hashes": [],
+  "count": 0,
+  "brevo_active": 0,
+  "first_created": "2026-06-03T00:00:00Z",
+  "last_updated": "2026-06-03T00:00:00Z"
+}

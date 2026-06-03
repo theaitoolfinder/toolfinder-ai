@@ -42,13 +42,13 @@ jobs:
         run: |
           git config user.email "bot@myaitoolsfinder.com"
           git config user.name "MyAI ToolsFinder Bot"
-          git add data/subscribers.json
+          git add data/subscribers.json data/subscribers_db.json
           if git diff --staged --quiet; then
             echo "No subscriber changes since last sync."
           else
-            COUNT=$(python3 -c "import json; d=json.load(open('data/subscribers.json')); print(d['count'])")
-            git commit -m "Sync subscribers: ${COUNT} active ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
+            COUNT=$(python3 -c "import json; d=json.load(open('data/subscribers_db.json')); print(d['count'])")
+            git commit -m "Sync subscribers: ${COUNT} total in DB ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
             git pull --rebase origin main || true
             git push
-            echo "✅ Subscriber list updated."
+            echo "✅ Subscriber DB updated."
           fi
