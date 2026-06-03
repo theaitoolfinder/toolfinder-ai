@@ -710,6 +710,9 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     background:rgba(0,0,0,.78)!important}
   .cmp-tray{
     backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  /* On mobile: use display:none instead of transform — viewport shifts can
+     cause translateY(100%) to leave a ghost bar visible at the bottom */
+  .cmp-tray.hidden{display:none!important;transform:none}
 
   /* Disable shimmer sweep — GPU-heavy pseudo-element animation */
   .pp-card::after{display:none!important}
