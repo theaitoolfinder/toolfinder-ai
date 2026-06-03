@@ -639,6 +639,104 @@ body::before{
 #sub-popup .pop-dismiss:hover{opacity:1}
 #sub-popup .pop-privacy{font-size:11px;color:var(--text-dim);margin-top:8px;opacity:.7}
 @media(max-width:480px){#sub-popup{padding:28px 20px 22px}#sub-popup .pop-title{font-size:19px}}
+
+/* ═══════════════════════════════════════════════════════
+   PERFORMANCE OPTIMIZATIONS
+   ─────────────────────────────────────────────────────
+   1. Globally reduce backdrop-filter intensity (desktop)
+   2. Remove backdrop-filter on mobile (solid fallbacks)
+   3. Disable hover transforms on touch screens
+   4. Respect prefers-reduced-motion
+   5. CSS containment on card grid
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1. Reduce backdrop-filter values globally (desktop still gets blur, just lighter) ── */
+header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px)}
+.eyebrow,.partner-picks-head .eyebrow{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%)}
+.btn-secondary{backdrop-filter:blur(10px) saturate(130%);-webkit-backdrop-filter:blur(10px) saturate(130%)}
+.stat{backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%)}
+.pp-card.pp-gold{backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%)}
+#sub-popup{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+#sub-popup-overlay{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#cb-win{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+.cmp-overlay{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.review-modal-bg{backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.cmp-tray{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* ── 2. Lighter hover lifts on desktop ── */
+.stat:hover{transform:translateY(-2px)}
+.card:hover{transform:translateY(-2px)}
+.pp-card:hover{transform:translateY(-2px)}
+
+/* ── 3. CSS containment — limits layout recalc scope to card grid ── */
+#grid{contain:layout style}
+.scroll{contain:layout style}
+
+/* ── 4. Mobile — remove backdrop-filter entirely (biggest heat fix) ── */
+@media(max-width:767px){
+  /* Replace all blur layers with solid/opaque fallbacks */
+  header.site{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(255,255,255,.97)!important}
+  .eyebrow,.partner-picks-head .eyebrow{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(219,234,254,.95)!important}
+  .btn-secondary{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(255,255,255,.95)!important}
+  .stat{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(255,255,255,.96)!important}
+  .pp-card.pp-gold{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:linear-gradient(148deg,#fffdf5 0%,#fef3c7 55%,#fffaeb 100%)!important}
+  #sub-popup-overlay{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(13,31,60,.72)!important}
+  #sub-popup{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:#fff!important}
+  #cb-win{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(255,255,255,.99)!important}
+  .cmp-overlay{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(0,0,0,.78)!important}
+  .review-modal-bg{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(13,31,60,.78)!important}
+  .auth-overlay{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:rgba(0,0,0,.78)!important}
+  .cmp-tray{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+
+  /* Disable shimmer sweep — GPU-heavy pseudo-element animation */
+  .pp-card::after{display:none!important}
+
+  /* No hover transforms on touch — they don't fire on tap anyway */
+  .stat:hover,.card:hover,.pp-card:hover,
+  .art-carousel-card:hover,.dir-card:hover,.review-card:hover{transform:none!important}
+
+  /* Shorten or kill non-essential transitions */
+  .card,.pp-card,.stat,.art-carousel-card,.dir-card,.review-card{
+    transition:box-shadow .15s!important}
+  .nav .cta,.btn-primary,.art-carousel-all,.visit,.cmp-go-btn,
+  .review-write-btn,.cmp-try-btn,.cmp-unlock-btn{
+    transition:opacity .15s!important}
+}
+
+/* ── 5. Respect prefers-reduced-motion (accessibility + battery) ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important}
+  .pp-card::after{display:none!important}
+  #sub-popup{transition:opacity .15s ease!important;transform:none!important}
+  #sub-popup-overlay.show #sub-popup{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -2487,12 +2585,14 @@ window.addEventListener("hashchange",readHash);readHash();
     if(!sentinel||!wrap)return;
     let spacer=null;
     let isFixed=false;
+    let rafPending=false; // RAF throttle — only one check per frame
     function check(){
       const headerH=headerEl?headerEl.offsetHeight:65;
       const sentTop=sentinel.getBoundingClientRect().top;
       const barH=wrap.offsetHeight;
       const releaseTop=releaseEl?releaseEl.getBoundingClientRect().top:Infinity;
       const shouldFix=sentTop<headerH&&releaseTop>(headerH+barH);
+      rafPending=false;
       if(shouldFix===isFixed)return;
       isFixed=shouldFix;
       if(shouldFix){
@@ -2504,13 +2604,18 @@ window.addEventListener("hashchange",readHash);readHash();
         wrap.classList.remove('is-fixed');
       }
     }
+    function scheduleCheck(){
+      if(rafPending)return; // already queued this frame
+      rafPending=true;
+      requestAnimationFrame(check);
+    }
     // Keep spacer in sync when bar height changes (chips added/removed)
     if('ResizeObserver' in window){
       new ResizeObserver(()=>{if(isFixed&&spacer)spacer.style.height=wrap.offsetHeight+'px';}).observe(wrap);
     }
-    // iOS Safari: scroll events don't fire during momentum — add touch listeners
-    window.addEventListener('scroll',check,{passive:true});
-    window.addEventListener('touchmove',check,{passive:true});
+    // RAF-throttled scroll/touch listeners — no layout thrash on every pixel
+    window.addEventListener('scroll',scheduleCheck,{passive:true});
+    window.addEventListener('touchmove',scheduleCheck,{passive:true});
     window.addEventListener('touchend',function(){requestAnimationFrame(check);},{passive:true});
     check();
   }
@@ -3501,6 +3606,9 @@ async function popSubscribe(){
   let animIdx = 0;
   let animTimer = null;
   let isWinOpen = false;
+  // On touch/mobile devices reduce animation frequency to save CPU
+  const IS_LOW_POWER = window.matchMedia('(pointer:coarse)').matches
+    || window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   function bodyG()  { return document.getElementById('clippy-body-g'); }
   function arm()    { return document.getElementById('clippy-arm'); }
@@ -3605,7 +3713,8 @@ async function popSubscribe(){
   function nextAnimState() {
     animIdx = (animIdx + 1) % ANIM_STATES.length;
     if (animTimer) clearTimeout(animTimer);
-    animTimer = setTimeout(runAnimState, 500);
+    // On mobile/low-power: delay transitions longer to reduce CPU usage
+    animTimer = setTimeout(runAnimState, IS_LOW_POWER ? 1200 : 500);
   }
 
   /* ── Run a state ── */
@@ -3614,7 +3723,7 @@ async function popSubscribe(){
       // When chat is open, just do a gentle idle bob
       resetAnims();
       setBodyAnim('clippyBob 2.6s ease-in-out infinite');
-      animTimer = setTimeout(nextAnimState, 5000 + Math.random() * 3000);
+      animTimer = setTimeout(nextAnimState, IS_LOW_POWER ? 10000 : 5000 + Math.random() * 3000);
       return;
     }
     const state = ANIM_STATES[animIdx];
@@ -3623,17 +3732,20 @@ async function popSubscribe(){
     switch (state) {
       case 'idle':
         setBodyAnim('clippyBob 2.4s ease-in-out infinite');
-        const blinkDelay = 1200 + Math.random() * 2000;
-        setTimeout(() => {
-          if (Math.random() > 0.65) {
-            setExpression('wink');
-            setTimeout(() => setExpression('neutral'), 520);
-          } else {
-            clippyBlink();
-            if (Math.random() > .55) setTimeout(clippyBlink, 420);
-          }
-        }, blinkDelay);
-        animTimer = setTimeout(nextAnimState, 4500 + Math.random() * 3500);
+        // On mobile, skip the blink/wink to save repaints
+        if (!IS_LOW_POWER) {
+          const blinkDelay = 1200 + Math.random() * 2000;
+          setTimeout(() => {
+            if (Math.random() > 0.65) {
+              setExpression('wink');
+              setTimeout(() => setExpression('neutral'), 520);
+            } else {
+              clippyBlink();
+              if (Math.random() > .55) setTimeout(clippyBlink, 420);
+            }
+          }, blinkDelay);
+        }
+        animTimer = setTimeout(nextAnimState, IS_LOW_POWER ? 9000 : 4500 + Math.random() * 3500);
         break;
 
       case 'wave':
@@ -3710,7 +3822,10 @@ async function popSubscribe(){
   }
   function scheduleSpeech() {
     if (speechTimer) clearTimeout(speechTimer);
-    const delay = 18000 + Math.random() * 14000; // 18–32s between appearances
+    // On mobile/low-power, much less frequent to reduce CPU wake-ups
+    const delay = IS_LOW_POWER
+      ? 45000 + Math.random() * 30000   // 45–75s on mobile
+      : 18000 + Math.random() * 14000;  // 18–32s on desktop
     speechTimer = setTimeout(showSpeech, delay);
   }
 
