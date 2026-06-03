@@ -18,6 +18,16 @@
         "Wispr Flow"
       ],
       "count": 3
+    },
+    {
+      "date": "2026-06-03",
+      "tools": [
+        "Rows AI",
+        "Browse AI",
+        "Read AI",
+        "Dovetail"
+      ],
+      "count": 4
     }
   ]
 }
