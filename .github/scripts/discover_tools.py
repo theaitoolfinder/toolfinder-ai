@@ -337,11 +337,20 @@ def research_tools_with_claude(existing_names, existing_domains, mentions):
 
     try:
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-        msg = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=3000,
-            messages=[{"role": "user", "content": prompt}]
-        )
+        # Try preferred model first, fall back to a stable model if unavailable
+        for model_name in ["claude-opus-4-5", "claude-sonnet-4-5", "claude-3-5-sonnet-20241022"]:
+            try:
+                msg = client.messages.create(
+                    model=model_name,
+                    max_tokens=3000,
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                print(f"[OK] Using model: {model_name}", file=sys.stderr)
+                break
+            except Exception as model_err:
+                print(f"[WARN] Model {model_name} failed: {model_err}", file=sys.stderr)
+        else:
+            raise RuntimeError("All models failed")
         raw = msg.content[0].text.strip()
         # Extract JSON array from response (in case of any preamble)
         m = re.search(r'\[.*\]', raw, re.DOTALL)
@@ -362,6 +371,366 @@ def curated_fallback_tools(existing_names, existing_domains):
     Rotated by week number to avoid repeating.
     """
     all_candidates = [
+        # ── Batch A: Code & Dev ──────────────────────────────────────────────────
+        {
+            "name": "Windsurf",
+            "domain": "windsurf.com",
+            "tag": "AI-native code editor by Codeium with deep codebase awareness and autonomous coding flows.",
+            "pill": "Free + Pro", "url": "https://windsurf.com",
+            "affiliate_url": "", "rating": 4.7, "reviews": "18K", "users": "1M+",
+            "verified": False, "featured": False,
+            "jobs": ["Developer", "Web Developer", "DevOps Engineer"],
+            "needs": ["Code faster", "Ship faster", "Build an app"],
+            "trending": 86, "cat": "Coding"
+        },
+        {
+            "name": "Cursor",
+            "domain": "cursor.com",
+            "tag": "AI-first code editor built on VS Code — write, edit and debug code with natural language.",
+            "pill": "Free + Pro", "url": "https://cursor.com",
+            "affiliate_url": "", "rating": 4.8, "reviews": "45K", "users": "3M+",
+            "verified": True, "featured": False,
+            "jobs": ["Developer", "Web Developer", "DevOps Engineer", "Founder"],
+            "needs": ["Code faster", "Ship faster", "Build an app"],
+            "trending": 92, "cat": "Coding"
+        },
+        {
+            "name": "v0.dev",
+            "domain": "v0.dev",
+            "tag": "Vercel's AI UI builder — describe a component or page and get production-ready React + Tailwind code.",
+            "pill": "Free + Pro", "url": "https://v0.dev",
+            "affiliate_url": "", "rating": 4.7, "reviews": "22K", "users": "1.5M+",
+            "verified": True, "featured": False,
+            "jobs": ["Developer", "Web Developer", "UX Designer", "Founder"],
+            "needs": ["Build a website", "Code faster", "Design without a designer"],
+            "trending": 88, "cat": "Coding"
+        },
+        {
+            "name": "Replit Agent",
+            "domain": "replit.com",
+            "tag": "AI agent that builds full apps from a description inside Replit — code, run, and deploy in one place.",
+            "pill": "Free + Pro", "url": "https://replit.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "30K", "users": "4M+",
+            "verified": True, "featured": False,
+            "jobs": ["Developer", "Founder", "Student", "Educator"],
+            "needs": ["Build an app", "Code faster", "Ship faster"],
+            "trending": 84, "cat": "Coding"
+        },
+        {
+            "name": "Pieces for Developers",
+            "domain": "pieces.app",
+            "tag": "AI developer productivity tool that captures, enriches and resurfaces code snippets with context.",
+            "pill": "Free + Pro", "url": "https://pieces.app",
+            "affiliate_url": "", "rating": 4.5, "reviews": "6K", "users": "300K+",
+            "verified": False, "featured": False,
+            "jobs": ["Developer", "Web Developer", "DevOps Engineer"],
+            "needs": ["Code faster", "Organize work", "Save time"],
+            "trending": 68, "cat": "Coding"
+        },
+        # ── Batch B: Video & Audio ────────────────────────────────────────────────
+        {
+            "name": "HeyGen",
+            "domain": "heygen.com",
+            "tag": "Create AI-generated videos with realistic talking avatars — translate, customize and scale fast.",
+            "pill": "Free + Pro", "url": "https://heygen.com",
+            "affiliate_url": "", "rating": 4.7, "reviews": "28K", "users": "2M+",
+            "verified": True, "featured": False,
+            "jobs": ["Content Creator", "Marketer", "Brand Manager", "Educator"],
+            "needs": ["Generate video", "Create social content", "Make social posts"],
+            "trending": 85, "cat": "Video"
+        },
+        {
+            "name": "Synthesia",
+            "domain": "synthesia.io",
+            "tag": "Create professional AI videos with digital avatars — no camera, crew or studio needed.",
+            "pill": "Free Trial", "url": "https://synthesia.io",
+            "affiliate_url": "", "rating": 4.6, "reviews": "18K", "users": "1M+",
+            "verified": True, "featured": False,
+            "jobs": ["Content Creator", "Educator", "Trainer", "Marketer"],
+            "needs": ["Generate video", "Create social content", "Create presentations"],
+            "trending": 81, "cat": "Video"
+        },
+        {
+            "name": "Descript",
+            "domain": "descript.com",
+            "tag": "Edit video and podcast audio by editing the transcript — AI removes filler words and silences automatically.",
+            "pill": "Free + Pro", "url": "https://descript.com",
+            "affiliate_url": "", "rating": 4.7, "reviews": "22K", "users": "1.5M+",
+            "verified": True, "featured": False,
+            "jobs": ["Podcaster", "Video Creator", "Content Creator", "YouTuber"],
+            "needs": ["Edit video", "Edit audio", "Transcribe meetings"],
+            "trending": 82, "cat": "Video"
+        },
+        {
+            "name": "Suno AI",
+            "domain": "suno.com",
+            "tag": "AI music generator — write a prompt and get a complete song with vocals and instrumentation instantly.",
+            "pill": "Free + Pro", "url": "https://suno.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "35K", "users": "3M+",
+            "verified": False, "featured": False,
+            "jobs": ["Content Creator", "Podcaster", "Video Creator", "YouTuber"],
+            "needs": ["Edit audio", "Create social content", "Generate voice"],
+            "trending": 83, "cat": "Audio"
+        },
+        {
+            "name": "ElevenLabs",
+            "domain": "elevenlabs.io",
+            "tag": "AI voice cloning and text-to-speech with hyper-realistic voices in 29 languages.",
+            "pill": "Free + Pro", "url": "https://elevenlabs.io",
+            "affiliate_url": "", "rating": 4.8, "reviews": "55K", "users": "5M+",
+            "verified": True, "featured": False,
+            "jobs": ["Content Creator", "Podcaster", "YouTuber", "Video Creator"],
+            "needs": ["Generate voice", "Edit audio", "Create social content"],
+            "trending": 91, "cat": "Audio"
+        },
+        # ── Batch C: Writing & Research ───────────────────────────────────────────
+        {
+            "name": "Perplexity Spaces",
+            "domain": "perplexity.ai",
+            "tag": "AI collaborative research workspaces — share searches, files and context across a team.",
+            "pill": "Free + Pro", "url": "https://perplexity.ai/spaces",
+            "affiliate_url": "", "rating": 4.6, "reviews": "12K", "users": "3M+",
+            "verified": True, "featured": False,
+            "jobs": ["Researcher", "Journalist", "Academic", "Student"],
+            "needs": ["Research competitors", "Summarize long docs", "Organize work"],
+            "trending": 79, "cat": "Research"
+        },
+        {
+            "name": "Elicit",
+            "domain": "elicit.com",
+            "tag": "AI research assistant that finds and summarizes academic papers to answer your research questions.",
+            "pill": "Free + Pro", "url": "https://elicit.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "8K", "users": "400K+",
+            "verified": False, "featured": False,
+            "jobs": ["Researcher", "Academic", "Student", "Journalist"],
+            "needs": ["Research competitors", "Summarize long docs", "Write faster"],
+            "trending": 72, "cat": "Research"
+        },
+        {
+            "name": "Consensus",
+            "domain": "consensus.app",
+            "tag": "AI search engine for scientific research — get evidence-based answers from 200M+ papers.",
+            "pill": "Free + Pro", "url": "https://consensus.app",
+            "affiliate_url": "", "rating": 4.5, "reviews": "5K", "users": "300K+",
+            "verified": False, "featured": False,
+            "jobs": ["Researcher", "Academic", "Student", "Journalist"],
+            "needs": ["Research competitors", "Summarize long docs", "Search the web"],
+            "trending": 70, "cat": "Research"
+        },
+        {
+            "name": "Writesonic",
+            "domain": "writesonic.com",
+            "tag": "AI writing platform for SEO articles, ads, emails and landing pages with brand voice control.",
+            "pill": "Free + Pro", "url": "https://writesonic.com",
+            "affiliate_url": "", "rating": 4.5, "reviews": "20K", "users": "2M+",
+            "verified": False, "featured": False,
+            "jobs": ["Copywriter", "Marketer", "SEO Consultant", "Content Creator"],
+            "needs": ["Write marketing copy", "Write faster", "Rank higher on Google"],
+            "trending": 73, "cat": "Writing"
+        },
+        {
+            "name": "Sudowrite",
+            "domain": "sudowrite.com",
+            "tag": "AI writing partner for fiction — brainstorm, draft, rewrite and expand your story with creative support.",
+            "pill": "Free Trial", "url": "https://sudowrite.com",
+            "affiliate_url": "", "rating": 4.5, "reviews": "6K", "users": "150K+",
+            "verified": False, "featured": False,
+            "jobs": ["Writer", "Content Creator"],
+            "needs": ["Write faster", "Brainstorm ideas", "Improve writing"],
+            "trending": 67, "cat": "Writing"
+        },
+        # ── Batch D: Productivity & Automation ────────────────────────────────────
+        {
+            "name": "Fathom",
+            "domain": "fathom.video",
+            "tag": "AI meeting recorder that auto-summarizes calls, highlights key moments and creates action items.",
+            "pill": "Free + Pro", "url": "https://fathom.video",
+            "affiliate_url": "", "rating": 4.8, "reviews": "25K", "users": "1M+",
+            "verified": False, "featured": False,
+            "jobs": ["Manager", "Sales Professional", "Founder", "Solopreneur"],
+            "needs": ["Transcribe meetings", "Take notes", "Organize work"],
+            "trending": 84, "cat": "Productivity"
+        },
+        {
+            "name": "Read AI",
+            "domain": "read.ai",
+            "tag": "AI meeting intelligence — real-time transcription, engagement scores, action items and summaries.",
+            "pill": "Free + Pro", "url": "https://read.ai",
+            "affiliate_url": "", "rating": 4.6, "reviews": "10K", "users": "500K+",
+            "verified": False, "featured": False,
+            "jobs": ["Manager", "Project Manager", "Sales Professional", "HR Professional"],
+            "needs": ["Transcribe meetings", "Organize work", "Take notes"],
+            "trending": 75, "cat": "Productivity"
+        },
+        {
+            "name": "Mem AI",
+            "domain": "mem.ai",
+            "tag": "AI-powered note-taking that organizes itself — surfaces relevant notes automatically when you need them.",
+            "pill": "Free + Pro", "url": "https://mem.ai",
+            "affiliate_url": "", "rating": 4.5, "reviews": "8K", "users": "300K+",
+            "verified": False, "featured": False,
+            "jobs": ["Writer", "Researcher", "Solopreneur", "Entrepreneur"],
+            "needs": ["Take notes", "Organize work", "Summarize long docs"],
+            "trending": 68, "cat": "Productivity"
+        },
+        {
+            "name": "Relay.app",
+            "domain": "relay.app",
+            "tag": "AI-native workflow automation with human-in-the-loop steps — smarter than Zapier for complex flows.",
+            "pill": "Free + Pro", "url": "https://relay.app",
+            "affiliate_url": "", "rating": 4.6, "reviews": "4K", "users": "80K+",
+            "verified": False, "featured": False,
+            "jobs": ["Founder", "Solopreneur", "Project Manager", "Virtual Assistant"],
+            "needs": ["Automate repetitive work", "Manage email", "Save time"],
+            "trending": 74, "cat": "Automation"
+        },
+        {
+            "name": "Lindy AI",
+            "domain": "lindy.ai",
+            "tag": "Build AI employees that handle email, scheduling, CRM updates and support tickets automatically.",
+            "pill": "Free + Pro", "url": "https://lindy.ai",
+            "affiliate_url": "", "rating": 4.6, "reviews": "5K", "users": "150K+",
+            "verified": False, "featured": False,
+            "jobs": ["Solopreneur", "Founder", "Virtual Assistant", "Manager"],
+            "needs": ["Automate repetitive work", "Manage email", "Handle customer queries"],
+            "trending": 78, "cat": "Automation"
+        },
+        # ── Batch E: Design & Marketing ────────────────────────────────────────────
+        {
+            "name": "Gamma",
+            "domain": "gamma.app",
+            "tag": "AI presentation and document builder — go from prompt to polished deck in seconds.",
+            "pill": "Free + Pro", "url": "https://gamma.app",
+            "affiliate_url": "", "rating": 4.7, "reviews": "30K", "users": "3M+",
+            "verified": True, "featured": False,
+            "jobs": ["Marketer", "Founder", "Educator", "Content Creator"],
+            "needs": ["Create presentations", "Write faster", "Brainstorm ideas"],
+            "trending": 86, "cat": "Presentation"
+        },
+        {
+            "name": "Framer AI",
+            "domain": "framer.com",
+            "tag": "AI website builder that designs and codes responsive sites from a text prompt — publish instantly.",
+            "pill": "Free + Pro", "url": "https://framer.com",
+            "affiliate_url": "", "rating": 4.7, "reviews": "20K", "users": "2M+",
+            "verified": True, "featured": False,
+            "jobs": ["Freelance Designer", "Founder", "Solopreneur", "UX Designer"],
+            "needs": ["Build a website", "Design without a designer", "Ship faster"],
+            "trending": 83, "cat": "Design"
+        },
+        {
+            "name": "Whimsical AI",
+            "domain": "whimsical.com",
+            "tag": "AI-powered visual workspace for flowcharts, wireframes and mind maps — build diagrams with prompts.",
+            "pill": "Free + Pro", "url": "https://whimsical.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "12K", "users": "1M+",
+            "verified": False, "featured": False,
+            "jobs": ["Product Manager", "UX Designer", "Project Manager", "Educator"],
+            "needs": ["Plan projects", "Brainstorm ideas", "Create presentations"],
+            "trending": 72, "cat": "Design"
+        },
+        {
+            "name": "AdCreative.ai",
+            "domain": "adcreative.ai",
+            "tag": "AI-generated ad creatives and copy that are conversion-optimised — connect your brand kit and go.",
+            "pill": "Free Trial", "url": "https://adcreative.ai",
+            "affiliate_url": "", "rating": 4.5, "reviews": "14K", "users": "1M+",
+            "verified": False, "featured": False,
+            "jobs": ["Digital Marketer", "E-commerce Owner", "Brand Manager", "Marketer"],
+            "needs": ["Run marketing", "Write marketing copy", "Create social content"],
+            "trending": 74, "cat": "Marketing"
+        },
+        {
+            "name": "Predis.ai",
+            "domain": "predis.ai",
+            "tag": "AI social media content creator — generate posts, videos and carousels from a keyword in seconds.",
+            "pill": "Free + Pro", "url": "https://predis.ai",
+            "affiliate_url": "", "rating": 4.5, "reviews": "8K", "users": "500K+",
+            "verified": False, "featured": False,
+            "jobs": ["Social Media Manager", "Content Creator", "Digital Marketer"],
+            "needs": ["Make social posts", "Create social content", "Save time"],
+            "trending": 72, "cat": "Marketing"
+        },
+        # ── Batch F: Sales & Support ───────────────────────────────────────────────
+        {
+            "name": "Gong",
+            "domain": "gong.io",
+            "tag": "AI revenue intelligence platform that records, transcribes and analyses every sales call.",
+            "pill": "Custom", "url": "https://gong.io",
+            "affiliate_url": "", "rating": 4.7, "reviews": "30K", "users": "4K companies",
+            "verified": True, "featured": False,
+            "jobs": ["Sales Professional", "Manager", "Founder"],
+            "needs": ["Transcribe meetings", "Research competitors", "Run marketing"],
+            "trending": 80, "cat": "Sales"
+        },
+        {
+            "name": "Tidio",
+            "domain": "tidio.com",
+            "tag": "AI customer service platform combining live chat, chatbot and email — resolve 70% of queries automatically.",
+            "pill": "Free + Pro", "url": "https://tidio.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "18K", "users": "300K businesses",
+            "verified": False, "featured": False,
+            "jobs": ["E-commerce Owner", "Customer Support", "Solopreneur"],
+            "needs": ["Handle customer queries", "Automate repetitive work", "Save time"],
+            "trending": 73, "cat": "Support"
+        },
+        {
+            "name": "Smartlead",
+            "domain": "smartlead.ai",
+            "tag": "AI cold email infrastructure with unlimited mailboxes, AI warm-up and personalised sequences.",
+            "pill": "Free Trial", "url": "https://smartlead.ai",
+            "affiliate_url": "", "rating": 4.6, "reviews": "6K", "users": "200K+",
+            "verified": False, "featured": False,
+            "jobs": ["Sales Professional", "Digital Marketer", "Founder", "Solopreneur"],
+            "needs": ["Run marketing", "Write marketing copy", "Manage email"],
+            "trending": 75, "cat": "Sales"
+        },
+        # ── Batch G: Finance & Analytics ──────────────────────────────────────────
+        {
+            "name": "Runway ML",
+            "domain": "runwayml.com",
+            "tag": "Professional AI video editing suite — inpaint, remove backgrounds and generate video with Gen-3.",
+            "pill": "Free + Pro", "url": "https://runwayml.com",
+            "affiliate_url": "", "rating": 4.7, "reviews": "35K", "users": "3M+",
+            "verified": True, "featured": False,
+            "jobs": ["Video Creator", "Graphic Designer", "Content Creator", "Filmmaker"],
+            "needs": ["Edit video", "Generate video", "Design without a designer"],
+            "trending": 88, "cat": "Video"
+        },
+        {
+            "name": "Rows AI",
+            "domain": "rows.com",
+            "tag": "AI-powered spreadsheet that can import live data, run analyses and generate charts from natural language.",
+            "pill": "Free + Pro", "url": "https://rows.com",
+            "affiliate_url": "", "rating": 4.5, "reviews": "5K", "users": "200K+",
+            "verified": False, "featured": False,
+            "jobs": ["Business Analyst", "Finance Professional", "Data Scientist", "Marketer"],
+            "needs": ["Organize work", "Plan projects", "Research competitors"],
+            "trending": 68, "cat": "Analytics"
+        },
+        {
+            "name": "Browse AI",
+            "domain": "browse.ai",
+            "tag": "No-code web scraping AI — train a robot to extract and monitor any website data automatically.",
+            "pill": "Free + Pro", "url": "https://browse.ai",
+            "affiliate_url": "", "rating": 4.6, "reviews": "7K", "users": "300K+",
+            "verified": False, "featured": False,
+            "jobs": ["Researcher", "Business Analyst", "Digital Marketer", "Solopreneur"],
+            "needs": ["Research competitors", "Automate repetitive work", "Save time"],
+            "trending": 71, "cat": "Automation"
+        },
+        {
+            "name": "Dovetail",
+            "domain": "dovetail.com",
+            "tag": "AI user research platform that analyses interviews, surveys and feedback to find patterns instantly.",
+            "pill": "Free + Pro", "url": "https://dovetail.com",
+            "affiliate_url": "", "rating": 4.6, "reviews": "8K", "users": "400K+",
+            "verified": False, "featured": False,
+            "jobs": ["UX Designer", "Product Manager", "Researcher", "Business Analyst"],
+            "needs": ["Research competitors", "Summarize long docs", "Organize work"],
+            "trending": 72, "cat": "Research"
+        },
+        # ── Legacy candidates (may already be in directory — deduplicated automatically) ──
         {
             "name": "Perplexity Pages",
             "domain": "perplexity.ai",
@@ -372,17 +741,6 @@ def curated_fallback_tools(existing_names, existing_domains):
             "jobs": ["Researcher", "Writer", "Educator"],
             "needs": ["Research competitors", "Summarize long docs", "Write faster"],
             "trending": 74, "cat": "Research"
-        },
-        {
-            "name": "Ideogram",
-            "domain": "ideogram.ai",
-            "tag": "AI image generator that excels at text rendering inside images — great for logos and graphics.",
-            "pill": "Free + Pro", "url": "https://ideogram.ai",
-            "affiliate_url": "", "rating": 4.5, "reviews": "25K", "users": "3M+",
-            "verified": False, "featured": False,
-            "jobs": ["Graphic Designer", "Marketer", "Content Creator"],
-            "needs": ["Generate images", "Create a logo", "Design without a designer"],
-            "trending": 78, "cat": "Image"
         },
         {
             "name": "Wispr Flow",
@@ -396,17 +754,6 @@ def curated_fallback_tools(existing_names, existing_domains):
             "trending": 71, "cat": "Productivity"
         },
         {
-            "name": "Pika Labs",
-            "domain": "pika.art",
-            "tag": "AI video generation from text or images — create cinematic short clips in seconds.",
-            "pill": "Free + Pro", "url": "https://pika.art",
-            "affiliate_url": "", "rating": 4.5, "reviews": "18K", "users": "1M+",
-            "verified": False, "featured": False,
-            "jobs": ["Video Creator", "Content Creator", "Marketer"],
-            "needs": ["Generate video", "Edit video", "Make social posts"],
-            "trending": 76, "cat": "Video"
-        },
-        {
             "name": "Wordware",
             "domain": "wordware.ai",
             "tag": "Build AI agents and automations in plain English — no code required, team-friendly.",
@@ -416,17 +763,6 @@ def curated_fallback_tools(existing_names, existing_domains):
             "jobs": ["Founder", "Product Manager", "Solopreneur", "Developer"],
             "needs": ["Automate repetitive work", "Build an app", "Ship faster"],
             "trending": 70, "cat": "Automation"
-        },
-        {
-            "name": "Udio",
-            "domain": "udio.com",
-            "tag": "AI music generator that creates full songs with vocals, instruments and custom lyrics.",
-            "pill": "Free + Pro", "url": "https://udio.com",
-            "affiliate_url": "", "rating": 4.5, "reviews": "14K", "users": "800K+",
-            "verified": False, "featured": False,
-            "jobs": ["Content Creator", "Podcaster", "Video Creator", "YouTuber"],
-            "needs": ["Edit audio", "Generate voice", "Create social content"],
-            "trending": 72, "cat": "Audio"
         },
         {
             "name": "Convergence Proxy",
@@ -451,39 +787,6 @@ def curated_fallback_tools(existing_names, existing_domains):
             "trending": 73, "cat": "Design"
         },
         {
-            "name": "Bolt.new",
-            "domain": "bolt.new",
-            "tag": "AI full-stack app builder — describe your app and get working code deployed in minutes.",
-            "pill": "Free + Pro", "url": "https://bolt.new",
-            "affiliate_url": "", "rating": 4.7, "reviews": "22K", "users": "2M+",
-            "verified": True, "featured": False,
-            "jobs": ["Developer", "Founder", "Solopreneur", "Product Manager"],
-            "needs": ["Build an app", "Build a website", "Ship faster", "Code faster"],
-            "trending": 85, "cat": "Coding"
-        },
-        {
-            "name": "Lovable",
-            "domain": "lovable.dev",
-            "tag": "AI that turns natural language descriptions into full-stack web apps — no coding experience needed.",
-            "pill": "Free + Pro", "url": "https://lovable.dev",
-            "affiliate_url": "", "rating": 4.6, "reviews": "15K", "users": "500K+",
-            "verified": False, "featured": False,
-            "jobs": ["Founder", "Solopreneur", "Product Manager", "Entrepreneur"],
-            "needs": ["Build an app", "Build a website", "Ship faster"],
-            "trending": 82, "cat": "Coding"
-        },
-        {
-            "name": "Krea AI",
-            "domain": "krea.ai",
-            "tag": "Real-time AI image generation and upscaling tool with advanced style controls for creatives.",
-            "pill": "Free + Pro", "url": "https://krea.ai",
-            "affiliate_url": "", "rating": 4.5, "reviews": "11K", "users": "700K+",
-            "verified": False, "featured": False,
-            "jobs": ["Graphic Designer", "Content Creator", "Photographer"],
-            "needs": ["Generate images", "Design without a designer"],
-            "trending": 70, "cat": "Image"
-        },
-        {
             "name": "Sora",
             "domain": "sora.com",
             "tag": "OpenAI's text-to-video model that generates realistic videos up to one minute from a prompt.",
@@ -495,21 +798,10 @@ def curated_fallback_tools(existing_names, existing_domains):
             "trending": 83, "cat": "Video"
         },
         {
-            "name": "Luma Dream Machine",
-            "domain": "lumalabs.ai",
-            "tag": "Luma AI's video generation tool — create smooth, high-quality video clips from text or images.",
-            "pill": "Free + Pro", "url": "https://lumalabs.ai/dream-machine",
-            "affiliate_url": "", "rating": 4.5, "reviews": "20K", "users": "1.5M+",
-            "verified": False, "featured": False,
-            "jobs": ["Video Creator", "Content Creator", "Graphic Designer"],
-            "needs": ["Generate video", "Edit video", "Create social content"],
-            "trending": 77, "cat": "Video"
-        },
-        {
             "name": "Fal.ai",
             "domain": "fal.ai",
             "tag": "Fast AI inference API for image and video generation — run Flux, SDXL and more at scale.",
-            "pill": "Pay-per-use", "url": "https://fal.ai",
+            "pill": "Free + Pro", "url": "https://fal.ai",
             "affiliate_url": "", "rating": 4.5, "reviews": "5K", "users": "200K+",
             "verified": False, "featured": False,
             "jobs": ["Developer", "Data Scientist", "Product Manager"],
