@@ -505,15 +505,15 @@ body::before{
 @media(max-width:500px){.brevo-popup-box{padding:28px 20px 22px}}
 
 /* ── Clippy Speech Bubble ── */
-#clippy-speech{position:fixed;bottom:152px;right:12px;z-index:601;background:white;border:2.5px solid var(--primary);border-radius:14px 14px 4px 14px;padding:11px 14px;font:12.5px/1.5 "Poppins",sans-serif;color:var(--text);max-width:215px;box-shadow:0 6px 26px rgba(26,86,219,.22);cursor:pointer;user-select:none;opacity:0;transform:translateY(12px) scale(.92);pointer-events:none;transition:opacity .38s,transform .38s}
+#clippy-speech{position:fixed;bottom:118px;right:12px;z-index:601;background:white;border:2.5px solid var(--primary);border-radius:14px 14px 4px 14px;padding:11px 14px;font:12.5px/1.5 "Poppins",sans-serif;color:var(--text);max-width:215px;box-shadow:0 6px 26px rgba(26,86,219,.22);cursor:pointer;user-select:none;opacity:0;transform:translateY(12px) scale(.92);pointer-events:none;transition:opacity .38s,transform .38s}
 #clippy-speech.show{opacity:1;transform:none;pointer-events:auto}
 #clippy-speech::after{content:'';position:absolute;bottom:-13px;right:24px;border:7px solid transparent;border-top-color:white}
 #clippy-speech::before{content:'';position:absolute;bottom:-16px;right:23px;border:8px solid transparent;border-top-color:var(--primary)}
 /* ── Clippy Button ── */
-#cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:130px;background:none;border:none;cursor:pointer;padding:0;filter:drop-shadow(0 8px 22px rgba(26,86,219,.42)) drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:filter .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
+#cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:96px;background:none;border:none;cursor:pointer;padding:0;filter:drop-shadow(0 8px 22px rgba(26,86,219,.42)) drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:filter .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
 #cb-btn:hover{filter:drop-shadow(0 14px 32px rgba(26,86,219,.58)) drop-shadow(0 3px 10px rgba(0,0,0,.2));transform:translateY(-5px) scale(1.04)}
 #cb-btn.open{filter:drop-shadow(0 4px 14px rgba(26,86,219,.3));transform:none}
-#teza-canvas{display:block;width:96px;height:130px}
+#teza-canvas{display:block;width:96px;height:96px}
 /* Clippy body animations (kept for no-op compatibility) */
 @keyframes clippyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes clippyWave{0%,100%{transform:rotate(0deg)}12%{transform:rotate(-45deg)}30%{transform:rotate(30deg)}50%{transform:rotate(-40deg)}68%{transform:rotate(24deg)}84%{transform:rotate(-12deg)}95%{transform:rotate(5deg)}}
@@ -522,7 +522,7 @@ body::before{
 @keyframes clippyExcite{0%,100%{transform:rotate(0deg) scale(1)}20%{transform:rotate(-12deg) scale(1.07)}45%{transform:rotate(12deg) scale(1.07)}70%{transform:rotate(-7deg) scale(1.04)}90%{transform:rotate(4deg) scale(1.02)}}
 @keyframes clippyLookSide{0%,100%{transform:translateX(0)}35%,65%{transform:translateX(4px)}}
 /* ── AI Chatbot Window ── */
-#cb-win{position:fixed;bottom:153px;right:10px;z-index:600;width:380px;max-width:calc(100vw - 20px);height:540px;max-height:calc(100vh - 168px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
+#cb-win{position:fixed;bottom:118px;right:10px;z-index:600;width:380px;max-width:calc(100vw - 20px);height:540px;max-height:calc(100vh - 168px);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.75);box-shadow:0 24px 64px rgba(26,86,219,.18),inset 0 1px 0 rgba(255,255,255,.95);display:flex;flex-direction:column;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .28s}
 #cb-win.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
 #cb-head{padding:16px 18px 14px;border-bottom:1px solid rgba(26,86,219,.08);display:flex;align-items:center;gap:10px;flex-shrink:0}
 #cb-head-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a56db,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.30)}
@@ -2681,7 +2681,7 @@ async function submitReview(){
 <!-- ── Teza AI Chatbot ── -->
 <button id="cb-btn" onclick="cbToggle()" aria-label="Chat with Teza — AI Tool Finder">
   <!-- Teza: animated 3D tesseract (4D hypercube projection) rendered on canvas -->
-  <canvas id="teza-canvas" width="96" height="130" aria-hidden="true"></canvas>
+  <canvas id="teza-canvas" width="96" height="96" aria-hidden="true"></canvas>
 </button>
 
 <div id="cb-win" role="dialog" aria-modal="true" aria-label="Teza AI Tool Finder chat">
@@ -3503,158 +3503,172 @@ async function submitReview(){
 })();
 
 /* ══════════════════════════════════════════════════════
-   TEZA — 3D Tesseract Canvas Renderer
-   4D hypercube · pure rotation · supernova glow colors
+   TEZA — Square Tesseract + Animated Face
+   96×96 canvas · 4D rotation · supernova glow · eyes+mouth
    ══════════════════════════════════════════════════════ */
 (function(){
   const canvas = document.getElementById('teza-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  // HiDPI scaling
+  // HiDPI scaling — square
   const dpr = window.devicePixelRatio || 1;
-  const W = 96, H = 130;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
+  const S = 96;
+  canvas.width  = S * dpr;
+  canvas.height = S * dpr;
   ctx.scale(dpr, dpr);
 
-  // ── 16 vertices: all ±1 in 4D ──
+  // ── 16 tesseract vertices ──
   const VERTS = [];
-  for (let i = 0; i < 16; i++) {
-    VERTS.push([
-      (i & 1) ? 1 : -1,
-      (i & 2) ? 1 : -1,
-      (i & 4) ? 1 : -1,
-      (i & 8) ? 1 : -1
-    ]);
-  }
+  for (let i = 0; i < 16; i++)
+    VERTS.push([(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
 
-  // ── 32 edges: vertices differing by exactly 1 bit ──
+  // ── 32 edges ──
   const EDGES = [];
-  for (let a = 0; a < 16; a++) {
-    for (let b = a + 1; b < 16; b++) {
-      const xor = a ^ b;
-      if (xor && (xor & (xor - 1)) === 0) EDGES.push([a, b]);
+  for (let a = 0; a < 16; a++)
+    for (let b = a+1; b < 16; b++) {
+      const x = a^b;
+      if (x && (x&(x-1))===0) EDGES.push([a,b]);
     }
-  }
-  const N_EDGES = EDGES.length;
+  const NE = EDGES.length;
 
-  // ── 4D rotation in plane (a,b) ──
-  function rot4(v, a, b, angle) {
-    const r = v.slice();
-    const c = Math.cos(angle), s = Math.sin(angle);
-    r[a] = v[a]*c - v[b]*s;
-    r[b] = v[a]*s + v[b]*c;
-    return r;
+  function rot4(v, a, b, ang) {
+    const r=v.slice(), c=Math.cos(ang), s=Math.sin(ang);
+    r[a]=v[a]*c-v[b]*s; r[b]=v[a]*s+v[b]*c; return r;
   }
 
   // ── Supernova palette ──
-  const PAL = [
-    [255,  20,  80],
-    [255, 100,   0],
-    [255, 220,   0],
-    [180,   0, 255],
-    [  0, 180, 255],
-    [  0, 255, 200],
-    [255,   0, 180],
-    [255, 255, 255],
+  const PAL=[
+    [255,20,80],[255,100,0],[255,220,0],[180,0,255],
+    [0,180,255],[0,255,200],[255,0,180],[255,255,255]
   ];
+  function lerpColor(ph, al) {
+    const f=((ph%1)+1)%1, n=PAL.length, i=Math.floor(f*n)%n, t=f*n-Math.floor(f*n);
+    const a=PAL[i],b=PAL[(i+1)%n];
+    return `rgba(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)},${al})`;
+  }
 
-  function lerpColor(phase, alpha) {
-    const f = ((phase % 1) + 1) % 1;
-    const n = PAL.length;
-    const i = Math.floor(f * n) % n;
-    const t = f * n - Math.floor(f * n);
-    const c0 = PAL[i], c1 = PAL[(i + 1) % n];
-    return `rgba(${Math.round(c0[0]+(c1[0]-c0[0])*t)},${Math.round(c0[1]+(c1[1]-c0[1])*t)},${Math.round(c0[2]+(c1[2]-c0[2])*t)},${alpha})`;
+  // ── Face state ──
+  const cx=S/2, cy=S/2;
+  let blinkStart=-10, nextBlink=3.2+Math.random()*3;
+  let lookStart=-10, nextLook=2+Math.random()*3;
+  let targetLX=0, targetLY=0;
+  let mood='smile', moodNext=6+Math.random()*6;
+
+  function drawEye(ex, ey, idx, iris_dx, iris_dy, scY) {
+    ctx.save();
+    ctx.translate(ex, ey);
+    ctx.scale(1, scY);
+    ctx.beginPath(); ctx.arc(0,0,6.5,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.95)';
+    ctx.shadowColor='rgba(255,255,255,0.55)'; ctx.shadowBlur=5;
+    ctx.fill(); ctx.shadowBlur=0;
+    ctx.beginPath(); ctx.arc(iris_dx,iris_dy,3.8,0,Math.PI*2);
+    ctx.fillStyle='#0e1635'; ctx.fill();
+    ctx.beginPath(); ctx.arc(iris_dx,iris_dy,2.1,0,Math.PI*2);
+    ctx.fillStyle='#000014'; ctx.fill();
+    ctx.beginPath(); ctx.arc(iris_dx+1.4,-0.8,1.1,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.92)'; ctx.fill();
+    ctx.restore();
+  }
+
+  function drawMouth() {
+    const mx=cx, my=cy+18;
+    ctx.save();
+    ctx.lineCap='round'; ctx.lineWidth=2.2;
+    ctx.strokeStyle='rgba(255,255,255,0.88)';
+    ctx.shadowColor='rgba(255,255,255,0.45)'; ctx.shadowBlur=4;
+    ctx.beginPath();
+    if (mood==='excited') {
+      ctx.moveTo(mx-12,my-3); ctx.quadraticCurveTo(mx,my+10,mx+12,my-3);
+    } else {
+      ctx.moveTo(mx-9,my); ctx.quadraticCurveTo(mx,my+8,mx+9,my);
+    }
+    ctx.stroke(); ctx.shadowBlur=0;
+    ctx.restore();
+  }
+
+  function drawFace(t) {
+    // Blink
+    const bd = t - blinkStart;
+    let scY = 1;
+    if (bd < 0.18) scY = 1 - Math.sin(bd/0.18*Math.PI)*0.88;
+    if (t - blinkStart > nextBlink) { blinkStart=t; nextBlink=3+Math.random()*4; }
+
+    // Look around
+    const ld = t - lookStart;
+    const decay = Math.max(0, 1 - ld*1.3);
+    const idx=0, iris_dx=targetLX*decay, iris_dy=targetLY*decay;
+    if (ld > nextLook) {
+      lookStart=t; nextLook=2.5+Math.random()*3.5;
+      targetLX=(Math.random()-0.5)*5; targetLY=(Math.random()-0.5)*2.5;
+    }
+
+    // Mood
+    if (t > moodNext) {
+      const m=['smile','smile','excited','smile'];
+      mood=m[Math.floor(Math.random()*m.length)];
+      moodNext=t+5+Math.random()*8;
+    }
+
+    // Wink: right eye squint
+    const scY_r = (mood==='wink') ? 0.08 : scY;
+    drawEye(cx-13, cy-2, 0, iris_dx, iris_dy, scY);
+    drawEye(cx+13, cy-2, 1, iris_dx, iris_dy, scY_r);
+    drawMouth();
   }
 
   function drawFrame(ts) {
-    const t = ts * 0.001;
-    ctx.clearRect(0, 0, W, H);
+    const t = ts*0.001;
+    ctx.clearRect(0, 0, S, S);
 
-
-    const cx = W * 0.5, cy = H * 0.46;
-
-    // ── Project all 16 vertices ──
-    // FIXED wDist + zDist — zero oscillation, zero zoom
-    const W4 = 2.2;  // 4D viewer distance (constant)
-    const Z3 = 2.5;  // 3D viewer distance (constant)
-    const SCALE = 62; // big enough to clearly see the cube-in-cube
-
+    // Project tesseract — fixed distances, no zoom
+    const W4=2.2, Z3=2.5, SCALE=40;
     const proj2d = VERTS.map(v => {
-      let r = v.slice();
-      // 5 incommensurate rotation planes
-      r = rot4(r, 0, 3, t * 0.70);  // XW
-      r = rot4(r, 1, 3, t * 0.53);  // YW
-      r = rot4(r, 0, 1, t * 0.34);  // XY
-      r = rot4(r, 2, 3, t * 0.41);  // ZW
-      r = rot4(r, 1, 2, t * 0.22);  // YZ
-
-      // 4D → 3D  (fixed W4, no oscillation)
-      const w4 = 1 / (W4 - r[3]);
-      const v3x = r[0] * w4, v3y = r[1] * w4, v3z = r[2] * w4;
-
-      // 3D → 2D  (fixed Z3, no oscillation)
-      const z3 = 1 / (Z3 - v3z);
-      return [cx + v3x * z3 * SCALE, cy + v3y * z3 * SCALE];
+      let r=v.slice();
+      r=rot4(r,0,3,t*0.70); r=rot4(r,1,3,t*0.53);
+      r=rot4(r,0,1,t*0.34); r=rot4(r,2,3,t*0.41); r=rot4(r,1,2,t*0.22);
+      const w4=1/(W4-r[3]);
+      const z3=1/(Z3-r[2]*w4);
+      return [cx+r[0]*w4*z3*SCALE, cy+r[1]*w4*z3*SCALE];
     });
 
-    ctx.lineCap = 'round';
+    ctx.lineCap='round';
 
-    // ── Pass 1: outer bloom ──
-    EDGES.forEach(([a, b], idx) => {
-      const phase = ((idx / N_EDGES) * 0.75 + t * 0.07) % 1;
-      ctx.beginPath();
-      ctx.moveTo(proj2d[a][0], proj2d[a][1]);
-      ctx.lineTo(proj2d[b][0], proj2d[b][1]);
-      ctx.strokeStyle = lerpColor(phase, 0.08);
-      ctx.lineWidth = 14;
-      ctx.shadowBlur = 0;
-      ctx.stroke();
+    // Pass 1 — bloom
+    EDGES.forEach(([a,b],i)=>{
+      const ph=((i/NE)*0.75+t*0.07)%1;
+      ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+      ctx.strokeStyle=lerpColor(ph,0.07); ctx.lineWidth=13; ctx.shadowBlur=0; ctx.stroke();
     });
-
-    // ── Pass 2: mid glow ──
-    EDGES.forEach(([a, b], idx) => {
-      const phase = ((idx / N_EDGES) * 0.75 + t * 0.07) % 1;
-      ctx.beginPath();
-      ctx.moveTo(proj2d[a][0], proj2d[a][1]);
-      ctx.lineTo(proj2d[b][0], proj2d[b][1]);
-      ctx.strokeStyle = lerpColor(phase, 0.50);
-      ctx.lineWidth = 3.5;
-      ctx.shadowColor = lerpColor(phase, 1);
-      ctx.shadowBlur = 14;
-      ctx.stroke();
+    // Pass 2 — mid glow
+    EDGES.forEach(([a,b],i)=>{
+      const ph=((i/NE)*0.75+t*0.07)%1;
+      ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+      ctx.strokeStyle=lerpColor(ph,0.48); ctx.lineWidth=3.2;
+      ctx.shadowColor=lerpColor(ph,1); ctx.shadowBlur=12; ctx.stroke();
     });
-
-    ctx.shadowBlur = 0;
-
-    // ── Pass 3: bright solid core ──
-    EDGES.forEach(([a, b], idx) => {
-      const phase = ((idx / N_EDGES) * 0.75 + t * 0.07) % 1;
-      ctx.beginPath();
-      ctx.moveTo(proj2d[a][0], proj2d[a][1]);
-      ctx.lineTo(proj2d[b][0], proj2d[b][1]);
-      ctx.strokeStyle = lerpColor(phase, 1.0);
-      ctx.lineWidth = 1.4;
-      ctx.shadowColor = '#ffffff';
-      ctx.shadowBlur = 3;
-      ctx.stroke();
+    ctx.shadowBlur=0;
+    // Pass 3 — bright core
+    EDGES.forEach(([a,b],i)=>{
+      const ph=((i/NE)*0.75+t*0.07)%1;
+      ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+      ctx.strokeStyle=lerpColor(ph,1); ctx.lineWidth=1.3;
+      ctx.shadowColor='#fff'; ctx.shadowBlur=3; ctx.stroke();
     });
+    ctx.shadowBlur=0;
 
-    ctx.shadowBlur = 0;
-
-    // ── Vertex sparkles ──
-    proj2d.forEach((p, i) => {
-      const phase = ((i / 16) * 0.6 + t * 0.05) % 1;
-      ctx.beginPath();
-      ctx.arc(p[0], p[1], 2.4, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,0.92)';
-      ctx.shadowColor = lerpColor(phase, 1);
-      ctx.shadowBlur = 9;
-      ctx.fill();
+    // Vertex sparkles
+    proj2d.forEach((p,i)=>{
+      const ph=((i/16)*0.6+t*0.05)%1;
+      ctx.beginPath(); ctx.arc(p[0],p[1],2.2,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.90)';
+      ctx.shadowColor=lerpColor(ph,1); ctx.shadowBlur=8; ctx.fill();
     });
-    ctx.shadowBlur = 0;
+    ctx.shadowBlur=0;
+
+    // Animated face — drawn on top of the tesseract
+    drawFace(t);
 
     requestAnimationFrame(drawFrame);
   }
