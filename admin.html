@@ -455,16 +455,20 @@ async function setupPassphrase(){
   const err=document.getElementById('setup-err');
   err.textContent='';
   if(!token){err.textContent='GitHub token is required.';return;}
+  if(!repo.includes('/')){err.textContent='Repository must be in owner/repo format (e.g. theaitoolfinder/toolfinder-ai).';return;}
   if(!pw1){err.textContent='Passphrase cannot be empty.';return;}
   if(pw1.length<8){err.textContent='Passphrase must be at least 8 characters.';return;}
   if(pw1!==pw2){err.textContent='Passphrases do not match.';return;}
+  const btn=document.querySelector('#setup .btn.primary');
+  if(btn){btn.disabled=true;btn.textContent='Saving…';}
   localStorage.setItem('myai_gh_token',token);
   localStorage.setItem('myai_gh_repo',repo);
   const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
   const hash=await sha256(salt+pw1);
   const cfg={v:1,salt,hash};
   const ok=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: set passphrase hash');
-  if(!ok){err.textContent='Failed to commit config — check token/repo name.';return;}
+  if(btn){btn.disabled=false;btn.textContent='Save & Unlock';}
+  if(!ok){err.textContent='Failed to commit config. Check: token is valid, has Contents: Write permission, and repo name is correct (owner/repo).';return;}
   _adminCfg=cfg;
   sessionStorage.setItem(LS_AUTH,'1');
   document.getElementById('setup').style.display='none';
@@ -1566,11 +1570,19 @@ async function commitToGitHub(filePath,newContent,commitMsg){
   const token=localStorage.getItem('myai_gh_token');
   if(!repo||!token)return false;
   try{
-    const getRes=await fetch(`https://api.github.com/repos/${repo}/contents/${encodeURIComponent(filePath)}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
-    const fileData=await getRes.json();
-    if(!fileData.sha)return false;
+    const getRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
     const encoded=btoa(unescape(encodeURIComponent(newContent)));
-    const putRes=await fetch(`https://api.github.com/repos/${repo}/contents/${encodeURIComponent(filePath)}`,{method:'PUT',headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:commitMsg,content:encoded,sha:fileData.sha})});
+    const body={message:commitMsg,content:encoded};
+    if(getRes.ok){
+      const fileData=await getRes.json();
+      if(fileData.sha)body.sha=fileData.sha; /* update existing file */
+    }else if(getRes.status!==404){
+      /* unexpected error (403, 401, etc.) — bail out */
+      console.error('GitHub GET failed:',getRes.status);return false;
+    }
+    /* 404 → file doesn't exist yet → create it (no sha needed) */
+    const putRes=await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`,{method:'PUT',headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!putRes.ok){const e=await putRes.json().catch(()=>({}));console.error('GitHub PUT failed:',putRes.status,e);return false;}
     const result=await putRes.json();
     return !!result.commit;
   }catch(e){console.error('GitHub commit failed:',e);return false;}
