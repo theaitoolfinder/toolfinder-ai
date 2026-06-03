@@ -1,0 +1,58 @@
+name: Sync Affiliate Links
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Runs whenever data/affiliate_tools.json is pushed to main.
+# Reads the affiliate partner list and patches js/tools-data.js so the
+# client-side auto-linker uses affiliate tracking URLs instead of plain homepages.
+#
+# Also available via manual dispatch (Actions → Run workflow).
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/affiliate_tools.json'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync affiliate URLs into tools-data.js
+        run: python .github/scripts/sync_affiliate_links.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add js/tools-data.js
+          if git diff --staged --quiet; then
+            echo "tools-data.js already up to date — nothing to commit."
+          else
+            COUNT=$(python3 -c "
+import json
+d = json.load(open('data/affiliate_tools.json'))
+print(len([t for t in d.get('tools',[]) if t.get('affiliate_url')]))
+")
+            git commit -m "Sync affiliate links: ${COUNT} partner(s) ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
+            git pull --rebase origin main || true
+            git push
+            echo "✅ Affiliate URLs synced."
+          fi

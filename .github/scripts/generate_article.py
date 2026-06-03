@@ -24,11 +24,28 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-ROOT          = Path(__file__).resolve().parent.parent.parent
-ARTICLES_DIR  = ROOT / "articles"
-ARTICLES_HTML = ROOT / "articles.html"
-LOG_PATH      = Path(__file__).resolve().parent / "article_log.json"
+ROOT               = Path(__file__).resolve().parent.parent.parent
+ARTICLES_DIR       = ROOT / "articles"
+ARTICLES_HTML      = ROOT / "articles.html"
+LOG_PATH           = Path(__file__).resolve().parent / "article_log.json"
+AFFILIATE_JSON     = ROOT / "data" / "affiliate_tools.json"
 ARTICLES_DIR.mkdir(exist_ok=True)
+
+# ── Affiliate partner tools ────────────────────────────────────────────────────
+def _load_affiliate_tools():
+    """Return list of affiliate tool dicts sorted by priority (1 = highest)."""
+    if not AFFILIATE_JSON.exists():
+        return []
+    try:
+        raw = json.loads(AFFILIATE_JSON.read_text(encoding="utf-8"))
+        tools = [t for t in raw.get("tools", []) if t.get("name")]
+        tools.sort(key=lambda t: (t.get("priority", 2), t["name"]))
+        return tools
+    except Exception:
+        return []
+
+AFFILIATE_TOOLS = _load_affiliate_tools()          # full dicts
+AFFILIATE_NAMES = [t["name"] for t in AFFILIATE_TOOLS]   # display names only
 
 # ── Runtime ────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
@@ -517,6 +534,13 @@ def build_title(article_type, log):
         ]
         if not unused:
             unused = TITLE_BANK["comparison"]
+        # Prefer pairs where at least one tool is an affiliate partner
+        if AFFILIATE_NAMES:
+            aff_set = {n.lower() for n in AFFILIATE_NAMES}
+            aff_pairs = [p for p in unused
+                         if p[0].lower() in aff_set or p[1].lower() in aff_set]
+            if aff_pairs:
+                unused = aff_pairs
         a, b = random.choice(unused)
         return f"{a} vs {b}: The Honest {YEAR} Verdict"
 
@@ -527,6 +551,19 @@ def build_title(article_type, log):
         ]
         if not unused:
             unused = TITLE_BANK["roundup"]
+        # Prefer categories that match an affiliate tool's categories
+        if AFFILIATE_TOOLS:
+            aff_cats = {
+                c.lower()
+                for t in AFFILIATE_TOOLS
+                for c in t.get("categories", [])
+            }
+            cat_matches = [
+                o for o in unused
+                if any(ac in o[0].lower() for ac in aff_cats)
+            ]
+            if cat_matches:
+                unused = cat_matches
         cat, aud = random.choice(unused)
         n = random.choice([7, 8, 9, 10, 11, 12])
         return f"{n} Best {cat} for {aud} in {YEAR} — Ranked and Tested"
@@ -800,9 +837,30 @@ def generate_with_claude(stories, article_type, title, log):
         return None
 
     type_cfg       = ARTICLE_TYPES[article_type]
-    tools_pick     = ", ".join(random.sample(TOOLS, min(25, len(TOOLS))))
     is_excl        = SLOT == "exclusive"
     recent_summary = build_recent_summary(log)
+
+    # ── Build tools_pick: affiliate tools first, fill with random others ──────
+    aff_names_pick = AFFILIATE_NAMES[:12]   # up to 12 partners at the front
+    non_aff = [t for t in TOOLS if t not in aff_names_pick]
+    filler  = random.sample(non_aff, min(18, len(non_aff)))
+    tools_pick = ", ".join(aff_names_pick + filler)
+
+    # ── Affiliate partner instruction (only when partners exist) ──────────────
+    aff_note = ""
+    if AFFILIATE_NAMES:
+        p1_tools = AFFILIATE_NAMES[:8]   # priority-1 pool shown to Claude
+        aff_note = (
+            "\n\nAFFILIATE PARTNER TOOLS — EDITORIAL REQUIREMENT:\n"
+            "MyAI ToolsFinder has content partnerships with the following tools. "
+            "Where genuinely relevant to the article topic, naturally include "
+            "at least 2–3 of these tools with substantive mentions (not just name-drops). "
+            "Treat them with the same honest, editorial voice as all other tools — "
+            "never forced, never promotional-sounding:\n"
+            f"  {', '.join(p1_tools)}\n"
+            "If the article is a comparison or roundup, prefer featuring these tools "
+            "as primary subjects where topic fit is strong."
+        )
 
     headlines = "\n".join(
         f"  {i+1}. [{s.get('source_label','?')}] {s['title']}"
@@ -827,7 +885,7 @@ def generate_with_claude(stories, article_type, title, log):
         TODAY: {DATE_STR}
         ARTICLE TYPE: {article_type.upper()}
         ARTICLE TITLE: {title}
-        {excl_note}
+        {excl_note}{aff_note}
 
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         CRITICAL REQUIREMENT — READ FIRST:
@@ -857,7 +915,7 @@ def generate_with_claude(stories, article_type, title, log):
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         - Tone: Conversational, honest, practical. Confident but not arrogant.
         - Voice: Write like a knowledgeable friend, not a marketing brochure.
-        - Naturally mention 4–6 specific tools where genuinely relevant. Use: {tools_pick}
+        - Naturally mention 4–8 specific tools where genuinely relevant. Use: {tools_pick}
         - HTML ONLY: use <p>, <h3>, <ul>, <li>, <strong>, <em>, <a href="...">.
         - NEVER use: h1, h2, html, head, body, nav, script, style, or layout tags.
         - Every paragraph must move the reader forward — zero filler sentences.
@@ -1393,18 +1451,28 @@ def main():
         parts = title.split(" vs ")
         pair  = f"{parts[0].strip()} vs {parts[1].split(':')[0].strip()}"
 
-    # ── Save log (with topic + pair for dedup) ────────────────────────────────
+    # ── Detect which affiliate tools were mentioned (for partner audit logs) ──
+    body_text_lower = re.sub(r"<[^>]+>", " ", body_html).lower()
+    mentioned_partners = [
+        n for n in AFFILIATE_NAMES
+        if n.lower() in body_text_lower
+    ]
+    if mentioned_partners:
+        print(f"[INFO] Affiliate partners mentioned: {', '.join(mentioned_partners)}", file=sys.stderr)
+
+    # ── Save log (with topic + pair + affiliate mentions for dedup/audit) ─────
     save_log(log, {
-        "date":   DATE_SLUG,
-        "slot":   SLOT,
-        "slug":   slug,
-        "title":  title,
-        "type":   article_type,
-        "source": source_name,
-        "hero":   hero_url,
-        "topic":  extract_topic(title, article_type),
-        "pair":   pair,
-        "words":  word_count,
+        "date":      DATE_SLUG,
+        "slot":      SLOT,
+        "slug":      slug,
+        "title":     title,
+        "type":      article_type,
+        "source":    source_name,
+        "hero":      hero_url,
+        "topic":     extract_topic(title, article_type),
+        "pair":      pair,
+        "words":     word_count,
+        "partners":  mentioned_partners,   # [] when no affiliate tools defined
     })
     print("[DONE] All steps complete.", file=sys.stderr)
 

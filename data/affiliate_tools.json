@@ -1,0 +1,16 @@
+{
+  "_readme": [
+    "Add your affiliate partner tools here.",
+    "The article generator will prioritize these tools in content naturally.",
+    "The sync-affiliate-links workflow auto-updates tools-data.js with your affiliate URLs,",
+    "so the client-side auto-linker uses your tracking links instead of plain homepages.",
+    "",
+    "Fields per tool:",
+    "  name          — Exact display name (must match how it appears in articles)",
+    "  affiliate_url — Your tracking/referral URL for this tool",
+    "  categories    — Used to bias roundup/tutorial topics toward this tool's niche",
+    "  priority      — 1 = highest (mentioned most often), 2 = normal, 3 = secondary"
+  ],
+  "tools": [
+  ]
+}
