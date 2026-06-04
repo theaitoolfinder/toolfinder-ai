@@ -675,25 +675,47 @@ def pick_source(log):
     available = [s for s in ALL_SOURCES if s not in recent]
     return random.choice(available if available else ALL_SOURCES)
 
-# ── Slug ───────────────────────────────────────────────────────────────────────
-def get_slug(log):
-    if SLOT == "exclusive":
-        today_excl = [e for e in log.get("generated", [])
-                      if e.get("date") == DATE_SLUG and e.get("slot") == "exclusive"]
-        n = len(today_excl) + 1
-        return f"exclusive-{DATE_SLUG}-{n}"
-    suffix_map = {
-        "morning":   "am",
-        "midday":    "md",
-        "afternoon": "pm",
-        "evening":   "eve",
-        "night":     "nt",
-        "latenight": "ln",
-        "lunch":     "am",
-        "dinner":    "pm",
-    }
-    suffix = suffix_map.get(SLOT, "pm")
-    return f"article-{DATE_SLUG}-{suffix}"
+# ── SEO Slug ───────────────────────────────────────────────────────────────────
+def title_to_slug(title: str) -> str:
+    """Convert an article title to a short, SEO-friendly URL slug.
+
+    Rules:
+      • Lowercase letters, digits, and hyphens only
+      • Max ~65 chars, always breaks at a word boundary
+      • No stop words stripped — Google reads full keyword phrases
+    Examples:
+      "ChatGPT vs Claude: The Honest 2026 Verdict"
+        → chatgpt-vs-claude-the-honest-2026-verdict
+      "9 Best AI Writing Tools for Content Creators in 2026 — Ranked and Tested"
+        → 9-best-ai-writing-tools-for-content-creators-in-2026-ranked
+    """
+    s = title.lower()
+    s = re.sub(r'[^a-z0-9\s-]', ' ', s)   # keep only safe chars
+    s = re.sub(r'[\s-]+', '-', s)           # collapse spaces/hyphens
+    s = s.strip('-')
+    if len(s) > 65:
+        s = s[:65].rsplit('-', 1)[0]        # break cleanly at word boundary
+    return s
+
+
+def get_slug(log, title: str) -> str:
+    """Return a unique, SEO-friendly slug derived from the article title.
+
+    Collision strategy: if the same slug already exists in the log or on disk,
+    append the date suffix so the URL stays meaningful.
+    """
+    existing_slugs = {e.get("slug", "") for e in log.get("generated", [])}
+
+    base = title_to_slug(title)
+    slug = base
+
+    # Resolve collisions (rare — same title generated twice)
+    counter = 2
+    while slug in existing_slugs or (ARTICLES_DIR / f"{slug}.html").exists():
+        slug = f"{base}-{DATE_SLUG}" if counter == 2 else f"{base}-{DATE_SLUG}-{counter}"
+        counter += 1
+
+    return slug
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -1432,24 +1454,36 @@ def update_articles_html(slug, title, excerpt, hero_url, article_type):
 # ══════════════════════════════════════════════════════════════════════════════
 
 def main():
-    log         = load_log()
-    slug        = get_slug(log)
-    output_path = ARTICLES_DIR / f"{slug}.html"
+    log = load_log()
 
-    if output_path.exists():
-        print(f"[INFO] Already exists: {slug}.html — skipping.")
+    # ── Early-exit: already generated this slot today (log-based check) ───────
+    already_done = any(
+        e.get("date") == DATE_SLUG and e.get("slot") == SLOT
+        for e in log.get("generated", [])
+    )
+    if already_done:
+        print(f"[INFO] Already generated '{SLOT}' slot for {DATE_SLUG} — skipping.")
         return
 
-    print(f"[INFO] Slot={SLOT}  Slug={slug}  Date={DATE_STR}", file=sys.stderr)
+    print(f"[INFO] Slot={SLOT}  Date={DATE_STR}", file=sys.stderr)
 
     # ── Select type + source ───────────────────────────────────────────────────
     article_type = pick_article_type(log)
     source_name  = pick_source(log)
     print(f"[INFO] Type={article_type}  Source={source_name}", file=sys.stderr)
 
-    # ── Build title early (needed for Claude prompt) ───────────────────────────
+    # ── Build title FIRST — slug is derived from it for SEO ───────────────────
     title = build_title(article_type, log)
     print(f"[INFO] Title: {title}", file=sys.stderr)
+
+    # ── Generate SEO-friendly slug from title ──────────────────────────────────
+    slug        = get_slug(log, title)
+    output_path = ARTICLES_DIR / f"{slug}.html"
+    print(f"[INFO] Slug: {slug}", file=sys.stderr)
+
+    if output_path.exists():
+        print(f"[INFO] Already exists: {slug}.html — skipping.")
+        return
 
     # ── Fetch stories ──────────────────────────────────────────────────────────
     stories = fetch_stories(source_name)
