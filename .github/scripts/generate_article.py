@@ -149,12 +149,12 @@ HERO_IMAGES = [
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
+    # photo-1574375927938 removed — wrong content (Netflix TV screen, not AI/tech)
     "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&auto=format&fit=crop",
+    # photo-1507003211169 removed — portrait headshot, not relevant to AI tools content
     "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
+    # photo-1640951613773 removed — wrong content (man silhouette/dark portrait, not AI/tech)
     # 18, 19 removed — were 404
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
@@ -191,6 +191,11 @@ HERO_IMAGES = [
     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
 ]
+
+# Guaranteed fallback shown by the browser if a hero image ever goes 404 AFTER generation.
+# Must always be a live, relevant AI/tech image. Re-verify this URL before changing it.
+HERO_FALLBACK_URL = "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop"
+
 
 def _url_alive(url: str) -> bool:
     """HEAD-check a URL — returns True only on HTTP 200. Fails safe (True) on timeout."""
@@ -1290,7 +1295,7 @@ footer a{{color:var(--primary);}}
 
 <div class="post-wrap">
   <article>
-    <img src="{hero_url}" alt="{title}" class="hero-img" loading="eager">
+    <img src="{hero_url}" alt="{title}" class="hero-img" loading="eager" onerror="this.onerror=null;this.src='{HERO_FALLBACK_URL}'">
     <div class="post-eyebrow">{eyebrow}</div>
     <h1 class="post-title">{title}</h1>
     <div class="post-meta">
@@ -1348,7 +1353,7 @@ def build_regular_card(slug, title, excerpt, hero_url, article_type, date_str):
     return f"""
     <a href="articles/{slug}.html" class="art-card" data-cat="{cfg['cat']}">
       <div class="art-card-img">
-        <img src="{hero_url}" alt="{title}" loading="lazy">
+        <img src="{hero_url}" alt="{title}" loading="lazy" onerror="this.onerror=null;this.src='{HERO_FALLBACK_URL}'">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">{cfg['label']}</span>
         <span class="art-card-read-time">{cfg['read_time']} read</span>
@@ -1369,7 +1374,7 @@ def build_exclusive_card(slug, title, excerpt, hero_url, article_type, date_str)
     return f"""
       <div class="art-card exclusive-card" data-href="articles/{slug}.html" onclick="showSubscribeGate()">
         <div class="art-card-img">
-          <img src="{hero_url}" alt="Exclusive" loading="lazy">
+          <img src="{hero_url}" alt="Exclusive" loading="lazy" onerror="this.onerror=null;this.src='{HERO_FALLBACK_URL}'">
           <div class="art-card-overlay"></div>
           <span class="art-card-cat">{cfg['label']}</span>
           <span class="art-card-read-time">{cfg['read_time']} read</span>

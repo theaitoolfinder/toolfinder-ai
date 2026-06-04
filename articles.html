@@ -423,7 +423,7 @@ footer a:hover{color:#e2c06a;}
 
     <a href="articles/article-2026-06-04-am.html" class="art-card" data-cat="comparison review">
       <div class="art-card-img">
-        <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=85&auto=format&fit=crop" alt="Leonardo.ai vs Midjourney: The Honest 2026 Verdict" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop" alt="Leonardo.ai vs Midjourney: The Honest 2026 Verdict" loading="lazy">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">Comparison</span>
         <span class="art-card-read-time">8 min read</span>
@@ -440,7 +440,7 @@ footer a:hover{color:#e2c06a;}
 
     <a href="articles/article-2026-06-03-ln.html" class="art-card" data-cat="review guide">
       <div class="art-card-img">
-        <img src="https://images.unsplash.com/photo-1655720831417-c7f2c4e9a028?w=800&q=85&auto=format&fit=crop" alt="AI Tools Digest — June 03, 2026 (Late Night Edition)" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop" alt="AI Tools Digest — June 03, 2026 (Late Night Edition)" loading="lazy">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">Daily Digest</span>
         <span class="art-card-read-time">6 min read</span>
@@ -457,7 +457,7 @@ footer a:hover{color:#e2c06a;}
 
     <a href="articles/article-2026-06-03-nt.html" class="art-card" data-cat="guide workflow">
       <div class="art-card-img">
-        <img src="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop" alt="The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop" alt="The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day" loading="lazy">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">Workflow</span>
         <span class="art-card-read-time">12 min read</span>
@@ -474,7 +474,7 @@ footer a:hover{color:#e2c06a;}
 
     <a href="articles/article-2026-06-03-eve.html" class="art-card" data-cat="review guide">
       <div class="art-card-img">
-        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop" alt="AI Tools Digest — June 03, 2026 (Evening Edition)" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=800&q=85&auto=format&fit=crop" alt="AI Tools Digest — June 03, 2026 (Evening Edition)" loading="lazy">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">Daily Digest</span>
         <span class="art-card-read-time">6 min read</span>
@@ -847,7 +847,7 @@ footer a:hover{color:#e2c06a;}
 
     <a href="articles/midjourney-vs-dalle-vs-leonardo.html" class="art-card" data-cat="design comparison">
       <div class="art-card-img">
-        <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80&auto=format&fit=crop" alt="AI Image Generation">
+        <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=600&q=80&auto=format&fit=crop" alt="AI Image Generation">
         <div class="art-card-overlay"></div>
         <span class="art-card-cat">Design</span>
         <span class="art-card-read-time">11 min read</span>
@@ -1275,6 +1275,16 @@ document.addEventListener('DOMContentLoaded',async function(){
   else if(result===false){ localStorage.removeItem('myai_user_v1'); }
   else { unlockExclusiveCards(); } /* offline — benefit of doubt */
 });
+
+/* ── Hero image fallback — if any card thumbnail 404s, show a guaranteed working image ── */
+(function(){
+  var FALLBACK='https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop';
+  document.querySelectorAll('.art-card-img img,.art-card img').forEach(function(img){
+    img.addEventListener('error',function(){
+      if(this.src!==FALLBACK){this.onerror=null;this.src=FALLBACK;}
+    });
+  });
+})();
 </script>
 </body>
 </html>
