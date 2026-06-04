@@ -134,8 +134,10 @@ TOOLS = [
     "Tidio","Intercom AI","AdCreative.ai","NotebookLM","Groq","Hugging Face",
 ]
 
-# ── Hero images — 42 varied tech/AI visuals ───────────────────────────────────
+# ── Hero images — verified tech/AI visuals (curl-checked 200 OK) ──────────────
+# All URLs verified live before adding. Run scripts/verify_hero_images.py to recheck.
 HERO_IMAGES = [
+    # ── Original verified pool ──────────────────────────────────────────────────
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
@@ -153,42 +155,62 @@ HERO_IMAGES = [
     "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1655720831417-c7f2c4e9a028?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=85&auto=format&fit=crop",
+    # 18, 19 removed — were 404
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
-    # 22 additional images — brings pool to 42 for ~14 days without any repeat
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1510915959810-6f5cff1f0cd5?w=800&q=85&auto=format&fit=crop",
+    # 25 removed — was 404
     "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506748686714-9b5ee0346711?w=800&q=85&auto=format&fit=crop",
+    # 27 removed — was 404
     "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1605792657660-2ea4d4b76b36?w=800&q=85&auto=format&fit=crop",
+    # 33 removed — was 404
     "https://images.unsplash.com/photo-1550645612-83f5d594b671?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1645362919867-a9e0b63b4858?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1687163155606-111a8494e1a5?w=800&q=85&auto=format&fit=crop",
+    # 36, 37, 38 removed — were 404
     "https://images.unsplash.com/photo-1698778573682-346d219402b5?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1714513252112-651e0f047282?w=800&q=85&auto=format&fit=crop",
+    # 40 removed — was 404
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1659535901819-e2f51f1d0e51?w=800&q=85&auto=format&fit=crop",
+    # 42 removed — was 404
+    # ── Verified replacements (curl 200 confirmed) ──────────────────────────────
+    "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
 ]
+
+def _url_alive(url: str) -> bool:
+    """HEAD-check a URL — returns True only on HTTP 200. Fails safe (True) on timeout."""
+    try:
+        r = requests.head(url, timeout=6, allow_redirects=True,
+                          headers={"User-Agent": "Mozilla/5.0"})
+        return r.status_code == 200
+    except Exception:
+        return True   # network error → assume alive, don't block article generation
+
 
 def pick_hero(index_offset: int = 0) -> str:
     """Return a hero URL not used by any previous article (log-aware dedup).
 
     Strategy:
       1. Load all hero URLs used so far from article_log.json.
-      2. Return the first image in HERO_IMAGES that has NOT been used yet.
-      3. If the entire pool has been used at least once, fall back to the image
-         used LEAST RECENTLY (oldest entry in the log that maps to a pool image).
+      2. Skip any image that returns HTTP 404 (live-checked via HEAD request).
+      3. Return the first ALIVE image in HERO_IMAGES that has NOT been used yet.
+      4. If the entire pool has been used at least once, fall back to the alive
+         image used LEAST RECENTLY.
       index_offset lets Friday exclusive slots each get a different image within
       the same run (offset 0,1,2,3,4 for the 5 Friday slots).
     """
@@ -206,21 +228,29 @@ def pick_hero(index_offset: int = 0) -> str:
     # Shift pool start by index_offset so concurrent Friday slots differ
     rotated = pool[index_offset % len(pool):] + pool[:index_offset % len(pool)]
 
-    # 1. Prefer never-used images
+    # 1. Prefer never-used AND alive images
     for img in rotated:
         if img not in used_set:
-            return img
+            if _url_alive(img):
+                return img
+            else:
+                print(f"[WARN] Hero image 404 — skipping: {img}", file=sys.stderr)
 
-    # 2. All used — pick least recently used (first occurrence in used_ordered
-    #    that is still in the pool, i.e., the one used longest ago)
+    # 2. All unused candidates are dead or exhausted — pick alive LRU image
     seen: set[str] = set()
     for url in used_ordered:
         if url in set(pool) and url not in seen:
             seen.add(url)
-            # Return the first one found — it's the oldest use
-            return url
+            if _url_alive(url):
+                return url
 
-    # 3. Hard fallback
+    # 3. Hard fallback — first alive image in pool regardless of use history
+    for img in rotated:
+        if _url_alive(img):
+            return img
+
+    # 4. Absolute fallback — pool is entirely dead (should never happen)
+    print("[ERROR] All hero images returned 404 — using first entry as last resort.", file=sys.stderr)
     return rotated[0]
 
 
