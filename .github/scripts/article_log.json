@@ -264,6 +264,19 @@
       "pair": "Leonardo.ai vs Midjourney",
       "words": 534,
       "partners": []
+    },
+    {
+      "date": "2026-06-04",
+      "slot": "midday",
+      "slug": "article-2026-06-04-md",
+      "title": "10 Best AI Productivity Tools for Remote Workers in 2026 — Ranked and Tested",
+      "type": "roundup",
+      "source": "reddit",
+      "hero": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
+      "topic": "productivity tools remote workers",
+      "pair": "",
+      "words": 612,
+      "partners": []
     }
   ]
 }
