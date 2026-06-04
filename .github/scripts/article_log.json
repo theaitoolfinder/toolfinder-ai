@@ -277,6 +277,19 @@
       "pair": "",
       "words": 612,
       "partners": []
+    },
+    {
+      "date": "2026-06-04",
+      "slot": "afternoon",
+      "slug": "article-2026-06-04-pm",
+      "title": "Build a Personal Knowledge Base with AI That Actually Saves You Time",
+      "type": "tutorial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
+      "topic": "personal knowledge base actually",
+      "pair": "",
+      "words": 785,
+      "partners": []
     }
   ]
 }
