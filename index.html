@@ -3007,11 +3007,33 @@ async function submitReview(){
     const ts=parseInt(localStorage.getItem(POPUP_KEY)||'0',10);
     if(ts && Date.now()-ts < DISMISS_DAYS*24*60*60*1000) return;
   }catch(e){}
-  setTimeout(()=>{
+  function maybeShow(){
     if(getUser()) return;
     const ov=document.getElementById('sub-popup-overlay');
-    if(ov){ ov.classList.add('show'); document.body.style.overflow='hidden'; }
-  }, 8000);
+    if(ov && !ov.classList.contains('show')){ ov.classList.add('show'); document.body.style.overflow='hidden'; }
+  }
+  const isMobile=window.innerWidth<=768;
+  if(isMobile){
+    // On mobile: show only after user has scrolled past 60% of the page
+    // (min 25s so they have time to browse — never interrupt tool browsing)
+    let scrollFired=false;
+    const minDelay=25000;
+    const startTime=Date.now();
+    function onScroll(){
+      if(scrollFired)return;
+      const scrolled=window.scrollY/(document.body.scrollHeight-window.innerHeight||1);
+      if(scrolled>=0.6 && Date.now()-startTime>=minDelay){
+        scrollFired=true;
+        window.removeEventListener('scroll',onScroll,{passive:true});
+        maybeShow();
+      }
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    // Fallback: show after 60s even if they haven't scrolled that far
+    setTimeout(()=>{ if(!scrollFired){ scrollFired=true; window.removeEventListener('scroll',onScroll,{passive:true}); maybeShow(); } },60000);
+  } else {
+    setTimeout(maybeShow, 8000);
+  }
 })();
 
 function dismissSubPopup(){
