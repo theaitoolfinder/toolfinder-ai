@@ -100,17 +100,26 @@ def determine_slot():
         except Exception:
             pass
 
-    # Friday exclusives: 10 slots at odd hours (catchup: one per run)
+    # Build a unified chronological schedule of all slots due today.
+    # Regular and exclusive slots interleave by UTC hour — process them in order
+    # so neither type starves the other (fixes Friday regular slots being skipped).
+    combined = list(REGULAR_SLOTS)  # [(0, "morning"), (4, "midday"), ...]
     if is_friday:
-        excl_due = sum(1 for h in EXCL_HOURS if hour >= h)
-        if excl_due > excl_today:
-            return "exclusive"
+        for h in EXCL_HOURS:
+            combined.append((h, "exclusive"))
+    combined.sort(key=lambda x: x[0])
 
-    # Regular slots — return the EARLIEST missing slot whose time has passed.
-    # Catchup logic: a delayed run will catch the earliest missing slot.
-    for min_hour, slot_name in REGULAR_SLOTS:
-        if hour >= min_hour and slot_name not in generated_today:
-            return slot_name
+    excl_seen = 0
+    for min_hour, slot_name in combined:
+        if hour < min_hour:
+            break   # haven't reached this slot's scheduled time yet
+        if slot_name == "exclusive":
+            excl_seen += 1
+            if excl_seen > excl_today:
+                return "exclusive"
+        else:
+            if slot_name not in generated_today:
+                return slot_name
 
     return None   # all expected slots are already done for today
 
@@ -1552,13 +1561,16 @@ def main():
     log = load_log()
 
     # ── Early-exit: already generated this slot today (log-based check) ───────
-    already_done = any(
-        e.get("date") == DATE_SLUG and e.get("slot") == SLOT
-        for e in log.get("generated", [])
-    )
-    if already_done:
-        print(f"[INFO] Already generated '{SLOT}' slot for {DATE_SLUG} — skipping.")
-        return
+    # For exclusive slots, determine_slot() already verified count-based need,
+    # so we skip the simple name-match guard (it would always fire after the 1st).
+    if SLOT != "exclusive":
+        already_done = any(
+            e.get("date") == DATE_SLUG and e.get("slot") == SLOT
+            for e in log.get("generated", [])
+        )
+        if already_done:
+            print(f"[INFO] Already generated '{SLOT}' slot for {DATE_SLUG} — skipping.")
+            return
 
     print(f"[INFO] Slot={SLOT}  Date={DATE_STR}", file=sys.stderr)
 
