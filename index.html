@@ -1844,9 +1844,26 @@ const LENSES={
     }
   }
 };
-const LS_KEY="myai_admin_overrides_v1";
-function loadOverrides(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{};}catch(e){return{};}}
-function tool(i){const o=loadOverrides()[i]||{};if(o._deleted)return null;return Object.assign({},TOOLS[i],o);}
+// Server-side overrides loaded from /data/admin_overrides.json (committed state only).
+// We deliberately do NOT read from localStorage here — the admin panel writes to the
+// same localStorage key, so locally-deleted tools would bleed onto the public page.
+// Only overrides that have been pushed to GitHub (via admin "Sync" action) are used.
+let _serverOverrides={};
+(async function loadServerOverrides(){
+  try{
+    const r=await fetch('/data/admin_overrides.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return;
+    const d=await r.json();
+    _serverOverrides=d.overrides||{};
+    // Re-render now that we have server overrides (affiliate URLs, verified badges, etc.)
+    if(typeof renderRows==='function')renderRows();
+    if(typeof renderDirectoryTabs==='function'){renderDirectoryTabs();renderDirectory();}
+    if(typeof renderTfmView==='function')renderTfmView();
+    if(typeof buildTfmDDs==='function')buildTfmDDs();
+    if(typeof setTfmCount==='function')setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
+  }catch(e){}
+})();
+function tool(i){const o=_serverOverrides[i]||{};if(o._deleted)return null;return Object.assign({},TOOLS[i],o);}
 function activeUrl(t){return(t.affiliate_url&&t.affiliate_url.trim())?t.affiliate_url:t.url;}
 function isAffiliate(t){return!!(t.affiliate_url&&t.affiliate_url.trim());}
 let currentFilter={lens:'job',value:LENSES.job.options[0]};
