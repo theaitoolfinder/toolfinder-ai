@@ -64,6 +64,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'articles/**'
+      - 'articles.html'
       - '.github/scripts/article_log.json'
       - 'data/**'
 
@@ -87,7 +88,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -117,8 +118,15 @@ jobs:
           else
             MSG="Auto-article: $(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT')"
             git commit -m "$MSG"
-            # Pull rebase to handle rare concurrent Friday runs, then push
-            git pull --rebase origin main || true
-            git push
-            echo "✅ Article published."
+            # Retry push up to 3 times — concurrent code pushes can reject the bot commit
+            for attempt in 1 2 3; do
+              echo "Push attempt $attempt..."
+              git pull --rebase origin main && git push && echo "✅ Article published." && break
+              if [ $attempt -lt 3 ]; then
+                echo "Push failed — retrying in 10s..."
+                sleep 10
+              else
+                echo "❌ Push failed after 3 attempts." && exit 1
+              fi
+            done
           fi
