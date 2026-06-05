@@ -307,6 +307,119 @@ footer a:hover{color:#e2c06a;}
   .nl-banner{padding:32px 20px;}
   .featured-wrap{padding:0 16px;}
 }
+
+/* ═══════════════════════════════════════
+   NEW CAROUSEL LAYOUT
+═══════════════════════════════════════ */
+
+/* Compact page header */
+.art-page-header{padding:90px 20px 36px;text-align:center;max-width:720px;margin:0 auto;}
+.art-page-header .eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);opacity:.6;margin-bottom:10px;}
+.art-page-header h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--gray);letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;}
+.art-page-header p{font-size:14px;color:var(--gray2);line-height:1.7;}
+
+/* Featured rotating carousel */
+.feat-carousel-wrap{position:relative;max-width:1080px;margin:0 auto 0;padding:0 20px 48px;}
+.feat-stage{position:relative;border-radius:22px;overflow:hidden;height:480px;background:#0d1f3c;box-shadow:var(--sh-lg);}
+.feat-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease,transform .6s ease;transform:translateY(6px);}
+.feat-slide.active{opacity:1;transform:translateY(0);}
+.feat-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.feat-slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,48,.08) 0%,rgba(10,20,48,.5) 45%,rgba(10,20,48,.94) 100%);}
+.feat-slide-body{position:absolute;bottom:0;left:0;right:0;padding:32px 36px;}
+.feat-cat{display:inline-flex;align-items:center;gap:5px;background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+.feat-title{font-size:clamp(1.3rem,2.5vw,2rem);font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:10px;max-width:760px;}
+.feat-excerpt{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:18px;max-width:600px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.feat-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.feat-meta{font-size:12px;color:rgba(255,255,255,.5);display:flex;gap:14px;}
+.feat-read-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#d4a843,var(--gold-a));color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:999px;box-shadow:var(--sh-gold);transition:all .2s;white-space:nowrap;}
+.feat-read-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,148,45,.5);}
+/* Arrows */
+.feat-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;margin-top:-24px;}
+.feat-arrow:hover{background:rgba(255,255,255,.32);}
+.feat-arrow-l{left:32px;}
+.feat-arrow-r{right:32px;}
+/* Dots */
+.feat-dots{display:flex;justify-content:center;gap:7px;padding-top:16px;}
+.feat-dot{width:8px;height:8px;border-radius:50%;background:rgba(26,86,219,.25);border:none;cursor:pointer;padding:0;transition:all .2s;}
+.feat-dot.active{background:var(--navy);width:22px;border-radius:4px;}
+
+/* Article carousel sections */
+.car-section{max-width:1080px;margin:0 auto;padding:0 20px 52px;}
+.car-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.car-title{font-size:1.1rem;font-weight:800;color:var(--gray);display:flex;align-items:center;gap:8px;}
+.car-count{font-size:12px;font-weight:500;color:var(--gray-m);background:rgba(26,86,219,.07);padding:3px 10px;border-radius:999px;}
+.car-nav{display:flex;gap:8px;}
+.car-btn{width:36px;height:36px;border-radius:50%;background:var(--glass-strong);border:1px solid rgba(26,86,219,.12);color:var(--navy);font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:var(--sh);}
+.car-btn:hover{background:#fff;box-shadow:0 6px 20px rgba(26,86,219,.15);}
+.car-btn:disabled{opacity:.3;cursor:default;}
+/* Carousel track */
+.car-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 2px 16px;scrollbar-width:none;}
+.car-track::-webkit-scrollbar{display:none;}
+/* Article card */
+.car-card{flex:0 0 300px;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;text-decoration:none;display:flex;flex-direction:column;}
+.car-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+.car-card-img{position:relative;height:180px;overflow:hidden;flex-shrink:0;}
+.car-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.car-card:hover .car-card-img img{transform:scale(1.04);}
+.car-card-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,20,48,.55) 100%);}
+.car-card-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;}
+.car-card-time{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);color:rgba(255,255,255,.85);font-size:10px;font-weight:500;padding:3px 8px;border-radius:999px;}
+.car-card-body{padding:18px 18px 14px;display:flex;flex-direction:column;flex:1;}
+.car-card-title{font-size:14px;font-weight:700;color:var(--gray);line-height:1.45;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.car-card-excerpt{font-size:12.5px;color:var(--gray2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:auto;}
+.car-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:10px;border-top:1px solid rgba(26,86,219,.07);}
+.car-card-date{font-size:11px;color:var(--gray-m);}
+.car-card-read{font-size:12px;font-weight:600;color:var(--navy);}
+/* Exclusive card variant */
+.car-card.excl-card .car-card-cat{background:linear-gradient(135deg,#d97706,#b45309);}
+.car-card.excl-card .car-card-title{filter:blur(5px);user-select:none;}
+.car-card.excl-card .car-card-excerpt{filter:blur(3px);user-select:none;}
+.car-card.excl-card.unlocked .car-card-title,.car-card.excl-card.unlocked .car-card-excerpt{filter:none;user-select:auto;}
+.excl-lock-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--navy);background:rgba(26,86,219,.08);padding:4px 10px;border-radius:6px;margin-bottom:8px;}
+/* Unlock CTA card */
+.car-unlock-card{flex:0 0 260px;scroll-snap-align:start;border-radius:16px;background:linear-gradient(135deg,#1a56db,#1e3a8a);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;text-align:center;box-shadow:0 8px 32px rgba(26,86,219,.3);}
+.car-unlock-icon{font-size:36px;margin-bottom:12px;}
+.car-unlock-card h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3;}
+.car-unlock-card p{font-size:12px;color:rgba(255,255,255,.65);margin-bottom:16px;line-height:1.6;}
+.car-unlock-btn{background:linear-gradient(135deg,#d4a843,#d97706);color:#fff;border:none;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;box-shadow:0 4px 14px rgba(217,119,6,.4);transition:transform .2s;}
+.car-unlock-btn:hover{transform:translateY(-2px);}
+/* Exclusive gate form (inside excl section) */
+.excl-gate{background:var(--glass-strong);backdrop-filter:var(--blur-sm);border-radius:18px;padding:32px 28px;margin-top:24px;text-align:center;border:1px solid var(--border);}
+.excl-gate h3{font-size:1.1rem;font-weight:800;color:var(--gray);margin-bottom:8px;}
+.excl-gate p{font-size:13.5px;color:var(--gray2);margin-bottom:20px;line-height:1.65;}
+.excl-gate-form{display:flex;gap:8px;max-width:400px;margin:0 auto 12px;}
+.excl-gate-form input{flex:1;padding:12px 14px;border:1.5px solid rgba(26,86,219,.15);border-radius:10px;font-size:14px;outline:none;font-family:inherit;transition:border-color .15s;}
+.excl-gate-form input:focus{border-color:var(--navy);}
+.excl-gate-form button{padding:12px 20px;background:linear-gradient(135deg,#1a56db,#1e3a8a);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;}
+.excl-gate-msg{font-size:13px;padding:10px 16px;border-radius:8px;max-width:400px;margin:0 auto 12px;display:none;text-align:left;line-height:1.5;}
+.excl-gate-msg.error{background:rgba(239,68,68,.1);color:#dc2626;border:1px solid rgba(239,68,68,.2);}
+.excl-gate-msg.success{background:rgba(22,163,74,.1);color:#16a34a;border:1px solid rgba(22,163,74,.2);}
+.excl-gate-hint{font-size:12px;color:var(--gray-m);}
+/* Exclusive pill */
+.excl-section-pill{font-size:10px;font-weight:700;background:linear-gradient(135deg,#d97706,#b45309);color:#fff;padding:3px 10px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;}
+
+/* Newsletter banner */
+.nl-banner-new{background:linear-gradient(135deg,#1a56db 0%,#1e3a8a 100%);border-radius:22px;padding:44px 40px;text-align:center;max-width:1080px;margin:0 auto 60px;position:relative;overflow:hidden;}
+.nl-banner-new h3{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;color:#fff;margin-bottom:10px;}
+.nl-banner-new p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+.nl-banner-wrap{padding:0 20px;}
+
+@media(max-width:768px){
+  .feat-stage{height:300px;}
+  .feat-slide-body{padding:20px 20px;}
+  .feat-title{font-size:1.1rem;}
+  .feat-excerpt{display:none;}
+  .feat-arrow{display:none;}
+  .feat-cat{font-size:9px;}
+  .car-card{flex:0 0 82vw;}
+  .car-unlock-card{flex:0 0 72vw;}
+  .art-page-header{padding:78px 16px 28px;}
+  .feat-carousel-wrap{padding:0 0 36px;}
+  .feat-stage{border-radius:0;}
+  .car-section{padding:0 16px 40px;}
+  .nl-banner-wrap{padding:0 16px;}
+  .nl-banner-new{padding:32px 20px;border-radius:18px;}
+}
 </style>
 </head>
 <body>
@@ -365,52 +478,80 @@ footer a:hover{color:#e2c06a;}
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 
-<!-- HERO -->
-<div class="art-hero">
-  <div class="art-hero-bg"></div>
-  <div class="art-hero-bg-img"></div>
-  <div class="art-hero-inner">
-    <div class="eyebrow" style="color:rgba(221,196,106,0.8)">AI Tools Intelligence</div>
-    <h1>Deep Dives &<br>Honest Reviews</h1>
-    <p>In-depth comparisons, tool reviews and practical guides — written by our team and updated every single week.</p>
-    <div class="art-filters">
-      <button class="art-pill on" onclick="filterArts('all',this)">All Articles</button>
-      <button class="art-pill" onclick="filterArts('comparison',this)">Comparisons</button>
-      <button class="art-pill" onclick="filterArts('review',this)">Reviews</button>
-      <button class="art-pill" onclick="filterArts('guide',this)">Guides</button>
-      <button class="art-pill" onclick="filterArts('writing',this)">Writing</button>
-      <button class="art-pill" onclick="filterArts('seo',this)">SEO</button>
-      <button class="art-pill" onclick="filterArts('design',this)">Design</button>
-      <button class="art-pill" onclick="filterArts('video',this)">Video</button>
-      <button class="art-pill" onclick="filterArts('free',this)">Free Tools</button>
+<!-- COMPACT HEADER -->
+<div class="art-page-header">
+  <div class="eyebrow">AI Tools Intelligence</div>
+  <h1>Deep Dives & Honest Reviews</h1>
+  <p>Comparisons, tutorials and Friday exclusives — updated 3× daily.</p>
+</div>
+
+<!-- FEATURED ROTATING ARTICLE -->
+<div class="feat-carousel-wrap">
+  <div class="feat-stage" id="feat-stage">
+    <!-- JS renders slides from #art-grid data -->
+  </div>
+  <button class="feat-arrow feat-arrow-l" id="feat-prev" onclick="featMove(-1)" aria-label="Previous">&#8249;</button>
+  <button class="feat-arrow feat-arrow-r" id="feat-next" onclick="featMove(1)" aria-label="Next">&#8250;</button>
+  <div class="feat-dots" id="feat-dots"></div>
+</div>
+
+<!-- LATEST ARTICLES CAROUSEL -->
+<div class="car-section" id="latest-section">
+  <div class="car-head">
+    <div class="car-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+      Latest Articles <span class="car-count" id="latest-count">0</span>
     </div>
+    <div class="car-nav">
+      <button class="car-btn" id="latest-prev" aria-label="Previous">&#8249;</button>
+      <button class="car-btn" id="latest-next" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+  <div class="car-track" id="latest-track">
+    <!-- JS renders cards from #art-grid + #art-grid-2 -->
   </div>
 </div>
 
-<!-- FEATURED ARTICLE -->
-<div class="featured-wrap">
-  <a href="articles/chatgpt-vs-claude-vs-gemini.html" class="featured-card">
-    <div class="featured-img">
-      <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&q=85&auto=format&fit=crop" alt="ChatGPT vs Claude vs Gemini comparison">
-      <div class="featured-img-overlay"></div>
-      <span class="featured-badge">Featured Article</span>
+<!-- FRIDAY EXCLUSIVES CAROUSEL -->
+<div class="car-section" id="excl-section">
+  <div class="car-head">
+    <div class="car-title">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#d97706"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Friday Exclusives <span class="excl-section-pill">Subscribers Only</span>
     </div>
-    <div class="featured-body">
-      <div class="featured-cat">Comparison · May 2026</div>
-      <div class="featured-title">ChatGPT vs Claude vs Gemini — Which AI Assistant Actually Wins in 2026?</div>
-      <div class="featured-excerpt">We ran 50 real-world tasks across all three major AI assistants — writing, coding, research and analysis. The results were surprising. Here's our definitive verdict backed by real data.</div>
-      <div class="featured-meta">
-        <span>May 11, 2026</span>
-        <span>10 min read</span>
-        <span>3 tools compared</span>
-      </div>
-      <span class="btn-read">Read Full Article →</span>
+    <div class="car-nav">
+      <button class="car-btn" id="excl-prev" aria-label="Previous">&#8249;</button>
+      <button class="car-btn" id="excl-next" aria-label="Next">&#8250;</button>
     </div>
-  </a>
+  </div>
+  <div class="car-track" id="excl-track">
+    <!-- JS renders exclusive cards + unlock CTA -->
+  </div>
+  <!-- Exclusive gate form -->
+  <div class="excl-gate" id="excl-gate-form">
+    <div style="font-size:32px;margin-bottom:12px">🔐</div>
+    <h3>Unlock Friday Exclusives</h3>
+    <p>These in-depth guides are free — just for newsletter subscribers. Enter your email to verify access.</p>
+    <div class="excl-gate-form">
+      <input type="email" id="gate-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')gateSubmit()">
+      <button id="gate-btn" onclick="gateSubmit()">Unlock →</button>
+    </div>
+    <div id="gate-msg" class="excl-gate-msg"></div>
+    <p class="excl-gate-hint">Not subscribed yet? <a href="index.html#newsletter" style="color:var(--navy);font-weight:600">Subscribe free →</a></p>
+  </div>
 </div>
 
-<!-- ARTICLES GRID -->
-<div class="art-section">
+<!-- NEWSLETTER BANNER -->
+<div class="nl-banner-wrap">
+  <div class="nl-banner-new">
+    <h3>Get 5 New Articles Every Week — Free</h3>
+    <p>Every Friday: in-depth tool reviews, honest comparisons and one immediately actionable tip.</p>
+    <a href="index.html#newsletter" class="btn-gold">Subscribe Free →</a>
+  </div>
+</div>
+
+<!-- ARTICLES GRID (hidden — bot still injects here; JS reads data for carousel) -->
+<div class="art-section" style="display:none" aria-hidden="true">
 
   <div class="art-section-header">
     <div class="art-section-title">Latest Articles</div>
@@ -1402,7 +1543,11 @@ function setGateMsg(text,type){
 }
 
 function unlockExclusiveCards(){
-  document.getElementById('exclusive-overlay').classList.add('unlocked');
+  /* Mark legacy overlay as unlocked (kept hidden but JS checks it) */
+  const ov=document.getElementById('exclusive-overlay');
+  if(ov) ov.classList.add('unlocked');
+
+  /* Unlock hidden legacy cards */
   document.querySelectorAll('.exclusive-card').forEach(card=>{
     card.querySelectorAll('[style*="blur"]').forEach(el=>{ el.style.filter='none'; el.style.userSelect='auto'; });
     const lock=card.querySelector('.exclusive-lock');
@@ -1421,13 +1566,35 @@ function unlockExclusiveCards(){
       card.onclick=null; card.style.cursor='default';
     }
   });
+
+  /* Unlock new carousel excl-cards */
+  document.querySelectorAll('#excl-track .excl-card').forEach(card=>{
+    card.classList.add('unlocked');
+    card.querySelectorAll('[style*="blur"]').forEach(el=>{ el.style.filter='none'; el.style.userSelect='auto'; });
+    const lock=card.querySelector('.excl-lock-badge');
+    if(lock){ lock.innerHTML='✅ Member Access'; lock.style.background='rgba(22,163,74,.1)'; lock.style.color='#16a34a'; }
+    const readEl=card.querySelector('.car-card-read');
+    const href=card.dataset.href;
+    if(href){
+      if(readEl) readEl.textContent='Read now →';
+      card.onclick=function(){ location.href=href; };
+    } else {
+      if(readEl) readEl.textContent='Coming soon →';
+      card.onclick=null; card.style.cursor='default';
+    }
+  });
+
+  /* Hide the gate form */
+  const gate=document.getElementById('excl-gate-form');
+  if(gate) gate.style.display='none';
 }
 
-/* Clicking a card while locked scrolls to the email input */
+/* Clicking a locked card scrolls to the gate form */
 function showSubscribeGate(){
-  const overlay=document.getElementById('exclusive-overlay');
-  if(overlay&&!overlay.classList.contains('unlocked')){
-    overlay.scrollIntoView({behavior:'smooth',block:'center'});
+  const gate=document.getElementById('excl-gate-form');
+  if(gate){
+    gate.style.display='';
+    gate.scrollIntoView({behavior:'smooth',block:'center'});
     setTimeout(()=>{ const i=document.getElementById('gate-email'); if(i) i.focus(); },400);
   }
 }
@@ -1475,6 +1642,183 @@ document.addEventListener('DOMContentLoaded',async function(){
     img.addEventListener('error',function(){
       if(this.src!==FALLBACK){this.onerror=null;this.src=FALLBACK;}
     });
+  });
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   Carousel builder — reads article data from hidden DOM
+   grids and renders the featured hero + two carousels.
+   New bot-generated articles auto-appear because they
+   land in #art-grid / #exclusive-grid which JS reads.
+   ═══════════════════════════════════════════════════════ */
+(function(){
+  var FALLBACK='https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop';
+
+  /* ── helpers ─────────────────────────────── */
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function collectRegular(){
+    var nodes=[].slice.call(document.querySelectorAll('#art-grid .art-card, #art-grid-2 .art-card'));
+    return nodes.map(function(c){
+      var img=c.querySelector('.art-card-img img');
+      return {
+        href: c.getAttribute('href')||'#',
+        imgSrc: img?(img.getAttribute('src')||FALLBACK):FALLBACK,
+        imgAlt: img?(img.alt||''):'',
+        cat: (c.querySelector('.art-card-cat')||{textContent:''}).textContent,
+        readTime: (c.querySelector('.art-card-read-time')||{textContent:''}).textContent,
+        title: (c.querySelector('.art-card-title')||{textContent:''}).textContent.trim(),
+        excerpt: (c.querySelector('.art-card-excerpt')||{textContent:''}).textContent.trim(),
+        date: (c.querySelector('.art-card-date')||{textContent:''}).textContent.trim()
+      };
+    }).filter(function(a){ return a.title; });
+  }
+
+  function collectExclusive(){
+    var nodes=[].slice.call(document.querySelectorAll('#exclusive-grid .exclusive-card, #exclusive-grid .art-card'));
+    return nodes.map(function(c){
+      var img=c.querySelector('.art-card-img img');
+      return {
+        href: c.dataset.href||c.getAttribute('href')||'#',
+        imgSrc: img?(img.getAttribute('src')||FALLBACK):FALLBACK,
+        imgAlt: img?(img.alt||''):'',
+        cat: (c.querySelector('.art-card-cat')||{textContent:''}).textContent,
+        readTime: (c.querySelector('.art-card-read-time')||{textContent:''}).textContent,
+        title: (c.querySelector('.art-card-title')||{textContent:''}).textContent.trim(),
+        excerpt: (c.querySelector('.art-card-excerpt')||{textContent:''}).textContent.trim(),
+        date: (c.querySelector('.art-card-date')||{textContent:''}).textContent.trim()
+      };
+    }).filter(function(a){ return a.title; });
+  }
+
+  function buildCarCard(art, isExcl){
+    var catBg = isExcl ? ' style="background:linear-gradient(135deg,#d97706,#b45309)"' : '';
+    var lockBadge = isExcl ? '<span class="excl-lock-badge">🔐 Subscribers Only</span>' : '';
+    var titleStyle = isExcl ? ' style="filter:blur(5px);user-select:none"' : '';
+    var excerptStyle = isExcl ? ' style="filter:blur(3px);user-select:none"' : '';
+    var readText = isExcl ? 'Subscribe to read →' : 'Read more →';
+    var dataHref = isExcl ? (' data-href="'+esc(art.href)+'"') : '';
+
+    var inner='<div class="car-card-img">'+
+      '<img src="'+esc(art.imgSrc)+'" alt="'+esc(art.imgAlt)+'" loading="lazy" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'">'+
+      '<div class="car-card-img-overlay"></div>'+
+      (art.cat?'<span class="car-card-cat"'+catBg+'>'+esc(art.cat)+'</span>':'')+
+      (art.readTime?'<span class="car-card-time">'+esc(art.readTime)+'</span>':'')+
+      '</div>'+
+      '<div class="car-card-body">'+
+      lockBadge+
+      '<div class="car-card-title"'+titleStyle+'>'+esc(art.title)+'</div>'+
+      '<div class="car-card-excerpt"'+excerptStyle+'>'+esc(art.excerpt)+'</div>'+
+      '<div class="car-card-footer">'+
+        '<span class="car-card-date">'+esc(art.date)+'</span>'+
+        '<span class="car-card-read">'+readText+'</span>'+
+      '</div></div>';
+
+    if(isExcl){
+      return '<div class="car-card excl-card"'+dataHref+'>'+inner+'</div>';
+    }
+    return '<a href="'+esc(art.href)+'" class="car-card">'+inner+'</a>';
+  }
+
+  /* ── Featured carousel ───────────────────── */
+  var _fi=[], _fx=0, _ft=null;
+
+  function buildFeatured(arts){
+    var items=arts.slice(0,6);
+    _fi=items;
+    var stage=document.getElementById('feat-stage');
+    var dotsEl=document.getElementById('feat-dots');
+    if(!stage||!items.length) return;
+
+    stage.innerHTML=items.map(function(art,i){
+      var exc=(art.excerpt||'').substring(0,160).trim();
+      return '<div class="feat-slide'+(i===0?' active':'')+'" data-idx="'+i+'">'+
+        '<img src="'+esc(art.imgSrc)+'" alt="'+esc(art.imgAlt)+'" loading="'+(i===0?'eager':'lazy')+'" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'">'+
+        '<div class="feat-slide-overlay"></div>'+
+        '<div class="feat-slide-body">'+
+          (art.cat?'<span class="feat-cat">'+esc(art.cat)+'</span>':'')+
+          '<h2 class="feat-title"><a href="'+esc(art.href)+'" style="color:inherit;text-decoration:none">'+esc(art.title)+'</a></h2>'+
+          (exc?'<p class="feat-excerpt">'+esc(exc)+'…</p>':'')+
+          '<div class="feat-footer">'+
+            '<div class="feat-meta"><span>'+esc(art.date)+'</span>'+(art.readTime?'<span>'+esc(art.readTime)+'</span>':'')+'</div>'+
+            '<a href="'+esc(art.href)+'" class="feat-read-btn">Read Article →</a>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+
+    if(dotsEl){
+      dotsEl.innerHTML=items.map(function(_,i){
+        return '<button class="feat-dot'+(i===0?' active':'')+'" onclick="featGoto('+i+')" aria-label="Slide '+(i+1)+'"></button>';
+      }).join('');
+    }
+    startFeatTimer();
+  }
+
+  function startFeatTimer(){
+    if(_ft) clearInterval(_ft);
+    _ft=setInterval(function(){ featMove(1); }, 6000);
+  }
+
+  window.featMove=function(dir){
+    if(!_fi.length) return;
+    _fx=(_fx+dir+_fi.length)%_fi.length;
+    featRender(); startFeatTimer();
+  };
+  window.featGoto=function(idx){ _fx=idx; featRender(); startFeatTimer(); };
+
+  function featRender(){
+    document.querySelectorAll('.feat-slide').forEach(function(s,i){ s.classList.toggle('active',i===_fx); });
+    document.querySelectorAll('.feat-dot').forEach(function(d,i){ d.classList.toggle('active',i===_fx); });
+  }
+
+  /* ── Latest carousel ─────────────────────── */
+  function buildLatest(arts){
+    var track=document.getElementById('latest-track');
+    var countEl=document.getElementById('latest-count');
+    if(!track) return;
+    track.innerHTML=arts.map(function(a){ return buildCarCard(a,false); }).join('');
+    if(countEl) countEl.textContent=arts.length;
+    document.getElementById('latest-prev').onclick=function(){ scrollTrack(track,-1); };
+    document.getElementById('latest-next').onclick=function(){ scrollTrack(track,1); };
+  }
+
+  /* ── Exclusive carousel ──────────────────── */
+  function buildExclusive(arts){
+    var track=document.getElementById('excl-track');
+    if(!track) return;
+    var html=arts.map(function(a){ return buildCarCard(a,true); }).join('');
+    html+='<div class="car-unlock-card">'+
+      '<div class="car-unlock-icon">🔐</div>'+
+      '<h4>Unlock All Friday Exclusives</h4>'+
+      '<p>Free for subscribers — enter your email below to verify access instantly.</p>'+
+      '<button class="car-unlock-btn" onclick="showSubscribeGate()">Unlock Access →</button>'+
+    '</div>';
+    track.innerHTML=html;
+    track.querySelectorAll('.excl-card').forEach(function(card){
+      card.style.cursor='pointer';
+      card.addEventListener('click',function(){ showSubscribeGate(); });
+    });
+    document.getElementById('excl-prev').onclick=function(){ scrollTrack(track,-1); };
+    document.getElementById('excl-next').onclick=function(){ scrollTrack(track,1); };
+  }
+
+  /* ── Scroll helper ───────────────────────── */
+  function scrollTrack(track, dir){
+    var first=track.querySelector('.car-card,.car-unlock-card');
+    var w=first?(first.offsetWidth+18):318;
+    track.scrollBy({left:dir*w*2, behavior:'smooth'});
+  }
+
+  /* ── Init ────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded',function(){
+    var regular=collectRegular();
+    var exclusive=collectExclusive();
+    buildFeatured(regular);
+    buildLatest(regular);
+    buildExclusive(exclusive);
   });
 })();
 </script>
