@@ -420,6 +420,19 @@
       "pair": "Fireflies.ai vs Otter.ai (2026)",
       "words": 535,
       "partners": []
+    },
+    {
+      "date": "2026-06-05",
+      "slot": "exclusive",
+      "slug": "ai-productivity-myths-debunked-what-actually-saves-time-vs-what",
+      "title": "AI Productivity Myths Debunked: What Actually Saves Time vs. What Wastes It",
+      "type": "deep_dive",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=85&auto=format&fit=crop",
+      "topic": "productivity myths debunked actually",
+      "pair": "",
+      "words": 621,
+      "partners": []
     }
   ]
 }
