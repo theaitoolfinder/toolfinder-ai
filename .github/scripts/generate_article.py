@@ -409,6 +409,78 @@ SLOT_TYPE_PREFS = {
     "dinner":    ["news_digest", "comparison", "roundup", "tutorial"],
 }
 
+# ── Varied title format pools (picked randomly so every article looks different) ──
+COMPARISON_TITLE_FORMATS = [
+    "{a} vs {b}: Which Is Actually Worth It in {year}?",
+    "{a} vs {b} ({year}): I Used Both for 30 Days — Here's the Truth",
+    "{a} or {b}? The {year} Comparison No One's Being Honest About",
+    "{a} vs {b}: Pricing, Features, and Which One Wins for Most Users",
+    "Is {b} Finally Better Than {a}? ({year} Head-to-Head)",
+    "{a} vs {b}: The Honest Breakdown for {year}",
+    "I Switched from {a} to {b} — Here's What Actually Happened",
+    "{a} vs {b}: Which AI Tool Should You Pay For in {year}?",
+    "{a} or {b}? A Real User's Take After Testing Both",
+    "{a} vs {b}: Features, Price, and the Winner for Your Use Case",
+    "{a} vs {b} — Stop Guessing. Here's the {year} Verdict.",
+    "Choosing Between {a} and {b}? Read This First ({year})",
+]
+
+ROUNDUP_TITLE_FORMATS = [
+    "{n} Best {cat} for {aud} in {year} (Ranked by Real Users)",
+    "The {n} {cat} That {aud} Are Actually Using in {year}",
+    "Best {cat} for {aud}: {n} Tools Tested, Only These Made the Cut",
+    "{n} {cat} for {aud} — Tried, Tested, and Ranked for {year}",
+    "I Tested {n} {cat} for {aud}. These Are the Only Ones Worth It.",
+    "{n} Best {cat} for {aud}: Honest Reviews, Real Pricing, No Fluff",
+    "The Best {cat} for {aud} Right Now ({year} Update)",
+    "Stop Overpaying: The {n} Best {cat} for {aud} That Fit Any Budget",
+    "{n} {cat} for {aud} That Will Actually Save You Time in {year}",
+    "The Only {cat} List {aud} Need in {year} — Curated and Tested",
+]
+
+# ── Opening style pool — injected per article to prevent identical hooks ──────
+OPENING_STYLES = [
+    "Open with a specific dollar amount or hours wasted — quantify the pain before you offer the solution.",
+    "Open with a 2-sentence before/after: one sentence on the slow painful old way, one on the fast AI-powered result.",
+    "Open with a surprising or counterintuitive finding that challenges what most people assume about this topic.",
+    "Open with a direct myth-bust in the first sentence: 'Most people believe X. They're wrong — and it's costing them.'",
+    "Open with a concrete before/after contrast: 'Six months ago this took 4 hours. Now it takes 18 minutes.'",
+    "Open by naming the exact reader and their exact frustration — ultra-specific, not 'as a professional...'",
+    "Open with a one-line story: one sentence setup, one sentence conflict, one sentence that promises resolution.",
+    "Open with the conclusion first — state your main finding boldly, then spend the article proving why it's true.",
+    "Open with a price shock: 'An agency charges $3,000 for this. With the right AI tools it costs $15 and 40 minutes.'",
+    "Open with the single thing that surprised you most when you actually tested these tools.",
+    "Open by calling out the #1 mistake people make with this topic — make the reader feel seen for having made it.",
+    "Open with a question that puts the reader inside a specific scenario they've definitely lived.",
+]
+
+# ── Forbidden phrases — injected into Claude prompt to ban stale AI writing ───
+FORBIDDEN_PHRASES = [
+    "In today's fast-paced world",
+    "In the ever-evolving landscape",
+    "Are you looking for",
+    "Look no further",
+    "game-changer",
+    "Leverage the power of",
+    "In this article, we will",
+    "Without further ado",
+    "It goes without saying",
+    "At the end of the day",
+    "Take your X to the next level",
+    "Unlock your potential",
+    "Dive deep into",
+    "In conclusion",
+    "To summarize",
+    "cutting-edge",
+    "revolutionary",
+    "seamlessly",
+    "robust solution",
+    "harness the power",
+    "transformative",
+    "streamline your workflow",
+    "In the digital age",
+]
+
 # ── Expanded title banks ───────────────────────────────────────────────────────
 TITLE_BANK = {
     "comparison": [
@@ -577,7 +649,9 @@ def build_title(article_type, log):
             if aff_pairs:
                 unused = aff_pairs
         a, b = random.choice(unused)
-        return f"{a} vs {b}: The Honest {YEAR} Verdict"
+        # Pick a varied title format so comparisons don't all sound the same
+        fmt = random.choice(COMPARISON_TITLE_FORMATS)
+        return fmt.format(a=a, b=b, year=YEAR)
 
     if article_type == "roundup":
         unused = [
@@ -601,7 +675,9 @@ def build_title(article_type, log):
                 unused = cat_matches
         cat, aud = random.choice(unused)
         n = random.choice([7, 8, 9, 10, 11, 12])
-        return f"{n} Best {cat} for {aud} in {YEAR} — Ranked and Tested"
+        # Pick a varied title format so roundups don't all end "Ranked and Tested"
+        fmt = random.choice(ROUNDUP_TITLE_FORMATS)
+        return fmt.format(n=n, cat=cat, aud=aud, year=YEAR)
 
     if article_type == "tutorial":
         unused = [t for t in TITLE_BANK["tutorial"]
@@ -897,6 +973,10 @@ def generate_with_claude(stories, article_type, title, log):
     is_excl        = SLOT == "exclusive"
     recent_summary = build_recent_summary(log)
 
+    # Pick a random opening style — forces variety so no two articles start the same way
+    opening_style  = random.choice(OPENING_STYLES)
+    forbidden_list = "\n".join(f"  ✗ \"{p}\"" for p in FORBIDDEN_PHRASES)
+
     # ── Build tools_pick: affiliate tools first, fill with random others ──────
     aff_names_pick = AFFILIATE_NAMES[:12]   # up to 12 partners at the front
     non_aff = [t for t in TOOLS if t not in aff_names_pick]
@@ -968,10 +1048,25 @@ def generate_with_claude(stories, article_type, title, log):
         {type_cfg['prompt']}
 
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        OPENING HOOK — USE THIS EXACT APPROACH:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        {opening_style}
+        Your first paragraph must use this opening style. No exceptions.
+
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        FORBIDDEN PHRASES — NEVER USE THESE:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        These phrases are overused AI writing clichés. If any appear in your output,
+        the article will be rejected. Do not use them in any form:
+{forbidden_list}
+
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         STYLE RULES (non-negotiable):
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         - Tone: Conversational, honest, practical. Confident but not arrogant.
         - Voice: Write like a knowledgeable friend, not a marketing brochure.
+        - Vary your section headings — do NOT use generic labels like "Introduction",
+          "Overview", "Conclusion". Every <h3> should be a specific, interesting claim.
         - Naturally mention 4–8 specific tools where genuinely relevant. Use: {tools_pick}
         - HTML ONLY: use <p>, <h3>, <ul>, <li>, <strong>, <em>, <a href="...">.
         - NEVER use: h1, h2, html, head, body, nav, script, style, or layout tags.
