@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample Prompt Templates – MyAI ToolsFinder</title>
+<meta name="description" content="500+ powerful AI prompt templates for every tool — 3 free prompts per category plus 30 exclusive subscriber prompts with beginner, intermediate, and advanced levels.">
+<link rel="canonical" href="https://myaitoolsfinder.com/prompts.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1a56db;--primary-light:rgba(26,86,219,.08);--primary-dark:#1343b2;
+  --surface:#ffffff;--surface-2:#f8f9fb;--border:#e5e7eb;
+  --text:#111827;--text-2:#4b5563;--text-dim:#9ca3af;
+  --purple:#7c3aed;--purple-light:rgba(124,58,237,.08);--purple-border:rgba(124,58,237,.2);
+  --green:#16a34a;--green-light:rgba(22,163,74,.08);
+  --amber:#d97706;--amber-light:rgba(217,119,6,.08);
+  --radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--surface);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:'Poppins',sans-serif;cursor:pointer}
+
+/* ── NAV ── */
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;color:var(--text)}
+.brand-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1a56db,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;color:var(--text-2);transition:background .15s,color .15s}
+.nav-a:hover,.nav-a.active{background:var(--surface-2);color:var(--text)}
+.nav-a.active{font-weight:600}
+.btn-nav-cta{padding:8px 18px;border-radius:999px;background:var(--primary);color:#fff;font-size:13px;font-weight:600;margin-left:8px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(26,86,219,.28)}
+.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,86,219,.38)}
+.burger{display:none;flex-direction:column;gap:5px;border:none;background:none;padding:4px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--text-2);border-radius:2px;transition:.2s}
+/* mobile menu */
+.mob-menu{display:none;position:fixed;inset:0;background:#fff;z-index:200;flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.mob-close{background:none;border:none;font-size:20px;color:var(--text-2);padding:4px 8px;cursor:pointer}
+.mob-nav{display:flex;flex-direction:column;padding:16px 12px;gap:2px;overflow-y:auto}
+.mob-nav a,.mob-nav button{display:flex;align-items:center;gap:10px;padding:13px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--text-2);background:none;border:none;width:100%;text-align:left;transition:background .15s,color .15s}
+.mob-nav a:hover,.mob-nav button:hover{background:var(--surface-2);color:var(--text)}
+.mob-nav a.active{color:var(--primary);font-weight:600}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:150}
+@media(max-width:768px){.nav-links,.btn-nav-cta{display:none}.burger{display:flex}}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#1a56db 100%);color:#fff;padding:64px 20px 56px;text-align:center}
+.hero-inner{max-width:760px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:16px;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 32px}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:12px}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-size:24px;font-weight:800}
+.hero-stat span{font-size:12px;color:rgba(255,255,255,.65);font-weight:500}
+
+/* ── LAYOUT ── */
+.page{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ── SEARCH + FILTERS ── */
+.search-bar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0 16px;display:flex;align-items:center;gap:12px;margin:32px auto 0;max-width:680px;box-shadow:var(--shadow)}
+.search-bar input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:14px;padding:14px 0;background:none;color:var(--text)}
+.search-bar input::placeholder{color:var(--text-dim)}
+.search-bar svg{color:var(--text-dim);flex-shrink:0}
+.search-clear{background:none;border:none;color:var(--text-dim);font-size:18px;line-height:1;padding:4px;display:none}
+.filter-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:24px 0 8px}
+.filter-label{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap}
+.filter-pill{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:500;color:var(--text-2);background:#fff;cursor:pointer;transition:all .15s;white-space:nowrap}
+.filter-pill:hover{border-color:var(--primary);color:var(--primary)}
+.filter-pill.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600}
+
+/* ── CATEGORY SECTION ── */
+.cat-section{margin:32px 0}
+.cat-section:first-child{margin-top:0}
+.cat-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.cat-icon{font-size:22px}
+.cat-title{font-size:20px;font-weight:700;color:var(--text)}
+.cat-count{font-size:13px;color:var(--text-dim);font-weight:500}
+
+/* ── TABS ── */
+.tool-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tool-tab{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:500;color:var(--text-2);background:#fff;cursor:pointer;transition:all .15s}
+.tool-tab:hover{border-color:var(--purple);color:var(--purple)}
+.tool-tab.active{border-color:var(--purple);background:var(--purple-light);color:var(--purple);font-weight:600}
+
+/* ── PROMPT GRID ── */
+.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.prompt-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow .2s,border-color .2s;cursor:pointer;position:relative;overflow:hidden}
+.prompt-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.10);border-color:#d1d5db}
+.prompt-card.free{border-left:3px solid var(--primary)}
+.prompt-card.premium.locked{border-left:3px solid var(--purple)}
+.prompt-card.premium.unlocked{border-left:3px solid var(--green)}
+.prompt-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.prompt-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.35}
+.prompt-badges{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.badge-free{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--primary-light);color:var(--primary);border:1px solid rgba(26,86,219,.2);text-transform:uppercase;letter-spacing:.06em}
+.badge-level{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em}
+.badge-level.beginner{background:var(--green-light);color:var(--green);border:1px solid rgba(22,163,74,.2)}
+.badge-level.intermediate{background:var(--amber-light);color:var(--amber);border:1px solid rgba(217,119,6,.2)}
+.badge-level.advanced{background:var(--purple-light);color:var(--purple);border:1px solid var(--purple-border)}
+.badge-lock{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--purple-light);color:var(--purple);border:1px solid var(--purple-border)}
+.prompt-usecase{font-size:11px;color:var(--text-dim);font-weight:500;margin-bottom:10px}
+.prompt-preview{font-size:12.5px;color:var(--text-2);line-height:1.6;max-height:60px;overflow:hidden;position:relative}
+.prompt-preview.blurred{filter:blur(5px);user-select:none;pointer-events:none}
+.prompt-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(transparent,#fff)}
+.prompt-card.premium.locked .prompt-preview::after{background:linear-gradient(transparent,rgba(248,249,255,.95))}
+.prompt-actions{display:flex;align-items:center;gap:8px;margin-top:14px}
+.btn-copy{padding:7px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--text-2);transition:all .15s}
+.btn-copy:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.btn-copy.copied{border-color:var(--green);color:var(--green);background:var(--green-light)}
+.btn-expand{padding:7px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--text-2);transition:all .15s}
+.btn-expand:hover{border-color:var(--text);color:var(--text)}
+.btn-unlock-inline{padding:7px 14px;border-radius:8px;border:1.5px solid var(--purple);background:var(--purple-light);font-size:12px;font-weight:600;color:var(--purple);transition:all .15s}
+.btn-unlock-inline:hover{background:var(--purple);color:#fff}
+.lock-overlay{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:10px;background:rgba(124,58,237,.04);border-radius:8px;border:1px dashed var(--purple-border)}
+.lock-msg{font-size:11.5px;color:var(--purple);font-weight:500;text-align:center}
+
+/* ── SUBSCRIBER GATE ── */
+.gate-section{background:linear-gradient(135deg,#1e1b4b,#4c1d95);border-radius:16px;padding:40px 32px;text-align:center;color:#fff;margin:40px 0;position:relative;overflow:hidden}
+.gate-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.gate-section>*{position:relative}
+.gate-icon{font-size:40px;margin-bottom:16px}
+.gate-title{font-size:22px;font-weight:800;margin-bottom:8px}
+.gate-subtitle{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:24px;max-width:500px;margin-left:auto;margin-right:auto}
+.gate-perks{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.gate-perk{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.85)}
+.gate-form{display:flex;gap:10px;max-width:440px;margin:0 auto}
+.gate-form input{flex:1;padding:12px 16px;border-radius:10px;border:none;font-family:'Poppins',sans-serif;font-size:14px;outline:none;color:var(--text)}
+.gate-form button{padding:12px 20px;border-radius:10px;border:none;background:#a78bfa;color:#fff;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s}
+.gate-form button:hover{background:#8b5cf6}
+.gate-msg{margin-top:14px;font-size:13px;font-weight:500;min-height:20px}
+.gate-msg.success{color:#86efac}
+.gate-msg.error{color:#fca5a5}
+@media(max-width:540px){.gate-form{flex-direction:column}.gate-perks{flex-direction:column;align-items:flex-start;max-width:280px;margin:0 auto 28px}}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;padding:28px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--surface-2);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;color:var(--text-2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s}
+.modal-close:hover{background:var(--border)}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:4px;padding-right:40px}
+.modal-meta{font-size:12px;color:var(--text-dim);margin-bottom:20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.modal-prompt{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:20px;font-size:13.5px;line-height:1.75;color:var(--text-2);white-space:pre-wrap;word-break:break-word;font-family:'Poppins',sans-serif}
+.modal-highlight{background:#fef3c7;border-radius:4px;padding:0 3px;font-weight:600;color:#92400e}
+.modal-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn-modal-copy{padding:10px 20px;border-radius:10px;background:var(--primary);color:#fff;border:none;font-size:13px;font-weight:700;transition:background .15s}
+.btn-modal-copy:hover{background:var(--primary-dark)}
+.btn-modal-copy.copied{background:var(--green)}
+.btn-modal-close{padding:10px 20px;border-radius:10px;border:1.5px solid var(--border);background:#fff;color:var(--text-2);font-size:13px;font-weight:600}
+.hint-box{background:rgba(26,86,219,.06);border:1px solid rgba(26,86,219,.15);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--primary);margin-top:14px}
+.hint-box strong{font-weight:700}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:64px 20px;color:var(--text-dim)}
+.empty-state h3{font-size:18px;font-weight:700;color:var(--text-2);margin-bottom:8px}
+
+/* ── TOOL SECTION ── */
+.tool-section{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;overflow:hidden}
+.tool-section-header{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--surface-2);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.tool-section-header:hover{background:#f0f2f7}
+.tool-logo{width:36px;height:36px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:#fff;padding:3px}
+.tool-logo-fallback{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--purple));display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0}
+.tool-section-title{font-size:15px;font-weight:700;color:var(--text)}
+.tool-section-sub{font-size:12px;color:var(--text-dim);margin-top:1px}
+.tool-chevron{margin-left:auto;color:var(--text-dim);transition:transform .25s;font-size:18px}
+.tool-section-header.open .tool-chevron{transform:rotate(180deg)}
+.tool-section-body{padding:20px;display:none}
+.tool-section-header.open+.tool-section-body{display:block}
+
+/* ── LEVEL TABS ── */
+.level-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:0}
+.level-tab{padding:8px 16px;font-size:13px;font-weight:600;color:var(--text-dim);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s}
+.level-tab:hover{color:var(--text)}
+.level-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.level-pane{display:none}
+.level-pane.active{display:block}
+
+/* ── UNLOCK BANNER ── */
+.unlock-banner{display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,var(--purple-light),rgba(124,58,237,.04));border:1px solid var(--purple-border);border-radius:12px;padding:16px 20px;margin:24px 0}
+.unlock-banner .icon{font-size:28px;flex-shrink:0}
+.unlock-banner .text h4{font-size:14px;font-weight:700;color:var(--purple);margin-bottom:2px}
+.unlock-banner .text p{font-size:12.5px;color:var(--text-2)}
+.unlock-banner .btn-unlock{margin-left:auto;padding:9px 18px;border-radius:10px;border:1.5px solid var(--purple);background:var(--purple);color:#fff;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:background .15s}
+.unlock-banner .btn-unlock:hover{background:#6d28d9}
+@media(max-width:540px){.unlock-banner{flex-wrap:wrap}.unlock-banner .btn-unlock{margin-left:0;width:100%}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .prompt-grid{grid-template-columns:1fr}
+  .hero{padding:44px 20px 40px}
+  .gate-section{padding:28px 20px}
+}
+@media(max-width:480px){
+  .hero-stats{gap:20px}
+  .hero-stat strong{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">
+        <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      MyAI ToolsFinder
+    </a>
+    <div class="nav-links">
+      <a href="index.html#tools" class="nav-a">AI Tools</a>
+      <a href="articles.html" class="nav-a">Articles</a>
+      <a href="prompts.html" class="nav-a active">Prompts</a>
+      <a href="about.html" class="nav-a">About</a>
+      <a href="index.html#newsletter" class="nav-a">Newsletter</a>
+      <a href="index.html#newsletter" class="btn-nav-cta">Get Weekly Digest</a>
+    </div>
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-head">
+    <a href="index.html" class="brand" style="font-size:14px">
+      <div class="brand-mark" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/></svg></div>
+      MyAI ToolsFinder
+    </a>
+    <button class="mob-close" onclick="toggleMenu()">&#x2715;</button>
+  </div>
+  <div class="mob-nav">
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> AI Tools Directory</a>
+    <a href="articles.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
+    <a href="prompts.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
+    <a href="about.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
+    <a href="index.html#newsletter" onclick="toggleMenu()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+  </div>
+</div>
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">💡 Sample Prompt Templates</div>
+    <h1>Get <em>More from Every</em> AI Tool</h1>
+    <p>Stop staring at a blank prompt. Use our proven templates to unlock the full power of 500+ AI tools — from day one.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>3</strong><span>Free prompts per tool</span></div>
+      <div class="hero-stat"><strong>30</strong><span>Exclusive subscriber prompts</span></div>
+      <div class="hero-stat"><strong>500+</strong><span>AI tools covered</span></div>
+      <div class="hero-stat"><strong>3 Levels</strong><span>Beginner · Intermediate · Advanced</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAIN ═══ -->
+<div class="page" style="padding-top:0">
+
+  <!-- Search -->
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="prompt-search" placeholder="Search tools or prompt topics…" autocomplete="off" oninput="filterPrompts()">
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">&#x2715;</button>
+    </div>
+
+    <!-- Category filter -->
+    <div class="filter-row">
+      <span class="filter-label">Category:</span>
+      <div class="filter-pills" id="cat-filters">
+        <button class="filter-pill active" data-cat="all" onclick="setCatFilter('all',this)">All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prompts content -->
+  <div id="prompts-content" style="margin-top:8px;padding-bottom:64px"></div>
+
+  <!-- Subscriber gate -->
+  <div class="gate-section" id="gate-section" style="display:none">
+    <div class="gate-icon">🔐</div>
+    <h2 class="gate-title">Unlock 30 Exclusive Prompt Templates Per Tool</h2>
+    <p class="gate-subtitle">Subscribers get 30 premium prompts per category — 9 beginner, 12 intermediate, and 9 advanced — crafted for serious AI power users.</p>
+    <div class="gate-perks">
+      <div class="gate-perk">✅ 9 Beginner prompts</div>
+      <div class="gate-perk">✅ 12 Intermediate prompts</div>
+      <div class="gate-perk">✅ 9 Advanced prompts</div>
+      <div class="gate-perk">✅ Instant access, no payment</div>
+    </div>
+    <div class="gate-form">
+      <input type="email" id="gate-email" placeholder="your@email.com" autocomplete="email">
+      <button onclick="verifySubscriber()">Unlock Prompts →</button>
+    </div>
+    <p class="gate-msg" id="gate-msg"></p>
+    <p style="font-size:11px;color:rgba(255,255,255,.5);margin-top:12px">Already a subscriber? Enter your email to verify access.</p>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ═══ PROMPT MODAL ═══ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="js/prompts-data.js"></script>
+<script>
+/* ── Mobile menu ── */
+function toggleMenu(){
+  document.getElementById('mob-menu').classList.toggle('open');
+  document.getElementById('mob-overlay').style.display =
+    document.getElementById('mob-menu').classList.contains('open') ? 'block' : 'none';
+}
+
+/* ── Subscriber state ── */
+let isSubscriber = false;
+
+/* ── Subscriber verification (matches articles.html pattern) ── */
+async function verifySubscriber(){
+  const email = (document.getElementById('gate-email').value||'').trim().toLowerCase();
+  const msg = document.getElementById('gate-msg');
+  if(!email || !email.includes('@')){ msg.textContent='Please enter a valid email.'; msg.className='gate-msg error'; return; }
+  msg.textContent='Verifying…'; msg.className='gate-msg';
+  try{
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email));
+    const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    const res = await fetch('/data/subscribers.json');
+    const data = await res.json();
+    const list = Array.isArray(data) ? data : (data.subscribers||[]);
+    if(list.includes(hash)){
+      isSubscriber = true;
+      sessionStorage.setItem('pf_sub','1');
+      msg.textContent='✅ Access granted! Enjoy your exclusive prompts.'; msg.className='gate-msg success';
+      document.getElementById('gate-section').style.display='none';
+      document.querySelectorAll('.premium-pane').forEach(p=>p.style.display='');
+      document.querySelectorAll('.lock-overlay').forEach(el=>el.style.display='none');
+      document.querySelectorAll('.prompt-preview.blurred').forEach(el=>el.classList.remove('blurred'));
+      document.querySelectorAll('.btn-unlock-inline').forEach(b=>{b.style.display='none'});
+    } else {
+      msg.textContent='Email not found. Subscribe at the bottom of our home page.'; msg.className='gate-msg error';
+    }
+  } catch(e){ msg.textContent='Verification failed — please try again.'; msg.className='gate-msg error'; }
+}
+
+/* ── Current filter state ── */
+let activeCat = 'all';
+let searchQuery = '';
+
+/* ── Category icons ── */
+const CAT_ICONS = {
+  'Chatbot':'🤖','Writing':'✍️','Image':'🖼️','Video':'🎬','Audio':'🎵',
+  'Design':'🎨','SEO':'🔍','Coding':'💻','Marketing':'📣','Productivity':'⚡',
+  'Research':'🔬','Sales':'💼','Automation':'⚙️','Analytics':'📊','Education':'🎓',
+  'HR':'👥','Social Media':'📱','Finance':'💰','AI Infrastructure':'🏗️',
+  'E-commerce':'🛒','Presentation':'📊','No-Code':'🔧','Legal':'⚖️',
+  'Customer Support':'🎧','Health':'❤️'
+};
+
+/* ── Build category filter pills ── */
+function buildFilters(){
+  const container = document.getElementById('cat-filters');
+  const cats = Object.keys(window.PROMPT_CATEGORY_BANK||{});
+  cats.forEach(cat=>{
+    const btn = document.createElement('button');
+    btn.className='filter-pill';
+    btn.dataset.cat=cat;
+    btn.textContent=(CAT_ICONS[cat]||'📌')+' '+cat;
+    btn.onclick=()=>setCatFilter(cat,btn);
+    container.appendChild(btn);
+  });
+}
+
+function setCatFilter(cat, btn){
+  activeCat = cat;
+  document.querySelectorAll('#cat-filters .filter-pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  renderPrompts();
+}
+
+/* ── Search ── */
+function filterPrompts(){
+  searchQuery = document.getElementById('prompt-search').value.trim().toLowerCase();
+  document.getElementById('search-clear').style.display = searchQuery ? 'block' : 'none';
+  renderPrompts();
+}
+function clearSearch(){
+  document.getElementById('prompt-search').value='';
+  searchQuery='';
+  document.getElementById('search-clear').style.display='none';
+  renderPrompts();
+}
+
+/* ── Favicon helper ── */
+function toolFavicon(domain){ return domain ? 'https://www.google.com/s2/favicons?domain='+domain+'&sz=64' : ''; }
+
+/* ── Get tool override or fall back to category ── */
+function getToolData(toolName, toolCat){
+  const slug = toolName.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  if(window.PROMPT_TOOL_OVERRIDES && window.PROMPT_TOOL_OVERRIDES[slug]){
+    return { free: window.PROMPT_TOOL_OVERRIDES[slug].free, premium: (window.PROMPT_CATEGORY_BANK[toolCat]||{}).premium||[], isOverride:true };
+  }
+  const catData = window.PROMPT_CATEGORY_BANK[toolCat]||{};
+  return { free: catData.free||[], premium: catData.premium||[], isOverride:false };
+}
+
+/* ── Main render ── */
+function renderPrompts(){
+  const container = document.getElementById('prompts-content');
+  const bank = window.PROMPT_CATEGORY_BANK||{};
+  const cats = activeCat==='all' ? Object.keys(bank) : [activeCat];
+  let anyResult = false;
+  let html = '';
+
+  // Determine which tools to show for this category
+  // We show: category-level section with free prompts, then per-tool overrides as tool sections
+  // Plus the subscriber premium section per category
+
+  cats.forEach(cat=>{
+    const catData = bank[cat];
+    if(!catData) return;
+
+    const catIcon = CAT_ICONS[cat]||'📌';
+    const freePrompts = catData.free||[];
+    const premiumPrompts = catData.premium||[];
+
+    // Filter by search
+    if(searchQuery){
+      const matchesCat = cat.toLowerCase().includes(searchQuery);
+      const matchesFree = freePrompts.some(p=>p.title.toLowerCase().includes(searchQuery)||p.prompt.toLowerCase().includes(searchQuery)||p.useCase.toLowerCase().includes(searchQuery));
+      const matchesPremium = premiumPrompts.some(p=>p.title.toLowerCase().includes(searchQuery)||p.prompt.toLowerCase().includes(searchQuery));
+      // Check tool overrides
+      const overrideMatch = Object.keys(window.PROMPT_TOOL_OVERRIDES||{}).some(slug=>{
+        const tObj = window.PROMPT_TOOL_OVERRIDES[slug];
+        return tObj.free&&tObj.free.some(p=>p.title.toLowerCase().includes(searchQuery)||p.prompt.toLowerCase().includes(searchQuery));
+      });
+      if(!matchesCat && !matchesFree && !matchesPremium && !overrideMatch) return;
+    }
+
+    anyResult = true;
+    const beginners = premiumPrompts.filter(p=>p.level==='beginner');
+    const intermediates = premiumPrompts.filter(p=>p.level==='intermediate');
+    const advanced = premiumPrompts.filter(p=>p.level==='advanced');
+
+    const sectionId = 'cat-'+cat.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+
+    html += `<div class="cat-section" id="${sectionId}">
+      <div class="cat-header">
+        <span class="cat-icon">${catIcon}</span>
+        <span class="cat-title">${cat}</span>
+        <span class="cat-count">${freePrompts.length} free · ${premiumPrompts.length} exclusive</span>
+      </div>
+
+      <div class="prompt-grid">
+        ${freePrompts.map((p,i)=>promptCardHTML(p,i,'free',cat)).join('')}
+      </div>
+
+      ${isSubscriber ? '' : `
+      <div class="unlock-banner">
+        <span class="icon">🔐</span>
+        <div class="text">
+          <h4>+30 Exclusive ${cat} Prompts</h4>
+          <p>9 beginner · 12 intermediate · 9 advanced — subscriber access only</p>
+        </div>
+        <button class="btn-unlock" onclick="scrollToGate()">Unlock Free →</button>
+      </div>`}
+
+      ${isSubscriber ? `
+      <div class="premium-pane">
+        <div class="level-tabs">
+          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')">🌱 Beginner (${beginners.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')">🚀 Intermediate (${intermediates.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')">⚡ Advanced (${advanced.length})</button>
+        </div>
+        <div class="level-pane active" data-level="beginner" data-parent="${sectionId}">
+          <div class="prompt-grid">${beginners.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+        <div class="level-pane" data-level="intermediate" data-parent="${sectionId}">
+          <div class="prompt-grid">${intermediates.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+        <div class="level-pane" data-level="advanced" data-parent="${sectionId}">
+          <div class="prompt-grid">${advanced.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+      </div>` : `
+      <div class="premium-pane" style="display:none">
+        <div class="level-tabs">
+          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')">🌱 Beginner (${beginners.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')">🚀 Intermediate (${intermediates.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')">⚡ Advanced (${advanced.length})</button>
+        </div>
+        <div class="level-pane active" data-level="beginner" data-parent="${sectionId}">
+          <div class="prompt-grid">${beginners.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+        <div class="level-pane" data-level="intermediate" data-parent="${sectionId}">
+          <div class="prompt-grid">${intermediates.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+        <div class="level-pane" data-level="advanced" data-parent="${sectionId}">
+          <div class="prompt-grid">${advanced.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
+        </div>
+      </div>`}
+
+    </div>`;
+  });
+
+  // Tool-specific override sections
+  if((activeCat==='all' || !activeCat) && !searchQuery){
+    const overrides = window.PROMPT_TOOL_OVERRIDES||{};
+    if(Object.keys(overrides).length){
+      html += `<div class="cat-section">
+        <div class="cat-header">
+          <span class="cat-icon">⭐</span>
+          <span class="cat-title">Top AI Tools — Custom Prompts</span>
+          <span class="cat-count">Custom-crafted for the most popular tools</span>
+        </div>`;
+      Object.entries(overrides).forEach(([slug,data])=>{
+        const toolName = slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        const anchor = slug;
+        html += `<div class="tool-section" id="${anchor}">
+          <div class="tool-section-header" onclick="toggleToolSection(this)">
+            <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=${slug}.com&sz=64"
+              alt="${toolName}" onerror="this.style.display='none'">
+            <div>
+              <div class="tool-section-title">${toolName}</div>
+              <div class="tool-section-sub">${(data.free||[]).length} custom free prompts</div>
+            </div>
+            <span class="tool-chevron">&#x25BE;</span>
+          </div>
+          <div class="tool-section-body">
+            <div class="prompt-grid">
+              ${(data.free||[]).map((p,i)=>promptCardHTML(p,i,'free',slug)).join('')}
+            </div>
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+  }
+
+  container.innerHTML = anyResult ? html : `<div class="empty-state"><h3>No prompts found</h3><p>Try a different search term or category.</p></div>`;
+
+  // Show gate if not subscriber
+  document.getElementById('gate-section').style.display = isSubscriber ? 'none' : 'block';
+
+  // Handle anchor navigation
+  if(location.hash){
+    setTimeout(()=>{
+      const el = document.querySelector(location.hash);
+      if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    }, 100);
+  }
+}
+
+/* ── Prompt card HTML ── */
+function promptCardHTML(p, i, type, catOrSlug){
+  const isLocked = type==='premium' && !isSubscriber;
+  const level = p.level||'';
+  const previewText = p.prompt.slice(0,140)+'…';
+  const cardClass = type==='free' ? 'prompt-card free' : (isSubscriber ? 'prompt-card premium unlocked' : 'prompt-card premium locked');
+  const dataStr = encodeURIComponent(JSON.stringify(p));
+
+  let badgesHTML = '';
+  if(type==='free') badgesHTML += `<span class="badge-free">Free</span>`;
+  if(level) badgesHTML += `<span class="badge-level ${level}">${level.charAt(0).toUpperCase()+level.slice(1)}</span>`;
+  if(isLocked) badgesHTML += `<span class="badge-lock">🔐 Members</span>`;
+
+  let actionsHTML = '';
+  if(!isLocked){
+    actionsHTML = `<button class="btn-copy" onclick="copyPrompt(this,${JSON.stringify(p.prompt)})">📋 Copy</button>
+    <button class="btn-expand" onclick="openModal(${dataStr})">View Full</button>`;
+  } else {
+    actionsHTML = `<button class="btn-unlock-inline" onclick="scrollToGate()">🔐 Subscribe to Unlock</button>`;
+  }
+
+  return `<div class="${cardClass}" onclick="${isLocked ? 'scrollToGate()' : 'openModal('+dataStr+')'}">
+    <div class="prompt-card-header">
+      <div class="prompt-title">${escHtml(p.title)}</div>
+      <div class="prompt-badges">${badgesHTML}</div>
+    </div>
+    <div class="prompt-usecase">💼 ${escHtml(p.useCase)}</div>
+    <div class="prompt-preview${isLocked?' blurred':''}">${escHtml(previewText)}</div>
+    <div class="prompt-actions" onclick="event.stopPropagation()">${actionsHTML}</div>
+  </div>`;
+}
+
+/* ── Level tab switching ── */
+function switchLevel(btn, sectionId, level){
+  const section = document.getElementById(sectionId);
+  if(!section) return;
+  section.querySelectorAll('.level-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  section.querySelectorAll('.level-pane').forEach(p=>{
+    p.classList.toggle('active', p.dataset.level===level);
+  });
+}
+
+/* ── Tool section toggle ── */
+function toggleToolSection(header){
+  header.classList.toggle('open');
+}
+
+/* ── Scroll to gate ── */
+function scrollToGate(){
+  const gate = document.getElementById('gate-section');
+  if(gate){ gate.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>{ const i=document.getElementById('gate-email'); if(i) i.focus(); },400); }
+}
+
+/* ── Copy prompt ── */
+function copyPrompt(btn, text){
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig = btn.innerHTML;
+    btn.innerHTML='✅ Copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.innerHTML=orig; btn.classList.remove('copied'); },2000);
+  }).catch(()=>{ alert('Copy failed — please select and copy manually.'); });
+}
+
+/* ── Modal ── */
+let currentPrompt = null;
+function openModal(dataEncoded){
+  let p;
+  try{ p = typeof dataEncoded==='string' ? JSON.parse(decodeURIComponent(dataEncoded)) : dataEncoded; }
+  catch(e){ return; }
+  currentPrompt = p;
+  const isLocked = p.level && !isSubscriber;
+  if(isLocked){ scrollToGate(); return; }
+
+  // Highlight [PLACEHOLDERS]
+  const highlighted = escHtml(p.prompt).replace(/\[([^\]]+)\]/g,'<span class="modal-highlight">[$1]</span>');
+  const levelBadge = p.level ? `<span class="badge-level ${p.level}" style="font-size:11px">${p.level.charAt(0).toUpperCase()+p.level.slice(1)}</span>` : '<span class="badge-free">Free</span>';
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-title">${escHtml(p.title)}</div>
+    <div class="modal-meta">
+      ${levelBadge}
+      <span style="color:var(--text-dim)">💼 ${escHtml(p.useCase)}</span>
+    </div>
+    <div class="modal-prompt">${highlighted}</div>
+    <div class="hint-box"><strong>💡 Tip:</strong> Replace the <span class="modal-highlight">[BRACKETED PLACEHOLDERS]</span> with your specific details before using this prompt.</div>
+    <div class="modal-actions">
+      <button class="btn-modal-copy" id="modal-copy-btn" onclick="copyModalPrompt()">📋 Copy Prompt</button>
+      <button class="btn-modal-close" onclick="closeModal()">Close</button>
+    </div>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function copyModalPrompt(){
+  if(!currentPrompt) return;
+  navigator.clipboard.writeText(currentPrompt.prompt).then(()=>{
+    const btn = document.getElementById('modal-copy-btn');
+    if(btn){ btn.textContent='✅ Copied!'; btn.classList.add('copied'); setTimeout(()=>{ btn.textContent='📋 Copy Prompt'; btn.classList.remove('copied'); },2000); }
+  });
+}
+
+function closeModal(e){
+  if(e && e.target!==document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+  currentPrompt=null;
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ── Helper ── */
+function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ── Init ── */
+window.addEventListener('DOMContentLoaded',()=>{
+  // Restore subscriber state from session
+  if(sessionStorage.getItem('pf_sub')==='1') isSubscriber=true;
+
+  buildFilters();
+
+  // Handle direct tool anchor (#tool-slug)
+  if(location.hash){
+    const slug = location.hash.slice(1);
+    // Try to find in overrides first
+    if(window.PROMPT_TOOL_OVERRIDES && window.PROMPT_TOOL_OVERRIDES[slug]){
+      // Stay on all categories, let hash scroll work
+    }
+  }
+
+  renderPrompts();
+});
+</script>
+</body>
+</html>
