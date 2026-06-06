@@ -243,6 +243,23 @@
   //  SUBSCRIPTION GATE
   // ══════════════════════════════════════════
 
+  // ── SHA-256 + subscriber check (self-contained for cross-page use) ──
+  async function mcbSha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str.trim().toLowerCase()));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  async function mcbIsSubscriber(email) {
+    // Prefer the existing global helper if on index.html
+    if (typeof isSubscriberCmp === 'function') return isSubscriberCmp(email);
+    try {
+      const hash = await mcbSha256(email);
+      const r = await fetch('/data/subscribers.json?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return null;
+      const d = await r.json();
+      return Array.isArray(d.hashes) && d.hashes.includes(hash);
+    } catch (e) { return null; }
+  }
+
   function mcbShowGate() {
     const inp    = document.getElementById('mcb-input');
     const send   = document.getElementById('mcb-send');
@@ -256,20 +273,76 @@
     wrap.className = 'mcb-msg bot';
     wrap.id = 'mcb-gate-wrap';
     wrap.innerHTML = `<div class="mcb-gate-card">
-      <p style="font-size:12px;color:#64748b;margin:0 0 10px;line-height:1.5;font-family:'Poppins',sans-serif">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
-      <div class="mcb-gate-fields">
-        <input id="mcb-gate-fname" class="mcb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
-        <input id="mcb-gate-email" class="mcb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
-          onkeydown="if(event.key==='Enter')mcbGateSubmit()">
+
+      <!-- VIEW 1: Subscribe -->
+      <div id="mcb-gate-sub-view">
+        <p style="font-size:12px;color:#64748b;margin:0 0 10px;line-height:1.5;font-family:'Poppins',sans-serif">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
+        <div class="mcb-gate-fields">
+          <input id="mcb-gate-fname" class="mcb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
+          <input id="mcb-gate-email" class="mcb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
+            onkeydown="if(event.key==='Enter')mcbGateSubmit()">
+        </div>
+        <button class="mcb-gate-btn" id="mcb-gate-btn" onclick="mcbGateSubmit()">Subscribe Free 🎉</button>
+        <div id="mcb-gate-msg" class="mcb-gate-msg"></div>
+        <button class="mcb-gate-skip" onclick="mcbGateShowVerify()">Already a subscriber? Verify access →</button>
       </div>
-      <button class="mcb-gate-btn" id="mcb-gate-btn" onclick="mcbGateSubmit()">Subscribe Free 🎉</button>
-      <div id="mcb-gate-msg" class="mcb-gate-msg"></div>
-      <button class="mcb-gate-skip" onclick="mcbGateSkip()">Already subscribed? Skip →</button>
+
+      <!-- VIEW 2: Verify existing subscriber -->
+      <div id="mcb-gate-verify-view" style="display:none">
+        <p style="font-size:12px;color:#64748b;margin:0 0 10px;line-height:1.5;font-family:'Poppins',sans-serif">Enter your subscriber email and we'll verify your access instantly.</p>
+        <input id="mcb-verify-email" class="mcb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
+          onkeydown="if(event.key==='Enter')mcbGateVerify()" style="margin-bottom:10px">
+        <button class="mcb-gate-btn" id="mcb-verify-btn" onclick="mcbGateVerify()">Verify Access →</button>
+        <div id="mcb-verify-msg" class="mcb-gate-msg"></div>
+        <button class="mcb-gate-skip" onclick="mcbGateShowSub()">← Back to subscribe</button>
+      </div>
+
     </div>`;
     msgs.appendChild(wrap);
     msgs.scrollTop = msgs.scrollHeight;
     setTimeout(() => document.getElementById('mcb-gate-email')?.focus(), 350);
   }
+
+  window.mcbGateShowVerify = function () {
+    document.getElementById('mcb-gate-sub-view').style.display  = 'none';
+    document.getElementById('mcb-gate-verify-view').style.display = '';
+    setTimeout(() => document.getElementById('mcb-verify-email')?.focus(), 80);
+  };
+
+  window.mcbGateShowSub = function () {
+    document.getElementById('mcb-gate-verify-view').style.display = 'none';
+    document.getElementById('mcb-gate-sub-view').style.display  = '';
+    setTimeout(() => document.getElementById('mcb-gate-email')?.focus(), 80);
+  };
+
+  window.mcbGateVerify = async function () {
+    const email = (document.getElementById('mcb-verify-email')?.value || '').trim();
+    const msgEl = document.getElementById('mcb-verify-msg');
+    const btn   = document.getElementById('mcb-verify-btn');
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Enter your subscriber email.'; }
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Checking…'; }
+    if (msgEl) { msgEl.style.color = '#64748b'; msgEl.textContent = ''; }
+    let result = null;
+    try { result = await mcbIsSubscriber(email); } catch (e) {}
+    if (result === true) {
+      const savedName = localStorage.getItem('myai_chat_name');
+      localStorage.setItem('pf_sub', '1');
+      localStorage.setItem('pf_email', email);
+      mcbGateComplete(savedName || null, true);
+    } else if (result === false) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
+      if (msgEl) {
+        msgEl.style.color = '#ef4444';
+        msgEl.innerHTML = '❌ Email not found. <a href="/#newsletter" target="_blank" style="color:#1a56db">Subscribe free</a> first, then come back!';
+      }
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Could not connect — please try again.'; }
+    }
+  };
 
   window.mcbGateSubmit = async function () {
     const fname = (document.getElementById('mcb-gate-fname')?.value || '').trim();
@@ -293,8 +366,6 @@
     if (fname) localStorage.setItem('myai_chat_name', fname);
     mcbGateComplete(fname || null, true);
   };
-
-  window.mcbGateSkip = function () { mcbGateComplete(null, false); };
 
   function mcbGateComplete(fname, subscribed) {
     localStorage.setItem('myai_chat_gate', '1');

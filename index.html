@@ -3787,20 +3787,84 @@ async function popSubscribe(){
     wrap.className = 'cb-msg bot';
     wrap.id = 'cb-gate-wrap';
     wrap.innerHTML = `<div class="cb-gate-card">
-      <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
-      <div class="cb-gate-fields">
-        <input id="cb-gate-fname" class="cb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
-        <input id="cb-gate-email" class="cb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
-          onkeydown="if(event.key==='Enter')cbGateSubmit()">
+
+      <!-- ── VIEW 1: Subscribe ── -->
+      <div id="cb-gate-sub-view">
+        <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
+        <div class="cb-gate-fields">
+          <input id="cb-gate-fname" class="cb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
+          <input id="cb-gate-email" class="cb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
+            onkeydown="if(event.key==='Enter')cbGateSubmit()">
+        </div>
+        <button class="cb-gate-btn" id="cb-gate-btn" onclick="cbGateSubmit()">Subscribe Free 🎉</button>
+        <div id="cb-gate-msg" class="cb-gate-msg"></div>
+        <button class="cb-gate-skip" onclick="cbGateShowVerify()">Already a subscriber? Verify access →</button>
       </div>
-      <button class="cb-gate-btn" id="cb-gate-btn" onclick="cbGateSubmit()">Subscribe Free 🎉</button>
-      <div id="cb-gate-msg" class="cb-gate-msg"></div>
-      <button class="cb-gate-skip" onclick="cbGateSkip()">Already subscribed? Skip →</button>
+
+      <!-- ── VIEW 2: Verify existing subscriber ── -->
+      <div id="cb-gate-verify-view" style="display:none">
+        <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Enter your subscriber email and we'll verify your access instantly.</p>
+        <input id="cb-verify-email" class="cb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
+          onkeydown="if(event.key==='Enter')cbGateVerify()" style="margin-bottom:10px">
+        <button class="cb-gate-btn" id="cb-verify-btn" onclick="cbGateVerify()">Verify Access →</button>
+        <div id="cb-verify-msg" class="cb-gate-msg"></div>
+        <button class="cb-gate-skip" onclick="cbGateShowSub()">← Back to subscribe</button>
+      </div>
+
     </div>`;
     msgs.appendChild(wrap);
     msgs.scrollTop = msgs.scrollHeight;
     setTimeout(() => document.getElementById('cb-gate-email')?.focus(), 350);
   }
+
+  /* Switch to verify view */
+  window.cbGateShowVerify = function() {
+    document.getElementById('cb-gate-sub-view').style.display  = 'none';
+    document.getElementById('cb-gate-verify-view').style.display = '';
+    setTimeout(() => document.getElementById('cb-verify-email')?.focus(), 80);
+  };
+
+  /* Switch back to subscribe view */
+  window.cbGateShowSub = function() {
+    document.getElementById('cb-gate-verify-view').style.display = 'none';
+    document.getElementById('cb-gate-sub-view').style.display  = '';
+    setTimeout(() => document.getElementById('cb-gate-email')?.focus(), 80);
+  };
+
+  /* Verify an existing subscriber email against subscribers.json */
+  window.cbGateVerify = async function() {
+    const email = (document.getElementById('cb-verify-email')?.value || '').trim();
+    const msgEl = document.getElementById('cb-verify-msg');
+    const btn   = document.getElementById('cb-verify-btn');
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Enter your subscriber email.'; }
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Checking…'; }
+    if (msgEl) { msgEl.style.color = '#64748b'; msgEl.textContent = ''; }
+
+    let result = null;
+    try { result = await isSubscriberCmp(email); } catch(e) {}
+
+    if (result === true) {
+      // Verified ✅ — complete gate as confirmed subscriber
+      const savedName = localStorage.getItem('myai_chat_name');
+      localStorage.setItem('pf_sub', '1');       // also unlocks prompts page
+      localStorage.setItem('pf_email', email);
+      cbGateComplete(savedName || null, true);
+    } else if (result === false) {
+      // Not found ❌
+      if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
+      if (msgEl) {
+        msgEl.style.color = '#ef4444';
+        msgEl.innerHTML = '❌ Email not found in our list. <a href="/#newsletter" target="_blank" style="color:#1a56db">Subscribe free</a> first, then come back!';
+      }
+    } else {
+      // Network error — let them through but not as verified subscriber
+      if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Could not connect — please try again.'; }
+    }
+  };
 
   window.cbGateSubmit = async function() {
     const fname = (document.getElementById('cb-gate-fname')?.value || '').trim();
@@ -3824,8 +3888,6 @@ async function popSubscribe(){
     if (fname) localStorage.setItem('myai_chat_name', fname);
     cbGateComplete(fname || null, true);
   };
-
-  window.cbGateSkip = function() { cbGateComplete(null, false); };
 
   function cbGateComplete(fname, subscribed) {
     localStorage.setItem('myai_chat_gate', '1');
