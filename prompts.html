@@ -68,7 +68,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 
 /* ── SEARCH + FILTERS ── */
 /* ── Sticky filter toolbar ── */
-.prompt-sticky-bar{position:sticky;top:0;z-index:40;background:rgba(240,246,255,.95);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border);padding:10px 20px 8px}
+.prompt-sticky-bar{position:sticky;top:64px;z-index:40;background:rgba(240,246,255,.97);backdrop-filter:saturate(200%) blur(20px);-webkit-backdrop-filter:saturate(200%) blur(20px);border-bottom:1px solid var(--border);padding:10px 20px 8px}
 .prompt-sticky-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
 .search-bar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);max-width:560px}
 .search-bar input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:13.5px;padding:10px 0;background:none;color:var(--text)}
@@ -78,7 +78,8 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .search-clear{background:none;border:none;color:var(--text-dim);font-size:18px;line-height:1;padding:4px;display:none}
 .filter-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:24px 0 8px}
 .filter-label{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
-.filter-pills{display:flex;gap:8px;flex-wrap:wrap}
+.filter-pills{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;mask-image:linear-gradient(to right,transparent 0,#000 10px,#000 calc(100% - 24px),transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0,#000 10px,#000 calc(100% - 24px),transparent 100%)}
+.filter-pills::-webkit-scrollbar{display:none}
 .filter-pill{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:500;color:var(--text-2);background:#fff;cursor:pointer;transition:all .15s;white-space:nowrap}
 .filter-pill:hover{border-color:var(--primary);color:var(--primary)}
 .filter-pill.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600}
@@ -119,7 +120,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .prompt-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow .2s,border-color .2s;cursor:pointer;position:relative;overflow:hidden}
 .prompt-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.10);border-color:#d1d5db}
 .prompt-card.free{border-left:3px solid var(--primary)}
-.prompt-card.premium.locked{border-left:3px solid var(--primary-dark)}
+.prompt-card.premium.locked{border-left:3px solid var(--primary-dark);background:linear-gradient(135deg,rgba(239,246,255,.7),rgba(245,243,255,.7))}
 .prompt-card.premium.unlocked{border-left:3px solid var(--green)}
 .prompt-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
 .prompt-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.35}
@@ -135,6 +136,8 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .prompt-preview.blurred{filter:blur(5px);user-select:none;pointer-events:none}
 .prompt-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(transparent,#fff)}
 .prompt-card.premium.locked .prompt-preview::after{background:linear-gradient(transparent,rgba(240,246,255,.95))}
+/* locked carousel card — lock icon overlay */
+.prompt-card.premium.locked::before{content:'🔐';position:absolute;top:10px;right:10px;font-size:14px;z-index:2;opacity:.7}
 .prompt-actions{display:flex;align-items:center;gap:8px;margin-top:14px}
 .btn-copy{padding:7px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--text-2);transition:all .15s}
 .btn-copy:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
@@ -404,13 +407,16 @@ async function verifySubscriber(){
     const list = Array.isArray(data) ? data : (data.subscribers||[]);
     if(list.includes(hash)){
       isSubscriber = true;
-      sessionStorage.setItem('pf_sub','1');
+      localStorage.setItem('pf_sub','1');
+      localStorage.setItem('pf_email', email);
       msg.textContent='✅ Access granted! Enjoy your exclusive prompts.'; msg.className='gate-msg success';
       document.getElementById('gate-section').style.display='none';
       document.querySelectorAll('.premium-pane').forEach(p=>p.style.display='');
       document.querySelectorAll('.lock-overlay').forEach(el=>el.style.display='none');
       document.querySelectorAll('.prompt-preview.blurred').forEach(el=>el.classList.remove('blurred'));
       document.querySelectorAll('.btn-unlock-inline').forEach(b=>{b.style.display='none'});
+      // re-render so carousel premium cards lose their locked state
+      renderPrompts();
     } else {
       msg.textContent='Email not found. Subscribe at the bottom of our home page.'; msg.className='gate-msg error';
     }
@@ -533,6 +539,7 @@ function renderPrompts(){
         <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)" aria-label="Previous">&#8249;</button>
         <div class="prompt-grid">
           ${freePrompts.map((p,i)=>promptCardHTML(p,i,'free',cat)).join('')}
+          ${premiumPrompts.slice(0,3).map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}
         </div>
         <button class="carousel-btn next" onclick="scrollCarousel(this,1)" aria-label="Next">&#8250;</button>
       </div>
@@ -777,7 +784,11 @@ function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;
 /* ── Init ── */
 window.addEventListener('DOMContentLoaded',()=>{
   // Restore subscriber state from session
-  if(sessionStorage.getItem('pf_sub')==='1') isSubscriber=true;
+  // Restore subscriber state (persists across sessions)
+  if(localStorage.getItem('pf_sub')==='1') isSubscriber=true;
+  // Pre-fill gate email if we know it
+  const savedPfEmail = localStorage.getItem('pf_email');
+  if(savedPfEmail){ const el=document.getElementById('gate-email'); if(el) el.value=savedPfEmail; }
 
   buildFilters();
 
