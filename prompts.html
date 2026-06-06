@@ -404,7 +404,7 @@ async function verifySubscriber(){
     const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     const res = await fetch('/data/subscribers.json');
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.subscribers||[]);
+    const list = Array.isArray(data) ? data : (data.hashes||data.subscribers||[]);
     if(list.includes(hash)){
       isSubscriber = true;
       localStorage.setItem('pf_sub','1');

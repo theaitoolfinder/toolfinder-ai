@@ -17,13 +17,13 @@
   // ── Inject CSS ──
   const style = document.createElement('style');
   style.textContent = `
-  #mcb-btn{position:fixed;bottom:24px;right:24px;z-index:9000;width:58px;height:58px;border-radius:50%;
-    background:linear-gradient(135deg,#1a56db,#7c3aed);border:none;cursor:pointer;
-    box-shadow:0 4px 20px rgba(26,86,219,.45);transition:transform .2s,box-shadow .2s;
-    display:flex;align-items:center;justify-content:center;padding:0}
-  #mcb-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(26,86,219,.55)}
-  #mcb-btn svg{width:26px;height:26px;color:#fff;flex-shrink:0}
-  #mcb-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;
+  #mcb-btn{position:fixed;bottom:10px;right:10px;z-index:9000;width:96px;height:96px;
+    background:transparent;border:none;border-radius:50%;cursor:pointer;padding:0;
+    box-shadow:none;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
+  #mcb-btn:hover{transform:translateY(-5px) scale(1.04)}
+  #mcb-btn.open{transform:none}
+  #mcb-teza-canvas{display:block;width:84px;height:84px}
+  #mcb-badge{position:absolute;top:0;right:0;width:18px;height:18px;border-radius:50%;
     background:#ef4444;color:#fff;font:700 10px 'Poppins',sans-serif;
     display:flex;align-items:center;justify-content:center;border:2px solid #fff;
     opacity:0;transition:opacity .2s;pointer-events:none}
@@ -113,8 +113,8 @@
   #mcb-send:hover{transform:scale(1.08)}
   #mcb-send:disabled{opacity:.4;cursor:not-allowed;transform:none}
   @media(max-width:480px){
-    #mcb-win{width:calc(100vw - 16px);right:8px;bottom:80px;max-height:72vh;border-radius:16px}
-    #mcb-btn{bottom:16px;right:16px}
+    #mcb-win{width:calc(100vw - 16px);right:8px;bottom:118px;max-height:72vh;border-radius:16px}
+    #mcb-btn{bottom:10px;right:10px}
   }`;
   document.head.appendChild(style);
 
@@ -122,14 +122,12 @@
   const root = document.createElement('div');
   root.style.cssText = 'position:fixed;z-index:9000';
   root.innerHTML = `
-  <button id="mcb-btn" onclick="mcbToggle()" aria-label="Chat with Teza — AI Tool Finder" style="position:fixed;bottom:24px;right:24px">
+  <button id="mcb-btn" onclick="mcbToggle()" aria-label="Chat with Teza — AI Tool Finder" style="position:fixed;bottom:10px;right:10px">
     <span id="mcb-badge"></span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
+    <canvas id="mcb-teza-canvas" width="84" height="84" aria-hidden="true"></canvas>
   </button>
 
-  <div id="mcb-win" role="dialog" aria-modal="true" aria-label="Teza chat" style="position:fixed;bottom:92px;right:24px">
+  <div id="mcb-win" role="dialog" aria-modal="true" aria-label="Teza chat" style="position:fixed;bottom:118px;right:10px">
     <div id="mcb-head">
       <div id="mcb-head-icon">🤖</div>
       <div id="mcb-head-info">
@@ -206,6 +204,7 @@
     const win = document.getElementById('mcb-win');
     const btn = document.getElementById('mcb-btn');
     win.classList.toggle('open', _isOpen);
+    btn.classList.toggle('open', _isOpen);
     if (_isOpen) {
       const msgs = document.getElementById('mcb-msgs');
       if (!msgs.children.length) {
@@ -606,4 +605,205 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+})();
+
+/* ══════════════════════════════════════════════════════
+   TEZA — Animated 3D tesseract for chatbot.js pages
+   84×84 canvas · 4D rotation · supernova glow · eyes+mouth
+   ══════════════════════════════════════════════════════ */
+(function(){
+  // Wait for DOM ready in case the script loads before the button is injected
+  function initTeza() {
+    const canvas = document.getElementById('mcb-teza-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // HiDPI scaling — square
+    const dpr = window.devicePixelRatio || 1;
+    const S = 84;
+    canvas.width  = S * dpr;
+    canvas.height = S * dpr;
+    ctx.scale(dpr, dpr);
+
+    // ── 16 tesseract vertices ──
+    const VERTS = [];
+    for (let i = 0; i < 16; i++)
+      VERTS.push([(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
+
+    // ── 32 edges ──
+    const EDGES = [];
+    for (let a = 0; a < 16; a++)
+      for (let b = a+1; b < 16; b++) {
+        const x = a^b;
+        if (x && (x&(x-1))===0) EDGES.push([a,b]);
+      }
+    const NE = EDGES.length;
+
+    function rot4(v, a, b, ang) {
+      const r=v.slice(), c=Math.cos(ang), s=Math.sin(ang);
+      r[a]=v[a]*c-v[b]*s; r[b]=v[a]*s+v[b]*c; return r;
+    }
+
+    // ── Supernova palette ──
+    const PAL=[
+      [255,20,80],[255,100,0],[255,220,0],[180,0,255],
+      [0,180,255],[0,255,200],[255,0,180],[255,255,255]
+    ];
+    function lerpColor(ph, al) {
+      const f=((ph%1)+1)%1, n=PAL.length, i=Math.floor(f*n)%n, t=f*n-Math.floor(f*n);
+      const a=PAL[i],b=PAL[(i+1)%n];
+      return `rgba(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)},${al})`;
+    }
+
+    // ── Face state ──
+    const cx=S/2, cy=S/2;
+    let blinkStart=-10, nextBlink=3.2+Math.random()*3;
+    let lookStart=-10, nextLook=2+Math.random()*3;
+    let targetLX=0, targetLY=0;
+    let mood='smile', moodNext=6+Math.random()*6;
+
+    function drawEye(ex, ey, idx, iris_dx, iris_dy, scY) {
+      ctx.save();
+      ctx.translate(ex, ey);
+      ctx.scale(1, scY);
+      ctx.beginPath(); ctx.arc(0,0,5.7,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.95)';
+      ctx.shadowColor='rgba(255,255,255,0.55)'; ctx.shadowBlur=5;
+      ctx.fill(); ctx.shadowBlur=0;
+      ctx.beginPath(); ctx.arc(iris_dx,iris_dy,3.3,0,Math.PI*2);
+      ctx.fillStyle='#0e1635'; ctx.fill();
+      ctx.beginPath(); ctx.arc(iris_dx,iris_dy,1.8,0,Math.PI*2);
+      ctx.fillStyle='#000014'; ctx.fill();
+      ctx.beginPath(); ctx.arc(iris_dx+1.2,-0.7,0.95,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.92)'; ctx.fill();
+      ctx.restore();
+    }
+
+    function drawMouth() {
+      const mx=cx, my=cy+15.5;
+      ctx.save();
+      ctx.lineCap='round'; ctx.lineWidth=2.0;
+      ctx.strokeStyle='rgba(255,255,255,0.88)';
+      ctx.shadowColor='rgba(255,255,255,0.45)'; ctx.shadowBlur=4;
+      ctx.beginPath();
+      if (mood==='excited') {
+        ctx.moveTo(mx-10.5,my-2.5); ctx.quadraticCurveTo(mx,my+8.5,mx+10.5,my-2.5);
+      } else {
+        ctx.moveTo(mx-7.5,my); ctx.quadraticCurveTo(mx,my+7,mx+7.5,my);
+      }
+      ctx.stroke(); ctx.shadowBlur=0;
+      ctx.restore();
+    }
+
+    function drawFace(t) {
+      // Blink
+      const bd = t - blinkStart;
+      let scY = 1;
+      if (bd < 0.18) scY = 1 - Math.sin(bd/0.18*Math.PI)*0.88;
+      if (t - blinkStart > nextBlink) { blinkStart=t; nextBlink=3+Math.random()*4; }
+
+      // Look around
+      const ld = t - lookStart;
+      const decay = Math.max(0, 1 - ld*1.3);
+      const iris_dx=targetLX*decay, iris_dy=targetLY*decay;
+      if (ld > nextLook) {
+        lookStart=t; nextLook=2.5+Math.random()*3.5;
+        targetLX=(Math.random()-0.5)*4.5; targetLY=(Math.random()-0.5)*2.2;
+      }
+
+      // Mood
+      if (t > moodNext) {
+        const m=['smile','smile','excited','smile'];
+        mood=m[Math.floor(Math.random()*m.length)];
+        moodNext=t+5+Math.random()*8;
+      }
+
+      const scY_r = (mood==='wink') ? 0.08 : scY;
+      drawEye(cx-11.5, cy-1.5, 0, iris_dx, iris_dy, scY);
+      drawEye(cx+11.5, cy-1.5, 1, iris_dx, iris_dy, scY_r);
+      drawMouth();
+    }
+
+    function drawFrame(ts) {
+      const t = ts*0.001;
+      ctx.clearRect(0, 0, S, S);
+
+      // ── Nebula smoke background ──
+      const nt=t*0.28;
+      const clouds=[
+        {x:cx+Math.sin(nt*0.9)*10,  y:cy+Math.cos(nt*0.6)*8,  r:34, c:[110,60,255]},
+        {x:cx+Math.cos(nt*0.5)*12,  y:cy+Math.sin(nt*0.8)*9,  r:28, c:[0,120,255]},
+        {x:cx+Math.sin(nt*1.1)*7,   y:cy+Math.cos(nt*1.3)*11, r:24, c:[220,40,180]},
+        {x:cx+Math.cos(nt*0.7)*9,   y:cy+Math.sin(nt*0.4)*7,  r:21, c:[255,80,40]},
+      ];
+      clouds.forEach(({x,y,r,c})=>{
+        const g=ctx.createRadialGradient(x,y,0,x,y,r);
+        g.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},0.18)`);
+        g.addColorStop(0.5,`rgba(${c[0]},${c[1]},${c[2]},0.07)`);
+        g.addColorStop(1,`rgba(${c[0]},${c[1]},${c[2]},0)`);
+        ctx.fillStyle=g;
+        ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+      });
+
+      // Project tesseract — fixed distances, no zoom
+      const W4=2.2, Z3=2.5, SCALE=35;
+      const proj2d = VERTS.map(v => {
+        let r=v.slice();
+        r=rot4(r,0,3,t*0.70); r=rot4(r,1,3,t*0.53);
+        r=rot4(r,0,1,t*0.34); r=rot4(r,2,3,t*0.41); r=rot4(r,1,2,t*0.22);
+        const w4=1/(W4-r[3]);
+        const z3=1/(Z3-r[2]*w4);
+        return [cx+r[0]*w4*z3*SCALE, cy+r[1]*w4*z3*SCALE];
+      });
+
+      ctx.lineCap='round';
+
+      // Pass 1 — bloom
+      EDGES.forEach(([a,b],i)=>{
+        const ph=((i/NE)*0.75+t*0.07)%1;
+        ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+        ctx.strokeStyle=lerpColor(ph,0.07); ctx.lineWidth=11; ctx.shadowBlur=0; ctx.stroke();
+      });
+      // Pass 2 — mid glow
+      EDGES.forEach(([a,b],i)=>{
+        const ph=((i/NE)*0.75+t*0.07)%1;
+        ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+        ctx.strokeStyle=lerpColor(ph,0.48); ctx.lineWidth=2.8;
+        ctx.shadowColor=lerpColor(ph,1); ctx.shadowBlur=10; ctx.stroke();
+      });
+      ctx.shadowBlur=0;
+      // Pass 3 — bright core
+      EDGES.forEach(([a,b],i)=>{
+        const ph=((i/NE)*0.75+t*0.07)%1;
+        ctx.beginPath(); ctx.moveTo(proj2d[a][0],proj2d[a][1]); ctx.lineTo(proj2d[b][0],proj2d[b][1]);
+        ctx.strokeStyle=lerpColor(ph,1); ctx.lineWidth=1.1;
+        ctx.shadowColor='#fff'; ctx.shadowBlur=3; ctx.stroke();
+      });
+      ctx.shadowBlur=0;
+
+      // Vertex sparkles
+      proj2d.forEach((p,i)=>{
+        const ph=((i/16)*0.6+t*0.05)%1;
+        ctx.beginPath(); ctx.arc(p[0],p[1],1.9,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.90)';
+        ctx.shadowColor=lerpColor(ph,1); ctx.shadowBlur=7; ctx.fill();
+      });
+      ctx.shadowBlur=0;
+
+      // Animated face — drawn on top of the tesseract
+      drawFace(t);
+
+      requestAnimationFrame(drawFrame);
+    }
+
+    requestAnimationFrame(drawFrame);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTeza);
+  } else {
+    // DOM already ready — but the chatbot IIFE may inject the canvas asynchronously;
+    // give it one tick to finish before looking for the canvas.
+    setTimeout(initTeza, 0);
+  }
 })();

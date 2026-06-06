@@ -189,12 +189,12 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .stars b{color:var(--text);font-weight:600}.users{color:var(--text-dim)}.users b{color:var(--text-2);font-weight:600}
 .tag{font-size:13.5px;color:var(--text-2);min-height:40px;line-height:1.5}
 .pill{display:inline-block;padding:4px 11px;background:var(--primary-light);color:var(--primary-2);border:1px solid rgba(26,86,219,.15);border-radius:999px;font-size:12px;font-weight:600}
-.actions{display:flex;gap:6px;margin-top:auto;padding-top:6px}
-.visit{flex:1.4;text-align:center;padding:8px 6px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:700;font-size:11.5px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(217,119,6,.30);letter-spacing:.01em;min-height:36px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
-.visit:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(217,119,6,.42)}
-.prompt-action-btn{flex:1;padding:8px 6px;border-radius:9px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;font-size:11.5px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 3px 8px rgba(124,58,237,.30);text-decoration:none;display:flex;align-items:center;justify-content:center;min-height:36px;white-space:nowrap;letter-spacing:.01em}
-.prompt-action-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(124,58,237,.42);color:#fff}
-.compare-btn{flex:1;padding:8px 6px;border-radius:9px;background:var(--surface);color:var(--text-2);border:1px solid var(--border);font-size:11.5px;font-weight:600;cursor:pointer;transition:all .15s;min-height:36px;white-space:nowrap}
+.actions{display:flex;gap:5px;margin-top:auto;padding-top:8px}
+.visit{flex:1.3;text-align:center;padding:6px 5px;border-radius:7px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:700;font-size:10.5px;transition:transform .15s,box-shadow .15s;box-shadow:0 3px 8px rgba(217,119,6,.28);letter-spacing:.01em;min-height:30px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.visit:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(217,119,6,.38)}
+.prompt-action-btn{flex:1;padding:6px 5px;border-radius:7px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 6px rgba(124,58,237,.28);text-decoration:none;display:flex;align-items:center;justify-content:center;min-height:30px;white-space:nowrap;letter-spacing:.01em}
+.prompt-action-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(124,58,237,.38);color:#fff}
+.compare-btn{flex:1;padding:6px 5px;border-radius:7px;background:transparent;color:var(--text-2);border:1px solid var(--border);font-size:10.5px;font-weight:600;cursor:pointer;transition:all .15s;min-height:30px;white-space:nowrap}
 .compare-btn:hover{color:var(--primary);border-color:var(--primary);background:var(--primary-light)}
 .empty{padding:36px;text-align:center;color:var(--text-dim);border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface-2)}
 .newsletter{margin:60px auto 0;padding:48px 30px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(26,86,219,.14);border-radius:20px;text-align:center;box-shadow:var(--shadow)}
@@ -491,12 +491,10 @@ body::before{
 #clippy-speech::before{content:'';position:absolute;bottom:-16px;right:23px;border:8px solid transparent;border-top-color:var(--primary)}
 /* ── Clippy Button ── */
 #cb-btn{position:fixed;bottom:10px;right:10px;z-index:600;width:96px;height:96px;
-  background:rgba(10,14,28,.65);border:none;border-radius:50%;cursor:pointer;padding:6px;
-  backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
-  box-shadow:0 8px 32px rgba(26,86,219,.48),0 2px 8px rgba(0,0,0,.28),0 0 0 1.5px rgba(255,255,255,.10);
-  transition:box-shadow .22s,transform .28s cubic-bezier(.34,1.56,.64,1)}
-#cb-btn:hover{box-shadow:0 14px 40px rgba(26,86,219,.64),0 3px 12px rgba(0,0,0,.32),0 0 0 1.5px rgba(255,255,255,.20);transform:translateY(-5px) scale(1.04)}
-#cb-btn.open{box-shadow:0 4px 16px rgba(26,86,219,.32),0 0 0 1.5px rgba(255,255,255,.10);transform:none}
+  background:transparent;border:none;border-radius:50%;cursor:pointer;padding:0;
+  box-shadow:none;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
+#cb-btn:hover{transform:translateY(-5px) scale(1.04)}
+#cb-btn.open{transform:none}
 #teza-canvas{display:block;width:96px;height:96px}
 /* Clippy body animations (kept for no-op compatibility) */
 @keyframes clippyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
@@ -1933,7 +1931,7 @@ function cardHTML(i){
   const rr=(t.rating||t.users)?"<div class=\"ratings\">"+( t.rating?"<span class=\"stars\">"+starHTML(t.rating)+"<b>&nbsp;"+t.rating+"</b>"+(t.reviews?" <span style=\"color:var(--text-dim);font-weight:400\">("+t.reviews+")</span>":"")+"</span>":"")+( t.users?" <span class=\"users\"><b>"+t.users+"</b> users</span>":"")+"</div>":"";
   const goUrl="go.html?url="+encodeURIComponent(url)+"&name="+encodeURIComponent(t.name);
   const slug=t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+goUrl+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Now Free &rarr;</a><a class=\"prompt-action-btn\" href=\"prompts.html#"+slug+"\" onclick=\"event.stopPropagation()\" title=\"Free AI prompts for "+t.name+"\">&#x1F4A1; Free Prompt</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2696; Compare AI</button></div></article>";
+  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+goUrl+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Free &rarr;</a><a class=\"prompt-action-btn\" href=\"prompts.html#"+slug+"\" onclick=\"event.stopPropagation()\" title=\"Free AI prompts for "+t.name+"\">&#x1F4A1; Prompt</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2696; Compare</button></div></article>";
 }
 function rowHTML(r){
   if(!r.items.length)return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2></div><div class=\"empty\">No tools match — try another option.</div></section>";
@@ -4278,6 +4276,23 @@ async function popSubscribe(){
   function drawFrame(ts) {
     const t = ts*0.001;
     ctx.clearRect(0, 0, S, S);
+
+    // ── Nebula smoke background ──
+    const nt=t*0.28;
+    const clouds=[
+      {x:cx+Math.sin(nt*0.9)*11,  y:cy+Math.cos(nt*0.6)*9,  r:38, c:[110,60,255]},
+      {x:cx+Math.cos(nt*0.5)*13,  y:cy+Math.sin(nt*0.8)*10, r:32, c:[0,120,255]},
+      {x:cx+Math.sin(nt*1.1)*8,   y:cy+Math.cos(nt*1.3)*12, r:28, c:[220,40,180]},
+      {x:cx+Math.cos(nt*0.7)*10,  y:cy+Math.sin(nt*0.4)*8,  r:24, c:[255,80,40]},
+    ];
+    clouds.forEach(({x,y,r,c})=>{
+      const g=ctx.createRadialGradient(x,y,0,x,y,r);
+      g.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},0.18)`);
+      g.addColorStop(0.5,`rgba(${c[0]},${c[1]},${c[2]},0.07)`);
+      g.addColorStop(1,`rgba(${c[0]},${c[1]},${c[2]},0)`);
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+    });
 
     // Project tesseract — fixed distances, no zoom
     const W4=2.2, Z3=2.5, SCALE=40;
