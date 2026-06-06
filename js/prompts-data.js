@@ -1670,7 +1670,7 @@ window.PROMPT_CATEGORY_BANK = {
         prompt: "Design a zero-downtime migration strategy for [MIGRATION TASK: e.g., relational DB schema change / database engine switch / monolith to microservices split] for a system serving [X] requests/second. Cover: (1) Pre-migration preparation (backups, rollback plan), (2) Dual-write pattern implementation, (3) Data backfill strategy with progress tracking, (4) Traffic cutover approach (blue-green, canary), (5) Verification and validation checkpoints, (6) Rollback triggers and procedure, (7) Post-migration cleanup, (8) Estimated timeline and resource requirements."
       }
     ]
-  }
+  },
 
 
   /* ============================================================
@@ -2711,7 +2711,7 @@ window.PROMPT_CATEGORY_BANK = {
         prompt: "Architect a real-time automation system for [USE CASE: e.g., fraud detection / dynamic pricing / personalization engine] processing [VOLUME: events/second]. Cover: (1) Stream processing architecture (Kafka Streams/Flink/Spark Streaming — justify), (2) Event schema design and schema registry, (3) Real-time ML inference integration, (4) Decision engine design (rules + ML hybrid), (5) Action execution with latency SLAs, (6) Stateful computation management, (7) Backpressure handling, (8) Exactly-once semantics approach, (9) Monitoring and alerting stack, (10) Disaster recovery and replay capability."
       }
     ]
-  }
+  },
 
 
   /* ============================================================
@@ -2856,7 +2856,7 @@ window.PROMPT_CATEGORY_BANK = {
       { title: "Executive Compensation Design", useCase: "C-Suite Comp", level: "advanced", prompt: "Design an executive compensation program for [COMPANY STAGE: pre-IPO / public / private equity-backed]. Cover: (1) Philosophy and peer group selection, (2) Base salary benchmarking, (3) Annual incentive plan (metrics, weighting, payout curve), (4) Long-term incentive design (equity type, grant sizing, vesting schedule, performance conditions), (5) Benefits and perquisites, (6) Clawback provisions, (7) Change-in-control provisions, (8) Board compensation committee governance, (9) Proxy/disclosure considerations if public." },
       { title: "Future of Work HR Strategy", useCase: "HR Strategy", level: "advanced", prompt: "Develop a future of work strategy for [COMPANY] addressing: (1) Work model design (office/remote/hybrid — decision framework, not mandate), (2) AI and automation's impact on the workforce (role impact assessment, reskilling plan), (3) Talent market changes (gig economy integration, skills-based hiring), (4) Employee wellbeing as a strategic priority, (5) Generational workforce dynamics, (6) New manager contract in a distributed world, (7) Culture and belonging without physical proximity, (8) HR capability requirements for the future, (9) 3-year scenario planning." }
     ]
-  }
+  },
 
 
   /* ============================================================
@@ -2998,7 +2998,7 @@ window.PROMPT_CATEGORY_BANK = {
       { title: "Headless Commerce Architecture", useCase: "E-commerce Technology", level: "advanced", prompt: "Architect a headless commerce solution for [BRAND] with [SCALE: X sessions/day, X SKUs, X markets]. Cover: (1) Business case for headless vs. traditional (when it's worth it), (2) Frontend framework selection (Next.js/Nuxt/Gatsby — justify), (3) Commerce engine (Shopify headless/BigCommerce/MACH architecture), (4) CMS integration, (5) API design (GraphQL/REST — justify), (6) Performance targets (Core Web Vitals, TTFB), (7) CDN and caching strategy, (8) Personalization layer, (9) Search integration, (10) Team capabilities required, (11) Migration plan from current platform." },
       { title: "E-commerce Brand Acquisition Analysis", useCase: "M&A / Investment", level: "advanced", prompt: "Conduct an acquisition analysis for buying e-commerce brand [BRAND NAME] currently generating [REVENUE] with [PROFIT MARGINS]. Analyze: (1) Business quality (traffic sources, customer concentration, brand defensibility), (2) Revenue quality (repeat purchase rate, subscription %, channel mix risk), (3) Operations assessment (supply chain, margins, team), (4) Growth opportunities post-acquisition, (5) Risks (Amazon dependency, supplier concentration, trademark), (6) Valuation multiples (revenue and EBITDA), (7) Deal structure options, (8) 100-day post-acquisition value creation plan, (9) Exit strategy in [X YEARS]." }
     ]
-  }
+  },
 
 
   /* ============================================================
