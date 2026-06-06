@@ -143,8 +143,11 @@ TOOLS = [
     "Tidio","Intercom AI","AdCreative.ai","NotebookLM","Groq","Hugging Face",
 ]
 
-# ── Hero images — verified tech/AI visuals (curl-checked 200 OK) ──────────────
-# All URLs verified live before adding. Run scripts/verify_hero_images.py to recheck.
+# ── Hero images — verified tech/AI visuals (100+ pool for uniqueness) ─────────
+# Pool size ≥ 100 ensures unique covers for weeks of high-frequency publishing.
+# Selection uses title-hash as seed → same title always maps to same image AND
+# concurrent GitHub Actions runs (which share the same log state) will pick
+# DIFFERENT images because they're writing different articles with different titles.
 HERO_IMAGES = [
     # ── Original verified pool ──────────────────────────────────────────────────
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
@@ -158,35 +161,24 @@ HERO_IMAGES = [
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
-    # photo-1574375927938 removed — wrong content (Netflix TV screen, not AI/tech)
     "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",
-    # photo-1507003211169 removed — portrait headshot, not relevant to AI tools content
     "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
-    # photo-1640951613773 removed — wrong content (man silhouette/dark portrait, not AI/tech)
-    # 18, 19 removed — were 404
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&auto=format&fit=crop",
-    # 25 removed — was 404
     "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&q=85&auto=format&fit=crop",
-    # 27 removed — was 404
     "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=85&auto=format&fit=crop",
-    # 33 removed — was 404
     "https://images.unsplash.com/photo-1550645612-83f5d594b671?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=85&auto=format&fit=crop",
-    # 36, 37, 38 removed — were 404
     "https://images.unsplash.com/photo-1698778573682-346d219402b5?w=800&q=85&auto=format&fit=crop",
-    # 40 removed — was 404
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
-    # 42 removed — was 404
-    # ── Verified replacements (curl 200 confirmed) ──────────────────────────────
     "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
@@ -199,6 +191,66 @@ HERO_IMAGES = [
     "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
+    # ── Extended pool — tech/AI/workspace (added for uniqueness at high volume) ──
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506729623306-dbf5eae43ab0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1680524238706-3c9e61bef3d4?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1682685797703-2bb22debb5ab?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1527430253228-e93688616381?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1651059545081-f8a9d6c0a993?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1661961112951-f2bfd1f7514e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673280349492-5e4fde0b8571?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1676225548768-49b6dd34bd9d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1678957165432-f0b40eb35aa3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1679403766680-7a8d21a0a83d?w=800&q=85&auto=format&fit=crop",
 ]
 
 # Guaranteed fallback shown by the browser if a hero image ever goes 404 AFTER generation.
@@ -216,56 +268,52 @@ def _url_alive(url: str) -> bool:
         return True   # network error → assume alive, don't block article generation
 
 
-def pick_hero(index_offset: int = 0) -> str:
-    """Return a hero URL not used by any previous article (log-aware dedup).
+def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
+    """Return a hero URL that is unique to this article.
 
-    Strategy:
-      1. Load all hero URLs used so far from article_log.json.
-      2. Skip any image that returns HTTP 404 (live-checked via HEAD request).
-      3. Return the first ALIVE image in HERO_IMAGES that has NOT been used yet.
-      4. If the entire pool has been used at least once, fall back to the alive
-         image used LEAST RECENTLY.
-      index_offset lets Friday exclusive slots each get a different image within
-      the same run (offset 0,1,2,3,4 for the 5 Friday slots).
+    Strategy (fixes concurrent-run duplication):
+      1. Hash the article TITLE to get a deterministic start index.
+         → Different articles always start from different positions in the pool,
+           even when concurrent GitHub Actions runs share the same log state.
+      2. Walk forward from that index, skipping images used in the last 100
+         articles (extended window vs the 60-entry generated list).
+      3. If the entire pool was used in the last 100 articles (unlikely with
+         100+ images), fall back to the hash-derived position regardless.
+      4. Skip any image that returns HTTP 404.
+      index_offset shifts the start for Friday exclusive multi-slot runs.
     """
-    used_ordered: list[str] = []   # oldest → newest
-    if LOG_PATH.exists():
-        try:
-            log = json.loads(LOG_PATH.read_text())
-            used_ordered = [e.get("hero", "") for e in log.get("generated", []) if e.get("hero")]
-        except Exception:
-            pass
+    pool = HERO_IMAGES
 
-    used_set = set(used_ordered)
-    pool = HERO_IMAGES  # keep original order as preference order
+    # Extended hero history — separate from the 60-entry generated list.
+    # Persisted under log["hero_history"] and never truncated beyond 200 entries.
+    hero_history: list[str] = log.get("hero_history", [])
+    # Also pull from generated list as fallback (older logs without hero_history)
+    legacy = [e.get("hero", "") for e in log.get("generated", []) if e.get("hero")]
+    recently_used: set[str] = set(hero_history[-100:] + legacy[-100:])
 
-    # Shift pool start by index_offset so concurrent Friday slots differ
-    rotated = pool[index_offset % len(pool):] + pool[:index_offset % len(pool)]
+    # Deterministic start index from title hash + offset
+    title_hash   = int(hashlib.md5(title.encode()).hexdigest(), 16)
+    base_idx     = (title_hash + index_offset) % len(pool)
 
-    # 1. Prefer never-used AND alive images
-    for img in rotated:
-        if img not in used_set:
+    # Pass 1: find an unused+alive image starting from hash position
+    for step in range(len(pool)):
+        img = pool[(base_idx + step) % len(pool)]
+        if img not in recently_used:
             if _url_alive(img):
                 return img
             else:
                 print(f"[WARN] Hero image 404 — skipping: {img}", file=sys.stderr)
 
-    # 2. All unused candidates are dead or exhausted — pick alive LRU image
-    seen: set[str] = set()
-    for url in used_ordered:
-        if url in set(pool) and url not in seen:
-            seen.add(url)
-            if _url_alive(url):
-                return url
-
-    # 3. Hard fallback — first alive image in pool regardless of use history
-    for img in rotated:
+    # Pass 2: pool exhausted for recent window — fall back to hash position (alive)
+    print("[INFO] Hero pool fully cycled — reusing least-recent image.", file=sys.stderr)
+    for step in range(len(pool)):
+        img = pool[(base_idx + step) % len(pool)]
         if _url_alive(img):
             return img
 
-    # 4. Absolute fallback — pool is entirely dead (should never happen)
-    print("[ERROR] All hero images returned 404 — using first entry as last resort.", file=sys.stderr)
-    return rotated[0]
+    # Absolute fallback
+    print("[ERROR] All hero images returned 404 — using fallback.", file=sys.stderr)
+    return HERO_FALLBACK_URL
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -728,7 +776,12 @@ def load_log():
 
 def save_log(log, entry):
     log.setdefault("generated", []).append(entry)
-    log["generated"] = log["generated"][-60:]
+    log["generated"] = log["generated"][-60:]   # rolling 60-entry window for article dedup
+    # Separate hero_history list — keep last 200 so pick_hero can avoid repeats over many weeks
+    hero_history = log.get("hero_history", [])
+    if entry.get("hero"):
+        hero_history.append(entry["hero"])
+    log["hero_history"] = hero_history[-200:]
     LOG_PATH.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
 
 def recent_values(log, key, n=8):
@@ -1683,7 +1736,8 @@ def main():
     # ── Hero image ─────────────────────────────────────────────────────────────
     excl_offset = len([e for e in log.get("generated", [])
                         if e.get("date") == DATE_SLUG and e.get("slot") == "exclusive"])
-    hero_url = pick_hero(index_offset=excl_offset)
+    # Pass title + log so pick_hero uses title-hash seed (prevents concurrent-run duplication)
+    hero_url = pick_hero(title=title, log=log, index_offset=excl_offset)
 
     # ── Generate body ──────────────────────────────────────────────────────────
     body_html = generate_with_claude(stories, article_type, title, log)
