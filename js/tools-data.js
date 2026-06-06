@@ -167,7 +167,7 @@ window.MYAI_AFF_MAP = {
   "eightfold":             "https://eightfold.ai",
   "eightfold ai":          "https://eightfold.ai",
   "elai.io":               "https://elai.io",
-  "elevenlabs":            "https://elevenlabs.io",
+  "elevenlabs":            "https://try.elevenlabs.io/flxscqgtf1ys",
   "elicit":                "https://elicit.com",
   "elicit ai":             "https://elicit.com",
   "elpass":                "https://elpass.app",
