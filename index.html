@@ -3219,6 +3219,7 @@ async function popSubscribe(){
 
   /* ── Send user message ── */
   window.cbSend = function() {
+    if (window._cbGateActive) return;
     const inp = document.getElementById('cb-input');
     const q = inp.value.trim();
     if (!q) return;
@@ -3773,10 +3774,13 @@ async function popSubscribe(){
   const _BREVO_EP = 'https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
 
   function cbShowGate() {
+    window._cbGateActive = true;
     const inp     = document.getElementById('cb-input');
     const sendBtn = document.getElementById('cb-send');
+    const chips   = document.getElementById('cb-chips');
     if (inp)     { inp.disabled = true; inp.placeholder = 'Subscribe to start chatting…'; }
     if (sendBtn) { sendBtn.disabled = true; }
+    if (chips)   { chips.style.display = 'none'; }
 
     cbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Quick thing first: join our **free Friday newsletter** and get instant access to everything I know! 🔑");
 
@@ -3888,12 +3892,15 @@ async function popSubscribe(){
   };
 
   function cbGateComplete(fname, subscribed) {
+    window._cbGateActive = false;
     localStorage.setItem('myai_chat_gate', '1');
     document.getElementById('cb-gate-wrap')?.remove();
     const inp     = document.getElementById('cb-input');
     const sendBtn = document.getElementById('cb-send');
+    const chips   = document.getElementById('cb-chips');
     if (inp)     { inp.disabled = false; inp.placeholder = 'Ask me anything about AI tools…'; }
     if (sendBtn) { sendBtn.disabled = false; }
+    if (chips)   { chips.style.display = ''; }
     if (subscribed && fname) {
       cbBotMsg(`🎉 You're in, **${fname}**! First email lands this Friday — watch your inbox.\n\nNow let's find you some great AI tools! What are you working on? I know 500+ tools across every category. 🚀`);
     } else if (subscribed) {

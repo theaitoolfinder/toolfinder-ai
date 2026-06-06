@@ -229,6 +229,7 @@
 
   // ── Send ──
   window.mcbSend = function () {
+    if (window._mcbGateActive) return;
     const inp = document.getElementById('mcb-input');
     const q = inp.value.trim();
     if (!q) return;
@@ -260,10 +261,13 @@
   }
 
   function mcbShowGate() {
+    window._mcbGateActive = true;
     const inp    = document.getElementById('mcb-input');
     const send   = document.getElementById('mcb-send');
-    if (inp)  { inp.disabled = true; inp.placeholder = 'Subscribe to start chatting…'; }
-    if (send) { send.disabled = true; }
+    const chips  = document.getElementById('mcb-chips');
+    if (inp)   { inp.disabled = true; inp.placeholder = 'Subscribe to start chatting…'; }
+    if (send)  { send.disabled = true; }
+    if (chips) { chips.style.display = 'none'; }
 
     mcbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Before we dive in, I'd love to invite you to our **free Friday newsletter**: 5 AI tools, 1 comparison, 1 tip per week. 1,000+ readers. Takes 10 seconds 👇");
 
@@ -367,12 +371,15 @@
   };
 
   function mcbGateComplete(fname, subscribed) {
+    window._mcbGateActive = false;
     localStorage.setItem('myai_chat_gate', '1');
     document.getElementById('mcb-gate-wrap')?.remove();
-    const inp  = document.getElementById('mcb-input');
-    const send = document.getElementById('mcb-send');
-    if (inp)  { inp.disabled = false; inp.placeholder = 'Ask me anything…'; }
-    if (send) { send.disabled = false; }
+    const inp   = document.getElementById('mcb-input');
+    const send  = document.getElementById('mcb-send');
+    const chips = document.getElementById('mcb-chips');
+    if (inp)   { inp.disabled = false; inp.placeholder = 'Ask me anything…'; }
+    if (send)  { send.disabled = false; }
+    if (chips) { chips.style.display = ''; }
     if (subscribed && fname) {
       mcbBotMsg(`🎉 You're in, **${fname}**! First email lands this Friday.\n\nNow — what can I help you with? I know 500+ AI tools, 700+ prompts, and everything about this site. 🚀`);
     } else if (subscribed) {
