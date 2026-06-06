@@ -629,7 +629,7 @@ window.PROMPT_CATEGORY_BANK = {
         prompt: "Design a complete visual identity system for [BRAND NAME] in [INDUSTRY]. Create and show: (1) Primary logo + 3 logo variants (horizontal, stacked, icon-only), (2) Color system (primary, secondary, accent, neutrals with hex codes), (3) Typography pairing (display + body font), (4) Icon set (6 custom icons), (5) Brand pattern/texture, (6) Applied mockups: business card, website header, app icon, packaging. Cohesive and distinctive brand identity."
       }
     ]
-  }
+  },
 
 
   /* ============================================================
