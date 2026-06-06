@@ -291,13 +291,14 @@
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn primary" onclick="saveGHSettings()">Save GitHub Settings</button>
+        <button class="btn primary" onclick="saveGHSettings()">Save &amp; Sync from GitHub</button>
         <button class="btn" onclick="testGHConnection()">Test Connection</button>
+        <button class="btn" onclick="manualSyncFromGitHub()">↺ Pull Latest Data</button>
       </div>
       <div id="gh-status" style="margin-top:10px;font-size:13px"></div>
     </div>
     <div class="info-banner">
-      <b>How it works:</b> After saving your GitHub token, every time you click <b>Save</b> on a tool or the site config, changes are automatically committed to <code>js/tools-data.js</code> and <code>index.html</code> in your repo. Your site updates within 30 seconds — no copy-paste needed.
+      <b>How it works:</b> Every Save automatically commits to GitHub — tool overrides, affiliate URLs, and site config are all synced. <b>Using a new device or browser?</b> Enter your token above and click <b>Save &amp; Sync from GitHub</b> to restore all your saved data instantly. Your GitHub token is the only thing you need to re-enter on each new device.
     </div>
   </div>
 
@@ -493,7 +494,7 @@ async function unlock(){
   if(!_adminCfg){const ok=await fetchAdminConfig();if(!ok){document.getElementById('err').textContent='Could not load auth config. Check your connection.';return;}}
   const h=await sha256(_adminCfg.salt+v);
   if(h!==_adminCfg.hash){document.getElementById('err').textContent='Wrong passphrase.';return;}
-  sessionStorage.setItem(LS_AUTH,'1');
+  localStorage.setItem(LS_AUTH,'1');
   await loadOverridesFromGitHub();
   showApp();
 }
@@ -522,25 +523,37 @@ async function setupPassphrase(){
   if(btn){btn.disabled=false;btn.textContent='Save & Unlock';}
   if(!res.ok){err.textContent=res.msg||'Failed to commit config.';return;}
   _adminCfg=cfg;
-  sessionStorage.setItem(LS_AUTH,'1');
+  localStorage.setItem(LS_AUTH,'1');
   document.getElementById('setup').style.display='none';
   showApp();
 }
 
-/* ── Load cross-device overrides from GitHub ─────────────── */
+/* ── Load cross-device overrides + site config from GitHub ── */
 async function loadOverridesFromGitHub(){
   const repo=localStorage.getItem('myai_gh_repo');
   const token=localStorage.getItem('myai_gh_token');
-  if(!repo||!token)return;
+  if(!repo||!token)return false;
+  const headers={Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'};
+  let synced=false;
   try{
-    const r=await fetch(`https://api.github.com/repos/${repo}/contents/data/admin_overrides.json`,
-      {headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
-    if(!r.ok)return;
-    const data=await r.json();
-    const content=JSON.parse(atob(data.content.replace(/\n/g,'')));
-    if(content&&content.overrides)
-      localStorage.setItem(LS_OVERRIDES,JSON.stringify(content.overrides));
+    /* Tool overrides */
+    const r=await fetch(`https://api.github.com/repos/${repo}/contents/data/admin_overrides.json`,{headers});
+    if(r.ok){
+      const data=await r.json();
+      const content=JSON.parse(atob(data.content.replace(/\n/g,'')));
+      if(content&&content.overrides){localStorage.setItem(LS_OVERRIDES,JSON.stringify(content.overrides));synced=true;}
+    }
   }catch(e){}
+  try{
+    /* Site config */
+    const r2=await fetch(`https://api.github.com/repos/${repo}/contents/data/admin_site_config.json`,{headers});
+    if(r2.ok){
+      const data2=await r2.json();
+      const cfg=JSON.parse(atob(data2.content.replace(/\n/g,'')));
+      if(cfg&&typeof cfg==='object'){localStorage.setItem(LS_SITECONFIG,JSON.stringify(cfg));synced=true;}
+    }
+  }catch(e){}
+  return synced;
 }
 
 /* Defaults — keep in sync with index.html TOOLS array.
@@ -1122,8 +1135,8 @@ const DEFAULT_SITE = {
 };
 
 /* ===== Auth helpers ===== */
-function logout(){ sessionStorage.removeItem(LS_AUTH); location.reload(); }
-function isAuthed(){ return sessionStorage.getItem(LS_AUTH) === '1'; }
+function logout(){ localStorage.removeItem(LS_AUTH); location.reload(); }
+function isAuthed(){ return localStorage.getItem(LS_AUTH) === '1'; }
 function showApp(){
   document.getElementById('gate').style.display = 'none';
   document.getElementById('app').style.display = 'block';
@@ -1787,13 +1800,21 @@ document.getElementById('search').addEventListener('input',e=>{ search = e.targe
 /* Auth boot is handled by initAdmin() below — do not add sync auth checks here */
 
 /* ── GitHub Auto-Deploy ── */
-function saveGHSettings(){
+async function saveGHSettings(){
   const repo=document.getElementById('gh-repo').value.trim();
   const token=document.getElementById('gh-token').value.trim();
   if(!repo||!token){alert('Please fill in both fields.');return;}
   localStorage.setItem('myai_gh_repo',repo);
   localStorage.setItem('myai_gh_token',token);
-  document.getElementById('gh-status').innerHTML='<span style="color:#16a34a">Settings saved. Click Test Connection to verify.</span>';
+  const statusEl=document.getElementById('gh-status');
+  statusEl.innerHTML='<span style="color:#16a34a">Settings saved — syncing data from GitHub…</span>';
+  const synced=await loadOverridesFromGitHub();
+  if(synced){
+    renderToolList();renderSiteForm();refreshStats();
+    statusEl.innerHTML='<span style="color:#16a34a">✅ Settings saved &amp; data synced from GitHub.</span>';
+  }else{
+    statusEl.innerHTML='<span style="color:#16a34a">Settings saved.</span> <span style="color:#d97706">⚠️ Could not sync — check token permissions or try Test Connection.</span>';
+  }
 }
 
 async function testGHConnection(){
@@ -1816,6 +1837,18 @@ async function testGHConnection(){
       statusEl.innerHTML=`<span style="color:#ef4444">❌ Unexpected response: ${data.message||'Check token and repo name.'}</span>`;
     }
   }catch(e){statusEl.innerHTML=`<span style="color:#ef4444">Network error: ${e.message}</span>`;}
+}
+
+async function manualSyncFromGitHub(){
+  const statusEl=document.getElementById('gh-status');
+  statusEl.innerHTML='Pulling latest data from GitHub…';
+  const synced=await loadOverridesFromGitHub();
+  if(synced){
+    renderToolList();renderSiteForm();refreshStats();
+    statusEl.innerHTML='<span style="color:#16a34a">✅ Data synced from GitHub — tool overrides and site config restored.</span>';
+  }else{
+    statusEl.innerHTML='<span style="color:#ef4444">❌ Sync failed — make sure your GitHub token is saved and has Contents: Read permission.</span>';
+  }
 }
 
 /* Returns {ok:true} on success, or {ok:false, status, msg} on failure */
@@ -1889,6 +1922,12 @@ function buildAdminOverridesJson(){
   return JSON.stringify({v:1,updated:new Date().toISOString(),overrides:ov},null,2)+'\n';
 }
 
+/* Build data/admin_site_config.json for cross-device persistence. */
+function buildAdminSiteConfigJson(){
+  const cfg=loadSite();
+  return JSON.stringify(cfg,null,2)+'\n';
+}
+
 async function autoCommitAfterSave(){
   const repo=localStorage.getItem('myai_gh_repo');
   const token=localStorage.getItem('myai_gh_token');
@@ -1896,13 +1935,15 @@ async function autoCommitAfterSave(){
   const toolsJs=buildToolsDataJs();
   const affJson=buildAffiliateToolsJson();
   const ovrJson=buildAdminOverridesJson();
-  // Commit all three files — parallel GETs then parallel PUTs (different files so no SHA conflict)
-  const [r1,r2,r3]=await Promise.all([
+  const siteCfgJson=buildAdminSiteConfigJson();
+  // Commit all four files in parallel
+  const [r1,r2,r3,r4]=await Promise.all([
     commitToGitHub('js/tools-data.js',toolsJs,'Admin: update tools & affiliate URLs'),
     commitToGitHub('data/affiliate_tools.json',affJson,'Admin: sync affiliate partner list'),
-    commitToGitHub('data/admin_overrides.json',ovrJson,'Admin: sync settings (cross-device)')
+    commitToGitHub('data/admin_overrides.json',ovrJson,'Admin: sync tool overrides (cross-device)'),
+    commitToGitHub('data/admin_site_config.json',siteCfgJson,'Admin: sync site config (cross-device)')
   ]);
-  if(r1.ok||r2.ok||r3.ok){showAdminToast('✅ Saved & deployed to GitHub.');}
+  if(r1.ok||r2.ok||r3.ok||r4.ok){showAdminToast('✅ Saved & deployed to GitHub.');}
   else{showAdminToast('⚠️ GitHub not connected — changes saved locally only.');}
 }
 
@@ -1928,8 +1969,8 @@ async function autoCommitAfterSave(){
   if(setupRepo)setupRepo.value=savedRepo;
   if(setupToken&&savedToken)setupToken.value=savedToken;
 
-  // If already authed this session, show app right away
-  if(sessionStorage.getItem(LS_AUTH)==='1'){
+  // If already authed (persisted in localStorage), show app right away
+  if(localStorage.getItem(LS_AUTH)==='1'){
     await loadOverridesFromGitHub();
     showApp();
     return;
