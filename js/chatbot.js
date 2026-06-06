@@ -208,8 +208,10 @@
     if (_isOpen) {
       const msgs = document.getElementById('mcb-msgs');
       if (!msgs.children.length) {
-        if (localStorage.getItem('myai_chat_gate') === '1') {
-          const savedName = localStorage.getItem('myai_chat_name');
+        const _mcbUser = (typeof getUser==='function') ? getUser() : null;
+        const _mcbLoggedIn = _mcbUser || localStorage.getItem('myai_chat_gate') === '1';
+        if (_mcbLoggedIn) {
+          const savedName = (_mcbUser?.name) || localStorage.getItem('myai_chat_name');
           mcbBotMsg(savedName
             ? `Hey ${savedName}! 👋 Good to see you again. How can I help? I know 500+ AI tools, 700+ prompts, and everything about this site.`
             : `Hey! 👋 I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Ask me anything: find tools, browse prompts, compare options, or get site help. What do you need?`);
@@ -332,8 +334,8 @@
     try { result = await mcbIsSubscriber(email); } catch (e) {}
     if (result === true) {
       const savedName = localStorage.getItem('myai_chat_name');
-      localStorage.setItem('pf_sub', '1');
-      localStorage.setItem('pf_email', email);
+      if (typeof memberLogin === 'function') memberLogin(email, savedName || null);
+      else { localStorage.setItem('pf_sub','1'); localStorage.setItem('pf_email',email); localStorage.setItem('myai_chat_gate','1'); }
       mcbGateComplete(savedName || null, true);
     } else if (result === false) {
       if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
@@ -367,12 +369,15 @@
       await fetch(BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
     } catch (e) {}
     if (fname) localStorage.setItem('myai_chat_name', fname);
+    localStorage.setItem('pf_email', email);
+    if (typeof memberLogin === 'function') memberLogin(email, fname || null);
+    else { localStorage.setItem('pf_sub','1'); localStorage.setItem('myai_chat_gate','1'); }
     mcbGateComplete(fname || null, true);
   };
 
   function mcbGateComplete(fname, subscribed) {
     window._mcbGateActive = false;
-    localStorage.setItem('myai_chat_gate', '1');
+    localStorage.setItem('myai_chat_gate', '1'); // belt-and-suspenders
     document.getElementById('mcb-gate-wrap')?.remove();
     const inp   = document.getElementById('mcb-input');
     const send  = document.getElementById('mcb-send');

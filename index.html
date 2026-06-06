@@ -2221,6 +2221,30 @@ let cmpModSearch = "";                // module search query
 function getUser(){ try{return JSON.parse(localStorage.getItem(LS_USER)||"null");}catch(e){return null;} }
 function setUser(u){ localStorage.setItem(LS_USER,JSON.stringify(u)); }
 function clearUser(){ localStorage.removeItem(LS_USER); }
+
+/* ── Unified member login / logout — unlocks ALL features ── */
+function memberLogin(email, name){
+  const n = name || email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  setUser({name:n, email});
+  localStorage.setItem('myai_chat_gate','1');
+  localStorage.setItem('myai_chat_name', n);
+  localStorage.setItem('pf_sub','1');
+  localStorage.setItem('pf_email', email);
+  updateNavAuth();
+  if(typeof renderCmpModule==='function') renderCmpModule();
+  if(typeof updateTray==='function') updateTray();
+}
+function memberLogout(){
+  clearUser();
+  localStorage.removeItem('myai_chat_gate');
+  localStorage.removeItem('myai_chat_name');
+  localStorage.removeItem('pf_sub');
+  localStorage.removeItem('pf_email');
+  updateNavAuth();
+  if(typeof renderCmpModule==='function') renderCmpModule();
+  if(typeof updateTray==='function') updateTray();
+  showToast('Logged out. See you next time! 👋');
+}
 function isPro(){ return !!getUser(); }
 
 /* ── Usage ── */
@@ -2495,12 +2519,9 @@ async function unlockComparisons(){
   const subscribed=await isSubscriberCmp(email);
   if(subscribed===true){
     const name=email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-    setUser({name,email});
+    memberLogin(email, name);
     closeAuthModal();
-    updateNavAuth();
-    renderCmpModule();
-    updateTray();
-    showToast("Welcome, "+name+"! 🎉 Unlimited comparisons unlocked.");
+    showToast("Welcome, "+name+"! 🎉 All member features unlocked.");
   } else if(subscribed===false){
     errEl.textContent="Email not found in our subscriber list.";
     const msgEl=document.getElementById("auth-msg");
@@ -2519,11 +2540,7 @@ async function submitAuth(){
 function setAuthMode(){}
 
 function logoutUser(){
-  clearUser();
-  updateNavAuth();
-  renderCmpModule();
-  updateTray();
-  showToast("Logged out successfully.");
+  memberLogout();
 }
 
 function handleNavLogin(){
@@ -3193,9 +3210,10 @@ async function popSubscribe(){
     btn.classList.toggle('open', isOpen);
     if (isOpen) {
       if (!document.getElementById('cb-msgs').children.length) {
-        if (localStorage.getItem('myai_chat_gate') === '1') {
-          // Already subscribed/skipped — show personalized greeting
-          const savedName = localStorage.getItem('myai_chat_name');
+        const _loggedIn = getUser() || localStorage.getItem('myai_chat_gate') === '1';
+        if (_loggedIn) {
+          // Already a member — show personalized greeting
+          const savedName = (getUser()?.name) || localStorage.getItem('myai_chat_name');
           const greet = savedName
             ? `Hey ${savedName}! 👋 Welcome back — 500+ AI tools at your fingertips. What are you working on today?`
             : GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
@@ -3849,10 +3867,9 @@ async function popSubscribe(){
     try { result = await isSubscriberCmp(email); } catch(e) {}
 
     if (result === true) {
-      // Verified ✅ — complete gate as confirmed subscriber
+      // Verified ✅ — unlock ALL member features
       const savedName = localStorage.getItem('myai_chat_name');
-      localStorage.setItem('pf_sub', '1');       // also unlocks prompts page
-      localStorage.setItem('pf_email', email);
+      memberLogin(email, savedName || null);
       cbGateComplete(savedName || null, true);
     } else if (result === false) {
       // Not found ❌
@@ -3888,12 +3905,17 @@ async function popSubscribe(){
       await fetch(_BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
     } catch(e) {}
     if (fname) localStorage.setItem('myai_chat_name', fname);
+    localStorage.setItem('pf_email', email); // needed by cbGateComplete → memberLogin
+    memberLogin(email, fname || null);
     cbGateComplete(fname || null, true);
   };
 
   function cbGateComplete(fname, subscribed) {
     window._cbGateActive = false;
-    localStorage.setItem('myai_chat_gate', '1');
+    // memberLogin sets myai_chat_gate, pf_sub, setUser etc. if we have an email
+    const email = localStorage.getItem('pf_email');
+    if (subscribed && email) memberLogin(email, fname || null);
+    else localStorage.setItem('myai_chat_gate','1'); // fallback for subscribe path
     document.getElementById('cb-gate-wrap')?.remove();
     const inp     = document.getElementById('cb-input');
     const sendBtn = document.getElementById('cb-send');
