@@ -5,6 +5,144 @@
  * 3 free prompts + 30 premium (9 beginner + 12 intermediate + 9 advanced) per category
  */
 
+/* ============================================================
+   TRENDING VIRAL PROMPTS — Updated weekly
+   Top 10 most shared AI prompts on Instagram, TikTok, Facebook
+   Last updated: June 6, 2026 · Next update: June 13, 2026
+   ============================================================ */
+window.TRENDING_PROMPTS = [
+  {
+    rank: 1,
+    title: "Chibi Doll Photo Generator",
+    tag: "🔥 #1 Trending",
+    platforms: ["Instagram","TikTok","Facebook"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "2.4M+",
+    trendScore: 99,
+    category: "Image Generation",
+    tip: "Upload a clear front-facing photo for best likeness results.",
+    prompt: `Transform the person in this photo into an adorable 3D chibi collectible doll. The doll should have oversized round eyes that match the subject's eye colour, a tiny button nose, plump rosy cheeks, and a small wide smile. Recreate their exact hairstyle, hair colour, and outfit in miniature doll form with soft fabric textures. Style it as a premium limited-edition vinyl art toy displayed on a clean white surface with soft studio lighting and a subtle drop shadow. The doll should be roughly 12 cm tall with a smooth matte finish and fine painted details. Keep the subject's facial identity and characteristic features clearly recognisable.`
+  },
+  {
+    rank: 2,
+    title: "Emotion Sticker Pack Generator",
+    tag: "🔥 Viral",
+    platforms: ["Instagram","Facebook","WhatsApp"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "1.8M+",
+    trendScore: 97,
+    category: "Sticker / Chibi",
+    tip: "Works best with a clear portrait photo. Share the sheet as a collage post.",
+    prompt: `Convert the person in this photo into a set of 16 chibi emotion stickers arranged in a 4×4 grid on a clean white background. Each sticker should show the same character with a distinct emotion: 1-laughing hard, 2-crying tears of joy, 3-angry with steam, 4-shocked open mouth, 5-thinking with finger on chin, 6-sleepy with heavy eyelids, 7-blowing a kiss, 8-winking, 9-blushing, 10-celebrating with arms up, 11-confused with question mark, 12-cool with sunglasses, 13-scared hiding behind hands, 14-sulking with crossed arms, 15-star-struck eyes, 16-heart eyes. Bold black outlines, pastel background per sticker, chibi proportions with large head and small body, flat illustration style suitable for messaging apps.`
+  },
+  {
+    rank: 3,
+    title: "Action Figure Unboxing",
+    tag: "🔥 Viral",
+    platforms: ["Instagram","TikTok"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "1.5M+",
+    trendScore: 96,
+    category: "Image Generation",
+    tip: "Mention 3–4 real accessories the person uses (laptop, coffee, camera) for a personalised result.",
+    prompt: `Transform the person in this photo into a limited-edition collectible action figure displayed inside a sealed blister pack. The figure should be a hyper-realistic miniature of the subject wearing their exact outfit. Include 3–5 mini accessories that reflect their personality or profession inside separate plastic compartments. The cardboard backing should have a bold retro toy-brand logo, the character's name in large blocky font, a star rating graphic, and a tag line like "Limited Edition Series 1". Style it as a premium product photograph with dramatic studio lighting on a gradient background. Make the plastic clamshell look authentically transparent with slight reflections.`
+  },
+  {
+    rank: 4,
+    title: "Studio Ghibli Portrait",
+    tag: "🎨 Still Hot",
+    platforms: ["Instagram","Pinterest","Facebook"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "3.1M+",
+    trendScore: 95,
+    category: "Illustrated / Art",
+    tip: "Add a specific Ghibli film for a more targeted style (e.g. 'in the style of Spirited Away').",
+    prompt: `Reimagine the person in this photo as a Studio Ghibli animated character in the style of Hayao Miyazaki. Transform their appearance into a hand-painted watercolour illustration with soft rounded features, expressive large eyes with a warm glimmer, and natural blush tones. Place them in a lush, magical Ghibli landscape — rolling green hills, a countryside town, or a sky full of soft white clouds. Use the signature Ghibli colour palette: warm ochres, dusty greens, sky blues, and soft pinks. Add small whimsical details in the background — a tiny spirit, floating lanterns, or wildflowers. Keep the subject's hair colour and key facial features recognisable. 2D animation cel style with visible brushstroke texture.`
+  },
+  {
+    rank: 5,
+    title: "Y2K Flash Selfie",
+    tag: "📸 Trending",
+    platforms: ["Instagram","TikTok"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "980K+",
+    trendScore: 91,
+    category: "Photo Editing",
+    tip: "Pair with a Y2K outfit for maximum effect — butterfly clips, low-rise jeans, tiny sunglasses.",
+    prompt: `Edit this photo to look like it was taken with a disposable camera at a party in the early 2000s. Apply a direct camera flash that creates harsh overexposed highlights on the face and fades to a warm amber-orange towards the edges. Add heavy film grain, slight chromatic aberration, and a subtle vintage vignette. Include a small red digital timestamp in the lower-right corner showing a date from 2002–2004. Soften the overall sharpness slightly, add faint film scratches, and give the shadows a cool greenish-blue tint while the highlights remain warm and blown out. The result should feel raw, spontaneous, and authentically nostalgic — like it was found in a forgotten disposable camera roll.`
+  },
+  {
+    rank: 6,
+    title: "Cinematic Neo-Noir Night Portrait",
+    tag: "🎬 Popular",
+    platforms: ["Instagram","Facebook"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "760K+",
+    trendScore: 88,
+    category: "Photo Editing",
+    tip: "Works best with a night-time or indoor photo. Great for moody profile pictures.",
+    prompt: `Transform this portrait into a cinematic neo-noir night scene. The subject should be seated in the driver's seat of a car, or standing on a rain-wet city street at night, lit dramatically by neon signage. Use deep magenta, electric blue, and cyan neon reflections bouncing off wet surfaces. Create strong chiaroscuro lighting — one side of the face lit by warm neon, the other deep in shadow. Add a rain-streaked window effect with bokeh city lights in the background. The colour grade should be desaturated with punchy highlights, deep blacks, and a subtle teal-orange contrast. Cinematic aspect ratio 2.39:1 letterbox bars. Overall mood: moody, mysterious, high-contrast film noir.`
+  },
+  {
+    rank: 7,
+    title: "Vintage Scrapbook Collage",
+    tag: "📌 Trending",
+    platforms: ["Instagram","Pinterest"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "640K+",
+    trendScore: 85,
+    category: "Collage / Aesthetic",
+    tip: "Upload 2–3 different photos of yourself and ask it to build the collage from multiple shots.",
+    prompt: `Create a warm aesthetic scrapbook collage portrait using this photo. Arrange 4–5 overlapping printed photo versions of the subject at slight angles, some with white polaroid borders and hand-written captions in pencil beneath them. Layer the composition with torn notebook paper scraps, dried pressed flowers (lavender, chamomile), vintage postage stamps, washi tape strips in muted pastel tones, small heart stickers, and a crumpled receipt or cinema ticket stub. The background should be a warm cream-coloured aged paper texture. Add subtle coffee ring stains, faint pencil doodles, and a soft overall film grain. The mood should feel personal, nostalgic, and handcrafted — like a page from a cherished memory journal.`
+  },
+  {
+    rank: 8,
+    title: "Retro Rubber Hose Cartoon",
+    tag: "🎨 Rising",
+    platforms: ["Instagram","TikTok","Facebook"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "520K+",
+    trendScore: 82,
+    category: "Illustrated / Art",
+    tip: "Ask it to keep the background simple (black or cream) so the character pops.",
+    prompt: `Transform the person in this photo into a 1930s rubber hose animation cartoon character in the style of early Fleischer Studios. The character should have flowing, bendy limbs with no elbows or knees — pure rubber hose style. Give them pie-cut eyes (triangular white wedge pupils), white gloves, round black shoes, and exaggerate their most distinctive facial features in a playful caricature way. Convert everything to a high-contrast black-and-white illustration with clean ink outlines and solid black fills. Add a few halftone dot texture areas. Include a small looping motion line suggesting the character is doing a cheerful little dance. Background: simple cream or black. Style: authentic vintage animation cel.`
+  },
+  {
+    rank: 9,
+    title: "3×3 Polaroid Style Grid",
+    tag: "📸 Popular",
+    platforms: ["Instagram","Facebook"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "490K+",
+    trendScore: 80,
+    category: "Collage / Aesthetic",
+    tip: "Perfect for Instagram grid posts or a 'year in photos' style story highlight cover.",
+    prompt: `Create a 3×3 grid of nine individual Polaroid-style portraits of the person in this photo. Each Polaroid should show the same person styled differently: 1-summer beach look, 2-cosy winter knit, 3-smart professional, 4-festival boho, 5-monochrome editorial, 6-Y2K streetwear, 7-cottage core, 8-night-out glam, 9-casual everyday. Each photo should have a white Polaroid border with a short handwritten label at the bottom. Maintain consistent facial identity across all nine variations. Arrange them neatly in a tight 3×3 grid on a warm cream background with subtle drop shadows under each print. Add a light film grain texture to the overall composition.`
+  },
+  {
+    rank: 10,
+    title: "Kawaii Character Design Sheet",
+    tag: "✨ Rising",
+    platforms: ["Instagram","Pinterest","TikTok"],
+    tool: "ChatGPT",
+    toolDomain: "chat.openai.com",
+    shares: "410K+",
+    trendScore: 78,
+    category: "Illustrated / Art",
+    tip: "Great for creating a personal mascot or OC (original character) from your photo.",
+    prompt: `Create a professional kawaii character design sheet based on the person in this photo. Show the character in a central full-body pose plus: a head close-up, a back view, three facial expressions (happy, surprised, pouty), two action poses (running, sitting), and one chibi super-deformed version. Use a clean Japanese illustration style with soft pastel colours, bold clean outlines, and cel shading. Include small reference annotations pointing to signature design features — hair accessories, outfit details, colour palette swatches in circles along the side. Background: plain white. Layout should look like a professional anime character reference sheet. Keep hair colour, eye colour, and distinctive features true to the original photo.`
+  }
+];
+
 window.PROMPT_CATEGORY_BANK = {
 
   /* ============================================================
