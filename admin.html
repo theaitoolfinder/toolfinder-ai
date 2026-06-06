@@ -487,6 +487,27 @@ async function fetchAdminConfig(){
   return false;
 }
 
+/* ── Sync saved data from live site — no token needed ────── *
+ * Reads admin_overrides.json and admin_site_config.json      *
+ * directly from the deployed site (same origin).             *
+ * Works on any device, browser, or Google account profile.   */
+async function syncFromLiveSite(){
+  try{
+    const r=await fetch('/data/admin_overrides.json?_='+Date.now(),{cache:'no-store'});
+    if(r.ok){
+      const data=await r.json();
+      if(data&&data.overrides) localStorage.setItem(LS_OVERRIDES,JSON.stringify(data.overrides));
+    }
+  }catch(e){}
+  try{
+    const r2=await fetch('/data/admin_site_config.json?_='+Date.now(),{cache:'no-store'});
+    if(r2.ok){
+      const cfg=await r2.json();
+      if(cfg&&typeof cfg==='object') localStorage.setItem(LS_SITECONFIG,JSON.stringify(cfg));
+    }
+  }catch(e){}
+}
+
 /* ── Unlock (login) ──────────────────────────────────────── */
 async function unlock(){
   const v=document.getElementById('pw').value;
@@ -495,7 +516,8 @@ async function unlock(){
   const h=await sha256(_adminCfg.salt+v);
   if(h!==_adminCfg.hash){document.getElementById('err').textContent='Wrong passphrase.';return;}
   localStorage.setItem(LS_AUTH,'1');
-  await loadOverridesFromGitHub();
+  await syncFromLiveSite();          // always works — no token needed
+  await loadOverridesFromGitHub();   // also try GitHub API if token saved
   showApp();
 }
 
@@ -524,6 +546,7 @@ async function setupPassphrase(){
   if(!res.ok){err.textContent=res.msg||'Failed to commit config.';return;}
   _adminCfg=cfg;
   localStorage.setItem(LS_AUTH,'1');
+  await syncFromLiveSite();
   document.getElementById('setup').style.display='none';
   showApp();
 }
@@ -1841,14 +1864,11 @@ async function testGHConnection(){
 
 async function manualSyncFromGitHub(){
   const statusEl=document.getElementById('gh-status');
-  statusEl.innerHTML='Pulling latest data from GitHub…';
-  const synced=await loadOverridesFromGitHub();
-  if(synced){
-    renderToolList();renderSiteForm();refreshStats();
-    statusEl.innerHTML='<span style="color:#16a34a">✅ Data synced from GitHub — tool overrides and site config restored.</span>';
-  }else{
-    statusEl.innerHTML='<span style="color:#ef4444">❌ Sync failed — make sure your GitHub token is saved and has Contents: Read permission.</span>';
-  }
+  statusEl.innerHTML='Pulling latest data…';
+  await syncFromLiveSite();           // works without token
+  await loadOverridesFromGitHub();    // also try GitHub API if token saved
+  renderToolList();renderSiteForm();refreshStats();
+  statusEl.innerHTML='<span style="color:#16a34a">✅ Data synced — tool overrides and site config restored.</span>';
 }
 
 /* Returns {ok:true} on success, or {ok:false, status, msg} on failure */
@@ -1971,7 +1991,8 @@ async function autoCommitAfterSave(){
 
   // If already authed (persisted in localStorage), show app right away
   if(localStorage.getItem(LS_AUTH)==='1'){
-    await loadOverridesFromGitHub();
+    await syncFromLiveSite();          // always works — no token needed
+    await loadOverridesFromGitHub();   // also try GitHub API if token saved
     showApp();
     return;
   }
