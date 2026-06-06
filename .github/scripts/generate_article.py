@@ -1031,6 +1031,13 @@ def generate_with_claude(stories, article_type, title, log):
         TODAY: {DATE_STR}
         ARTICLE TYPE: {article_type.upper()}
         ARTICLE TITLE: {title}
+
+        ⚠️  CRITICAL — TITLE MATCH REQUIREMENT:
+        Every section, every example, every recommendation in this article MUST be
+        directly and specifically about the EXACT title above. If the title is a
+        comparison of two specific tools, write ONLY about those two tools. If it's
+        a roundup of a specific category, cover ONLY that category. Never drift off-topic.
+        A reader who clicks this title must find exactly what the title promises.
         {excl_note}{aff_note}
 
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1089,49 +1096,81 @@ def generate_with_claude(stories, article_type, title, log):
         Start directly with the first <p> tag of the article body.
     """).strip()
 
-    try:
-        client  = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-        # Higher token limits ensure full 1,200+ word articles
-        max_tok = 5000 if is_excl else 4000
-        msg = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=max_tok,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        text = msg.content[0].text.strip()
-        word_count = len(re.sub(r"<[^>]+>", " ", text).split())
-        print(f"[OK] Claude generated ~{word_count} words ({len(text)} chars)", file=sys.stderr)
+    # Model preference order — first available model wins
+    MODELS = ["claude-opus-4-5", "claude-sonnet-4-5", "claude-haiku-4-5",
+              "claude-opus-4-0", "claude-sonnet-4-0"]
+    max_tok = 5000 if is_excl else 4000
 
-        # Warn if too short — but still use it rather than falling back to template
-        if word_count < 800:
-            print(f"[WARN] Article may be too short ({word_count} words)", file=sys.stderr)
+    for model in MODELS:
+        try:
+            client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+            msg = client.messages.create(
+                model=model,
+                max_tokens=max_tok,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            text = msg.content[0].text.strip()
+            word_count = len(re.sub(r"<[^>]+>", " ", text).split())
+            print(f"[OK] {model} generated ~{word_count} words ({len(text)} chars)", file=sys.stderr)
+            if word_count < 800:
+                print(f"[WARN] Article may be too short ({word_count} words)", file=sys.stderr)
+            return text
+        except Exception as e:
+            err_str = str(e)
+            if "not_found_error" in err_str or "model" in err_str.lower():
+                print(f"[WARN] Model {model} not found, trying next...", file=sys.stderr)
+                continue
+            print(f"[WARN] Claude API error with {model}: {e}", file=sys.stderr)
+            return None
 
-        return text
-    except Exception as e:
-        print(f"[WARN] Claude API error: {e}", file=sys.stderr)
-        return None
+    print(f"[WARN] All Claude models exhausted — falling back to template.", file=sys.stderr)
+    return None
 
 
 def generate_fallback(stories, article_type, title):
     """
     Rich template fallback when Claude API is unavailable.
     Produces a structured, readable article of ~800+ words using story context.
+    Title-aware: extracts tool names / category from the title for relevant content.
     """
     type_cfg   = ARTICLE_TYPES[article_type]
-    tools_mentioned = random.sample(TOOLS, 6)
-    t1, t2, t3 = tools_mentioned[0], tools_mentioned[1], tools_mentioned[2]
-    t4, t5, t6 = tools_mentioned[3], tools_mentioned[4], tools_mentioned[5]
 
-    # Intro paragraph — vary by article type
+    # ── Extract title-relevant tools / topics ─────────────────────────────────
+    # For comparison: extract the two tool names from "Tool A vs Tool B: ..."
+    t1_from_title, t2_from_title = None, None
+    if article_type == "comparison" and " vs " in title.lower():
+        raw = re.split(r'\s+vs\s+', title, flags=re.IGNORECASE)[0:2]
+        t1_from_title = raw[0].strip()
+        t2_from_title = re.split(r'[:\(—]', raw[1])[0].strip() if len(raw) > 1 else None
+
+    # For roundups: extract category name from "N Best {cat} for {aud}"
+    cat_from_title = None
+    if article_type == "roundup":
+        m = re.search(r'(?:Best\s+|Top\s+)(\d+\s+)?([\w\s]+?)\s+(?:for|to|that)', title, re.IGNORECASE)
+        if m:
+            cat_from_title = m.group(2).strip()
+
+    # Pick 6 relevant tools — prefer title tools, fill with random others
+    title_lower = title.lower()
+    matched = [t for t in TOOLS if t.lower() in title_lower]
+    filler  = [t for t in TOOLS if t not in matched]
+    random.shuffle(filler)
+    tools_pick = (matched + filler)[:6]
+    while len(tools_pick) < 6:
+        tools_pick.append(random.choice(TOOLS))
+    t1 = t1_from_title or tools_pick[0]
+    t2 = t2_from_title or tools_pick[1]
+    t3, t4, t5, t6 = tools_pick[2], tools_pick[3], tools_pick[4], tools_pick[5]
+
+    # Intro paragraph — vary by article type, always references the title
     intros = {
         "comparison": (
             f"<p>Choosing the right AI tool isn't just a preference — it's a business decision "
-            f"that affects your output quality, your time, and your monthly bill. In this comparison, "
-            f"we break down <strong>{title.split(' vs ')[0] if ' vs ' in title else t1}</strong> and "
-            f"<strong>{title.split(' vs ')[1].split(':')[0] if ' vs ' in title else t2}</strong> "
+            f"that affects your output quality, your time, and your monthly bill. This comparison "
+            f"breaks down <strong>{t1}</strong> and <strong>{t2}</strong> "
             f"across the dimensions that actually matter to working professionals: real output quality, "
-            f"pricing transparency, learning curve, and long-term value. We skip the marketing language "
-            f"and give you the honest verdict.</p>"
+            f"pricing transparency, learning curve, and long-term value. No marketing language — "
+            f"just the honest verdict on which one wins for most users in {YEAR}.</p>"
         ),
         "roundup": (
             f"<p>The AI tools landscape changes fast — what was the best option three months ago may "
@@ -1195,33 +1234,48 @@ def generate_fallback(stories, article_type, title):
     # Main content sections — vary by type
     if article_type in ("comparison",):
         html += (
-            f"<h3>How We Evaluated These Tools</h3>\n"
-            f"<p>We looked at four things: output quality on real tasks (not cherry-picked demos), "
-            f"pricing transparency (are the costs predictable?), integration with common workflows "
-            f"(does it fit into how people actually work?), and the learning curve (how long before "
-            f"you're getting real value?). The tools that score well on all four are genuinely worth "
-            f"your money. The ones that score well on only one or two are worth knowing about but "
-            f"not necessarily worth subscribing to.</p>\n\n"
-            f"<h3>Tool Deep Dive: {t1}</h3>\n"
-            f"<p><strong>{t1}</strong> has carved out a clear position in the market by doing a "
-            f"specific set of things exceptionally well. Its core strength is consistency — you get "
-            f"reliable output without needing to spend twenty minutes crafting the perfect prompt. "
-            f"For anyone who needs to produce work quickly without babysitting an AI, that reliability "
-            f"has genuine value. Pricing starts at a level that's reasonable for individual users, "
-            f"with team plans that scale without punishing you for growing.</p>\n"
-            f"<p>The limitation worth knowing: it handles standard use cases beautifully but can feel "
-            f"constrained when you need something highly specific or outside its sweet spot. Power users "
-            f"sometimes find themselves working around its guardrails rather than with them.</p>\n\n"
-            f"<h3>Tool Deep Dive: {t2}</h3>\n"
-            f"<p><strong>{t2}</strong> takes a different approach — it prioritizes flexibility over "
-            f"consistency. That's a real trade-off: you can get better output when you know what you're "
-            f"doing, but it takes more effort to get there reliably. The pricing model is different too, "
-            f"which matters depending on your usage pattern. Heavy users often find it more economical; "
-            f"occasional users sometimes pay more than they expect.</p>\n"
-            f"<p>Where it clearly wins: complex, multi-step tasks that require following detailed "
-            f"instructions, maintaining context across long conversations, and handling edge cases "
-            f"gracefully. If your work involves nuanced, specialized tasks, this is worth the learning "
-            f"investment.</p>\n\n"
+            f"<h3>How We Evaluated {t1} vs {t2}</h3>\n"
+            f"<p>We tested both tools on the same real-world tasks — not cherry-picked demos. "
+            f"The four dimensions that matter most: output quality on realistic prompts, "
+            f"pricing predictability (no surprise bills), integration with everyday workflows, "
+            f"and the learning curve to get consistent results. Both tools have genuine strengths, "
+            f"but they win on different dimensions — which is exactly what makes this comparison "
+            f"worth doing rather than just picking whichever one you've heard of.</p>\n\n"
+            f"<h3>{t1}: Strengths, Weaknesses, and Best Use Cases</h3>\n"
+            f"<p><strong>{t1}</strong> has built a strong reputation for consistency and reliability. "
+            f"Its core strength is delivering predictable, high-quality output without requiring "
+            f"extensive prompt engineering. For anyone producing work at volume — content creators, "
+            f"marketers, founders — that reliability compounds quickly into real time savings. "
+            f"Pricing is transparent and starts at a level most individuals can justify, "
+            f"with team plans that scale reasonably.</p>\n"
+            f"<p>The honest limitation: it excels at standard use cases but can feel constrained "
+            f"on highly specialized or nuanced tasks. Users doing complex, multi-step reasoning "
+            f"sometimes find more headroom in competing tools. That said, for 80% of everyday "
+            f"AI work, this is not a meaningful drawback.</p>\n\n"
+            f"<h3>{t2}: Strengths, Weaknesses, and Best Use Cases</h3>\n"
+            f"<p><strong>{t2}</strong> takes a different architectural approach — it trades some "
+            f"out-of-the-box consistency for a higher ceiling on complex tasks. When you know "
+            f"exactly what you want and can provide the right context, the output quality is "
+            f"consistently impressive. The pricing model is structured differently, which matters "
+            f"depending on your usage pattern — heavy daily users often find it more economical "
+            f"per output than alternatives.</p>\n"
+            f"<p>Where it clearly wins: multi-step reasoning, maintaining context across long "
+            f"sessions, and handling specialized domain knowledge. If your work involves nuanced "
+            f"tasks — legal drafting, technical writing, complex analysis — this tool's ceiling "
+            f"is meaningfully higher than most alternatives.</p>\n\n"
+            f"<h3>Head-to-Head: The 5 Dimensions That Actually Matter</h3>\n"
+            f"<ul>\n"
+            f"<li><strong>Output quality on everyday tasks:</strong> Both deliver strong results. "
+            f"{t1} wins on consistency; {t2} wins on ceiling for complex prompts.</li>\n"
+            f"<li><strong>Pricing and value:</strong> {t1} is more predictable for occasional users. "
+            f"{t2} can be more economical at high volume depending on your use case.</li>\n"
+            f"<li><strong>Learning curve:</strong> {t1} is easier to get value from immediately. "
+            f"{t2} rewards users who invest time in understanding how to prompt it effectively.</li>\n"
+            f"<li><strong>Integrations:</strong> Both have solid API access and third-party integrations. "
+            f"Check which tools you already use before assuming either has an edge here.</li>\n"
+            f"<li><strong>Speed:</strong> Response times are comparable for most tasks. "
+            f"Latency differences become meaningful only at scale or with very long prompts.</li>\n"
+            f"</ul>\n\n"
         )
     elif article_type == "tutorial":
         steps = [
@@ -1354,11 +1408,41 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} — MyAI ToolsFinder</title>
-<meta name="description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight for solopreneurs, creators and professionals. {DATE_STR}.">
-<meta property="og:title" content="{title}">
-<meta property="og:image" content="{hero_url}">
+<meta name="description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools guide for solopreneurs, creators and professionals. Updated {DATE_STR}.">
+<!-- Open Graph -->
 <meta property="og:type" content="article">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight from MyAI ToolsFinder. Updated {DATE_STR}.">
+<meta property="og:url" content="https://myaitoolsfinder.com/articles/{slug}.html">
+<meta property="og:image" content="{hero_url}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="MyAI ToolsFinder">
+<meta property="article:published_time" content="{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}">
+<meta property="article:author" content="MyAI ToolsFinder">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight from MyAI ToolsFinder.">
+<meta name="twitter:image" content="{hero_url}">
+<meta name="twitter:site" content="@myaitoolsfinder">
+<!-- Canonical -->
 <link rel="canonical" href="https://myaitoolsfinder.com/articles/{slug}.html">
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{re.sub(chr(34), chr(39), title)}",
+  "image": "{hero_url}",
+  "datePublished": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
+  "dateModified": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
+  "author": {{"@type": "Organization", "name": "MyAI ToolsFinder", "url": "https://myaitoolsfinder.com"}},
+  "publisher": {{"@type": "Organization", "name": "MyAI ToolsFinder", "url": "https://myaitoolsfinder.com", "logo": {{"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}}}},
+  "mainEntityOfPage": "https://myaitoolsfinder.com/articles/{slug}.html",
+  "description": "{re.sub(chr(34), chr(39), title)} — Practical AI tools guide updated {DATE_STR}."
+}}
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a56db'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">

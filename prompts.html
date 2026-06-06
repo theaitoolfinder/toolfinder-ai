@@ -67,8 +67,12 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .page{max-width:1200px;margin:0 auto;padding:0 20px}
 
 /* ── SEARCH + FILTERS ── */
-.search-bar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0 16px;display:flex;align-items:center;gap:12px;margin:32px auto 0;max-width:680px;box-shadow:var(--shadow)}
-.search-bar input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:14px;padding:14px 0;background:none;color:var(--text)}
+/* ── Sticky filter toolbar ── */
+.prompt-sticky-bar{position:sticky;top:0;z-index:40;background:rgba(240,246,255,.95);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border);padding:10px 20px 8px}
+.prompt-sticky-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.search-bar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);max-width:560px}
+.search-bar input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:13.5px;padding:10px 0;background:none;color:var(--text)}
+.search-bar.compact input{padding:8px 0;font-size:13px}
 .search-bar input::placeholder{color:var(--text-dim)}
 .search-bar svg{color:var(--text-dim);flex-shrink:0}
 .search-clear{background:none;border:none;color:var(--text-dim);font-size:18px;line-height:1;padding:4px;display:none}
@@ -102,7 +106,16 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .tool-tab.active{border-color:var(--primary-dark);background:var(--primary-light);color:var(--primary-dark);font-weight:600}
 
 /* ── PROMPT GRID ── */
-.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+/* ── Carousel layout ── */
+.prompt-carousel-wrap{position:relative}
+.prompt-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;-webkit-overflow-scrolling:touch}
+.prompt-grid::-webkit-scrollbar{height:4px}
+.prompt-grid::-webkit-scrollbar-track{background:transparent}
+.prompt-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.prompt-grid .prompt-card{flex:0 0 320px;max-width:320px;scroll-snap-align:start}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.carousel-btn:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
+.carousel-btn.prev{left:-18px}.carousel-btn.next{right:-18px}
 .prompt-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow .2s,border-color .2s;cursor:pointer;position:relative;overflow:hidden}
 .prompt-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.10);border-color:#d1d5db}
 .prompt-card.free{border-left:3px solid var(--primary)}
@@ -205,7 +218,8 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
-  .prompt-grid{grid-template-columns:1fr}
+  .prompt-grid .prompt-card{flex:0 0 280px;max-width:280px}
+  .carousel-btn{display:none}
   .hero{padding:44px 20px 40px}
   .gate-section{padding:28px 20px}
 }
@@ -272,25 +286,22 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
   </div>
 </section>
 
-<!-- ═══ MAIN ═══ -->
-<div class="page" style="padding-top:0">
-
-  <!-- Search -->
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="search-bar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" id="prompt-search" placeholder="Search tools or prompt topics…" autocomplete="off" oninput="filterPrompts()">
+<!-- ═══ STICKY FILTER TOOLBAR ═══ -->
+<div class="prompt-sticky-bar" id="prompt-sticky-bar">
+  <div class="prompt-sticky-inner">
+    <div class="search-bar compact">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="prompt-search" placeholder="Search prompts…" autocomplete="off" oninput="filterPrompts()">
       <button class="search-clear" id="search-clear" onclick="clearSearch()">&#x2715;</button>
     </div>
-
-    <!-- Category filter -->
-    <div class="filter-row">
-      <span class="filter-label">Category:</span>
-      <div class="filter-pills" id="cat-filters">
-        <button class="filter-pill active" data-cat="all" onclick="setCatFilter('all',this)">All</button>
-      </div>
+    <div class="filter-pills" id="cat-filters">
+      <button class="filter-pill active" data-cat="all" onclick="setCatFilter('all',this)">All</button>
     </div>
   </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="page" style="padding-top:0">
 
   <!-- Prompts content -->
   <div id="prompts-content" style="margin-top:8px;padding-bottom:64px"></div>
@@ -518,8 +529,12 @@ function renderPrompts(){
       </div>
       ${toolChipsHTML}
 
-      <div class="prompt-grid">
-        ${freePrompts.map((p,i)=>promptCardHTML(p,i,'free',cat)).join('')}
+      <div class="prompt-carousel-wrap">
+        <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)" aria-label="Previous">&#8249;</button>
+        <div class="prompt-grid">
+          ${freePrompts.map((p,i)=>promptCardHTML(p,i,'free',cat)).join('')}
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel(this,1)" aria-label="Next">&#8250;</button>
       </div>
 
       ${isSubscriber ? '' : `
@@ -618,12 +633,16 @@ function renderPrompts(){
 }
 
 /* ── Prompt card HTML ── */
+/* ── Global prompt store (avoids inline JSON in onclick attrs) ── */
+const PROMPT_STORE = [];
+function storePrompt(p){ const id=PROMPT_STORE.length; PROMPT_STORE.push(p); return id; }
+
 function promptCardHTML(p, i, type, catOrSlug){
   const isLocked = type==='premium' && !isSubscriber;
   const level = p.level||'';
   const previewText = p.prompt.slice(0,140)+'…';
   const cardClass = type==='free' ? 'prompt-card free' : (isSubscriber ? 'prompt-card premium unlocked' : 'prompt-card premium locked');
-  const dataStr = encodeURIComponent(JSON.stringify(p));
+  const pid = storePrompt(p);   // safe integer reference — no JSON in HTML
 
   let badgesHTML = '';
   if(type==='free') badgesHTML += `<span class="badge-free">Free</span>`;
@@ -632,13 +651,13 @@ function promptCardHTML(p, i, type, catOrSlug){
 
   let actionsHTML = '';
   if(!isLocked){
-    actionsHTML = `<button class="btn-copy" onclick="copyPrompt(this,${JSON.stringify(p.prompt)})">📋 Copy</button>
-    <button class="btn-expand" onclick="openModal(${dataStr})">View Full</button>`;
+    actionsHTML = `<button class="btn-copy" onclick="copyPromptById(this,${pid})">📋 Copy</button>
+    <button class="btn-expand" onclick="openModalById(${pid})">👁 View Full</button>`;
   } else {
     actionsHTML = `<button class="btn-unlock-inline" onclick="scrollToGate()">🔐 Subscribe to Unlock</button>`;
   }
 
-  return `<div class="${cardClass}" onclick="${isLocked ? 'scrollToGate()' : 'openModal('+dataStr+')'}">
+  return `<div class="${cardClass}" onclick="${isLocked ? 'scrollToGate()' : 'openModalById('+pid+')'}">
     <div class="prompt-card-header">
       <div class="prompt-title">${escHtml(p.title)}</div>
       <div class="prompt-badges">${badgesHTML}</div>
@@ -647,6 +666,27 @@ function promptCardHTML(p, i, type, catOrSlug){
     <div class="prompt-preview${isLocked?' blurred':''}">${escHtml(previewText)}</div>
     <div class="prompt-actions" onclick="event.stopPropagation()">${actionsHTML}</div>
   </div>`;
+}
+
+/* ── Copy by store ID ── */
+function copyPromptById(btn, pid){
+  const p = PROMPT_STORE[pid];
+  if(!p) return;
+  copyPrompt(btn, p.prompt);
+}
+
+/* ── Open modal by store ID ── */
+function openModalById(pid){
+  const p = PROMPT_STORE[pid];
+  if(p) openModal(p);
+}
+
+/* ── Carousel scroll ── */
+function scrollCarousel(btn, dir){
+  const grid = btn.closest('.prompt-carousel-wrap').querySelector('.prompt-grid');
+  if(!grid) return;
+  const cardW = grid.querySelector('.prompt-card')?.offsetWidth || 320;
+  grid.scrollBy({left: dir * (cardW + 16) * 2, behavior: 'smooth'});
 }
 
 /* ── Level tab switching ── */
@@ -682,10 +722,14 @@ function copyPrompt(btn, text){
 
 /* ── Modal ── */
 let currentPrompt = null;
-function openModal(dataEncoded){
+function openModal(data){
   let p;
-  try{ p = typeof dataEncoded==='string' ? JSON.parse(decodeURIComponent(dataEncoded)) : dataEncoded; }
-  catch(e){ return; }
+  try{
+    if(typeof data==='object' && data!==null){ p = data; }
+    else if(typeof data==='string'){ p = JSON.parse(decodeURIComponent(data)); }
+    else { return; }
+  }
+  catch(e){ console.error('openModal parse error',e); return; }
   currentPrompt = p;
   const isLocked = p.level && !isSubscriber;
   if(isLocked){ scrollToGate(); return; }
