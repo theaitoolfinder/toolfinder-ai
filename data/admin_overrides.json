@@ -1,7 +1,10 @@
 {
   "v": 1,
-  "updated": "2026-06-03T16:47:22.367Z",
+  "updated": "2026-06-06T23:40:56.927Z",
   "overrides": {
+    "48": {
+      "trending": 9
+    },
     "75": {
       "trending": 99,
       "affiliate_url": "https://go.reclaim.ai/do7hs1jez62m",
