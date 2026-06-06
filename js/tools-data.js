@@ -722,5 +722,6 @@ window.MYAI_AFF_MAP = {
   "rows ai": "https://rows.com",
   "browse ai": "https://browse.ai",
   "read ai": "https://read.ai",
-  "dovetail": "https://dovetail.com"
+  "dovetail": "https://dovetail.com",
+  "smartlead": "https://smartlead.ai"
 };
