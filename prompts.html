@@ -87,6 +87,14 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .cat-title{font-size:20px;font-weight:700;color:var(--text)}
 .cat-count{font-size:13px;color:var(--text-dim);font-weight:500}
 
+/* ── TOOL CHIPS (per-category) ── */
+.cat-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.cat-tool-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 8px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:500;color:var(--text-2);text-decoration:none;transition:border-color .15s,background .15s,color .15s;white-space:nowrap}
+.cat-tool-chip:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
+.cat-tool-chip img{width:16px;height:16px;border-radius:3px;object-fit:contain}
+.cat-tool-chip .chip-fallback{width:16px;height:16px;border-radius:3px;background:var(--primary);color:#fff;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-header{flex-wrap:wrap}
+
 /* ── TABS ── */
 .tool-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .tool-tab{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:500;color:var(--text-2);background:#fff;cursor:pointer;transition:all .15s}
@@ -318,6 +326,48 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 
 <!-- ═══ SCRIPTS ═══ -->
 <script src="js/prompts-data.js"></script>
+<script src="js/tools-data.js"></script>
+<script>
+/* ── Top tools per prompt category ── */
+const CATEGORY_TOOLS = {
+  'Chatbot':            [{n:'ChatGPT',d:'chat.openai.com'},{n:'Claude',d:'claude.ai'},{n:'Gemini',d:'gemini.google.com'},{n:'Perplexity',d:'perplexity.ai'},{n:'Copilot',d:'copilot.microsoft.com'}],
+  'Writing':            [{n:'Jasper',d:'jasper.ai'},{n:'Copy.ai',d:'copy.ai'},{n:'Writesonic',d:'writesonic.com'},{n:'Grammarly',d:'grammarly.com'},{n:'Notion AI',d:'notion.so'}],
+  'Image':              [{n:'Midjourney',d:'midjourney.com'},{n:'DALL-E 3',d:'openai.com'},{n:'Adobe Firefly',d:'firefly.adobe.com'},{n:'Leonardo AI',d:'leonardo.ai'},{n:'Stable Diffusion',d:'stability.ai'}],
+  'Video':              [{n:'Runway',d:'runwayml.com'},{n:'HeyGen',d:'heygen.com'},{n:'Synthesia',d:'synthesia.io'},{n:'Sora',d:'sora.com'},{n:'InVideo AI',d:'invideo.io'}],
+  'Audio':              [{n:'ElevenLabs',d:'elevenlabs.io'},{n:'Suno',d:'suno.com'},{n:'Murf AI',d:'murf.ai'},{n:'Udio',d:'udio.com'},{n:'Adobe Podcast',d:'podcast.adobe.com'}],
+  'Design':             [{n:'Canva',d:'canva.com'},{n:'Adobe Firefly',d:'firefly.adobe.com'},{n:'Figma AI',d:'figma.com'},{n:'Looka',d:'looka.com'},{n:'Uizard',d:'uizard.io'}],
+  'SEO':                [{n:'Surfer SEO',d:'surferseo.com'},{n:'Semrush',d:'semrush.com'},{n:'Ahrefs',d:'ahrefs.com'},{n:'Frase',d:'frase.io'},{n:'NeuronWriter',d:'neuronwriter.com'}],
+  'Coding':             [{n:'GitHub Copilot',d:'github.com'},{n:'Cursor',d:'cursor.com'},{n:'Claude',d:'claude.ai'},{n:'Bolt.new',d:'bolt.new'},{n:'Replit AI',d:'replit.com'}],
+  'Marketing':          [{n:'HubSpot AI',d:'hubspot.com'},{n:'Jasper',d:'jasper.ai'},{n:'Copy.ai',d:'copy.ai'},{n:'AdCreative.ai',d:'adcreative.ai'},{n:'Mailchimp',d:'mailchimp.com'}],
+  'Productivity':       [{n:'Notion AI',d:'notion.so'},{n:'Otter.ai',d:'otter.ai'},{n:'Reclaim.ai',d:'reclaim.ai'},{n:'Motion',d:'usemotion.com'},{n:'Taskade',d:'taskade.com'}],
+  'Research':           [{n:'Perplexity',d:'perplexity.ai'},{n:'Consensus',d:'consensus.app'},{n:'Elicit',d:'elicit.org'},{n:'Scite',d:'scite.ai'},{n:'ChatGPT',d:'chat.openai.com'}],
+  'Sales':              [{n:'HubSpot AI',d:'hubspot.com'},{n:'Gong',d:'gong.io'},{n:'Apollo.io',d:'apollo.io'},{n:'Lavender',d:'lavender.ai'},{n:'Salesloft',d:'salesloft.com'}],
+  'Automation':         [{n:'Zapier AI',d:'zapier.com'},{n:'Make',d:'make.com'},{n:'n8n',d:'n8n.io'},{n:'Activepieces',d:'activepieces.com'},{n:'Power Automate',d:'powerautomate.microsoft.com'}],
+  'Analytics':          [{n:'Tableau AI',d:'tableau.com'},{n:'Power BI',d:'powerbi.microsoft.com'},{n:'Akkio',d:'akkio.com'},{n:'Obviously AI',d:'obviously.ai'},{n:'Polymer',d:'polymersearch.com'}],
+  'Education':          [{n:'Khanmigo',d:'khanacademy.org'},{n:'Quizlet AI',d:'quizlet.com'},{n:'Duolingo AI',d:'duolingo.com'},{n:'Coursera AI',d:'coursera.org'},{n:'Claude',d:'claude.ai'}],
+  'HR':                 [{n:'Workday AI',d:'workday.com'},{n:'15Five',d:'15five.com'},{n:'Leena AI',d:'leena.ai'},{n:'Eightfold AI',d:'eightfold.ai'},{n:'HiBob AI',d:'hibob.com'}],
+  'Social Media':       [{n:'Buffer AI',d:'buffer.com'},{n:'Hootsuite AI',d:'hootsuite.com'},{n:'Predis.ai',d:'predis.ai'},{n:'Taplio',d:'taplio.com'},{n:'Lately',d:'lately.ai'}],
+  'Finance':            [{n:'Domo',d:'domo.com'},{n:'Planful',d:'planful.com'},{n:'Datarails',d:'datarails.com'},{n:'Cube',d:'cube.dev'},{n:'ChatGPT',d:'chat.openai.com'}],
+  'AI Infrastructure':  [{n:'OpenAI API',d:'platform.openai.com'},{n:'Anthropic',d:'anthropic.com'},{n:'Google AI',d:'ai.google.dev'},{n:'AWS AI',d:'aws.amazon.com'},{n:'Azure AI',d:'azure.microsoft.com'}],
+  'E-commerce':         [{n:'Shopify AI',d:'shopify.com'},{n:'Nosto',d:'nosto.com'},{n:'Rebuy',d:'rebuyengine.com'},{n:'Jasper',d:'jasper.ai'},{n:'ChatGPT',d:'chat.openai.com'}],
+  'Presentation':       [{n:'Gamma',d:'gamma.app'},{n:'Beautiful.ai',d:'beautiful.ai'},{n:'Tome',d:'tome.app'},{n:'Pitch',d:'pitch.com'},{n:'Plus AI',d:'plusdocs.com'}],
+  'No-Code':            [{n:'Bubble AI',d:'bubble.io'},{n:'Webflow AI',d:'webflow.com'},{n:'Framer AI',d:'framer.com'},{n:'Glide',d:'glideapps.com'},{n:'Softr',d:'softr.io'}],
+  'Legal':              [{n:'Harvey AI',d:'harvey.ai'},{n:'Ironclad',d:'ironcladapp.com'},{n:'Spellbook',d:'spellbook.legal'},{n:'Clio AI',d:'clio.com'},{n:'ChatGPT',d:'chat.openai.com'}],
+  'Customer Support':   [{n:'Intercom AI',d:'intercom.com'},{n:'Zendesk AI',d:'zendesk.com'},{n:'Freshdesk AI',d:'freshdesk.com'},{n:'Ada',d:'ada.cx'},{n:'Tidio',d:'tidio.com'}],
+  'Health':             [{n:'Abridge',d:'abridge.com'},{n:'Ada Health',d:'ada.com'},{n:'Nabla',d:'nabla.com'},{n:'Corti',d:'corti.ai'},{n:'ChatGPT',d:'chat.openai.com'}]
+};
+
+/* ── Build a tool chip HTML string ── */
+function toolChipHTML(tool){
+  const affMap = window.MYAI_AFF_MAP||{};
+  const url = affMap[tool.n.toLowerCase()] || affMap[tool.d.replace(/\..+/,'')] || 'https://'+tool.d;
+  const faviconUrl = 'https://www.google.com/s2/favicons?domain='+tool.d+'&sz=32';
+  const initials = (tool.n.replace(/[^A-Z]/g,'').slice(0,2)||tool.n.slice(0,2).toUpperCase());
+  return '<a class="cat-tool-chip" href="'+url+'" target="_blank" rel="noopener sponsored" title="Use '+tool.n+'">'
+    +'<img src="'+faviconUrl+'" alt="'+tool.n+'" width="16" height="16" onerror="this.outerHTML=\'<span class=&quot;chip-fallback&quot;>'+initials+'</span>\'">'
+    +tool.n+'</a>';
+}
+</script>
 <script>
 /* ── Mobile menu ── */
 function toggleMenu(){
@@ -457,12 +507,16 @@ function renderPrompts(){
 
     const sectionId = 'cat-'+cat.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 
+    const catTools = CATEGORY_TOOLS[cat]||[];
+    const toolChipsHTML = catTools.length ? `<div class="cat-tools">${catTools.map(toolChipHTML).join('')}</div>` : '';
+
     html += `<div class="cat-section" id="${sectionId}">
       <div class="cat-header">
         <span class="cat-icon">${catIcon}</span>
         <span class="cat-title">${cat}</span>
         <span class="cat-count">${freePrompts.length} free · ${premiumPrompts.length} exclusive</span>
       </div>
+      ${toolChipsHTML}
 
       <div class="prompt-grid">
         ${freePrompts.map((p,i)=>promptCardHTML(p,i,'free',cat)).join('')}
