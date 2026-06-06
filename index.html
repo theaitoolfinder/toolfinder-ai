@@ -536,6 +536,16 @@ body::before{
 .cb-typing span:nth-child(2){animation-delay:.18s}
 .cb-typing span:nth-child(3){animation-delay:.36s}
 @keyframes cbDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+/* ── Subscription gate card ── */
+.cb-gate-card{background:linear-gradient(135deg,rgba(239,246,255,.9),rgba(245,243,255,.9));border:1px solid rgba(26,86,219,.12);border-radius:13px;padding:15px;margin-top:2px;width:100%}
+.cb-gate-fields{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.cb-gate-input{padding:9px 13px;border-radius:10px;border:1.5px solid rgba(26,86,219,.2);font:13px 'Poppins',sans-serif;outline:none;width:100%;transition:border-color .15s;background:#fff;color:var(--text)}
+.cb-gate-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.cb-gate-btn{width:100%;padding:10px;border-radius:10px;border:none;background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;font:700 13px 'Poppins',sans-serif;cursor:pointer;transition:opacity .15s;margin-bottom:5px}
+.cb-gate-btn:hover{opacity:.88}.cb-gate-btn:disabled{opacity:.5;cursor:not-allowed}
+.cb-gate-msg{font-size:12px;min-height:14px;margin:2px 0;text-align:center}
+.cb-gate-skip{background:none;border:none;font:400 11.5px 'Poppins',sans-serif;color:#94a3b8;cursor:pointer;text-decoration:underline;display:block;width:100%;text-align:center;padding:3px 0;transition:color .15s}
+.cb-gate-skip:hover{color:#64748b}
 
 /* ── Partner Picks section ── */
 .partner-picks{padding:40px 0 24px;overflow:hidden}
@@ -3144,6 +3154,10 @@ async function popSubscribe(){
     <button class="cb-chip" onclick="cbQuick('Trending AI tools right now')">🔥 Trending</button>
     <button class="cb-chip" onclick="cbQuick('Best tools for developers')">💻 Dev tools</button>
     <button class="cb-chip" onclick="cbQuick('Tools to save time')">⏱️ Save time</button>
+    <button class="cb-chip" onclick="cbQuick('Show me the prompts library')">✍️ Prompts</button>
+    <button class="cb-chip" onclick="cbQuick('Latest articles and guides')">📰 Articles</button>
+    <button class="cb-chip" onclick="cbQuick('Tell me about the newsletter')">📬 Newsletter</button>
+    <button class="cb-chip" onclick="cbQuick('How does this site work?')">❓ How it works</button>
   </div>
   <div id="cb-input-row">
     <input id="cb-input" type="text" placeholder="Ask me anything about AI tools…"
@@ -3176,9 +3190,21 @@ async function popSubscribe(){
     btn.classList.toggle('open', isOpen);
     if (isOpen) {
       if (!document.getElementById('cb-msgs').children.length) {
-        cbBotMsg(GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
+        if (localStorage.getItem('myai_chat_gate') === '1') {
+          // Already subscribed/skipped — show personalized greeting
+          const savedName = localStorage.getItem('myai_chat_name');
+          const greet = savedName
+            ? `Hey ${savedName}! 👋 Welcome back — 500+ AI tools at your fingertips. What are you working on today?`
+            : GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+          cbBotMsg(greet);
+          setTimeout(() => document.getElementById('cb-input').focus(), 320);
+        } else {
+          // First-time visitor — show Brevo subscription gate
+          cbShowGate();
+        }
+      } else {
+        setTimeout(() => document.getElementById('cb-input').focus(), 320);
       }
-      setTimeout(() => document.getElementById('cb-input').focus(), 320);
     }
   };
 
@@ -3322,6 +3348,68 @@ async function popSubscribe(){
   function cbProcess(q) {
     const ql = q.toLowerCase().replace(/[''`]/g, "'").trim();
     const allTools = typeof TOOLS !== 'undefined' ? TOOLS : [];
+
+    /* ════════════════════════════════════════
+       0. SITE CUSTOMER SERVICE & NAVIGATION
+       ════════════════════════════════════════ */
+
+    /* Prompts Library */
+    if (/\bprompt(s)?\b/.test(ql) && !/\bcompare\b/.test(ql)) {
+      const topicMatch = ql.match(/(?:prompts?|writing)\s+(?:for|about|on)\s+(.+)/i)
+                       || ql.match(/^(seo|email|social|youtube|blog|copywriting|coding|marketing|business|productivity|sales|hr|finance|legal|design|video|audio|chatbot|e.?commerce|freelance|education|mindfulness)\s+prompts?/i)
+                       || ql.match(/prompts?\s+(?:for\s+)?(.{3,})/i);
+      const rawTopic = topicMatch ? (topicMatch[1]||topicMatch[0]).replace(/\b(get|find|show|best|good|free|ai|me|give|some|a|an|the)\b/gi,'').trim() : null;
+      const topic = rawTopic && rawTopic.length > 2 ? rawTopic : null;
+      if (topic) {
+        cbBotMsg(`Here are prompts for **${topic}** ✍️\n\n👉 <a href="/prompts.html" target="_blank">Open Prompts Library</a> — search for "${topic}" there.\n\nWe have 700+ free prompts across 25 categories. Want me to also find AI **tools** for ${topic}?`);
+      } else {
+        cbBotMsg(`We have **700+ free prompts** across 25 categories! ✍️\n\n👉 <a href="/prompts.html" target="_blank">Open Prompts Library →</a>\n\nCategories include: Copywriting, SEO, Social Media, Email, YouTube, Coding, Marketing, Sales, HR, Finance, Legal, Design, and more.\n\nWhich topic are you looking for prompts on?`);
+      }
+      return;
+    }
+
+    /* Articles & Guides */
+    if (/\barticle(s)?|blog post|latest.*(guide|post|content)|read about|guide(s)?\b/.test(ql) && !/tool/.test(ql)) {
+      const topicMatch = ql.match(/(?:article|guide|read)\s+(?:about|on|for)\s+(.+)/i);
+      const topic = topicMatch ? topicMatch[1].trim() : null;
+      if (topic) {
+        cbBotMsg(`Check out our <a href="/articles.html" target="_blank">Articles section</a> for **${topic}** content — in-depth reviews, comparisons, and tutorials.\n\nWe publish new AI content several times daily. Any specific tool or topic you want a guide on?`);
+      } else {
+        cbBotMsg(`Our <a href="/articles.html" target="_blank">Articles & Guides</a> section has:\n\n📝 In-depth AI tool reviews\n⚖️ Honest head-to-head comparisons\n🔧 Practical how-to tutorials\n📰 Weekly AI news digests\n\nNew content goes live multiple times daily. What topic are you interested in?`);
+      }
+      return;
+    }
+
+    /* Newsletter */
+    if (/\bnewsletter|friday.*(email|digest|drop|tips)|subscribe.*weekly|weekly.*email\b/.test(ql)) {
+      cbBotMsg(`Our free **AI Toolbox Newsletter** drops every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest tool comparison\n✅ 1 practical time-saving tip\n✅ 10 exclusive Friday articles for members\n\n**1,000+ solopreneurs & creators** read it weekly — free forever, no credit card.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>\n\nOr just drop your email here and I'll add you right now!`);
+      return;
+    }
+
+    /* Contact / Support */
+    if (/\b(contact|reach.*team|email.*team|talk.*human|live.*chat|get.*help|customer.?service|support ticket)\b/.test(ql)) {
+      cbBotMsg(`For anything I can't sort out, reach the team directly:\n\n📧 **hello@myaitoolsfinder.com**\n\nWe typically respond within 24 hours. What's going on? There's a good chance I can help right now! 😊`);
+      return;
+    }
+
+    /* About the site */
+    if (/\b(about this site|about myai|who (built|made|runs)|what is this (site|website)|site.*mission|myai.*toolsfinder)\b/.test(ql)) {
+      cbBotMsg(`**MyAI ToolsFinder** is a free, curated directory of 500+ AI tools — built for solopreneurs, freelancers, and creators.\n\n🔍 **Tools Directory** — 500+ tools, filterable by job/need/category\n✍️ **Prompts Library** — 700+ free ready-to-use prompts\n📰 **Articles** — honest reviews, comparisons & tutorials\n📬 **Newsletter** — free Friday digest to 1,000+ readers\n\nAll free. What can I help you find today?`);
+      return;
+    }
+
+    /* Compare feature how-to */
+    if (/\bhow (to|do i) (use|access) (the )?compare|compare.*feature|side.?by.?side (feature|tool)\b/.test(ql)) {
+      cbBotMsg(`Our **Compare** feature lets you pit two AI tools head-to-head!\n\n1. Browse the directory below\n2. Click **⚖️** on any tool card\n3. Pick a second tool\n4. Hit **Compare** — full side-by-side breakdown\n\nYou'll need a free subscriber account to unlock it. Not subscribed? Drop your email and I'll get you in! 👇`);
+      return;
+    }
+
+    /* Is the site free */
+    if (/\b(is this|the site|this website|myai|it)\b.*(free|paid|cost|charge|subscription|pricing)\b/.test(ql)
+     || /\bhow much.*use|do.*pay.*to (use|access)\b/.test(ql)) {
+      cbBotMsg(`**Totally free!** 🎉\n\nThe Tools Directory, Prompts Library, and Articles are all 100% free.\n\nThe Compare feature and Friday exclusive articles require a **free newsletter subscription** — no credit card, just your email. That's it.\n\nAny other questions?`);
+      return;
+    }
 
     /* ════════════════════════════════════════
        1. SMALL TALK
@@ -3673,6 +3761,82 @@ async function popSubscribe(){
     msgs.appendChild(wrap);
     msgs.scrollTop = msgs.scrollHeight;
     return wrap;
+  }
+
+  /* ══════════════════════════════════════════
+     SUBSCRIPTION GATE (Brevo)
+     ══════════════════════════════════════════ */
+
+  const _BREVO_EP = 'https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
+
+  function cbShowGate() {
+    const inp     = document.getElementById('cb-input');
+    const sendBtn = document.getElementById('cb-send');
+    if (inp)     { inp.disabled = true; inp.placeholder = 'Subscribe to start chatting…'; }
+    if (sendBtn) { sendBtn.disabled = true; }
+
+    cbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Quick thing first: join our **free Friday newsletter** and get instant access to everything I know! 🔑");
+
+    const msgs = document.getElementById('cb-msgs');
+    const wrap  = document.createElement('div');
+    wrap.className = 'cb-msg bot';
+    wrap.id = 'cb-gate-wrap';
+    wrap.innerHTML = `<div class="cb-gate-card">
+      <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
+      <div class="cb-gate-fields">
+        <input id="cb-gate-fname" class="cb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
+        <input id="cb-gate-email" class="cb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
+          onkeydown="if(event.key==='Enter')cbGateSubmit()">
+      </div>
+      <button class="cb-gate-btn" id="cb-gate-btn" onclick="cbGateSubmit()">Subscribe Free 🎉</button>
+      <div id="cb-gate-msg" class="cb-gate-msg"></div>
+      <button class="cb-gate-skip" onclick="cbGateSkip()">Already subscribed? Skip →</button>
+    </div>`;
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(() => document.getElementById('cb-gate-email')?.focus(), 350);
+  }
+
+  window.cbGateSubmit = async function() {
+    const fname = (document.getElementById('cb-gate-fname')?.value || '').trim();
+    const email = (document.getElementById('cb-gate-email')?.value || '').trim();
+    const msgEl = document.getElementById('cb-gate-msg');
+    const btn   = document.getElementById('cb-gate-btn');
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Enter a valid email address.'; }
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+    if (msgEl) { msgEl.style.color = 'var(--text-dim)'; msgEl.textContent = ''; }
+    try {
+      const fd = new FormData();
+      fd.append('EMAIL', email);
+      if (fname) fd.append('FIRSTNAME', fname);
+      fd.append('locale', 'en');
+      fd.append('html_type', 'simple');
+      await fetch(_BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
+    } catch(e) {}
+    if (fname) localStorage.setItem('myai_chat_name', fname);
+    cbGateComplete(fname || null, true);
+  };
+
+  window.cbGateSkip = function() { cbGateComplete(null, false); };
+
+  function cbGateComplete(fname, subscribed) {
+    localStorage.setItem('myai_chat_gate', '1');
+    document.getElementById('cb-gate-wrap')?.remove();
+    const inp     = document.getElementById('cb-input');
+    const sendBtn = document.getElementById('cb-send');
+    if (inp)     { inp.disabled = false; inp.placeholder = 'Ask me anything about AI tools…'; }
+    if (sendBtn) { sendBtn.disabled = false; }
+    if (subscribed && fname) {
+      cbBotMsg(`🎉 You're in, **${fname}**! First email lands this Friday — watch your inbox.\n\nNow let's find you some great AI tools! What are you working on? I know 500+ tools across every category. 🚀`);
+    } else if (subscribed) {
+      cbBotMsg(`🎉 Subscribed! First email lands this Friday.\n\nNow — what can I help you find? 500+ AI tools, honest comparisons, 700+ prompts. Just tell me what you need. 🚀`);
+    } else {
+      cbBotMsg(`No worries! I'm still here to help 😊\n\nI know **500+ AI tools**, can compare any two, suggest prompts, and answer any question about this site. What are you working on?`);
+    }
+    setTimeout(() => document.getElementById('cb-input')?.focus(), 150);
   }
 
   /* ══════════════════════════════════════════
