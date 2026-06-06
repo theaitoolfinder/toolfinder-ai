@@ -143,9 +143,22 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .tfm-count-wrap{display:flex;align-items:center;gap:6px;padding:8px 12px;border-left:1px solid var(--border-soft);font-size:12.5px;color:var(--text-dim);white-space:nowrap;flex-shrink:0;background:var(--surface)}
 .tfm-count-wrap b{color:var(--text);font-weight:700}
 .tfm-clear{background:none;border:none;color:var(--primary);font-size:12.5px;font-family:inherit;cursor:pointer;font-weight:600;padding:0;text-decoration:underline}
-/* Flat tool grid (used when filter/sort is active) */
-.tool-flat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding-bottom:32px}
+/* Carousel container (used when filter/sort is active) */
+.tool-flat-grid{display:block;padding-bottom:8px}
 .tool-flat-grid.hidden{display:none}
+/* 3-row carousel */
+.tfm-carousel-group{margin-bottom:4px}
+.tfm-carousel-row{margin-bottom:20px}
+.tfm-carousel-row-label{font-size:11px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;padding-left:2px}
+.tfm-carousel-outer{position:relative}
+.tfm-carousel-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 2px 8px}
+.tfm-carousel-track::-webkit-scrollbar{display:none}
+.tfm-carousel-track .card{flex:0 0 272px;width:272px;scroll-snap-align:start}
+.tfm-carr-btn{position:absolute;top:50%;transform:translateY(-60%);width:34px;height:34px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);color:var(--text-2);font-size:16px;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.10);transition:all .15s;padding:0;font-family:inherit}
+.tfm-carr-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.tfm-carr-btn.prev{left:-17px}
+.tfm-carr-btn.next{right:-17px}
+@media(max-width:700px){.tfm-carr-btn{display:none}}
 /* legacy classes kept for compat */
 .tfm-bar{display:none}
 .tfm-search-wrap{display:none}
@@ -936,6 +949,10 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <div class="lens-note" id="lens-note"></div>
   </section>
   <div class="container tool-flat-grid hidden" id="tool-flat-grid"></div>
+  <div class="container" id="tfm-load-more-wrap" style="display:none;text-align:center;padding:4px 0 36px">
+    <button id="tfm-load-more-btn" onclick="tfmLoadMore()" style="padding:11px 36px;border-radius:10px;border:1.5px solid var(--primary);background:#fff;color:var(--primary);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s">⬇ Load more tools</button>
+    <div id="tfm-load-more-label" style="margin-top:8px;font-size:12.5px;color:var(--text-dim)"></div>
+  </div>
   <div class="container" id="rows"></div>
   <!-- ── Articles Carousel ── -->
   <section class="container art-carousel-section" id="articles-preview">
@@ -2077,14 +2094,78 @@ function tfmGetFilteredTools(){
   else if(tfmSort==='new')idxs.reverse();
   return idxs;
 }
+const TFM_PAGE=24; // 3 rows × 8 cards
+const TFM_ROW_SIZE=8;
+const TFM_ROW_LABELS=['🏆 Top Picks','⭐ More Tools','🔎 Explore More'];
+let tfmShown=TFM_PAGE;
+let tfmAllIdxs=[];
+let tfmGroupCount=0;
 function setTfmCount(n){const el=document.getElementById('tfm-count');if(el)el.textContent=n;}
+function tfmCarouselGroupHTML(groupIdx,idxSlice){
+  // Split idxSlice into up to 3 rows of TFM_ROW_SIZE each
+  const rows=[];
+  for(let r=0;r<3;r++){
+    const start=r*TFM_ROW_SIZE;
+    const rowIdxs=idxSlice.slice(start,start+TFM_ROW_SIZE);
+    if(!rowIdxs.length)break;
+    const trackId='tc-'+groupIdx+'-'+r;
+    const labelIdx=groupIdx===0?r:r; // reuse labels per group
+    const label=groupIdx===0?(TFM_ROW_LABELS[r]||'More Tools'):('Row '+(groupIdx*3+r+1));
+    rows.push(
+      '<div class="tfm-carousel-row">'+
+      '<div class="tfm-carousel-row-label">'+label+'</div>'+
+      '<div class="tfm-carousel-outer">'+
+      '<button class="tfm-carr-btn prev" onclick="tcScroll(this,-1)" aria-label="Previous">&#8249;</button>'+
+      '<div class="tfm-carousel-track" id="'+trackId+'">'+
+        rowIdxs.map(i=>cardHTML(i)).join('')+
+      '</div>'+
+      '<button class="tfm-carr-btn next" onclick="tcScroll(this,1)" aria-label="Next">&#8250;</button>'+
+      '</div>'+
+      '</div>'
+    );
+  }
+  return '<div class="tfm-carousel-group" id="tcg-'+groupIdx+'">'+rows.join('')+'</div>';
+}
+function tcScroll(btn,dir){
+  const outer=btn.closest('.tfm-carousel-outer');
+  const track=outer.querySelector('.tfm-carousel-track');
+  const cardW=284; // 272px + 12px gap
+  track.scrollBy({left:dir*cardW*2,behavior:'smooth'});
+}
+function tfmUpdateLoadMore(){
+  const wrap=document.getElementById('tfm-load-more-wrap');
+  const btn=document.getElementById('tfm-load-more-btn');
+  const lbl=document.getElementById('tfm-load-more-label');
+  if(!wrap)return;
+  const remaining=tfmAllIdxs.length-tfmShown;
+  if(remaining>0){
+    wrap.style.display='';
+    btn.textContent='⬇ Load '+Math.min(remaining,TFM_PAGE)+' more tools';
+    lbl.textContent='Showing '+tfmShown+' of '+tfmAllIdxs.length+' tools';
+  } else {
+    wrap.style.display='none';
+  }
+}
+function tfmLoadMore(){
+  const flatGrid=document.getElementById('tool-flat-grid');
+  const next=tfmAllIdxs.slice(tfmShown,tfmShown+TFM_PAGE);
+  if(!next.length)return;
+  tfmGroupCount++;
+  const tmp=document.createElement('div');
+  tmp.innerHTML=tfmCarouselGroupHTML(tfmGroupCount,next);
+  while(tmp.firstChild)flatGrid.appendChild(tmp.firstChild);
+  tfmShown+=next.length;
+  tfmUpdateLoadMore();
+}
 function renderTfmView(){
   const flatGrid=document.getElementById('tool-flat-grid');
   const rowsEl=document.getElementById('rows');
   const noteEl=document.getElementById('lens-note');
   const clearBtn=document.getElementById('tfm-clear');
+  const loadWrap=document.getElementById('tfm-load-more-wrap');
   if(!tfmHasActiveFilter()){
     flatGrid.classList.add('hidden');
+    if(loadWrap)loadWrap.style.display='none';
     rowsEl.style.display='';
     renderRows();
     setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
@@ -2095,14 +2176,19 @@ function renderTfmView(){
   rowsEl.style.display='none';
   if(noteEl)noteEl.style.display='none';
   flatGrid.classList.remove('hidden');
-  const idxs=tfmGetFilteredTools();
-  setTfmCount(idxs.length);
+  tfmAllIdxs=tfmGetFilteredTools();
+  tfmShown=Math.min(TFM_PAGE,tfmAllIdxs.length);
+  tfmGroupCount=0;
+  setTfmCount(tfmAllIdxs.length);
   if(clearBtn)clearBtn.style.display=tfmHasExplicitFilter()?'':'none';
-  if(!idxs.length){
-    flatGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-dim)"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-size:17px;font-weight:600;margin-bottom:8px">No tools match your filters</div><div style="font-size:14px">Try removing some filters or <button class="tfm-clear" onclick="clearTfmFilters()" style="font-size:inherit">clearing all</button>.</div></div>';
+  if(!tfmAllIdxs.length){
+    flatGrid.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text-dim)"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-size:17px;font-weight:600;margin-bottom:8px">No tools match your filters</div><div style="font-size:14px">Try removing some filters or <button class="tfm-clear" onclick="clearTfmFilters()" style="font-size:inherit">clearing all</button>.</div></div>';
+    if(loadWrap)loadWrap.style.display='none';
     return;
   }
-  flatGrid.innerHTML=idxs.map(i=>cardHTML(i)).join('');
+  flatGrid.innerHTML=tfmCarouselGroupHTML(0,tfmAllIdxs.slice(0,TFM_PAGE));
+  tfmShown=Math.min(TFM_PAGE,tfmAllIdxs.length);
+  tfmUpdateLoadMore();
 }
 function chk(on){return on?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>':'';}
 function buildTfmDDs(){
