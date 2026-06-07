@@ -3134,7 +3134,6 @@ async function submitReview(){
           _st=setInterval(()=>ppSpot(1),6000);
         };
         window.ppSpotGoto=function(idx){
-          const dir=idx>parseInt(el.querySelector('.pp-spot-slide.active')?.[...el.querySelectorAll('.pp-spot-slide')].indexOf(el.querySelector('.pp-spot-slide.active'))||0)?1:-1;
           clearInterval(_st);
           const all=el.querySelectorAll('.pp-spot-slide');
           const dotEls=el.querySelectorAll('.pp-spot-dot');
