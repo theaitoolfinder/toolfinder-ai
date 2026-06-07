@@ -583,7 +583,7 @@ body::before{
 .pp-track{display:flex;align-items:stretch;gap:16px;width:max-content;padding:0 2px}
 /* ── Partner Spotlight — split card layout ── */
 .pp-spotlight-wrap{padding:0 0 28px;width:100%}
-.pp-spotlight{border-radius:20px;overflow:hidden;user-select:none;width:100%;
+.pp-spotlight{position:relative;border-radius:20px;overflow:hidden;user-select:none;width:100%;
   background:#fff;border:1.5px solid var(--border);
   box-shadow:0 8px 40px rgba(26,86,219,.12),0 2px 10px rgba(0,0,0,.06);
   display:grid}
@@ -592,7 +592,7 @@ body::before{
   display:flex;align-items:stretch;width:100%;min-height:300px;}
 .pp-spot-slide.active{opacity:1;pointer-events:auto;z-index:2;}
 /* Left: info panel */
-.pp-spot-left{flex:0 0 420px;max-width:48%;padding:32px 36px;display:flex;flex-direction:column;gap:0;position:relative;
+.pp-spot-left{flex:0 0 420px;max-width:48%;padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:0;position:relative;
   background:linear-gradient(135deg,#f0f4ff 0%,#fff 60%)}
 .pp-spot-left::after{content:'';position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent)}
 .pp-spot-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
@@ -614,7 +614,7 @@ body::before{
 .pp-spot-stat{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--text-2)}
 .pp-spot-stat svg{color:#f59e0b}
 /* CTA row: primary + prompt buttons */
-.pp-spot-ctas{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:auto}
+.pp-spot-ctas{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
 .pp-spot-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:12px;font-size:13px;font-weight:700;color:#fff;text-decoration:none;
   background:linear-gradient(135deg,#f59e0b,#d97706);
   box-shadow:0 6px 20px rgba(217,119,6,.32),inset 0 1px 0 rgba(255,255,255,.18);
@@ -646,13 +646,19 @@ body::before{
 .pp-spot-dot-nav{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s;border:none;padding:0;flex-shrink:0}
 .pp-spot-dot-nav.active{background:var(--primary);width:18px;border-radius:4px}
 @media(max-width:700px){
-  .pp-spot-slide{min-height:unset}
-  .pp-spot-slide.active{flex-direction:column}
-  .pp-spot-left{flex:none;max-width:100%;padding:22px 22px 18px}
+  .pp-spot-slide{min-height:unset;flex-direction:column}
+  .pp-spot-left{flex:none;max-width:100%;padding:20px 20px 16px;gap:10px;justify-content:flex-start}
   .pp-spot-left::after{display:none}
-  .pp-spot-right{min-height:180px}
-  .pp-spot-features{display:none}
-  .pp-spot-stats{display:none}
+  .pp-spot-top{margin-bottom:0}
+  .pp-spot-name{font-size:17px}
+  .pp-spot-desc{display:block;margin:0;font-size:12.5px}
+  .pp-spot-features{margin-bottom:0;gap:4px}
+  .pp-spot-features li{font-size:12px}
+  .pp-spot-stats{margin-bottom:0;gap:10px}
+  .pp-spot-ctas{margin-top:4px;gap:8px}
+  .pp-spot-btn{padding:10px 18px;font-size:12.5px}
+  .pp-spot-prompt-btn{padding:10px 14px;font-size:12px}
+  .pp-spot-right{min-height:200px;flex-shrink:0}
 }
 /* ── Shared card base ── */
 .pp-card{flex:0 0 250px;border-radius:20px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:11px;position:relative;overflow:hidden;
