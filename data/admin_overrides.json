@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T15:40:33.850Z",
+  "updated": "2026-06-07T15:51:33.591Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -24,6 +24,9 @@
         "Solopreneur",
         "Content Creator"
       ]
+    },
+    "309": {
+      "affiliate_url": "https://www.taskade.com/?via=b3q5tf"
     }
   }
 }
