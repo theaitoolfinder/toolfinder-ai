@@ -72,6 +72,14 @@
         "Productivity"
       ],
       "priority": 1
+    },
+    {
+      "name": "Submagic AI",
+      "affiliate_url": "https://submagic.co/?via=benjie11",
+      "categories": [
+        "Video"
+      ],
+      "priority": 1
     }
   ]
 }
