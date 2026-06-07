@@ -11,9 +11,10 @@
 <link rel="shortcut icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>try{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t!=='blue')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 <style>
 :root{
-  --primary:#1a56db;--primary-light:#dbeafe;--primary-dark:#1343b2;
+  --primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--primary-dark:#1343b2;
   --surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;
   --text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;
   --navy:#0d1f33;--navy-light:rgba(26,86,219,.07);--navy-border:rgba(26,86,219,.22);
@@ -21,8 +22,39 @@
   --amber:#d97706;--amber-light:rgba(217,119,6,.08);
   --radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
 }
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--surface-2:#f5f3ff;--border:#ddd6fe;--bg:#f5f3ff}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--surface-2:#ecfdf5;--border:#a7f3d0;--bg:#ecfdf5}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--surface-2:#fffbeb;--border:#fde68a;--bg:#fffbeb}
+[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--surface-2:#fff1f2;--border:#fecdd3;--bg:#fff1f2}
+[data-theme="cyan"]{--primary:#0891b2;--primary-2:#0e7490;--primary-light:#cffafe;--surface-2:#ecfeff;--border:#a5f3fc;--bg:#ecfeff}
+[data-theme="indigo"]{--primary:#4338ca;--primary-2:#3730a3;--primary-light:#e0e7ff;--surface-2:#eef2ff;--border:#c7d2fe;--bg:#eef2ff}
+[data-theme="slate"]{--primary:#475569;--primary-2:#334155;--primary-light:#e2e8f0;--surface-2:#f1f5f9;--border:#cbd5e1;--bg:#f1f5f9}
+[data-theme="lime"]{--primary:#65a30d;--primary-2:#4d7c0f;--primary-light:#d9f99d;--surface-2:#f7fee7;--border:#bef264;--bg:#f7fee7}
+[data-theme="violet"]{--primary:#9333ea;--primary-2:#7e22ce;--primary-light:#f3e8ff;--surface-2:#faf5ff;--border:#e9d5ff;--bg:#faf5ff}
+[data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--primary-light:#ffedd5;--surface-2:#fff7ed;--border:#fed7aa;--bg:#fff7ed}
+[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--surface-2:#f0f9ff;--border:#bae6fd;--bg:#f0f9ff}
+[data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--primary-light:#fce7f3;--surface-2:#fdf2f8;--border:#fbcfe8;--bg:#fdf2f8}
+#nav-theme-wrap{position:relative}
+#nav-theme-btn{padding:6px 11px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:var(--text-2);transition:border-color .15s}
+#nav-theme-btn:hover{border-color:var(--primary);color:var(--primary)}
+#nav-theme-dot{width:12px;height:12px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0;transition:background .25s}
+#theme-panel{position:absolute;top:calc(100% + 10px);right:0;z-index:500;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 16px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14);width:228px;display:none;flex-direction:column;gap:12px}
+#theme-panel.open{display:flex}
+#theme-panel h5{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim,#888)}
+.theme-swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.theme-swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
+.theme-swatch:hover{transform:scale(1.14)}
+.theme-swatch.active{border-color:#1a202c;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--primary)}
+.theme-swatch[data-t="blue"]{background:#1a56db}.theme-swatch[data-t="purple"]{background:#7c3aed}.theme-swatch[data-t="green"]{background:#059669}.theme-swatch[data-t="amber"]{background:#d97706}.theme-swatch[data-t="rose"]{background:#e11d48}.theme-swatch[data-t="cyan"]{background:#0891b2}.theme-swatch[data-t="indigo"]{background:#4338ca}.theme-swatch[data-t="slate"]{background:#475569}.theme-swatch[data-t="lime"]{background:#65a30d}.theme-swatch[data-t="violet"]{background:#9333ea}.theme-swatch[data-t="orange"]{background:#ea580c}.theme-swatch[data-t="sky"]{background:#0284c7}.theme-swatch[data-t="pink"]{background:#db2777}
+#theme-panel-footer{font-size:10.5px;color:var(--text-dim,#888);text-align:center}
+.mob-theme-row{padding:10px 14px 8px;border-top:1px solid var(--border);margin-top:4px}
+.mob-theme-row>span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim,#888);margin-bottom:9px}
+.mob-theme-swatches{display:flex;flex-wrap:wrap;gap:8px}
+.mob-theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s}
+.mob-theme-swatch.active{border-color:#1a202c}
+@media(max-width:768px){#nav-theme-btn{display:none}}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Poppins',sans-serif;background:#f0f6ff;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Poppins',sans-serif;background:var(--bg,#f0f6ff);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font-family:'Poppins',sans-serif;cursor:pointer}
 
@@ -30,7 +62,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer}
 header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;color:var(--text)}
-.brand-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1a56db,#1343b2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-a{padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;color:var(--text-2);transition:background .15s,color .15s}
 .nav-a:hover,.nav-a.active{background:var(--surface-2);color:var(--text)}
@@ -289,7 +321,10 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
       <a href="articles.html" class="nav-a">Articles</a>
       <a href="prompts.html" class="nav-a active">Prompts</a>
       <a href="about.html" class="nav-a">About</a>
-      <a href="index.html#newsletter" class="nav-a">Newsletter</a>
+      <div id="nav-theme-wrap">
+        <button id="nav-theme-btn" onclick="toggleThemePanel(event)"><span id="nav-theme-dot"></span>Theme</button>
+        <div id="theme-panel"><h5>Your Colour Theme</h5><div class="theme-swatches"><div class="theme-swatch" data-t="blue" title="Blue" onclick="applyTheme('blue')"></div><div class="theme-swatch" data-t="purple" title="Purple" onclick="applyTheme('purple')"></div><div class="theme-swatch" data-t="green" title="Green" onclick="applyTheme('green')"></div><div class="theme-swatch" data-t="amber" title="Amber" onclick="applyTheme('amber')"></div><div class="theme-swatch" data-t="rose" title="Rose" onclick="applyTheme('rose')"></div><div class="theme-swatch" data-t="cyan" title="Cyan" onclick="applyTheme('cyan')"></div><div class="theme-swatch" data-t="indigo" title="Indigo" onclick="applyTheme('indigo')"></div><div class="theme-swatch" data-t="slate" title="Slate" onclick="applyTheme('slate')"></div><div class="theme-swatch" data-t="lime" title="Lime" onclick="applyTheme('lime')"></div><div class="theme-swatch" data-t="violet" title="Violet" onclick="applyTheme('violet')"></div><div class="theme-swatch" data-t="orange" title="Orange" onclick="applyTheme('orange')"></div><div class="theme-swatch" data-t="sky" title="Sky" onclick="applyTheme('sky')"></div><div class="theme-swatch" data-t="pink" title="Pink" onclick="applyTheme('pink')"></div></div><div id="theme-panel-footer">Saves automatically ✓</div></div>
+      </div>
       <a href="index.html#newsletter" class="btn-nav-cta">Get Weekly Digest</a>
     </div>
     <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -311,6 +346,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
     <a href="prompts.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
     <a href="about.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
     <a href="index.html#newsletter" onclick="toggleMenu()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+    <div class="mob-theme-row"><span>🎨 Colour Theme</span><div class="mob-theme-swatches"><div class="mob-theme-swatch" data-t="blue" style="background:#1a56db" onclick="applyTheme('blue')"></div><div class="mob-theme-swatch" data-t="purple" style="background:#7c3aed" onclick="applyTheme('purple')"></div><div class="mob-theme-swatch" data-t="green" style="background:#059669" onclick="applyTheme('green')"></div><div class="mob-theme-swatch" data-t="amber" style="background:#d97706" onclick="applyTheme('amber')"></div><div class="mob-theme-swatch" data-t="rose" style="background:#e11d48" onclick="applyTheme('rose')"></div><div class="mob-theme-swatch" data-t="cyan" style="background:#0891b2" onclick="applyTheme('cyan')"></div><div class="mob-theme-swatch" data-t="indigo" style="background:#4338ca" onclick="applyTheme('indigo')"></div><div class="mob-theme-swatch" data-t="slate" style="background:#475569" onclick="applyTheme('slate')"></div><div class="mob-theme-swatch" data-t="lime" style="background:#65a30d" onclick="applyTheme('lime')"></div><div class="mob-theme-swatch" data-t="violet" style="background:#9333ea" onclick="applyTheme('violet')"></div><div class="mob-theme-swatch" data-t="orange" style="background:#ea580c" onclick="applyTheme('orange')"></div><div class="mob-theme-swatch" data-t="sky" style="background:#0284c7" onclick="applyTheme('sky')"></div><div class="mob-theme-swatch" data-t="pink" style="background:#db2777" onclick="applyTheme('pink')"></div></div></div>
   </div>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
@@ -977,5 +1013,19 @@ function trendingModalCopy(idx){
 }
 </script>
 <script src="js/chatbot.js"></script>
+<div id="ath-toast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);z-index:9999;background:#1a202c;color:#fff;border-radius:14px;padding:14px 18px 12px;width:min(320px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.28);font-family:'Poppins',sans-serif;font-size:13px;line-height:1.5;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none"><button onclick="dismissAthToast()" style="float:right;background:none;border:none;color:#ccc;font-size:17px;cursor:pointer;margin-top:-2px;margin-left:8px;line-height:1">×</button><strong style="display:block;font-size:14px;font-weight:700;margin-bottom:4px">💾 Save your colour theme!</strong><span id="ath-toast-msg"></span></div>
+<style>#ath-toast.show{opacity:1!important;transform:translateX(-50%) translateY(0)!important;pointer-events:auto!important}</style>
+<script>
+(function(){
+  var K='myai_theme_v1',_o=false,_a=false;
+  function sync(t){var c={blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',slate:'#475569',lime:'#65a30d',violet:'#9333ea',orange:'#ea580c',sky:'#0284c7',pink:'#db2777'};document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(e){e.classList.toggle('active',e.dataset.t===(t||'blue'));});var d=document.getElementById('nav-theme-dot');if(d)d.style.background=c[t||'blue']||'#1a56db';}
+  window.applyTheme=function(t){var h=document.documentElement;if(!t||t==='blue')h.removeAttribute('data-theme');else h.setAttribute('data-theme',t);try{localStorage.setItem(K,t||'blue');}catch(e){}sync(t||'blue');_o=false;var p=document.getElementById('theme-panel');if(p)p.classList.remove('open');if(!_a){_a=true;showAthToast();}};
+  window.toggleThemePanel=function(e){e&&e.stopPropagation();var p=document.getElementById('theme-panel');_o=!_o;p.classList.toggle('open',_o);};
+  document.addEventListener('click',function(e){if(!_o)return;var b=document.getElementById('nav-theme-btn'),p=document.getElementById('theme-panel');if(p&&!p.contains(e.target)&&e.target!==b&&!b.contains(e.target)){_o=false;p.classList.remove('open');}});
+  window.showAthToast=function(){var ios=/iphone|ipad|ipod/i.test(navigator.userAgent),and=/android/i.test(navigator.userAgent);var msg=ios?'On iPhone: tap Share ↑ → "Add to Home Screen"':and?'On Android: tap ⋮ → "Add to Home Screen"':'Bookmark this page — your colour saves every visit!';var t=document.getElementById('ath-toast');var m=document.getElementById('ath-toast-msg');if(t&&m){m.innerHTML=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},8000);}};
+  window.dismissAthToast=function(){var t=document.getElementById('ath-toast');if(t)t.classList.remove('show');};
+  var s='blue';try{s=localStorage.getItem(K)||'blue';}catch(e){}sync(s);if(s&&s!=='blue')document.documentElement.setAttribute('data-theme',s);
+})();
+</script>
 </body>
 </html>
