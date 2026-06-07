@@ -324,7 +324,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .tool-logo{width:36px;height:36px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:#fff;padding:3px}
 .tool-logo-fallback{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(26,86,219,.22)}
 .tool-section-title{font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.tool-partner-badge{font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.9);border:1.5px solid rgba(245,158,11,.5);border-radius:999px;padding:2px 7px}
+.tool-partner-badge{font-size:11px;font-weight:800;color:#d97706;background:rgba(254,243,199,.9);border:1.5px solid rgba(245,158,11,.5);border-radius:999px;padding:1px 6px;line-height:1.4}
 .partner-tool-section .tool-section-header{background:linear-gradient(135deg,rgba(254,243,199,.35),var(--surface-2));border-left:3px solid rgba(245,158,11,.55)}
 .tool-section-sub{font-size:12px;color:var(--text-dim);margin-top:1px}
 .tool-chevron{margin-left:auto;color:var(--text-dim);transition:transform .25s;font-size:18px}
@@ -1048,7 +1048,7 @@ async function buildPartnerCarousel(){
       role="button" tabindex="0" aria-label="${tool.name} prompts">
       <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${tool.name}" onerror="this.style.display='none'">
       <div class="partner-card-name">${tool.name}</div>
-      ${isPartner?'<span class="tool-partner-badge">✦ Partner</span>':''}
+      ${isPartner?'<span class="tool-partner-badge">✦</span>':''}
       <div class="partner-card-count">${count||3} free prompt${count!==1?'s':''}</div>
     </div>`;
   }).join('');
@@ -1103,7 +1103,7 @@ function selectPartnerTool(slug){
   panel.innerHTML = `
     <div class="partner-expand-head">
       <img class="partner-expand-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
-      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦ Partner</span>':''} — Prompts</span>
+      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦</span>':''} — Prompts</span>
       ${tryBtnHTML}
       <button class="partner-expand-close" onclick="selectPartnerTool('${slug}')" title="Close">✕</button>
     </div>
