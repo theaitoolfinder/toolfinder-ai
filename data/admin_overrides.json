@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T19:57:17.817Z",
+  "updated": "2026-06-07T19:57:21.221Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -34,7 +34,8 @@
       "trending": 9
     },
     "157": {
-      "affiliate_url": "https://simplified.com?fpr=benjie19"
+      "affiliate_url": "https://simplified.com?fpr=benjie19",
+      "trending": 0
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
