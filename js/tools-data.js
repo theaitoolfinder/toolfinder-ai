@@ -639,7 +639,7 @@ window.MYAI_AFF_MAP = {
   "tapcart ai":            "https://tapcart.com",
   "taplio":                "https://taplio.com",
   "taskade":               "https://taskade.com",
-  "taskade ai":            "https://taskade.com",
+  "taskade ai":            "https://www.taskade.com/?via=b3q5tf",
   "tavus":                 "https://tavus.io",
   "teachable":             "https://teachable.com",
   "teachable ai":          "https://teachable.com",
