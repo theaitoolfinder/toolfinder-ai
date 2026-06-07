@@ -110,7 +110,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .mob-nav a{padding:13px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--text-2);display:block;transition:all .15s}
 .mob-nav a:hover{background:var(--surface-2);color:var(--text)}
 .mob-cta{margin-top:10px;background:var(--primary)!important;color:#fff!important;text-align:center;font-weight:600!important;border-radius:999px!important}
-.mob-admin{margin-top:auto!important;color:var(--text-dim)!important;font-size:12px!important;padding:8px 14px!important}
+.mob-admin{color:var(--text-dim)!important;font-size:12px!important;padding:8px 14px!important}
 .mob-overlay{position:fixed;inset:0;background:rgba(15,23,42,.40);z-index:299;display:none}
 .mob-overlay.open{display:block}
 .hero{padding:72px 0 36px;text-align:center;position:relative}
@@ -844,7 +844,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 /* ── Theme Switcher — nav button + dropdown ── */
 #nav-theme-btn{padding:7px 10px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-2);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;position:relative}
 #nav-theme-btn:hover{border-color:var(--primary);color:var(--primary)}
-@media(max-width:768px){#theme-panel{position:fixed!important;top:62px;left:10px;right:10px;width:auto;z-index:600}.mob-theme-row{display:none}}
+@media(max-width:768px){#nav-theme-btn{display:none!important}.nav-login{display:none!important}#theme-panel{position:fixed!important;top:62px!important;left:10px!important;right:10px!important;width:auto!important;z-index:600!important}.mob-theme-row{display:none}}
 #nav-theme-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0;transition:background .25s}
 /* ── Hue Wheel ── */
 .hue-ring-wrap{position:relative;width:116px;height:116px;margin:6px auto 10px;cursor:crosshair;user-select:none;-webkit-user-select:none;flex-shrink:0}
@@ -1033,40 +1033,11 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <a href="articles.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
     <a href="prompts.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
     <a href="about.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
-    <a href="#newsletter" onclick="toggleMenu()" class="mob-cta" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
     <a href="#compare" onclick="toggleMenu();document.getElementById('compare').scrollIntoView({behavior:'smooth'})" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare Tools</a>
+    <button onclick="toggleMenu();setTimeout(function(){toggleThemePanel()},50)" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--text-2);text-align:left;padding:13px 14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:10px;border-radius:10px;width:100%;transition:all .15s" onmouseenter="this.style.background='var(--surface-2)'" onmouseleave="this.style.background='none'"><span id="mob-theme-dot-btn" style="width:14px;height:14px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0"></span> Colour Theme</button>
+    <button onclick="toggleMenu();handleNavLogin()" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--text-2);text-align:left;padding:13px 14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:10px;border-radius:10px;width:100%;transition:all .15s" onmouseenter="this.style.background='var(--surface-2)'" onmouseleave="this.style.background='none'" id="mob-login-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> Log In</button>
+    <a href="#newsletter" onclick="toggleMenu()" class="mob-cta" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
     <a href="admin.html" class="mob-admin" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Admin</a>
-    <button onclick="toggleMenu();handleNavLogin()" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--primary);text-align:left;padding:13px 14px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:10px" id="mob-login-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> Log In</button>
-    <!-- Mobile theme swatches -->
-    <div class="mob-theme-row">
-      <span>🎨 Colour Theme</span>
-      <div class="mob-theme-swatches-wrap">
-      <div id="mob-theme-gate">
-        <span class="mob-gate-lbl">🔒 Subscribers only</span>
-        <button class="mob-gate-btn" onclick="showThemeGateSubscribe()">Subscribe Free →</button>
-      </div>
-      <div class="mob-theme-swatches" id="mob-swatches">
-        <div class="mob-theme-swatch" data-t="blue"   title="Blue"   style="background:#93c5fd" onclick="applyTheme('blue')"></div>
-        <div class="mob-theme-swatch" data-t="purple" title="Purple" style="background:#d8b4fe" onclick="applyTheme('purple')"></div>
-        <div class="mob-theme-swatch" data-t="green"  title="Green"  style="background:#86efac" onclick="applyTheme('green')"></div>
-        <div class="mob-theme-swatch" data-t="amber"  title="Amber"  style="background:#fcd34d" onclick="applyTheme('amber')"></div>
-        <div class="mob-theme-swatch" data-t="rose"   title="Rose"   style="background:#fda4af" onclick="applyTheme('rose')"></div>
-        <div class="mob-theme-swatch" data-t="cyan"   title="Cyan"   style="background:#67e8f9" onclick="applyTheme('cyan')"></div>
-        <div class="mob-theme-swatch" data-t="indigo" title="Indigo" style="background:#a5b4fc" onclick="applyTheme('indigo')"></div>
-        <div class="mob-theme-swatch" data-t="slate"  title="Slate"  style="background:#94a3b8" onclick="applyTheme('slate')"></div>
-        <div class="mob-theme-swatch" data-t="lime"   title="Lime"   style="background:#bef264" onclick="applyTheme('lime')"></div>
-        <div class="mob-theme-swatch" data-t="violet" title="Violet" style="background:#c4b5fd" onclick="applyTheme('violet')"></div>
-        <div class="mob-theme-swatch" data-t="orange" title="Orange" style="background:#fdba74" onclick="applyTheme('orange')"></div>
-        <div class="mob-theme-swatch" data-t="sky"    title="Sky"    style="background:#7dd3fc" onclick="applyTheme('sky')"></div>
-        <div class="mob-theme-swatch" data-t="pink"    title="Pink"    style="background:#f9a8d4" onclick="applyTheme('pink')"></div>
-        <div class="mob-theme-swatch" data-t="teal"    title="Teal"    style="background:#5eead4" onclick="applyTheme('teal')"></div>
-        <div class="mob-theme-swatch" data-t="fuchsia" title="Fuchsia" style="background:#f0abfc" onclick="applyTheme('fuchsia')"></div>
-        <div class="mob-theme-swatch" data-t="red"     title="Red"     style="background:#fca5a5" onclick="applyTheme('red')"></div>
-        <div class="mob-theme-swatch" data-t="gold"    title="Gold"    style="background:#fde047" onclick="applyTheme('gold')"></div>
-        <div class="mob-theme-swatch" data-t="brown"   title="Brown"   style="background:#f5c68a" onclick="applyTheme('brown')"></div>
-      </div>
-      </div><!-- /mob-theme-swatches-wrap -->
-    </div>
   </div>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
@@ -1365,7 +1336,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <button class="pop-btn" onclick="popSubscribe()">Subscribe Free &rarr;</button>
     <div class="pop-msg" id="pop-msg"></div>
     <span class="pop-dismiss" onclick="dismissSubPopup()">No thanks, I'll miss out</span>
-    <p class="pop-privacy">No spam. Unsubscribe any time.</p>
+    <p class="pop-privacy">No spam. Unsubscribe any time. &nbsp;·&nbsp; <button onclick="dismissSubPopup();handleNavLogin()" style="background:none;border:none;font-family:inherit;font-size:inherit;color:var(--primary);cursor:pointer;padding:0;font-weight:600;text-decoration:underline">Already subscribed? Log In</button></p>
   </div>
 </div>
 
