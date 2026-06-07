@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Sample Prompt Templates – MyAI ToolsFinder</title>
 <meta name="description" content="500+ powerful AI prompt templates for every tool — 3 free prompts per category plus 30 exclusive subscriber prompts with beginner, intermediate, and advanced levels.">
 <link rel="canonical" href="https://myaitoolsfinder.com/prompts.html">
@@ -324,7 +327,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .tool-logo{width:36px;height:36px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:#fff;padding:3px}
 .tool-logo-fallback{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(26,86,219,.22)}
 .tool-section-title{font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.tool-partner-badge{font-size:11px;font-weight:800;color:#d97706;background:rgba(254,243,199,.9);border:1.5px solid rgba(245,158,11,.5);border-radius:999px;padding:1px 6px;line-height:1.4}
+.tool-partner-badge{display:none!important}
 .partner-tool-section .tool-section-header{background:linear-gradient(135deg,rgba(254,243,199,.35),var(--surface-2));border-left:3px solid rgba(245,158,11,.55)}
 .tool-section-sub{font-size:12px;color:var(--text-dim);margin-top:1px}
 .tool-chevron{margin-left:auto;color:var(--text-dim);transition:transform .25s;font-size:18px}
@@ -538,8 +541,8 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 </div>
 
 <!-- ═══ SCRIPTS ═══ -->
-<script src="js/prompts-data.js"></script>
-<script src="js/tools-data.js"></script>
+<script src="js/prompts-data.js?v=20260607"></script>
+<script src="js/tools-data.js?v=20260607"></script>
 <script>
 /* ── Top tools per prompt category ── */
 const CATEGORY_TOOLS = {
@@ -995,12 +998,11 @@ function domainFromUrl(url){
   try{ return new URL(url).hostname.replace(/^www\./,''); }catch(e){ return ''; }
 }
 
-/* Resolve affiliate URL: data attr → MYAI_AFF_MAP → domain fallback */
+/* Resolve affiliate URL: data attr → MYAI_AFF_MAP only — never falls back to plain domain */
 function getPartnerAffUrl(slug, domain, knownAffUrl){
   if(knownAffUrl && knownAffUrl.trim()) return knownAffUrl.trim();
   const m = window.MYAI_AFF_MAP || {};
-  return m[slug] || m[slug.replace(/-/g,' ')] || m[domain] || m[(domain||'').replace(/\..+/,'')]
-    || (domain ? 'https://'+domain : null);
+  return m[slug] || m[slug.replace(/-/g,' ')] || m[domain] || m[(domain||'').replace(/\..+/,'')] || null;
 }
 
 /* Build carousel from data/affiliate_tools.json (source of truth) */
@@ -1030,15 +1032,14 @@ async function buildPartnerCarousel(){
 
   const cards = affTools.map(tool => {
     const slug      = toSlug(tool.name);
-    const isPartner = PARTNER_SLUGS_LIST.includes(slug);
     const hasCustom = !!overrides[slug];
-    const domain    = domainFromUrl(tool.affiliate_url) || (overrides[slug] && overrides[slug].domain) || '';
+    const domain    = (overrides[slug] && overrides[slug].domain) || domainFromUrl(tool.affiliate_url) || '';
     const cat       = (tool.categories && tool.categories[0]) || '';
     const count     = hasCustom
       ? (overrides[slug].free||[]).length
       : Math.min(((window.PROMPT_CATEGORY_BANK&&cat)?((window.PROMPT_CATEGORY_BANK[cat]||{}).free||[]).length:0), 5);
 
-    return `<div class="partner-card${isPartner?' is-partner':''}"
+    return `<div class="partner-card is-partner"
       data-slug="${slug}"
       data-name="${tool.name}"
       data-domain="${domain}"
@@ -1048,7 +1049,6 @@ async function buildPartnerCarousel(){
       role="button" tabindex="0" aria-label="${tool.name} prompts">
       <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${tool.name}" onerror="this.style.display='none'">
       <div class="partner-card-name">${tool.name}</div>
-      ${isPartner?'<span class="tool-partner-badge">✦</span>':''}
       <div class="partner-card-count">${count||3} free prompt${count!==1?'s':''}</div>
     </div>`;
   }).join('');
@@ -1087,8 +1087,6 @@ function selectPartnerTool(slug){
   const domain    = card.dataset.domain || '';
   const cat       = card.dataset.cat || '';
   const affUrl    = getPartnerAffUrl(slug, domain, card.dataset.aff);
-  const isPartner = PARTNER_SLUGS_LIST.includes(slug);
-
   // Prompts: custom overrides first, then category fallback (up to 5)
   let prompts;
   if(overrides[slug]){
@@ -1103,7 +1101,7 @@ function selectPartnerTool(slug){
   panel.innerHTML = `
     <div class="partner-expand-head">
       <img class="partner-expand-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
-      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦</span>':''} — Prompts</span>
+      <span class="partner-expand-title">${name} — Prompts</span>
       ${tryBtnHTML}
       <button class="partner-expand-close" onclick="selectPartnerTool('${slug}')" title="Close">✕</button>
     </div>
