@@ -37,10 +37,26 @@
 <script type="application/ld+json" id="ldjson"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Instant theme load — runs before CSS paints to prevent flash of unstyled colour -->
+<script>try{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t!=='blue')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 <style>
-:root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--accent-2:#fbbf24;--ok:#16a34a;--star:#f59e0b;--danger:#ef4444;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;}
+:root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--accent-2:#fbbf24;--ok:#16a34a;--star:#f59e0b;--danger:#ef4444;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--brain-clr:rgba(26,86,219,.10);--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
+
+/* ── Colour Themes ───────────────────────────────────── */
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--surface-2:#f5f3ff;--border:#ddd6fe;--border-soft:#ede9fe;--bg:#f5f3ff;--shadow:0 2px 12px rgba(124,58,237,.07);--shadow-lg:0 8px 28px rgba(124,58,237,.13);--brain-clr:rgba(124,58,237,.11);--hero-grad:linear-gradient(160deg,#ede9fe 0%,#f5f3ff 45%,#fdf4ff 100%)}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--surface-2:#ecfdf5;--border:#a7f3d0;--border-soft:#d1fae5;--bg:#ecfdf5;--shadow:0 2px 12px rgba(5,150,105,.07);--shadow-lg:0 8px 28px rgba(5,150,105,.13);--brain-clr:rgba(5,150,105,.11);--hero-grad:linear-gradient(160deg,#d1fae5 0%,#ecfdf5 45%,#f0fdf4 100%)}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--surface-2:#fffbeb;--border:#fde68a;--border-soft:#fef3c7;--bg:#fffbeb;--shadow:0 2px 12px rgba(217,119,6,.07);--shadow-lg:0 8px 28px rgba(217,119,6,.13);--brain-clr:rgba(217,119,6,.11);--hero-grad:linear-gradient(160deg,#fef3c7 0%,#fffbeb 45%,#fff7ed 100%)}
+[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--surface-2:#fff1f2;--border:#fecdd3;--border-soft:#ffe4e6;--bg:#fff1f2;--shadow:0 2px 12px rgba(225,29,72,.07);--shadow-lg:0 8px 28px rgba(225,29,72,.13);--brain-clr:rgba(225,29,72,.11);--hero-grad:linear-gradient(160deg,#ffe4e6 0%,#fff1f2 45%,#fff0f3 100%)}
+[data-theme="cyan"]{--primary:#0891b2;--primary-2:#0e7490;--primary-light:#cffafe;--surface-2:#ecfeff;--border:#a5f3fc;--border-soft:#cffafe;--bg:#ecfeff;--shadow:0 2px 12px rgba(8,145,178,.07);--shadow-lg:0 8px 28px rgba(8,145,178,.13);--brain-clr:rgba(8,145,178,.11);--hero-grad:linear-gradient(160deg,#cffafe 0%,#ecfeff 45%,#f0f9ff 100%)}
+[data-theme="indigo"]{--primary:#4338ca;--primary-2:#3730a3;--primary-light:#e0e7ff;--surface-2:#eef2ff;--border:#c7d2fe;--border-soft:#e0e7ff;--bg:#eef2ff;--shadow:0 2px 12px rgba(67,56,202,.07);--shadow-lg:0 8px 28px rgba(67,56,202,.13);--brain-clr:rgba(67,56,202,.11);--hero-grad:linear-gradient(160deg,#e0e7ff 0%,#eef2ff 45%,#ede9fe 100%)}
+[data-theme="slate"]{--primary:#475569;--primary-2:#334155;--primary-light:#e2e8f0;--surface-2:#f1f5f9;--border:#cbd5e1;--border-soft:#e2e8f0;--bg:#f1f5f9;--shadow:0 2px 12px rgba(71,85,105,.07);--shadow-lg:0 8px 28px rgba(71,85,105,.13);--brain-clr:rgba(71,85,105,.11);--hero-grad:linear-gradient(160deg,#e2e8f0 0%,#f1f5f9 45%,#f8fafc 100%)}
+[data-theme="lime"]{--primary:#65a30d;--primary-2:#4d7c0f;--primary-light:#d9f99d;--surface-2:#f7fee7;--border:#bef264;--border-soft:#d9f99d;--bg:#f7fee7;--shadow:0 2px 12px rgba(101,163,13,.07);--shadow-lg:0 8px 28px rgba(101,163,13,.13);--brain-clr:rgba(101,163,13,.11);--hero-grad:linear-gradient(160deg,#d9f99d 0%,#f7fee7 45%,#f0fdf4 100%)}
+[data-theme="violet"]{--primary:#9333ea;--primary-2:#7e22ce;--primary-light:#f3e8ff;--surface-2:#faf5ff;--border:#e9d5ff;--border-soft:#f3e8ff;--bg:#faf5ff;--shadow:0 2px 12px rgba(147,51,234,.07);--shadow-lg:0 8px 28px rgba(147,51,234,.13);--brain-clr:rgba(147,51,234,.11);--hero-grad:linear-gradient(160deg,#f3e8ff 0%,#faf5ff 45%,#fdf4ff 100%)}
+[data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--primary-light:#ffedd5;--surface-2:#fff7ed;--border:#fed7aa;--border-soft:#ffedd5;--bg:#fff7ed;--shadow:0 2px 12px rgba(234,88,12,.07);--shadow-lg:0 8px 28px rgba(234,88,12,.13);--brain-clr:rgba(234,88,12,.11);--hero-grad:linear-gradient(160deg,#ffedd5 0%,#fff7ed 45%,#fffbeb 100%)}
+[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--surface-2:#f0f9ff;--border:#bae6fd;--border-soft:#e0f2fe;--bg:#f0f9ff;--shadow:0 2px 12px rgba(2,132,199,.07);--shadow-lg:0 8px 28px rgba(2,132,199,.13);--brain-clr:rgba(2,132,199,.11);--hero-grad:linear-gradient(160deg,#e0f2fe 0%,#f0f9ff 45%,#ecfeff 100%)}
+[data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--primary-light:#fce7f3;--surface-2:#fdf2f8;--border:#fbcfe8;--border-soft:#fce7f3;--bg:#fdf2f8;--shadow:0 2px 12px rgba(219,39,119,.07);--shadow-lg:0 8px 28px rgba(219,39,119,.13);--brain-clr:rgba(219,39,119,.11);--hero-grad:linear-gradient(160deg,#fce7f3 0%,#fdf2f8 45%,#fff1f2 100%)}
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;background:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html,body{margin:0;padding:0;background:var(--hero-grad);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 html{overflow-x:hidden}body{-webkit-overflow-scrolling:touch}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;touch-action:manipulation}.container{max-width:1180px;margin:0 auto;padding:0 20px}
 .disclosure{background:rgba(26,86,219,.06);border-bottom:1px solid rgba(26,86,219,.12);color:var(--text-dim);font-size:11px;text-align:center;padding:5px 16px}
 .disclosure a{color:var(--primary);text-decoration:underline;font-weight:500}
@@ -789,6 +805,44 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
   #sub-popup{transition:opacity .15s ease!important;transform:none!important}
   #sub-popup-overlay.show #sub-popup{transform:none!important}
 }
+
+/* ── Brain Circuit SVG Background ── */
+.hero-brain{position:absolute;top:50%;left:50%;transform:translate(-50%,-54%);width:min(540px,90vw);height:auto;pointer-events:none;z-index:0;opacity:.55;user-select:none}
+.hero-brain path,.hero-brain circle,.hero-brain line,.hero-brain polyline{stroke:var(--brain-clr);fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hero-brain .node{fill:var(--brain-clr);stroke:none}
+.hero>*{position:relative;z-index:1}
+
+/* ── Theme Switcher Widget ── */
+#theme-fab{position:fixed;bottom:88px;right:18px;z-index:290;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.12);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .18s,box-shadow .18s;outline:none}
+#theme-fab:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(0,0,0,.18)}
+#theme-panel{position:fixed;bottom:140px;right:18px;z-index:291;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 16px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14);width:220px;display:none;flex-direction:column;gap:12px}
+#theme-panel.open{display:flex}
+#theme-panel h5{margin:0;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim)}
+.theme-swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.theme-swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s;position:relative}
+.theme-swatch:hover{transform:scale(1.15)}
+.theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--surface)}
+.theme-swatch[data-t="blue"]{background:#1a56db}
+.theme-swatch[data-t="purple"]{background:#7c3aed}
+.theme-swatch[data-t="green"]{background:#059669}
+.theme-swatch[data-t="amber"]{background:#d97706}
+.theme-swatch[data-t="rose"]{background:#e11d48}
+.theme-swatch[data-t="cyan"]{background:#0891b2}
+.theme-swatch[data-t="indigo"]{background:#4338ca}
+.theme-swatch[data-t="slate"]{background:#475569}
+.theme-swatch[data-t="lime"]{background:#65a30d}
+.theme-swatch[data-t="violet"]{background:#9333ea}
+.theme-swatch[data-t="orange"]{background:#ea580c}
+.theme-swatch[data-t="sky"]{background:#0284c7}
+.theme-swatch[data-t="pink"]{background:#db2777}
+#theme-panel-footer{font-size:10.5px;color:var(--text-dim);text-align:center;line-height:1.4}
+
+/* ── Add to Home Screen Toast ── */
+#ath-toast{position:fixed;bottom:160px;left:50%;transform:translateX(-50%) translateY(20px);z-index:400;background:#1a202c;color:#fff;border-radius:14px;padding:14px 18px 12px;width:min(320px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.28);font-size:13px;line-height:1.5;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+#ath-toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+#ath-toast strong{display:block;font-size:14px;font-weight:700;margin-bottom:4px}
+#ath-toast-close{float:right;background:none;border:none;color:#ccc;font-size:17px;cursor:pointer;margin-top:-2px;margin-left:8px;line-height:1}
+#ath-toast em{font-style:normal;color:#93c5fd}
 </style>
 <script type="application/ld+json">
 {
@@ -875,6 +929,68 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 <main>
   <section class="hero container">
+    <!-- Brain circuit board SVG background — static, no JS, no animation -->
+    <svg class="hero-brain" viewBox="0 0 540 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <!-- Left hemisphere circuit lines -->
+      <path d="M120,240 Q90,200 100,160 Q110,120 140,100 Q170,80 200,90 Q220,96 230,110" stroke-width="1.5"/>
+      <path d="M230,110 Q240,124 238,140 Q236,158 220,168 Q204,178 190,172 Q174,166 168,152 Q162,136 170,122 Q178,108 194,106" stroke-width="1.5"/>
+      <path d="M120,240 Q108,260 112,290 Q116,320 136,340 Q158,360 184,356 Q210,352 222,332 Q234,312 228,290 Q222,268 206,258 Q188,248 170,254" stroke-width="1.5"/>
+      <path d="M170,254 Q154,260 148,274 Q142,290 150,304 Q158,318 174,320 Q190,322 198,308 Q206,294 198,280 Q190,266 176,264" stroke-width="1.5"/>
+      <!-- Right hemisphere -->
+      <path d="M420,240 Q450,200 440,160 Q430,120 400,100 Q370,80 340,90 Q320,96 310,110" stroke-width="1.5"/>
+      <path d="M310,110 Q300,124 302,140 Q304,158 320,168 Q336,178 350,172 Q366,166 372,152 Q378,136 370,122 Q362,108 346,106" stroke-width="1.5"/>
+      <path d="M420,240 Q432,260 428,290 Q424,320 404,340 Q382,360 356,356 Q330,352 318,332 Q306,312 312,290 Q318,268 334,258 Q352,248 370,254" stroke-width="1.5"/>
+      <path d="M370,254 Q386,260 392,274 Q398,290 390,304 Q382,318 366,320 Q350,322 342,308 Q334,294 342,280 Q350,266 364,264" stroke-width="1.5"/>
+      <!-- Corpus callosum — center bridge -->
+      <path d="M230,220 Q240,214 260,212 Q280,210 300,212 Q320,214 310,220" stroke-width="1.5"/>
+      <path d="M228,240 Q240,232 270,230 Q300,228 312,240" stroke-width="1.5"/>
+      <!-- Vertical connectors left -->
+      <line x1="140" y1="100" x2="140" y2="76" stroke-width="1.2"/><line x1="140" y1="76" x2="160" y2="76" stroke-width="1.2"/><line x1="160" y1="76" x2="160" y2="60" stroke-width="1.2"/>
+      <line x1="200" y1="90" x2="200" y2="66" stroke-width="1.2"/><line x1="200" y1="66" x2="230" y2="66" stroke-width="1.2"/>
+      <line x1="100" y1="160" x2="76" y2="160" stroke-width="1.2"/><line x1="76" y1="160" x2="76" y2="200" stroke-width="1.2"/>
+      <line x1="120" y1="240" x2="92" y2="240" stroke-width="1.2"/><line x1="92" y1="240" x2="92" y2="270" stroke-width="1.2"/>
+      <line x1="136" y1="340" x2="120" y2="340" stroke-width="1.2"/><line x1="120" y1="340" x2="120" y2="370" stroke-width="1.2"/><line x1="120" y1="370" x2="148" y2="370" stroke-width="1.2"/>
+      <line x1="184" y1="356" x2="184" y2="390" stroke-width="1.2"/><line x1="184" y1="390" x2="220" y2="390" stroke-width="1.2"/>
+      <!-- Vertical connectors right -->
+      <line x1="400" y1="100" x2="400" y2="76" stroke-width="1.2"/><line x1="400" y1="76" x2="380" y2="76" stroke-width="1.2"/><line x1="380" y1="76" x2="380" y2="60" stroke-width="1.2"/>
+      <line x1="340" y1="90" x2="340" y2="66" stroke-width="1.2"/><line x1="340" y1="66" x2="310" y2="66" stroke-width="1.2"/>
+      <line x1="440" y1="160" x2="464" y2="160" stroke-width="1.2"/><line x1="464" y1="160" x2="464" y2="200" stroke-width="1.2"/>
+      <line x1="420" y1="240" x2="448" y2="240" stroke-width="1.2"/><line x1="448" y1="240" x2="448" y2="270" stroke-width="1.2"/>
+      <line x1="404" y1="340" x2="420" y2="340" stroke-width="1.2"/><line x1="420" y1="340" x2="420" y2="370" stroke-width="1.2"/><line x1="420" y1="370" x2="392" y2="370" stroke-width="1.2"/>
+      <line x1="356" y1="356" x2="356" y2="390" stroke-width="1.2"/><line x1="356" y1="390" x2="320" y2="390" stroke-width="1.2"/>
+      <!-- Center bottom connector -->
+      <line x1="270" y1="390" x2="270" y2="420" stroke-width="1.2"/><line x1="240" y1="420" x2="300" y2="420" stroke-width="1.2"/>
+      <!-- Internal circuit cross-hatch left -->
+      <line x1="150" y1="150" x2="180" y2="150" stroke-width="1"/><line x1="180" y1="150" x2="180" y2="190" stroke-width="1"/><line x1="180" y1="190" x2="150" y2="190" stroke-width="1"/><line x1="150" y1="190" x2="150" y2="150" stroke-width="1"/>
+      <line x1="150" y1="280" x2="180" y2="280" stroke-width="1"/><line x1="180" y1="280" x2="180" y2="320" stroke-width="1"/><line x1="180" y1="320" x2="150" y2="320" stroke-width="1"/><line x1="150" y1="320" x2="150" y2="280" stroke-width="1"/>
+      <!-- Internal circuit cross-hatch right -->
+      <line x1="360" y1="150" x2="390" y2="150" stroke-width="1"/><line x1="390" y1="150" x2="390" y2="190" stroke-width="1"/><line x1="390" y1="190" x2="360" y2="190" stroke-width="1"/><line x1="360" y1="190" x2="360" y2="150" stroke-width="1"/>
+      <line x1="360" y1="280" x2="390" y2="280" stroke-width="1"/><line x1="390" y1="280" x2="390" y2="320" stroke-width="1"/><line x1="390" y1="320" x2="360" y2="320" stroke-width="1"/><line x1="360" y1="320" x2="360" y2="280" stroke-width="1"/>
+      <!-- Nodes — circuit junction dots -->
+      <circle class="node" cx="140" cy="100" r="3.5"/><circle class="node" cx="200" cy="90" r="3.5"/><circle class="node" cx="230" cy="110" r="3"/>
+      <circle class="node" cx="100" cy="160" r="3.5"/><circle class="node" cx="120" cy="240" r="3.5"/><circle class="node" cx="136" cy="340" r="3.5"/>
+      <circle class="node" cx="184" cy="356" r="3.5"/><circle class="node" cx="228" cy="290" r="3"/>
+      <circle class="node" cx="170" cy="254" r="3"/><circle class="node" cx="174" cy="320" r="3"/>
+      <circle class="node" cx="400" cy="100" r="3.5"/><circle class="node" cx="340" cy="90" r="3.5"/><circle class="node" cx="310" cy="110" r="3"/>
+      <circle class="node" cx="440" cy="160" r="3.5"/><circle class="node" cx="420" cy="240" r="3.5"/><circle class="node" cx="404" cy="340" r="3.5"/>
+      <circle class="node" cx="356" cy="356" r="3.5"/><circle class="node" cx="312" cy="290" r="3"/>
+      <circle class="node" cx="370" cy="254" r="3"/><circle class="node" cx="366" cy="320" r="3"/>
+      <circle class="node" cx="270" cy="230" r="4"/><circle class="node" cx="270" cy="212" r="3"/>
+      <circle class="node" cx="160" cy="76" r="2.5"/><circle class="node" cx="76" cy="160" r="2.5"/><circle class="node" cx="92" cy="240" r="2.5"/>
+      <circle class="node" cx="120" cy="370" r="2.5"/><circle class="node" cx="184" cy="390" r="2.5"/>
+      <circle class="node" cx="380" cy="76" r="2.5"/><circle class="node" cx="464" cy="160" r="2.5"/><circle class="node" cx="448" cy="240" r="2.5"/>
+      <circle class="node" cx="420" cy="370" r="2.5"/><circle class="node" cx="356" cy="390" r="2.5"/>
+      <circle class="node" cx="270" cy="420" r="3"/><circle class="node" cx="240" cy="420" r="2.5"/><circle class="node" cx="300" cy="420" r="2.5"/>
+      <!-- Tiny box connectors -->
+      <rect x="146" y="146" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="176" y="186" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="146" y="316" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="176" y="276" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="356" y="146" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="386" y="186" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="356" y="316" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+      <rect x="386" y="276" width="8" height="8" rx="1.5" class="node" opacity=".7"/>
+    </svg>
     <div class="eyebrow">AI Tools Directory &middot; 500+ Tools &middot; Curated Weekly</div>
     <h1>Find the AI tools that <em>fit your work.</em></h1>
     <p>Skip the noise. Browse by your job, by the problem you need to solve, or by what&rsquo;s trending &mdash; then click straight through to the best deal.</p>
@@ -4551,6 +4667,115 @@ async function popSubscribe(){
     if(!document.hidden) requestAnimationFrame(drawFrame);
   });
   requestAnimationFrame(drawFrame);
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     THEME SWITCHER WIDGET
+═══════════════════════════════════════════════════════ -->
+<!-- Floating palette button -->
+<button id="theme-fab" aria-label="Change color theme" onclick="toggleThemePanel()">🎨</button>
+
+<!-- Theme panel -->
+<div id="theme-panel" role="dialog" aria-label="Choose your color theme">
+  <h5>Your Colour Theme</h5>
+  <div class="theme-swatches">
+    <div class="theme-swatch" data-t="blue"   title="Blue (Default)" onclick="applyTheme('blue')"></div>
+    <div class="theme-swatch" data-t="purple" title="Purple"          onclick="applyTheme('purple')"></div>
+    <div class="theme-swatch" data-t="green"  title="Green"           onclick="applyTheme('green')"></div>
+    <div class="theme-swatch" data-t="amber"  title="Amber"           onclick="applyTheme('amber')"></div>
+    <div class="theme-swatch" data-t="rose"   title="Rose"            onclick="applyTheme('rose')"></div>
+    <div class="theme-swatch" data-t="cyan"   title="Cyan"            onclick="applyTheme('cyan')"></div>
+    <div class="theme-swatch" data-t="indigo" title="Indigo"          onclick="applyTheme('indigo')"></div>
+    <div class="theme-swatch" data-t="slate"  title="Slate"           onclick="applyTheme('slate')"></div>
+    <div class="theme-swatch" data-t="lime"   title="Lime"            onclick="applyTheme('lime')"></div>
+    <div class="theme-swatch" data-t="violet" title="Violet"          onclick="applyTheme('violet')"></div>
+    <div class="theme-swatch" data-t="orange" title="Orange"          onclick="applyTheme('orange')"></div>
+    <div class="theme-swatch" data-t="sky"    title="Sky"             onclick="applyTheme('sky')"></div>
+    <div class="theme-swatch" data-t="pink"   title="Pink"            onclick="applyTheme('pink')"></div>
+  </div>
+  <div id="theme-panel-footer">Your choice saves automatically ✓</div>
+</div>
+
+<!-- Add to Home Screen Toast -->
+<div id="ath-toast" role="status" aria-live="polite">
+  <button id="ath-toast-close" onclick="dismissAthToast()" aria-label="Close">×</button>
+  <strong>💾 Save your colour theme!</strong>
+  <span id="ath-toast-msg"></span>
+</div>
+
+<script>
+// ── Theme Switcher ──────────────────────────────────────
+(function(){
+  var STORAGE_KEY = 'myai_theme_v1';
+  var _panelOpen  = false;
+  var _athShown   = false;
+
+  // Sync swatch active state on load
+  function syncSwatches(t){
+    document.querySelectorAll('.theme-swatch').forEach(function(el){
+      el.classList.toggle('active', el.dataset.t === (t||'blue'));
+    });
+  }
+
+  // Apply theme globally
+  window.applyTheme = function(t){
+    var html = document.documentElement;
+    if(!t || t==='blue'){
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', t);
+    }
+    try{ localStorage.setItem(STORAGE_KEY, t||'blue'); }catch(e){}
+    syncSwatches(t||'blue');
+    // Show ATH toast once per session
+    if(!_athShown){ _athShown=true; showAthToast(); }
+  };
+
+  window.toggleThemePanel = function(){
+    var panel = document.getElementById('theme-panel');
+    _panelOpen = !_panelOpen;
+    panel.classList.toggle('open', _panelOpen);
+  };
+
+  // Close panel when clicking outside
+  document.addEventListener('click', function(e){
+    if(_panelOpen && !document.getElementById('theme-panel').contains(e.target) && e.target.id!=='theme-fab'){
+      _panelOpen = false;
+      document.getElementById('theme-panel').classList.remove('open');
+    }
+  });
+
+  // ATH toast
+  window.showAthToast = function(){
+    var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    var isAndroid = /android/i.test(navigator.userAgent);
+    var msg = '';
+    if(isIOS){
+      msg = 'On iPhone/iPad: tap the <em>Share ↑</em> button → <em>"Add to Home Screen"</em> — your colour scheme will load every visit!';
+    } else if(isAndroid){
+      msg = 'On Android: tap the <em>⋮ menu</em> → <em>"Add to Home Screen"</em> — your colour scheme will load every visit!';
+    } else {
+      msg = 'Bookmark this page or add it to your home screen — your colour scheme is saved and will load every visit!';
+    }
+    var el = document.getElementById('ath-toast');
+    document.getElementById('ath-toast-msg').innerHTML = msg;
+    el.classList.add('show');
+    // Auto-dismiss after 8s
+    setTimeout(function(){ el.classList.remove('show'); }, 8000);
+  };
+
+  window.dismissAthToast = function(){
+    document.getElementById('ath-toast').classList.remove('show');
+  };
+
+  // Init on load
+  var saved = 'blue';
+  try{ saved = localStorage.getItem(STORAGE_KEY)||'blue'; }catch(e){}
+  syncSwatches(saved);
+  if(saved && saved!=='blue') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
 })();
 </script>
 </body>
