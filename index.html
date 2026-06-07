@@ -4555,23 +4555,14 @@ async function popSubscribe(){
     drawFace(t);
 
     // Mobile: 10fps — Desktop: 20fps
-    _rafId = setTimeout(()=>{ if(!document.hidden) requestAnimationFrame(drawFrame); }, isMobile ? 100 : 50);
+    if(!document.hidden) requestAnimationFrame(drawFrame);
   }
 
-  let _rafId;
-  // Pause when tab is hidden
+  // Pause when tab is hidden, resume on return
   document.addEventListener('visibilitychange',()=>{
     if(!document.hidden) requestAnimationFrame(drawFrame);
   });
-  // Pause when canvas is scrolled out of view
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(entries=>{
-      if(entries[0].isIntersecting) requestAnimationFrame(drawFrame);
-      else clearTimeout(_rafId);
-    },{threshold:0.1}).observe(canvas);
-  } else {
-    requestAnimationFrame(drawFrame);
-  }
+  requestAnimationFrame(drawFrame);
 })();
 </script>
 </body>
