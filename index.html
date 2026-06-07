@@ -763,9 +763,16 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
   /* Disable shimmer sweep — GPU-heavy pseudo-element animation */
   .pp-card::after{display:none!important}
 
+  /* Kill marquee animation on mobile */
+  .marquee-track{animation:none!important}
+
   /* No hover transforms on touch — they don't fire on tap anyway */
   .stat:hover,.card:hover,.pp-card:hover,
   .art-carousel-card:hover,.dir-card:hover,.review-card:hover{transform:none!important}
+
+  /* Kill chatbot idle + typing animations on mobile */
+  .cb-typing span{animation:none!important;opacity:.5}
+  #cb-body{animation:none!important}
 
   /* Shorten or kill non-essential transitions */
   .card,.pp-card,.stat,.art-carousel-card,.dir-card,.review-card{
@@ -4367,6 +4374,18 @@ async function popSubscribe(){
 (function(){
   const canvas = document.getElementById('teza-canvas');
   if (!canvas) return;
+  // On mobile: skip the expensive canvas animation entirely — show static icon
+  if(window.matchMedia('(max-width:767px)').matches){
+    canvas.style.display='none';
+    const btn=document.getElementById('cb-btn');
+    if(btn){
+      const ic=document.createElement('span');
+      ic.textContent='🤖';
+      ic.style.cssText='font-size:28px;line-height:1;display:block';
+      btn.insertBefore(ic,canvas.nextSibling);
+    }
+    return;
+  }
   const ctx = canvas.getContext('2d');
 
   // HiDPI scaling — square
