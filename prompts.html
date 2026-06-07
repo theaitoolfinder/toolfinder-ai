@@ -183,6 +183,8 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .cat-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .cat-tool-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 8px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:500;color:var(--text-2);text-decoration:none;transition:border-color .15s,background .15s,color .15s;white-space:nowrap}
 .cat-tool-chip:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
+.cat-tool-aff{border-color:#f59e0b!important;background:linear-gradient(135deg,#fffbeb,#fff)!important;color:var(--text-2)!important;box-shadow:0 0 0 1px #f59e0b33}
+.cat-tool-aff:hover{border-color:#d97706!important;background:linear-gradient(135deg,#fef3c7,#fffbeb)!important}
 .cat-tool-chip img{width:16px;height:16px;border-radius:3px;object-fit:contain}
 .cat-tool-chip .chip-fallback{width:16px;height:16px;border-radius:3px;background:var(--primary);color:#fff;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cat-header{flex-wrap:wrap}
@@ -528,9 +530,34 @@ function toolChipHTML(tool){
   const url = affMap[tool.n.toLowerCase()] || affMap[tool.d.replace(/\..+/,'')] || 'https://'+tool.d;
   const faviconUrl = 'https://www.google.com/s2/favicons?domain='+tool.d+'&sz=32';
   const initials = (tool.n.replace(/[^A-Z]/g,'').slice(0,2)||tool.n.slice(0,2).toUpperCase());
-  return '<a class="cat-tool-chip" href="'+url+'" target="_blank" rel="noopener sponsored" title="Use '+tool.n+'">'
+  const isAff = _affToolNames.has(tool.n.toLowerCase());
+  return '<a class="cat-tool-chip'+(isAff?' cat-tool-aff':'')+'" href="'+url+'" target="_blank" rel="noopener sponsored" title="Use '+tool.n+(isAff?' — featured':'')+'">'
     +'<img src="'+faviconUrl+'" alt="'+tool.n+'" width="16" height="16" onerror="this.outerHTML=\'<span class=&quot;chip-fallback&quot;>'+initials+'</span>\'">'
     +tool.n+'</a>';
+}
+
+/* ── Cached set of tool names that have admin-set affiliate URLs ── */
+/* Re-read on each render in case admin just updated */
+let _affToolNames = new Set();
+function refreshAffToolNames(){
+  try{
+    const ov = JSON.parse(localStorage.getItem('myai_admin_overrides_v1')||'{}') || {};
+    _affToolNames = new Set(
+      Object.values(ov)
+        .filter(o => o && o.name && o.affiliate_url && o.affiliate_url.trim())
+        .map(o => o.name.toLowerCase())
+    );
+  } catch(e){ _affToolNames = new Set(); }
+}
+
+/* ── Sort a category's tool list: affiliate-linked tools float to the front ── */
+function sortCatToolsByAff(tools){
+  if(!_affToolNames.size) return tools;
+  return tools.slice().sort((a,b)=>{
+    const aAff = _affToolNames.has(a.n.toLowerCase()) ? 0 : 1;
+    const bAff = _affToolNames.has(b.n.toLowerCase()) ? 0 : 1;
+    return aAff - bAff;
+  });
 }
 </script>
 <script>
@@ -636,6 +663,7 @@ function getToolData(toolName, toolCat){
 
 /* ── Main render ── */
 function renderPrompts(){
+  refreshAffToolNames(); // pull latest admin affiliate overrides before sorting
   const container = document.getElementById('prompts-content');
   const bank = window.PROMPT_CATEGORY_BANK||{};
   const cats = activeCat==='all' ? Object.keys(bank) : [activeCat];
@@ -674,7 +702,7 @@ function renderPrompts(){
 
     const sectionId = 'cat-'+cat.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 
-    const catTools = CATEGORY_TOOLS[cat]||[];
+    const catTools = sortCatToolsByAff(CATEGORY_TOOLS[cat]||[]);
     const toolChipsHTML = catTools.length ? `<div class="cat-tools">${catTools.map(toolChipHTML).join('')}</div>` : '';
 
     html += `<div class="cat-section" id="${sectionId}">
