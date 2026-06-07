@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T20:04:39.331Z",
+  "updated": "2026-06-07T20:16:31.308Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -45,6 +45,9 @@
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
       "verified": true,
       "trending": 90
+    },
+    "495": {
+      "affiliate_url": "https://submagic.co/?via=benjie11"
     }
   }
 }
