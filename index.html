@@ -40,6 +40,7 @@
 <!-- Instant theme load — runs before CSS paints to prevent flash of unstyled colour -->
 <script>
 try{
+  if(localStorage.getItem('pf_sub')!=='1') throw 0;
   var _t=localStorage.getItem('myai_theme_v1');
   if(_t&&_t.indexOf('custom:')===-1){
     if(_t&&_t!=='blue') document.documentElement.setAttribute('data-theme',_t);
@@ -895,7 +896,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 /* Mobile burger menu theme row */
 .mob-theme-row{padding:10px 14px 8px;border-top:1px solid var(--border-soft);margin-top:4px}
 .mob-theme-row span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:9px}
-.mob-theme-swatches{display:flex;flex-wrap:wrap;gap:8px}
+.mob-theme-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .mob-theme-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
 .mob-theme-swatch:hover,.mob-theme-swatch:active{transform:scale(1.16)}
 .mob-theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--primary)}
@@ -5004,7 +5005,7 @@ async function popSubscribe(){
     if(!isNaN(initH)) applyHueTheme(initH);
   } else {
     syncSwatches(saved);
-    if(saved && saved!=='blue') document.documentElement.setAttribute('data-theme', saved);
+    if(saved && saved!=='blue'&&isThemeUnlocked()) document.documentElement.setAttribute('data-theme', saved);
   }
   // Refresh gate state on init and whenever localStorage changes (e.g. after login)
   refreshThemeGate();

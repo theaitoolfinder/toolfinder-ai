@@ -20,6 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <script>
 try{
+  if(localStorage.getItem('pf_sub')!=='1') throw 0;
   var _t=localStorage.getItem('myai_theme_v1');
   if(_t&&_t.indexOf('custom:')===-1){
     if(_t&&_t!=='blue') document.documentElement.setAttribute('data-theme',_t);
@@ -91,7 +92,7 @@ try{
 #theme-panel-footer{font-size:10.5px;color:#888;text-align:center}
 .mob-theme-row{padding:10px 14px 8px;border-top:1px solid rgba(0,0,0,.07);margin-top:4px}
 .mob-theme-row>span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:9px}
-.mob-theme-swatches{display:flex;flex-wrap:wrap;gap:8px}
+.mob-theme-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .mob-theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s}
 .mob-theme-swatch.active{border-color:#1a202c}
 #theme-panel{overflow:hidden}
@@ -478,7 +479,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   (function(){var dr=false;function ang(w,cx,cy){var rc=w.getBoundingClientRect(),dx=cx-(rc.left+rc.width/2),dy=cy-(rc.top+rc.height/2),a=Math.atan2(dy,dx)*180/Math.PI+90;return((a%360)+360)%360;}function mv(e){if(!dr)return;var w=document.getElementById('hue-ring-wrap');if(!w)return;var cx=e.touches?e.touches[0].clientX:e.clientX,cy=e.touches?e.touches[0].clientY:e.clientY;var h=ang(w,cx,cy);setCursor(h);applyHueTheme(h);}document.addEventListener('DOMContentLoaded',function(){var w=document.getElementById('hue-ring-wrap');if(!w)return;function sd(e){var rc=w.getBoundingClientRect(),cx=e.touches?e.touches[0].clientX:e.clientX,cy=e.touches?e.touches[0].clientY:e.clientY,dx=cx-(rc.left+rc.width/2),dy=cy-(rc.top+rc.height/2),dist=Math.sqrt(dx*dx+dy*dy),r=rc.width/2;if(dist<r*0.28||dist>r*1.05)return;dr=true;mv(e);e.preventDefault();}w.addEventListener('mousedown',sd);w.addEventListener('touchstart',sd,{passive:false});document.addEventListener('mousemove',mv);document.addEventListener('touchmove',mv,{passive:true});document.addEventListener('mouseup',function(){dr=false;});document.addEventListener('touchend',function(){dr=false;});});})();
   window.showAthToast=function(){var ios=/iphone|ipad|ipod/i.test(navigator.userAgent),and=/android/i.test(navigator.userAgent);var msg=ios?'On iPhone: tap Share ↑ → "Add to Home Screen"':and?'On Android: tap ⋮ → "Add to Home Screen"':'Bookmark this page — your colour saves every visit!';var t=document.getElementById('ath-toast');var m=document.getElementById('ath-toast-msg');if(t&&m){m.innerHTML=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},8000);}};
   window.dismissAthToast=function(){var t=document.getElementById('ath-toast');if(t)t.classList.remove('show');};
-  var s='blue';try{s=localStorage.getItem(K)||'blue';}catch(e){}if(s.indexOf('custom:')===0){applyHueTheme(parseFloat(s.split(':')[1])||217);}else{sync(s);if(s&&s!=='blue')document.documentElement.setAttribute('data-theme',s);}
+  var s='blue';try{s=localStorage.getItem(K)||'blue';}catch(e){}if(s.indexOf('custom:')===0){applyHueTheme(parseFloat(s.split(':')[1])||217);}else{sync(s);if(s&&s!=='blue'&&isThemeUnlocked())document.documentElement.setAttribute('data-theme',s);}
   refreshThemeGate();
   window.addEventListener('storage',function(ev){if(ev.key==='pf_sub')refreshThemeGate();});
 })();
