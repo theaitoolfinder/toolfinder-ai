@@ -377,7 +377,7 @@ window.MYAI_AFF_MAP = {
   "mailchimp ai":          "https://mailchimp.com",
   "mailerlite":            "https://mailerlite.com",
   "mailerlite ai":         "https://mailerlite.com",
-  "make.com":              "https://make.com",
+  "make.com":              "https://www.make.com/en/register?pc=myaitoolsfinder",
   "manatal":               "https://manatal.com",
   "manatal ai":            "https://manatal.com",
   "marblism":              "https://marblism.com",
