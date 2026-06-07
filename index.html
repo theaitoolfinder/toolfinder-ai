@@ -4775,6 +4775,7 @@ async function popSubscribe(){
 
   // Apply a full palette from a hue angle (0-360)
   window.applyHueTheme = function(h){
+    if(!isThemeUnlocked()){ showThemeGateSubscribe(); return; }
     var r = document.documentElement;
     // Remove any named theme so CSS vars take over
     r.removeAttribute('data-theme');
@@ -4857,6 +4858,7 @@ async function popSubscribe(){
   }
 
   window.applyTheme = function(t){
+    if(!isThemeUnlocked() && t && t!=='blue'){ showThemeGateSubscribe(); return; }
     var html = document.documentElement;
     // Clear any inline custom-hue vars
     ['--primary','--primary-2','--primary-light','--surface-2','--border','--border-soft',
