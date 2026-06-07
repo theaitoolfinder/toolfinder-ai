@@ -40,7 +40,7 @@
 <!-- Instant theme load — runs before CSS paints to prevent flash of unstyled colour -->
 <script>
 try{
-  if(localStorage.getItem('pf_sub')!=='1') throw 0;
+  if(!(parseInt(localStorage.getItem('pf_sub')||'0')>Date.now())) throw 0;
   var _t=localStorage.getItem('myai_theme_v1');
   if(_t&&_t.indexOf('custom:')===-1){
     if(_t&&_t!=='blue') document.documentElement.setAttribute('data-theme',_t);
@@ -2547,7 +2547,7 @@ function memberLogin(email, name){
   setUser({name:n, email});
   localStorage.setItem('myai_chat_gate','1');
   localStorage.setItem('myai_chat_name', n);
-  localStorage.setItem('pf_sub','1');
+  localStorage.setItem('pf_sub',String(Date.now()+365*24*60*60*1000));
   localStorage.setItem('pf_email', email);
   updateNavAuth();
   if(typeof refreshThemeGate==='function') refreshThemeGate();
@@ -4880,7 +4880,7 @@ async function popSubscribe(){
 
   function isThemeUnlocked(){
     try{
-      if(localStorage.getItem('pf_sub')==='1') return true;
+      if(parseInt(localStorage.getItem('pf_sub')||'0')>Date.now()) return true;
       if(typeof getUser==='function' && getUser()) return true;
     }catch(e){}
     return false;

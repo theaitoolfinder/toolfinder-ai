@@ -335,7 +335,7 @@
     if (result === true) {
       const savedName = localStorage.getItem('myai_chat_name');
       if (typeof memberLogin === 'function') memberLogin(email, savedName || null);
-      else { localStorage.setItem('pf_sub','1'); localStorage.setItem('pf_email',email); localStorage.setItem('myai_chat_gate','1'); }
+      else { localStorage.setItem('pf_sub',String(Date.now()+365*24*60*60*1000)); localStorage.setItem('pf_email',email); localStorage.setItem('myai_chat_gate','1'); }
       mcbGateComplete(savedName || null, true);
     } else if (result === false) {
       if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
@@ -371,7 +371,7 @@
     if (fname) localStorage.setItem('myai_chat_name', fname);
     localStorage.setItem('pf_email', email);
     if (typeof memberLogin === 'function') memberLogin(email, fname || null);
-    else { localStorage.setItem('pf_sub','1'); localStorage.setItem('myai_chat_gate','1'); }
+    else { localStorage.setItem('pf_sub',String(Date.now()+365*24*60*60*1000)); localStorage.setItem('myai_chat_gate','1'); }
     mcbGateComplete(fname || null, true);
   };
 

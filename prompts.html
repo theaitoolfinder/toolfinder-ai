@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
 try{
-  if(localStorage.getItem('pf_sub')!=='1') throw 0;
+  if(!(parseInt(localStorage.getItem('pf_sub')||'0')>Date.now())) throw 0;
   var _t=localStorage.getItem('myai_theme_v1');
   if(_t&&_t.indexOf('custom:')===-1){
     if(_t&&_t!=='blue') document.documentElement.setAttribute('data-theme',_t);
@@ -556,7 +556,7 @@ async function verifySubscriber(){
     const list = Array.isArray(data) ? data : (data.hashes||data.subscribers||[]);
     if(list.includes(hash)){
       isSubscriber = true;
-      localStorage.setItem('pf_sub','1');
+      localStorage.setItem('pf_sub',String(Date.now()+365*24*60*60*1000));
       localStorage.setItem('pf_email', email);
       msg.textContent='✅ Access granted! Enjoy your exclusive prompts.'; msg.className='gate-msg success';
       document.getElementById('gate-section').style.display='none';
@@ -955,7 +955,7 @@ function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;
 window.addEventListener('DOMContentLoaded',()=>{
   // Restore subscriber state from session
   // Restore subscriber state (persists across sessions)
-  if(localStorage.getItem('pf_sub')==='1') isSubscriber=true;
+  if(parseInt(localStorage.getItem('pf_sub')||'0')>Date.now()) isSubscriber=true;
   // Pre-fill gate email if we know it
   const savedPfEmail = localStorage.getItem('pf_email');
   if(savedPfEmail){ const el=document.getElementById('gate-email'); if(el) el.value=savedPfEmail; }
@@ -1079,7 +1079,7 @@ function trendingModalCopy(idx){
   window.applyHueTheme=function(h){if(!isThemeUnlocked()){showThemeGateSubscribe();return;}var r=document.documentElement;r.removeAttribute('data-theme');['--primary','--primary-2','--primary-light','--surface-2','--border','--border-soft','--bg'].forEach(function(v){r.style.removeProperty(v);});r.style.setProperty('--primary',h2x(h,75,38));r.style.setProperty('--primary-2',h2x(h,75,28));r.style.setProperty('--primary-light',h2x(h,80,90));r.style.setProperty('--surface-2',h2x(h,60,96));r.style.setProperty('--border',h2x(h,60,82));r.style.setProperty('--bg',h2x(h,55,96));var dot=document.getElementById('nav-theme-dot');if(dot)dot.style.background=h2x(h,70,45);try{localStorage.setItem(K,'custom:'+Math.round(h));}catch(e){}document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(e){e.classList.remove('active');});var ob=document.getElementById('theme-original-btn');if(ob)ob.classList.remove('active');if(!_a){_a=true;showAthToast();}};
   function sync(t){var isC=t&&t.indexOf('custom:')===0;document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(e){e.classList.toggle('active',!isC&&e.dataset.t===(t||'blue'));});var ob=document.getElementById('theme-original-btn');if(ob)ob.classList.toggle('active',!isC&&(t||'blue')==='blue');var d=document.getElementById('nav-theme-dot');if(d){if(isC){d.style.background=h2x(parseFloat(t.split(':')[1])||217,70,45);}else{var c={blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',slate:'#475569',lime:'#65a30d',violet:'#9333ea',orange:'#ea580c',sky:'#0284c7',pink:'#db2777',teal:'#0d9488',fuchsia:'#c026d3',red:'#dc2626',gold:'#ca8a04',brown:'#92400e'};d.style.background=c[t||'blue']||'#1a56db';}}if(!isC)posForTheme(t||'blue');}
   window.applyTheme=function(t){if(!isThemeUnlocked()&&t&&t!=='blue'){showThemeGateSubscribe();return;}var h=document.documentElement;['--primary','--primary-2','--primary-light','--surface-2','--border','--border-soft','--bg'].forEach(function(v){h.style.removeProperty(v);});if(!t||t==='blue')h.removeAttribute('data-theme');else h.setAttribute('data-theme',t);try{localStorage.setItem(K,t||'blue');}catch(e){}sync(t||'blue');_o=false;var p=document.getElementById('theme-panel');if(p)p.classList.remove('open');if(!_a){_a=true;showAthToast();}};
-  function isThemeUnlocked(){try{return localStorage.getItem('pf_sub')==='1';}catch(e){return false;}}
+  function isThemeUnlocked(){try{return parseInt(localStorage.getItem('pf_sub')||'0')>Date.now();}catch(e){return false;}}
   function refreshThemeGate(){var u=isThemeUnlocked();var p=document.getElementById('theme-panel');if(p)p.classList.toggle('unlocked',u);var r=document.querySelector('.mob-theme-row');if(r)r.classList.toggle('unlocked',u);}
   window.showThemeGateSubscribe=function(){location.href='index.html#newsletter';};
   window.toggleThemePanel=function(e){e&&e.stopPropagation();var p=document.getElementById('theme-panel');_o=!_o;refreshThemeGate();p.classList.toggle('open',_o);if(_o){var sv='';try{sv=localStorage.getItem(K)||'';}catch(ex){}if(sv.indexOf('custom:')===0)setCursor(parseFloat(sv.split(':')[1])||217);else posForTheme(sv||'blue');}};
