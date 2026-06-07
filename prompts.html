@@ -349,10 +349,39 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .unlock-banner .btn-unlock:hover{background:var(--primary-2)}
 @media(max-width:540px){.unlock-banner{flex-wrap:wrap}.unlock-banner .btn-unlock{margin-left:0;width:100%}}
 
+/* ── PARTNER TOOLS CAROUSEL ── */
+.partner-section{padding:28px 0 8px;margin-bottom:4px}
+.partner-section-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.partner-section-icon{font-size:22px;line-height:1}
+.partner-section-title{font-size:20px;font-weight:800;color:var(--text)}
+.partner-section-sub{font-size:12px;color:var(--text-dim);margin-left:4px}
+.partner-carousel-outer{position:relative;margin:0 -4px;padding:0 4px}
+.partner-carousel{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.partner-carousel::-webkit-scrollbar{display:none}
+.partner-card{flex:0 0 158px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 12px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;scroll-snap-align:start;transition:border-color .2s,box-shadow .2s,transform .2s;text-align:center;user-select:none;position:relative}
+.partner-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(26,86,219,.12);transform:translateY(-2px)}
+.partner-card.active{border-color:#f59e0b!important;background:linear-gradient(160deg,#fffbeb 0%,#fff 100%)!important;box-shadow:0 4px 20px rgba(245,158,11,.22)!important;transform:translateY(-2px)}
+.partner-card.active::after{content:'▼';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);font-size:12px;color:#f59e0b;line-height:1}
+.partner-card-logo{width:44px;height:44px;border-radius:10px;object-fit:contain;border:1px solid var(--border);background:#fff;padding:4px;flex-shrink:0}
+.partner-card-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.2}
+.partner-card-count{font-size:10.5px;color:var(--text-dim)}
+.partner-expand{margin-top:14px;background:#fff;border:1.5px solid #f59e0b;border-radius:14px;padding:20px;display:none;animation:ptFadeIn .2s ease}
+.partner-expand.open{display:block}
+@keyframes ptFadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.partner-expand-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.partner-expand-logo{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:#fff;padding:2px;object-fit:contain}
+.partner-expand-title{font-size:15px;font-weight:700;color:var(--text)}
+.partner-expand-close{margin-left:auto;background:none;border:none;font-size:18px;color:var(--text-dim);cursor:pointer;line-height:1;padding:2px 8px;border-radius:6px;flex-shrink:0}
+.partner-expand-close:hover{background:var(--surface-2);color:var(--text)}
+.partner-scroll-btn{position:absolute;top:38px;transform:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,.08);font-size:18px;color:var(--text-2);line-height:1}
+.partner-scroll-btn:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
+.partner-scroll-btn.prev{left:-16px}.partner-scroll-btn.next{right:-16px}
+
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
   .prompt-grid .prompt-card{flex:0 0 280px;max-width:280px}
   .carousel-btn{display:none}
+  .partner-scroll-btn{display:none}
   .hero{padding:44px 20px 40px}
   .gate-section{padding:28px 20px}
 }
@@ -457,6 +486,21 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
     <div class="trending-scroll-wrap">
       <div class="trending-scroll" id="trending-scroll"></div>
     </div>
+  </section>
+
+  <!-- ⭐ Top AI Tools — Partner Carousel -->
+  <section class="partner-section" id="partner-section" style="display:none">
+    <div class="partner-section-header">
+      <span class="partner-section-icon">⭐</span>
+      <h2 class="partner-section-title">Top AI Tools &mdash; <span style="background:linear-gradient(90deg,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Custom Prompts</span></h2>
+      <span class="partner-section-sub">Custom-crafted for the most popular tools</span>
+    </div>
+    <div class="partner-carousel-outer">
+      <button class="partner-scroll-btn prev" onclick="scrollPartnerCarousel(-1)" aria-label="Previous">&#8249;</button>
+      <div class="partner-carousel" id="partner-carousel"></div>
+      <button class="partner-scroll-btn next" onclick="scrollPartnerCarousel(1)" aria-label="Next">&#8250;</button>
+    </div>
+    <div class="partner-expand" id="partner-expand"></div>
   </section>
 
   <!-- Prompts content -->
@@ -769,51 +813,6 @@ function renderPrompts(){
     </div>`;
   });
 
-  // Tool-specific override sections
-  if((activeCat==='all' || !activeCat) && !searchQuery){
-    const overrides = window.PROMPT_TOOL_OVERRIDES||{};
-    if(Object.keys(overrides).length){
-      // Partners always show first
-      const PARTNER_SLUGS = ['elevenlabs','fireflies-ai','reclaim-ai'];
-      const sortedEntries = Object.entries(overrides).sort(([a],[b])=>{
-        const pa=PARTNER_SLUGS.indexOf(a), pb=PARTNER_SLUGS.indexOf(b);
-        if(pa>-1&&pb>-1) return pa-pb;
-        if(pa>-1) return -1;
-        if(pb>-1) return 1;
-        return 0;
-      });
-      html += `<div class="cat-section">
-        <div class="cat-header">
-          <span class="cat-icon">⭐</span>
-          <span class="cat-title">Top AI Tools — Custom Prompts</span>
-          <span class="cat-count">Custom-crafted for the most popular tools</span>
-        </div>`;
-      sortedEntries.forEach(([slug,data])=>{
-        const toolName = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-        const domain = data.domain || (slug.replace(/-/g,'')+'.com');
-        const anchor = slug;
-        const isPartner = ['elevenlabs','fireflies-ai','reclaim-ai'].includes(slug);
-        html += `<div class="tool-section${isPartner?' partner-tool-section':''}" id="${anchor}">
-          <div class="tool-section-header" onclick="toggleToolSection(this)">
-            <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64"
-              alt="${toolName}" onerror="this.style.display='none'">
-            <div>
-              <div class="tool-section-title">${toolName}${isPartner?' <span class="tool-partner-badge">✦ Partner</span>':''}</div>
-              <div class="tool-section-sub">${(data.free||[]).length} custom free prompts</div>
-            </div>
-            <span class="tool-chevron">&#x25BE;</span>
-          </div>
-          <div class="tool-section-body">
-            <div class="prompt-grid">
-              ${(data.free||[]).map((p,i)=>promptCardHTML(p,i,'free',slug)).join('')}
-            </div>
-          </div>
-        </div>`;
-      });
-      html += `</div>`;
-    }
-  }
-
   container.innerHTML = anyResult ? html : `<div class="empty-state"><h3>No prompts found</h3><p>Try a different search term or category.</p></div>`;
 
   // Show gate if not subscriber
@@ -980,6 +979,94 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 /* ── Helper ── */
 function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+/* ═══════════════════════════════════════════════════════
+   PARTNER TOOLS CAROUSEL
+   ═══════════════════════════════════════════════════════ */
+const PARTNER_SLUGS_LIST = ['elevenlabs','fireflies-ai','reclaim-ai'];
+let _activePartnerSlug = null;
+
+function buildPartnerCarousel(){
+  const overrides = window.PROMPT_TOOL_OVERRIDES || {};
+  const section = document.getElementById('partner-section');
+  const carousel = document.getElementById('partner-carousel');
+  if(!Object.keys(overrides).length){ return; }
+
+  const sorted = Object.entries(overrides).sort(([a],[b])=>{
+    const pa=PARTNER_SLUGS_LIST.indexOf(a), pb=PARTNER_SLUGS_LIST.indexOf(b);
+    if(pa>-1&&pb>-1) return pa-pb;
+    if(pa>-1) return -1; if(pb>-1) return 1; return 0;
+  });
+
+  carousel.innerHTML = sorted.map(([slug,data])=>{
+    const isPartner = PARTNER_SLUGS_LIST.includes(slug);
+    const domain = data.domain || slug.replace(/-/g,'')+'.com';
+    const name = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const count = (data.free||[]).length;
+    return `<div class="partner-card${isPartner?' is-partner':''}" data-slug="${slug}" onclick="selectPartnerTool('${slug}')" role="button" tabindex="0" aria-label="${name} prompts">
+      <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
+      <div class="partner-card-name">${name}</div>
+      ${isPartner?'<span class="tool-partner-badge">✦ Partner</span>':''}
+      <div class="partner-card-count">${count} custom prompt${count!==1?'s':''}</div>
+    </div>`;
+  }).join('');
+
+  if(section) section.style.display = '';
+
+  // Handle anchor deep-link to a partner tool
+  if(location.hash){
+    const slug = location.hash.slice(1);
+    if(overrides[slug]) setTimeout(()=>selectPartnerTool(slug), 400);
+  }
+}
+
+function selectPartnerTool(slug){
+  const overrides = window.PROMPT_TOOL_OVERRIDES || {};
+  const panel = document.getElementById('partner-expand');
+
+  // Deselect all cards
+  document.querySelectorAll('#partner-carousel .partner-card').forEach(c=>c.classList.remove('active'));
+
+  if(_activePartnerSlug===slug){
+    // Collapse
+    _activePartnerSlug = null;
+    panel.classList.remove('open');
+    setTimeout(()=>{ if(!panel.classList.contains('open')) panel.innerHTML=''; }, 220);
+    return;
+  }
+
+  _activePartnerSlug = slug;
+  const data = overrides[slug];
+  if(!data) return;
+
+  // Highlight selected card & scroll it into view
+  const card = document.querySelector(`#partner-carousel [data-slug="${slug}"]`);
+  if(card){
+    card.classList.add('active');
+    card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  }
+
+  const name = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  const domain = data.domain || slug.replace(/-/g,'')+'.com';
+  const prompts = data.free || [];
+  const isPartner = PARTNER_SLUGS_LIST.includes(slug);
+
+  panel.innerHTML = `
+    <div class="partner-expand-head">
+      <img class="partner-expand-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
+      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦ Partner</span>':''} — Custom Prompts</span>
+      <button class="partner-expand-close" onclick="selectPartnerTool('${slug}')" title="Close">✕</button>
+    </div>
+    <div class="prompt-grid">${prompts.map((p,i)=>promptCardHTML(p,i,'free',slug)).join('')}</div>
+  `;
+  panel.classList.add('open');
+  setTimeout(()=>panel.scrollIntoView({behavior:'smooth', block:'nearest'}), 60);
+}
+
+function scrollPartnerCarousel(dir){
+  const c = document.getElementById('partner-carousel');
+  if(c) c.scrollBy({left: dir * 360, behavior:'smooth'});
+}
+
 /* ── Init ── */
 window.addEventListener('DOMContentLoaded',()=>{
   // Restore subscriber state from session
@@ -991,14 +1078,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   buildFilters();
   renderTrending();
-
-  // Handle direct tool anchor (#tool-slug) — ensure we're on 'all' so the section renders
-  if(location.hash){
-    const slug = location.hash.slice(1);
-    if(window.PROMPT_TOOL_OVERRIDES && window.PROMPT_TOOL_OVERRIDES[slug]){
-      activeCat = 'all'; // tool overrides only render in 'all' view
-    }
-  }
+  buildPartnerCarousel(); // partner tools carousel (separate from category filters)
 
   renderPrompts();
 });
