@@ -301,7 +301,7 @@ window.MYAI_AFF_MAP = {
   "kajabi":                "https://kajabi.com",
   "kajabi ai":             "https://kajabi.com",
   "kensho":                "https://kensho.com",
-  "keyword insights":      "https://keywordinsights.ai",
+  "keyword insights":      "https://www.keywordinsights.ai/?ref=myaitoolsfinder",
   "khan academy":          "https://khanacademy.org/khan-labs",
   "khan academy ai":       "https://khanacademy.org/khan-labs",
   "khroma":                "https://khroma.co",
