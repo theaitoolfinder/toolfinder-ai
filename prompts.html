@@ -987,34 +987,65 @@ function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;
 const PARTNER_SLUGS_LIST = ['elevenlabs','fireflies-ai','reclaim-ai'];
 let _activePartnerSlug = null;
 
-/* Resolve the best affiliate/try URL for a partner tool */
+/* Convert a tool name to the slug format used as keys */
+function toSlug(name){ return (name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+/* Resolve the best affiliate URL: admin overrides → MYAI_AFF_MAP → domain */
 function getPartnerAffUrl(slug, domain){
+  // 1. Admin localStorage overrides take highest priority
+  try {
+    const adminOv = JSON.parse(localStorage.getItem('myai_admin_overrides_v1')||'{}') || {};
+    const entry = Object.values(adminOv).find(o => o && o.name && toSlug(o.name) === slug);
+    if(entry && entry.affiliate_url && entry.affiliate_url.trim()) return entry.affiliate_url.trim();
+  } catch(e){}
+  // 2. Baked-in affiliate map
   const m = window.MYAI_AFF_MAP || {};
-  // Try several key forms: slug as-is, slug with spaces, domain, domain root
-  return m[slug]
-    || m[slug.replace(/-/g,' ')]
-    || m[domain]
-    || m[(domain||'').replace(/\..+/,'')]
+  return m[slug] || m[slug.replace(/-/g,' ')] || m[domain] || m[(domain||'').replace(/\..+/,'')]
     || (domain ? 'https://'+domain : null);
+}
+
+/* Read tools that have affiliate_url set in admin localStorage overrides */
+function getAdminAffTools(){
+  try {
+    const adminOv = JSON.parse(localStorage.getItem('myai_admin_overrides_v1')||'{}') || {};
+    return Object.values(adminOv)
+      .filter(o => o && o.name && o.affiliate_url && o.affiliate_url.trim())
+      .map(o => ({
+        slug: toSlug(o.name),
+        displayName: o.name,
+        domain: o.domain || '',
+        cat: o.cat || '',
+        affiliateUrl: o.affiliate_url.trim()
+      }));
+  } catch(e){ return []; }
 }
 
 function buildPartnerCarousel(){
   const overrides = window.PROMPT_TOOL_OVERRIDES || {};
-  const section = document.getElementById('partner-section');
-  const carousel = document.getElementById('partner-carousel');
-  if(!Object.keys(overrides).length){ return; }
+  const section   = document.getElementById('partner-section');
+  const carousel  = document.getElementById('partner-carousel');
 
-  const sorted = Object.entries(overrides).sort(([a],[b])=>{
+  // Admin-added affiliate tools (from localStorage)
+  const adminAffTools = getAdminAffTools();
+  const overrideSlugs = new Set(Object.keys(overrides));
+
+  // Tools with affiliate URLs that are NOT already covered by PROMPT_TOOL_OVERRIDES
+  const extraTools = adminAffTools.filter(t => !overrideSlugs.has(t.slug));
+
+  if(!overrideSlugs.size && !extraTools.length){ return; }
+
+  // ── Section 1: PROMPT_TOOL_OVERRIDES tools (custom prompts, partners first) ──
+  const sortedOverrides = Object.entries(overrides).sort(([a],[b])=>{
     const pa=PARTNER_SLUGS_LIST.indexOf(a), pb=PARTNER_SLUGS_LIST.indexOf(b);
     if(pa>-1&&pb>-1) return pa-pb;
     if(pa>-1) return -1; if(pb>-1) return 1; return 0;
   });
 
-  carousel.innerHTML = sorted.map(([slug,data])=>{
+  const overrideCards = sortedOverrides.map(([slug,data])=>{
     const isPartner = PARTNER_SLUGS_LIST.includes(slug);
     const domain = data.domain || slug.replace(/-/g,'')+'.com';
-    const name = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-    const count = (data.free||[]).length;
+    const name   = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const count  = (data.free||[]).length;
     return `<div class="partner-card${isPartner?' is-partner':''}" data-slug="${slug}" onclick="selectPartnerTool('${slug}')" role="button" tabindex="0" aria-label="${name} prompts">
       <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
       <div class="partner-card-name">${name}</div>
@@ -1023,12 +1054,25 @@ function buildPartnerCarousel(){
     </div>`;
   }).join('');
 
+  // ── Section 2: Admin-affiliate tools without custom prompts (use category fallback) ──
+  const extraCards = extraTools.map(t => {
+    const catData  = (window.PROMPT_CATEGORY_BANK && t.cat) ? (window.PROMPT_CATEGORY_BANK[t.cat]||{}) : {};
+    const freeCount = Math.min((catData.free||[]).length, 5);
+    return `<div class="partner-card is-aff" data-slug="${t.slug}" data-name="${t.displayName}" data-domain="${t.domain}" data-cat="${t.cat}" onclick="selectPartnerTool('${t.slug}')" role="button" tabindex="0" aria-label="${t.displayName} prompts">
+      <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=64" alt="${t.displayName}" onerror="this.style.display='none'">
+      <div class="partner-card-name">${t.displayName}</div>
+      <div class="partner-card-count">${freeCount || '3'} free prompt${freeCount!==1?'s':''}</div>
+    </div>`;
+  }).join('');
+
+  carousel.innerHTML = overrideCards + extraCards;
   if(section) section.style.display = '';
 
-  // Handle anchor deep-link to a partner tool
+  // Deep-link anchor
   if(location.hash){
     const slug = location.hash.slice(1);
-    if(overrides[slug]) setTimeout(()=>selectPartnerTool(slug), 400);
+    const allKnown = new Set([...overrideSlugs, ...extraTools.map(t=>t.slug)]);
+    if(allKnown.has(slug)) setTimeout(()=>selectPartnerTool(slug), 400);
   }
 }
 
@@ -1040,7 +1084,6 @@ function selectPartnerTool(slug){
   document.querySelectorAll('#partner-carousel .partner-card').forEach(c=>c.classList.remove('active'));
 
   if(_activePartnerSlug===slug){
-    // Collapse
     _activePartnerSlug = null;
     panel.classList.remove('open');
     setTimeout(()=>{ if(!panel.classList.contains('open')) panel.innerHTML=''; }, 220);
@@ -1048,28 +1091,40 @@ function selectPartnerTool(slug){
   }
 
   _activePartnerSlug = slug;
-  const data = overrides[slug];
-  if(!data) return;
 
-  // Highlight selected card & scroll it into view
+  // Highlight card
   const card = document.querySelector(`#partner-carousel [data-slug="${slug}"]`);
   if(card){
     card.classList.add('active');
     card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
   }
 
-  const name = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-  const domain = data.domain || slug.replace(/-/g,'')+'.com';
-  const prompts = data.free || [];
-  const isPartner = PARTNER_SLUGS_LIST.includes(slug);
-  const affUrl = getPartnerAffUrl(slug, domain);
+  let name, domain, prompts, isPartner;
 
-  const tryBtnHTML = affUrl ? `<a class="partner-try-btn" href="${affUrl}" target="_blank" rel="noopener sponsored" title="Try ${name} free">Try Free →</a>` : '';
+  if(overrides[slug]){
+    // Has custom prompts in PROMPT_TOOL_OVERRIDES
+    const data = overrides[slug];
+    name     = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    domain   = data.domain || slug.replace(/-/g,'')+'.com';
+    prompts  = data.free || [];
+    isPartner= PARTNER_SLUGS_LIST.includes(slug);
+  } else if(card){
+    // Admin-affiliate tool — use category-level prompts as fallback
+    name   = card.dataset.name || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    domain = card.dataset.domain || '';
+    const cat = card.dataset.cat || '';
+    const catData = (window.PROMPT_CATEGORY_BANK && cat) ? (window.PROMPT_CATEGORY_BANK[cat]||{}) : {};
+    prompts  = (catData.free || []).slice(0, 5);
+    isPartner= false;
+  } else { return; }
+
+  const affUrl    = getPartnerAffUrl(slug, domain);
+  const tryBtnHTML= affUrl ? `<a class="partner-try-btn" href="${affUrl}" target="_blank" rel="noopener sponsored" title="Try ${name} free">Try Free →</a>` : '';
 
   panel.innerHTML = `
     <div class="partner-expand-head">
       <img class="partner-expand-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
-      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦ Partner</span>':''} — Custom Prompts</span>
+      <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦ Partner</span>':''} — Prompts</span>
       ${tryBtnHTML}
       <button class="partner-expand-close" onclick="selectPartnerTool('${slug}')" title="Close">✕</button>
     </div>
