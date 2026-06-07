@@ -63,7 +63,7 @@ window.MYAI_AFF_MAP = {
   "beacons ai":            "https://beacons.ai",
   "beatoven.ai":           "https://beatoven.ai",
   "beautiful.ai":          "https://beautiful.ai",
-  "beehiiv":               "https://beehiiv.com",
+  "beehiiv":               "https://www.beehiiv.com/?via=benjie-gadiaza",
   "bill":                  "https://bill.com",
   "bill ai":               "https://bill.com",
   "blackbox":              "https://blackbox.ai",
