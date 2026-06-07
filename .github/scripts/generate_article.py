@@ -268,28 +268,64 @@ def _url_alive(url: str) -> bool:
         return True   # network error → assume alive, don't block article generation
 
 
+def _scan_disk_heroes() -> set[str]:
+    """Scan all articles on disk and return the set of hero image URLs in use.
+
+    This is the ground truth — it catches every article ever published,
+    regardless of whether it's still in the log's rolling window.
+    Run before pick_hero so concurrent GitHub Actions jobs (which all share
+    the same checkout state) still pick different images per title.
+
+    Uses og:image as the canonical source — it's unambiguous and can't be
+    confused with onerror fallback URLs that also appear in <img> tags.
+    """
+    used: set[str] = set()
+    try:
+        for html_file in ARTICLES_DIR.glob("*.html"):
+            text = html_file.read_text(encoding="utf-8", errors="ignore")
+            # og:image is the definitive hero URL — no onerror confusion
+            m = re.search(r'<meta\s+property=["\']og:image["\']\s+content=["\']([^"\']+)["\']', text)
+            if not m:
+                # Alternate attribute order
+                m = re.search(r'<meta\s+content=["\']([^"\']+)["\']\s+property=["\']og:image["\']', text)
+            if m:
+                used.add(m.group(1).split("?")[0])  # strip query params for comparison
+    except Exception as e:
+        print(f"[WARN] disk hero scan failed: {e}", file=sys.stderr)
+    return used
+
+
 def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
     """Return a hero URL that is unique to this article.
 
-    Strategy (fixes concurrent-run duplication):
-      1. Hash the article TITLE to get a deterministic start index.
-         → Different articles always start from different positions in the pool,
-           even when concurrent GitHub Actions runs share the same log state.
-      2. Walk forward from that index, skipping images used in the last 100
-         articles (extended window vs the 60-entry generated list).
-      3. If the entire pool was used in the last 100 articles (unlikely with
-         100+ images), fall back to the hash-derived position regardless.
-      4. Skip any image that returns HTTP 404.
+    Strategy:
+      1. Scan ALL article files on disk → complete ground-truth used-image set.
+         This catches every published article regardless of log window size,
+         and works correctly even when concurrent GitHub Actions runs share
+         the same checkout state.
+      2. Hash the article TITLE to get a deterministic start index.
+         → Different titles always map to different pool positions.
+      3. Walk forward from that index, skipping already-used images.
+      4. Fall back to log hero_history for any pool images not found on disk.
+      5. If pool fully exhausted, reuse from hash position (last resort).
+      6. Skip any image that returns HTTP 404.
       index_offset shifts the start for Friday exclusive multi-slot runs.
     """
     pool = HERO_IMAGES
 
-    # Extended hero history — separate from the 60-entry generated list.
-    # Persisted under log["hero_history"] and never truncated beyond 200 entries.
+    # Ground truth: scan every article file currently on disk
+    disk_used = _scan_disk_heroes()
+
+    # Also include log-based history for belt-and-suspenders
     hero_history: list[str] = log.get("hero_history", [])
-    # Also pull from generated list as fallback (older logs without hero_history)
     legacy = [e.get("hero", "") for e in log.get("generated", []) if e.get("hero")]
-    recently_used: set[str] = set(hero_history[-100:] + legacy[-100:])
+    log_used: set[str] = set(hero_history + legacy)
+
+    # Normalise pool URLs to base (no query string) for comparison
+    def _base(url: str) -> str:
+        return url.split("?")[0]
+
+    recently_used: set[str] = disk_used | {_base(u) for u in log_used}
 
     # Deterministic start index from title hash + offset
     title_hash   = int(hashlib.md5(title.encode()).hexdigest(), 16)
@@ -298,7 +334,7 @@ def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
     # Pass 1: find an unused+alive image starting from hash position
     for step in range(len(pool)):
         img = pool[(base_idx + step) % len(pool)]
-        if img not in recently_used:
+        if _base(img) not in recently_used:
             if _url_alive(img):
                 return img
             else:
