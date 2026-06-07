@@ -661,22 +661,16 @@ body::before{
   background:var(--primary-light);border:1.5px solid rgba(26,86,219,.22);
   transition:all .2s}
 .pp-spot-prompt-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-2px)}
-/* Right: feature showcase */
-.pp-spot-right{flex:1;min-width:0;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
-.pp-spot-showcase{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;position:relative;gap:20px;text-align:center}
-.pp-spot-showcase::before{content:'';position:absolute;inset:0;background:inherit;opacity:1}
-.pp-spot-showcase-logo{width:72px;height:72px;border-radius:20px;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;position:relative;z-index:1}
-.pp-spot-showcase-logo img{width:72px;height:72px;object-fit:cover;border-radius:19px}
-.pp-spot-showcase-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;text-shadow:0 2px 8px rgba(0,0,0,.18);position:relative;z-index:1;line-height:1.2}
-.pp-spot-showcase-tag{font-size:12.5px;color:rgba(255,255,255,.88);max-width:260px;line-height:1.55;position:relative;z-index:1;text-shadow:0 1px 4px rgba(0,0,0,.12)}
-.pp-spot-showcase-feats{display:flex;flex-direction:column;gap:8px;width:100%;max-width:280px;position:relative;z-index:1}
-.pp-spot-showcase-feat{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:9px 14px;text-align:left}
-.pp-spot-showcase-feat-icon{font-size:16px;flex-shrink:0;line-height:1}
-.pp-spot-showcase-feat-text{font-size:12px;color:#fff;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.15);line-height:1.3}
-.pp-spot-showcase-stats{display:flex;gap:16px;position:relative;z-index:1}
-.pp-spot-showcase-stat{display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 16px;backdrop-filter:blur(8px)}
-.pp-spot-showcase-stat-val{font-size:15px;font-weight:800;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.2)}
-.pp-spot-showcase-stat-lbl{font-size:10px;color:rgba(255,255,255,.75);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+/* Right: website screenshot preview */
+.pp-spot-right{flex:1;min-width:0;position:relative;background:#e8edf3;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
+.pp-spot-browser-bar{background:#f1f5f9;border-bottom:1px solid rgba(0,0,0,.08);height:32px;padding:0 14px;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.pp-spot-browser-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pp-spot-browser-dot.r{background:#ff5f56}.pp-spot-browser-dot.y{background:#ffbd2e}.pp-spot-browser-dot.g{background:#27c93f}
+.pp-spot-url-bar{flex:1;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:6px;height:19px;margin:0 12px;display:flex;align-items:center;padding:0 8px;gap:5px;overflow:hidden}
+.pp-spot-url-bar svg{flex-shrink:0;color:#64748b}
+.pp-spot-url-text{font-size:10px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.pp-spot-screenshot-wrap{flex:1;overflow:hidden;position:relative}
+.pp-spot-screenshot{width:100%;height:100%;display:block;object-fit:cover;object-position:top}
 /* Nav */
 .pp-spot-nav{position:absolute;bottom:14px;right:16px;display:flex;align-items:center;gap:8px;z-index:4}
 .pp-spot-arrow{width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--border);color:var(--text-2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;padding:0;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.08)}
@@ -697,13 +691,7 @@ body::before{
   .pp-spot-ctas{margin-top:4px;gap:8px}
   .pp-spot-btn{padding:10px 18px;font-size:12.5px}
   .pp-spot-prompt-btn{padding:10px 14px;font-size:12px}
-  .pp-spot-right{min-height:220px;flex-shrink:0}
-  .pp-spot-showcase{padding:20px 18px;gap:14px}
-  .pp-spot-showcase-logo{width:56px;height:56px;border-radius:16px}
-  .pp-spot-showcase-logo img{width:56px;height:56px;border-radius:15px}
-  .pp-spot-showcase-name{font-size:18px}
-  .pp-spot-showcase-tag{display:none}
-  .pp-spot-showcase-feats{max-width:100%}
+  .pp-spot-right{min-height:200px;flex-shrink:0}
 }
 /* ── Partner picks carousel — cards use same .card layout as tool directory ── */
 /* Gold partner card tint */
@@ -3270,44 +3258,9 @@ async function submitReview(){
     }
     function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
-    function catGradient(cat){
-      const map={
-        'Automation':'linear-gradient(135deg,#f97316 0%,#ea580c 50%,#c2410c 100%)',
-        'Writing':'linear-gradient(135deg,#3b82f6 0%,#2563eb 50%,#1d4ed8 100%)',
-        'Design':'linear-gradient(135deg,#8b5cf6 0%,#7c3aed 50%,#6d28d9 100%)',
-        'Video':'linear-gradient(135deg,#ef4444 0%,#dc2626 50%,#b91c1c 100%)',
-        'Audio':'linear-gradient(135deg,#6366f1 0%,#4f46e5 50%,#4338ca 100%)',
-        'SEO':'linear-gradient(135deg,#10b981 0%,#059669 50%,#047857 100%)',
-        'Marketing':'linear-gradient(135deg,#ec4899 0%,#db2777 50%,#be185d 100%)',
-        'Productivity':'linear-gradient(135deg,#06b6d4 0%,#0891b2 50%,#0e7490 100%)',
-        'Research':'linear-gradient(135deg,#14b8a6 0%,#0d9488 50%,#0f766e 100%)',
-        'Sales':'linear-gradient(135deg,#f59e0b 0%,#d97706 50%,#b45309 100%)',
-        'Coding':'linear-gradient(135deg,#64748b 0%,#475569 50%,#334155 100%)',
-        'Image':'linear-gradient(135deg,#a855f7 0%,#9333ea 50%,#7e22ce 100%)',
-        'Analytics':'linear-gradient(135deg,#0284c7 0%,#0369a1 50%,#075985 100%)',
-        'HR':'linear-gradient(135deg,#f43f5e 0%,#e11d48 50%,#be123c 100%)',
-        'Education':'linear-gradient(135deg,#84cc16 0%,#65a30d 50%,#4d7c0f 100%)',
-        'Finance':'linear-gradient(135deg,#22c55e 0%,#16a34a 50%,#15803d 100%)'
-      };
-      return map[cat]||'linear-gradient(135deg,#1a56db 0%,#1e3a8a 50%,#1e2a6e 100%)';
-    }
-    function featIcon(need){
-      const n=(need||'').toLowerCase();
-      if(n.includes('automat')||n.includes('workflow')) return '⚡';
-      if(n.includes('write')||n.includes('content')||n.includes('copy')) return '✍️';
-      if(n.includes('design')||n.includes('visual')||n.includes('image')) return '🎨';
-      if(n.includes('video')) return '🎬';
-      if(n.includes('audio')||n.includes('voice')||n.includes('podcast')) return '🎙️';
-      if(n.includes('seo')||n.includes('rank')||n.includes('keyword')) return '📈';
-      if(n.includes('email')||n.includes('newsletter')) return '📧';
-      if(n.includes('schedule')||n.includes('calendar')||n.includes('time')) return '📅';
-      if(n.includes('meeting')||n.includes('transcript')) return '🎤';
-      if(n.includes('research')||n.includes('analyz')||n.includes('data')) return '🔍';
-      if(n.includes('team')||n.includes('collaborat')) return '👥';
-      if(n.includes('code')||n.includes('develop')||n.includes('build')) return '💻';
-      if(n.includes('sales')||n.includes('lead')) return '💼';
-      if(n.includes('social')||n.includes('post')) return '📱';
-      return '✨';
+    /* Use WordPress mshots — more reliable than thum.io, handles Cloudflare sites */
+    function shot(domain){
+      return `https://s0.wordpress.com/mshots/v1/https%3A%2F%2F${encodeURIComponent(domain)}?w=1200&h=750`;
     }
 
     /* ── Build spotlight hero slider from affiliate partners ── */
@@ -3365,18 +3318,15 @@ async function submitReview(){
             </div>
           </div>
           <div class="pp-spot-right">
-            <div class="pp-spot-showcase" style="background:${catGradient(cat)}">
-              <div class="pp-spot-showcase-logo">
-                ${domain?`<img src="${fav(domain)}" alt="${p.name}" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span style=\\"font-size:22px;font-weight:800;color:var(--primary)\\">${ini2}</span>')">`:`<span style="font-size:22px;font-weight:800;color:var(--primary)">${ini2}</span>`}
+            <div class="pp-spot-browser-bar">
+              <span class="pp-spot-browser-dot r"></span><span class="pp-spot-browser-dot y"></span><span class="pp-spot-browser-dot g"></span>
+              <div class="pp-spot-url-bar">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="pp-spot-url-text">${domain}</span>
               </div>
-              <div class="pp-spot-showcase-name">${p.name}</div>
-              ${tag?`<div class="pp-spot-showcase-tag">${tag}</div>`:''}
-              ${needs.length?`<div class="pp-spot-showcase-feats">${needs.slice(0,3).map(n=>`<div class="pp-spot-showcase-feat"><span class="pp-spot-showcase-feat-icon">${featIcon(n)}</span><span class="pp-spot-showcase-feat-text">${n}</span></div>`).join('')}</div>`:''}
-              ${(rating||users)?`<div class="pp-spot-showcase-stats">
-                ${rating?`<div class="pp-spot-showcase-stat"><span class="pp-spot-showcase-stat-val">⭐ ${rating}</span><span class="pp-spot-showcase-stat-lbl">Rating</span></div>`:''}
-                ${users?`<div class="pp-spot-showcase-stat"><span class="pp-spot-showcase-stat-val">${users}</span><span class="pp-spot-showcase-stat-lbl">Users</span></div>`:''}
-                ${cat?`<div class="pp-spot-showcase-stat"><span class="pp-spot-showcase-stat-val">🏷️</span><span class="pp-spot-showcase-stat-lbl">${cat}</span></div>`:''}
-              </div>`:''}
+            </div>
+            <div class="pp-spot-screenshot-wrap">
+              <img class="pp-spot-screenshot" src="${shot(domain)}" alt="${p.name} website" loading="${i===0?'eager':'lazy'}" onerror="this.src='https://image.thum.io/get/width/1200/crop/750/https://'+encodeURIComponent('${domain}')">
             </div>
           </div>
         </div>`;
