@@ -671,6 +671,19 @@
       "pair": "",
       "words": 797,
       "partners": []
+    },
+    {
+      "date": "2026-06-07",
+      "slot": "night",
+      "slug": "the-ai-hiring-workflow-screen-100-applicants-in-an-afternoon",
+      "title": "The AI Hiring Workflow: Screen 100 Applicants in an Afternoon",
+      "type": "workflow",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
+      "topic": "hiring workflow screen applicants",
+      "pair": "",
+      "words": 818,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -726,6 +739,7 @@
     "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1527430253228-e93688616381?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1527430253228-e93688616381?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop"
   ]
 }
