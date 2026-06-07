@@ -371,7 +371,9 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .partner-expand-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .partner-expand-logo{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:#fff;padding:2px;object-fit:contain}
 .partner-expand-title{font-size:15px;font-weight:700;color:var(--text)}
-.partner-expand-close{margin-left:auto;background:none;border:none;font-size:18px;color:var(--text-dim);cursor:pointer;line-height:1;padding:2px 8px;border-radius:6px;flex-shrink:0}
+.partner-try-btn{margin-left:auto;display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(245,158,11,.35)}
+.partner-try-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(245,158,11,.45);color:#fff}
+.partner-expand-close{margin-left:8px;background:none;border:none;font-size:18px;color:var(--text-dim);cursor:pointer;line-height:1;padding:2px 8px;border-radius:6px;flex-shrink:0}
 .partner-expand-close:hover{background:var(--surface-2);color:var(--text)}
 .partner-scroll-btn{position:absolute;top:38px;transform:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,.08);font-size:18px;color:var(--text-2);line-height:1}
 .partner-scroll-btn:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
@@ -985,6 +987,17 @@ function escHtml(str){ return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;
 const PARTNER_SLUGS_LIST = ['elevenlabs','fireflies-ai','reclaim-ai'];
 let _activePartnerSlug = null;
 
+/* Resolve the best affiliate/try URL for a partner tool */
+function getPartnerAffUrl(slug, domain){
+  const m = window.MYAI_AFF_MAP || {};
+  // Try several key forms: slug as-is, slug with spaces, domain, domain root
+  return m[slug]
+    || m[slug.replace(/-/g,' ')]
+    || m[domain]
+    || m[(domain||'').replace(/\..+/,'')]
+    || (domain ? 'https://'+domain : null);
+}
+
 function buildPartnerCarousel(){
   const overrides = window.PROMPT_TOOL_OVERRIDES || {};
   const section = document.getElementById('partner-section');
@@ -1049,11 +1062,15 @@ function selectPartnerTool(slug){
   const domain = data.domain || slug.replace(/-/g,'')+'.com';
   const prompts = data.free || [];
   const isPartner = PARTNER_SLUGS_LIST.includes(slug);
+  const affUrl = getPartnerAffUrl(slug, domain);
+
+  const tryBtnHTML = affUrl ? `<a class="partner-try-btn" href="${affUrl}" target="_blank" rel="noopener sponsored" title="Try ${name} free">Try Free →</a>` : '';
 
   panel.innerHTML = `
     <div class="partner-expand-head">
       <img class="partner-expand-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name}" onerror="this.style.display='none'">
       <span class="partner-expand-title">${name}${isPartner?' <span class="tool-partner-badge" style="margin-left:6px">✦ Partner</span>':''} — Custom Prompts</span>
+      ${tryBtnHTML}
       <button class="partner-expand-close" onclick="selectPartnerTool('${slug}')" title="Close">✕</button>
     </div>
     <div class="prompt-grid">${prompts.map((p,i)=>promptCardHTML(p,i,'free',slug)).join('')}</div>
