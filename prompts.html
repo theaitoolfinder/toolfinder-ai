@@ -1035,10 +1035,6 @@ async function buildPartnerCarousel(){
     const hasCustom = !!overrides[slug];
     const domain    = (overrides[slug] && overrides[slug].domain) || domainFromUrl(tool.affiliate_url) || '';
     const cat       = (tool.categories && tool.categories[0]) || '';
-    const count     = hasCustom
-      ? (overrides[slug].free||[]).length
-      : Math.min(((window.PROMPT_CATEGORY_BANK&&cat)?((window.PROMPT_CATEGORY_BANK[cat]||{}).free||[]).length:0), 5);
-
     return `<div class="partner-card is-partner"
       data-slug="${slug}"
       data-name="${tool.name}"
@@ -1049,7 +1045,7 @@ async function buildPartnerCarousel(){
       role="button" tabindex="0" aria-label="${tool.name} prompts">
       <img class="partner-card-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${tool.name}" onerror="this.style.display='none'">
       <div class="partner-card-name">${tool.name}</div>
-      <div class="partner-card-count">${count||3} free prompt${count!==1?'s':''}</div>
+      <div class="partner-card-count">5 free prompts</div>
     </div>`;
   }).join('');
 
@@ -1087,13 +1083,15 @@ function selectPartnerTool(slug){
   const domain    = card.dataset.domain || '';
   const cat       = card.dataset.cat || '';
   const affUrl    = getPartnerAffUrl(slug, domain, card.dataset.aff);
-  // Prompts: custom overrides first, then category fallback (up to 5)
+  // Prompts: custom overrides first; fallback fills to 5 with free + premium from category
   let prompts;
   if(overrides[slug]){
     prompts = overrides[slug].free || [];
   } else {
     const catData = (window.PROMPT_CATEGORY_BANK&&cat) ? (window.PROMPT_CATEGORY_BANK[cat]||{}) : {};
-    prompts = (catData.free||[]).slice(0,5);
+    const freeOnes    = catData.free    || [];
+    const premiumOnes = catData.premium || [];
+    prompts = freeOnes.concat(premiumOnes).slice(0,5);
   }
 
   const tryBtnHTML = affUrl ? `<a class="partner-try-btn" href="${affUrl}" target="_blank" rel="noopener sponsored">Try Free →</a>` : '';
