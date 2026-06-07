@@ -25,12 +25,13 @@
 <script>try{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t!=='blue')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 <style>
 :root{
-  --bg:#f0f6ff;--navy:#1a56db;--navy2:#1e3a8a;--primary:#1a56db;--primary-2:#1e3a8a;
+  --bg:#f0f6ff;--bg-off:#e8f2ff;--navy:#1a56db;--navy2:#1e3a8a;--primary:#1a56db;--primary-2:#1e3a8a;
   --gold-a:#d97706;--gold-bg:#fef3c7;--gold-b:#fbbf24;
   --gray:#1e3a5f;--gray2:#5c7799;--gray-m:#9ca3af;
   --green:#16a34a;
   --glass:rgba(255,255,255,0.75);
   --glass-strong:rgba(255,255,255,0.92);
+  --card-border:rgba(26,86,219,0.09);
   --border:rgba(255,255,255,0.88);
   --blur:blur(24px) saturate(200%);
   --blur-sm:blur(14px) saturate(160%);
@@ -39,19 +40,21 @@
   --sh-gold:0 4px 24px rgba(217,119,6,0.35);
   --r:20px;--r-sm:14px;--r-xs:9px;--r-pill:980px;
 }
-[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--navy:#7c3aed;--navy2:#6d28d9;--bg:#f5f3ff}
-[data-theme="green"]{--primary:#059669;--primary-2:#047857;--navy:#059669;--navy2:#047857;--bg:#ecfdf5}
-[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--navy:#d97706;--navy2:#b45309;--bg:#fffbeb}
-[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--navy:#e11d48;--navy2:#be123c;--bg:#fff1f2}
-[data-theme="cyan"]{--primary:#0891b2;--primary-2:#0e7490;--navy:#0891b2;--navy2:#0e7490;--bg:#ecfeff}
-[data-theme="indigo"]{--primary:#4338ca;--primary-2:#3730a3;--navy:#4338ca;--navy2:#3730a3;--bg:#eef2ff}
-[data-theme="slate"]{--primary:#475569;--primary-2:#334155;--navy:#475569;--navy2:#334155;--bg:#f1f5f9}
-[data-theme="lime"]{--primary:#65a30d;--primary-2:#4d7c0f;--navy:#65a30d;--navy2:#4d7c0f;--bg:#f7fee7}
-[data-theme="violet"]{--primary:#9333ea;--primary-2:#7e22ce;--navy:#9333ea;--navy2:#7e22ce;--bg:#faf5ff}
-[data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--navy:#ea580c;--navy2:#c2410c;--bg:#fff7ed}
-[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--navy:#0284c7;--navy2:#0369a1;--bg:#f0f9ff}
-[data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--navy:#db2777;--navy2:#be185d;--bg:#fdf2f8}
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--navy:#7c3aed;--navy2:#6d28d9;--bg:#f5f3ff;--bg-off:#ede9fe;--glass-strong:rgba(250,247,255,0.93);--card-border:rgba(124,58,237,0.10);--sh:0 4px 20px rgba(124,58,237,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(124,58,237,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--navy:#059669;--navy2:#047857;--bg:#ecfdf5;--bg-off:#d1fae5;--glass-strong:rgba(245,255,250,0.93);--card-border:rgba(5,150,105,0.10);--sh:0 4px 20px rgba(5,150,105,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(5,150,105,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--navy:#d97706;--navy2:#b45309;--bg:#fffbeb;--bg-off:#fef3c7;--glass-strong:rgba(255,254,245,0.93);--card-border:rgba(217,119,6,0.10);--sh:0 4px 20px rgba(217,119,6,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(217,119,6,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--navy:#e11d48;--navy2:#be123c;--bg:#fff1f2;--bg-off:#ffe4e6;--glass-strong:rgba(255,248,249,0.93);--card-border:rgba(225,29,72,0.10);--sh:0 4px 20px rgba(225,29,72,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(225,29,72,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="cyan"]{--primary:#0891b2;--primary-2:#0e7490;--navy:#0891b2;--navy2:#0e7490;--bg:#ecfeff;--bg-off:#cffafe;--glass-strong:rgba(245,255,255,0.93);--card-border:rgba(8,145,178,0.10);--sh:0 4px 20px rgba(8,145,178,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(8,145,178,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="indigo"]{--primary:#4338ca;--primary-2:#3730a3;--navy:#4338ca;--navy2:#3730a3;--bg:#eef2ff;--bg-off:#e0e7ff;--glass-strong:rgba(248,250,255,0.93);--card-border:rgba(67,56,202,0.10);--sh:0 4px 20px rgba(67,56,202,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(67,56,202,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="slate"]{--primary:#475569;--primary-2:#334155;--navy:#475569;--navy2:#334155;--bg:#f1f5f9;--bg-off:#e2e8f0;--glass-strong:rgba(250,252,254,0.93);--card-border:rgba(71,85,105,0.10);--sh:0 4px 20px rgba(71,85,105,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(71,85,105,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="lime"]{--primary:#65a30d;--primary-2:#4d7c0f;--navy:#65a30d;--navy2:#4d7c0f;--bg:#f7fee7;--bg-off:#d9f99d;--glass-strong:rgba(250,255,240,0.93);--card-border:rgba(101,163,13,0.10);--sh:0 4px 20px rgba(101,163,13,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(101,163,13,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="violet"]{--primary:#9333ea;--primary-2:#7e22ce;--navy:#9333ea;--navy2:#7e22ce;--bg:#faf5ff;--bg-off:#f3e8ff;--glass-strong:rgba(252,248,255,0.93);--card-border:rgba(147,51,234,0.10);--sh:0 4px 20px rgba(147,51,234,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(147,51,234,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--navy:#ea580c;--navy2:#c2410c;--bg:#fff7ed;--bg-off:#ffedd5;--glass-strong:rgba(255,252,248,0.93);--card-border:rgba(234,88,12,0.10);--sh:0 4px 20px rgba(234,88,12,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(234,88,12,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--navy:#0284c7;--navy2:#0369a1;--bg:#f0f9ff;--bg-off:#e0f2fe;--glass-strong:rgba(245,252,255,0.93);--card-border:rgba(2,132,199,0.10);--sh:0 4px 20px rgba(2,132,199,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(2,132,199,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
+[data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--navy:#db2777;--navy2:#be185d;--bg:#fdf2f8;--bg-off:#fce7f3;--glass-strong:rgba(255,248,252,0.93);--card-border:rgba(219,39,119,0.10);--sh:0 4px 20px rgba(219,39,119,0.08),0 1px 0 rgba(255,255,255,0.9) inset;--sh-lg:0 16px 48px rgba(219,39,119,0.14),0 1px 0 rgba(255,255,255,0.95) inset}
 /* ── Theme picker nav button ── */
+.nav-login{padding:7px 16px;border-radius:999px;border:1.5px solid rgba(26,86,219,.22);background:transparent;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--navy);transition:all .15s;white-space:nowrap;margin-right:4px}
+.nav-login:hover{border-color:var(--navy);background:rgba(255,255,255,.5)}
 #nav-theme-wrap{position:relative}
 #nav-theme-btn{padding:6px 11px;border-radius:var(--r-pill);border:1.5px solid rgba(26,86,219,.25);background:transparent;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:var(--navy);transition:border-color .15s}
 #nav-theme-btn:hover{border-color:var(--navy)}
@@ -70,7 +73,7 @@
 .mob-theme-swatches{display:flex;flex-wrap:wrap;gap:8px}
 .mob-theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s}
 .mob-theme-swatch.active{border-color:#1a202c}
-@media(max-width:767px){#nav-theme-btn{display:none}}
+@media(max-width:767px){#nav-theme-btn{display:none}.nav-login{display:none}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{
@@ -179,7 +182,7 @@ nav{
 .art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 .art-card{
   background:var(--glass-strong);backdrop-filter:var(--blur);
-  border:1px solid var(--border);border-radius:var(--r);
+  border:1px solid var(--card-border);border-radius:var(--r);
   overflow:hidden;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
   display:flex;flex-direction:column;box-shadow:var(--sh);
   position:relative;
@@ -239,7 +242,7 @@ nav{
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,148,45,0.5);}
 
 /* FOOTER */
-footer{background:rgba(26,86,219,0.96);padding:48px 20px 28px;text-align:center;}
+footer{background:var(--navy);padding:48px 20px 28px;text-align:center;}
 footer p{font-size:12.5px;color:rgba(255,255,255,0.3);}
 footer a{color:var(--gold-a);transition:color 0.15s;}
 footer a:hover{color:#e2c06a;}
@@ -478,6 +481,7 @@ footer a:hover{color:#e2c06a;}
     <a href="articles.html" class="nav-a active">Articles</a>
     <a href="prompts.html" class="nav-a">Prompts</a>
     <a href="about.html" class="nav-a">About</a>
+    <button class="nav-login" onclick="window.location='index.html'">Log In</button>
     <div id="nav-theme-wrap">
       <button id="nav-theme-btn" onclick="toggleThemePanel(event)"><span id="nav-theme-dot"></span>Theme</button>
       <div id="theme-panel"><h5>Your Colour Theme</h5><div class="theme-swatches"><div class="theme-swatch" data-t="blue" title="Blue" onclick="applyTheme('blue')"></div><div class="theme-swatch" data-t="purple" title="Purple" onclick="applyTheme('purple')"></div><div class="theme-swatch" data-t="green" title="Green" onclick="applyTheme('green')"></div><div class="theme-swatch" data-t="amber" title="Amber" onclick="applyTheme('amber')"></div><div class="theme-swatch" data-t="rose" title="Rose" onclick="applyTheme('rose')"></div><div class="theme-swatch" data-t="cyan" title="Cyan" onclick="applyTheme('cyan')"></div><div class="theme-swatch" data-t="indigo" title="Indigo" onclick="applyTheme('indigo')"></div><div class="theme-swatch" data-t="slate" title="Slate" onclick="applyTheme('slate')"></div><div class="theme-swatch" data-t="lime" title="Lime" onclick="applyTheme('lime')"></div><div class="theme-swatch" data-t="violet" title="Violet" onclick="applyTheme('violet')"></div><div class="theme-swatch" data-t="orange" title="Orange" onclick="applyTheme('orange')"></div><div class="theme-swatch" data-t="sky" title="Sky" onclick="applyTheme('sky')"></div><div class="theme-swatch" data-t="pink" title="Pink" onclick="applyTheme('pink')"></div></div><div id="theme-panel-footer">Saves automatically ✓</div></div>
