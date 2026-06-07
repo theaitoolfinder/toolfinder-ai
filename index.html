@@ -3089,7 +3089,7 @@ async function submitReview(){
     }
     function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
-    function shot(url){return `https://image.thum.io/get/width/1200/crop/630/${encodeURIComponent(url)}`;}
+    function shot(url){return `https://image.thum.io/get/width/1200/crop/630/${url}`;}
 
     /* ── Build spotlight hero slider from affiliate partners ── */
     (function buildSpotlight(){
