@@ -234,7 +234,9 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .tool-section-header:hover{background:#f0f2f7}
 .tool-logo{width:36px;height:36px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:#fff;padding:3px}
 .tool-logo-fallback{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(26,86,219,.22)}
-.tool-section-title{font-size:15px;font-weight:700;color:var(--text)}
+.tool-section-title{font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tool-partner-badge{font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#92400e;background:rgba(254,243,199,.9);border:1.5px solid rgba(245,158,11,.5);border-radius:999px;padding:2px 7px}
+.partner-tool-section .tool-section-header{background:linear-gradient(135deg,rgba(254,243,199,.35),var(--surface-2));border-left:3px solid rgba(245,158,11,.55)}
 .tool-section-sub{font-size:12px;color:var(--text-dim);margin-top:1px}
 .tool-chevron{margin-left:auto;color:var(--text-dim);transition:transform .25s;font-size:18px}
 .tool-section-header.open .tool-chevron{transform:rotate(180deg)}
@@ -651,21 +653,32 @@ function renderPrompts(){
   if((activeCat==='all' || !activeCat) && !searchQuery){
     const overrides = window.PROMPT_TOOL_OVERRIDES||{};
     if(Object.keys(overrides).length){
+      // Partners always show first
+      const PARTNER_SLUGS = ['elevenlabs','fireflies-ai','reclaim-ai'];
+      const sortedEntries = Object.entries(overrides).sort(([a],[b])=>{
+        const pa=PARTNER_SLUGS.indexOf(a), pb=PARTNER_SLUGS.indexOf(b);
+        if(pa>-1&&pb>-1) return pa-pb;
+        if(pa>-1) return -1;
+        if(pb>-1) return 1;
+        return 0;
+      });
       html += `<div class="cat-section">
         <div class="cat-header">
           <span class="cat-icon">⭐</span>
           <span class="cat-title">Top AI Tools — Custom Prompts</span>
           <span class="cat-count">Custom-crafted for the most popular tools</span>
         </div>`;
-      Object.entries(overrides).forEach(([slug,data])=>{
-        const toolName = slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+      sortedEntries.forEach(([slug,data])=>{
+        const toolName = data.displayName || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        const domain = data.domain || (slug.replace(/-/g,'')+'.com');
         const anchor = slug;
-        html += `<div class="tool-section" id="${anchor}">
+        const isPartner = ['elevenlabs','fireflies-ai','reclaim-ai'].includes(slug);
+        html += `<div class="tool-section${isPartner?' partner-tool-section':''}" id="${anchor}">
           <div class="tool-section-header" onclick="toggleToolSection(this)">
-            <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=${slug}.com&sz=64"
+            <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64"
               alt="${toolName}" onerror="this.style.display='none'">
             <div>
-              <div class="tool-section-title">${toolName}</div>
+              <div class="tool-section-title">${toolName}${isPartner?' <span class="tool-partner-badge">✦ Partner</span>':''}</div>
               <div class="tool-section-sub">${(data.free||[]).length} custom free prompts</div>
             </div>
             <span class="tool-chevron">&#x25BE;</span>

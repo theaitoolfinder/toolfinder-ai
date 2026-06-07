@@ -3480,6 +3480,26 @@ window.PROMPT_TOOL_OVERRIDES = {
       { title: "Character Animation Prompt", useCase: "Character Video", prompt: "Animate [CHARACTER DESCRIPTION] performing the following action: [DETAILED ACTION DESCRIPTION: e.g., a young woman laughs warmly, tilts her head slightly to the right, then makes eye contact with the camera]. Setting: [BACKGROUND DESCRIPTION]. Lighting: [LIGHTING TYPE]. Camera: [CAMERA FRAMING: e.g., medium close-up, steady]. Motion quality: fluid, natural, realistic. Duration: [X SECONDS]. Maintain: consistent character appearance, natural micro-movements (breathing, subtle eye movement)." },
       { title: "Product in Motion Prompt", useCase: "Commercial Video", prompt: "Create a [X]-second product showcase video for [PRODUCT NAME/DESCRIPTION]. Motion: [HOW THE PRODUCT MOVES: e.g., slowly rotates 360° / is placed on the surface by invisible hands / transforms from flat components to assembled form]. Background: [SURFACE AND ENVIRONMENT: e.g., floating above a clean white gradient surface with soft shadow below]. Lighting: [STUDIO LIGHTING TYPE]. Camera: [SHOT TYPE AND MOVEMENT]. Style: [HIGH-END COMMERCIAL / MINIMAL TECH / LUXURY BRAND]. End frame: [STATIC HERO SHOT DESCRIPTION]." }
     ]
+  },
+
+  "fireflies-ai": {
+    domain: "fireflies.ai",
+    displayName: "Fireflies.ai",
+    free: [
+      { title: "Meeting Summary & Key Decisions", useCase: "Meeting Productivity", prompt: "Using my Fireflies.ai transcript from [MEETING NAME / DATE], generate a structured meeting summary. Include: (1) Meeting purpose in one sentence, (2) Attendees and their roles, (3) Key decisions made (bulleted list), (4) Problems raised and proposed solutions, (5) Open questions that were left unresolved, (6) Next steps agreed upon (with owner and due date if mentioned), (7) Any commitments made by specific people. Keep the summary under 400 words. Highlight any decisions that require follow-up from me specifically: [YOUR NAME/ROLE]." },
+      { title: "Action Item Extraction", useCase: "Task Management", prompt: "Extract all action items from this Fireflies.ai meeting transcript: [PASTE TRANSCRIPT OR SUMMARY]. For each action item provide: (1) Task description (clear and specific), (2) Owner (person responsible), (3) Due date or timeframe (if mentioned), (4) Priority (High / Medium / Low based on context), (5) Dependencies (what needs to happen first). Format as a table. Then write a Slack/Teams message I can send to the team listing all action items clearly. Flag any tasks assigned to me: [YOUR NAME]." },
+      { title: "Follow-Up Email from Meeting", useCase: "Communication", prompt: "Based on this Fireflies.ai meeting transcript/summary: [PASTE CONTENT], draft a professional follow-up email to send to all attendees. Include: (1) Brief thank-you and meeting recap (2 sentences), (2) Decisions made (bulleted), (3) Action items table (person → task → deadline), (4) Next meeting date/time if scheduled, (5) Any documents or resources shared during the meeting (with links if available). Tone: [FORMAL / FRIENDLY / DIRECT]. Send from: [YOUR NAME, TITLE]. Recipients: [LIST ATTENDEES]." }
+    ]
+  },
+
+  "reclaim-ai": {
+    domain: "reclaim.ai",
+    displayName: "Reclaim AI",
+    free: [
+      { title: "Weekly Schedule Optimization Plan", useCase: "Time Management", prompt: "Help me optimize my schedule using Reclaim AI principles. My current situation: (1) Working hours: [e.g., 9am–6pm Mon–Fri], (2) Recurring commitments: [LIST FIXED MEETINGS], (3) Deep work needs: [e.g., 2 hours/day for [PROJECT]], (4) Admin tasks: [e.g., email, Slack — roughly X hours/week], (5) Personal habits to protect: [e.g., lunch, gym, school pickup]. Goals: maximize deep focus blocks, minimize context-switching, protect personal time. Provide: an ideal weekly schedule template and the top 3 Reclaim AI task categories I should set up first." },
+      { title: "Focus Block Strategy", useCase: "Deep Work", prompt: "Design a focus block strategy for my role as [YOUR ROLE] at [TYPE OF COMPANY]. I need to complete [TYPE OF DEEP WORK: e.g., writing, coding, analysis] for [X hours/week]. My biggest scheduling challenges are: [e.g., back-to-back meetings / constant interruptions / unclear priorities]. Using Reclaim AI's smart scheduling: (1) What focus block duration and frequency should I target?, (2) What times of day are ideal for deep work for [MORNING PERSON / EVENING PERSON]?, (3) How should I handle meeting requests that conflict with focus blocks?, (4) What buffer time should I schedule between meetings?" },
+      { title: "Meeting Load Audit & Reduction Plan", useCase: "Meeting Management", prompt: "Audit my current meeting load and help me reduce it using Reclaim AI. My current meetings: [LIST RECURRING MEETINGS WITH FREQUENCY AND DURATION]. Total meeting time per week: [X HOURS]. Role: [YOUR ROLE]. For each meeting category, assess: (1) Is this meeting necessary or could it be async?, (2) Could it be shorter? (3) Could frequency be reduced? Then: (4) Suggest which meetings to convert to async updates, (5) Recommend ideal meeting-free days/time blocks to protect, (6) Draft a message to my team explaining my new scheduling boundaries." }
+    ]
   }
 
 };
