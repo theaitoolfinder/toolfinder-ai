@@ -109,7 +109,7 @@ try{
 .mob-theme-swatch.active{border-color:#1a202c}
 #theme-panel{overflow:hidden}
 #theme-gate{position:absolute;inset:0;z-index:10;border-radius:18px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;text-align:center;pointer-events:auto}
-#theme-panel.unlocked #theme-gate{display:none}
+#theme-gate{display:none}
 .theme-gate-icon{font-size:28px;line-height:1}
 .theme-gate-title{font-size:13px;font-weight:700;color:#1a202c;margin:0}
 .theme-gate-sub{font-size:11px;color:#64748b;margin:0;line-height:1.45}
@@ -120,7 +120,8 @@ try{
 #mob-theme-gate .mob-gate-lbl{font-size:10.5px;font-weight:700;color:#64748b;letter-spacing:.03em}
 #mob-theme-gate .mob-gate-btn{font-size:11px;font-weight:700;padding:5px 14px;border-radius:999px;background:linear-gradient(135deg,var(--primary,#1a56db),var(--primary-2,#1e40af));color:#fff;border:none;cursor:pointer;white-space:nowrap;line-height:1.4}
 .mob-theme-row.unlocked #mob-theme-gate{display:none}
-@media(max-width:767px){#nav-theme-btn{display:none}.nav-login{display:none}}
+@media(max-width:767px){.nav-login{display:none}}
+@media(max-width:768px){#theme-panel{position:fixed!important;top:62px;left:10px;right:10px;width:auto;z-index:600}.mob-theme-row{display:none}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{

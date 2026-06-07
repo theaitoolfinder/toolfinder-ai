@@ -844,7 +844,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 /* ── Theme Switcher — nav button + dropdown ── */
 #nav-theme-btn{padding:7px 10px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-2);font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;position:relative}
 #nav-theme-btn:hover{border-color:var(--primary);color:var(--primary)}
-@media(max-width:767px){#nav-theme-btn{display:none}}
+@media(max-width:768px){#theme-panel{position:fixed!important;top:62px;left:10px;right:10px;width:auto;z-index:600}.mob-theme-row{display:none}}
 #nav-theme-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0;transition:background .25s}
 /* ── Hue Wheel ── */
 .hue-ring-wrap{position:relative;width:116px;height:116px;margin:6px auto 10px;cursor:crosshair;user-select:none;-webkit-user-select:none;flex-shrink:0}
@@ -857,7 +857,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 #theme-panel.open{display:flex}
 /* ── Theme gate (non-subscribers) ── */
 #theme-gate{position:absolute;inset:0;z-index:10;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;pointer-events:auto}
-#theme-panel.unlocked #theme-gate{display:none}
+#theme-gate{display:none}
 .theme-gate-icon{font-size:32px;line-height:1}
 .theme-gate-title{font-size:14px;font-weight:800;color:var(--text);margin:0;letter-spacing:-.01em}
 .theme-gate-sub{font-size:12px;color:var(--text-dim);margin:0;line-height:1.5;max-width:190px}
