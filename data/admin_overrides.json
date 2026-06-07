@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T18:47:39.390Z",
+  "updated": "2026-06-07T18:47:42.501Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -30,7 +30,8 @@
       "trending": 90
     },
     "88": {
-      "affiliate_url": "https://www.make.com/en/register?pc=myaitoolsfinder"
+      "affiliate_url": "https://www.make.com/en/register?pc=myaitoolsfinder",
+      "trending": 9
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
