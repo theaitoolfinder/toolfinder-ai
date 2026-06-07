@@ -3342,7 +3342,7 @@ async function submitReview(){
               </div>
             </div>
             <div class="pp-spot-screenshot-wrap">
-              <img class="pp-spot-screenshot" src="${shot(domain)}" alt="${p.name} website" loading="${i===0?'eager':'lazy'}" onerror="shotFallback(this,'${domain}','${p.name.replace(/'/g,"&#39;")}')"
+              <img class="pp-spot-screenshot" src="${shot(domain)}" alt="${p.name} website" loading="${i===0?'eager':'lazy'}" onerror="shotFallback(this,'${domain}','${p.name.replace(/'/g,"&#39;")}')">
             </div>
           </div>
         </div>`;
