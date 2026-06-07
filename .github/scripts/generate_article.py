@@ -1489,6 +1489,31 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
     enc_title = requests.utils.quote(title)
     enc_url   = requests.utils.quote(f"https://myaitoolsfinder.com/articles/{slug}.html")
 
+    # ── Related articles: pick 3 recent articles from the log (excluding current) ──
+    related_html = ""
+    try:
+        log_data = json.load(open(LOG_PATH, encoding="utf-8"))
+        all_entries = [e for e in log_data.get("generated", []) if e.get("slug") and e["slug"] != slug and e.get("title")]
+        picks = all_entries[-6:]  # last 6 candidates
+        import random as _rnd
+        _rnd.shuffle(picks)
+        picks = picks[:3]
+        if picks:
+            items = "\n".join(
+                f'    <li><a href="../articles/{e["slug"]}.html" '
+                f'style="color:#1a56db;text-decoration:underline;font-size:14px;font-weight:500">'
+                f'{e["title"]}</a></li>'
+                for e in picks
+            )
+            related_html = f"""<div class="related-articles" style="margin-top:40px;padding:24px;background:#f0f6ff;border-radius:12px;border:1px solid #c9d9f5">
+  <h3 style="font-size:15px;font-weight:700;color:#0d1f3c;margin:0 0 14px;text-transform:uppercase;letter-spacing:.08em">Related Articles</h3>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+{items}
+  </ul>
+</div>"""
+    except Exception:
+        pass
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1611,6 +1636,7 @@ footer a{{color:var(--primary);}}
     <div class="post-body">
       {body_html}
     </div>
+    {related_html}
     {sources_html}
     <div class="share-row">
       <a href="https://twitter.com/intent/tweet?text={enc_title}&url={enc_url}" target="_blank" rel="noopener nofollow" class="share-btn">
