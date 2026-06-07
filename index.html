@@ -3336,7 +3336,7 @@ async function submitReview(){
       </div>`:'';
       el.innerHTML=slides.join('')+nav;
       if(partners.length>1){
-        let _si=0,_st=setInterval(()=>ppSpot(1),7000);
+        let _si=0,_st=setInterval(()=>ppSpot(1),4000);
         window.ppSpot=function(dir){
           clearInterval(_st);
           const all=el.querySelectorAll('.pp-spot-slide');
@@ -3346,7 +3346,7 @@ async function submitReview(){
           _si=(_si+dir+all.length)%all.length;
           all[_si].classList.add('active');
           dotEls[_si]&&dotEls[_si].classList.add('active');
-          _st=setInterval(()=>ppSpot(1),6000);
+          _st=setInterval(()=>ppSpot(1),4000);
         };
         window.ppSpotGoto=function(idx){
           clearInterval(_st);
@@ -3357,7 +3357,7 @@ async function submitReview(){
           _si=idx;
           all[_si].classList.add('active');
           dotEls[_si]&&dotEls[_si].classList.add('active');
-          _st=setInterval(()=>ppSpot(1),7000);
+          _st=setInterval(()=>ppSpot(1),4000);
         };
       }
     })();
