@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T15:59:52.938Z",
+  "updated": "2026-06-07T15:59:55.985Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -26,7 +26,8 @@
       ]
     },
     "82": {
-      "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza"
+      "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza",
+      "trending": 9
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
