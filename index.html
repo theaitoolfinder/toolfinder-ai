@@ -38,7 +38,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Instant theme load — runs before CSS paints to prevent flash of unstyled colour -->
-<script>try{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t!=='blue')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
+<script>
+try{
+  var _t=localStorage.getItem('myai_theme_v1');
+  if(_t&&_t.indexOf('custom:')===-1){
+    if(_t&&_t!=='blue') document.documentElement.setAttribute('data-theme',_t);
+  } else if(_t&&_t.indexOf('custom:')===0){
+    var _h=parseFloat(_t.split(':')[1]);
+    if(!isNaN(_h)){
+      var _r=document.documentElement;
+      var _s=function(h,s,l){var a=s*(Math.min(l,1-l)/100);var f=function(n){var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,9-k,1));};return '#'+[f(0),f(8),f(4)].map(function(x){return Math.round(x*255).toString(16).padStart(2,'0');}).join('');};
+      _r.style.setProperty('--primary',_s(_h,75,38));
+      _r.style.setProperty('--primary-2',_s(_h,75,28));
+      _r.style.setProperty('--primary-light',_s(_h,80,90));
+      _r.style.setProperty('--surface-2',_s(_h,60,96));
+      _r.style.setProperty('--border',_s(_h,60,82));
+      _r.style.setProperty('--border-soft',_s(_h,60,90));
+      _r.style.setProperty('--bg',_s(_h,55,96));
+      _r.style.setProperty('--hero-grad','linear-gradient(160deg,'+_s(_h,65,88)+' 0%,'+_s(_h,55,96)+' 45%,'+_s(_h,60,94)+' 100%)');
+    }
+  }
+}catch(e){}
+</script>
 <style>
 :root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--accent-2:#fbbf24;--ok:#16a34a;--star:#f59e0b;--danger:#ef4444;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--brain-clr:rgba(26,86,219,.10);--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
 
@@ -55,6 +76,11 @@
 [data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--primary-light:#ffedd5;--surface-2:#fff7ed;--border:#fed7aa;--border-soft:#ffedd5;--bg:#fff7ed;--shadow:0 2px 12px rgba(234,88,12,.07);--shadow-lg:0 8px 28px rgba(234,88,12,.13);--brain-clr:rgba(234,88,12,.11);--hero-grad:linear-gradient(160deg,#ffedd5 0%,#fff7ed 45%,#fffbeb 100%)}
 [data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--surface-2:#f0f9ff;--border:#bae6fd;--border-soft:#e0f2fe;--bg:#f0f9ff;--shadow:0 2px 12px rgba(2,132,199,.07);--shadow-lg:0 8px 28px rgba(2,132,199,.13);--brain-clr:rgba(2,132,199,.11);--hero-grad:linear-gradient(160deg,#e0f2fe 0%,#f0f9ff 45%,#ecfeff 100%)}
 [data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--primary-light:#fce7f3;--surface-2:#fdf2f8;--border:#fbcfe8;--border-soft:#fce7f3;--bg:#fdf2f8;--shadow:0 2px 12px rgba(219,39,119,.07);--shadow-lg:0 8px 28px rgba(219,39,119,.13);--brain-clr:rgba(219,39,119,.11);--hero-grad:linear-gradient(160deg,#fce7f3 0%,#fdf2f8 45%,#fff1f2 100%)}
+[data-theme="teal"]{--primary:#0d9488;--primary-2:#0f766e;--primary-light:#ccfbf1;--surface-2:#f0fdfa;--border:#99f6e4;--border-soft:#ccfbf1;--bg:#f0fdfa;--shadow:0 2px 12px rgba(13,148,136,.07);--shadow-lg:0 8px 28px rgba(13,148,136,.13);--brain-clr:rgba(13,148,136,.11);--hero-grad:linear-gradient(160deg,#ccfbf1 0%,#f0fdfa 45%,#ecfeff 100%)}
+[data-theme="fuchsia"]{--primary:#c026d3;--primary-2:#a21caf;--primary-light:#fae8ff;--surface-2:#fdf4ff;--border:#f0abfc;--border-soft:#fae8ff;--bg:#fdf4ff;--shadow:0 2px 12px rgba(192,38,211,.07);--shadow-lg:0 8px 28px rgba(192,38,211,.13);--brain-clr:rgba(192,38,211,.11);--hero-grad:linear-gradient(160deg,#fae8ff 0%,#fdf4ff 45%,#fce7f3 100%)}
+[data-theme="red"]{--primary:#dc2626;--primary-2:#b91c1c;--primary-light:#fee2e2;--surface-2:#fef2f2;--border:#fecaca;--border-soft:#fee2e2;--bg:#fef2f2;--shadow:0 2px 12px rgba(220,38,38,.07);--shadow-lg:0 8px 28px rgba(220,38,38,.13);--brain-clr:rgba(220,38,38,.11);--hero-grad:linear-gradient(160deg,#fee2e2 0%,#fef2f2 45%,#fff1f2 100%)}
+[data-theme="gold"]{--primary:#ca8a04;--primary-2:#a16207;--primary-light:#fef9c3;--surface-2:#fefce8;--border:#fde047;--border-soft:#fef9c3;--bg:#fefce8;--shadow:0 2px 12px rgba(202,138,4,.07);--shadow-lg:0 8px 28px rgba(202,138,4,.13);--brain-clr:rgba(202,138,4,.11);--hero-grad:linear-gradient(160deg,#fef9c3 0%,#fefce8 45%,#fef3c7 100%)}
+[data-theme="brown"]{--primary:#92400e;--primary-2:#78350f;--primary-light:#fef3c7;--surface-2:#fdf6ec;--border:#fcd9a0;--border-soft:#fef3c7;--bg:#fdf6ec;--shadow:0 2px 12px rgba(146,64,14,.07);--shadow-lg:0 8px 28px rgba(146,64,14,.13);--brain-clr:rgba(146,64,14,.11);--hero-grad:linear-gradient(160deg,#fef3c7 0%,#fdf6ec 45%,#fff7ed 100%)}
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--hero-grad);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 html{overflow-x:hidden}body{-webkit-overflow-scrolling:touch}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;touch-action:manipulation}.container{max-width:1180px;margin:0 auto;padding:0 20px}
@@ -819,33 +845,45 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 #nav-theme-btn:hover{border-color:var(--primary);color:var(--primary)}
 @media(max-width:767px){#nav-theme-btn{display:none}}
 #nav-theme-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0;transition:background .25s}
-#theme-panel{position:absolute;top:calc(100% + 10px);right:0;z-index:500;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 16px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14);width:232px;display:none;flex-direction:column;gap:12px}
+/* ── Hue Wheel ── */
+.hue-ring-wrap{position:relative;width:116px;height:116px;margin:6px auto 10px;cursor:crosshair;user-select:none;-webkit-user-select:none;flex-shrink:0}
+.hue-ring{width:116px;height:116px;border-radius:50%;background:conic-gradient(hsl(0,80%,62%),hsl(20,80%,62%),hsl(40,80%,62%),hsl(60,78%,62%),hsl(80,78%,62%),hsl(100,78%,62%),hsl(120,75%,57%),hsl(140,75%,55%),hsl(160,75%,55%),hsl(180,75%,55%),hsl(200,78%,58%),hsl(220,80%,60%),hsl(240,78%,62%),hsl(260,80%,63%),hsl(280,80%,63%),hsl(300,80%,62%),hsl(320,80%,62%),hsl(340,80%,62%),hsl(360,80%,62%));mask:radial-gradient(circle,transparent 33px,black 34px);-webkit-mask:radial-gradient(circle,transparent 33px,black 34px)}
+.hue-cursor{position:absolute;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.35),0 0 0 1.5px rgba(0,0,0,.12);pointer-events:none;transform:translate(-50%,-50%);z-index:2}
+.hue-center{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--surface);border:2px solid var(--border);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;display:flex;align-items:center;justify-content:center;font-size:11px}
+.hue-wheel-hint{font-size:9.5px;color:var(--text-dim);text-align:center;margin:-4px 0 8px;letter-spacing:.04em;opacity:.8}
+/* ── Theme Panel ── */
+#theme-panel{position:absolute;top:calc(100% + 10px);right:0;z-index:500;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 14px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14);width:250px;display:none;flex-direction:column;gap:8px}
 #theme-panel.open{display:flex}
-#theme-panel h5{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim)}
-.theme-swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.theme-swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
-.theme-swatch:hover{transform:scale(1.14)}
+#theme-panel h5{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);text-align:center}
+.theme-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+.theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
+.theme-swatch:hover{transform:scale(1.16)}
 .theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--primary)}
-.theme-swatch[data-t="blue"]{background:#1a56db}
-.theme-swatch[data-t="purple"]{background:#7c3aed}
-.theme-swatch[data-t="green"]{background:#059669}
-.theme-swatch[data-t="amber"]{background:#d97706}
-.theme-swatch[data-t="rose"]{background:#e11d48}
-.theme-swatch[data-t="cyan"]{background:#0891b2}
-.theme-swatch[data-t="indigo"]{background:#4338ca}
-.theme-swatch[data-t="slate"]{background:#475569}
-.theme-swatch[data-t="lime"]{background:#65a30d}
-.theme-swatch[data-t="violet"]{background:#9333ea}
-.theme-swatch[data-t="orange"]{background:#ea580c}
-.theme-swatch[data-t="sky"]{background:#0284c7}
-.theme-swatch[data-t="pink"]{background:#db2777}
+.theme-swatch[data-t="blue"]{background:#93c5fd}
+.theme-swatch[data-t="purple"]{background:#d8b4fe}
+.theme-swatch[data-t="green"]{background:#86efac}
+.theme-swatch[data-t="amber"]{background:#fcd34d}
+.theme-swatch[data-t="rose"]{background:#fda4af}
+.theme-swatch[data-t="cyan"]{background:#67e8f9}
+.theme-swatch[data-t="indigo"]{background:#a5b4fc}
+.theme-swatch[data-t="slate"]{background:#94a3b8}
+.theme-swatch[data-t="lime"]{background:#bef264}
+.theme-swatch[data-t="violet"]{background:#c4b5fd}
+.theme-swatch[data-t="orange"]{background:#fdba74}
+.theme-swatch[data-t="sky"]{background:#7dd3fc}
+.theme-swatch[data-t="pink"]{background:#f9a8d4}
+.theme-swatch[data-t="teal"]{background:#5eead4}
+.theme-swatch[data-t="fuchsia"]{background:#f0abfc}
+.theme-swatch[data-t="red"]{background:#fca5a5}
+.theme-swatch[data-t="gold"]{background:#fde047}
+.theme-swatch[data-t="brown"]{background:#f5c68a}
 #theme-panel-footer{font-size:10.5px;color:var(--text-dim);text-align:center;line-height:1.4}
 /* Mobile burger menu theme row */
 .mob-theme-row{padding:10px 14px 8px;border-top:1px solid var(--border-soft);margin-top:4px}
 .mob-theme-row span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:9px}
 .mob-theme-swatches{display:flex;flex-wrap:wrap;gap:8px}
-.mob-theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
-.mob-theme-swatch:hover,.mob-theme-swatch:active{transform:scale(1.14)}
+.mob-theme-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
+.mob-theme-swatch:hover,.mob-theme-swatch:active{transform:scale(1.16)}
 .mob-theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--primary)}
 
 /* ── Add to Home Screen Toast ── */
@@ -923,22 +961,33 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
         </button>
         <div id="theme-panel" role="dialog" aria-label="Choose your colour theme">
           <h5>Your Colour Theme</h5>
-          <div class="theme-swatches">
-            <div class="theme-swatch" data-t="blue"   title="Blue"   onclick="applyTheme('blue')"></div>
-            <div class="theme-swatch" data-t="purple" title="Purple" onclick="applyTheme('purple')"></div>
-            <div class="theme-swatch" data-t="green"  title="Green"  onclick="applyTheme('green')"></div>
-            <div class="theme-swatch" data-t="amber"  title="Amber"  onclick="applyTheme('amber')"></div>
-            <div class="theme-swatch" data-t="rose"   title="Rose"   onclick="applyTheme('rose')"></div>
-            <div class="theme-swatch" data-t="cyan"   title="Cyan"   onclick="applyTheme('cyan')"></div>
-            <div class="theme-swatch" data-t="indigo" title="Indigo" onclick="applyTheme('indigo')"></div>
-            <div class="theme-swatch" data-t="slate"  title="Slate"  onclick="applyTheme('slate')"></div>
-            <div class="theme-swatch" data-t="lime"   title="Lime"   onclick="applyTheme('lime')"></div>
-            <div class="theme-swatch" data-t="violet" title="Violet" onclick="applyTheme('violet')"></div>
-            <div class="theme-swatch" data-t="orange" title="Orange" onclick="applyTheme('orange')"></div>
-            <div class="theme-swatch" data-t="sky"    title="Sky"    onclick="applyTheme('sky')"></div>
-            <div class="theme-swatch" data-t="pink"   title="Pink"   onclick="applyTheme('pink')"></div>
+          <div class="hue-ring-wrap" id="hue-ring-wrap">
+            <div class="hue-ring"></div>
+            <div class="hue-cursor" id="hue-cursor"></div>
+            <div class="hue-center">✦</div>
           </div>
-          <div id="theme-panel-footer">Your choice saves automatically ✓</div>
+          <div class="hue-wheel-hint">Drag the ring for any colour</div>
+          <div class="theme-swatches">
+            <div class="theme-swatch" data-t="blue"    title="Blue"    onclick="applyTheme('blue')"></div>
+            <div class="theme-swatch" data-t="purple"  title="Purple"  onclick="applyTheme('purple')"></div>
+            <div class="theme-swatch" data-t="green"   title="Green"   onclick="applyTheme('green')"></div>
+            <div class="theme-swatch" data-t="amber"   title="Amber"   onclick="applyTheme('amber')"></div>
+            <div class="theme-swatch" data-t="rose"    title="Rose"    onclick="applyTheme('rose')"></div>
+            <div class="theme-swatch" data-t="cyan"    title="Cyan"    onclick="applyTheme('cyan')"></div>
+            <div class="theme-swatch" data-t="indigo"  title="Indigo"  onclick="applyTheme('indigo')"></div>
+            <div class="theme-swatch" data-t="slate"   title="Slate"   onclick="applyTheme('slate')"></div>
+            <div class="theme-swatch" data-t="lime"    title="Lime"    onclick="applyTheme('lime')"></div>
+            <div class="theme-swatch" data-t="violet"  title="Violet"  onclick="applyTheme('violet')"></div>
+            <div class="theme-swatch" data-t="orange"  title="Orange"  onclick="applyTheme('orange')"></div>
+            <div class="theme-swatch" data-t="sky"     title="Sky"     onclick="applyTheme('sky')"></div>
+            <div class="theme-swatch" data-t="pink"    title="Pink"    onclick="applyTheme('pink')"></div>
+            <div class="theme-swatch" data-t="teal"    title="Teal"    onclick="applyTheme('teal')"></div>
+            <div class="theme-swatch" data-t="fuchsia" title="Fuchsia" onclick="applyTheme('fuchsia')"></div>
+            <div class="theme-swatch" data-t="red"     title="Red"     onclick="applyTheme('red')"></div>
+            <div class="theme-swatch" data-t="gold"    title="Gold"    onclick="applyTheme('gold')"></div>
+            <div class="theme-swatch" data-t="brown"   title="Brown"   onclick="applyTheme('brown')"></div>
+          </div>
+          <div id="theme-panel-footer">Saves automatically ✓</div>
         </div>
       </div>
       <a href="#newsletter" class="cta">Get Weekly Digest</a>
@@ -964,19 +1013,24 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <div class="mob-theme-row">
       <span>🎨 Colour Theme</span>
       <div class="mob-theme-swatches" id="mob-swatches">
-        <div class="mob-theme-swatch" data-t="blue"   title="Blue"   style="background:#1a56db" onclick="applyTheme('blue')"></div>
-        <div class="mob-theme-swatch" data-t="purple" title="Purple" style="background:#7c3aed" onclick="applyTheme('purple')"></div>
-        <div class="mob-theme-swatch" data-t="green"  title="Green"  style="background:#059669" onclick="applyTheme('green')"></div>
-        <div class="mob-theme-swatch" data-t="amber"  title="Amber"  style="background:#d97706" onclick="applyTheme('amber')"></div>
-        <div class="mob-theme-swatch" data-t="rose"   title="Rose"   style="background:#e11d48" onclick="applyTheme('rose')"></div>
-        <div class="mob-theme-swatch" data-t="cyan"   title="Cyan"   style="background:#0891b2" onclick="applyTheme('cyan')"></div>
-        <div class="mob-theme-swatch" data-t="indigo" title="Indigo" style="background:#4338ca" onclick="applyTheme('indigo')"></div>
-        <div class="mob-theme-swatch" data-t="slate"  title="Slate"  style="background:#475569" onclick="applyTheme('slate')"></div>
-        <div class="mob-theme-swatch" data-t="lime"   title="Lime"   style="background:#65a30d" onclick="applyTheme('lime')"></div>
-        <div class="mob-theme-swatch" data-t="violet" title="Violet" style="background:#9333ea" onclick="applyTheme('violet')"></div>
-        <div class="mob-theme-swatch" data-t="orange" title="Orange" style="background:#ea580c" onclick="applyTheme('orange')"></div>
-        <div class="mob-theme-swatch" data-t="sky"    title="Sky"    style="background:#0284c7" onclick="applyTheme('sky')"></div>
-        <div class="mob-theme-swatch" data-t="pink"   title="Pink"   style="background:#db2777" onclick="applyTheme('pink')"></div>
+        <div class="mob-theme-swatch" data-t="blue"   title="Blue"   style="background:#93c5fd" onclick="applyTheme('blue')"></div>
+        <div class="mob-theme-swatch" data-t="purple" title="Purple" style="background:#d8b4fe" onclick="applyTheme('purple')"></div>
+        <div class="mob-theme-swatch" data-t="green"  title="Green"  style="background:#86efac" onclick="applyTheme('green')"></div>
+        <div class="mob-theme-swatch" data-t="amber"  title="Amber"  style="background:#fcd34d" onclick="applyTheme('amber')"></div>
+        <div class="mob-theme-swatch" data-t="rose"   title="Rose"   style="background:#fda4af" onclick="applyTheme('rose')"></div>
+        <div class="mob-theme-swatch" data-t="cyan"   title="Cyan"   style="background:#67e8f9" onclick="applyTheme('cyan')"></div>
+        <div class="mob-theme-swatch" data-t="indigo" title="Indigo" style="background:#a5b4fc" onclick="applyTheme('indigo')"></div>
+        <div class="mob-theme-swatch" data-t="slate"  title="Slate"  style="background:#94a3b8" onclick="applyTheme('slate')"></div>
+        <div class="mob-theme-swatch" data-t="lime"   title="Lime"   style="background:#bef264" onclick="applyTheme('lime')"></div>
+        <div class="mob-theme-swatch" data-t="violet" title="Violet" style="background:#c4b5fd" onclick="applyTheme('violet')"></div>
+        <div class="mob-theme-swatch" data-t="orange" title="Orange" style="background:#fdba74" onclick="applyTheme('orange')"></div>
+        <div class="mob-theme-swatch" data-t="sky"    title="Sky"    style="background:#7dd3fc" onclick="applyTheme('sky')"></div>
+        <div class="mob-theme-swatch" data-t="pink"    title="Pink"    style="background:#f9a8d4" onclick="applyTheme('pink')"></div>
+        <div class="mob-theme-swatch" data-t="teal"    title="Teal"    style="background:#5eead4" onclick="applyTheme('teal')"></div>
+        <div class="mob-theme-swatch" data-t="fuchsia" title="Fuchsia" style="background:#f0abfc" onclick="applyTheme('fuchsia')"></div>
+        <div class="mob-theme-swatch" data-t="red"     title="Red"     style="background:#fca5a5" onclick="applyTheme('red')"></div>
+        <div class="mob-theme-swatch" data-t="gold"    title="Gold"    style="background:#fde047" onclick="applyTheme('gold')"></div>
+        <div class="mob-theme-swatch" data-t="brown"   title="Brown"   style="background:#f5c68a" onclick="applyTheme('brown')"></div>
       </div>
     </div>
   </div>
@@ -4677,21 +4731,99 @@ async function popSubscribe(){
   var _panelOpen  = false;
   var _athShown   = false;
 
+  // HSL → hex helper
+  function hslToHex(h,s,l){
+    s/=100; l/=100;
+    var a=s*Math.min(l,1-l);
+    var f=function(n){var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,9-k,1));};
+    return '#'+[f(0),f(8),f(4)].map(function(x){return Math.round(x*255).toString(16).padStart(2,'0');}).join('');
+  }
+
+  // Apply a full palette from a hue angle (0-360)
+  window.applyHueTheme = function(h){
+    var r = document.documentElement;
+    // Remove any named theme so CSS vars take over
+    r.removeAttribute('data-theme');
+    r.style.setProperty('--primary', hslToHex(h,75,38));
+    r.style.setProperty('--primary-2', hslToHex(h,75,28));
+    r.style.setProperty('--primary-light', hslToHex(h,80,90));
+    r.style.setProperty('--surface-2', hslToHex(h,60,96));
+    r.style.setProperty('--border', hslToHex(h,60,82));
+    r.style.setProperty('--border-soft', hslToHex(h,60,90));
+    r.style.setProperty('--bg', hslToHex(h,55,96));
+    r.style.setProperty('--shadow','0 2px 12px hsla('+h+',60%,45%,.07)');
+    r.style.setProperty('--shadow-lg','0 8px 28px hsla('+h+',60%,45%,.13)');
+    r.style.setProperty('--brain-clr','hsla('+h+',65%,50%,.11)');
+    r.style.setProperty('--hero-grad','linear-gradient(160deg,'+hslToHex(h,65,88)+' 0%,'+hslToHex(h,55,96)+' 45%,'+hslToHex(h,60,94)+' 100%)');
+    // Update nav dot
+    var dot = document.getElementById('nav-theme-dot');
+    if(dot) dot.style.background = hslToHex(h,70,45);
+    // Save
+    try{ localStorage.setItem(STORAGE_KEY,'custom:'+Math.round(h)); }catch(e){}
+    // De-select all named swatches
+    document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(el){
+      el.classList.remove('active');
+    });
+    if(!_athShown){ _athShown=true; showAthToast(); }
+  };
+
   function syncSwatches(t){
     var active = t || 'blue';
+    var isCustom = active.indexOf('custom:')===0;
     document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(el){
-      el.classList.toggle('active', el.dataset.t === active);
+      el.classList.toggle('active', !isCustom && el.dataset.t === active);
     });
     // Update the dot colour in the nav button
     var dot = document.getElementById('nav-theme-dot');
     if(dot){
-      var colours = {blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',slate:'#475569',lime:'#65a30d',violet:'#9333ea',orange:'#ea580c',sky:'#0284c7',pink:'#db2777'};
-      dot.style.background = colours[active] || '#1a56db';
+      if(isCustom){
+        var ch = parseFloat(active.split(':')[1]);
+        dot.style.background = isNaN(ch) ? '#1a56db' : hslToHex(ch,70,45);
+      } else {
+        var colours = {
+          blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',
+          rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',slate:'#475569',
+          lime:'#65a30d',violet:'#9333ea',orange:'#ea580c',sky:'#0284c7',
+          pink:'#db2777',teal:'#0d9488',fuchsia:'#c026d3',red:'#dc2626',
+          gold:'#ca8a04',brown:'#92400e'
+        };
+        dot.style.background = colours[active] || '#1a56db';
+      }
     }
+    // Sync hue cursor position if it's a named theme
+    if(!isCustom && active !== 'blue') positionCursorForTheme(active);
+  }
+
+  // Map named themes to approximate hue for cursor positioning
+  function positionCursorForTheme(t){
+    var hues = {
+      purple:270,green:152,amber:38,rose:345,cyan:192,indigo:245,slate:215,
+      lime:84,violet:270,orange:24,sky:201,pink:330,teal:174,fuchsia:293,
+      red:0,gold:43,brown:28,blue:217
+    };
+    var h = hues[t];
+    if(h == null) return;
+    setCursorForHue(h);
+  }
+
+  function setCursorForHue(h){
+    var wrap = document.getElementById('hue-ring-wrap');
+    var cursor = document.getElementById('hue-cursor');
+    if(!wrap || !cursor) return;
+    var r = wrap.offsetWidth/2;
+    var ringR = r * 0.82; // midpoint of ring
+    var rad = (h - 90) * Math.PI / 180;
+    cursor.style.left = (r + ringR * Math.cos(rad)) + 'px';
+    cursor.style.top  = (r + ringR * Math.sin(rad)) + 'px';
   }
 
   window.applyTheme = function(t){
     var html = document.documentElement;
+    // Clear any inline custom-hue vars
+    ['--primary','--primary-2','--primary-light','--surface-2','--border','--border-soft',
+     '--bg','--shadow','--shadow-lg','--brain-clr','--hero-grad'].forEach(function(v){
+       html.style.removeProperty(v);
+     });
     if(!t || t==='blue'){ html.removeAttribute('data-theme'); }
     else { html.setAttribute('data-theme', t); }
     try{ localStorage.setItem(STORAGE_KEY, t||'blue'); }catch(e){}
@@ -4709,6 +4841,15 @@ async function popSubscribe(){
     var panel = document.getElementById('theme-panel');
     _panelOpen = !_panelOpen;
     panel.classList.toggle('open', _panelOpen);
+    if(_panelOpen){
+      var saved2 = '';
+      try{ saved2=localStorage.getItem(STORAGE_KEY)||''; }catch(e){}
+      if(saved2.indexOf('custom:')===0){
+        setCursorForHue(parseFloat(saved2.split(':')[1])||217);
+      } else {
+        positionCursorForTheme(saved2||'blue');
+      }
+    }
   };
 
   // Close panel when clicking outside
@@ -4721,6 +4862,54 @@ async function popSubscribe(){
       panel.classList.remove('open');
     }
   });
+
+  // ── Hue-ring drag ──────────────────────────────────────
+  (function(){
+    var dragging = false;
+    function getAngle(wrap, cx, cy){
+      var rect = wrap.getBoundingClientRect();
+      var dx = cx - (rect.left + rect.width/2);
+      var dy = cy - (rect.top  + rect.height/2);
+      var ang = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+      return ((ang % 360) + 360) % 360;
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var wrap = document.getElementById('hue-ring-wrap');
+      if(!wrap) return;
+      var cx = e.touches ? e.touches[0].clientX : e.clientX;
+      var cy = e.touches ? e.touches[0].clientY : e.clientY;
+      var h = getAngle(wrap, cx, cy);
+      setCursorForHue(h);
+      applyHueTheme(h);
+    }
+    function onUp(){ dragging=false; }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var wrap = document.getElementById('hue-ring-wrap');
+      if(!wrap) return;
+      function startDrag(e){
+        var rect = wrap.getBoundingClientRect();
+        var cx = e.touches ? e.touches[0].clientX : e.clientX;
+        var cy = e.touches ? e.touches[0].clientY : e.clientY;
+        var dx = cx - (rect.left + rect.width/2);
+        var dy = cy - (rect.top  + rect.height/2);
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        var r = rect.width/2;
+        // Only start if click is within the ring band (28%-55% of radius from center)
+        if(dist < r*0.28 || dist > r*1.05) return;
+        dragging=true;
+        onMove(e);
+        e.preventDefault();
+      }
+      wrap.addEventListener('mousedown',  startDrag);
+      wrap.addEventListener('touchstart', startDrag, {passive:false});
+      document.addEventListener('mousemove',  onMove);
+      document.addEventListener('touchmove',  onMove, {passive:true});
+      document.addEventListener('mouseup',    onUp);
+      document.addEventListener('touchend',   onUp);
+    });
+  })();
 
   // ATH toast
   window.showAthToast = function(){
@@ -4740,11 +4929,16 @@ async function popSubscribe(){
     document.getElementById('ath-toast').classList.remove('show');
   };
 
-  // Init
+  // Init — restore saved theme
   var saved = 'blue';
   try{ saved = localStorage.getItem(STORAGE_KEY)||'blue'; }catch(e){}
-  syncSwatches(saved);
-  if(saved && saved!=='blue') document.documentElement.setAttribute('data-theme', saved);
+  if(saved.indexOf('custom:')===0){
+    var initH = parseFloat(saved.split(':')[1]);
+    if(!isNaN(initH)) applyHueTheme(initH);
+  } else {
+    syncSwatches(saved);
+    if(saved && saved!=='blue') document.documentElement.setAttribute('data-theme', saved);
+  }
 })();
 </script>
 </body>
