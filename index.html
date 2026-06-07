@@ -3258,25 +3258,14 @@ async function submitReview(){
     }
     function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
-    /* Branded placeholder — shown when no screenshot is available */
-    function showPlaceholder(wrap, domain, name){
-      const initials=(name||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
-      wrap.style.cssText='background:linear-gradient(145deg,#f0f6ff,#dbeafe);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:28px;min-height:300px';
-      wrap.innerHTML='<div style="width:64px;height:64px;border-radius:16px;background:#fff;box-shadow:0 4px 16px rgba(26,86,219,.15);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="https://www.google.com/s2/favicons?domain='+domain+'&sz=64" style="width:64px;height:64px" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{textContent:\''+initials+'\',style:\'font-size:20px;font-weight:800;color:#1a56db\'}))"></div>'
-        +'<div style="font-size:16px;font-weight:800;color:#1e3a8a;letter-spacing:-.01em">'+name+'</div>'
-        +'<div style="font-size:12px;color:#5c7799;background:rgba(255,255,255,.7);padding:6px 14px;border-radius:999px;border:1px solid #c9d9f5">'+domain+'</div>';
+    function shot(domain){
+      return 'https://s0.wordpress.com/mshots/v1/https%3A%2F%2F'+domain+'?w=1200&h=750';
     }
-    /* Load screenshot via Microlink API (headless Chrome — bypasses Cloudflare) */
-    function loadShot(imgEl, domain, name){
-      const wrap=imgEl.closest('.pp-spot-right');
-      fetch('https://api.microlink.io/?url='+encodeURIComponent('https://'+domain)+'&screenshot=true&meta=false&embed=screenshot.url')
-        .then(r=>r.text())
-        .then(url=>{
-          url=url.trim().replace(/^"|"$/g,'');
-          if(url&&url.startsWith('http')){imgEl.src=url;}
-          else{showPlaceholder(wrap,domain,name);}
-        })
-        .catch(()=>showPlaceholder(wrap,domain,name));
+    function shotErr(el, domain){
+      if(!el.dataset.f){
+        el.dataset.f='1';
+        el.src='https://image.thum.io/get/width/1200/crop/750/https://'+domain;
+      }
     }
 
     /* ── Build spotlight hero slider from affiliate partners ── */
@@ -3342,7 +3331,7 @@ async function submitReview(){
               </div>
             </div>
             <div class="pp-spot-screenshot-wrap">
-              <img class="pp-spot-screenshot" data-domain="${domain}" data-name="${p.name.replace(/"/g,'&quot;')}" alt="${p.name} website">
+              <img class="pp-spot-screenshot" src="${shot(domain)}" alt="${p.name} website" loading="${i===0?'eager':'lazy'}" onerror="shotErr(this,'${domain}')">`
             </div>
           </div>
         </div>`;
@@ -3353,10 +3342,6 @@ async function submitReview(){
         <button class="pp-spot-arrow" onclick="ppSpot(1)">&#8250;</button>
       </div>`:'';
       el.innerHTML=slides.join('')+nav;
-      /* Load screenshots async via Microlink (handles Cloudflare-protected sites) */
-      el.querySelectorAll('.pp-spot-screenshot[data-domain]').forEach((img,i)=>{
-        setTimeout(()=>loadShot(img, img.dataset.domain, img.dataset.name), i*200);
-      });
       if(partners.length>1){
         let _si=0,_st=setInterval(()=>ppSpot(1),4000);
         window.ppSpot=function(dir){
