@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T15:51:38.875Z",
+  "updated": "2026-06-07T15:59:52.938Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -24,6 +24,9 @@
         "Solopreneur",
         "Content Creator"
       ]
+    },
+    "82": {
+      "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza"
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
