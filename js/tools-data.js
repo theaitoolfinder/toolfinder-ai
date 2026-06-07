@@ -186,7 +186,7 @@ window.MYAI_AFF_MAP = {
   "figma ai":              "https://figma.com",
   "fillout":               "https://fillout.com",
   "fillout ai":            "https://fillout.com",
-  "fireflies.ai":          "https://fireflies.ai",
+  "fireflies.ai":          "https://fireflies.ai/?fpr=benjie21",
   "fireworks":             "https://fireworks.ai",
   "fireworks ai":          "https://fireworks.ai",
   "fliki":                 "https://fliki.ai",
