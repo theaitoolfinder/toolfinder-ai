@@ -425,7 +425,7 @@ window.MYAI_AFF_MAP = {
   "navan ai":              "https://navan.com",
   "netomi":                "https://netomi.com",
   "netomi ai":             "https://netomi.com",
-  "neuronwriter":          "https://neuronwriter.com",
+  "neuronwriter":          "https://app.neuronwriter.com/ar/a164b2cc978873dc1a98713284d9b87a",
   "neverinstall":          "https://neverinstall.com",
   "nightcafe":             "https://nightcafe.studio",
   "nightcafe ai":          "https://nightcafe.studio",
