@@ -578,7 +578,7 @@ window.MYAI_AFF_MAP = {
   "seo.ai":                "https://seo.ai",
   "seowind":               "https://seowind.io",
   "shopify magic":         "https://shopify.com/magic",
-  "simplified":            "https://simplified.com",
+  "simplified":            "https://simplified.com?fpr=benjie19",
   "slidebean":             "https://slidebean.com",
   "slidesai":              "https://slidesai.io",
   "smartlead":             "https://smartlead.ai",
