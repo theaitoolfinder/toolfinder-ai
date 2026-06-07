@@ -699,12 +699,22 @@ function renderPrompts(){
   // Show gate if not subscriber
   document.getElementById('gate-section').style.display = isSubscriber ? 'none' : 'block';
 
-  // Handle anchor navigation
-  if(location.hash){
+  // Handle anchor navigation — auto-expand + scroll to tool section (once on load)
+  if(location.hash && !renderPrompts._hashHandled){
+    renderPrompts._hashHandled = true;
     setTimeout(()=>{
-      const el = document.querySelector(location.hash);
-      if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
-    }, 100);
+      try {
+        const el = document.querySelector(location.hash);
+        if(el){
+          // Auto-expand the section if it has a collapsible header
+          const header = el.querySelector('.tool-section-header');
+          if(header && !header.classList.contains('open')){
+            header.classList.add('open');
+          }
+          el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      } catch(e){}
+    }, 300);
   }
 }
 
@@ -862,11 +872,11 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildFilters();
   renderTrending();
 
-  // Handle direct tool anchor (#tool-slug)
+  // Handle direct tool anchor (#tool-slug) — ensure we're on 'all' so the section renders
   if(location.hash){
     const slug = location.hash.slice(1);
     if(window.PROMPT_TOOL_OVERRIDES && window.PROMPT_TOOL_OVERRIDES[slug]){
-      // Stay on all categories, let hash scroll work
+      activeCat = 'all'; // tool overrides only render in 'all' view
     }
   }
 
