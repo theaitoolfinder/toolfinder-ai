@@ -877,6 +877,10 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 .theme-swatch[data-t="red"]{background:#fca5a5}
 .theme-swatch[data-t="gold"]{background:#fde047}
 .theme-swatch[data-t="brown"]{background:#f5c68a}
+.theme-original-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:7px 10px;border-radius:999px;border:1.5px solid #c9d9f5;background:#f0f6ff;color:#1a56db;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:.02em}
+.theme-original-btn:hover{background:#dbeafe;border-color:#1a56db}
+.theme-original-btn.active{border-color:#1a56db;box-shadow:0 0 0 2px #fff,0 0 0 4px #1a56db;background:#dbeafe}
+.theme-original-btn .orig-dot{width:12px;height:12px;border-radius:50%;background:#1a56db;flex-shrink:0}
 #theme-panel-footer{font-size:10.5px;color:var(--text-dim);text-align:center;line-height:1.4}
 /* Mobile burger menu theme row */
 .mob-theme-row{padding:10px 14px 8px;border-top:1px solid var(--border-soft);margin-top:4px}
@@ -967,6 +971,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
             <div class="hue-center">✦</div>
           </div>
           <div class="hue-wheel-hint">Drag the ring for any colour</div>
+          <button class="theme-original-btn" id="theme-original-btn" onclick="applyTheme('blue')" title="Reset to original website colour"><span class="orig-dot"></span>Original</button>
           <div class="theme-swatches">
             <div class="theme-swatch" data-t="blue"    title="Blue"    onclick="applyTheme('blue')"></div>
             <div class="theme-swatch" data-t="purple"  title="Purple"  onclick="applyTheme('purple')"></div>
@@ -4760,10 +4765,12 @@ async function popSubscribe(){
     if(dot) dot.style.background = hslToHex(h,70,45);
     // Save
     try{ localStorage.setItem(STORAGE_KEY,'custom:'+Math.round(h)); }catch(e){}
-    // De-select all named swatches
+    // De-select all named swatches + original btn
     document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(el){
       el.classList.remove('active');
     });
+    var origBtn = document.getElementById('theme-original-btn');
+    if(origBtn) origBtn.classList.remove('active');
     if(!_athShown){ _athShown=true; showAthToast(); }
   };
 
@@ -4773,6 +4780,9 @@ async function popSubscribe(){
     document.querySelectorAll('.theme-swatch,.mob-theme-swatch').forEach(function(el){
       el.classList.toggle('active', !isCustom && el.dataset.t === active);
     });
+    // Original button active state
+    var origBtn = document.getElementById('theme-original-btn');
+    if(origBtn) origBtn.classList.toggle('active', !isCustom && (active === 'blue'));
     // Update the dot colour in the nav button
     var dot = document.getElementById('nav-theme-dot');
     if(dot){
