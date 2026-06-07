@@ -117,22 +117,22 @@ a{text-decoration:none;color:inherit;}
 button{font-family:'Poppins',sans-serif;cursor:pointer;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;
   background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
   border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+  display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
 .logo{display:flex;align-items:center;gap:10px;}
-.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--navy),var(--navy2));
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.logo-name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
-.logo-sub{font-size:9px;font-weight:500;color:var(--gray-m);letter-spacing:0.07em;text-transform:uppercase;display:block;}
+.logo-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  box-shadow:0 4px 12px rgba(26,86,219,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-name{font-size:17px;font-weight:700;color:var(--navy);letter-spacing:-0.01em;}
+.logo-sub{display:none;}
 .nav-links{display:flex;align-items:center;gap:6px;}
-.nav-a{font-size:13px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:6px;transition:all 0.15s;}
+.nav-a{font-size:14px;font-weight:500;color:var(--gray);padding:6px 12px;border-radius:6px;transition:all 0.15s;}
 .nav-a:hover{color:var(--navy);background:var(--bg-off);}
 .nav-a.active{color:var(--navy);font-weight:600;}
-.btn-navy{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:none;border-radius:980px;
-  padding:9px 22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;}
-.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,219,.35);}
+.btn-navy{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;border-radius:980px;
+  padding:9px 18px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(26,86,219,0.30);transition:all 0.18s;}
+.btn-navy:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(13,31,51,0.4);}
 
 /* HERO */
 .about-hero{padding:110px 20px 72px;text-align:center;border-bottom:1px solid var(--border);background:linear-gradient(160deg,var(--bg),var(--bg-off));}
@@ -252,11 +252,11 @@ footer p{font-size:12.5px;color:var(--gray-m);}
     </div>
     <div>
       <span class="logo-name">MyAI ToolsFinder</span>
-      <span class="logo-sub">AI Tools Directory</span>
     </div>
   </a>
   <div class="nav-links">
     <a href="index.html#tools" class="nav-a">AI Tools</a>
+    <a href="index.html#compare" class="nav-a">Compare</a>
     <a href="articles.html" class="nav-a">Articles</a>
     <a href="prompts.html" class="nav-a">Prompts</a>
     <a href="about.html" class="nav-a active">About</a>
