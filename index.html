@@ -7,6 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
+<!-- v20260607b -->
 <meta name='impact-site-verification' value='6cc173d1-67e8-49df-a869-3175dbabfdf0'>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Best AI Tools Directory 2026 — 500+ Tools for Solopreneurs | MyAI ToolsFinder</title>
@@ -3258,10 +3259,17 @@ async function submitReview(){
     }
     function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
+    /* Static screenshots for domains that block bot screenshot services */
+    var LOCAL_SHOTS = {
+      'make.com': '/img/screenshots/make-com.jpg',
+      'www.make.com': '/img/screenshots/make-com.jpg'
+    };
     function shot(domain){
+      if(LOCAL_SHOTS[domain]) return LOCAL_SHOTS[domain];
       return 'https://s0.wordpress.com/mshots/v1/https%3A%2F%2F'+domain+'?w=1200&h=750';
     }
     function shotErr(el, domain){
+      if(LOCAL_SHOTS[domain]) return; /* already using local, don't fallback */
       if(!el.dataset.f){
         el.dataset.f='1';
         el.src='https://image.thum.io/get/width/1200/crop/750/https://'+domain;
