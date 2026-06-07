@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T20:04:31.932Z",
+  "updated": "2026-06-07T20:04:33.586Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -38,7 +38,8 @@
       "trending": 9
     },
     "168": {
-      "affiliate_url": "https://www.opus.pro/?via=myaitoolsfinder"
+      "affiliate_url": "https://www.opus.pro/?via=myaitoolsfinder",
+      "trending": 90
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
