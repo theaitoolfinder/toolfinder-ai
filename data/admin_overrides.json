@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T20:16:33.160Z",
+  "updated": "2026-06-07T20:16:37.570Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -48,7 +48,8 @@
     },
     "495": {
       "affiliate_url": "https://submagic.co/?via=benjie11",
-      "verified": true
+      "verified": true,
+      "trending": 9
     }
   }
 }
