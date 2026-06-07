@@ -447,7 +447,7 @@ window.MYAI_AFF_MAP = {
   "omnisend":              "https://omnisend.com",
   "omnisend ai":           "https://omnisend.com",
   "openrouter":            "https://openrouter.ai",
-  "opusclip":              "https://opus.pro",
+  "opusclip":              "https://www.opus.pro/?via=myaitoolsfinder",
   "otter.ai":              "https://otter.ai",
   "outranking":            "https://outranking.io",
   "outreach":              "https://outreach.io",
