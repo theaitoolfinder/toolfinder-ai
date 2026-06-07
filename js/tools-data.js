@@ -612,7 +612,7 @@ window.MYAI_AFF_MAP = {
   "steve.ai":              "https://steve.ai",
   "storydoc":              "https://storydoc.com",
   "submagic":              "https://submagic.co",
-  "submagic ai":           "https://submagic.co",
+  "submagic ai":           "https://submagic.co/?via=benjie11",
   "sudowrite":             "https://sudowrite.com",
   "suki":                  "https://suki.ai",
   "suki ai":               "https://suki.ai",
