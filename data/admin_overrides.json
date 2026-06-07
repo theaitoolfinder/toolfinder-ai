@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-07T20:25:09.309Z",
+  "updated": "2026-06-07T20:25:10.739Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -42,7 +42,8 @@
       "trending": 95
     },
     "181": {
-      "affiliate_url": "https://www.keywordinsights.ai/?ref=myaitoolsfinder"
+      "affiliate_url": "https://www.keywordinsights.ai/?ref=myaitoolsfinder",
+      "trending": 9
     },
     "309": {
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
