@@ -697,6 +697,19 @@
       "pair": "",
       "words": 775,
       "partners": []
+    },
+    {
+      "date": "2026-06-08",
+      "slot": "morning",
+      "slug": "turn-one-piece-of-content-into-20-with-this-ai-repurposing",
+      "title": "Turn One Piece of Content Into 20 with This AI Repurposing Workflow",
+      "type": "tutorial",
+      "source": "verge",
+      "hero": "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
+      "topic": "turn piece content repurposing",
+      "pair": "",
+      "words": 559,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -754,6 +767,7 @@
     "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1527430253228-e93688616381?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop"
   ]
 }
