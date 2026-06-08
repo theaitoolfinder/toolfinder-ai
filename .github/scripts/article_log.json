@@ -751,6 +751,21 @@
       "pair": "",
       "words": 816,
       "partners": []
+    },
+    {
+      "date": "2026-06-08",
+      "slot": "night",
+      "slug": "the-freelancer-ai-stack-20-hours-saved-per-week-exact-workflow",
+      "title": "The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
+      "type": "workflow",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
+      "topic": "freelancer stack hours saved",
+      "pair": "",
+      "words": 771,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -812,6 +827,7 @@
     "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop"
   ]
 }
