@@ -710,6 +710,19 @@
       "pair": "",
       "words": 559,
       "partners": []
+    },
+    {
+      "date": "2026-06-08",
+      "slot": "midday",
+      "slug": "the-only-ai-productivity-tools-list-remote-workers-need-in-2026",
+      "title": "The Only AI Productivity Tools List Remote Workers Need in 2026 — Curated and Tested",
+      "type": "roundup",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
+      "topic": "only productivity tools list",
+      "pair": "",
+      "words": 613,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -768,6 +781,7 @@
     "https://images.unsplash.com/photo-1527430253228-e93688616381?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop"
   ]
 }
