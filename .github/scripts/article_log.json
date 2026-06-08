@@ -723,6 +723,21 @@
       "pair": "",
       "words": 613,
       "partners": []
+    },
+    {
+      "date": "2026-06-08",
+      "slot": "afternoon",
+      "slug": "choosing-between-zapier-and-make-com-read-this-first-2026",
+      "title": "Choosing Between Zapier and Make.com? Read This First (2026)",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
+      "topic": "choosing between zapier makecom",
+      "pair": "",
+      "words": 836,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -782,6 +797,7 @@
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop"
   ]
 }
