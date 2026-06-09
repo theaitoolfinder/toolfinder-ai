@@ -20,31 +20,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
-<script src="/js/theme.js" onerror="void 0"></script>
+<script src="js/theme.js"></script>
 <style>
-:root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
-[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--surface-2:#f5f3ff;--border:#ddd6fe;--border-soft:#ede9fe;--bg:#f5f3ff;--shadow:0 2px 12px rgba(124,58,237,.07);--shadow-lg:0 8px 28px rgba(124,58,237,.13);--hero-grad:linear-gradient(160deg,#ede9fe 0%,#f5f3ff 45%,#fdf4ff 100%)}
-[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--surface-2:#ecfdf5;--border:#a7f3d0;--border-soft:#d1fae5;--bg:#ecfdf5;--shadow:0 2px 12px rgba(5,150,105,.07);--shadow-lg:0 8px 28px rgba(5,150,105,.13);--hero-grad:linear-gradient(160deg,#d1fae5 0%,#ecfdf5 45%,#f0fdf4 100%)}
-[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--surface-2:#fffbeb;--border:#fde68a;--border-soft:#fef3c7;--bg:#fffbeb;--shadow:0 2px 12px rgba(217,119,6,.07);--shadow-lg:0 8px 28px rgba(217,119,6,.13);--hero-grad:linear-gradient(160deg,#fef3c7 0%,#fffbeb 45%,#fff7ed 100%)}
-[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--surface-2:#fff1f2;--border:#fecdd3;--border-soft:#ffe4e6;--bg:#fff1f2;--shadow:0 2px 12px rgba(225,29,72,.07);--shadow-lg:0 8px 28px rgba(225,29,72,.13);--hero-grad:linear-gradient(160deg,#ffe4e6 0%,#fff1f2 45%,#fff0f3 100%)}
+:root{--primary:#1a56db;--primary-2:#1e40af;--primary-light:#eff6ff;--surface-2:#f0f6ff;--bg:#f8faff;--surface:#fff;--text:#1a202c;--text-2:#4a5568;--text-dim:#64748b;--border:#e2e8f0;--border-soft:rgba(0,0,0,.07)}
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--surface-2:#f5f3ff;--border:#ddd6fe;--bg:#f5f3ff}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--surface-2:#ecfdf5;--border:#a7f3d0;--bg:#ecfdf5}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--surface-2:#fffbeb;--border:#fde68a;--bg:#fffbeb}
+[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--surface-2:#f0f9ff;--border:#bae6fd;--bg:#f0f9ff}
+.nav-login{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:transparent;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--text-2);transition:all .15s;white-space:nowrap;margin-right:4px}
+.nav-login:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text)}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 4px 12px rgba(26,86,219,.28);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:14px;font-weight:500;color:var(--text-2);text-decoration:none;transition:background .15s,color .15s}
+.nav-a:hover,.nav-a.active{background:var(--surface-2);color:var(--text)}
+.nav-a.active{font-weight:600}
+.btn-nav-cta{padding:8px 18px;border-radius:999px;background:var(--primary);color:#fff;font-size:13px;font-weight:600;margin-left:8px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(26,86,219,.28);text-decoration:none}
+.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,86,219,.38)}
+.burger{display:none;flex-direction:column;gap:5px;border:none;background:none;padding:8px;cursor:pointer;border-radius:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--text,#1a202c);border-radius:2px;transition:transform .22s,opacity .22s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{position:fixed;top:0;right:-290px;width:280px;height:100vh;background:var(--surface,#fff);z-index:300;transition:right .25s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(26,86,219,.12);display:flex;flex-direction:column}
+.mob-menu.open{right:0}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-soft,#e2e8f0)}
+.mob-close{background:none;border:1px solid var(--border,#e2e8f0);border-radius:8px;width:36px;height:36px;font-size:17px;cursor:pointer;color:var(--text-dim,#64748b);display:flex;align-items:center;justify-content:center}
+.mob-nav{padding:16px 12px;display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto}
+.mob-nav a,.mob-nav button{display:flex;align-items:center;gap:10px;padding:13px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--text-2,#4a5568);background:none;border:none;width:100%;text-align:left;transition:background .15s,color .15s;text-decoration:none}
+.mob-nav a:hover,.mob-nav button:hover{background:var(--surface-2,#f0f6ff);color:var(--text,#1a202c)}
+.mob-nav a.active{color:var(--primary);font-weight:600}
+.mob-cta{margin-top:10px;background:var(--primary,#1a56db)!important;color:#fff!important;text-align:center;font-weight:600!important;border-radius:999px!important}
+.mob-overlay{position:fixed;inset:0;background:rgba(15,23,42,.40);z-index:299;display:none}
+.mob-overlay.open{display:block}
+@media(max-width:768px){.nav-links,.btn-nav-cta{display:none}.burger{display:flex}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{font-family:'Poppins',system-ui,sans-serif;background:var(--hero-grad);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh}
+html,body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;touch-action:manipulation}
 img{display:block;max-width:100%}
 
-/* ── NAV (matches site exactly) ── */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(200%) blur(22px);-webkit-backdrop-filter:saturate(200%) blur(22px);border-bottom:1px solid rgba(255,255,255,.55);box-shadow:0 1px 0 rgba(26,86,219,.06),0 4px 24px rgba(26,86,219,.06)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1180px;margin:0 auto;padding:0 20px;gap:16px}
-.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--text)}
-.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.28)}
-.nav-links{display:flex;gap:24px;list-style:none;font-size:14px;color:var(--text-2)}
-.nav-links a{padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;font-weight:500}
-.nav-links a:hover{color:var(--text);border-bottom-color:var(--primary)}
-.nav-links a.active{color:var(--primary);font-weight:600}
-.nav-back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--border-soft);background:var(--surface);color:var(--text-2);font-size:13px;font-weight:600;transition:all .15s}
-.nav-back-btn:hover{border-color:var(--primary);color:var(--primary)}
-@media(max-width:640px){.nav-links{display:none}}
+/* quiz page extra vars */
+:root{--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
 
 /* ── PROGRESS STRIP ── */
 .prog-strip{height:3px;background:var(--border-soft);overflow:hidden}
@@ -397,33 +416,43 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
-<header class="site-header">
-  <nav class="nav">
+<header>
+  <div class="nav">
     <a href="index.html" class="brand">
-      <div class="brand-mark">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-          <circle cx="6" cy="6" r="2.8" fill="white"/>
-          <circle cx="14" cy="6" r="2.8" fill="white" opacity=".55"/>
-          <circle cx="6" cy="14" r="2.8" fill="white" opacity=".55"/>
-          <circle cx="14" cy="14" r="2.8" fill="white" opacity=".25"/>
-          <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
+      <div class="brand-mark"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       MyAI ToolsFinder
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html">AI Tools</a></li>
-      <li><a href="articles.html">Articles</a></li>
-      <li><a href="prompts.html">Prompts</a></li>
-      <li><a href="tutorials.html">Tutorials</a></li>
-      <li><a href="quiz.html" class="active">Quiz</a></li>
-    </ul>
-    <a href="index.html" class="nav-back-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Back to Directory
-    </a>
-  </nav>
+    <div class="nav-links">
+      <a href="index.html#tools" class="nav-a">AI Tools</a>
+      <a href="index.html#compare" class="nav-a">Compare</a>
+      <a href="articles.html" class="nav-a">Articles</a>
+      <a href="prompts.html" class="nav-a">Prompts</a>
+      <a href="tutorials.html" class="nav-a">Tutorials</a>
+      <a href="quiz.html" class="nav-a active">Quiz</a>
+      <a href="about.html" class="nav-a">About</a>
+      <button class="nav-login" onclick="window.location='index.html'">Log In</button>
+      <a href="index.html#newsletter" class="btn-nav-cta">Get Weekly Digest</a>
+    </div>
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
 </header>
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-head">
+    <a href="index.html" class="brand" style="font-size:15px"><span class="brand-mark" style="width:28px;height:28px"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>MyAI ToolsFinder</a>
+    <button class="mob-close" onclick="toggleMenu()">&#x2715;</button>
+  </div>
+  <div class="mob-nav">
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> AI Tools Directory</a>
+    <a href="articles.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
+    <a href="prompts.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
+    <a href="tutorials.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Tutorials</a>
+    <a href="quiz.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg> Quiz</a>
+    <a href="about.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
+    <a href="index.html#compare"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare</a>
+    <a href="index.html#newsletter" class="mob-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+  </div>
+</div>
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 <div class="prog-strip"><div class="prog-fill" id="prog"></div></div>
 
 <!-- ── INTRO ── -->
@@ -628,6 +657,12 @@ function retake(){
   var p=new URLSearchParams(window.location.search).get('result');
   if(p&&RESULTS[p]){scores[p]=8;buildResult(true);show('result-screen');document.getElementById('prog').style.width='100%';}
 })();
+</script>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mob-menu'),o=document.getElementById('mob-overlay'),b=document.getElementById('burger');
+  m.classList.toggle('open');o.classList.toggle('open');if(b)b.classList.toggle('open');
+}
 </script>
 </body>
 </html>
