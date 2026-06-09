@@ -148,15 +148,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
   font-family:'Poppins',sans-serif}
 .btn-start:hover{opacity:.9;transform:translateY(-1px)}
 
-/* COMING SOON CARD */
-.tut-card.coming-soon{opacity:.82;background:var(--surface);border:1.5px dashed var(--border)}
-.tut-card.coming-soon:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-.coming-soon-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;
-  font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-  background:rgba(100,116,139,.1);color:#64748b;border:1.5px solid rgba(100,116,139,.2)}
-.btn-notify{padding:8px 16px;border-radius:20px;background:transparent;
-  color:var(--text-dim);font-size:.78rem;font-weight:600;border:1.5px solid var(--border);
-  cursor:default;font-family:'Poppins',sans-serif}
 
 /* SUBSCRIBE MODAL */
 #modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
@@ -376,10 +367,7 @@ function filterCards(){
     c.style.display=show?'':'none';
     if(show)visible++;
   });
-  const availCount=Array.from(document.querySelectorAll('.tut-card-wrap')).filter(c=>c.style.display!=='none'&&!c.querySelector('.coming-soon')).length;
-  const soonCount=Array.from(document.querySelectorAll('.tut-card-wrap')).filter(c=>c.style.display!=='none'&&c.querySelector('.coming-soon')).length;
-  const labelParts=[availCount+' Tutorial'+(availCount!==1?'s':'')+(activeChip!=='all'?' in '+activeChip:'')+' Available'];
-  if(soonCount) labelParts.push(soonCount+' Coming Soon');
+  const labelParts=[visible+' Tutorial'+(visible!==1?'s':'')+(activeChip!=='all'?' in '+activeChip:'')+' Available'];
   document.getElementById('results-label').textContent=labelParts.join(' · ');
   document.getElementById('no-results').style.display=visible===0?'block':'none';
 }
@@ -415,18 +403,6 @@ function ctaSubscribe(){
   document.getElementById('cta-email').value='';
 }
 
-const COMING_SOON=[
-  {slug:'chatgpt',   name:'ChatGPT',        domain:'chat.openai.com',      category:'Chatbot',   tagline:'World\'s most popular AI assistant for writing, coding and research.'},
-  {slug:'cursor',    name:'Cursor',          domain:'cursor.com',           category:'Coding',    tagline:'AI-native code editor — the fastest way to ship with AI pair-programming.'},
-  {slug:'claude',    name:'Claude',          domain:'claude.ai',            category:'Chatbot',   tagline:'Anthropic\'s AI known for nuanced understanding and long documents.'},
-  {slug:'midjourney',name:'Midjourney',      domain:'midjourney.com',       category:'Image',     tagline:'State-of-the-art AI image generation with photoreal output and style range.'},
-  {slug:'deepseek',  name:'DeepSeek',        domain:'chat.deepseek.com',    category:'Chatbot',   tagline:'Open-source AI model rivaling GPT-4 — huge in developer circles.'},
-  {slug:'canva',     name:'Canva',           domain:'canva.com',            category:'Design',    tagline:'World\'s most popular design platform with Magic AI. Design anything in minutes.'},
-  {slug:'capcut-ai', name:'CapCut AI',       domain:'capcut.com',           category:'Video',     tagline:'TikTok\'s free AI video editor with auto-captions and viral templates.'},
-  {slug:'gemini',    name:'Gemini',          domain:'gemini.google.com',    category:'Chatbot',   tagline:'Google\'s multimodal AI with real-time web access across Workspace.'},
-  {slug:'khan-academy-ai',name:'Khan Academy AI',domain:'khanacademy.org', category:'Education', tagline:'Khanmigo — AI tutor for students and teaching assistant for educators.'},
-  {slug:'runway',    name:'Runway',          domain:'runwayml.com',         category:'Video',     tagline:'AI video generation and editing — Gen-3, motion brush, lipsync and inpainting.'},
-];
 
 function buildGrid(){
   const grid=document.getElementById('tut-grid');
@@ -481,32 +457,6 @@ function buildGrid(){
     grid.appendChild(wrap);
   });
 
-  /* Coming soon cards — top 10 popular tools */
-  COMING_SOON.forEach(t=>{
-    const wrap=document.createElement('div');
-    wrap.className='tut-card-wrap';
-    wrap.dataset.cat=t.category;
-    wrap.dataset.name=t.name;
-    wrap.dataset.tagline=t.tagline;
-    wrap.innerHTML=`<div class="tut-card coming-soon">
-      <div class="card-header">
-        <div class="card-logo"><img src="${clearbit(t.domain)}" alt="${t.name}" loading="lazy"
-          onerror="if(this.dataset.f){this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=logo-fallback>${initials(t.name)}</div>');}else{this.dataset.f=1;this.src='https://www.google.com/s2/favicons?domain=${t.domain}&sz=128';}"></div>
-        <div class="card-meta"><h3>${t.name}</h3><div class="cat">${t.category}</div></div>
-      </div>
-      <div class="card-body">
-        <div class="card-tagline">${t.tagline}</div>
-        <div class="level-pills">
-          <span class="coming-soon-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Coming Soon</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="step-count">Tutorial in progress</div>
-        <span class="btn-notify">Notify Me</span>
-      </div>
-    </div>`;
-    grid.appendChild(wrap);
-  });
 }
 
 buildGrid();

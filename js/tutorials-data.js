@@ -1214,6 +1214,1666 @@ Navigational → branded content</p>
         ]
       }
     }
+  },
+
+  /* ── ChatGPT ── */
+  'chatgpt': {
+    name: 'ChatGPT',
+    domain: 'chat.openai.com',
+    affiliate_url: '',
+    category: 'Chatbot',
+    tagline: 'Write, research, code and think with the world\'s most popular AI',
+    color: '#10a37f',
+    levels: {
+      basic: {
+        title: 'Your First Hour with ChatGPT',
+        description: 'Go from blank page to useful AI assistant in under 10 minutes.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Create your free account',
+            content: `<p>Go to <strong>chat.openai.com</strong> and click <em>Sign Up</em>. Use Google or email — the free plan is genuinely useful with GPT-4o access.</p>
+<p>Once logged in, you see the chat interface. The text box at the bottom is where you type. Simple.</p>`,
+            tip: { type: 'info', text: 'The free plan gives access to GPT-4o (OpenAI\'s best model). ChatGPT Plus ($20/mo) removes limits and adds faster responses.' }
+          },
+          {
+            title: 'Understand what makes a good prompt',
+            content: `<p>ChatGPT responds to whatever you type. Vague prompts = vague answers. Specific prompts = specific, useful answers.</p>
+<p><strong>Weak:</strong> "Write a bio"<br><strong>Strong:</strong> "Write a 3-sentence professional bio for a freelance graphic designer with 5 years of experience. Tone: confident but approachable."</p>
+<p>The formula: <em>Task + Context + Format + Tone</em>.</p>`,
+            tip: { type: 'tip', text: 'If the first response isn\'t right, say "make it shorter", "more formal", or "give me 3 alternatives" — ChatGPT remembers the conversation.' }
+          },
+          {
+            title: 'Try your first real task',
+            content: `<p>Pick something you genuinely need done. Great starters:</p>
+<ul>
+  <li>"Summarise this article: [paste text]"</li>
+  <li>"Write a subject line for an email about [topic]"</li>
+  <li>"Explain [concept] like I'm 10 years old"</li>
+  <li>"Fix the grammar in this paragraph: [paste]"</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Use the file and image upload',
+            content: `<p>Click the <strong>paperclip icon</strong> in the chat bar to upload a file (PDF, Word, CSV, image). ChatGPT reads it and answers questions about it.</p>
+<p>Example: upload a 20-page report and ask "What are the 5 most important takeaways?"</p>`,
+            tip: { type: 'info', text: 'Image upload lets you share a screenshot and ask "What\'s wrong with this design?" or "Read the text in this photo."' }
+          },
+          {
+            title: 'Organise with Projects',
+            content: `<p>In the left sidebar, click <strong>New project</strong>. Projects keep related conversations together and let you give ChatGPT persistent context — e.g. "Always respond in British English" or "I run a bakery in Melbourne."</p>
+<p>Create one project per client, topic, or goal.</p>`,
+            tip: { type: 'success', text: 'You\'ve now got a 24/7 AI collaborator. The more specific context you give it, the better every response becomes.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Prompt Engineering & Custom Instructions',
+        description: 'Get dramatically better results by learning how ChatGPT actually works.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Set Custom Instructions',
+            content: `<p>Click your profile icon → <strong>Customize ChatGPT</strong>. You get two boxes:</p>
+<ul>
+  <li><strong>About you:</strong> "I'm a marketing consultant who specialises in SaaS. I work with B2B companies with 10-200 employees."</li>
+  <li><strong>Response style:</strong> "Be direct. Skip preamble. Use bullet points where helpful. Always give a concrete example."</li>
+</ul>
+<p>These instructions apply to every new conversation automatically.</p>`,
+            tip: { type: 'tip', text: 'Spend 10 minutes writing good custom instructions once — it will improve thousands of future responses.' }
+          },
+          {
+            title: 'Use role-setting and chain prompting',
+            content: `<p><strong>Role-setting</strong>: Start with "Act as a [role]..." to prime the model. Example: "Act as a senior copywriter who specialises in email marketing. Here's a product description..."</p>
+<p><strong>Chain prompting</strong>: Break complex tasks into steps. First ask for an outline, then expand each section, then refine. You get much better quality than asking for everything at once.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use the Canvas for documents',
+            content: `<p>Click the <strong>Canvas</strong> button (grid icon) when writing longer documents. Canvas opens a side-by-side editor where you can highlight sections and ask ChatGPT to rewrite just that part.</p>
+<p>Great for blog posts, proposals, reports — anything over 300 words.</p>`,
+            tip: { type: 'info', text: 'In Canvas, you can ask it to "adjust reading level", "add more examples", or "make this section punchier" on any selected text.' }
+          },
+          {
+            title: 'Analyse data with the code interpreter',
+            content: `<p>Upload a CSV or spreadsheet. Ask: "Summarise this data", "Create a chart showing sales by month", or "Which row has the highest value in column C?"</p>
+<p>ChatGPT runs real Python code behind the scenes and shows you the result — no coding required from you.</p>`,
+            tip: { type: 'tip', text: 'You can download charts generated by ChatGPT as PNG files. Useful for quick reports or presentations.' }
+          },
+          {
+            title: 'Build a reusable prompt library',
+            content: `<p>Keep a running note (Notion, Apple Notes, anywhere) of prompts that gave you great results. Tag them by use case: "emails", "research", "social media".</p>
+<p>Within ChatGPT, you can also save and reuse prompt templates in the chat bar using the <strong>Saved prompts</strong> feature.</p>`,
+            tip: { type: 'success', text: 'A personal prompt library is your competitive edge. Most people retype from scratch every time — you\'ll be 5× faster.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'GPTs, Voice Mode & Power Workflows',
+        description: 'Build custom GPTs, automate with the API, and integrate ChatGPT into your workflow.',
+        duration: '30 min',
+        steps: [
+          {
+            title: 'Build a custom GPT',
+            content: `<p>Click <strong>Explore GPTs → Create</strong>. Use the builder to define:</p>
+<ul>
+  <li><strong>Name & personality</strong> — what it should act like</li>
+  <li><strong>Instructions</strong> — detailed system prompt (e.g. "You are a social media assistant for a fitness brand...")</li>
+  <li><strong>Knowledge</strong> — upload PDFs (your brand guide, FAQs, product catalogue)</li>
+  <li><strong>Actions</strong> — connect to external APIs</li>
+</ul>`,
+            tip: { type: 'info', text: 'Publish your GPT privately for your team, or publicly on the GPT Store. Businesses use custom GPTs as internal AI assistants.' }
+          },
+          {
+            title: 'Use Voice Mode for hands-free work',
+            content: `<p>In the mobile app, tap the <strong>waveform icon</strong> to activate Advanced Voice Mode. You can have a full spoken conversation — ChatGPT listens, responds, and remembers context.</p>
+<p>Use cases: brainstorming while walking, hands-free research while cooking, practising a presentation.</p>`,
+            tip: { type: 'tip', text: 'Say "stop" or "pause" to interrupt ChatGPT mid-sentence. Say "what were we talking about?" to recover context.' }
+          },
+          {
+            title: 'Connect the API for automation',
+            content: `<p>Get your API key at <strong>platform.openai.com</strong>. Use it with Make.com or Zapier to create automations: "When I get an email inquiry, draft a personalised reply using ChatGPT and save to draft."</p>
+<div class="code-box">Model: gpt-4o | Max tokens: 1000 | Temperature: 0.7</div>`,
+            tip: { type: 'warning', text: 'API usage is billed per token. Set a monthly spending limit in your OpenAI account to avoid surprises.' }
+          },
+          {
+            title: 'Use memory for persistent context',
+            content: `<p>Go to <strong>Settings → Personalization → Memory</strong> and turn it on. ChatGPT will now remember facts across conversations: your job, preferences, ongoing projects.</p>
+<p>You can also manually add memories: "Remember that I prefer metric units" or "Remember my client's name is Sarah and she runs a bakery."</p>`,
+            tip: null
+          },
+          {
+            title: 'Combine tools into a power workflow',
+            content: `<p>Example power workflow for content creators:</p>
+<ol>
+  <li>Paste a YouTube transcript → ask for a blog post outline</li>
+  <li>Expand each section in Canvas</li>
+  <li>Upload the draft to GPT with SEO instructions → get meta description + title variants</li>
+  <li>Export and publish</li>
+</ol>
+<p>Full article from transcript in under 15 minutes.</p>`,
+            tip: { type: 'success', text: 'The gap between people who use AI casually and those who build systems around it is growing. You\'re now in the second group.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Cursor ── */
+  'cursor': {
+    name: 'Cursor',
+    domain: 'cursor.com',
+    affiliate_url: '',
+    category: 'Coding',
+    tagline: 'AI-native code editor — ship faster with AI pair programming',
+    color: '#6366f1',
+    levels: {
+      basic: {
+        title: 'Set Up Cursor & Write AI-Assisted Code',
+        description: 'From install to your first AI-generated feature in under 15 minutes.',
+        duration: '15 min',
+        steps: [
+          {
+            title: 'Download and install Cursor',
+            content: `<p>Go to <strong>cursor.com</strong> and download for Mac, Windows, or Linux. Cursor is built on VS Code — if you use VS Code, your extensions, themes, and keybindings import automatically.</p>
+<p>Sign in with GitHub or Google. The Hobby plan is free with 2,000 completions/month.</p>`,
+            tip: { type: 'info', text: 'Import VS Code settings on first launch: Cursor → Settings → Import VS Code Settings. Done in one click.' }
+          },
+          {
+            title: 'Open a project and explore the interface',
+            content: `<p>Open any existing project or create a new folder. The Cursor interface looks like VS Code but adds:</p>
+<ul>
+  <li><strong>Tab</strong> key: accepts AI autocomplete suggestions (grey ghost text)</li>
+  <li><strong>Cmd/Ctrl+K</strong>: inline edit — highlight code and ask AI to change it</li>
+  <li><strong>Cmd/Ctrl+L</strong>: Chat panel — ask questions about your codebase</li>
+  <li><strong>Cmd/Ctrl+I</strong>: Composer — multi-file AI editing</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Use Tab autocomplete',
+            content: `<p>Start typing any function and watch Cursor predict the next lines in grey. Press <strong>Tab</strong> to accept. Press <strong>Escape</strong> to dismiss.</p>
+<p>It's smarter than Copilot because it understands your entire codebase context — not just the current file.</p>`,
+            tip: { type: 'tip', text: 'Tab suggestions get better the more code is in your project. For new files, give context by writing a comment describing what the file should do.' }
+          },
+          {
+            title: 'Make your first Cmd+K inline edit',
+            content: `<p>Highlight any block of code. Press <strong>Cmd+K</strong> (Mac) or <strong>Ctrl+K</strong> (Windows). A prompt bar appears — type what you want:</p>
+<ul>
+  <li>"Add error handling"</li>
+  <li>"Convert to async/await"</li>
+  <li>"Write a unit test for this function"</li>
+  <li>"Add JSDoc comments"</li>
+</ul>
+<p>A diff preview shows changes. Accept with <strong>Enter</strong>, reject with <strong>Escape</strong>.</p>`,
+            tip: { type: 'tip', text: 'If you don\'t highlight anything, Cmd+K generates new code at your cursor position based on surrounding context.' }
+          },
+          {
+            title: 'Ask the Chat about your codebase',
+            content: `<p>Press <strong>Cmd+L</strong> to open the Chat panel. Ask natural language questions:</p>
+<ul>
+  <li>"Where is the authentication logic?"</li>
+  <li>"What does this file do?"</li>
+  <li>"How do I add a new API route?"</li>
+</ul>
+<p>Cursor searches your entire codebase and gives accurate answers with file references.</p>`,
+            tip: { type: 'success', text: 'You\'ve just turned a code editor into an AI pair programmer. Every task now has a second opinion.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Composer, Rules & Context Management',
+        description: 'Use multi-file editing and project rules to 10x your development speed.',
+        duration: '25 min',
+        steps: [
+          {
+            title: 'Use Composer for multi-file edits',
+            content: `<p>Press <strong>Cmd+I</strong> to open Composer. This is Cursor's most powerful feature — describe a feature in plain English and Cursor creates or edits multiple files at once.</p>
+<p>Example: "Add a dark mode toggle. Update the CSS variables, add a button to the nav, and persist the preference in localStorage."</p>
+<p>Cursor shows a plan, then applies changes across all affected files with a diff you can review.</p>`,
+            tip: { type: 'warning', text: 'Always review the diff before accepting. AI is fast but not infallible — scan each file change before committing.' }
+          },
+          {
+            title: 'Add @ context to focus the AI',
+            content: `<p>In Chat or Composer, type <strong>@</strong> to add specific context:</p>
+<ul>
+  <li><strong>@Files</strong> — reference a specific file</li>
+  <li><strong>@Docs</strong> — attach official docs (React, Tailwind, etc.)</li>
+  <li><strong>@Web</strong> — search the web for current info</li>
+  <li><strong>@Codebase</strong> — search your entire project</li>
+</ul>
+<p>The more focused context you give, the more accurate the output.</p>`,
+            tip: null
+          },
+          {
+            title: 'Create a .cursorrules file',
+            content: `<p>In the root of your project, create a file named <strong>.cursorrules</strong>. This is a plain text file that tells Cursor how to behave on this project:</p>
+<div class="code-box">You are an expert Next.js 14 developer.
+Use TypeScript for all new files.
+Use Tailwind CSS for styling.
+Follow the existing folder structure in /app.
+Always add error boundaries around new components.</div>
+<p>Every AI response in this project now follows your rules automatically.</p>`,
+            tip: { type: 'tip', text: 'Find community .cursorrules templates at cursor.directory — copy and adapt rules from 1,000+ projects.' }
+          },
+          {
+            title: 'Debug with AI chat',
+            content: `<p>When you hit an error, paste it directly into Chat: "I\'m getting this error: [paste error]. Here\'s the relevant code: @filename"</p>
+<p>Cursor traces through your actual code (not generic examples) and gives a specific fix. It often catches the root cause, not just the symptom.</p>`,
+            tip: { type: 'tip', text: 'Say "explain why this happened" after the fix — understanding the root cause prevents the same error class in future code.' }
+          },
+          {
+            title: 'Use Notepads for project context',
+            content: `<p>Open <strong>Notepads</strong> (icon in left sidebar). Create a notepad called "Project Context" and paste in your tech stack, architecture decisions, API docs, and coding conventions.</p>
+<p>Reference it in any prompt with <strong>@Notepad name</strong>. This gives every AI interaction full awareness of your project.</p>`,
+            tip: { type: 'success', text: 'Teams that set up .cursorrules + Notepads ship features 3-5× faster because every developer — junior or senior — codes with the same expert context.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Agentic Workflows & Full Feature Builds',
+        description: 'Let Cursor build entire features autonomously while you review and guide.',
+        duration: '40 min',
+        steps: [
+          {
+            title: 'Enable Agent mode in Composer',
+            content: `<p>In Composer, switch from <em>Normal</em> to <strong>Agent</strong> mode (dropdown at the top). In Agent mode, Cursor can:</p>
+<ul>
+  <li>Run terminal commands autonomously</li>
+  <li>Install packages</li>
+  <li>Read error output and self-correct</li>
+  <li>Create, edit, and delete files as needed</li>
+</ul>
+<p>Give it a high-level task: "Build a REST API endpoint for user authentication using JWT. Include registration, login, and refresh token routes."</p>`,
+            tip: { type: 'warning', text: 'Agent mode can make sweeping changes. Work in a feature branch and commit frequently so you can roll back.' }
+          },
+          {
+            title: 'Build a feature from a spec',
+            content: `<p>Write a brief feature spec in a Notepad or comment, then point Agent at it:</p>
+<div class="code-box">@spec.md Build the feature described here. Follow the existing patterns in @/app/api. Use @/types for all TypeScript types. Run tests after each major step.</div>
+<p>Agent reads the spec, plans the implementation, builds it, runs tests, and iterates on failures.</p>`,
+            tip: null
+          },
+          {
+            title: 'Iterative review workflow',
+            content: `<p>Never blindly accept large AI diffs. Use this review loop:</p>
+<ol>
+  <li>Agent generates changes → Review the diff file by file</li>
+  <li>Accept good changes, reject bad ones</li>
+  <li>Tell Agent: "The auth middleware looks good but the token refresh logic is wrong — [explain why]"</li>
+  <li>Agent corrects and re-submits</li>
+</ol>
+<p>You're the architect; Agent is your fast junior dev.</p>`,
+            tip: { type: 'tip', text: 'Add "explain your reasoning" to complex requests. Understanding the AI\'s approach helps you catch logical errors before they become bugs.' }
+          },
+          {
+            title: 'Integrate external docs with @Docs',
+            content: `<p>Go to <strong>Cursor Settings → Features → Docs</strong>. Add any library URL — Cursor crawls it and makes it searchable via <strong>@Docs</strong> in chat.</p>
+<p>Example: add Stripe's API docs. Now ask: "Using @Stripe docs, write the webhook handler for payment_intent.succeeded" — Cursor generates accurate code from the latest docs, not its training data.</p>`,
+            tip: { type: 'info', text: 'Custom docs are project-specific. Share your cursor.json with the team so everyone gets the same curated doc set.' }
+          },
+          {
+            title: 'Build a full-stack feature end-to-end',
+            content: `<p>The end game: give Agent a user story and let it build the full stack — DB schema → API routes → frontend components → tests → docs.</p>
+<p>Example: "Feature: Users can upload a profile picture. Store in S3, display in the nav, and fall back to initials if no image." Then guide the review cycle until it ships.</p>`,
+            tip: { type: 'success', text: 'Developers who master agentic workflows ship features in hours that used to take days. That\'s the real unlock with Cursor.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Claude ── */
+  'claude': {
+    name: 'Claude',
+    domain: 'claude.ai',
+    affiliate_url: '',
+    category: 'Chatbot',
+    tagline: 'Anthropic\'s AI — exceptional at writing, reasoning and long documents',
+    color: '#d97706',
+    levels: {
+      basic: {
+        title: 'Getting Started with Claude',
+        description: 'Discover what makes Claude different and nail your first conversations.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Create your account',
+            content: `<p>Go to <strong>claude.ai</strong> and sign up with Google or email. The free plan gives access to Claude Sonnet — fast, capable, and free with daily usage limits.</p>
+<p>Claude Pro ($20/mo) unlocks Claude Opus (most intelligent), higher limits, and Projects.</p>`,
+            tip: { type: 'info', text: 'Claude is made by Anthropic, an AI safety company. It\'s designed to be honest, harmless, and particularly good at nuanced, thoughtful responses.' }
+          },
+          {
+            title: 'Understand Claude\'s strengths',
+            content: `<p>Claude excels at tasks that require careful reasoning and high-quality writing:</p>
+<ul>
+  <li><strong>Long documents</strong> — can read and analyse up to 200,000 tokens (roughly 500 pages)</li>
+  <li><strong>Nuanced writing</strong> — captures tone, voice, and style very accurately</li>
+  <li><strong>Complex reasoning</strong> — breaks down multi-step problems clearly</li>
+  <li><strong>Coding</strong> — strong at debugging, explanation, and code review</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Upload and analyse a long document',
+            content: `<p>Click the <strong>paperclip icon</strong> and upload a PDF, Word doc, or paste text directly. Then ask:</p>
+<ul>
+  <li>"What are the 5 key arguments in this document?"</li>
+  <li>"Find any factual inconsistencies"</li>
+  <li>"Write an executive summary in 3 bullet points"</li>
+</ul>
+<p>Claude processes the entire document — not just a truncated excerpt — which matters for long contracts, research papers, or books.</p>`,
+            tip: { type: 'tip', text: 'Try uploading a contract and asking "Flag any clauses that are unusually risky for the buyer." Claude catches nuance that keyword searches miss.' }
+          },
+          {
+            title: 'Try Claude for writing',
+            content: `<p>Claude produces exceptionally natural prose. Give it style guidance:</p>
+<p><em>"Write a 200-word intro for my newsletter about productivity. Tone: conversational, not salesy. Start with a relatable observation, not a question."</em></p>
+<p>Then refine: "Make the third sentence punchier" or "Add a specific example from the first bullet."</p>`,
+            tip: { type: 'tip', text: 'Claude responds well to voice references: "Write this in the style of Paul Graham" or "Match the tone of the sample I paste below."' }
+          },
+          {
+            title: 'Use the conversation to iterate',
+            content: `<p>Unlike a search engine, Claude holds the full context of your conversation. You don't need to repeat yourself:</p>
+<ul>
+  <li>"Make it 20% shorter"</li>
+  <li>"Change the audience — now write it for developers, not marketers"</li>
+  <li>"Give me a completely different angle on the same topic"</li>
+</ul>`,
+            tip: { type: 'success', text: 'Claude\'s long context window means you can have deep, multi-step working sessions on a single complex task without losing thread.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Projects, System Prompts & Deep Research',
+        description: 'Build a personal AI workspace that knows your context and style.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Create a Project',
+            content: `<p>In the sidebar, click <strong>New Project</strong>. Projects give Claude persistent memory within that context — every new conversation in the project inherits the same instructions and uploaded documents.</p>
+<p>Create projects for: "My Blog", "Client XYZ", "Product Research", "Writing Style."</p>`,
+            tip: { type: 'info', text: 'Projects are available on Claude Pro and Team plans. On free, conversations reset each time — Projects are one of the most valuable Pro features.' }
+          },
+          {
+            title: 'Write a Project system prompt',
+            content: `<p>Inside a Project, click <strong>Edit project instructions</strong>. This is Claude's persistent briefing. Example for a content project:</p>
+<div class="code-box">You are my content assistant for [Brand Name].
+Brand voice: direct, warm, evidence-based. Never hype or superlatives.
+Target audience: busy founders aged 30-50.
+Always use British spelling.
+Structure long pieces with clear H2 headings.
+When I paste URLs, fetch and summarise them.</div>`,
+            tip: { type: 'tip', text: 'The more specific your project instructions, the less you need to repeat yourself. Write them like briefing a new employee on day one.' }
+          },
+          {
+            title: 'Upload reference documents to a Project',
+            content: `<p>Inside a Project, click <strong>Add content</strong>. Upload your brand guide, past articles, style sheet, product FAQs, or any reference material.</p>
+<p>Claude references these documents in every conversation within the project. Ask "Summarise our Q3 report" and it reads from the uploaded file.</p>`,
+            tip: null
+          },
+          {
+            title: 'Deep research with Claude',
+            content: `<p>Claude is exceptional at synthesising complex information. For research tasks:</p>
+<ol>
+  <li>Paste multiple sources or documents</li>
+  <li>Ask: "Compare the main arguments across these sources. Identify where they agree, where they conflict, and what's missing."</li>
+  <li>Follow up: "Now write a balanced 500-word overview based on this analysis."</li>
+</ol>`,
+            tip: { type: 'warning', text: 'Claude\'s training data has a cutoff date. For current events or recent statistics, verify with a search engine after Claude provides the framework.' }
+          },
+          {
+            title: 'Use Claude for code review',
+            content: `<p>Paste any code block and ask for a review:</p>
+<ul>
+  <li>"Review this function for bugs, edge cases, and readability"</li>
+  <li>"Is there a more efficient algorithm for this?"</li>
+  <li>"What would break this if the input is null or very large?"</li>
+</ul>
+<p>Claude gives detailed explanations, not just corrected code — ideal for learning as you build.</p>`,
+            tip: { type: 'success', text: 'The combo of long context + careful reasoning makes Claude particularly good at reviewing large codebases for architectural issues, not just syntax errors.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Claude API, Agentic Tasks & Advanced Workflows',
+        description: 'Integrate Claude into products and automate complex multi-step tasks.',
+        duration: '35 min',
+        steps: [
+          {
+            title: 'Get your API key',
+            content: `<p>Go to <strong>console.anthropic.com</strong>, create an account (separate from claude.ai), and generate an API key. Add credits to your account — usage is billed per token.</p>
+<p>The API gives you access to Claude Haiku (fast/cheap), Sonnet (balanced), and Opus (most powerful).</p>`,
+            tip: { type: 'info', text: 'Claude\'s API pricing is competitive with GPT-4. Haiku is extremely cheap for high-volume tasks like summarisation or classification.' }
+          },
+          {
+            title: 'Write your first API call',
+            content: `<p>A simple Python call:</p>
+<div class="code-box">import anthropic
+client = anthropic.Anthropic(api_key="your-key")
+message = client.messages.create(
+  model="claude-sonnet-4-5",
+  max_tokens=1024,
+  messages=[{"role": "user", "content": "Summarise this in 3 bullets: [text]"}]
+)
+print(message.content[0].text)</div>`,
+            tip: { type: 'tip', text: 'Use the system parameter to set Claude\'s role and behaviour globally for the session, separate from the user message.' }
+          },
+          {
+            title: 'Build a tool-use workflow',
+            content: `<p>Claude can call external tools (APIs, databases) mid-conversation using <strong>Tool Use</strong> (Anthropic's function calling feature). Define your tools in the API call, and Claude decides when and how to use them.</p>
+<p>Example: give Claude a "search_database" tool and a "send_email" tool. Ask it to "Find all overdue invoices and send reminder emails." It calls your tools autonomously.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use extended thinking for hard problems',
+            content: `<p>Enable <strong>extended thinking</strong> in the API to have Claude reason through a problem step by step before answering. Best for:</p>
+<ul>
+  <li>Complex mathematical problems</li>
+  <li>Multi-step logical reasoning</li>
+  <li>Strategy decisions with many variables</li>
+</ul>
+<div class="code-box">thinking={"type": "enabled", "budget_tokens": 10000}</div>`,
+            tip: { type: 'warning', text: 'Extended thinking uses significantly more tokens. Reserve it for problems where depth genuinely matters — not routine tasks.' }
+          },
+          {
+            title: 'Build a document processing pipeline',
+            content: `<p>Real-world example: automated contract review pipeline.</p>
+<ol>
+  <li>New PDF contract arrives via email (Gmail trigger in Make.com)</li>
+  <li>Make.com extracts text and sends to Claude API with your review instructions</li>
+  <li>Claude flags risky clauses, missing sections, and key terms</li>
+  <li>Summary sent back to you via Slack</li>
+</ol>
+<p>What took 30 minutes of legal review now takes 30 seconds per document.</p>`,
+            tip: { type: 'success', text: 'Claude\'s 200K context window and precise instruction-following make it the strongest model for document-heavy automation pipelines.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Midjourney ── */
+  'midjourney': {
+    name: 'Midjourney',
+    domain: 'midjourney.com',
+    affiliate_url: '',
+    category: 'Image',
+    tagline: 'State-of-the-art AI image generation with photoreal output',
+    color: '#2563eb',
+    levels: {
+      basic: {
+        title: 'Your First Midjourney Image',
+        description: 'Generate stunning AI images on the Midjourney website in under 10 minutes.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Create your account',
+            content: `<p>Go to <strong>midjourney.com</strong> and click <em>Sign In</em> with Discord. Midjourney requires a paid plan — Basic starts at $10/month for ~200 images.</p>
+<p>Once subscribed, you can generate directly on the website at <strong>midjourney.com/imagine</strong> — no Discord commands needed anymore.</p>`,
+            tip: { type: 'info', text: 'Midjourney dropped the Discord-only requirement in 2024. The web interface is now the primary way to generate images.' }
+          },
+          {
+            title: 'Write your first prompt',
+            content: `<p>In the prompt box, describe what you want. Midjourney works best with descriptive, specific prompts:</p>
+<p><strong>Weak:</strong> "a cat"<br><strong>Strong:</strong> "a fluffy orange tabby cat sitting on a wooden windowsill at golden hour, cozy interior background, soft bokeh, photorealistic"</p>
+<p>Include: subject + setting + lighting + style + mood.</p>`,
+            tip: null
+          },
+          {
+            title: 'Understand the 4-image grid',
+            content: `<p>Midjourney generates a 2×2 grid of 4 variations. Under the grid you'll see buttons:</p>
+<ul>
+  <li><strong>U1-U4</strong> (Upscale) — get a full high-res version of image 1, 2, 3, or 4</li>
+  <li><strong>V1-V4</strong> (Variation) — generate 4 new variations based on that image</li>
+  <li><strong>🔄</strong> — regenerate all 4 with the same prompt</li>
+</ul>`,
+            tip: { type: 'tip', text: 'U first, V second. Upscale the best one to see full detail, then use Variations to explore similar options if you want more choices.' }
+          },
+          {
+            title: 'Add style keywords',
+            content: `<p>Style keywords dramatically change the output. Try adding:</p>
+<ul>
+  <li><strong>Photography:</strong> DSLR, 35mm, Canon 5D, shallow depth of field</li>
+  <li><strong>Illustration:</strong> flat design, vector art, watercolour, pencil sketch</li>
+  <li><strong>Cinematic:</strong> film grain, anamorphic lens, movie still</li>
+  <li><strong>Art style:</strong> oil painting, Studio Ghibli style, Art Nouveau</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Add an artist name to imitate their style: "in the style of Monet" or "Greg Rutkowski lighting". Combine for unique hybrid aesthetics.' }
+          },
+          {
+            title: 'Download and use your image',
+            content: `<p>After upscaling (U1-U4), click the image to open it full size. Right-click → Save Image As, or use the download button.</p>
+<p>Upscaled images are typically 1024×1024px or larger — suitable for most web and print uses.</p>`,
+            tip: { type: 'success', text: 'Midjourney images can be used commercially on all paid plans. Check the licence terms at docs.midjourney.com for specifics.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Parameters, Aspect Ratios & Style Control',
+        description: 'Take creative control with Midjourney\'s powerful parameter system.',
+        duration: '25 min',
+        steps: [
+          {
+            title: 'Use aspect ratio and version parameters',
+            content: `<p>Add parameters at the end of your prompt with <strong>--</strong>:</p>
+<ul>
+  <li><strong>--ar 16:9</strong> — widescreen (YouTube thumbnails, wallpapers)</li>
+  <li><strong>--ar 9:16</strong> — portrait (Instagram Stories, TikTok)</li>
+  <li><strong>--ar 1:1</strong> — square (Instagram posts)</li>
+  <li><strong>--v 6</strong> — use Midjourney V6 (most photorealistic)</li>
+</ul>
+<div class="code-box">a neon-lit Tokyo street at night, rain reflections, cinematic --ar 16:9 --v 6</div>`,
+            tip: null
+          },
+          {
+            title: 'Control quality and stylisation',
+            content: `<p>Two key parameters:</p>
+<ul>
+  <li><strong>--q 2</strong> — double quality (slower, more detail, uses 2× GPU time)</li>
+  <li><strong>--s 0-1000</strong> — stylisation. Low (0-100): realistic, literal. High (700+): artistic, creative interpretation</li>
+</ul>
+<p>For product photography: <code>--s 50 --q 2</code>. For painterly art: <code>--s 800</code>.</p>`,
+            tip: { type: 'tip', text: 'Start with --s 250 (default) and adjust from there. High stylisation can make prompts less literal — great for art, not for specific product shots.' }
+          },
+          {
+            title: 'Use --no to exclude elements',
+            content: `<p>The <strong>--no</strong> parameter removes things from the image:</p>
+<div class="code-box">a serene forest path in autumn --no people, signs, buildings, cars</div>
+<p>Useful when Midjourney keeps adding unwanted elements. You can list multiple things to exclude separated by commas.</p>`,
+            tip: { type: 'tip', text: 'More effective than writing "without X" in the prompt. Negative parameters are processed separately and carry more weight.' }
+          },
+          {
+            title: 'Seed for reproducible results',
+            content: `<p>Every image has a <strong>seed number</strong> — a random value that determines the starting noise pattern. Find it by reacting to an image with ✉️ in Discord, or checking image info in the web interface.</p>
+<p>Reuse a seed with a slightly different prompt to get consistent character appearance across images:</p>
+<div class="code-box">portrait of a woman in a red dress --seed 1234
+portrait of the same woman in a blue dress --seed 1234</div>`,
+            tip: { type: 'warning', text: 'Seeds give approximate consistency, not exact. For true character consistency, use the newer Character Reference feature (--cref).' }
+          },
+          {
+            title: 'Image prompting with --iw',
+            content: `<p>Upload an image as part of your prompt to use it as a visual reference. Paste the image URL first, then your text prompt:</p>
+<div class="code-box">[image URL] in this style but set in a sci-fi environment --iw 0.5</div>
+<p><strong>--iw</strong> (image weight) from 0.1–2.0 controls how much the reference image influences the output. 0.5 = balanced influence.</p>`,
+            tip: { type: 'success', text: 'Image prompting is the fastest way to match an existing visual style — product shots, brand aesthetics, architecture references.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Consistent Characters, Inpainting & Production Workflows',
+        description: 'Create consistent characters and integrate Midjourney into a professional creative workflow.',
+        duration: '40 min',
+        steps: [
+          {
+            title: 'Character Reference (--cref)',
+            content: `<p>The <strong>--cref</strong> parameter creates consistent character appearance across multiple images:</p>
+<div class="code-box">portrait of Emma in a coffee shop --cref [URL of your character image] --cw 100</div>
+<p><strong>--cw</strong> (character weight) controls how closely the character appearance is followed. 100 = strict, 0 = loose inspiration.</p>`,
+            tip: { type: 'info', text: 'Create your character reference image first using a detailed character description, then use that output as --cref for all subsequent images.' }
+          },
+          {
+            title: 'Style Reference (--sref)',
+            content: `<p>Use <strong>--sref</strong> to lock in a visual style across a project — colour palette, texture, line quality:</p>
+<div class="code-box">a mountain landscape --sref [URL of style reference] --sw 500</div>
+<p>Create a brand visual kit by making one hero image and using it as --sref for all subsequent marketing assets. Instant brand consistency.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use Vary (Region) for inpainting',
+            content: `<p>Upscale an image, then click <strong>Vary (Region)</strong>. This lets you select a specific area of the image and regenerate just that part with a new prompt.</p>
+<p>Use cases: fix an awkward hand, swap a background, change someone's clothing, add or remove objects.</p>`,
+            tip: { type: 'tip', text: 'Inpainting works best when your selection has clean, clear edges. Feathery or complex boundaries can create visible seams.' }
+          },
+          {
+            title: 'Integrate with the Midjourney API',
+            content: `<p>Midjourney has an official API (in beta access). For unofficial automation, many creators use <strong>Replicate</strong> or wrap Midjourney via automation tools.</p>
+<p>Production workflow: prompt spreadsheet → Make.com → Midjourney batch generation → auto-download to Google Drive → review queue in Notion.</p>`,
+            tip: { type: 'warning', text: 'Third-party Midjourney automation tools violate the ToS. Use official API access (waitlist at midjourney.com) for production pipelines.' }
+          },
+          {
+            title: 'Build a brand asset production system',
+            content: `<p>Systematic brand image creation:</p>
+<ol>
+  <li>Create your character reference and style reference images</li>
+  <li>Build a prompt template library: hero shots, social posts, blog headers</li>
+  <li>Use --sref for style consistency across all templates</li>
+  <li>Batch generate in Midjourney, organise by campaign in the web gallery</li>
+  <li>Export and feed into Canva templates for final copy/layout</li>
+</ol>`,
+            tip: { type: 'success', text: 'A well-built Midjourney prompt library means your brand can produce consistent, on-brand AI images in minutes instead of commissioning design work.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Gemini ── */
+  'gemini': {
+    name: 'Gemini',
+    domain: 'gemini.google.com',
+    affiliate_url: '',
+    category: 'Chatbot',
+    tagline: 'Google\'s multimodal AI with real-time web access across Workspace',
+    color: '#1a73e8',
+    levels: {
+      basic: {
+        title: 'Getting Started with Gemini',
+        description: 'Set up Gemini and discover its unique strengths over other AI assistants.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Access Gemini',
+            content: `<p>Go to <strong>gemini.google.com</strong> and sign in with any Google account. Gemini is free with your Google account — Gemini Advanced ($19.99/month as part of Google One AI Premium) unlocks the most capable model and Workspace integration.</p>
+<p>You can also access Gemini directly in Gmail, Docs, Sheets, and Slides with a Workspace account.</p>`,
+            tip: { type: 'info', text: 'Gemini 2.0 Flash (free tier) is fast and capable for everyday tasks. Gemini 1.5 Pro and Ultra (Advanced) handle complex reasoning and very long documents.' }
+          },
+          {
+            title: 'Try Gemini\'s real-time web access',
+            content: `<p>Unlike ChatGPT free tier, Gemini can search the web for current information. Ask questions that require up-to-date data:</p>
+<ul>
+  <li>"What's the current price of Bitcoin?"</li>
+  <li>"Summarise the news about [recent event]"</li>
+  <li>"What are the latest features in iOS 18?"</li>
+</ul>
+<p>Gemini shows sources and cites where information came from.</p>`,
+            tip: null
+          },
+          {
+            title: 'Upload images for analysis',
+            content: `<p>Gemini is truly multimodal — upload photos and ask questions about them:</p>
+<ul>
+  <li>Photo of a dish: "What's in this meal? Estimate calories."</li>
+  <li>Screenshot of an error: "What does this error mean and how do I fix it?"</li>
+  <li>Photo of a product: "What is this? Where can I buy it?"</li>
+  <li>Handwritten notes: "Transcribe and summarise this"</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Gemini can analyse up to multiple images in one conversation. Compare products, spot differences between designs, or analyse a series of photos.' }
+          },
+          {
+            title: 'Connect Google services',
+            content: `<p>Click the <strong>Connect apps</strong> button (puzzle piece icon) to give Gemini access to your Google services:</p>
+<ul>
+  <li><strong>Gmail</strong> — "Summarise my unread emails from this week"</li>
+  <li><strong>Google Drive</strong> — "Find the Q3 report in my Drive and summarise it"</li>
+  <li><strong>Google Calendar</strong> — "What do I have scheduled tomorrow?"</li>
+</ul>`,
+            tip: { type: 'warning', text: 'Connecting Google services allows Gemini to access your personal data. Review the permissions — you can revoke access at any time in your Google Account settings.' }
+          },
+          {
+            title: 'Use Gems for custom AI assistants',
+            content: `<p>Click <strong>Gems</strong> in the sidebar to create custom Gemini assistants with specific instructions and personalities — similar to ChatGPT\'s custom GPTs.</p>
+<p>Create a "Writing Coach" Gem, a "Research Assistant" Gem, or a "Grammar Checker" Gem — each with its own system instructions.</p>`,
+            tip: { type: 'success', text: 'Gems + Google Workspace integration = a personalised AI assistant embedded directly in your existing tools. This is Gemini\'s biggest advantage over standalone AI tools.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Gemini in Google Workspace',
+        description: 'Use Gemini\'s AI inside Gmail, Docs, Sheets and Slides to work faster.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Gemini in Gmail',
+            content: `<p>Open Gmail and click the <strong>Gemini icon</strong> (✦) in the compose window. You can:</p>
+<ul>
+  <li><strong>Help me write</strong> — describe an email, Gemini drafts it</li>
+  <li><strong>Refine</strong> — make it shorter, more formal, more friendly</li>
+  <li><strong>Summarise this email</strong> — get a 3-bullet summary of any message</li>
+  <li><strong>Reply suggestions</strong> — one-click reply drafts</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Use "Help me write" for routine emails (meeting requests, follow-ups, rejections). Even a rough Gemini draft is faster than starting from scratch.' }
+          },
+          {
+            title: 'Gemini in Google Docs',
+            content: `<p>In any Google Doc, click <strong>Help me write</strong> at the top, or use the Gemini sidebar. You can:</p>
+<ul>
+  <li>Generate a first draft from a brief</li>
+  <li>Proofread and suggest improvements</li>
+  <li>Ask questions about the document's content</li>
+  <li>Rewrite selected sections in a different tone</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Gemini in Google Sheets',
+            content: `<p>In Google Sheets, Gemini can:</p>
+<ul>
+  <li><strong>Explain data</strong> — "What trends do you see in this data?"</li>
+  <li><strong>Write formulas</strong> — "Write a formula to calculate the 30-day rolling average of column B"</li>
+  <li><strong>Generate data</strong> — "Create a table of the top 10 countries by GDP with their population"</li>
+  <li><strong>Analyse and chart</strong> — "Create a chart showing sales by quarter"</li>
+</ul>`,
+            tip: { type: 'tip', text: 'For formula help, describe what you want in plain English. Gemini generates the correct Sheets formula even for complex multi-condition lookups.' }
+          },
+          {
+            title: 'Use NotebookLM for deep document analysis',
+            content: `<p><strong>NotebookLM</strong> (notebooklm.google.com) is a Gemini-powered research tool. Upload PDFs, Google Docs, YouTube videos, or paste text, then ask questions across all sources at once.</p>
+<p>It generates a summary, creates an FAQ, identifies key themes, and lets you quiz it on the content — like having a research assistant who has read everything.</p>`,
+            tip: { type: 'info', text: 'NotebookLM\'s "Audio Overview" feature creates a podcast-style audio summary of your documents — genuinely useful for long reports you want to absorb while commuting.' }
+          },
+          {
+            title: 'Gemini Advanced for complex research',
+            content: `<p>Gemini 1.5 Pro (Advanced) has a 1 million token context window — the longest of any AI. Upload entire codebases, lengthy legal documents, or books and ask questions across the full content.</p>
+<p>Use "Deep Research" mode to have Gemini autonomously search the web across dozens of sources and produce a comprehensive research report.</p>`,
+            tip: { type: 'success', text: 'Deep Research + NotebookLM together form the most powerful research workflow available in any AI suite right now.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Gemini API, Multimodal Workflows & Automation',
+        description: 'Build applications and automate workflows using Gemini\'s API.',
+        duration: '35 min',
+        steps: [
+          {
+            title: 'Get access to the Gemini API',
+            content: `<p>Go to <strong>aistudio.google.com</strong> (Google AI Studio) and generate an API key. Free tier is generous — 15 requests/minute at no cost.</p>
+<p>AI Studio is also a great playground for testing prompts before building with the API — drag and drop files, test different models, and tune parameters.</p>`,
+            tip: { type: 'info', text: 'For production applications with high volume, switch to the Vertex AI version of Gemini for enterprise-grade SLAs and fine-tuning capabilities.' }
+          },
+          {
+            title: 'Make your first API call',
+            content: `<p>Python example with the Gemini SDK:</p>
+<div class="code-box">import google.generativeai as genai
+genai.configure(api_key="YOUR_KEY")
+model = genai.GenerativeModel("gemini-2.0-flash")
+response = model.generate_content("Summarise AI trends in 2025")
+print(response.text)</div>`,
+            tip: null
+          },
+          {
+            title: 'Use multimodal inputs in the API',
+            content: `<p>Gemini natively handles text, images, audio, and video in the same API call:</p>
+<div class="code-box">response = model.generate_content([
+  "Describe what's happening in this image",
+  PIL.Image.open("photo.jpg")
+])</div>
+<p>For video: upload to Google Drive and pass the file URI. Gemini can analyse full video files and describe content, transcribe dialogue, or answer questions about scenes.</p>`,
+            tip: { type: 'tip', text: 'Gemini is the only major model that natively processes long video files (up to 1 hour). Huge for video production, compliance, and media analysis use cases.' }
+          },
+          {
+            title: 'Build a Google Workspace automation',
+            content: `<p>Using Apps Script (Google's built-in automation tool), you can connect Gemini to any Workspace app without leaving the Google ecosystem:</p>
+<ul>
+  <li>Auto-summarise incoming emails and add to a Sheet</li>
+  <li>Generate a weekly report from Sheets data → create a Doc → email it</li>
+  <li>Classify support tickets in Sheets using Gemini and route them</li>
+</ul>`,
+            tip: { type: 'warning', text: 'Apps Script runs server-side on Google\'s infrastructure. API quotas are shared across your Google account — check quotas before building high-volume automations.' }
+          },
+          {
+            title: 'Implement a RAG pipeline with Gemini',
+            content: `<p>Retrieval-Augmented Generation: combine your private knowledge base with Gemini's reasoning.</p>
+<ol>
+  <li>Store your documents in a vector database (Pinecone, ChromaDB)</li>
+  <li>On each query, retrieve the most relevant document chunks</li>
+  <li>Pass retrieved context + user question to Gemini API</li>
+  <li>Gemini answers based on your own data, not just training data</li>
+</ol>
+<p>This is the architecture behind most production AI assistants.</p>`,
+            tip: { type: 'success', text: 'Gemini\'s massive context window means you can often skip the retrieval step for smaller knowledge bases — just pass all your documents directly.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Canva ── */
+  'canva': {
+    name: 'Canva',
+    domain: 'canva.com',
+    affiliate_url: '',
+    category: 'Design',
+    tagline: 'Design anything with AI — no design experience needed',
+    color: '#7d2ae8',
+    levels: {
+      basic: {
+        title: 'Create Your First Design with Canva',
+        description: 'Go from blank canvas to polished design in under 15 minutes.',
+        duration: '15 min',
+        steps: [
+          {
+            title: 'Create your account',
+            content: `<p>Go to <strong>canva.com</strong> and sign up free with Google, Facebook, or email. The free plan includes thousands of templates, basic elements, and 5GB storage.</p>
+<p>Canva Pro ($15/month) unlocks the full AI suite (Magic Studio), brand kits, and 100M+ premium assets.</p>`,
+            tip: { type: 'info', text: 'Students, teachers, and non-profits get Canva Pro free. Verify at canva.com/education or canva.com/nonprofits.' }
+          },
+          {
+            title: 'Start from a template',
+            content: `<p>On the Canva home page, click the design type you need: Social Post, Presentation, Poster, Flyer, Video, Logo, etc. Or type in the search bar: "Instagram post 2024" or "pitch deck".</p>
+<p>Browse hundreds of templates filtered by style, colour, and industry. Click any template to open it in the editor.</p>`,
+            tip: { type: 'tip', text: 'Filter templates by colour to match your brand. Click the colour filter and enter your brand\'s hex code to see templates in your palette.' }
+          },
+          {
+            title: 'Edit text, images, and colours',
+            content: `<p>In the editor:</p>
+<ul>
+  <li><strong>Text:</strong> Double-click any text box to edit. Change font, size, and colour from the top toolbar.</li>
+  <li><strong>Images:</strong> Click an image to replace it. Drag your own photo from the <em>Uploads</em> panel, or search Canva's library.</li>
+  <li><strong>Colours:</strong> Click any coloured element and use the colour picker. Paste a hex code for exact brand colours.</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Use Magic Studio AI tools',
+            content: `<p>Click <strong>Apps → Magic Studio</strong> or look for the ✦ icon. Key AI tools:</p>
+<ul>
+  <li><strong>Magic Write</strong> — AI text generation in any text box</li>
+  <li><strong>Background Remover</strong> — one-click background removal from any photo</li>
+  <li><strong>Magic Eraser</strong> — paint over any object to remove it from a photo</li>
+  <li><strong>Text to Image</strong> — generate any image from a description</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Background Remover alone saves hours of Photoshop work. Upload any product photo and remove the background in one click — ready for any background.' }
+          },
+          {
+            title: 'Download and share',
+            content: `<p>Click <strong>Share → Download</strong>. Choose your format:</p>
+<ul>
+  <li><strong>PNG</strong> — best for images with transparent backgrounds</li>
+  <li><strong>JPEG</strong> — best for photos, smaller file size</li>
+  <li><strong>PDF Print</strong> — for printing (includes bleed marks)</li>
+  <li><strong>MP4</strong> — for animated designs and videos</li>
+</ul>
+<p>Or click <strong>Share → Publish to social</strong> to post directly to connected accounts.</p>`,
+            tip: { type: 'success', text: 'You just produced professional-quality design without a designer. Canva\'s template system means the hard layout work is already done — you just customise.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Brand Kits, Magic Studio & Advanced AI Tools',
+        description: 'Build a consistent brand identity and unlock Canva\'s full AI design suite.',
+        duration: '25 min',
+        steps: [
+          {
+            title: 'Set up your Brand Kit',
+            content: `<p>Go to <strong>Brand Hub → Brand Kit</strong> (Pro feature). Upload your:</p>
+<ul>
+  <li><strong>Logo</strong> (PNG with transparent background)</li>
+  <li><strong>Brand colours</strong> (add hex codes for primary, secondary, accent)</li>
+  <li><strong>Brand fonts</strong> (upload custom fonts or select from Canva's library)</li>
+</ul>
+<p>Once set up, your brand colours and fonts appear in every design automatically.</p>`,
+            tip: { type: 'info', text: 'Create multiple Brand Kits if you manage multiple clients or brands. Switch between them in the editor from the Brand section.' }
+          },
+          {
+            title: 'Use Magic Design to generate from a photo',
+            content: `<p>Click <strong>Create a design → Magic Design</strong>. Upload a photo (product, headshot, event) and describe what you need. Canva generates 8+ template options styled around your photo.</p>
+<p>Pick a template, and all text placeholders are pre-populated with AI-written copy based on your brief.</p>`,
+            tip: { type: 'tip', text: 'Magic Design is fastest for repeating content needs — event flyers, product announcements, social posts. The AI learns your preferred style over time.' }
+          },
+          {
+            title: 'Magic Edit and Expand',
+            content: `<p><strong>Magic Edit</strong>: Click any photo → Edit image → Magic Edit. Paint over any area and describe what to replace it with: "a bouquet of sunflowers" or "a laptop on the desk".</p>
+<p><strong>Magic Expand</strong>: Extend a photo beyond its original edges. Great for making portrait photos landscape, or adding more background to a cropped shot.</p>`,
+            tip: null
+          },
+          {
+            title: 'Create a template for your team',
+            content: `<p>Design a master template with your brand elements locked in: logo position, colour palette, font hierarchy. Then:</p>
+<ol>
+  <li>Click <strong>Share → Template link</strong></li>
+  <li>Share the link — teammates open it and get an editable copy</li>
+  <li>They customise the text and images; brand elements stay protected</li>
+</ol>`,
+            tip: { type: 'tip', text: 'Lock brand elements by right-clicking → Lock. Teammates can edit unlocked elements but can\'t accidentally move your logo or change brand colours.' }
+          },
+          {
+            title: 'Use Bulk Create for content at scale',
+            content: `<p>Go to <strong>Apps → Bulk Create</strong>. Upload a CSV with your data (names, dates, product names). Canva generates hundreds of personalised designs — certificates, social posts, personalised cards — in seconds.</p>
+<p>Each row in your CSV becomes a unique design variation.</p>`,
+            tip: { type: 'success', text: 'Bulk Create turns a 2-hour personalisation task into a 2-minute one. Perfect for event certificates, personalised ads, or merchandise mockups.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Canva for Teams, API & Production Workflows',
+        description: 'Run professional design operations at scale using Canva\'s advanced features.',
+        duration: '35 min',
+        steps: [
+          {
+            title: 'Set up Canva for Teams',
+            content: `<p>Upgrade to <strong>Canva for Teams</strong> to enable:</p>
+<ul>
+  <li>Shared Brand Kits accessible by the whole team</li>
+  <li>Team folders with permission controls</li>
+  <li>Design approval workflows</li>
+  <li>Shared template libraries</li>
+  <li>Admin controls for brand compliance</li>
+</ul>`,
+            tip: { type: 'info', text: 'Teams plans have per-seat pricing. For agencies: create one Canva for Teams account and invite clients as "External Members" with limited access to their folder only.' }
+          },
+          {
+            title: 'Use Canva Connect API',
+            content: `<p>The <strong>Canva Connect API</strong> lets you integrate Canva into your own applications or automate design creation programmatically.</p>
+<p>Use cases: auto-generate event tickets from a database, create personalised social posts from CRM data, integrate design creation into your e-commerce platform.</p>
+<p>Access at <strong>canva.dev</strong>.</p>`,
+            tip: null
+          },
+          {
+            title: 'Integrate with Make.com for automated design',
+            content: `<p>Connect Canva to Make.com (no-code automation). Example workflow:</p>
+<ol>
+  <li>New Shopify order arrives</li>
+  <li>Make.com triggers Canva API with order details</li>
+  <li>Canva generates a personalised "Thank you" card using a template</li>
+  <li>PDF saved to Google Drive and sent via email automatically</li>
+</ol>`,
+            tip: { type: 'tip', text: 'Combine Bulk Create + Make.com for the most powerful no-code design automation. Trigger bulk exports based on data from any connected app.' }
+          },
+          {
+            title: 'Build a social media content system',
+            content: `<p>Professional social content workflow with Canva:</p>
+<ol>
+  <li>Create a Content Calendar in Canva (they have a template)</li>
+  <li>Build master templates for each post type: quote card, product shot, announcement</li>
+  <li>Use Magic Write to draft copy for each post</li>
+  <li>Connect to Buffer or Later via Canva's direct publishing integration</li>
+  <li>Schedule all posts for the month in one session</li>
+</ol>`,
+            tip: null
+          },
+          {
+            title: 'Create a video production workflow',
+            content: `<p>Canva's video editor (often overlooked) handles:</p>
+<ul>
+  <li>Animated social content with auto-resize for all platforms</li>
+  <li>Presentation recordings with your face in the corner</li>
+  <li>Short-form video with captions and animations</li>
+</ul>
+<p>Use <strong>Magic Animate</strong> to auto-animate any static design into a video. Adjust animation style, speed, and timing without touching a timeline.</p>`,
+            tip: { type: 'success', text: 'Canva has quietly become a full creative suite. Designers who master Canva\'s team and API features run entire design operations that used to require expensive agencies.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── DeepSeek ── */
+  'deepseek': {
+    name: 'DeepSeek',
+    domain: 'chat.deepseek.com',
+    affiliate_url: '',
+    category: 'Chatbot',
+    tagline: 'Powerful open-source AI — exceptional at coding and reasoning',
+    color: '#4f46e5',
+    levels: {
+      basic: {
+        title: 'Getting Started with DeepSeek',
+        description: 'Discover DeepSeek\'s unique strengths in coding, math and reasoning.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Access DeepSeek',
+            content: `<p>Go to <strong>chat.deepseek.com</strong> and sign up with email or phone. DeepSeek is free to use on the web.</p>
+<p>DeepSeek is an open-source Chinese AI model that rivals GPT-4 in many benchmarks — particularly in coding and mathematical reasoning — at a fraction of the cost.</p>`,
+            tip: { type: 'info', text: 'DeepSeek\'s models are open-source. You can run them locally via Ollama for complete privacy and no usage limits. The web chat is the easiest way to start.' }
+          },
+          {
+            title: 'Enable DeepThink (R1) mode',
+            content: `<p>At the bottom of the chat interface, toggle <strong>DeepThink (R1)</strong> on. This activates DeepSeek's reasoning model, which shows its step-by-step thinking before answering.</p>
+<p>R1 is exceptionally good at:</p>
+<ul>
+  <li>Complex mathematics and proofs</li>
+  <li>Multi-step coding problems</li>
+  <li>Logic puzzles and reasoning chains</li>
+  <li>Scientific problem solving</li>
+</ul>`,
+            tip: { type: 'tip', text: 'DeepThink is slower but dramatically more accurate for hard problems. Use normal mode for quick tasks, DeepThink for anything requiring careful reasoning.' }
+          },
+          {
+            title: 'Try a coding task',
+            content: `<p>DeepSeek excels at code. Try:</p>
+<ul>
+  <li>"Write a Python function to parse a CSV and calculate the average of column 3"</li>
+  <li>"Debug this JavaScript: [paste code]"</li>
+  <li>"Explain what this SQL query does line by line: [paste query]"</li>
+  <li>"Convert this Python function to TypeScript"</li>
+</ul>
+<p>The code output is usually ready to run with minimal editing.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use it for research and analysis',
+            content: `<p>DeepSeek handles analytical tasks well:</p>
+<ul>
+  <li>"Analyse the pros and cons of [decision] from multiple angles"</li>
+  <li>"What are the key differences between [A] and [B]?"</li>
+  <li>"Solve this: [math problem]" — shows full working</li>
+</ul>`,
+            tip: { type: 'warning', text: 'DeepSeek\'s training data has Chinese government censorship on some political topics. For those areas, use Claude or ChatGPT instead.' }
+          },
+          {
+            title: 'Enable web search',
+            content: `<p>Toggle <strong>Search</strong> at the bottom of the input box. DeepSeek will search the web and cite sources in its response — similar to Gemini and Perplexity.</p>
+<p>Good for: current events, recent research papers, product comparisons, pricing information.</p>`,
+            tip: { type: 'success', text: 'DeepSeek offers a genuinely impressive free tier. For coding and technical tasks especially, it often matches or exceeds more expensive commercial models.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Advanced Prompting & Coding Workflows',
+        description: 'Get the most out of DeepSeek for technical tasks and complex reasoning.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Use DeepSeek for code review',
+            content: `<p>Paste any codebase excerpt and ask for a thorough review:</p>
+<div class="code-box">"Review this code. Identify:
+1. Bugs and potential errors
+2. Security vulnerabilities
+3. Performance issues
+4. Code style/readability improvements
+Explain each issue and suggest a fix."</div>
+<p>DeepSeek gives structured, actionable feedback with specific line references.</p>`,
+            tip: null
+          },
+          {
+            title: 'Solve complex algorithms with R1',
+            content: `<p>For algorithm design problems, use DeepThink (R1) and provide full context:</p>
+<div class="code-box">"I need an algorithm to find the shortest path between nodes in a weighted graph where some edges can be negative. My graph has up to 10,000 nodes. Recommend the best approach and implement it in Python."</div>
+<p>Watch the reasoning steps — DeepSeek evaluates multiple approaches before choosing.</p>`,
+            tip: { type: 'tip', text: 'Reading DeepSeek\'s reasoning chain teaches you how to think about algorithm problems systematically — genuinely valuable for developing programming instincts.' }
+          },
+          {
+            title: 'Generate unit tests automatically',
+            content: `<p>Paste a function or class and ask:</p>
+<div class="code-box">"Write comprehensive unit tests for this function using [pytest/Jest/JUnit]. Cover: normal cases, edge cases, invalid inputs, and boundary conditions."</div>
+<p>DeepSeek generates test files ready to run, with descriptive test names and assertions.</p>`,
+            tip: { type: 'tip', text: 'Combine with "Explain each test" to understand what\'s being tested and why — useful for teams building test culture from scratch.' }
+          },
+          {
+            title: 'Document code automatically',
+            content: `<p>Paste any function, class, or module and ask:</p>
+<ul>
+  <li>"Write JSDoc/docstring comments for all functions"</li>
+  <li>"Create a README for this project based on the code"</li>
+  <li>"Generate API documentation for these endpoints"</li>
+</ul>
+<p>DeepSeek reads the code accurately and produces documentation that matches the actual behaviour.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use for data science and maths',
+            content: `<p>DeepSeek R1 is among the strongest models for mathematical reasoning. Use it for:</p>
+<ul>
+  <li>Statistical analysis explanations</li>
+  <li>ML model architecture recommendations</li>
+  <li>Data cleaning strategy for messy datasets</li>
+  <li>Numpy/Pandas code for complex transformations</li>
+</ul>`,
+            tip: { type: 'success', text: 'For pure technical and coding tasks, DeepSeek R1 is arguably the best free option available. Bookmark it as your go-to coding assistant.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'DeepSeek API & Local Deployment',
+        description: 'Access DeepSeek\'s API and run models locally for full privacy and control.',
+        duration: '35 min',
+        steps: [
+          {
+            title: 'Get the DeepSeek API',
+            content: `<p>Go to <strong>platform.deepseek.com</strong> and create an account. Generate an API key. DeepSeek's API is OpenAI-compatible — you can use the OpenAI SDK with DeepSeek's base URL.</p>
+<div class="code-box">base_url="https://api.deepseek.com"
+api_key="your-deepseek-key"
+model="deepseek-chat" # or "deepseek-reasoner"</div>`,
+            tip: { type: 'info', text: 'DeepSeek\'s API pricing is dramatically cheaper than OpenAI\'s. deepseek-chat costs ~$0.14/M input tokens vs GPT-4o\'s $2.50/M — roughly 18× cheaper.' }
+          },
+          {
+            title: 'Run DeepSeek locally with Ollama',
+            content: `<p>Install <strong>Ollama</strong> (ollama.com) — a tool for running LLMs locally. Then:</p>
+<div class="code-box">ollama pull deepseek-r1:7b   # 7B parameter model
+ollama run deepseek-r1:7b    # start chatting</div>
+<p>The 7B model runs on most laptops with 8GB RAM. The 70B model needs a powerful GPU.</p>`,
+            tip: { type: 'tip', text: 'Local DeepSeek means zero API costs and complete privacy — your prompts never leave your machine. Ideal for sensitive business data.' }
+          },
+          {
+            title: 'Integrate with Open WebUI',
+            content: `<p>Install <strong>Open WebUI</strong> (a ChatGPT-like interface for local models) to use DeepSeek locally with a clean interface. Supports multiple models, conversation history, and custom system prompts.</p>
+<p>Connect via Ollama → Open WebUI → access via browser at localhost:3000.</p>`,
+            tip: null
+          },
+          {
+            title: 'Build a coding agent with the API',
+            content: `<p>Using the OpenAI-compatible SDK with DeepSeek's endpoint:</p>
+<div class="code-box">from openai import OpenAI
+client = OpenAI(
+  api_key="your-deepseek-key",
+  base_url="https://api.deepseek.com"
+)
+# Use with tool calling for agentic coding tasks
+response = client.chat.completions.create(
+  model="deepseek-reasoner",
+  messages=[{"role":"user","content":"Refactor this codebase..."}]
+)</div>`,
+            tip: { type: 'warning', text: 'DeepSeek\'s servers are in China. For compliance-sensitive use cases (healthcare, finance, legal), use local deployment via Ollama instead of the API.' }
+          },
+          {
+            title: 'Fine-tuning for domain-specific use',
+            content: `<p>DeepSeek's models are open-source, meaning you can fine-tune them on your own data. Use <strong>Unsloth</strong> or <strong>LLaMA Factory</strong> for efficient fine-tuning on consumer hardware.</p>
+<p>Use case: fine-tune DeepSeek on your company's codebase to create a coding assistant that deeply understands your architecture and conventions.</p>`,
+            tip: { type: 'success', text: 'Open-source + fine-tuning = a fully custom AI assistant that rivals commercial models but runs in your own infrastructure. This is the long-term advantage of open-source AI.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── CapCut AI ── */
+  'capcut-ai': {
+    name: 'CapCut AI',
+    domain: 'capcut.com',
+    affiliate_url: '',
+    category: 'Video',
+    tagline: 'Free AI video editor with auto-captions and viral templates',
+    color: '#000000',
+    levels: {
+      basic: {
+        title: 'Create Your First AI Video with CapCut',
+        description: 'Edit and publish a polished video in under 20 minutes — zero experience needed.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Download CapCut or use the web version',
+            content: `<p>Download CapCut from the App Store (iOS), Google Play (Android), or use <strong>capcut.com</strong> in your browser. All versions are free.</p>
+<p>Sign in with TikTok, Google, or email. CapCut is made by ByteDance (TikTok's parent company) and is deeply integrated with TikTok's content creation workflow.</p>`,
+            tip: { type: 'info', text: 'The web version at capcut.com has more advanced AI features. For quick mobile edits, use the app. For serious content production, use the web editor.' }
+          },
+          {
+            title: 'Import your footage',
+            content: `<p>Click <strong>New Project</strong> → <strong>Import</strong>. Add your video clips, photos, or start from a template. CapCut accepts MP4, MOV, AVI, and most common formats.</p>
+<p>The timeline at the bottom shows your clips in sequence. Drag to reorder, pinch to zoom.</p>`,
+            tip: null
+          },
+          {
+            title: 'Add auto-captions',
+            content: `<p>This is CapCut's killer feature. Click <strong>Text → Auto Captions</strong>. CapCut transcribes your audio in seconds and adds perfectly timed, styled captions.</p>
+<p>Choose from caption styles — animated, bold, minimalist. TikTok-style captions typically use large text with a coloured background word.</p>`,
+            tip: { type: 'tip', text: 'Auto captions increase video watch time significantly — most people watch short videos with sound off. Never skip captions for social content.' }
+          },
+          {
+            title: 'Use AI effects and enhancements',
+            content: `<p>Under the <strong>AI</strong> tab:</p>
+<ul>
+  <li><strong>Auto reframe</strong> — automatically keeps the subject in frame when converting 16:9 to 9:16</li>
+  <li><strong>Background remover</strong> — remove or replace backgrounds from any clip</li>
+  <li><strong>Face enhancement</strong> — smooth skin, brighten eyes</li>
+  <li><strong>Noise reduction</strong> — clean up ambient noise from audio</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Auto Reframe saves enormous time when repurposing horizontal YouTube content for vertical TikTok/Reels. The AI tracks faces and keeps them centred.' }
+          },
+          {
+            title: 'Export and publish',
+            content: `<p>Click <strong>Export</strong> in the top right. For social media:</p>
+<ul>
+  <li><strong>Resolution:</strong> 1080p for TikTok/Reels, 4K for YouTube</li>
+  <li><strong>Format:</strong> MP4</li>
+  <li><strong>Frame rate:</strong> 30fps standard, 60fps for smooth motion</li>
+</ul>
+<p>Use the <strong>Share to TikTok</strong> button to publish directly from CapCut.</p>`,
+            tip: { type: 'success', text: 'You just made a professional-quality video with AI assistance. CapCut removes the biggest friction in content creation — complex editing software.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Templates, Script-to-Video & Viral Techniques',
+        description: 'Use CapCut\'s AI to systematise viral content creation.',
+        duration: '25 min',
+        steps: [
+          {
+            title: 'Use Trending Templates',
+            content: `<p>In the CapCut app, go to <strong>Templates</strong>. Browse trending templates — these are pre-edited video formats that are currently performing well on TikTok.</p>
+<p>Pick a template, replace the clips with your own footage (CapCut shows you exactly which slot each clip goes in), and it auto-edits to match the template's music and transitions.</p>`,
+            tip: { type: 'info', text: 'Trending templates work because the edit style is already optimised for the algorithm. Using a template that\'s already viral gives your content a head start.' }
+          },
+          {
+            title: 'Script to Video',
+            content: `<p>In the web editor at capcut.com, click <strong>Script to Video</strong>. Write or paste a script — CapCut AI automatically:</p>
+<ul>
+  <li>Splits the script into scenes</li>
+  <li>Matches stock footage to each scene</li>
+  <li>Adds voiceover (or uses your script for AI voice)</li>
+  <li>Adds captions and music</li>
+</ul>
+<p>A full faceless video from a written script in under 5 minutes.</p>`,
+            tip: { type: 'tip', text: 'For faceless content channels (news, facts, how-to), Script to Video is the most efficient production workflow available at any price.' }
+          },
+          {
+            title: 'AI voice cloning and text-to-speech',
+            content: `<p>Under <strong>Text → Text to Speech</strong>, choose from 300+ AI voices across 50+ languages. Or use <strong>Voice Cloning</strong> (Pro feature) to clone your own voice for hands-free narration.</p>
+<p>Batch process: write your whole script in the text-to-speech editor, and every line gets AI narration automatically.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use Dynamic captions and animations',
+            content: `<p>Beyond standard captions, try:</p>
+<ul>
+  <li><strong>Karaoke captions</strong> — highlights each word as it's spoken</li>
+  <li><strong>Emoji captions</strong> — adds relevant emojis to caption lines automatically</li>
+  <li><strong>Word animations</strong> — each word pops in with an animation</li>
+</ul>
+<p>These styles are currently trending because they keep viewers watching and increase shares.</p>`,
+            tip: { type: 'tip', text: 'Word-by-word animations (sometimes called "word pop" style) are consistently among the highest-engagement caption formats. Test them on your next 5 videos.' }
+          },
+          {
+            title: 'A/B test hooks with multiple exports',
+            content: `<p>The first 1-3 seconds (the "hook") determine 80% of your video's performance. Create 2-3 versions of your video with different opening shots, then:</p>
+<ul>
+  <li>Export each version</li>
+  <li>Post all versions on different days</li>
+  <li>Keep the hook style that gets highest average watch time</li>
+</ul>`,
+            tip: { type: 'success', text: 'Most creators post once and wonder why videos don\'t perform. Systematic hook testing is the single highest-leverage improvement for short-form video.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Viral Content Systems & CapCut Team Workflows',
+        description: 'Build a content production machine with CapCut at the centre.',
+        duration: '35 min',
+        steps: [
+          {
+            title: 'Build a content repurposing pipeline',
+            content: `<p>Turn one piece of long-form content into 10+ short clips:</p>
+<ol>
+  <li>Record or download a YouTube video / podcast</li>
+  <li>Use CapCut's <strong>Auto Highlight</strong> — AI identifies the most engaging moments</li>
+  <li>Each highlight becomes a short clip with auto-captions</li>
+  <li>Apply a consistent caption style template</li>
+  <li>Export all clips with one-click batch export</li>
+</ol>`,
+            tip: { type: 'info', text: 'Auto Highlight uses engagement signals (energy, volume spikes, keyword detection) to find your best moments. It\'s not perfect but dramatically reduces manual clipping time.' }
+          },
+          {
+            title: 'Create a brand template library',
+            content: `<p>Design your own reusable video templates in CapCut:</p>
+<ul>
+  <li>Set brand colours in the colour picker (save as custom palette)</li>
+  <li>Set your brand font for captions</li>
+  <li>Create an intro/outro animation with your logo</li>
+  <li>Save as a draft template — duplicate for each new video</li>
+</ul>
+<p>Your videos immediately look cohesive even if made by different team members.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use CapCut for Teams',
+            content: `<p>CapCut for Business allows team collaboration — multiple editors working on shared projects with brand guidelines enforced. Set up:</p>
+<ul>
+  <li>Shared asset library (approved footage, music, graphics)</li>
+  <li>Brand style guidelines (fonts, colours)</li>
+  <li>Review and approval workflows</li>
+</ul>`,
+            tip: { type: 'tip', text: 'For agencies or marketing teams producing high video volume: CapCut for Teams + a shared footage library means any team member can produce on-brand content independently.' }
+          },
+          {
+            title: 'Integrate CapCut into a full content stack',
+            content: `<p>Professional content production stack:</p>
+<ol>
+  <li><strong>ChatGPT</strong> → write scripts and video titles</li>
+  <li><strong>ElevenLabs</strong> → AI voiceover for each script</li>
+  <li><strong>Midjourney</strong> → AI visuals for faceless videos</li>
+  <li><strong>CapCut</strong> → assemble, caption, add music, export</li>
+  <li><strong>Buffer/Later</strong> → schedule and publish across platforms</li>
+</ol>
+<p>Full faceless video pipeline — professional quality, no on-camera presence required.</p>`,
+            tip: null
+          },
+          {
+            title: 'Analyse performance and iterate',
+            content: `<p>Connect your TikTok/Instagram analytics to identify patterns:</p>
+<ul>
+  <li>Which caption styles get highest completion rate?</li>
+  <li>Which video lengths perform best for your audience?</li>
+  <li>Which hook types drive most shares?</li>
+</ul>
+<p>Feed insights back into your CapCut templates. Iteration is the algorithm's reward signal — the creators who systematically improve their templates win consistently.</p>`,
+            tip: { type: 'success', text: 'The creators dominating short-form video aren\'t luckier — they\'ve built systematic production and testing machines. CapCut is the engine. You\'ve now got the blueprint.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Runway ── */
+  'runway': {
+    name: 'Runway',
+    domain: 'runwayml.com',
+    affiliate_url: '',
+    category: 'Video',
+    tagline: 'AI video generation and editing — Gen-3, motion brush and inpainting',
+    color: '#7c3aed',
+    levels: {
+      basic: {
+        title: 'Generate Your First AI Video with Runway',
+        description: 'Create stunning AI-generated video clips in under 10 minutes.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Create your account',
+            content: `<p>Go to <strong>runwayml.com</strong> and sign up with Google or email. Free accounts get 125 credits (~25 seconds of video). Standard plan starts at $15/month for 625 credits.</p>
+<p>You'll land on the Runway workspace — a browser-based creative suite with multiple AI tools.</p>`,
+            tip: { type: 'info', text: 'Runway Gen-3 Alpha (their latest model) produces significantly more cinematic results than Gen-2. Make sure you\'re using Gen-3 for your first experiments.' }
+          },
+          {
+            title: 'Generate a video from text (Text to Video)',
+            content: `<p>Click <strong>Text to Video</strong> in the sidebar. In the prompt box, describe your scene:</p>
+<p><em>"A lone astronaut walking on Mars at sunset, red dust swirling, cinematic wide shot, epic lighting"</em></p>
+<p>Click <strong>Generate</strong>. In 60-90 seconds you'll get a 4-second video clip.</p>`,
+            tip: { type: 'tip', text: 'Start with short, clear scene descriptions. Add camera movement terms: "slow zoom in", "aerial shot", "dolly forward". These dramatically improve results.' }
+          },
+          {
+            title: 'Generate video from an image (Image to Video)',
+            content: `<p>Click <strong>Image to Video</strong>. Upload any image — a photo, an AI image from Midjourney, or even a sketch. Add a prompt describing how the image should move:</p>
+<p><em>"Camera slowly pans right, clouds move across sky, gentle breeze in the trees"</em></p>
+<p>Runway animates your static image into a living scene.</p>`,
+            tip: { type: 'tip', text: 'Image to Video tends to produce more controlled results than Text to Video because the visual starting point is defined. Use Midjourney to create the perfect frame, then animate it with Runway.' }
+          },
+          {
+            title: 'Use camera controls',
+            content: `<p>In Gen-3, click <strong>Advanced Options → Camera Controls</strong>. Set specific camera movements:</p>
+<ul>
+  <li><strong>Pan</strong> — horizontal camera movement</li>
+  <li><strong>Tilt</strong> — up/down camera movement</li>
+  <li><strong>Zoom</strong> — push in/pull back</li>
+  <li><strong>Roll</strong> — rotating camera</li>
+</ul>
+<p>Combine movements: slow zoom + pan right = a cinematic reveal.</p>`,
+            tip: null
+          },
+          {
+            title: 'Download your video',
+            content: `<p>After generation, click <strong>Download</strong> to save the MP4. Clips are typically 4-10 seconds depending on your selected duration.</p>
+<p>Chain multiple clips together in CapCut or any video editor for longer sequences. Each clip becomes one scene in a storyboard.</p>`,
+            tip: { type: 'success', text: 'You just created footage that would have required a film crew and location. For short-form content, product visualisations, and creative projects, Runway is a game-changer.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Motion Brush, Inpainting & Extend Clip',
+        description: 'Take creative control with Runway\'s advanced editing AI tools.',
+        duration: '25 min',
+        steps: [
+          {
+            title: 'Use Motion Brush for selective animation',
+            content: `<p>In <strong>Image to Video</strong>, click <strong>Motion Brush</strong> before generating. Paint over specific areas of your image and set their motion direction separately:</p>
+<ul>
+  <li>Paint the sky → set gentle drift to the right</li>
+  <li>Paint water → set ripple motion</li>
+  <li>Paint a person → set a walking forward direction</li>
+</ul>
+<p>Each painted region gets independent motion control.</p>`,
+            tip: { type: 'tip', text: 'Motion Brush gives you director-level control. The most cinematic results often come from moving the background subtly while keeping the subject still (or vice versa).' }
+          },
+          {
+            title: 'Use Inpainting to edit existing video',
+            content: `<p>Open any video in Runway's <strong>Inpainting</strong> tool. Draw a mask over any object you want to remove — a logo, person, watermark, or unwanted element. Runway fills it in seamlessly.</p>
+<p>Also use inpainting to <em>add</em> elements: mask a blank wall and describe what should appear there.</p>`,
+            tip: { type: 'warning', text: 'Inpainting works best on static or slow-moving areas. Fast-moving objects or complex textures (grass, crowds) are harder to inpaint convincingly across frames.' }
+          },
+          {
+            title: 'Extend clips with AI',
+            content: `<p>Select any generated clip and click <strong>Extend Clip</strong>. Runway continues the video scene using AI, adding another 4 seconds that match the movement, lighting, and style of the original.</p>
+<p>You can extend multiple times to build longer sequences — though quality may degrade after 3-4 extensions.</p>`,
+            tip: null
+          },
+          {
+            title: 'Use Act-One for character animation',
+            content: `<p><strong>Act-One</strong> transfers facial expressions and movements from a real actor's video to an AI character. Record yourself (or use stock footage) as the performance reference, upload a character image, and Runway maps the performance onto the character.</p>
+<p>Use for: animated brand mascots, game characters, explainer video avatars.</p>`,
+            tip: { type: 'info', text: 'Act-One is one of the few AI tools that preserves the nuance of human performance. The emotional expression carries through — subtle smiles, eyebrow raises, natural head movements.' }
+          },
+          {
+            title: 'Lip sync with Runway',
+            content: `<p>Use <strong>Lip Sync</strong> to match an AI character's lip movements to a voiceover. Upload your character video + audio file, and Runway syncs the lips precisely.</p>
+<p>Workflow: Midjourney portrait → animate with Image to Video → lip sync with ElevenLabs AI voice → a fully voiced AI spokesperson.</p>`,
+            tip: { type: 'success', text: 'Midjourney + Runway + ElevenLabs = a complete AI video production stack. A single creator can now produce content that would have required a production studio.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Production Pipelines, API & Consistent Characters',
+        description: 'Build scalable AI video production workflows for professional output.',
+        duration: '40 min',
+        steps: [
+          {
+            title: 'Create a consistent character system',
+            content: `<p>Consistent characters across multiple scenes require a systematic approach:</p>
+<ol>
+  <li>Create your character in Midjourney with detailed physical descriptions</li>
+  <li>Generate 10+ reference images in different poses/angles using --cref</li>
+  <li>Use the best reference image as input for every Runway Image to Video generation</li>
+  <li>Keep camera movements subtle to minimise character drift</li>
+</ol>`,
+            tip: { type: 'tip', text: 'Write your character description as a saved prompt: age, hair, clothing, lighting. Paste it consistently across all Midjourney and Runway prompts to maintain visual consistency.' }
+          },
+          {
+            title: 'Use the Runway API',
+            content: `<p>Access the Runway API at <strong>docs.dev.runwayml.com</strong>. Generate video programmatically:</p>
+<div class="code-box">import runwayml
+client = runwayml.RunwayML()
+task = client.image_to_video.create(
+  model='gen3a_turbo',
+  prompt_image=image_url,
+  prompt_text='Camera slowly zooms in',
+  duration=5
+)</div>`,
+            tip: { type: 'info', text: 'Runway\'s API enables batch video generation — useful for e-commerce product animations, real estate virtual tours, or personalised video at scale.' }
+          },
+          {
+            title: 'Build a storyboard-to-video pipeline',
+            content: `<p>Professional short film pipeline:</p>
+<ol>
+  <li>Write scene descriptions in a spreadsheet (location, action, camera, mood)</li>
+  <li>Generate Midjourney frames for each scene</li>
+  <li>Animate each frame with Runway Image to Video</li>
+  <li>Assemble all clips in CapCut or Premiere</li>
+  <li>Add ElevenLabs voiceover and music</li>
+</ol>
+<p>A 60-second narrative film in a day instead of a week of production.</p>`,
+            tip: null
+          },
+          {
+            title: 'Colour grade with AI-assisted tools',
+            content: `<p>Runway includes a colour grading suite. Upload your final assembled video and use:</p>
+<ul>
+  <li><strong>Match Colour</strong> — match the colour grade of a reference film or image</li>
+  <li><strong>Stylise</strong> — apply cinematic colour grades (Teal & Orange, Bleach Bypass, etc.)</li>
+  <li><strong>Manual LUT upload</strong> — apply your own or purchased LUT files</li>
+</ul>`,
+            tip: { type: 'tip', text: 'Colour consistency across scenes is what separates amateur and professional-looking AI video. Run all your clips through the same colour grade before final export.' }
+          },
+          {
+            title: 'Package and deliver client projects',
+            content: `<p>For agency or freelance work with Runway:</p>
+<ul>
+  <li>Use Runway's <strong>Assets</strong> panel to organise clips by project</li>
+  <li>Export final video at 4K for maximum quality (downscale at delivery)</li>
+  <li>Share via Runway's built-in link sharing for client review</li>
+  <li>Collect feedback on specific timestamps in the review link</li>
+</ul>`,
+            tip: { type: 'success', text: 'AI video production is the most underpenetrated creative service right now. Agencies using Runway deliver in 20% of the traditional timeline — that\'s a structural competitive advantage.' }
+          }
+        ]
+      }
+    }
+  },
+
+  /* ── Khan Academy AI ── */
+  'khan-academy-ai': {
+    name: 'Khan Academy AI',
+    domain: 'khanacademy.org',
+    affiliate_url: '',
+    category: 'Education',
+    tagline: 'Khanmigo — AI tutor for students and teaching assistant for educators',
+    color: '#14866d',
+    levels: {
+      basic: {
+        title: 'Getting Started with Khanmigo',
+        description: 'Use Khan Academy\'s AI tutor to learn any subject faster and smarter.',
+        duration: '10 min',
+        steps: [
+          {
+            title: 'Access Khanmigo',
+            content: `<p>Go to <strong>khanacademy.org</strong> and create a free account. Khanmigo (the AI tutor) is available to students via Khan Academy's platform. In the US, it's available as a paid add-on ($4/month for students, free for teachers via the teacher dashboard).</p>
+<p>Look for the Khanmigo icon (the owl) in the bottom right of any exercise page.</p>`,
+            tip: { type: 'info', text: 'Khanmigo is designed to never give you the answer directly. Instead it guides you to figure it out — which builds genuine understanding rather than dependence.' }
+          },
+          {
+            title: 'Start a tutoring session',
+            content: `<p>Click the Khanmigo icon while working on any Khan Academy exercise. Type your question or confusion:</p>
+<ul>
+  <li>"I don't understand how to set up this equation"</li>
+  <li>"Can you explain what integration means?"</li>
+  <li>"Why did I get this wrong?"</li>
+</ul>
+<p>Khanmigo responds with guiding questions rather than direct answers — this is intentional and highly effective for learning.</p>`,
+            tip: { type: 'tip', text: 'If you\'re frustrated by Khanmigo not giving the answer: that\'s the point. Ask "Can you give me a hint?" to get a nudge in the right direction without the full solution.' }
+          },
+          {
+            title: 'Use it across all subjects',
+            content: `<p>Khanmigo works across Khan Academy's entire curriculum:</p>
+<ul>
+  <li><strong>Maths</strong> — from arithmetic through calculus and linear algebra</li>
+  <li><strong>Science</strong> — biology, chemistry, physics, computing</li>
+  <li><strong>Humanities</strong> — history, grammar, writing</li>
+  <li><strong>Test prep</strong> — SAT, GMAT, LSAT practice</li>
+</ul>
+<p>Ask Khanmigo to explain any concept on the page, regardless of your current level.</p>`,
+            tip: null
+          },
+          {
+            title: 'Practise writing with Khanmigo',
+            content: `<p>Khanmigo can review essays and writing assignments. Paste your draft and ask:</p>
+<ul>
+  <li>"What's the weakest part of my argument?"</li>
+  <li>"Is my thesis clear?"</li>
+  <li>"How could my introduction be stronger?"</li>
+</ul>
+<p>It provides feedback like a writing teacher — pointing to specific passages and asking questions that prompt you to improve them.</p>`,
+            tip: { type: 'tip', text: 'Ask Khanmigo to roleplay as a character from a book you\'re studying. Talking to "Atticus Finch" or "Napoleon" about their decisions deepens literary and historical understanding.' }
+          },
+          {
+            title: 'Use the Tutor Me feature for free-form learning',
+            content: `<p>Outside of specific exercises, click <strong>Tutor Me</strong> in Khanmigo to start a free-form learning conversation. Tell it:</p>
+<ul>
+  <li>What subject you're studying</li>
+  <li>What you already understand</li>
+  <li>What specifically confuses you</li>
+</ul>
+<p>Khanmigo designs a mini lesson just for you, asking questions to check understanding as it goes.</p>`,
+            tip: { type: 'success', text: 'A patient, personalised tutor available 24/7 who never gets frustrated and adapts to exactly your level of understanding. That\'s Khanmigo — and it\'s genuinely unlike any other AI tool.' }
+          }
+        ]
+      },
+      intermediate: {
+        title: 'Deep Learning, Exam Prep & Student Workflows',
+        description: 'Use Khanmigo strategically to master difficult material and prepare for exams.',
+        duration: '20 min',
+        steps: [
+          {
+            title: 'Use Socratic questioning to understand concepts deeply',
+            content: `<p>When you encounter a concept you've memorised but don't truly understand, ask Khanmigo:</p>
+<ul>
+  <li>"Why does this rule exist? What would happen if it didn't?"</li>
+  <li>"Can you give me a real-world example where this matters?"</li>
+  <li>"What's the intuition behind this formula?"</li>
+</ul>
+<p>Going beyond "what" to "why" is where deep learning happens — and Khanmigo is designed for exactly this.</p>`,
+            tip: null
+          },
+          {
+            title: 'SAT and standardised test prep',
+            content: `<p>Khan Academy has the official free SAT prep partnership with College Board. Use Khanmigo alongside practice tests:</p>
+<ol>
+  <li>Take a practice test on Khan Academy</li>
+  <li>Review each wrong answer with Khanmigo: "Why did I get this wrong?"</li>
+  <li>Ask Khanmigo to generate similar questions until the concept sticks</li>
+  <li>Track your weak areas using Khan Academy's skill recommendations</li>
+</ol>`,
+            tip: { type: 'tip', text: 'Students who use Khan Academy\'s official SAT prep for 20+ hours improve their score by an average of 115 points. Adding Khanmigo for explanations accelerates this significantly.' }
+          },
+          {
+            title: 'Create personalised practice problems',
+            content: `<p>Ask Khanmigo to generate custom practice problems at exactly your level:</p>
+<p><em>"I understand linear equations with one variable. Create 5 practice problems that are slightly more challenging, focusing on word problems."</em></p>
+<p>Khanmigo designs targeted problems and walks you through each one as you solve it.</p>`,
+            tip: { type: 'info', text: 'Spaced repetition is the most effective study technique. After each Khanmigo session, note which concepts still feel shaky and come back to those first next time.' }
+          },
+          {
+            title: 'Debate and discuss ideas',
+            content: `<p>For history and social studies, use Khanmigo's debate feature:</p>
+<p>Ask it to argue the opposite position from what you believe about a historical event or policy. This forces you to encounter counterarguments and strengthens your critical thinking.</p>
+<p>Example: "Argue that the French Revolution had more negative than positive effects."</p>`,
+            tip: { type: 'tip', text: 'Teachers: Khanmigo debates are a great homework format. Assign students to debate a topic with Khanmigo and submit the transcript as their argument analysis.' }
+          },
+          {
+            title: 'Use Khan Academy alongside other learning resources',
+            content: `<p>Khan Academy works best as your practice and explanation layer. Pair it with:</p>
+<ul>
+  <li><strong>YouTube / 3Blue1Brown</strong> — visual explanations of maths concepts</li>
+  <li><strong>Anki</strong> — flashcards for memorisation (facts, vocabulary, formulas)</li>
+  <li><strong>Khan Academy exercises</strong> — immediate Khanmigo support while practising</li>
+</ul>
+<p>Khanmigo bridges the gap between passive video watching and active problem solving.</p>`,
+            tip: { type: 'success', text: 'The students who improve fastest combine: quality explanations (videos) + active practice (exercises) + immediate feedback (Khanmigo). That learning loop compounds rapidly.' }
+          }
+        ]
+      },
+      advanced: {
+        title: 'Khanmigo for Teachers & Educational Programme Design',
+        description: 'Use Khanmigo to enhance teaching, personalise instruction, and save planning time.',
+        duration: '30 min',
+        steps: [
+          {
+            title: 'Set up a teacher account',
+            content: `<p>Go to <strong>khanacademy.org/teacher</strong> and create a teacher account. Teachers get Khanmigo free in the US. Create a class, add your students, and you get a dashboard showing each student's progress, time spent, and skill mastery.</p>
+<p>You can see exactly which students are struggling with which skills — without them having to raise their hand.</p>`,
+            tip: { type: 'info', text: 'Khan Academy\'s teacher dashboard is one of the most detailed free formative assessment tools available. Pair it with Khanmigo for a complete personalised learning system.' }
+          },
+          {
+            title: 'Use Khanmigo for lesson planning',
+            content: `<p>Teachers can use Khanmigo directly to assist with planning:</p>
+<ul>
+  <li>"Create a lesson plan for introducing quadratic equations to 9th grade students"</li>
+  <li>"Design a discussion activity about the causes of World War I for Year 10"</li>
+  <li>"Generate 10 differentiated problems on fractions for students working at three different levels"</li>
+</ul>`,
+            tip: null
+          },
+          {
+            title: 'Create writing feedback prompts',
+            content: `<p>Design Khanmigo prompts that help students self-edit before submission:</p>
+<p><em>"Ask Khanmigo: 'Review my essay introduction. Does it clearly state my thesis? What would make it stronger?'"</em></p>
+<p>When students get Khanmigo feedback before submitting, the quality of work teachers receive improves dramatically — and students arrive with more specific questions.</p>`,
+            tip: { type: 'tip', text: 'Assign Khanmigo conversation transcripts as part of the homework submission. You can see exactly how students reasoned through problems and where Khanmigo helped them.' }
+          },
+          {
+            title: 'Assign targeted practice by skill gap',
+            content: `<p>Use the teacher dashboard to identify class-wide skill gaps (e.g. 60% of students scoring below mastery on "solving systems of equations"). Then:</p>
+<ol>
+  <li>Assign the relevant Khan Academy skill as homework</li>
+  <li>Students use Khanmigo during practice for immediate support</li>
+  <li>Review the next class focusing on the remaining confusion</li>
+</ol>
+<p>Data-driven instruction at zero cost.</p>`,
+            tip: { type: 'info', text: 'Khan Academy\'s research shows classes that use the platform for 30+ minutes/week as supplemental practice see measurably better test outcomes. The key is consistent use, not intensive cramming.' }
+          },
+          {
+            title: 'Design a Khanmigo-enhanced curriculum unit',
+            content: `<p>A full unit design using Khanmigo as an integral tool:</p>
+<ol>
+  <li><strong>Introduce</strong>: Teacher-led lesson with visuals and examples</li>
+  <li><strong>Practice</strong>: Khan Academy exercises with Khanmigo support available</li>
+  <li><strong>Deepen</strong>: Khanmigo Socratic discussions on the "why" behind concepts</li>
+  <li><strong>Apply</strong>: Project with Khanmigo as a thinking partner</li>
+  <li><strong>Assess</strong>: Traditional test — the formative assessment was already done by the dashboard</li>
+</ol>`,
+            tip: { type: 'success', text: 'The teachers using Khanmigo most effectively spend less time re-explaining basics (Khanmigo handles it) and more time on high-level discussions and project-based learning. That\'s the leverage.' }
+          }
+        ]
+      }
+    }
   }
 
 }; // end TUTORIALS_DATA
