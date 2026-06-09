@@ -52,9 +52,13 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 #theme-panel.open{display:flex}
 #theme-panel h5{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim)}
 .theme-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;transition:transform .15s;border:2.5px solid transparent}
+.theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;transition:transform .15s,border-color .15s;border:2.5px solid transparent}
 .theme-swatch:hover{transform:scale(1.18)}
-.theme-swatch[data-t="blue"]{background:#1a56db}.theme-swatch[data-t="purple"]{background:#7c3aed}.theme-swatch[data-t="green"]{background:#059669}.theme-swatch[data-t="amber"]{background:#d97706}.theme-swatch[data-t="rose"]{background:#e11d48}.theme-swatch[data-t="cyan"]{background:#0891b2}.theme-swatch[data-t="indigo"]{background:#4338ca}.theme-swatch[data-t="sky"]{background:#0284c7}.theme-swatch[data-t="pink"]{background:#db2777}.theme-swatch[data-t="teal"]{background:#0d9488}.theme-swatch[data-t="orange"]{background:#ea580c}.theme-swatch[data-t="violet"]{background:#9333ea}
+.theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--primary)}
+.theme-swatch[data-t="blue"]{background:#93c5fd}.theme-swatch[data-t="purple"]{background:#d8b4fe}.theme-swatch[data-t="green"]{background:#86efac}.theme-swatch[data-t="amber"]{background:#fcd34d}.theme-swatch[data-t="rose"]{background:#fda4af}.theme-swatch[data-t="cyan"]{background:#67e8f9}.theme-swatch[data-t="indigo"]{background:#a5b4fc}.theme-swatch[data-t="slate"]{background:#94a3b8}.theme-swatch[data-t="lime"]{background:#bef264}.theme-swatch[data-t="violet"]{background:#c4b5fd}.theme-swatch[data-t="orange"]{background:#fdba74}.theme-swatch[data-t="sky"]{background:#7dd3fc}.theme-swatch[data-t="pink"]{background:#f9a8d4}.theme-swatch[data-t="teal"]{background:#5eead4}.theme-swatch[data-t="fuchsia"]{background:#f0abfc}.theme-swatch[data-t="red"]{background:#fca5a5}.theme-swatch[data-t="gold"]{background:#fde047}.theme-swatch[data-t="brown"]{background:#f5c68a}
+.theme-original-btn{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface-2);font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .15s;width:100%}
+.theme-original-btn:hover,.theme-original-btn.active{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.theme-original-btn .orig-dot{width:12px;height:12px;border-radius:50%;background:#1a56db;flex-shrink:0}
 #theme-panel-footer{font-size:10.5px;color:var(--text-dim);text-align:center}
 @media(max-width:768px){#nav-theme-btn{display:none!important}#theme-panel{position:fixed!important;top:62px;left:10px;right:10px;width:auto;z-index:600}}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -192,7 +196,31 @@ footer a:hover{color:var(--primary)}
       <button class="nav-login" onclick="window.location='index.html'">Log In</button>
       <div id="nav-theme-wrap">
         <button id="nav-theme-btn" onclick="toggleThemePanel(event)"><span id="nav-theme-dot"></span>Theme</button>
-        <div id="theme-panel"><h5>Colour Theme</h5><div class="theme-swatches"><div class="theme-swatch" data-t="blue" title="Blue" onclick="applyThemeMini('blue')"></div><div class="theme-swatch" data-t="purple" title="Purple" onclick="applyThemeMini('purple')"></div><div class="theme-swatch" data-t="green" title="Green" onclick="applyThemeMini('green')"></div><div class="theme-swatch" data-t="amber" title="Amber" onclick="applyThemeMini('amber')"></div><div class="theme-swatch" data-t="rose" title="Rose" onclick="applyThemeMini('rose')"></div><div class="theme-swatch" data-t="cyan" title="Cyan" onclick="applyThemeMini('cyan')"></div><div class="theme-swatch" data-t="indigo" title="Indigo" onclick="applyThemeMini('indigo')"></div><div class="theme-swatch" data-t="sky" title="Sky" onclick="applyThemeMini('sky')"></div><div class="theme-swatch" data-t="pink" title="Pink" onclick="applyThemeMini('pink')"></div><div class="theme-swatch" data-t="teal" title="Teal" onclick="applyThemeMini('teal')"></div><div class="theme-swatch" data-t="orange" title="Orange" onclick="applyThemeMini('orange')"></div><div class="theme-swatch" data-t="violet" title="Violet" onclick="applyThemeMini('violet')"></div></div><div id="theme-panel-footer">Saves automatically ✓</div></div>
+        <div id="theme-panel">
+          <h5>Your Colour Theme</h5>
+          <button class="theme-original-btn" id="theme-original-btn" onclick="applyTheme('blue')" title="Reset to original website colour"><span class="orig-dot"></span>Original</button>
+          <div class="theme-swatches">
+            <div class="theme-swatch" data-t="blue"    title="Blue"    onclick="applyTheme('blue')"></div>
+            <div class="theme-swatch" data-t="purple"  title="Purple"  onclick="applyTheme('purple')"></div>
+            <div class="theme-swatch" data-t="green"   title="Green"   onclick="applyTheme('green')"></div>
+            <div class="theme-swatch" data-t="amber"   title="Amber"   onclick="applyTheme('amber')"></div>
+            <div class="theme-swatch" data-t="rose"    title="Rose"    onclick="applyTheme('rose')"></div>
+            <div class="theme-swatch" data-t="cyan"    title="Cyan"    onclick="applyTheme('cyan')"></div>
+            <div class="theme-swatch" data-t="indigo"  title="Indigo"  onclick="applyTheme('indigo')"></div>
+            <div class="theme-swatch" data-t="slate"   title="Slate"   onclick="applyTheme('slate')"></div>
+            <div class="theme-swatch" data-t="lime"    title="Lime"    onclick="applyTheme('lime')"></div>
+            <div class="theme-swatch" data-t="violet"  title="Violet"  onclick="applyTheme('violet')"></div>
+            <div class="theme-swatch" data-t="orange"  title="Orange"  onclick="applyTheme('orange')"></div>
+            <div class="theme-swatch" data-t="sky"     title="Sky"     onclick="applyTheme('sky')"></div>
+            <div class="theme-swatch" data-t="pink"    title="Pink"    onclick="applyTheme('pink')"></div>
+            <div class="theme-swatch" data-t="teal"    title="Teal"    onclick="applyTheme('teal')"></div>
+            <div class="theme-swatch" data-t="fuchsia" title="Fuchsia" onclick="applyTheme('fuchsia')"></div>
+            <div class="theme-swatch" data-t="red"     title="Red"     onclick="applyTheme('red')"></div>
+            <div class="theme-swatch" data-t="gold"    title="Gold"    onclick="applyTheme('gold')"></div>
+            <div class="theme-swatch" data-t="brown"   title="Brown"   onclick="applyTheme('brown')"></div>
+          </div>
+          <div id="theme-panel-footer">Saves automatically ✓</div>
+        </div>
       </div>
       <a href="index.html#newsletter" class="btn-nav-cta">Get Weekly Digest</a>
     </div>
@@ -412,9 +440,60 @@ function buildGrid(){
 buildGrid();
 </script>
 <script>
-function toggleThemePanel(e){if(e)e.stopPropagation();var p=document.getElementById('theme-panel');if(p)p.classList.toggle('open');}
-function applyThemeMini(t){var h=document.documentElement;['--primary','--primary-2','--primary-light','--surface-2','--border','--bg'].forEach(function(v){h.style.removeProperty(v);});if(!t||t==='blue')h.removeAttribute('data-theme');else h.setAttribute('data-theme',t);try{localStorage.setItem('myai_theme_v1',t||'blue');}catch(e){}var d=document.getElementById('nav-theme-dot');if(d){var c={blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',sky:'#0284c7',pink:'#db2777',teal:'#0d9488',orange:'#ea580c',violet:'#9333ea'};d.style.background=c[t]||'#1a56db';}}
-document.addEventListener('click',function(e){var p=document.getElementById('theme-panel'),b=document.getElementById('nav-theme-btn');if(p&&p.classList.contains('open')&&!p.contains(e.target)&&(!b||!b.contains(e.target)))p.classList.remove('open');});
+(function(){
+  var STORAGE_KEY='myai_theme_v1';
+  var _panelOpen=false;
+  var _dot_colours={blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',slate:'#475569',lime:'#65a30d',violet:'#9333ea',orange:'#ea580c',sky:'#0284c7',pink:'#db2777',teal:'#0d9488',fuchsia:'#c026d3',red:'#dc2626',gold:'#ca8a04',brown:'#92400e'};
+
+  function syncSwatches(t){
+    var active=t||'blue';
+    document.querySelectorAll('.theme-swatch').forEach(function(el){
+      el.classList.toggle('active',el.dataset.t===active);
+    });
+    var origBtn=document.getElementById('theme-original-btn');
+    if(origBtn) origBtn.classList.toggle('active',active==='blue');
+    var dot=document.getElementById('nav-theme-dot');
+    if(dot) dot.style.background=_dot_colours[active]||'#1a56db';
+  }
+
+  window.applyTheme=function(t){
+    var html=document.documentElement;
+    ['--primary','--primary-2','--primary-light','--surface-2','--border','--border-soft','--bg','--shadow','--shadow-lg','--brain-clr','--hero-grad'].forEach(function(v){html.style.removeProperty(v);});
+    if(!t||t==='blue') html.removeAttribute('data-theme');
+    else html.setAttribute('data-theme',t);
+    try{localStorage.setItem(STORAGE_KEY,t||'blue');}catch(e){}
+    syncSwatches(t||'blue');
+    _panelOpen=false;
+    var panel=document.getElementById('theme-panel');
+    if(panel) panel.classList.remove('open');
+  };
+
+  window.toggleThemePanel=function(e){
+    if(e) e.stopPropagation();
+    var panel=document.getElementById('theme-panel');
+    _panelOpen=!_panelOpen;
+    panel.classList.toggle('open',_panelOpen);
+    if(_panelOpen){
+      var saved='blue';
+      try{saved=localStorage.getItem(STORAGE_KEY)||'blue';}catch(e){}
+      syncSwatches(saved);
+    }
+  };
+
+  document.addEventListener('click',function(e){
+    if(!_panelOpen) return;
+    var btn=document.getElementById('nav-theme-btn');
+    var panel=document.getElementById('theme-panel');
+    if(panel&&!panel.contains(e.target)&&(!btn||!btn.contains(e.target))){
+      _panelOpen=false;panel.classList.remove('open');
+    }
+  });
+
+  // Init active swatch on load
+  var saved='blue';
+  try{saved=localStorage.getItem(STORAGE_KEY)||'blue';}catch(e){}
+  syncSwatches(saved);
+}());
 function toggleMenu(){
   const m=document.getElementById('mob-menu'),o=document.getElementById('mob-overlay'),b=document.getElementById('burger');
   m.classList.toggle('open');o.classList.toggle('open');if(b)b.classList.toggle('open');
