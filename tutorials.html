@@ -82,27 +82,30 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
 
 /* SEARCH + FILTER */
 .filter-bar-wrap{position:sticky;top:64px;z-index:50;background:var(--bg);border-bottom:1px solid var(--border-soft)}
-.filter-bar{max-width:1100px;margin:0 auto;padding:12px 24px;
-  display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
-.search-wrap{flex:1;min-width:200px;position:relative}
-.search-wrap input{width:100%;padding:11px 16px 11px 40px;border-radius:10px;
+.filter-bar{max-width:1100px;margin:0 auto;padding:10px 24px;display:flex;gap:12px;align-items:center}
+.search-wrap{flex-shrink:0;width:210px;position:relative}
+.search-wrap input{width:100%;padding:9px 14px 9px 38px;border-radius:20px;
   border:1.5px solid var(--border);background:var(--surface);color:var(--text);
-  font-family:'Poppins',sans-serif;font-size:.875rem;outline:none;transition:.2s}
+  font-family:'Poppins',sans-serif;font-size:.82rem;outline:none;transition:.2s}
 .search-wrap input:focus{border-color:var(--primary)}
 .search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:.9rem}
-.filter-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip-track{flex:1;min-width:0;position:relative}
+.chip-track::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;
+  background:linear-gradient(to right,transparent,var(--bg));pointer-events:none;z-index:1}
+.filter-chips{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding-right:40px}
+.filter-chips::-webkit-scrollbar{display:none}
 .chip{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);
   color:var(--text-dim);font-size:.8rem;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
 .chip:hover{border-color:var(--primary);color:var(--primary)}
 .chip.active{background:var(--primary);border-color:var(--primary);color:#fff}
 @media(max-width:768px){
   .filter-bar-wrap{top:56px}
-  .filter-bar{flex-direction:column;align-items:stretch;gap:8px;padding:10px 16px}
-  .search-wrap{min-width:unset}
-  .search-wrap input{padding:9px 14px 9px 36px;font-size:.82rem}
-  .filter-chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}
-  .filter-chips::-webkit-scrollbar{display:none}
-  .chip{padding:6px 13px;font-size:.76rem}
+  .filter-bar{padding:8px 12px;gap:8px}
+  .search-wrap{width:110px;flex-shrink:0}
+  .search-wrap input{padding:7px 8px 7px 30px;font-size:.76rem;border-radius:20px}
+  .search-icon{left:10px}
+  .chip{padding:6px 12px;font-size:.76rem}
 }
 
 /* GRID */
@@ -282,9 +285,9 @@ footer a:hover{color:var(--primary)}
 <div class="filter-bar-wrap"><div class="filter-bar">
   <div class="search-wrap">
     <span class="search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
-    <input type="text" id="search-input" placeholder="Search tutorials…" oninput="filterCards()"/>
+    <input type="text" id="search-input" placeholder="Search…" oninput="filterCards()"/>
   </div>
-  <div class="filter-chips">
+  <div class="chip-track"><div class="filter-chips">
     <div class="chip active" data-cat="all" onclick="setChip(this)">All</div>
     <div class="chip" data-cat="Chatbot" onclick="setChip(this)">Chatbot</div>
     <div class="chip" data-cat="Coding" onclick="setChip(this)">Coding</div>
@@ -298,7 +301,7 @@ footer a:hover{color:var(--primary)}
     <div class="chip" data-cat="Automation" onclick="setChip(this)">Automation</div>
     <div class="chip" data-cat="Writing" onclick="setChip(this)">Writing</div>
     <div class="chip" data-cat="Education" onclick="setChip(this)">Education</div>
-  </div>
+  </div></div>
 </div></div>
 
 <!-- GRID -->
