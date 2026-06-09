@@ -670,6 +670,10 @@ body::before{
   background:var(--primary-light);border:1.5px solid rgba(26,86,219,.22);
   transition:all .2s}
 .pp-spot-prompt-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-2px)}
+.pp-spot-tutorial-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:12px;font-size:12.5px;font-weight:600;color:#0369a1;text-decoration:none;
+  background:#e0f2fe;border:1.5px solid rgba(2,132,199,.22);
+  transition:all .2s}
+.pp-spot-tutorial-btn:hover{background:#0284c7;color:#fff;border-color:#0284c7;transform:translateY(-2px)}
 /* Right: website screenshot preview */
 .pp-spot-right{flex:1;min-width:0;position:relative;background:#e8edf3;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
 .pp-spot-browser-bar{background:#f1f5f9;border-bottom:1px solid rgba(0,0,0,.08);height:32px;padding:0 14px;display:flex;align-items:center;gap:6px;flex-shrink:0}
@@ -700,6 +704,7 @@ body::before{
   .pp-spot-ctas{margin-top:4px;gap:8px}
   .pp-spot-btn{padding:10px 18px;font-size:12.5px}
   .pp-spot-prompt-btn{padding:10px 14px;font-size:12px}
+  .pp-spot-tutorial-btn{padding:10px 14px;font-size:12px}
   .pp-spot-right{min-height:200px;flex-shrink:0}
 }
 /* ── Partner picks carousel — cards use same .card layout as tool directory ── */
@@ -2150,7 +2155,10 @@ function cardHTML(i){
   const goUrl="go.html?url="+encodeURIComponent(url)+"&name="+encodeURIComponent(t.name);
   const slug=t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const hasTut=window.TUTORIALS_DATA&&window.TUTORIALS_DATA[slug];
-  const tutBtn=hasTut?"<a class=\"tutorial-btn\" href=\"tutorials/view.html?tool="+slug+"&level=basic\" onclick=\"event.stopPropagation()\" title=\"Step-by-step tutorial for "+t.name+"\"><svg width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg> Tutorial</a>":"";
+  const isAffSlug=window.AFFILIATE_SLUGS&&window.AFFILIATE_SLUGS.has(slug);
+  const showTut=hasTut||(t.trending||0)>=85||t.featured||isAffSlug;
+  const tutUrl=hasTut?'tutorials/view.html?tool='+slug+'&level=basic':'tutorials.html';
+  const tutBtn=showTut?"<a class=\"tutorial-btn\" href=\""+tutUrl+"\" onclick=\"event.stopPropagation()\" title=\"Step-by-step tutorial for "+t.name+"\"><svg width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg> Tutorial</a>":"";
   return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"if(this.dataset.f){this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>');}else{this.dataset.f=1;this.src='https://www.google.com/s2/favicons?domain="+encodeURIComponent(t.domain||"")+"&sz=128';}\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\" title=\"Featured\"><svg width='10' height='10' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg></span>":"")+(t.verified?"<span class=\"verified-mark\" title=\"Verified\"><svg width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3'><polyline points='20 6 9 17 4 12'/></svg></span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+goUrl+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Free &rarr;</a><div class=\"actions-2\"><a class=\"prompt-action-btn\" href=\"prompts.html#"+slug+"\" onclick=\"event.stopPropagation()\" title=\"Free AI prompts for "+t.name+"\"><svg width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'><path d='M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z'/></svg> Prompts</a>"+tutBtn+"<button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\"><svg width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'><path d='M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10'/></svg> Compare</button></div></div></article>";
 }
 function rowHTML(r){
@@ -3251,6 +3259,8 @@ async function submitReview(){
     if(!partners.length) return;
 
     const affiliateNameSet=new Set(partners.map(p=>p.name.toLowerCase()));
+    /* Expose affiliate slugs globally so cardHTML() can show tutorial btn */
+    window.AFFILIATE_SLUGS=new Set(partners.map(p=>p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')));
     function toolByName(name){
       const nl=name.toLowerCase();
       return TOOLS.map((_,i)=>tool(i)).filter(Boolean).find(t=>t.name.toLowerCase()===nl)||null;
@@ -3327,6 +3337,10 @@ async function submitReview(){
               <a class="pp-spot-prompt-btn" href="prompts.html#${p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 Free Prompts
+              </a>
+              <a class="pp-spot-tutorial-btn" href="tutorials/view.html?tool=${p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}&level=basic">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Tutorial
               </a>
             </div>
           </div>
