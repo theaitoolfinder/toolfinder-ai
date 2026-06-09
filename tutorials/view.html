@@ -399,8 +399,8 @@ function renderTutorial(toolId, level){
   const lvlLabel = {basic:'Core',intermediate:'Pro',advanced:'Elite'}[lvlKey] || cap(lvlKey);
   document.getElementById('breadcrumb-tool').textContent = td.name + ' — ' + lvlLabel;
 
-  /* Hero logo */
-  const logoHtml = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback>${initials(td.name)}</div>')">`;
+  /* Hero logo — clearbit → Google favicon → letter fallback */
+  const logoHtml = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://www.google.com/s2/favicons?domain=${encodeURIComponent(td.domain)}&sz=128';}else{this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback>${initials(td.name)}</div>');}">`;
   document.getElementById('hero-logo').innerHTML = logoHtml;
   document.getElementById('hero-title').textContent = lvlData.title;
   document.getElementById('hero-sub').textContent = lvlData.description;
@@ -424,7 +424,7 @@ function renderTutorial(toolId, level){
   }).join('');
 
   /* Sidebar tool info */
-  document.getElementById('sidebar-logo').innerHTML = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" style="width:38px;height:38px;object-fit:contain" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback style=width:38px;height:38px;font-size:.9rem>${initials(td.name)}</div>')">`;
+  document.getElementById('sidebar-logo').innerHTML = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" style="width:38px;height:38px;object-fit:contain" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://www.google.com/s2/favicons?domain=${encodeURIComponent(td.domain)}&sz=128';}else{this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback style=width:38px;height:38px;font-size:.9rem>${initials(td.name)}</div>');}">`;
   document.getElementById('sidebar-name').textContent = td.name;
   document.getElementById('sidebar-tag').textContent = td.tagline;
   const ctaEl = document.getElementById('sidebar-cta');
