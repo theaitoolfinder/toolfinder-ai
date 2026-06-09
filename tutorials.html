@@ -19,7 +19,7 @@
 .nav-login:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text);text-decoration:none}
 .brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 4px 12px rgba(26,86,219,.28);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-a{padding:6px 12px;border-radius:8px;font-size:14px;font-weight:500;color:var(--text-2);text-decoration:none;transition:background .15s,color .15s}
@@ -382,8 +382,8 @@ function buildGrid(){
 
     wrap.innerHTML=`<div class="tut-card">
       <div class="card-header">
-        <div class="card-logo"><img src="${clearbit(tool.domain)}" alt="${tool.name}"
-          onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=logo-fallback>${initials(tool.name)}</div>')"></div>
+        <div class="card-logo"><img src="${clearbit(tool.domain)}" alt="${tool.name}" loading="lazy"
+          onerror="if(this.dataset.f){this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=logo-fallback>${initials(tool.name)}</div>');}else{this.dataset.f=1;this.src='https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128';}"></div>
         <div class="card-meta"><h3>${tool.name}</h3><div class="cat">${tool.category}</div></div>
       </div>
       <div class="card-body">
