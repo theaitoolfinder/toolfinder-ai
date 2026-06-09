@@ -65,7 +65,7 @@ window.TUTORIALS_DATA = {
             title: 'Record a clean 1-minute sample',
             content: `<p>Quality in = quality out. Record yourself reading a neutral script in a quiet room. Use your phone's default voice memo app — it's fine.</p>
 <p>Avoid: background music, echo, Zoom compression, or edited clips. Raw recordings work best.</p>`,
-            tip: { type: 'warning', text: 'ElevenLabs requires you to confirm the voice is yours. Cloning another person's voice without consent violates their Terms of Service.' }
+            tip: { type: 'warning', text: 'ElevenLabs requires you to confirm the voice is yours. Cloning another person\'s voice without consent violates their Terms of Service.' }
           },
           {
             title: 'Create an Instant Voice Clone',
@@ -165,7 +165,7 @@ window.TUTORIALS_DATA = {
             title: 'Use recommended NLP terms',
             content: `<p>Scroll the right panel to find <strong>Recommended Terms</strong> — semantically related phrases Google expects to see in your content.</p>
 <p>Green = used enough. Orange = use more. Red = missing entirely. Weave these naturally into your writing.</p>`,
-            tip: { type: 'warning', text: 'Don't stuff keywords. Use them naturally in context — Google's NLP can tell the difference.' }
+            tip: { type: 'warning', text: 'Don\'t stuff keywords. Use them naturally in context — Google\'s NLP can tell the difference.' }
           },
           {
             title: 'Check competitor word counts & headings',
@@ -196,7 +196,7 @@ window.TUTORIALS_DATA = {
             title: 'Optimize internal links',
             content: `<p>In the <strong>Internal Links</strong> tab, NeuronWriter shows pages on your site that should link to — or receive links from — this article.</p>
 <p>Add 2–4 internal links. This passes authority and helps Google understand your site structure.</p>`,
-            tip: { type: 'info', text: 'Internal linking is one of the most overlooked on-page SEO tactics. Don't skip this step.' }
+            tip: { type: 'info', text: 'Internal linking is one of the most overlooked on-page SEO tactics. Don\'t skip this step.' }
           },
           {
             title: 'Publish and track position',
@@ -264,7 +264,7 @@ window.TUTORIALS_DATA = {
             title: 'Invite Fred to a meeting',
             content: `<p>For meetings not in your calendar, copy the meeting link and go to <strong>Add to Meeting</strong> in the Fireflies dashboard. Paste the link and Fred will join.</p>
 <p>You'll see Fred appear as a participant — it's just the AI bot, it doesn't speak.</p>`,
-            tip: { type: 'tip', text: 'Always give attendees a heads-up that the meeting is being recorded. It's both polite and legally required in many regions.' }
+            tip: { type: 'tip', text: 'Always give attendees a heads-up that the meeting is being recorded. It\'s both polite and legally required in many regions.' }
           },
           {
             title: 'Review your transcript',
