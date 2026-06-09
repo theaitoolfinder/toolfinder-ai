@@ -44,6 +44,19 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .mob-overlay{position:fixed;inset:0;background:rgba(15,23,42,.40);z-index:299;display:none}
 .mob-overlay.open{display:block}
 @media(max-width:768px){.nav-links,.btn-nav-cta{display:none}.burger{display:flex}}
+#nav-theme-wrap{position:relative}
+#nav-theme-btn{padding:6px 11px;border-radius:999px;border:1.5px solid var(--border);background:transparent;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:var(--text-2);transition:border-color .15s}
+#nav-theme-btn:hover{border-color:var(--primary);color:var(--primary)}
+#nav-theme-dot{width:11px;height:11px;border-radius:50%;background:var(--primary);display:inline-block;flex-shrink:0;transition:background .25s}
+#theme-panel{position:absolute;top:calc(100% + 10px);right:0;z-index:500;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 16px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14);width:240px;display:none;flex-direction:column;gap:10px}
+#theme-panel.open{display:flex}
+#theme-panel h5{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim)}
+.theme-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.theme-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;transition:transform .15s;border:2.5px solid transparent}
+.theme-swatch:hover{transform:scale(1.18)}
+.theme-swatch[data-t="blue"]{background:#1a56db}.theme-swatch[data-t="purple"]{background:#7c3aed}.theme-swatch[data-t="green"]{background:#059669}.theme-swatch[data-t="amber"]{background:#d97706}.theme-swatch[data-t="rose"]{background:#e11d48}.theme-swatch[data-t="cyan"]{background:#0891b2}.theme-swatch[data-t="indigo"]{background:#4338ca}.theme-swatch[data-t="sky"]{background:#0284c7}.theme-swatch[data-t="pink"]{background:#db2777}.theme-swatch[data-t="teal"]{background:#0d9488}.theme-swatch[data-t="orange"]{background:#ea580c}.theme-swatch[data-t="violet"]{background:#9333ea}
+#theme-panel-footer{font-size:10.5px;color:var(--text-dim);text-align:center}
+@media(max-width:768px){#nav-theme-btn{display:none!important}#theme-panel{position:fixed!important;top:62px;left:10px;right:10px;width:auto;z-index:600}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
 
@@ -64,8 +77,9 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
 .legend-dot{width:10px;height:10px;border-radius:50%}
 
 /* SEARCH + FILTER */
-.filter-bar{max-width:1100px;margin:32px auto 0;padding:0 24px;
-  display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.filter-bar{max-width:1100px;margin:0 auto;padding:12px 24px;
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  position:sticky;top:64px;z-index:50;background:var(--bg);border-bottom:1px solid var(--border-soft)}
 .search-wrap{flex:1;min-width:200px;position:relative}
 .search-wrap input{width:100%;padding:11px 16px 11px 40px;border-radius:10px;
   border:1.5px solid var(--border);background:var(--surface);color:var(--text);
@@ -176,6 +190,10 @@ footer a:hover{color:var(--primary)}
       <a href="tutorials.html" class="nav-a active">Tutorials</a>
       <a href="about.html" class="nav-a">About</a>
       <button class="nav-login" onclick="window.location='index.html'">Log In</button>
+      <div id="nav-theme-wrap">
+        <button id="nav-theme-btn" onclick="toggleThemePanel(event)"><span id="nav-theme-dot"></span>Theme</button>
+        <div id="theme-panel"><h5>Colour Theme</h5><div class="theme-swatches"><div class="theme-swatch" data-t="blue" title="Blue" onclick="applyThemeMini('blue')"></div><div class="theme-swatch" data-t="purple" title="Purple" onclick="applyThemeMini('purple')"></div><div class="theme-swatch" data-t="green" title="Green" onclick="applyThemeMini('green')"></div><div class="theme-swatch" data-t="amber" title="Amber" onclick="applyThemeMini('amber')"></div><div class="theme-swatch" data-t="rose" title="Rose" onclick="applyThemeMini('rose')"></div><div class="theme-swatch" data-t="cyan" title="Cyan" onclick="applyThemeMini('cyan')"></div><div class="theme-swatch" data-t="indigo" title="Indigo" onclick="applyThemeMini('indigo')"></div><div class="theme-swatch" data-t="sky" title="Sky" onclick="applyThemeMini('sky')"></div><div class="theme-swatch" data-t="pink" title="Pink" onclick="applyThemeMini('pink')"></div><div class="theme-swatch" data-t="teal" title="Teal" onclick="applyThemeMini('teal')"></div><div class="theme-swatch" data-t="orange" title="Orange" onclick="applyThemeMini('orange')"></div><div class="theme-swatch" data-t="violet" title="Violet" onclick="applyThemeMini('violet')"></div></div><div id="theme-panel-footer">Saves automatically ✓</div></div>
+      </div>
       <a href="index.html#newsletter" class="btn-nav-cta">Get Weekly Digest</a>
     </div>
     <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -192,15 +210,18 @@ footer a:hover{color:var(--primary)}
     <a href="prompts.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
     <a href="tutorials.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Tutorials</a>
     <a href="about.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
-    <a href="index.html#compare"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare</a>
-    <a href="index.html#newsletter" class="mob-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+    <a href="index.html#compare" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare</a>
+    <button onclick="toggleMenu();setTimeout(function(){toggleThemePanel()},50)" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--text-2,#4a5568);text-align:left;padding:13px 14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:10px;border-radius:10px;width:100%;transition:all .15s" onmouseenter="this.style.background='var(--surface-2,#f0f6ff)'" onmouseleave="this.style.background='none'"><span style="width:14px;height:14px;border-radius:50%;background:var(--primary,#1a56db);display:inline-block;flex-shrink:0"></span> Colour Theme</button>
+    <button onclick="toggleMenu();location.href='index.html'" style="background:none;border:none;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--text-2,#4a5568);text-align:left;padding:13px 14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:10px;border-radius:10px;width:100%;transition:all .15s" onmouseenter="this.style.background='var(--surface-2,#f0f6ff)'" onmouseleave="this.style.background='none'" id="mob-login-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> Log In</button>
+    <a href="index.html#newsletter" onclick="toggleMenu()" class="mob-cta" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Get Weekly Digest</a>
+    <a href="admin.html" class="mob-admin" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Admin</a>
   </div>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="toggleMenu()"></div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">📚 Free AI Tutorials</div>
+  <div class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Free AI Tutorials</div>
   <h1>Learn the <span>Best AI Tools</span><br>Step by Step</h1>
   <p>Hands-on tutorials for the top AI tools — from beginner basics to advanced power-user workflows.</p>
   <div class="lock-legend">
@@ -213,7 +234,7 @@ footer a:hover{color:var(--primary)}
 <!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <span class="search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
     <input type="text" id="search-input" placeholder="Search tutorials…" oninput="filterCards()"/>
   </div>
   <div class="filter-chips">
@@ -233,7 +254,7 @@ footer a:hover{color:var(--primary)}
   <div class="section-label" id="results-label">11 Tutorials Available</div>
   <div class="tut-grid" id="tut-grid"></div>
   <div id="no-results">
-    <div style="font-size:2.5rem;margin-bottom:12px">🔍</div>
+    <div style="margin-bottom:16px"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
     <p>No tutorials match your search. <span style="cursor:pointer;color:var(--primary)" onclick="resetFilters()">Clear filters</span></p>
   </div>
 </div>
@@ -252,7 +273,7 @@ footer a:hover{color:var(--primary)}
 <div id="modal-overlay">
   <div class="modal">
     <button class="modal-close" id="modal-close">✕</button>
-    <div style="font-size:2.5rem;margin-bottom:10px">🚀</div>
+    <div style="margin-bottom:12px;display:flex;justify-content:center"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
     <h2>Unlock All Tutorials</h2>
     <p>Free access to Intermediate &amp; Advanced tutorials — just enter your email.</p>
     <ul class="modal-perks">
@@ -368,14 +389,14 @@ function buildGrid(){
       <div class="card-body">
         <div class="card-tagline">${tool.tagline}</div>
         <div class="level-pills">
-          <a class="level-pill pill-basic" href="tutorials/view.html?tool=${slug}&level=basic">📖 Basic</a>
+          <a class="level-pill pill-basic" href="tutorials/view.html?tool=${slug}&level=basic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Basic</a>
           <a class="level-pill pill-intermediate${intLocked?' pill-locked':''}" href="${intHref}"
             ${intLocked?'onclick="showModal(\''+slug+'\');return false"':''}>
-            ⚡ Intermediate${intLocked?' <span class=lock>🔒</span>':''}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Intermediate${intLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
           </a>
           <a class="level-pill pill-advanced${advLocked?' pill-locked':''}" href="${advHref}"
             ${advLocked?'onclick="showModal(\''+slug+'\');return false"':''}>
-            🚀 Advanced${advLocked?' <span class=lock>🔒</span>':''}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Advanced${advLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
           </a>
         </div>
       </div>
@@ -391,6 +412,9 @@ function buildGrid(){
 buildGrid();
 </script>
 <script>
+function toggleThemePanel(e){if(e)e.stopPropagation();var p=document.getElementById('theme-panel');if(p)p.classList.toggle('open');}
+function applyThemeMini(t){var h=document.documentElement;['--primary','--primary-2','--primary-light','--surface-2','--border','--bg'].forEach(function(v){h.style.removeProperty(v);});if(!t||t==='blue')h.removeAttribute('data-theme');else h.setAttribute('data-theme',t);try{localStorage.setItem('myai_theme_v1',t||'blue');}catch(e){}var d=document.getElementById('nav-theme-dot');if(d){var c={blue:'#1a56db',purple:'#7c3aed',green:'#059669',amber:'#d97706',rose:'#e11d48',cyan:'#0891b2',indigo:'#4338ca',sky:'#0284c7',pink:'#db2777',teal:'#0d9488',orange:'#ea580c',violet:'#9333ea'};d.style.background=c[t]||'#1a56db';}}
+document.addEventListener('click',function(e){var p=document.getElementById('theme-panel'),b=document.getElementById('nav-theme-btn');if(p&&p.classList.contains('open')&&!p.contains(e.target)&&(!b||!b.contains(e.target)))p.classList.remove('open');});
 function toggleMenu(){
   const m=document.getElementById('mob-menu'),o=document.getElementById('mob-overlay'),b=document.getElementById('burger');
   m.classList.toggle('open');o.classList.toggle('open');if(b)b.classList.toggle('open');
