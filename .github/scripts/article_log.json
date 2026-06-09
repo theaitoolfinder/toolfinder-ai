@@ -1,18 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-05-24",
-      "slot": "lunch",
-      "slug": "article-2026-05-24-am",
-      "title": "Build Your First No-Code AI Automation (Step-by-Step for Beginners)",
-      "type": "tutorial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=85&auto=format&fit=crop",
-      "topic": "first nocode automation stepbystep",
-      "pair": "",
-      "words": 765
-    },
-    {
       "date": "2026-05-25",
       "slot": "dinner",
       "slug": "article-2026-05-25-pm",
@@ -772,6 +760,19 @@
       "partners": [
         "ElevenLabs"
       ]
+    },
+    {
+      "date": "2026-06-09",
+      "slot": "morning",
+      "slug": "write-seo-articles-10-faster-the-exact-ai-workflow",
+      "title": "Write SEO Articles 10× Faster: The Exact AI Workflow",
+      "type": "tutorial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
+      "topic": "write articles faster exact",
+      "pair": "",
+      "words": 559,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -835,6 +836,7 @@
     "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop"
   ]
 }
