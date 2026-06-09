@@ -35,9 +35,13 @@
 <meta name="twitter:image" content="https://myaitoolsfinder.com/og-image.png"/>
 <!-- Organization schema (static — helps Google show favicon & logo in search) -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MyAI ToolsFinder","url":"https://myaitoolsfinder.com","logo":{"@type":"ImageObject","url":"https://myaitoolsfinder.com/favicon.png","width":32,"height":32},"sameAs":["https://twitter.com/myaitoolsfinder","https://www.facebook.com/myaitoolsfinder","https://www.instagram.com/myaitoolsfinder","https://www.youtube.com/@myaitoolsfinder","https://www.linkedin.com/company/myaitoolsfinder","https://www.tiktok.com/@myaitoolsfinder"]}</script>
+<!-- WebSite schema — enables Google Sitelinks Search Box -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"MyAI ToolsFinder","url":"https://myaitoolsfinder.com","description":"Curated AI tools directory for solopreneurs, freelancers and creators. Browse 500+ tools by job, problem, or what's trending.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://myaitoolsfinder.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json" id="ldjson"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <!-- Instant theme load — runs before CSS paints to prevent flash of unstyled colour -->
 <script>
 try{
