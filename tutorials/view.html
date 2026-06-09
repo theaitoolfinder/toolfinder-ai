@@ -602,11 +602,10 @@ function checkCompletion(toolId, lvlKey, total){
   let done = 0;
   for(let i=0;i<total;i++) if(isStepDone(toolId,lvlKey,i)) done++;
   if(done < total) return;
-  const td = window.TUTORIALS_DATA[toolId];
-  ga4track('level_complete',{tool_name:td?td.name:toolId,level:lvlKey,steps_total:total});
   const banner = document.getElementById('completion-banner');
   banner.style.display = 'block';
   const td = window.TUTORIALS_DATA[toolId];
+  ga4track('level_complete',{tool_name:td?td.name:toolId,level:lvlKey,steps_total:total});
   const nextMap = {basic:'intermediate', intermediate:'advanced'};
   const next = nextMap[lvlKey];
   const msgEl = document.getElementById('completion-msg');
