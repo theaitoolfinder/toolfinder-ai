@@ -18,930 +18,614 @@
 <meta name="twitter:image" content="https://myaitoolsfinder.com/img/quiz-og.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
-<script>try{var _t=localStorage.getItem('myai_theme_v1');}catch(e){}</script>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 <script src="/js/theme.js" onerror="void 0"></script>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{--bg:#f0f6ff;--surface:#ffffff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--surface-2:#f5f3ff;--border:#ddd6fe;--border-soft:#ede9fe;--bg:#f5f3ff;--shadow:0 2px 12px rgba(124,58,237,.07);--shadow-lg:0 8px 28px rgba(124,58,237,.13);--hero-grad:linear-gradient(160deg,#ede9fe 0%,#f5f3ff 45%,#fdf4ff 100%)}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--surface-2:#ecfdf5;--border:#a7f3d0;--border-soft:#d1fae5;--bg:#ecfdf5;--shadow:0 2px 12px rgba(5,150,105,.07);--shadow-lg:0 8px 28px rgba(5,150,105,.13);--hero-grad:linear-gradient(160deg,#d1fae5 0%,#ecfdf5 45%,#f0fdf4 100%)}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--surface-2:#fffbeb;--border:#fde68a;--border-soft:#fef3c7;--bg:#fffbeb;--shadow:0 2px 12px rgba(217,119,6,.07);--shadow-lg:0 8px 28px rgba(217,119,6,.13);--hero-grad:linear-gradient(160deg,#fef3c7 0%,#fffbeb 45%,#fff7ed 100%)}
+[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--surface-2:#fff1f2;--border:#fecdd3;--border-soft:#ffe4e6;--bg:#fff1f2;--shadow:0 2px 12px rgba(225,29,72,.07);--shadow-lg:0 8px 28px rgba(225,29,72,.13);--hero-grad:linear-gradient(160deg,#ffe4e6 0%,#fff1f2 45%,#fff0f3 100%)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Poppins',system-ui,sans-serif;background:var(--hero-grad);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+img{display:block;max-width:100%}
 
-:root {
-  --ink: #0a0f1e;
-  --ink-2: #1e2740;
-  --mid: #64748b;
-  --muted: #94a3b8;
-  --border: #e2e8f0;
-  --surface: #f8fafc;
-  --white: #ffffff;
-  --blue: #1a56db;
-  --blue-2: #1e3a8a;
-  --A: #6d28d9; --B: #0369a1; --C: #047857; --D: #b91c1c;
-}
+/* ── NAV (matches site exactly) ── */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(200%) blur(22px);-webkit-backdrop-filter:saturate(200%) blur(22px);border-bottom:1px solid rgba(255,255,255,.55);box-shadow:0 1px 0 rgba(26,86,219,.06),0 4px 24px rgba(26,86,219,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1180px;margin:0 auto;padding:0 20px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--text)}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.28)}
+.nav-links{display:flex;gap:24px;list-style:none;font-size:14px;color:var(--text-2)}
+.nav-links a{padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;font-weight:500}
+.nav-links a:hover{color:var(--text);border-bottom-color:var(--primary)}
+.nav-links a.active{color:var(--primary);font-weight:600}
+.nav-back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--border-soft);background:var(--surface);color:var(--text-2);font-size:13px;font-weight:600;transition:all .15s}
+.nav-back-btn:hover{border-color:var(--primary);color:var(--primary)}
+@media(max-width:640px){.nav-links{display:none}}
 
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--white);
-  color: var(--ink);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
+/* ── PROGRESS STRIP ── */
+.prog-strip{height:3px;background:var(--border-soft);overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--primary),#60a5fa);transition:width .45s cubic-bezier(.4,0,.2,1);width:0%}
 
-/* ─── NAV ─── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  height: 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,.07);
-}
-.nav-logo {
-  display: flex; align-items: center; gap: 8px;
-  font-weight: 700; font-size: 14px; color: var(--ink);
-  text-decoration: none; letter-spacing: -.2px;
-}
-.logo-mark {
-  width: 28px; height: 28px; border-radius: 7px;
-  background: linear-gradient(135deg, #1a56db, #1e3a8a);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.nav-back {
-  font-size: 13px; font-weight: 500; color: var(--mid);
-  text-decoration: none; letter-spacing: -.1px;
-}
-.nav-back:hover { color: var(--blue); }
+/* ── SCREENS ── */
+.screen{display:none;min-height:calc(100vh - 67px)}
+.screen.active{display:block}
 
-/* ─── PROGRESS BAR (fixed top) ─── */
-.progress-strip {
-  position: fixed; top: 56px; left: 0; right: 0; z-index: 199;
-  height: 3px; background: var(--border);
+/* ── INTRO ── */
+#intro-screen{
+  background:var(--hero-grad);
+  position:relative;overflow:hidden;
 }
-.progress-strip-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--blue), #60a5fa);
-  transition: width .5s cubic-bezier(.4,0,.2,1);
+#intro-screen::before{
+  content:'';position:absolute;inset:-40px 0 auto 0;
+  height:520px;
+  background:radial-gradient(72% 72% at 50% 0%,rgba(26,86,219,.18) 0%,rgba(96,165,250,.10) 50%,transparent 100%);
+  pointer-events:none;z-index:0;
 }
+.intro-inner{
+  position:relative;z-index:1;
+  max-width:720px;margin:0 auto;
+  padding:80px 24px 72px;
+  text-align:center;
+}
+.eyebrow{
+  display:inline-block;font-size:11.5px;letter-spacing:.22em;color:var(--primary);
+  text-transform:uppercase;margin-bottom:20px;padding:7px 14px;
+  border:1px solid rgba(255,255,255,.7);border-radius:999px;
+  background:rgba(219,234,254,.65);backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 10px rgba(26,86,219,.10);
+  font-weight:600;
+}
+.intro-h1{
+  font-size:clamp(32px,5.5vw,58px);line-height:1.06;
+  font-weight:800;letter-spacing:-.025em;
+  color:var(--text);margin-bottom:16px;
+}
+.intro-h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--primary),#60a5fa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.intro-sub{
+  font-size:17px;color:var(--text-2);
+  max-width:520px;margin:0 auto 32px;line-height:1.65;
+}
+.intro-types{
+  display:flex;flex-wrap:wrap;gap:10px;
+  justify-content:center;margin-bottom:36px;
+}
+.intro-type{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 16px;border-radius:999px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 8px rgba(26,86,219,.08);
+  font-size:13px;font-weight:600;color:var(--text-2);
+}
+.intro-type .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.intro-meta{
+  display:flex;align-items:center;justify-content:center;
+  gap:24px;margin-bottom:36px;flex-wrap:wrap;
+}
+.intro-meta-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--text-dim);
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff;font-weight:700;font-size:15px;border:none;
+  box-shadow:0 6px 22px rgba(26,86,219,.38),inset 0 1px 0 rgba(255,255,255,.15);
+  transition:transform .15s,box-shadow .15s;
+  letter-spacing:-.01em;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(26,86,219,.50),inset 0 1px 0 rgba(255,255,255,.15)}
+.btn-primary svg{transition:transform .2s}
+.btn-primary:hover svg{transform:translateX(4px)}
 
-/* ─── SCREENS ─── */
-.screen {
-  min-height: 100vh;
-  padding-top: 56px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+/* ── QUESTION SCREEN ── */
+#quiz-screen{background:var(--bg);}
+.q-wrap{max-width:660px;margin:0 auto;padding:40px 24px 60px}
+.q-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:28px;
 }
-.hidden { display: none !important; }
-
-/* ─── INTRO ─── */
-#intro-screen {
-  background: var(--ink);
-  position: relative; overflow: hidden;
+.q-counter{
+  font-size:12px;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--text-dim);
 }
-#intro-screen::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(26,86,219,.25) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(109,40,217,.15) 0%, transparent 70%);
-  pointer-events: none;
+.q-counter strong{color:var(--primary)}
+.q-card{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:36px 32px;
+  box-shadow:var(--shadow-lg);
+  transition:opacity .25s,transform .25s;
 }
-.intro-inner {
-  position: relative; z-index: 1;
-  max-width: 640px; width: 100%;
-  padding: 60px 32px;
-  text-align: center;
+.q-text{
+  font-size:clamp(18px,2.8vw,24px);font-weight:700;
+  line-height:1.35;letter-spacing:-.02em;
+  color:var(--text);margin-bottom:28px;
 }
-.intro-eyebrow {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 600; letter-spacing: 2px;
-  text-transform: uppercase; color: #60a5fa;
-  margin-bottom: 28px;
+.options{display:flex;flex-direction:column;gap:10px}
+.option{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 18px;
+  background:var(--surface);
+  border:1.5px solid var(--border-soft);
+  border-radius:12px;
+  text-align:left;width:100%;
+  font-family:'Poppins',sans-serif;
+  transition:border-color .15s,background .15s,transform .15s,box-shadow .15s;
 }
-.intro-eyebrow::before, .intro-eyebrow::after {
-  content: ''; width: 24px; height: 1px; background: #60a5fa; opacity: .5;
+.option:hover{
+  border-color:var(--primary);
+  background:var(--primary-light);
+  transform:translateX(4px);
+  box-shadow:var(--shadow);
 }
-.intro-h1 {
-  font-size: clamp(32px, 6vw, 54px);
-  font-weight: 800; line-height: 1.1; letter-spacing: -.03em;
-  color: #fff; margin-bottom: 20px;
+.option.selected{
+  border-color:var(--primary);
+  background:var(--primary-light);
+  box-shadow:var(--shadow);
 }
-.intro-h1 em { font-style: normal; color: #60a5fa; }
-.intro-sub {
-  font-size: 16px; font-weight: 400; line-height: 1.7;
-  color: #94a3b8; margin-bottom: 44px; max-width: 440px; margin-left: auto; margin-right: auto;
+.opt-key{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  background:var(--surface-2);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;letter-spacing:.5px;
+  color:var(--text-dim);margin-top:1px;
+  transition:all .15s;
 }
-.intro-types {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  justify-content: center; margin-bottom: 44px;
+.option:hover .opt-key,.option.selected .opt-key{
+  background:var(--primary);border-color:var(--primary);color:#fff;
 }
-.intro-type {
-  display: flex; align-items: center; gap: 7px;
-  padding: 8px 16px; border-radius: 6px;
-  font-size: 13px; font-weight: 600; letter-spacing: -.1px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.05);
-  color: rgba(255,255,255,.75);
-}
-.intro-type .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.intro-meta {
-  display: flex; align-items: center; justify-content: center;
-  gap: 20px; margin-bottom: 36px;
-}
-.intro-meta-item {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 13px; font-weight: 500; color: #64748b;
-}
-.intro-meta-item svg { opacity: .6; }
-.start-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #fff; color: var(--ink);
-  font-size: 15px; font-weight: 700; letter-spacing: -.2px;
-  padding: 16px 36px; border-radius: 999px; border: none; cursor: pointer;
-  box-shadow: 0 0 0 0 rgba(255,255,255,.3);
-  transition: transform .2s, box-shadow .2s;
-}
-.start-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(255,255,255,.15);
-}
-.start-btn svg { transition: transform .2s; }
-.start-btn:hover svg { transform: translateX(4px); }
-
-/* ─── QUESTION ─── */
-#quiz-screen {
-  background: var(--surface);
-  padding-top: 80px;
-}
-.q-wrap {
-  width: 100%; max-width: 640px;
-  padding: 20px 24px 48px;
-  margin: 0 auto;
-}
-.q-meta {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 32px;
-}
-.q-counter {
-  font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--muted);
-}
-.q-counter strong { color: var(--blue); }
-.q-text {
-  font-size: clamp(20px, 3.5vw, 26px); font-weight: 700;
-  line-height: 1.35; letter-spacing: -.03em;
-  color: var(--ink); margin-bottom: 32px;
-}
-.options { display: flex; flex-direction: column; gap: 10px; }
-.option {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 18px 20px; border-radius: 12px;
-  background: var(--white); border: 1.5px solid var(--border);
-  cursor: pointer; text-align: left; width: 100%;
-  font-family: 'Inter', sans-serif;
-  transition: border-color .15s, background .15s, transform .15s;
-  position: relative;
-}
-.option:hover {
-  border-color: var(--blue);
-  background: #f0f6ff;
-  transform: translateX(4px);
-}
-.option.selected {
-  border-color: var(--blue);
-  background: #eff6ff;
-}
-.option-label {
-  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
-  background: var(--surface); border: 1.5px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; letter-spacing: .5px;
-  color: var(--mid); margin-top: 1px;
-  transition: all .15s;
-}
-.option:hover .option-label, .option.selected .option-label {
-  background: var(--blue); border-color: var(--blue); color: #fff;
-}
-.option-text {
-  font-size: 15px; font-weight: 500; line-height: 1.55;
-  color: var(--ink-2); letter-spacing: -.1px;
+.opt-text{
+  font-size:14.5px;font-weight:500;line-height:1.55;
+  color:var(--text-2);letter-spacing:-.01em;
 }
 
-/* ─── RESULT ─── */
-#result-screen {
-  background: var(--surface);
-  padding-top: 80px; padding-bottom: 60px;
-  justify-content: flex-start;
-}
-.result-wrap { width: 100%; max-width: 660px; padding: 20px 24px; margin: 0 auto; }
+/* ── RESULT SCREEN ── */
+#result-screen{background:var(--bg);}
+.r-wrap{max-width:680px;margin:0 auto;padding:32px 24px 60px}
 
-/* Result hero card */
-.r-hero {
-  border-radius: 20px; overflow: hidden;
-  margin-bottom: 16px;
-  position: relative;
-}
-.r-hero-top {
-  padding: 48px 40px 36px;
-  position: relative;
-}
-.r-hero-top::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-  background: rgba(255,255,255,.15);
-}
-.r-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: rgba(255,255,255,.55);
-  margin-bottom: 14px;
-}
-.r-emoji { font-size: 52px; line-height: 1; display: block; margin-bottom: 14px; }
-.r-type {
-  font-size: clamp(30px, 6vw, 46px); font-weight: 800;
-  letter-spacing: -.04em; line-height: 1; color: #fff;
-  margin-bottom: 12px;
-}
-.r-tagline {
-  font-size: 15px; font-weight: 400; line-height: 1.6;
-  color: rgba(255,255,255,.7); max-width: 420px;
-}
+/* Hero card — keeps personality gradient */
+.r-hero{border-radius:var(--radius);overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-lg)}
+.r-hero-top{padding:44px 36px 32px;position:relative}
+.r-hero-top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,.15)}
+.r-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px}
+.r-emoji{font-size:52px;line-height:1;display:block;margin-bottom:12px}
+.r-type{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff;margin-bottom:10px}
+.r-tagline{font-size:15px;font-weight:400;line-height:1.65;color:rgba(255,255,255,.75);max-width:400px}
+.r-dna{padding:22px 36px;background:rgba(0,0,0,.2)}
+.r-dna-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+.dna-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.dna-row:last-child{margin-bottom:0}
+.dna-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.6);width:92px;flex-shrink:0}
+.dna-track{flex:1;height:5px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+.dna-fill{height:100%;border-radius:999px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.dna-pct{font-size:11px;font-weight:700;color:rgba(255,255,255,.45);width:32px;text-align:right;flex-shrink:0}
 
-/* DNA bars inside hero */
-.r-dna {
-  padding: 24px 40px;
-  background: rgba(0,0,0,.25);
+/* White sections — site card style */
+.r-section{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:26px 28px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
 }
-.r-dna-title {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-  margin-bottom: 14px;
+.r-section-title{
+  font-size:10.5px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--text-dim);
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
 }
-.dna-row {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 9px;
-}
-.dna-row:last-child { margin-bottom: 0; }
-.dna-label {
-  font-size: 11px; font-weight: 600; color: rgba(255,255,255,.65);
-  width: 96px; flex-shrink: 0; letter-spacing: -.1px;
-}
-.dna-track {
-  flex: 1; height: 5px; background: rgba(255,255,255,.1); border-radius: 999px; overflow: hidden;
-}
-.dna-fill { height: 100%; border-radius: 999px; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
-.dna-pct {
-  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5);
-  width: 32px; text-align: right; flex-shrink: 0;
-}
+.r-section-title::after{content:'';flex:1;height:1px;background:var(--border-soft)}
+.r-desc p{font-size:14.5px;line-height:1.8;color:var(--text-2)}
+.r-desc p+p{margin-top:12px}
 
-/* White sections */
-.r-section {
-  background: var(--white); border-radius: 16px;
-  padding: 28px 32px; margin-bottom: 12px;
-  border: 1px solid var(--border);
+/* Tool chips — site pill style */
+.tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.tool-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 14px;border-radius:999px;
+  background:var(--surface-2);
+  border:1px solid var(--border-soft);
+  font-size:13px;font-weight:600;color:var(--text-2);
+  text-decoration:none;letter-spacing:-.01em;
+  transition:border-color .15s,box-shadow .15s,color .15s;
 }
-.r-section-title {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
-}
-.r-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.tool-pill:hover{border-color:var(--primary);color:var(--primary);box-shadow:var(--shadow)}
+.tool-pill img{width:16px;height:16px;border-radius:4px;object-fit:contain}
 
-/* Description */
-.r-desc p { font-size: 15px; line-height: 1.8; color: #334155; }
-.r-desc p + p { margin-top: 14px; }
+/* Article link — site card style */
+.r-article{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 20px;border-radius:12px;
+  background:var(--surface);border:1px solid var(--border-soft);
+  margin-bottom:12px;box-shadow:var(--shadow);
+  transition:border-color .15s,box-shadow .15s;
+}
+.r-article:hover{border-color:rgba(26,86,219,.22);box-shadow:var(--shadow-lg)}
+.r-article-icon{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:var(--primary-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.r-article-title{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.r-article-sub{font-size:12px;color:var(--text-dim);margin-top:2px}
+.r-article-arrow{margin-left:auto;color:var(--text-dim);flex-shrink:0;transition:transform .15s}
+.r-article:hover .r-article-arrow{transform:translateX(4px);color:var(--primary)}
 
-/* Tools */
-.tools-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.tool-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 8px 14px; border-radius: 8px;
-  background: var(--surface); border: 1px solid var(--border);
-  font-size: 13px; font-weight: 600; color: var(--ink);
-  text-decoration: none; letter-spacing: -.1px;
-  transition: border-color .15s, box-shadow .15s;
+/* Share section */
+.share-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;margin-bottom:12px;
 }
-.tool-pill:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(26,86,219,.1); }
-.tool-pill img { width: 16px; height: 16px; border-radius: 4px; object-fit: contain; }
+.sh-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:14px 8px;border-radius:12px;
+  font-size:11px;font-weight:700;letter-spacing:.2px;
+  border:none;cursor:pointer;text-decoration:none;
+  transition:transform .15s,box-shadow .15s;
+  font-family:'Poppins',sans-serif;
+}
+.sh-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.sh-x  {background:#000;color:#fff}
+.sh-fb {background:#1877f2;color:#fff}
+.sh-li {background:#0a66c2;color:#fff}
+.sh-wa {background:#25d366;color:#fff}
+.copy-row{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface-2);border:1px solid var(--border-soft);
+  border-radius:10px;padding:11px 14px;
+}
+.copy-url{flex:1;font-size:12px;color:var(--text-dim);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.copy-btn{
+  flex-shrink:0;padding:6px 14px;border-radius:7px;
+  background:var(--primary);color:#fff;
+  font-size:12px;font-weight:700;border:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  transition:background .15s;
+}
+.copy-btn:hover{background:var(--primary-2)}
 
-/* Article link */
-.r-article-link {
-  display: flex; align-items: center; gap: 10px;
-  padding: 16px 20px; border-radius: 10px;
-  background: var(--surface); border: 1px solid var(--border);
-  text-decoration: none; transition: border-color .15s;
+/* Bottom CTAs */
+.r-bottom{display:flex;gap:10px;margin-top:4px}
+.btn-dir{
+  flex:1;padding:13px 20px;border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff;font-size:14px;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 6px 22px rgba(26,86,219,.35);
+  transition:transform .15s,box-shadow .15s;
+  font-family:'Poppins',sans-serif;
 }
-.r-article-link:hover { border-color: var(--blue); }
-.r-article-link-text { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -.1px; }
-.r-article-link-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.r-article-arrow { margin-left: auto; color: var(--mid); flex-shrink: 0; }
-
-/* Share */
-.share-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px; margin-bottom: 12px;
+.btn-dir:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,86,219,.45)}
+.btn-ghost{
+  padding:13px 20px;border-radius:999px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.7);
+  color:var(--text-2);font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'Poppins',sans-serif;
+  display:flex;align-items:center;gap:6px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 8px rgba(0,0,0,.06);
+  transition:all .15s;
 }
-.sh-btn {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 6px; padding: 14px 8px; border-radius: 12px;
-  font-size: 11px; font-weight: 700; letter-spacing: .3px;
-  border: none; cursor: pointer; text-decoration: none;
-  transition: transform .15s, box-shadow .15s;
-}
-.sh-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
-.sh-btn svg { flex-shrink: 0; }
-.sh-x   { background: #000; color: #fff; }
-.sh-fb  { background: #1877f2; color: #fff; }
-.sh-li  { background: #0a66c2; color: #fff; }
-.sh-wa  { background: #25d366; color: #fff; }
-.copy-row {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 12px 16px;
-}
-.copy-url {
-  flex: 1; font-size: 13px; color: var(--mid); overflow: hidden;
-  white-space: nowrap; text-overflow: ellipsis; letter-spacing: -.1px;
-}
-.copy-btn {
-  flex-shrink: 0; padding: 7px 16px; border-radius: 6px;
-  background: var(--blue); color: #fff;
-  font-size: 12px; font-weight: 700; border: none; cursor: pointer;
-  transition: background .15s;
-}
-.copy-btn:hover { background: var(--blue-2); }
-
-/* Bottom CTA row */
-.r-bottom { display: flex; gap: 10px; margin-top: 4px; }
-.r-btn-primary {
-  flex: 1; padding: 14px 20px; border-radius: 10px;
-  background: var(--blue); color: #fff;
-  font-size: 14px; font-weight: 700; letter-spacing: -.1px;
-  text-decoration: none; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: background .15s;
-}
-.r-btn-primary:hover { background: var(--blue-2); }
-.r-btn-ghost {
-  padding: 14px 20px; border-radius: 10px;
-  background: transparent; border: 1.5px solid var(--border); color: var(--mid);
-  font-size: 14px; font-weight: 600; letter-spacing: -.1px;
-  cursor: pointer; display: flex; align-items: center; gap: 8px;
-  transition: border-color .15s, color .15s;
-}
-.r-btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+.btn-ghost:hover{background:rgba(255,255,255,.75);color:var(--primary)}
 
 /* Friend banner */
-.friend-banner {
-  background: var(--ink); border-radius: 16px; overflow: hidden;
-  margin-bottom: 16px;
-  border: 1px solid rgba(255,255,255,.08);
+.friend-banner{
+  background:var(--surface);border:1px solid var(--border-soft);
+  border-radius:var(--radius);overflow:hidden;
+  margin-bottom:14px;box-shadow:var(--shadow-lg);
 }
-.friend-banner-inner {
-  padding: 24px 28px;
-  display: flex; align-items: center; gap: 18px;
+.friend-inner{
+  padding:22px 24px;display:flex;align-items:center;gap:16px;
 }
-.friend-icon {
-  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
+.friend-icon{
+  width:48px;height:48px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--primary-light);font-size:24px;
 }
-.friend-copy h3 {
-  font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; letter-spacing: -.2px;
+.friend-copy h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.friend-copy p{font-size:13px;color:var(--text-2);line-height:1.5}
+.friend-copy strong{color:var(--primary)}
+.friend-cta{
+  display:block;
+  margin:0 24px 20px;
+  padding:13px;border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff;font-size:14px;font-weight:700;
+  text-align:center;border:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  box-shadow:0 4px 16px rgba(26,86,219,.3);
+  transition:transform .15s,box-shadow .15s;
 }
-.friend-copy p { font-size: 13px; color: #64748b; line-height: 1.5; }
-.friend-copy strong { color: #93c5fd; }
-.friend-cta-btn {
-  margin: 0 28px 24px;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 13px; border-radius: 10px;
-  background: #fff; color: var(--ink);
-  font-size: 14px; font-weight: 800; letter-spacing: -.2px;
-  border: none; cursor: pointer; width: calc(100% - 56px);
-  transition: background .15s;
-}
-.friend-cta-btn:hover { background: #f0f6ff; }
+.friend-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,86,219,.4)}
 
 /* Toast */
-.toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
-  background: var(--ink); color: #fff; padding: 11px 22px;
-  border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: -.1px;
-  z-index: 999; transition: transform .3s cubic-bezier(.4,0,.2,1);
-  white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,.2);
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--text);color:#fff;
+  padding:10px 20px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:-.01em;
+  z-index:999;transition:transform .3s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;box-shadow:var(--shadow-lg);
+  font-family:'Poppins',sans-serif;
 }
-.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.show{transform:translateX(-50%) translateY(0)}
 
-/* ─── MOBILE ─── */
-@media (max-width: 600px) {
-  .nav { padding: 0 16px; }
-  .intro-inner { padding: 40px 20px; }
-  .intro-h1 { font-size: 28px; }
-  .intro-sub { font-size: 14px; }
-  .intro-types { gap: 8px; }
-  .intro-type { font-size: 12px; padding: 7px 13px; }
-  .intro-meta { gap: 14px; }
-  .start-btn { width: 100%; justify-content: center; font-size: 15px; padding: 15px 28px; }
-  .q-wrap { padding: 16px 16px 40px; }
-  .q-text { font-size: 18px; }
-  .option { padding: 14px 14px; gap: 12px; }
-  .option-text { font-size: 14px; }
-  .result-wrap { padding: 16px 14px; }
-  .r-hero-top { padding: 32px 24px 28px; }
-  .r-dna { padding: 20px 24px; }
-  .r-section { padding: 22px 20px; }
-  .r-type { font-size: 30px; }
-  .r-tagline { font-size: 14px; }
-  .share-grid { grid-template-columns: repeat(2, 1fr); }
-  .r-bottom { flex-direction: column; }
-  .r-btn-ghost { justify-content: center; }
-  .friend-banner-inner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 20px 16px; }
-  .friend-cta-btn { margin: 0 20px 20px; width: calc(100% - 40px); }
-  .dna-label { width: 76px; font-size: 10px; }
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .intro-inner{padding:52px 20px 48px}
+  .intro-h1{font-size:28px}
+  .intro-sub{font-size:15px}
+  .intro-type{font-size:12px;padding:6px 12px}
+  .intro-meta{gap:16px}
+  .btn-primary{width:100%;justify-content:center;font-size:14px;padding:14px 24px}
+  .q-wrap{padding:24px 16px 48px}
+  .q-card{padding:24px 18px}
+  .q-text{font-size:17px;margin-bottom:20px}
+  .option{padding:13px 14px;gap:10px}
+  .opt-key{width:26px;height:26px}
+  .opt-text{font-size:13.5px}
+  .r-wrap{padding:20px 14px 48px}
+  .r-hero-top{padding:28px 22px 24px}
+  .r-dna{padding:18px 22px}
+  .r-section{padding:20px 18px}
+  .r-type{font-size:28px}
+  .share-grid{grid-template-columns:1fr 1fr}
+  .r-bottom{flex-direction:column}
+  .btn-dir,.btn-ghost{justify-content:center}
+  .friend-inner{flex-direction:column;align-items:flex-start;gap:10px;padding:18px 18px 14px}
+  .friend-cta{margin:0 18px 18px}
 }
 </style>
 </head>
 <body>
 
-<!-- Progress strip -->
-<div class="progress-strip"><div class="progress-strip-fill" id="prog" style="width:0%"></div></div>
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <circle cx="6" cy="6" r="2.8" fill="white"/>
+          <circle cx="14" cy="6" r="2.8" fill="white" opacity=".55"/>
+          <circle cx="6" cy="14" r="2.8" fill="white" opacity=".55"/>
+          <circle cx="14" cy="14" r="2.8" fill="white" opacity=".25"/>
+          <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      MyAI ToolsFinder
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">AI Tools</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="prompts.html">Prompts</a></li>
+      <li><a href="quiz.html" class="active">Quiz</a></li>
+    </ul>
+    <a href="index.html" class="nav-back-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Directory
+    </a>
+  </nav>
+</header>
+<div class="prog-strip"><div class="prog-fill" id="prog"></div></div>
 
-<!-- Nav -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-        <circle cx="6" cy="6" r="2.8" fill="white"/>
-        <circle cx="14" cy="6" r="2.8" fill="white" opacity=".55"/>
-        <circle cx="6" cy="14" r="2.8" fill="white" opacity=".55"/>
-        <circle cx="14" cy="14" r="2.8" fill="white" opacity=".25"/>
-        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-    MyAI ToolsFinder
-  </a>
-  <a href="index.html" class="nav-back">← Directory</a>
-</nav>
-
-<!-- ─── INTRO ─── -->
-<div id="intro-screen" class="screen">
+<!-- ── INTRO ── -->
+<div id="intro-screen" class="screen active">
   <div class="intro-inner">
-    <div class="intro-eyebrow">AI Personality Quiz</div>
+    <div class="eyebrow">AI Personality Quiz</div>
     <h1 class="intro-h1">What kind of<br><em>AI user</em> are you?</h1>
     <p class="intro-sub">8 questions. Brutally honest results. Find out which of the four AI personality types you actually are — and get your perfect tool stack.</p>
-
     <div class="intro-types">
-      <div class="intro-type"><span class="dot" style="background:#8b5cf6"></span>The Automator</div>
-      <div class="intro-type"><span class="dot" style="background:#0ea5e9"></span>The Creator</div>
-      <div class="intro-type"><span class="dot" style="background:#10b981"></span>The Researcher</div>
-      <div class="intro-type"><span class="dot" style="background:#ef4444"></span>The Hustler</div>
+      <span class="intro-type"><span class="dot" style="background:#8b5cf6"></span>The Automator</span>
+      <span class="intro-type"><span class="dot" style="background:#0ea5e9"></span>The Creator</span>
+      <span class="intro-type"><span class="dot" style="background:#10b981"></span>The Researcher</span>
+      <span class="intro-type"><span class="dot" style="background:#ef4444"></span>The Hustler</span>
     </div>
-
     <div class="intro-meta">
-      <div class="intro-meta-item">
+      <span class="intro-meta-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         2 minutes
-      </div>
-      <div class="intro-meta-item">
+      </span>
+      <span class="intro-meta-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>
         8 questions
-      </div>
-      <div class="intro-meta-item">
+      </span>
+      <span class="intro-meta-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Free
-      </div>
+        Free, no sign-up
+      </span>
     </div>
-
-    <button class="start-btn" onclick="startQuiz()">
+    <button class="btn-primary" onclick="startQuiz()">
       Start the quiz
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
   </div>
 </div>
 
-<!-- ─── QUIZ ─── -->
-<div id="quiz-screen" class="screen hidden">
+<!-- ── QUIZ ── -->
+<div id="quiz-screen" class="screen">
   <div class="q-wrap">
     <div class="q-meta">
       <span class="q-counter">Question <strong id="q-num">1</strong> of 8</span>
     </div>
-    <div id="q-card"></div>
+    <div class="q-card" id="q-card"></div>
   </div>
 </div>
 
-<!-- ─── RESULT ─── -->
-<div id="result-screen" class="screen hidden">
-  <div class="result-wrap" id="result-wrap"></div>
+<!-- ── RESULT ── -->
+<div id="result-screen" class="screen">
+  <div class="r-wrap" id="r-wrap"></div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-var QUESTIONS = [
-  {
-    text: "When you wake up in the morning, your first thought is...",
-    opts: [
-      { t: "A", text: '"What can I automate today?"' },
-      { t: "B", text: '"What can I create today?"' },
-      { t: "C", text: '"What do I want to learn today?"' },
-      { t: "D", text: '"How do I make more money today?"' }
-    ]
-  },
-  {
-    text: "Your ideal AI tool does what, exactly?",
-    opts: [
-      { t: "A", text: "Runs my entire workflow while I focus on what matters" },
-      { t: "B", text: "Turns rough ideas into beautiful, polished outputs" },
-      { t: "C", text: "Answers any question I throw at it with depth and accuracy" },
-      { t: "D", text: "Books meetings, writes outreach, and helps me close deals" }
-    ]
-  },
-  {
-    text: "Which tab is always open on your browser?",
-    opts: [
-      { t: "A", text: "Zapier or Make.com — watching my automations run" },
-      { t: "B", text: "Canva, Figma, or Midjourney" },
-      { t: "C", text: "ChatGPT or Perplexity — constant research sessions" },
-      { t: "D", text: "LinkedIn, Apollo.io, or my CRM dashboard" }
-    ]
-  },
-  {
-    text: "Your biggest AI-related frustration is...",
-    opts: [
-      { t: "A", text: "Doing something manually that could have been automated" },
-      { t: "B", text: "AI-generated content that looks generic and lifeless" },
-      { t: "C", text: "AI that confidently gives me wrong information" },
-      { t: "D", text: "Competitors using AI more aggressively than me" }
-    ]
-  },
-  {
-    text: "Your colleagues or friends would describe you as...",
-    opts: [
-      { t: "A", text: '"The one who has a system for literally everything"' },
-      { t: "B", text: '"The creative one who always makes cool stuff"' },
-      { t: "C", text: '"Always deep in research, always has a random fact ready"' },
-      { t: "D", text: '"Never stops working on a new business idea"' }
-    ]
-  },
-  {
-    text: "A successful week for you means...",
-    opts: [
-      { t: "A", text: "Hours saved through automation and optimized systems" },
-      { t: "B", text: "Something published or shipped that you're genuinely proud of" },
-      { t: "C", text: "New knowledge gained and hard problems solved" },
-      { t: "D", text: "Revenue generated, leads closed, numbers up" }
-    ]
-  },
-  {
-    text: 'Someone asks "what do you use AI for?" You say...',
-    opts: [
-      { t: "A", text: '"I\'ve automated my back-office. My business basically runs itself."' },
-      { t: "B", text: '"I create content, visuals, and video at 10× my old speed."' },
-      { t: "C", text: '"Research, analysis, writing — it\'s my 24/7 thinking partner."' },
-      { t: "D", text: '"Lead gen, outreach, and sales copy. It\'s my unfair advantage."' }
-    ]
-  },
-  {
-    text: "Pick your AI spirit animal:",
-    opts: [
-      { t: "A", text: "🤖 A robot that runs perfectly on autopilot, 24/7, no complaints" },
-      { t: "B", text: "🦚 A peacock — expressive, stunning, impossible to ignore" },
-      { t: "C", text: "🦉 An owl — wise, precise, always asking why" },
-      { t: "D", text: "🦈 A shark — always moving, always hunting, never stops" }
-    ]
-  }
+var QUESTIONS=[
+  {text:"When you wake up in the morning, your first thought is...",opts:[{t:"A",text:'"What can I automate today?"'},{t:"B",text:'"What can I create today?"'},{t:"C",text:'"What do I want to learn today?"'},{t:"D",text:'"How do I make more money today?"'}]},
+  {text:"Your ideal AI tool does what, exactly?",opts:[{t:"A",text:"Runs my entire workflow while I focus on what matters"},{t:"B",text:"Turns rough ideas into beautiful, polished outputs"},{t:"C",text:"Answers any question I throw at it with depth and accuracy"},{t:"D",text:"Books meetings, writes outreach, and helps me close deals"}]},
+  {text:"Which tab is always open on your browser?",opts:[{t:"A",text:"Zapier or Make.com — watching my automations run"},{t:"B",text:"Canva, Figma, or Midjourney"},{t:"C",text:"ChatGPT or Perplexity — constant research sessions"},{t:"D",text:"LinkedIn, Apollo.io, or my CRM dashboard"}]},
+  {text:"Your biggest AI-related frustration is...",opts:[{t:"A",text:"Doing something manually that could have been automated"},{t:"B",text:"AI-generated content that looks generic and lifeless"},{t:"C",text:"AI that confidently gives me wrong information"},{t:"D",text:"Competitors using AI more aggressively than me"}]},
+  {text:"Your colleagues or friends would describe you as...",opts:[{t:"A",text:'"The one who has a system for literally everything"'},{t:"B",text:'"The creative one who always makes cool stuff"'},{t:"C",text:'"Always deep in research, always has a random fact ready"'},{t:"D",text:'"Never stops working on a new business idea"'}]},
+  {text:"A successful week for you means...",opts:[{t:"A",text:"Hours saved through automation and optimized systems"},{t:"B",text:"Something published or shipped that you are genuinely proud of"},{t:"C",text:"New knowledge gained and hard problems solved"},{t:"D",text:"Revenue generated, leads closed, numbers up"}]},
+  {text:'Someone asks "what do you use AI for?" You say...',opts:[{t:"A",text:'"I\'ve automated my back-office. My business basically runs itself."'},{t:"B",text:'"I create content, visuals, and video at 10x my old speed."'},{t:"C",text:'"Research, analysis, writing — it\'s my 24/7 thinking partner."'},{t:"D",text:'"Lead gen, outreach, and sales copy. It\'s my unfair advantage."'}]},
+  {text:"Pick your AI spirit animal:",opts:[{t:"A",text:"🤖 A robot that runs perfectly on autopilot, 24/7, no complaints"},{t:"B",text:"🦚 A peacock — expressive, stunning, impossible to ignore"},{t:"C",text:"🦉 An owl — wise, precise, always asking why"},{t:"D",text:"🦈 A shark — always moving, always hunting, never stops"}]}
 ];
 
-var RESULTS = {
-  A: {
-    emoji: "🤖", type: "The Automator",
-    color: "#6d28d9", colorLight: "#8b5cf6",
-    grad: "linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #6d28d9 100%)",
-    tagline: "You didn't come here to work. You came here to build systems that do it for you.",
-    desc: "You see every manual task the way a surgeon sees a butter knife — technically functional, but wildly inefficient for the job. Your workflows have workflows. You've spent four hours setting up an automation that saves ten minutes a week, and you'd do it again without hesitation.\n\nYour friends are impressed by how much you accomplish while apparently doing nothing. Your accountant is mildly confused. Somewhere, a Zapier engineer is renovating their kitchen because of you. You don't use AI tools — you deploy them in formations.",
-    tools: [
-      { name: "Make.com",    domain: "make.com",         url: "https://make.com" },
-      { name: "Zapier",      domain: "zapier.com",        url: "https://zapier.com" },
-      { name: "n8n",         domain: "n8n.io",            url: "https://n8n.io" },
-      { name: "Notion AI",   domain: "notion.so",         url: "https://notion.so" },
-      { name: "Reclaim.ai",  domain: "reclaim.ai",        url: "https://reclaim.ai" },
-      { name: "Activepieces",domain: "activepieces.com",  url: "https://activepieces.com" }
-    ],
-    article: { title: "Zapier vs Make.com — Which Wins in 2026?", sub: "Automation deep dive", url: "articles/zapier-vs-make-automation.html" }
-  },
-  B: {
-    emoji: "🎨", type: "The Creator",
-    color: "#0369a1", colorLight: "#0ea5e9",
-    grad: "linear-gradient(135deg, #0c2a4a 0%, #0e4d7a 50%, #0369a1 100%)",
-    tagline: "You see a blank canvas where others see a blank page.",
-    desc: "You treat AI as the world's most patient creative collaborator — one that never judges your 47th revision, never complains about the feedback call that ran two hours, and genuinely thinks 'what if we made it more purple?' is a valid creative direction.\n\nYou have generated more AI images in the past month than meals consumed. Every project is an opportunity to make something people stop scrolling for. You're not just using AI — you're making things that simply would not exist without you, and that's the part that actually matters.",
-    tools: [
-      { name: "Midjourney",    domain: "midjourney.com",     url: "https://midjourney.com" },
-      { name: "Canva AI",      domain: "canva.com",          url: "https://canva.com" },
-      { name: "ElevenLabs",    domain: "elevenlabs.io",      url: "https://elevenlabs.io" },
-      { name: "Runway ML",     domain: "runwayml.com",       url: "https://runwayml.com" },
-      { name: "Adobe Firefly", domain: "firefly.adobe.com",  url: "https://firefly.adobe.com" },
-      { name: "Gamma",         domain: "gamma.app",          url: "https://gamma.app" }
-    ],
-    article: { title: "Create Videos with AI — No Camera Workflow 2026", sub: "Creator tools deep dive", url: "articles/create-videos-with-ai-no-camera-workflow-2026.html" }
-  },
-  C: {
-    emoji: "🔍", type: "The Researcher",
-    color: "#047857", colorLight: "#10b981",
-    grad: "linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%)",
-    tagline: "You don't just use AI. You interrogate it.",
-    desc: "You've been using AI as a supercharged knowledge engine since day one, and you are quietly appalled by how everyone else is wasting it on 'write me a tweet.' You go deep. You verify sources. You've cited Perplexity in a casual conversation. You have said 'well, actually...' at least once this week.\n\nFor you, the best feature any AI tool can have is the one that helps you understand something you did not know an hour ago. You're not just smarter with AI — you are genuinely curious, and AI finally gives that curiosity somewhere worth going.",
-    tools: [
-      { name: "Perplexity AI", domain: "perplexity.ai",             url: "https://perplexity.ai" },
-      { name: "ChatGPT",       domain: "openai.com",                url: "https://chat.openai.com" },
-      { name: "Claude",        domain: "anthropic.com",             url: "https://claude.ai" },
-      { name: "NotebookLM",    domain: "notebooklm.google.com",     url: "https://notebooklm.google.com" },
-      { name: "Elicit",        domain: "elicit.com",                url: "https://elicit.com" },
-      { name: "Consensus",     domain: "consensus.app",             url: "https://consensus.app" }
-    ],
-    article: { title: "AI Research Workflow That Saves 4 Hours a Week", sub: "Research tools deep dive", url: "articles/ai-research-workflow-saves-4-hours-2026.html" }
-  },
-  D: {
-    emoji: "💼", type: "The Hustler",
-    color: "#b91c1c", colorLight: "#ef4444",
-    grad: "linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #b91c1c 100%)",
-    tagline: "ROI. Revenue. Results. In that order, every time.",
-    desc: "You do not care if AI is 'interesting.' You care if it makes you money. You have pitched AI tools to your team, your clients, your business partner, your barber, and at least one family member who did not ask. You measure everything in leads, conversions, and revenue closed.\n\nThe moment an AI tool stops producing return, it is gone — no sentiment, no loyalty. You have already automated your prospecting, your follow-ups, and your invoicing. You are not using AI tools. You are deploying them like weapons in a very deliberate business strategy, and it is working.",
-    tools: [
-      { name: "Apollo.io",   domain: "apollo.io",      url: "https://apollo.io" },
-      { name: "Instantly.ai",domain: "instantly.ai",   url: "https://instantly.ai" },
-      { name: "Jasper AI",   domain: "jasper.ai",      url: "https://jasper.ai" },
-      { name: "Surfer SEO",  domain: "surferseo.com",  url: "https://surferseo.com" },
-      { name: "HubSpot AI",  domain: "hubspot.com",    url: "https://hubspot.com" },
-      { name: "Copy.ai",     domain: "copy.ai",        url: "https://copy.ai" }
-    ],
-    article: { title: "The 5-Tool AI Workflow That Replaced a Marketing Team", sub: "Hustle stack deep dive", url: "articles/the-5-tool-ai-workflow-that-replaced-a-marketing-team-in-2026.html" }
-  }
+var RESULTS={
+  A:{emoji:"🤖",type:"The Automator",color:"#6d28d9",grad:"linear-gradient(135deg,#2e1065 0%,#4c1d95 50%,#6d28d9 100%)",tagline:"You didn't come here to work. You came here to build systems that do it for you.",desc:"You see every manual task the way a surgeon sees a butter knife — technically functional, but wildly inefficient for the job. Your workflows have workflows. You have spent four hours setting up an automation that saves ten minutes a week, and you would do it again without hesitation.\n\nYour friends are impressed by how much you accomplish while apparently doing nothing. Your accountant is mildly confused. Somewhere, a Zapier engineer is renovating their kitchen because of you.",tools:[{name:"Make.com",domain:"make.com",url:"https://make.com"},{name:"Zapier",domain:"zapier.com",url:"https://zapier.com"},{name:"n8n",domain:"n8n.io",url:"https://n8n.io"},{name:"Notion AI",domain:"notion.so",url:"https://notion.so"},{name:"Reclaim.ai",domain:"reclaim.ai",url:"https://reclaim.ai"},{name:"Activepieces",domain:"activepieces.com",url:"https://activepieces.com"}],article:{icon:"⚡",title:"Zapier vs Make.com — Which Wins in 2026?",sub:"Automation deep dive",url:"articles/zapier-vs-make-automation.html"}},
+  B:{emoji:"🎨",type:"The Creator",color:"#0369a1",grad:"linear-gradient(135deg,#0c2a4a 0%,#0e4d7a 50%,#0369a1 100%)",tagline:"You see a blank canvas where others see a blank page.",desc:"You treat AI as the world's most patient creative collaborator — one that never judges your 47th revision, never complains about the feedback call that ran two hours, and genuinely thinks more purple is a valid creative direction.\n\nYou have generated more AI images in the past month than meals consumed. Every project is an opportunity to make something people stop scrolling for. You are not just using AI — you are making things that simply would not exist without you.",tools:[{name:"Midjourney",domain:"midjourney.com",url:"https://midjourney.com"},{name:"Canva AI",domain:"canva.com",url:"https://canva.com"},{name:"ElevenLabs",domain:"elevenlabs.io",url:"https://elevenlabs.io"},{name:"Runway ML",domain:"runwayml.com",url:"https://runwayml.com"},{name:"Adobe Firefly",domain:"firefly.adobe.com",url:"https://firefly.adobe.com"},{name:"Gamma",domain:"gamma.app",url:"https://gamma.app"}],article:{icon:"🎬",title:"Create Videos with AI — No Camera Workflow 2026",sub:"Creator tools deep dive",url:"articles/create-videos-with-ai-no-camera-workflow-2026.html"}},
+  C:{emoji:"🔍",type:"The Researcher",color:"#047857",grad:"linear-gradient(135deg,#022c22 0%,#064e3b 50%,#047857 100%)",tagline:"You don't just use AI. You interrogate it.",desc:"You have been using AI as a supercharged knowledge engine since day one, and you are quietly appalled by how everyone else is wasting it on write me a tweet. You go deep. You verify sources. You have cited Perplexity in a casual conversation. You have said well, actually at least once this week.\n\nFor you, the best feature any AI tool can have is the one that helps you understand something you did not know an hour ago. You are not just smarter with AI — you are genuinely curious, and AI finally gives that curiosity somewhere worth going.",tools:[{name:"Perplexity AI",domain:"perplexity.ai",url:"https://perplexity.ai"},{name:"ChatGPT",domain:"openai.com",url:"https://chat.openai.com"},{name:"Claude",domain:"anthropic.com",url:"https://claude.ai"},{name:"NotebookLM",domain:"notebooklm.google.com",url:"https://notebooklm.google.com"},{name:"Elicit",domain:"elicit.com",url:"https://elicit.com"},{name:"Consensus",domain:"consensus.app",url:"https://consensus.app"}],article:{icon:"📚",title:"AI Research Workflow That Saves 4 Hours a Week",sub:"Research tools deep dive",url:"articles/ai-research-workflow-saves-4-hours-2026.html"}},
+  D:{emoji:"💼",type:"The Hustler",color:"#b91c1c",grad:"linear-gradient(135deg,#450a0a 0%,#7f1d1d 50%,#b91c1c 100%)",tagline:"ROI. Revenue. Results. In that order, every time.",desc:"You do not care if AI is interesting. You care if it makes you money. You have pitched AI tools to your team, your clients, your business partner, your barber, and at least one family member who did not ask. You measure everything in leads, conversions, and revenue closed.\n\nThe moment an AI tool stops producing return, it is gone — no sentiment, no loyalty. You have already automated your prospecting, your follow-ups, and your invoicing. You are not using AI tools. You are deploying them like weapons in a very deliberate business strategy.",tools:[{name:"Apollo.io",domain:"apollo.io",url:"https://apollo.io"},{name:"Instantly.ai",domain:"instantly.ai",url:"https://instantly.ai"},{name:"Jasper AI",domain:"jasper.ai",url:"https://jasper.ai"},{name:"Surfer SEO",domain:"surferseo.com",url:"https://surferseo.com"},{name:"HubSpot AI",domain:"hubspot.com",url:"https://hubspot.com"},{name:"Copy.ai",domain:"copy.ai",url:"https://copy.ai"}],article:{icon:"💰",title:"The 5-Tool AI Workflow That Replaced a Marketing Team",sub:"Hustle stack deep dive",url:"articles/the-5-tool-ai-workflow-that-replaced-a-marketing-team-in-2026.html"}}
 };
 
-var SHARE_MSGS = {
-  A: "I just took the AI personality quiz and I'm The Automator — my workflows have workflows 😂 What type are you?",
-  B: "Apparently I'm The Creator according to this AI personality quiz. I make things with AI that didn't exist before. What's your type?",
-  C: "I'm The Researcher on the AI personality quiz — I don't just use AI, I interrogate it 🔍 What are you?",
-  D: "Got The Hustler on this AI personality quiz. ROI. Revenue. Results. What's YOUR type? 💼"
-};
+var SHARE_MSGS={A:"I just took the AI personality quiz and I'm The Automator — my workflows have workflows 😂 What type are you?",B:"Apparently I'm The Creator according to this AI personality quiz. I make things with AI that did not exist before. What's your type?",C:"I'm The Researcher on this AI personality quiz — I don't just use AI, I interrogate it 🔍 What are you?",D:"Got The Hustler on this AI personality quiz. ROI. Revenue. Results. What's YOUR type? 💼"};
 
-var scores = { A:0, B:0, C:0, D:0 };
-var current = 0;
-var lock = false;
+var scores={A:0,B:0,C:0,D:0},cur=0,lock=false;
 
-function startQuiz() {
-  document.getElementById('intro-screen').classList.add('hidden');
-  document.getElementById('quiz-screen').classList.remove('hidden');
-  renderQ();
+function show(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function renderQ() {
-  lock = false;
-  var q = QUESTIONS[current];
-  var pct = Math.round((current / 8) * 100);
-  document.getElementById('prog').style.width = pct + '%';
-  document.getElementById('q-num').textContent = current + 1;
+function startQuiz(){show('quiz-screen');renderQ();}
 
-  var labels = ['A','B','C','D'];
-  var html = '<div class="q-text">' + q.text + '</div><div class="options">';
-  q.opts.forEach(function(o, i) {
-    html += '<button class="option" onclick="pick(\'' + o.t + '\',this)">';
-    html += '<div class="option-label">' + labels[i] + '</div>';
-    html += '<div class="option-text">' + o.text + '</div>';
-    html += '</button>';
+function renderQ(){
+  lock=false;
+  var q=QUESTIONS[cur];
+  document.getElementById('prog').style.width=Math.round((cur/8)*100)+'%';
+  document.getElementById('q-num').textContent=cur+1;
+  var keys=['A','B','C','D'];
+  var html='<div class="q-text">'+q.text+'</div><div class="options">';
+  q.opts.forEach(function(o,i){
+    html+='<button class="option" onclick="pick(\''+o.t+'\',this)"><div class="opt-key">'+keys[i]+'</div><div class="opt-text">'+o.text+'</div></button>';
   });
-  html += '</div>';
-
-  var card = document.getElementById('q-card');
-  card.style.opacity = '0'; card.style.transform = 'translateY(16px)';
-  card.innerHTML = html;
-  requestAnimationFrame(function() {
-    card.style.transition = 'opacity .3s, transform .3s';
-    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
-  });
+  html+='</div>';
+  var card=document.getElementById('q-card');
+  card.style.cssText='opacity:0;transform:translateY(16px);transition:opacity .28s,transform .28s';
+  card.innerHTML=html;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){card.style.opacity='1';card.style.transform='translateY(0)';});});
 }
 
-function pick(type, btn) {
-  if (lock) return;
-  lock = true;
-  scores[type]++;
-  btn.classList.add('selected');
-  setTimeout(function() {
-    current++;
-    if (current < 8) { renderQ(); }
-    else { showResult(); }
-  }, 320);
+function pick(type,btn){
+  if(lock)return;lock=true;
+  scores[type]++;btn.classList.add('selected');
+  setTimeout(function(){cur++;if(cur<8){renderQ();}else{buildResult(false);show('result-screen');document.getElementById('prog').style.width='100%';}},340);
 }
 
-function showResult() {
-  document.getElementById('prog').style.width = '100%';
-  document.getElementById('quiz-screen').classList.add('hidden');
-  document.getElementById('result-screen').classList.remove('hidden');
-  buildResult(false);
-}
+function buildResult(isShared){
+  var winner='A',max=0;
+  ['A','B','C','D'].forEach(function(t){if(scores[t]>max){max=scores[t];winner=t;}});
+  var r=RESULTS[winner];
+  var pcts={};['A','B','C','D'].forEach(function(t){pcts[t]=Math.round((scores[t]/8)*100);});
+  var dnaColors={A:'#8b5cf6',B:'#0ea5e9',C:'#10b981',D:'#ef4444'};
+  var dnaLabels={A:'Automator',B:'Creator',C:'Researcher',D:'Hustler'};
+  var quizUrl='https://myaitoolsfinder.com/quiz.html?result='+winner;
 
-function buildResult(isShared) {
-  var winner = 'A', max = 0;
-  ['A','B','C','D'].forEach(function(t) { if (scores[t] > max) { max = scores[t]; winner = t; } });
-  var r = RESULTS[winner];
-  var total = 8;
-  var pcts = {};
-  ['A','B','C','D'].forEach(function(t) { pcts[t] = Math.round((scores[t] / total) * 100); });
-
-  var dnaColors = { A: '#8b5cf6', B: '#0ea5e9', C: '#10b981', D: '#ef4444' };
-  var dnaLabels = { A: 'Automator', B: 'Creator', C: 'Researcher', D: 'Hustler' };
-  var dnaHtml = '';
-  ['A','B','C','D'].forEach(function(t) {
-    dnaHtml +=
-      '<div class="dna-row">' +
-        '<div class="dna-label">' + dnaLabels[t] + '</div>' +
-        '<div class="dna-track"><div class="dna-fill" id="df-' + t + '" style="background:' + dnaColors[t] + ';width:0%"></div></div>' +
-        '<div class="dna-pct">' + pcts[t] + '%</div>' +
-      '</div>';
+  var dna='';
+  ['A','B','C','D'].forEach(function(t){
+    dna+='<div class="dna-row"><div class="dna-label">'+dnaLabels[t]+'</div><div class="dna-track"><div class="dna-fill" id="df-'+t+'" style="background:'+dnaColors[t]+';width:0%"></div></div><div class="dna-pct">'+pcts[t]+'%</div></div>';
   });
 
-  var toolsHtml = '';
-  r.tools.forEach(function(tool) {
-    toolsHtml +=
-      '<a href="' + tool.url + '" target="_blank" rel="noopener" class="tool-pill">' +
-        '<img src="https://logo.clearbit.com/' + tool.domain + '" alt="" onerror="this.style.display=\'none\'">' +
-        tool.name +
-      '</a>';
+  var tools='';
+  r.tools.forEach(function(tool){
+    tools+='<a href="'+tool.url+'" target="_blank" rel="noopener" class="tool-pill"><img src="https://logo.clearbit.com/'+tool.domain+'" alt="" onerror="this.style.display=\'none\'">'+tool.name+'</a>';
   });
 
-  var descHtml = r.desc.split('\n\n').map(function(p){ return '<p>' + p + '</p>'; }).join('');
-  var quizUrl = 'https://myaitoolsfinder.com/quiz.html?result=' + winner;
+  var desc=r.desc.split('\n\n').map(function(p){return'<p>'+p+'</p>';}).join('');
+  var enc=encodeURIComponent;
+  var msg=SHARE_MSGS[winner]||'I just took the AI personality quiz!';
 
-  // Share buttons
-  var shareHtml =
-    '<div class="r-section">' +
-      '<div class="r-section-title">Share your result</div>' +
-      '<div class="share-grid">' +
-        '<a class="sh-btn sh-x" href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(SHARE_MSGS[winner] + ' 👉 ' + quizUrl) + '" target="_blank" rel="noopener">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' +
-          'Post on X' +
-        '</a>' +
-        '<a class="sh-btn sh-fb" href="https://www.facebook.com/sharer.php?u=' + encodeURIComponent(quizUrl) + '" target="_blank" rel="noopener">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>' +
-          'Facebook' +
-        '</a>' +
-        '<a class="sh-btn sh-li" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(quizUrl) + '" target="_blank" rel="noopener">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>' +
-          'LinkedIn' +
-        '</a>' +
-        '<a class="sh-btn sh-wa" href="https://wa.me/?text=' + encodeURIComponent((SHARE_MSGS[winner] || '') + ' 👉 ' + quizUrl) + '" target="_blank" rel="noopener">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>' +
-          'WhatsApp' +
-        '</a>' +
-      '</div>' +
-      '<div class="copy-row">' +
-        '<span class="copy-url">' + quizUrl + '</span>' +
-        '<button class="copy-btn" onclick="share(\'copy\',\'' + winner + '\')">Copy link</button>' +
-      '</div>' +
+  var html=
+    '<div class="r-hero">'+
+      '<div class="r-hero-top" style="background:'+r.grad+'">'+
+        '<div class="r-label">Your result</div>'+
+        '<span class="r-emoji">'+r.emoji+'</span>'+
+        '<div class="r-type">'+r.type+'</div>'+
+        '<div class="r-tagline">'+r.tagline+'</div>'+
+      '</div>'+
+      '<div class="r-dna"><div class="r-dna-title">Your AI DNA</div>'+dna+'</div>'+
+    '</div>'+
+
+    '<div class="r-section r-desc"><div class="r-section-title">About you</div>'+desc+'</div>'+
+
+    '<div class="r-section"><div class="r-section-title">Your ideal AI stack</div><div class="tools-row">'+tools+'</div></div>'+
+
+    '<a href="'+r.article.url+'" class="r-article">'+
+      '<div class="r-article-icon">'+r.article.icon+'</div>'+
+      '<div><div class="r-article-title">'+r.article.title+'</div><div class="r-article-sub">'+r.article.sub+'</div></div>'+
+      '<svg class="r-article-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'+
+    '</a>'+
+
+    '<div class="r-section">'+
+      '<div class="r-section-title">Share your result</div>'+
+      '<div class="share-grid">'+
+        '<a class="sh-btn sh-x" href="https://twitter.com/intent/tweet?text='+enc(msg+' 👉 '+quizUrl)+'" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post on X</a>'+
+        '<a class="sh-btn sh-fb" href="https://www.facebook.com/sharer.php?u='+enc(quizUrl)+'" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>'+
+        '<a class="sh-btn sh-li" href="https://www.linkedin.com/sharing/share-offsite/?url='+enc(quizUrl)+'" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>'+
+        '<a class="sh-btn sh-wa" href="https://wa.me/?text='+enc(msg+' 👉 '+quizUrl)+'" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>'+
+      '</div>'+
+      '<div class="copy-row"><span class="copy-url">'+quizUrl+'</span><button class="copy-btn" onclick="copyLink(\''+quizUrl+'\')">Copy link</button></div>'+
+    '</div>'+
+
+    '<div class="r-bottom">'+
+      '<a href="index.html" class="btn-dir">Browse your AI stack →</a>'+
+      '<button class="btn-ghost" onclick="retake()">↩ Retake</button>'+
     '</div>';
 
-  var html =
-    // Hero
-    '<div class="r-hero">' +
-      '<div class="r-hero-top" style="background:' + r.grad + '">' +
-        '<div class="r-label">Your result</div>' +
-        '<span class="r-emoji">' + r.emoji + '</span>' +
-        '<div class="r-type">' + r.type + '</div>' +
-        '<div class="r-tagline">' + r.tagline + '</div>' +
-      '</div>' +
-      '<div class="r-dna">' +
-        '<div class="r-dna-title">Your AI DNA</div>' +
-        dnaHtml +
-      '</div>' +
-    '</div>' +
+  var wrap=document.getElementById('r-wrap');
+  wrap.innerHTML=html;
 
-    // Description
-    '<div class="r-section r-desc">' +
-      '<div class="r-section-title">About you</div>' +
-      descHtml +
-    '</div>' +
-
-    // Tools
-    '<div class="r-section">' +
-      '<div class="r-section-title">Your ideal AI stack</div>' +
-      '<div class="tools-row">' + toolsHtml + '</div>' +
-    '</div>' +
-
-    // Article
-    '<a href="' + r.article.url + '" class="r-section r-article-link" style="display:flex;margin-bottom:12px;">' +
-      '<div>' +
-        '<div class="r-article-link-text">' + r.article.title + '</div>' +
-        '<div class="r-article-link-sub">' + r.article.sub + ' →</div>' +
-      '</div>' +
-      '<svg class="r-article-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
-    '</a>' +
-
-    // Share
-    shareHtml +
-
-    // Bottom CTA
-    '<div class="r-bottom">' +
-      '<a href="index.html" class="r-btn-primary">Browse your AI stack →</a>' +
-      '<button class="r-btn-ghost" onclick="retake()">↩ Retake quiz</button>' +
-    '</div>';
-
-  var wrap = document.getElementById('result-wrap');
-  wrap.innerHTML = html;
-
-  // Inject friend banner if this is a shared link view
-  if (isShared) {
-    var banner = document.createElement('div');
-    banner.className = 'friend-banner';
-    banner.innerHTML =
-      '<div class="friend-banner-inner">' +
-        '<div class="friend-icon" style="background:rgba(255,255,255,.07)">' + r.emoji + '</div>' +
-        '<div class="friend-copy">' +
-          '<h3>Someone shared their result with you</h3>' +
-          '<p>They got <strong>' + r.type + '</strong>. Curious what type you are?</p>' +
-        '</div>' +
-      '</div>' +
-      '<button class="friend-cta-btn" onclick="retake()">Take the quiz yourself →</button>';
-    wrap.insertBefore(banner, wrap.firstChild);
+  if(isShared){
+    var banner=document.createElement('div');
+    banner.className='friend-banner';
+    banner.innerHTML=
+      '<div class="friend-inner">'+
+        '<div class="friend-icon">'+r.emoji+'</div>'+
+        '<div class="friend-copy"><h3>Someone shared their result with you</h3><p>They got <strong>'+r.type+'</strong> — what type are you?</p></div>'+
+      '</div>'+
+      '<button class="friend-cta" onclick="retake()">🧠 Take the quiz yourself →</button>';
+    wrap.insertBefore(banner,wrap.firstChild);
   }
 
-  // Animate DNA bars
-  setTimeout(function() {
-    ['A','B','C','D'].forEach(function(t) {
-      var el = document.getElementById('df-' + t);
-      if (el) el.style.width = pcts[t] + '%';
-    });
-  }, 150);
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(function(){
+    ['A','B','C','D'].forEach(function(t){var el=document.getElementById('df-'+t);if(el)el.style.width=pcts[t]+'%';});
+  },180);
 }
 
-function share(platform, type) {
-  var url = 'https://myaitoolsfinder.com/quiz.html?result=' + type;
-  var msg = SHARE_MSGS[type] || 'I just took the AI personality quiz!';
-  var enc = encodeURIComponent;
-
-  if (platform === 'copy') {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function(){ toast('Link copied to clipboard'); });
-    } else {
-      var el = document.createElement('textarea');
-      el.value = url; document.body.appendChild(el); el.select();
-      document.execCommand('copy'); document.body.removeChild(el);
-      toast('Link copied to clipboard');
-    }
-    return;
-  }
-
-  var shareUrl;
-  if (platform === 'x') {
-    shareUrl = 'https://twitter.com/intent/tweet?text=' + enc(msg + ' 👉 ' + url);
-  } else if (platform === 'fb') {
-    // Facebook sharer — must be a clean public URL, opened as new tab (not popup)
-    shareUrl = 'https://www.facebook.com/sharer.php?u=' + enc(url);
-  } else if (platform === 'li') {
-    shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + enc(url);
-  } else if (platform === 'wa') {
-    shareUrl = 'https://wa.me/?text=' + enc(msg + ' 👉 ' + url);
-  }
-
-  if (shareUrl) {
-    // Use anchor click — most reliable cross-browser, avoids popup blockers
-    var a = document.createElement('a');
-    a.href = shareUrl;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
+function copyLink(url){
+  if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){toast('Link copied to clipboard');});}
+  else{var el=document.createElement('textarea');el.value=url;document.body.appendChild(el);el.select();document.execCommand('copy');document.body.removeChild(el);toast('Link copied to clipboard');}
 }
 
-function toast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2800);}
+
+function retake(){
+  scores={A:0,B:0,C:0,D:0};cur=0;lock=false;
+  document.getElementById('prog').style.width='0%';
+  show('intro-screen');
 }
 
-function retake() {
-  scores = { A:0, B:0, C:0, D:0 };
-  current = 0; lock = false;
-  document.getElementById('result-screen').classList.add('hidden');
-  document.getElementById('intro-screen').classList.remove('hidden');
-  document.getElementById('prog').style.width = '0%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Shared link handling
-(function() {
-  var p = new URLSearchParams(window.location.search).get('result');
-  if (p && RESULTS[p]) {
-    scores[p] = 8;
-    document.getElementById('intro-screen').classList.add('hidden');
-    document.getElementById('result-screen').classList.remove('hidden');
-    document.getElementById('prog').style.width = '100%';
-    buildResult(true);
-  }
+// Shared link
+(function(){
+  var p=new URLSearchParams(window.location.search).get('result');
+  if(p&&RESULTS[p]){scores[p]=8;buildResult(true);show('result-screen');document.getElementById('prog').style.width='100%';}
 })();
 </script>
 </body>
