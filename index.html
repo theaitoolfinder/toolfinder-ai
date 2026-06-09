@@ -2212,6 +2212,7 @@ function setFilter(lens,value){
     const ddId=map[lens];
     const lbl=document.getElementById('flabel-'+ddId);
     if(lbl)lbl.textContent=value||LENSES[lens].label;
+    ga4track('filter_used',{filter_type:lens,filter_value:value||LENSES[lens].options[0]});
   }
   buildDDs();
   renderRows();
@@ -2232,7 +2233,7 @@ function renderRows(){
 function syncHash(){history.replaceState(null,'','#'+currentFilter.lens+':'+encodeURIComponent(currentFilter.value));}
 function setLens(l){setFilter(l,LENSES[l]?LENSES[l].options[0]:'All');}
 function setValue(v){setFilter(currentFilter.lens,v);}
-document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderTfmView();});
+document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderTfmView();if(searchQuery.length>2){ga4track('search_used',{search_term:searchQuery});}});
 /* ══════════════════════════════════════════
    TFM FILTER SYSTEM (toolfinder.com style)
 ══════════════════════════════════════════ */
@@ -2485,7 +2486,20 @@ document.addEventListener('click',e=>{
 document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();const[l,v]=a.dataset.quick.split(":");setLens(l);if(LENSES[l].options.includes(v))setValue(v);document.getElementById("tools").scrollIntoView({behavior:"smooth",block:"start"});}));
 function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){if(l==='all')setFilter('all');else{setFilter(l,LENSES[l].options.includes(v)?v:LENSES[l].options[0]);}}}
 window.dataLayer=window.dataLayer||[];
-function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event:"tool_click",tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),destination:activeUrl(t)});try{const c=JSON.parse(localStorage.getItem("myai_clicks_v1")||"{}");c[t.name]=(c[t.name]||0)+1;localStorage.setItem("myai_clicks_v1",JSON.stringify(c));}catch(e){}}
+function ga4track(name,params){
+  try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
+  try{
+    const k='myai_analytics_v1';
+    const d=JSON.parse(localStorage.getItem(k)||'{}');
+    d[name]=(d[name]||0)+1;
+    const log=JSON.parse(localStorage.getItem('myai_event_log_v1')||'[]');
+    log.unshift({e:name,p:params||{},t:Date.now()});
+    if(log.length>200)log.length=200;
+    localStorage.setItem(k,JSON.stringify(d));
+    localStorage.setItem('myai_event_log_v1',JSON.stringify(log));
+  }catch(e){}
+}
+function trackVisit(i){const t=tool(i);if(!t)return;window.dataLayer.push({event:"tool_click",tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),destination:activeUrl(t)});ga4track('tool_click',{tool_name:t.name,tool_category:t.cat,is_affiliate:isAffiliate(t),click_type:'visit'});try{const c=JSON.parse(localStorage.getItem("myai_clicks_v1")||"{}");c[t.name]=(c[t.name]||0)+1;localStorage.setItem("myai_clicks_v1",JSON.stringify(c));}catch(e){}}
 function renderStats(){
   const v=TOOLS.map((_,i)=>tool(i)).filter(Boolean),cats=new Set(v.map(t=>t.cat));
   /* Round down to nearest 25 for a more accurate display */
@@ -2569,6 +2583,8 @@ function toggleCompare(idx){
       return;
     }
     cmpSel.push(idx);
+    const t=tool(idx);
+    if(t) ga4track('tool_click',{tool_name:t.name,tool_category:t.cat,click_type:'compare'});
   }
   updateTray();
   updateCmpButtons();
@@ -4873,6 +4889,7 @@ async function popSubscribe(){
     else { html.setAttribute('data-theme', t); }
     try{ localStorage.setItem(STORAGE_KEY, t||'blue'); }catch(e){}
     syncSwatches(t||'blue');
+    if(typeof ga4track==='function') ga4track('theme_change',{theme_name:t||'blue'});
     // Close the nav panel after picking
     _panelOpen = false;
     var panel = document.getElementById('theme-panel');

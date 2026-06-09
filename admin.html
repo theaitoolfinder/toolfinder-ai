@@ -154,6 +154,7 @@
     <button class="tab active" data-tab="tools">Tools</button>
     <button class="tab" data-tab="subscribers">Subscribers</button>
     <button class="tab" data-tab="reviews">Reviews</button>
+    <button class="tab" data-tab="analytics">Analytics</button>
     <button class="tab" data-tab="site">Site settings</button>
     <button class="tab" data-tab="github">GitHub Sync</button>
   </div>
@@ -271,6 +272,48 @@
     <div>
       <label>Google Place ID</label>
       <input type="text" id="cfg-google-place-id" placeholder="ChIJ…" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- ANALYTICS TAB -->
+  <div id="tab-analytics" style="display:none">
+    <div style="margin-bottom:18px">
+      <h3 style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">Site Analytics</h3>
+      <p style="font-size:13px;color:var(--text-dim);margin:0 0 16px">Local event counts (this browser) + link to your full GA4 dashboard. Events are tracked across index, tutorials, and article pages.</p>
+    </div>
+
+    <!-- GA4 link banner -->
+    <div class="info-banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <span>📊 Full analytics data (all visitors, real-time) lives in <b>Google Analytics 4</b> — property ID <code>G-SZQYFK19QN</code></span>
+      <a href="https://analytics.google.com" target="_blank" rel="noopener" class="btn primary" style="white-space:nowrap">Open GA4 →</a>
+    </div>
+
+    <!-- Local event counters -->
+    <div style="margin-bottom:20px">
+      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Local Event Counts <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(your browser session)</span></h4>
+      <div id="analytics-event-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px"></div>
+      <button class="btn danger" style="margin-top:10px;font-size:12px" onclick="clearAnalyticsData()">Clear local event data</button>
+    </div>
+
+    <!-- Top tools by click -->
+    <div style="margin-bottom:20px">
+      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Top Tools by Click <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(this browser)</span></h4>
+      <div id="analytics-top-tools" style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden"></div>
+    </div>
+
+    <!-- Recent event log -->
+    <div>
+      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Recent Events <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(last 50)</span></h4>
+      <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+        <table id="analytics-log-table" style="width:100%;border-collapse:collapse;font-size:12.5px">
+          <thead><tr style="background:var(--bg-soft);border-bottom:1px solid var(--border)">
+            <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Time</th>
+            <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Event</th>
+            <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Params</th>
+          </tr></thead>
+          <tbody id="analytics-log-body"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -1444,11 +1487,79 @@ function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,
 /* ===== Tab + search wiring ===== */
 function switchToTab(name){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
-  ['tools','subscribers','reviews','site','github'].forEach(n=>{
+  ['tools','subscribers','reviews','analytics','site','github'].forEach(n=>{
     document.getElementById('tab-'+n).style.display = (n===name)?'block':'none';
   });
-  if(name==='subscribers') loadSubDB();   /* default view is My Database */
+  if(name==='subscribers') loadSubDB();
   if(name==='reviews') initReviewsTab();
+  if(name==='analytics') renderAnalyticsTab();
+}
+
+function renderAnalyticsTab(){
+  // Event counters
+  const counts = JSON.parse(localStorage.getItem('myai_analytics_v1')||'{}');
+  const grid = document.getElementById('analytics-event-grid');
+  const eventLabels = {
+    tool_click:'Tool Clicks', filter_used:'Filter Used', search_used:'Search Used',
+    theme_change:'Theme Changes', tutorial_card_click:'Tutorial Card Clicks',
+    tutorial_start:'Tutorials Started', step_complete:'Steps Completed',
+    level_complete:'Levels Completed', affiliate_click:'Affiliate Clicks',
+    elite_unlock:'Elite Unlocks'
+  };
+  const allKeys = Object.keys({...eventLabels,...counts});
+  const uniqueKeys = [...new Set(allKeys)];
+  grid.innerHTML = uniqueKeys.map(k=>{
+    const label = eventLabels[k]||k;
+    const val = counts[k]||0;
+    return `<div class="stat"><b>${val}</b><span>${label}</span></div>`;
+  }).join('') || '<p style="color:var(--text-dim);font-size:13px">No events recorded yet. Interact with the site to generate events.</p>';
+
+  // Top tools
+  const clicks = JSON.parse(localStorage.getItem('myai_clicks_v1')||'{}');
+  const topTools = Object.entries(clicks).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const topEl = document.getElementById('analytics-top-tools');
+  if(topTools.length===0){
+    topEl.innerHTML='<p style="padding:14px;color:var(--text-dim);font-size:13px">No tool clicks recorded yet.</p>';
+  } else {
+    const max = topTools[0][1]||1;
+    topEl.innerHTML = topTools.map(([name,count],i)=>`
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:${i<topTools.length-1?'1px solid var(--border)':'none'}">
+        <span style="font-size:12px;color:var(--text-dim);width:20px;text-align:right">${i+1}</span>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">${name}</div>
+          <div style="height:5px;border-radius:3px;background:var(--bg-soft);overflow:hidden">
+            <div style="height:100%;width:${Math.round(count/max*100)}%;background:var(--accent);border-radius:3px"></div>
+          </div>
+        </div>
+        <span style="font-size:13px;font-weight:700;color:var(--accent)">${count}</span>
+      </div>`).join('');
+  }
+
+  // Event log
+  const log = JSON.parse(localStorage.getItem('myai_event_log_v1')||'[]').slice(0,50);
+  const tbody = document.getElementById('analytics-log-body');
+  if(log.length===0){
+    tbody.innerHTML='<tr><td colspan="3" style="padding:14px;color:var(--text-dim);text-align:center">No events logged yet.</td></tr>';
+  } else {
+    tbody.innerHTML = log.map((entry,i)=>{
+      const d = new Date(entry.t);
+      const timeStr = d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+      const dateStr = d.toLocaleDateString([], {month:'short',day:'numeric'});
+      const paramStr = Object.entries(entry.p||{}).map(([k,v])=>`${k}: ${v}`).join(', ');
+      return `<tr style="border-bottom:1px solid var(--border);${i%2?'background:var(--bg-soft)':''}">
+        <td style="padding:7px 12px;color:var(--text-dim);white-space:nowrap">${dateStr} ${timeStr}</td>
+        <td style="padding:7px 12px;font-weight:600;color:var(--text)">${entry.e}</td>
+        <td style="padding:7px 12px;color:var(--text-dim);font-size:11.5px">${paramStr}</td>
+      </tr>`;
+    }).join('');
+  }
+}
+
+function clearAnalyticsData(){
+  if(!confirm('Clear all local event data? This only affects this browser and does not affect GA4.')) return;
+  localStorage.removeItem('myai_analytics_v1');
+  localStorage.removeItem('myai_event_log_v1');
+  renderAnalyticsTab();
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
   switchToTab(b.dataset.tab);

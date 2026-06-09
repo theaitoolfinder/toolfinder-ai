@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title id="page-title">Tutorial — MyAI ToolsFinder</title>
@@ -357,6 +359,20 @@ footer a:hover{color:var(--primary)}
 <script src="../js/tutorials-data.js"></script>
 <script>
 /* ── Helpers ── */
+function ga4track(name,params){
+  try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
+  try{
+    const k='myai_analytics_v1';
+    const d=JSON.parse(localStorage.getItem(k)||'{}');
+    d[name]=(d[name]||0)+1;
+    const log=JSON.parse(localStorage.getItem('myai_event_log_v1')||'[]');
+    log.unshift({e:name,p:params||{},t:Date.now()});
+    if(log.length>200)log.length=200;
+    localStorage.setItem(k,JSON.stringify(d));
+    localStorage.setItem('myai_event_log_v1',JSON.stringify(log));
+  }catch(e){}
+}
+
 const params = new URLSearchParams(location.search);
 const TOOL_ID = (params.get('tool')||'').toLowerCase();
 const LEVEL   = (params.get('level')||'basic').toLowerCase();
@@ -432,7 +448,7 @@ function renderTutorial(toolId, level){
   document.getElementById('sidebar-tag').textContent = td.tagline;
   const ctaEl = document.getElementById('sidebar-cta');
   ctaEl.href = td.affiliate_url;
-  ctaEl.onclick = () => markTried(toolId);
+  ctaEl.onclick = () => { markTried(toolId); ga4track('affiliate_click',{tool_name:td.name,source:'sidebar'}); };
 
   /* Lock wall check */
   const lockWall = document.getElementById('lock-wall');
@@ -450,6 +466,8 @@ function renderTutorial(toolId, level){
       document.getElementById('unlock-note').textContent = 'No strings — just try the tool and the tutorial unlocks.';
       document.getElementById('btn-unlock').onclick = () => {
         markTried(toolId);
+        ga4track('elite_unlock',{tool_name:td.name});
+        ga4track('affiliate_click',{tool_name:td.name,source:'tutorial_unlock'});
         window.open(td.affiliate_url, '_blank');
         setTimeout(() => location.reload(), 800);
       };
@@ -465,6 +483,7 @@ function renderTutorial(toolId, level){
   lockWall.style.display = 'none';
   stepsList.style.display = 'flex';
   renderSteps(toolId, lvlKey, lvlData);
+  ga4track('tutorial_start',{tool_name:td.name,level:lvlKey});
 }
 
 function linkifyContent(html, td){
@@ -567,6 +586,8 @@ function markStepUI(toolId, lvlKey, i){
   const dot = document.getElementById('dot-'+i);
   if(dot) dot.classList.add('done');
   const steps = window.TUTORIALS_DATA[toolId].levels[lvlKey].steps;
+  const td = window.TUTORIALS_DATA[toolId];
+  ga4track('step_complete',{tool_name:td.name,level:lvlKey,step_number:i+1,step_title:steps[i]?steps[i].title:''});
   updateProgress(toolId, lvlKey, steps.length);
   checkCompletion(toolId, lvlKey, steps.length);
 }
@@ -581,6 +602,8 @@ function checkCompletion(toolId, lvlKey, total){
   let done = 0;
   for(let i=0;i<total;i++) if(isStepDone(toolId,lvlKey,i)) done++;
   if(done < total) return;
+  const td = window.TUTORIALS_DATA[toolId];
+  ga4track('level_complete',{tool_name:td?td.name:toolId,level:lvlKey,steps_total:total});
   const banner = document.getElementById('completion-banner');
   banner.style.display = 'block';
   const td = window.TUTORIALS_DATA[toolId];
@@ -590,7 +613,7 @@ function checkCompletion(toolId, lvlKey, total){
   const actEl = document.getElementById('completion-actions');
   if(lvlKey === 'advanced'){
     msgEl.textContent = `Amazing! You've mastered ${td.name} from basics to advanced. Time to put it into practice.`;
-    actEl.innerHTML = `<a href="${td.affiliate_url}" class="btn-next-level" target="_blank" rel="sponsored noopener nofollow" onclick="markTried('${toolId}')">Try ${td.name} Free →</a>
+    actEl.innerHTML = `<a href="${td.affiliate_url}" class="btn-next-level" target="_blank" rel="sponsored noopener nofollow" onclick="markTried('${toolId}');ga4track('affiliate_click',{tool_name:'${td.name}',source:'completion_banner'})">Try ${td.name} Free →</a>
       <a href="../tutorials.html" class="btn-back-tuts">More Tutorials</a>`;
   } else {
     msgEl.textContent = `Great work! Ready for the ${cap(next)} level? It goes much deeper.`;
