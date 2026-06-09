@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI-clopedia Mockup — MyAI ToolsFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background: #2c1810;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, #3d2415 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, #3d2415 0%, transparent 60%);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  font-family:'Crimson Text',serif;
+}
+
+/* ── TOP NAV BAR ── */
+.topbar{
+  width:100%;max-width:960px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:28px;
+}
+.topbar-logo{
+  font-family:'Playfair Display',serif;
+  font-size:14px;color:#c9a96e;letter-spacing:1px;text-decoration:none;
+}
+.topbar-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-style:italic;color:#f5f0e8;
+  letter-spacing:.5px;
+}
+.topbar-back{font-size:13px;color:#c9a96e;text-decoration:none;letter-spacing:.5px;}
+.topbar-back:hover{color:#f5f0e8;}
+
+/* ── BOOK WRAPPER ── */
+.book-shell{
+  position:relative;
+  width:100%;max-width:920px;
+}
+
+/* Book shadow / 3D effect */
+.book-3d{
+  position:relative;
+  border-radius:4px 12px 12px 4px;
+  box-shadow:
+    -8px 0 20px rgba(0,0,0,.5),
+    8px 0 30px rgba(0,0,0,.6),
+    0 20px 60px rgba(0,0,0,.7);
+}
+
+/* ── BOOK COVER / SPINE ── */
+.book-spine{
+  position:absolute;
+  left:-22px;top:4px;bottom:4px;width:24px;
+  background:linear-gradient(to right,#5a2d0c,#8b4513,#6b3410);
+  border-radius:4px 0 0 4px;
+  display:flex;align-items:center;justify-content:center;
+}
+.spine-text{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:'Playfair Display',serif;
+  font-size:10px;letter-spacing:3px;
+  color:#c9a96e;font-style:italic;
+  white-space:nowrap;
+}
+
+/* ── SPREAD (two pages) ── */
+.spread{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:#f5f0e8;
+  border-radius:0 8px 8px 0;
+  overflow:hidden;
+  min-height:580px;
+  position:relative;
+}
+
+/* Center gutter / binding shadow */
+.spread::after{
+  content:'';
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  top:0;bottom:0;width:12px;
+  background:linear-gradient(to right,
+    rgba(0,0,0,.18) 0%,
+    rgba(0,0,0,.05) 40%,
+    rgba(0,0,0,.05) 60%,
+    rgba(0,0,0,.18) 100%);
+  pointer-events:none;z-index:10;
+}
+
+/* ── PAGE SHARED ── */
+.page{
+  padding:36px 32px 28px;
+  position:relative;
+  background: #f5f0e8;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+}
+.page-left{border-right:1px solid rgba(44,24,16,.12);}
+
+/* ── LETTER TAB ── */
+.letter-tab{
+  position:absolute;
+  top:20px;right:-1px;
+  width:28px;height:28px;
+  background:#8b0000;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:13px;font-weight:700;color:#f5f0e8;
+  border-radius:4px 0 0 4px;
+}
+.page-right .letter-tab{left:-1px;right:auto;border-radius:0 4px 4px 0;}
+
+/* ── PAGE HEADER RULE ── */
+.page-header{
+  border-bottom:2px solid #8b0000;
+  padding-bottom:10px;
+  margin-bottom:18px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+}
+.page-header-title{
+  font-family:'Playfair Display',serif;
+  font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:#8b0000;
+}
+.page-number{
+  font-family:'Crimson Text',serif;
+  font-size:11px;color:#9a8060;letter-spacing:1px;
+}
+
+/* ── TOOL NAME ── */
+.tool-initial{
+  float:left;
+  font-family:'Playfair Display',serif;
+  font-size:72px;line-height:.85;
+  color:#8b0000;
+  margin-right:8px;
+  margin-top:4px;
+  font-weight:700;
+}
+.tool-name{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;
+  color:#2c1810;line-height:1.1;
+  margin-bottom:4px;
+}
+.tool-maker{
+  font-family:'Crimson Text',serif;
+  font-size:14px;font-style:italic;
+  color:#7a6040;margin-bottom:12px;
+}
+
+/* ── LOGO ── */
+.tool-logo-wrap{
+  width:56px;height:56px;
+  border:1px solid rgba(44,24,16,.15);
+  border-radius:10px;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  margin-bottom:14px;
+  float:right;margin-left:12px;
+}
+.tool-logo-wrap img{width:44px;height:44px;object-fit:contain;}
+
+/* ── DIVIDER ── */
+.ornament-rule{
+  display:flex;align-items:center;gap:8px;
+  margin:14px 0;
+  color:#8b0000;font-size:14px;
+  clear:both;
+}
+.ornament-rule::before,.ornament-rule::after{
+  content:'';flex:1;
+  height:1px;background:linear-gradient(to right,transparent,#8b0000,transparent);
+}
+
+/* ── TAGLINE ── */
+.tool-tagline{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:16px;
+  color:#2c1810;line-height:1.5;
+  margin-bottom:14px;
+  clear:both;
+}
+
+/* ── META TABLE ── */
+.meta-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.meta-table td{
+  font-size:13px;padding:5px 0;
+  border-bottom:1px dotted rgba(44,24,16,.2);
+  color:#2c1810;vertical-align:top;
+}
+.meta-table td:first-child{
+  font-family:'Playfair Display',serif;
+  font-weight:600;width:80px;
+  color:#8b0000;font-size:12px;letter-spacing:.5px;
+}
+
+/* ── CATEGORY BADGE ── */
+.cat-badge{
+  display:inline-block;
+  border:1.5px solid #8b0000;
+  color:#8b0000;
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:'Playfair Display',serif;
+  padding:3px 10px;border-radius:2px;
+  margin-bottom:14px;
+}
+
+/* ── BODY TEXT ── */
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-size:12px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:#8b0000;margin-bottom:6px;margin-top:14px;
+}
+.body-text{
+  font-size:15px;line-height:1.7;
+  color:#2c1810;
+}
+
+/* ── BEST FOR ── */
+.best-for-list{
+  list-style:none;margin:6px 0 14px;
+}
+.best-for-list li{
+  font-size:14px;color:#2c1810;
+  padding:3px 0;display:flex;align-items:center;gap:6px;
+}
+.best-for-list li::before{content:'✦';color:#8b0000;font-size:10px;}
+
+/* ── CTA ── */
+.visit-btn{
+  display:inline-block;
+  background:#8b0000;color:#f5f0e8;
+  font-family:'Playfair Display',serif;
+  font-size:13px;letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:10px 22px;text-decoration:none;
+  border:none;cursor:pointer;
+  margin-top:14px;
+}
+.visit-btn:hover{background:#6b0000;}
+
+/* ── PAGE FOOTER ── */
+.page-footer{
+  position:absolute;
+  bottom:20px;left:32px;right:32px;
+  border-top:1px solid rgba(44,24,16,.15);
+  padding-top:8px;
+  display:flex;justify-content:space-between;
+  align-items:center;
+}
+.footer-site{
+  font-size:11px;color:#9a8060;letter-spacing:.5px;font-style:italic;
+}
+
+/* ── NAVIGATION ── */
+.nav-bar{
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  margin-top:24px;
+}
+.nav-btn{
+  background:rgba(245,240,232,.1);
+  border:1px solid rgba(201,169,110,.3);
+  color:#c9a96e;
+  font-family:'Playfair Display',serif;
+  font-size:13px;letter-spacing:1px;
+  padding:10px 28px;cursor:pointer;border-radius:2px;
+  text-transform:uppercase;
+}
+.nav-btn:hover{background:rgba(245,240,232,.2);border-color:#c9a96e;}
+.nav-position{
+  font-family:'Crimson Text',serif;
+  font-style:italic;color:#c9a96e;font-size:15px;
+  min-width:140px;text-align:center;
+}
+
+/* ── ALPHABET BAR ── */
+.alpha-bar{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:4px;
+  margin-top:16px;max-width:920px;
+}
+.alpha-btn{
+  width:26px;height:26px;border-radius:2px;
+  background:rgba(245,240,232,.08);border:1px solid rgba(201,169,110,.2);
+  color:#c9a96e;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.alpha-btn:hover,.alpha-btn.active{background:rgba(201,169,110,.3);border-color:#c9a96e;color:#f5f0e8;}
+
+/* ── COVER SPREAD ── */
+.cover-left{
+  background:linear-gradient(135deg,#3d2415 0%,#2c1810 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:48px 32px;
+  text-align:center;
+}
+.cover-ornament{color:#c9a96e;font-size:28px;margin-bottom:16px;}
+.cover-vol{
+  font-family:'Playfair Display',serif;
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:#c9a96e;margin-bottom:8px;
+}
+.cover-title{
+  font-family:'Playfair Display',serif;
+  font-size:42px;font-weight:700;font-style:italic;
+  color:#f5f0e8;line-height:1.1;margin-bottom:8px;
+}
+.cover-subtitle{
+  font-family:'Crimson Text',serif;
+  font-size:16px;font-style:italic;color:#c9a96e;
+  line-height:1.6;margin-bottom:20px;
+}
+.cover-rule{width:60%;height:1px;background:linear-gradient(to right,transparent,#c9a96e,transparent);margin:0 auto 20px;}
+.cover-stats{
+  font-family:'Crimson Text',serif;
+  font-size:13px;color:#9a8060;letter-spacing:1px;
+}
+.cover-right{
+  background:#f5f0e8;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  padding:48px 36px;
+}
+.toc-title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;
+  color:#2c1810;margin-bottom:4px;
+  border-bottom:2px solid #8b0000;
+  padding-bottom:8px;
+}
+.toc-subtitle{font-size:13px;font-style:italic;color:#7a6040;margin-bottom:18px;}
+.toc-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;
+}
+.toc-item{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;color:#2c1810;
+  border-bottom:1px dotted rgba(44,24,16,.2);
+  padding:3px 0;
+}
+.toc-item-letter{font-family:'Playfair Display',serif;font-weight:700;color:#8b0000;}
+.toc-item-page{color:#9a8060;font-size:12px;}
+.toc-note{
+  margin-top:16px;font-size:12px;font-style:italic;color:#7a6040;
+  line-height:1.6;
+}
+
+/* ── SPREAD SELECTOR ── */
+.spread-selector{display:flex;gap:10px;margin-bottom:20px;}
+.sel-btn{
+  padding:6px 16px;border-radius:2px;border:1px solid rgba(201,169,110,.3);
+  background:rgba(245,240,232,.08);color:#c9a96e;cursor:pointer;
+  font-family:'Playfair Display',serif;font-size:12px;letter-spacing:.5px;
+}
+.sel-btn.active{background:rgba(201,169,110,.25);border-color:#c9a96e;color:#f5f0e8;}
+
+/* ── ANNOTATION LABEL ── */
+.label-pill{
+  background:#c9a96e;color:#2c1810;
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:6px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="topbar-logo">← MyAI ToolsFinder</a>
+  <div class="topbar-title">AI-clopedia</div>
+  <span class="topbar-back">MOCKUP PREVIEW</span>
+</div>
+
+<!-- SPREAD SELECTOR -->
+<div class="spread-selector">
+  <button class="sel-btn active" onclick="showSpread(0,this)">Cover + TOC</button>
+  <button class="sel-btn" onclick="showSpread(1,this)">Tool Entry — ChatGPT</button>
+  <button class="sel-btn" onclick="showSpread(2,this)">Tool Entry — Midjourney</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SPREAD 0: COVER + TABLE OF CONTENTS
+═══════════════════════════════════════════ -->
+<div class="book-shell" id="spread-0">
+  <div class="book-spine"><span class="spine-text">AI-CLOPEDIA · MYAITOOLSFINDER.COM</span></div>
+  <div class="book-3d">
+    <div class="spread">
+      <!-- LEFT: COVER -->
+      <div class="cover-left">
+        <div class="cover-ornament">❧</div>
+        <div class="cover-vol">Volume I · 2026 Edition</div>
+        <div class="cover-title">AI-clopedia</div>
+        <div class="cover-subtitle">A Complete Reference to the<br>World's AI Tools & Services</div>
+        <div class="cover-rule"></div>
+        <div class="cover-stats">500+ Tools · A–Z · All Categories</div>
+        <div style="margin-top:24px;font-size:11px;letter-spacing:2px;color:#7a5030;text-transform:uppercase;">MyAI ToolsFinder</div>
+      </div>
+      <!-- RIGHT: TABLE OF CONTENTS -->
+      <div class="cover-right">
+        <div class="toc-title">Table of Contents</div>
+        <div class="toc-subtitle">Organized alphabetically by tool name</div>
+        <div class="toc-grid">
+          <div class="toc-item"><span class="toc-item-letter">A</span><span>ActivePieces – Avo</span><span class="toc-item-page">pg. 7</span></div>
+          <div class="toc-item"><span class="toc-item-letter">N</span><span>Notion – Notta</span><span class="toc-item-page">pg. 198</span></div>
+          <div class="toc-item"><span class="toc-item-letter">B</span><span>Beautiful.ai – Byword</span><span class="toc-item-page">pg. 28</span></div>
+          <div class="toc-item"><span class="toc-item-letter">O</span><span>OpenAI – Otter.ai</span><span class="toc-item-page">pg. 212</span></div>
+          <div class="toc-item"><span class="toc-item-letter">C</span><span>Canva – Cursor</span><span class="toc-item-page">pg. 44</span></div>
+          <div class="toc-item"><span class="toc-item-letter">P</span><span>Perplexity – Pika</span><span class="toc-item-page">pg. 228</span></div>
+          <div class="toc-item"><span class="toc-item-letter">D</span><span>DALL-E – Durable</span><span class="toc-item-page">pg. 68</span></div>
+          <div class="toc-item"><span class="toc-item-letter">Q–R</span><span>QuillBot – Runway</span><span class="toc-item-page">pg. 244</span></div>
+          <div class="toc-item"><span class="toc-item-letter">E</span><span>ElevenLabs – Explainit</span><span class="toc-item-page">pg. 84</span></div>
+          <div class="toc-item"><span class="toc-item-letter">S</span><span>Semrush – Synthesia</span><span class="toc-item-page">pg. 258</span></div>
+          <div class="toc-item"><span class="toc-item-letter">F</span><span>Fireflies – Framer</span><span class="toc-item-page">pg. 96</span></div>
+          <div class="toc-item"><span class="toc-item-letter">T</span><span>Tome – Typeface</span><span class="toc-item-page">pg. 290</span></div>
+          <div class="toc-item"><span class="toc-item-letter">G</span><span>Gamma – Grammarly</span><span class="toc-item-page">pg. 110</span></div>
+          <div class="toc-item"><span class="toc-item-letter">U–V</span><span>Uizard – Veed.io</span><span class="toc-item-page">pg. 308</span></div>
+          <div class="toc-item"><span class="toc-item-letter">H–I</span><span>HeyGen – Instantly</span><span class="toc-item-page">pg. 128</span></div>
+          <div class="toc-item"><span class="toc-item-letter">W–Z</span><span>Writesonic – Zapier</span><span class="toc-item-page">pg. 322</span></div>
+          <div class="toc-item"><span class="toc-item-letter">J–L</span><span>Jasper – Leonardo</span><span class="toc-item-page">pg. 150</span></div>
+          <div class="toc-item"><span style="font-family:'Playfair Display',serif;font-weight:700;color:#8b0000;">Index</span><span>By Category</span><span class="toc-item-page">pg. 348</span></div>
+          <div class="toc-item"><span class="toc-item-letter">M</span><span>Make.com – Murf</span><span class="toc-item-page">pg. 172</span></div>
+        </div>
+        <div class="toc-note">
+          ✦ All tools include affiliate links. Pricing as of 2026.<br>
+          Visit myaitoolsfinder.com for the full interactive directory.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SPREAD 1: ChatGPT
+═══════════════════════════════════════════ -->
+<div class="book-shell" id="spread-1" style="display:none;">
+  <div class="book-spine"><span class="spine-text">AI-CLOPEDIA · MYAITOOLSFINDER.COM</span></div>
+  <div class="book-3d">
+    <div class="spread">
+      <!-- LEFT PAGE -->
+      <div class="page page-left">
+        <div class="letter-tab">C</div>
+
+        <div class="page-header">
+          <div class="page-header-title">AI-clopedia · AI Assistants</div>
+          <div class="page-number">pg. 44</div>
+        </div>
+
+        <div class="tool-logo-wrap">
+          <img src="https://logo.clearbit.com/openai.com" alt="ChatGPT logo" onerror="this.src='https://ui-avatars.com/api/?name=ChatGPT&background=10a37f&color=fff&size=64'">
+        </div>
+
+        <div class="tool-initial">C</div>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-maker">by OpenAI · est. 2022</div>
+
+        <div class="ornament-rule">✦</div>
+
+        <div class="tool-tagline">"The AI assistant that redefined how the world works, writes, and thinks."</div>
+
+        <table class="meta-table">
+          <tr><td>Category</td><td>AI Assistants · Writing</td></tr>
+          <tr><td>Pricing</td><td>Free · Plus $20/mo · Team $30/mo</td></tr>
+          <tr><td>Free Tier</td><td>Yes — GPT-3.5 unlimited</td></tr>
+          <tr><td>Best Known</td><td>GPT-4o, Code Interpreter, Plugins</td></tr>
+        </table>
+
+        <div class="page-footer">
+          <div class="footer-site">myaitoolsfinder.com</div>
+          <div class="page-number">44</div>
+        </div>
+      </div>
+
+      <!-- RIGHT PAGE -->
+      <div class="page" style="padding:36px 32px 28px;">
+        <div class="letter-tab" style="left:-1px;right:auto;border-radius:0 4px 4px 0;">C</div>
+
+        <div class="page-header">
+          <div class="page-header-title">ChatGPT — continued</div>
+          <div class="page-number">pg. 45</div>
+        </div>
+
+        <div class="cat-badge">AI Assistants</div>
+
+        <div class="section-heading">What It Does</div>
+        <div class="body-text">
+          ChatGPT is a large language model chatbot developed by OpenAI. It excels at natural language conversations, long-form writing, code generation, data analysis, and reasoning. With GPT-4o, it understands images, audio, and documents in a single context window.
+        </div>
+
+        <div class="section-heading">Best For</div>
+        <ul class="best-for-list">
+          <li>Content creators & copywriters</li>
+          <li>Developers & technical writers</li>
+          <li>Solopreneurs automating admin work</li>
+          <li>Students & researchers</li>
+        </ul>
+
+        <div class="section-heading">The Verdict</div>
+        <div class="body-text" style="font-style:italic;color:#5a3a1a;">
+          The most versatile AI tool available. If you use only one AI tool, make it this one — the free tier alone is more powerful than most paid alternatives.
+        </div>
+
+        <a href="https://chat.openai.com" class="visit-btn" target="_blank">Visit ChatGPT →</a>
+
+        <div class="page-footer">
+          <div class="footer-site">myaitoolsfinder.com</div>
+          <div class="page-number">45</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SPREAD 2: Midjourney
+═══════════════════════════════════════════ -->
+<div class="book-shell" id="spread-2" style="display:none;">
+  <div class="book-spine"><span class="spine-text">AI-CLOPEDIA · MYAITOOLSFINDER.COM</span></div>
+  <div class="book-3d">
+    <div class="spread">
+      <!-- LEFT PAGE -->
+      <div class="page page-left">
+        <div class="letter-tab">M</div>
+
+        <div class="page-header">
+          <div class="page-header-title">AI-clopedia · AI Design Tools</div>
+          <div class="page-number">pg. 172</div>
+        </div>
+
+        <div class="tool-logo-wrap">
+          <img src="https://logo.clearbit.com/midjourney.com" alt="Midjourney logo" onerror="this.src='https://ui-avatars.com/api/?name=MJ&background=1a1a2e&color=fff&size=64'">
+        </div>
+
+        <div class="tool-initial" style="color:#4a0080;">M</div>
+        <div class="tool-name">Midjourney</div>
+        <div class="tool-maker">by Midjourney, Inc. · est. 2022</div>
+
+        <div class="ornament-rule">✦</div>
+
+        <div class="tool-tagline">"The gold standard for AI image generation — unmatched in artistic quality."</div>
+
+        <table class="meta-table">
+          <tr><td>Category</td><td>AI Design · Image Generation</td></tr>
+          <tr><td>Pricing</td><td>Basic $10/mo · Standard $30/mo</td></tr>
+          <tr><td>Free Tier</td><td>No — paid plans only</td></tr>
+          <tr><td>Best Known</td><td>Photorealism, artistic styles, V6</td></tr>
+        </table>
+
+        <div class="page-footer">
+          <div class="footer-site">myaitoolsfinder.com</div>
+          <div class="page-number">172</div>
+        </div>
+      </div>
+
+      <!-- RIGHT PAGE -->
+      <div class="page" style="padding:36px 32px 28px;">
+        <div class="letter-tab" style="left:-1px;right:auto;border-radius:0 4px 4px 0;">M</div>
+
+        <div class="page-header">
+          <div class="page-header-title">Midjourney — continued</div>
+          <div class="page-number">pg. 173</div>
+        </div>
+
+        <div class="cat-badge">AI Design Tools</div>
+
+        <div class="section-heading">What It Does</div>
+        <div class="body-text">
+          Midjourney generates stunning, high-resolution images from text prompts via Discord. Its V6 model produces photorealistic results and artistic compositions that rival professional photography and illustration, making it the go-to tool for visual content creators.
+        </div>
+
+        <div class="section-heading">Best For</div>
+        <ul class="best-for-list">
+          <li>Graphic designers & visual artists</li>
+          <li>Social media content creators</li>
+          <li>Marketing teams & ad creatives</li>
+          <li>Game designers & concept artists</li>
+        </ul>
+
+        <div class="section-heading">The Verdict</div>
+        <div class="body-text" style="font-style:italic;color:#5a3a1a;">
+          Simply the best AI image generator for quality. The Discord-only interface is a quirk, but the output quality justifies the $10/month entry price completely.
+        </div>
+
+        <a href="https://midjourney.com" class="visit-btn" target="_blank">Visit Midjourney →</a>
+
+        <div class="page-footer">
+          <div class="footer-site">myaitoolsfinder.com</div>
+          <div class="page-number">173</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn" onclick="prevSpread()">◀ Previous</button>
+  <div class="nav-position" id="nav-pos">Cover · Page 1–2</div>
+  <button class="nav-btn" onclick="nextSpread()">Next ▶</button>
+</div>
+
+<!-- ALPHABET BAR -->
+<div class="alpha-bar">
+  <div class="label-pill" style="margin-right:4px;">Jump to letter:</div>
+  <script>
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(l=>{
+      document.write(`<button class="alpha-btn" onclick="alert('In full version, jumps to ${l} section')">${l}</button>`);
+    });
+  </script>
+</div>
+
+<div style="margin-top:16px;font-family:'Crimson Text',serif;font-style:italic;font-size:13px;color:#7a6040;text-align:center;">
+  ✦ This is a static mockup preview — Turn.js page-flip animation will be active in the final version ✦
+</div>
+
+<script>
+let current = 0;
+const spreads = ['spread-0','spread-1','spread-2'];
+const labels = ['Cover · Pages 1–2','ChatGPT · Pages 44–45','Midjourney · Pages 172–173'];
+
+function showSpread(n, btn){
+  spreads.forEach(id => document.getElementById(id).style.display='none');
+  document.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(spreads[n]).style.display='block';
+  if(btn) btn.classList.add('active');
+  current = n;
+  document.getElementById('nav-pos').textContent = labels[n];
+}
+function nextSpread(){
+  let n=(current+1)%spreads.length;
+  showSpread(n, document.querySelectorAll('.sel-btn')[n]);
+}
+function prevSpread(){
+  let n=(current-1+spreads.length)%spreads.length;
+  showSpread(n, document.querySelectorAll('.sel-btn')[n]);
+}
+</script>
+</body>
+</html>
