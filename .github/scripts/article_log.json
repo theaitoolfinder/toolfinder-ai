@@ -1,18 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-05-27",
-      "slot": "dinner",
-      "slug": "article-2026-05-27-pm",
-      "title": "AI Tools Digest — May 27, 2026 (Evening Edition)",
-      "type": "news_digest",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest 2026 evening",
-      "pair": "",
-      "words": 813
-    },
-    {
       "date": "2026-05-28",
       "slot": "dinner",
       "slug": "article-2026-05-28-pm",
@@ -777,6 +765,19 @@
       "partners": [
         "ElevenLabs"
       ]
+    },
+    {
+      "date": "2026-06-09",
+      "slot": "evening",
+      "slug": "ai-tools-digest-june-09-2026-evening-edition",
+      "title": "AI Tools Digest — June 09, 2026 (Evening Edition)",
+      "type": "news_digest",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools digest june 2026",
+      "pair": "",
+      "words": 817,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -843,6 +844,7 @@
     "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop"
   ]
 }
