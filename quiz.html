@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Kind of AI User Are You? — MyAI ToolsFinder</title>
+<meta name="description" content="Take the quiz! 8 questions to find your AI personality type: The Automator, The Creator, The Researcher, or The Hustler.">
+<meta property="og:title" content="What Kind of AI User Are You?">
+<meta property="og:description" content="8 questions. 4 personality types. 100% accurate (probably). Take the quiz!">
+<meta property="og:url" content="https://myaitoolsfinder.com/quiz.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<script src="/js/theme.js"></script>
+<style>
+:root {
+  --blue: #1a56db; --navy: #1e3a8a; --bg: #f0f6ff;
+  --text: #0d1f3c; --text-2: #1e3a5f; --border: #dce9ff;
+  --A: #7c3aed; --B: #0891b2; --C: #059669; --D: #dc2626;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+
+/* ── NAV ── */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px; background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 700; font-size: 15px; }
+.logo-mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--blue), var(--navy)); display: flex; align-items: center; justify-content: center; }
+.nav-back { font-size: 13px; color: var(--blue); text-decoration: none; font-weight: 500; }
+.nav-back:hover { text-decoration: underline; }
+
+/* ── WRAPPER ── */
+.quiz-wrap {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 40px 20px 60px; max-width: 720px; margin: 0 auto; width: 100%;
+}
+
+/* ── HERO INTRO ── */
+.hero {
+  text-align: center; padding: 20px 0 36px;
+}
+.hero-emoji { font-size: 64px; line-height: 1; margin-bottom: 16px; display: block; animation: bounce 2s ease-in-out infinite; }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero h1 {
+  font-size: clamp(26px, 5vw, 38px); font-weight: 900; line-height: 1.15;
+  color: var(--text); margin-bottom: 12px;
+}
+.hero h1 span { color: var(--blue); }
+.hero p { font-size: 16px; color: var(--text-2); max-width: 480px; margin: 0 auto 28px; line-height: 1.7; }
+.hero-types {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 32px;
+}
+.type-pill {
+  padding: 7px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; gap: 6px;
+}
+.pill-A { background: #ede9fe; color: var(--A); }
+.pill-B { background: #cffafe; color: var(--B); }
+.pill-C { background: #d1fae5; color: var(--C); }
+.pill-D { background: #fee2e2; color: var(--D); }
+.start-btn {
+  background: var(--blue); color: #fff; font-size: 17px; font-weight: 700;
+  padding: 16px 40px; border-radius: 999px; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,86,219,.35);
+  transition: transform .15s, box-shadow .15s;
+}
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,86,219,.4); }
+
+/* ── PROGRESS ── */
+.progress-wrap { width: 100%; margin-bottom: 28px; }
+.progress-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.progress-bar {
+  height: 6px; background: #dce9ff; border-radius: 999px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--blue), #60a5fa);
+  border-radius: 999px; transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── QUESTION CARD ── */
+.q-card {
+  width: 100%; background: #fff; border-radius: 20px;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  padding: 36px 32px;
+  animation: slideIn .35s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.q-number {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 10px;
+}
+.q-text {
+  font-size: clamp(18px, 3vw, 24px); font-weight: 800; line-height: 1.3;
+  color: var(--text); margin-bottom: 28px;
+}
+.q-text .q-emoji { display: block; font-size: 40px; margin-bottom: 10px; }
+
+/* ── ANSWER OPTIONS ── */
+.options { display: flex; flex-direction: column; gap: 12px; }
+.option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px; border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff; cursor: pointer; text-align: left; width: 100%;
+  font-family: 'Poppins', sans-serif;
+  transition: all .18s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+}
+.option:hover { border-color: var(--blue); background: #f0f6ff; transform: translateX(4px); }
+.option.selected { border-color: var(--blue); background: #eff6ff; }
+.option.correct { animation: pulse .3s ease; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+.opt-letter {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; letter-spacing: .5px;
+  transition: all .18s;
+}
+.opt-A .opt-letter { background: #ede9fe; color: var(--A); }
+.opt-B .opt-letter { background: #cffafe; color: var(--B); }
+.opt-C .opt-letter { background: #d1fae5; color: var(--C); }
+.opt-D .opt-letter { background: #fee2e2; color: var(--D); }
+.option:hover .opt-letter,
+.option.selected .opt-letter { transform: scale(1.1); }
+.opt-text { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+/* ── RESULT ── */
+.result-card {
+  width: 100%; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.12);
+  animation: resultReveal .5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes resultReveal { from { opacity: 0; transform: scale(.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.result-hero {
+  padding: 48px 36px 36px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.result-hero::before {
+  content: ''; position: absolute; inset: 0;
+  opacity: .12; background: radial-gradient(circle at 50% 0%, white, transparent 70%);
+}
+.result-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.2); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 999px; margin-bottom: 16px;
+  border: 1.5px solid rgba(255,255,255,.3);
+}
+.result-emoji { font-size: 80px; display: block; margin-bottom: 12px; line-height: 1; }
+.result-type {
+  font-size: clamp(28px, 6vw, 42px); font-weight: 900; color: #fff;
+  line-height: 1; margin-bottom: 8px;
+}
+.result-tagline { font-size: 15px; color: rgba(255,255,255,.85); font-weight: 500; line-height: 1.5; }
+
+/* Score bar */
+.score-bars { padding: 28px 32px; background: #fff; }
+.score-bars-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-2); margin-bottom: 14px; }
+.score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.score-label { font-size: 12px; font-weight: 600; width: 100px; flex-shrink: 0; }
+.score-track { flex: 1; height: 8px; background: #f0f6ff; border-radius: 999px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 999px; transition: width 1s cubic-bezier(.4,0,.2,1); }
+.score-pct { font-size: 12px; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+
+/* Description */
+.result-body { padding: 0 32px 28px; background: #fff; }
+.result-desc-box {
+  background: #f8fafc; border-radius: 14px; padding: 20px 22px;
+  border-left: 4px solid; margin-bottom: 24px;
+  font-size: 15px; line-height: 1.75; color: var(--text-2);
+}
+
+/* Tools list */
+.tools-title {
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-2); margin-bottom: 12px;
+}
+.tools-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.tool-chip {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  border: 1.5px solid; text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.tool-chip:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.tool-chip img { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; }
+
+/* CTA row */
+.result-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+.btn-share {
+  flex: 1; min-width: 160px; padding: 13px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 700; cursor: pointer; border: none;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all .18s;
+}
+.btn-retake {
+  flex: 1; min-width: 140px; padding: 12px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--border); background: #fff; color: var(--text-2);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all .18s;
+}
+.btn-retake:hover { border-color: var(--blue); color: var(--blue); }
+.btn-dir {
+  flex: 1; min-width: 140px; padding: 12px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--blue); color: var(--blue); background: transparent;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; transition: all .18s;
+}
+.btn-dir:hover { background: #eff6ff; }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--text); color: #fff; padding: 12px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; z-index: 999;
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Hidden */
+.hidden { display: none !important; }
+
+/* Responsive */
+@media (max-width: 500px) {
+  .q-card { padding: 24px 18px; }
+  .result-hero { padding: 36px 20px 24px; }
+  .result-body, .score-bars { padding: 0 20px 20px; }
+  .score-bars { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity=".55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity=".55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity=".25"/>
+        <path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    MyAI ToolsFinder
+  </a>
+  <a href="index.html" class="nav-back">← Back to Directory</a>
+</nav>
+
+<div class="quiz-wrap">
+
+  <!-- ── INTRO ── -->
+  <div id="intro-screen" class="hero">
+    <span class="hero-emoji">🧠</span>
+    <h1>What Kind of <span>AI User</span><br>Are You?</h1>
+    <p>8 questions. 4 personality types. Find out if you're a workflow wizard, a creative powerhouse, a knowledge nerd, or a pure grindset machine.</p>
+    <div class="hero-types">
+      <span class="type-pill pill-A">🤖 The Automator</span>
+      <span class="type-pill pill-B">🎨 The Creator</span>
+      <span class="type-pill pill-C">🔍 The Researcher</span>
+      <span class="type-pill pill-D">💼 The Hustler</span>
+    </div>
+    <button class="start-btn" onclick="startQuiz()">Take the Quiz →</button>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <div id="quiz-screen" class="hidden" style="width:100%">
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="q-label">Question 1 of 8</span>
+        <span id="q-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div id="q-card" class="q-card">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
+  <!-- ── RESULT ── -->
+  <div id="result-screen" class="hidden" style="width:100%">
+    <!-- injected by JS -->
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Copied! Share it with your friends</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  QUESTIONS
+// ═══════════════════════════════════════════
+var QUESTIONS = [
+  {
+    emoji: "⏰",
+    text: "When you wake up in the morning, your first thought is...",
+    opts: [
+      { type: "A", text: '"What boring task can I automate away today?"' },
+      { type: "B", text: '"What can I make that'll look amazing?"' },
+      { type: "C", text: '"What interesting rabbit hole should I go down?"' },
+      { type: "D", text: '"How do I make more money before lunch?"' }
+    ]
+  },
+  {
+    emoji: "🛠️",
+    text: "Your ideal AI tool does what, exactly?",
+    opts: [
+      { type: "A", text: "Runs complex workflows while I sleep" },
+      { type: "B", text: "Turns my rough ideas into beautiful outputs" },
+      { type: "C", text: "Answers literally any question I throw at it" },
+      { type: "D", text: "Books meetings, writes emails, and closes deals" }
+    ]
+  },
+  {
+    emoji: "💻",
+    text: "Which of these is always open in your browser?",
+    opts: [
+      { type: "A", text: "Zapier or Make.com — my automation dashboard" },
+      { type: "B", text: "Canva, Figma, or Midjourney" },
+      { type: "C", text: "ChatGPT or Perplexity — constant Q&A sessions" },
+      { type: "D", text: "LinkedIn, Apollo, or my CRM" }
+    ]
+  },
+  {
+    emoji: "😅",
+    text: "What's your biggest AI-related fear?",
+    opts: [
+      { type: "A", text: "Doing something manually that could've been automated" },
+      { type: "B", text: "My content looking obviously AI-generated" },
+      { type: "C", text: "Getting confidently wrong information from AI" },
+      { type: "D", text: "My competitors deploying AI before I do" }
+    ]
+  },
+  {
+    emoji: "👥",
+    text: "How do your friends or colleagues describe you?",
+    opts: [
+      { type: "A", text: '"The one who has a system for literally everything"' },
+      { type: "B", text: '"The creative one who makes cool stuff"' },
+      { type: "C", text: '"Always deep in research, always has random facts"' },
+      { type: "D", text: '"Never stops working on a new business idea"' }
+    ]
+  },
+  {
+    emoji: "📊",
+    text: "How do you measure a successful week?",
+    opts: [
+      { type: "A", text: "Hours saved through automation" },
+      { type: "B", text: "Number of pieces published or projects shipped" },
+      { type: "C", text: "New things I've learned or problems I've solved" },
+      { type: "D", text: "Revenue generated or new leads closed" }
+    ]
+  },
+  {
+    emoji: "🤔",
+    text: "Someone asks you \"what do you use AI for?\" You say...",
+    opts: [
+      { type: "A", text: '"I\'ve automated my entire back-office. My business basically runs itself."' },
+      { type: "B", text: '"I use it to create content, images, and video at 10× speed."' },
+      { type: "C", text: '"Research, analysis, writing — it\'s like a brilliant assistant 24/7."' },
+      { type: "D", text: '"Lead gen, outreach, sales copy — it\'s my unfair advantage."' }
+    ]
+  },
+  {
+    emoji: "🐾",
+    text: "Pick your AI spirit animal:",
+    opts: [
+      { type: "A", text: "🤖 A robot that never sleeps and never complains" },
+      { type: "B", text: "🦚 A peacock — stunning, expressive, impossible to ignore" },
+      { type: "C", text: "🦉 An owl — wise, curious, always asking \"but why?\"" },
+      { type: "D", text: "🦈 A shark — always moving, always hunting" }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════
+//  RESULTS
+// ═══════════════════════════════════════════
+var RESULTS = {
+  A: {
+    emoji: "🤖",
+    type: "The Automator",
+    color: "#7c3aed",
+    bg: "linear-gradient(135deg, #4c1d95, #7c3aed)",
+    borderColor: "#7c3aed",
+    bgLight: "#ede9fe",
+    tagline: "You didn't come here to work. You came here to build systems that work for you.",
+    desc: "You see manual tasks the way a shark sees still water — unnecessary and slightly offensive. Your workflows have workflows. You've automated things that probably didn't need automating. You once spent 4 hours setting up an automation to save 10 minutes a week, and you stand by that decision 100%.\n\nYour friends are impressed by how much you get done. Your accountant is confused. Somewhere, a Zapier engineer is buying a boat because of you.",
+    tools: [
+      { name: "Make.com", domain: "make.com", url: "https://make.com" },
+      { name: "Zapier", domain: "zapier.com", url: "https://zapier.com" },
+      { name: "n8n", domain: "n8n.io", url: "https://n8n.io" },
+      { name: "ActivePieces", domain: "activepieces.com", url: "https://activepieces.com" },
+      { name: "Reclaim.ai", domain: "reclaim.ai", url: "https://reclaim.ai" },
+      { name: "Notion AI", domain: "notion.so", url: "https://notion.so" }
+    ],
+    article: { text: "Read: Zapier vs Make.com — Which Wins in 2026?", url: "articles/zapier-vs-make-automation.html" }
+  },
+  B: {
+    emoji: "🎨",
+    type: "The Creator",
+    color: "#0891b2",
+    bg: "linear-gradient(135deg, #0e7490, #0891b2)",
+    borderColor: "#0891b2",
+    bgLight: "#cffafe",
+    tagline: "You see a blank canvas where others see a blank page.",
+    desc: "You treat AI as the world's most patient creative collaborator — one that never judges your 47th revision, never complains about your '5-minute' feedback call that runs two hours, and actually thinks 'what if we made it more purple?' is a valid creative direction.\n\nYou've generated more AI images than you've eaten meals this week. Every project is a chance to make something people stop scrolling for. You're not just using AI — you're making things with it that simply wouldn't exist without you.",
+    tools: [
+      { name: "Midjourney", domain: "midjourney.com", url: "https://midjourney.com" },
+      { name: "Canva AI", domain: "canva.com", url: "https://canva.com" },
+      { name: "ElevenLabs", domain: "elevenlabs.io", url: "https://elevenlabs.io" },
+      { name: "Runway ML", domain: "runwayml.com", url: "https://runwayml.com" },
+      { name: "Adobe Firefly", domain: "firefly.adobe.com", url: "https://firefly.adobe.com" },
+      { name: "Gamma", domain: "gamma.app", url: "https://gamma.app" }
+    ],
+    article: { text: "Read: Create Videos with AI — No Camera Workflow 2026", url: "articles/create-videos-with-ai-no-camera-workflow-2026.html" }
+  },
+  C: {
+    emoji: "🔍",
+    type: "The Researcher",
+    color: "#059669",
+    bg: "linear-gradient(135deg, #065f46, #059669)",
+    borderColor: "#059669",
+    bgLight: "#d1fae5",
+    tagline: "You don't just use AI — you interrogate it.",
+    desc: "You've been using AI like a supercharged search engine since day one, and you are quietly appalled by how everyone else is wasting it on 'write me a tweet.' You go deep. You verify sources. You've cited Perplexity in casual conversation. You've said 'well, actually...' at least once this week.\n\nFor you, the best AI feature is the one that helps you understand something you didn't know an hour ago. You're not just smarter with AI — you're genuinely curious, and AI finally gives that curiosity somewhere worth going.",
+    tools: [
+      { name: "Perplexity AI", domain: "perplexity.ai", url: "https://perplexity.ai" },
+      { name: "ChatGPT", domain: "openai.com", url: "https://chat.openai.com" },
+      { name: "Claude", domain: "anthropic.com", url: "https://claude.ai" },
+      { name: "NotebookLM", domain: "notebooklm.google.com", url: "https://notebooklm.google.com" },
+      { name: "Elicit", domain: "elicit.com", url: "https://elicit.com" },
+      { name: "Consensus", domain: "consensus.app", url: "https://consensus.app" }
+    ],
+    article: { text: "Read: AI Research Workflow That Saves 4 Hours", url: "articles/ai-research-workflow-saves-4-hours-2026.html" }
+  },
+  D: {
+    emoji: "💼",
+    type: "The Hustler",
+    color: "#dc2626",
+    bg: "linear-gradient(135deg, #991b1b, #dc2626)",
+    borderColor: "#dc2626",
+    bgLight: "#fee2e2",
+    tagline: "ROI. Revenue. Results. In that order.",
+    desc: "You don't care if AI is 'interesting' — you care if it makes you money. You've pitched AI tools to your team, your clients, your business partner, and your barber. You measure everything in leads, conversions, and revenue. You are not using AI tools, you are deploying them like weapons in a very aggressive business strategy.\n\nThe moment an AI tool stops generating ROI, it's gone. No sentiment. No loyalty. You've probably already automated your prospecting, your follow-ups, and your invoicing. If there's money to be made, you'll find the AI that helps you get there first.",
+    tools: [
+      { name: "Apollo.io", domain: "apollo.io", url: "https://apollo.io" },
+      { name: "Instantly.ai", domain: "instantly.ai", url: "https://instantly.ai" },
+      { name: "Jasper AI", domain: "jasper.ai", url: "https://jasper.ai" },
+      { name: "Surfer SEO", domain: "surferseo.com", url: "https://surferseo.com" },
+      { name: "HubSpot AI", domain: "hubspot.com", url: "https://hubspot.com" },
+      { name: "Copy.ai", domain: "copy.ai", url: "https://copy.ai" }
+    ],
+    article: { text: "Read: The 5-Tool AI Workflow That Replaced a Marketing Team", url: "articles/the-5-tool-ai-workflow-that-replaced-a-marketing-team-in-2026.html" }
+  }
+};
+
+// ═══════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════
+var scores = { A: 0, B: 0, C: 0, D: 0 };
+var currentQ = 0;
+var answered = false;
+
+function startQuiz() {
+  document.getElementById('intro-screen').classList.add('hidden');
+  document.getElementById('quiz-screen').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  var q = QUESTIONS[currentQ];
+  var pct = Math.round((currentQ / QUESTIONS.length) * 100);
+  document.getElementById('q-label').textContent = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
+  document.getElementById('q-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  var html = '<div class="q-number">Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length + '</div>';
+  html += '<div class="q-text"><span class="q-emoji">' + q.emoji + '</span>' + q.text + '</div>';
+  html += '<div class="options">';
+  q.opts.forEach(function(opt, i) {
+    var letters = ['A','B','C','D'];
+    var l = letters[i];
+    html += '<button class="option opt-' + opt.type + '" onclick="pickAnswer(\'' + opt.type + '\', this)">';
+    html += '<div class="opt-letter">' + l + '</div>';
+    html += '<div class="opt-text">' + opt.text + '</div>';
+    html += '</button>';
+  });
+  html += '</div>';
+
+  var card = document.getElementById('q-card');
+  card.style.animation = 'none';
+  card.offsetHeight; // reflow
+  card.style.animation = '';
+  card.innerHTML = html;
+}
+
+function pickAnswer(type, btn) {
+  if (answered) return;
+  answered = true;
+  scores[type]++;
+  btn.classList.add('selected', 'correct');
+
+  setTimeout(function() {
+    currentQ++;
+    if (currentQ < QUESTIONS.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 380);
+}
+
+function showResult() {
+  // Update progress to 100%
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('q-label').textContent = 'Complete!';
+  document.getElementById('q-pct').textContent = '100%';
+
+  // Find winner
+  var winner = 'A';
+  var max = 0;
+  ['A','B','C','D'].forEach(function(t) {
+    if (scores[t] > max) { max = scores[t]; winner = t; }
+  });
+
+  var r = RESULTS[winner];
+  var total = QUESTIONS.length;
+
+  // Score percentages
+  var pcts = {};
+  ['A','B','C','D'].forEach(function(t) { pcts[t] = Math.round((scores[t] / total) * 100); });
+
+  // Score bars HTML
+  var scoreLabels = { A: '🤖 Automator', B: '🎨 Creator', C: '🔍 Researcher', D: '💼 Hustler' };
+  var scoreColors = { A: '#7c3aed', B: '#0891b2', C: '#059669', D: '#dc2626' };
+  var scoreBarsHtml = '';
+  ['A','B','C','D'].forEach(function(t) {
+    scoreBarsHtml += '<div class="score-row">';
+    scoreBarsHtml += '<div class="score-label" style="color:' + scoreColors[t] + ';font-size:12px;font-weight:700;">' + scoreLabels[t] + '</div>';
+    scoreBarsHtml += '<div class="score-track"><div class="score-fill" id="sf-' + t + '" style="background:' + scoreColors[t] + ';width:0%"></div></div>';
+    scoreBarsHtml += '<div class="score-pct" style="color:' + scoreColors[t] + '">' + pcts[t] + '%</div>';
+    scoreBarsHtml += '</div>';
+  });
+
+  // Tools HTML
+  var toolsHtml = '';
+  r.tools.forEach(function(tool) {
+    toolsHtml += '<a href="' + tool.url + '" target="_blank" class="tool-chip" style="border-color:' + r.color + '20;color:' + r.color + ';background:' + r.bgLight + '">';
+    toolsHtml += '<img src="https://logo.clearbit.com/' + tool.domain + '" alt="' + tool.name + '" onerror="this.style.display=\'none\'">';
+    toolsHtml += tool.name + '</a>';
+  });
+
+  // Desc paragraphs
+  var descParts = r.desc.split('\n\n');
+  var descHtml = descParts.map(function(p) { return '<p>' + p + '</p>'; }).join('');
+
+  var html = '<div class="result-card">';
+
+  // Hero
+  html += '<div class="result-hero" style="background:' + r.bg + '">';
+  html += '<div class="result-badge">🎉 Your Result</div>';
+  html += '<span class="result-emoji">' + r.emoji + '</span>';
+  html += '<div class="result-type">' + r.type + '</div>';
+  html += '<div class="result-tagline">' + r.tagline + '</div>';
+  html += '</div>';
+
+  // Score bars
+  html += '<div class="score-bars">';
+  html += '<div class="score-bars-title">Your AI DNA breakdown</div>';
+  html += scoreBarsHtml;
+  html += '</div>';
+
+  // Body
+  html += '<div class="result-body">';
+  html += '<div class="result-desc-box" style="border-left-color:' + r.color + ';background:' + r.bgLight + '20">' + descHtml + '</div>';
+  html += '<div class="tools-title">Your Perfect AI Stack 🛠️</div>';
+  html += '<div class="tools-grid">' + toolsHtml + '</div>';
+  html += '<div class="tools-title" style="margin-bottom:10px;">Keep Reading 📚</div>';
+  html += '<a href="' + r.article.url + '" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:' + r.color + ';text-decoration:none;margin-bottom:24px;">→ ' + r.article.text + '</a>';
+  html += '<div class="result-cta">';
+  html += '<button class="btn-share" style="background:' + r.color + ';color:#fff" onclick="shareResult(\'' + r.type + '\')">🔗 Share Your Result</button>';
+  html += '<a href="index.html" class="btn-dir">🔍 Find My AI Tools →</a>';
+  html += '<button class="btn-retake" onclick="retake()">↩ Retake Quiz</button>';
+  html += '</div></div></div>';
+
+  document.getElementById('quiz-screen').classList.add('hidden');
+  var rs = document.getElementById('result-screen');
+  rs.classList.remove('hidden');
+  rs.innerHTML = html;
+
+  // Animate score bars after render
+  setTimeout(function() {
+    ['A','B','C','D'].forEach(function(t) {
+      var el = document.getElementById('sf-' + t);
+      if (el) el.style.width = pcts[t] + '%';
+    });
+  }, 200);
+}
+
+function shareResult(type) {
+  var url = window.location.href.split('?')[0] + '?result=' + encodeURIComponent(type);
+  var text = 'I just found out I\'m "' + type + '" on the AI personality quiz! What are you? 👉 ' + url;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      showToast('✅ Copied! Paste it anywhere to share');
+    });
+  } else {
+    // Fallback
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('✅ Copied! Paste it anywhere to share');
+  }
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
+
+function retake() {
+  scores = { A: 0, B: 0, C: 0, D: 0 };
+  currentQ = 0;
+  answered = false;
+  document.getElementById('result-screen').classList.add('hidden');
+  document.getElementById('quiz-screen').classList.remove('hidden');
+  document.getElementById('progress-fill').style.width = '0%';
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Auto-jump to result from URL param (for shared links)
+(function() {
+  var p = new URLSearchParams(window.location.search).get('result');
+  if (p && RESULTS[p]) {
+    scores[p] = 8;
+    showResult();
+    document.getElementById('intro-screen').classList.add('hidden');
+  }
+})();
+</script>
+
+<div id="toast" class="toast"></div>
+</body>
+</html>
