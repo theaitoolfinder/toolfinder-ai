@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script src="js/tutorials-data.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
 <meta charset="utf-8"/>
@@ -258,6 +259,8 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .visit:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(217,119,6,.38)}
 .prompt-action-btn{flex:1;padding:6px 5px;border-radius:7px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 6px rgba(124,58,237,.28);text-decoration:none;display:flex;align-items:center;justify-content:center;min-height:30px;white-space:nowrap;letter-spacing:.01em}
 .prompt-action-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(124,58,237,.38);color:#fff}
+.tutorial-btn{flex:1;padding:6px 5px;border-radius:7px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border:none;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 6px rgba(14,165,233,.28);text-decoration:none;display:flex;align-items:center;justify-content:center;min-height:30px;white-space:nowrap;letter-spacing:.01em}
+.tutorial-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(14,165,233,.38);color:#fff}
 .compare-btn{flex:1;padding:6px 5px;border-radius:7px;background:transparent;color:var(--text-2);border:1px solid var(--border);font-size:10.5px;font-weight:600;cursor:pointer;transition:all .15s;min-height:30px;white-space:nowrap}
 .compare-btn:hover{color:var(--primary);border-color:var(--primary);background:var(--primary-light)}
 .empty{padding:36px;text-align:center;color:var(--text-dim);border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface-2)}
@@ -960,6 +963,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
       <li><a href="#compare" onclick="document.getElementById('compare').scrollIntoView({behavior:'smooth'});return false;">Compare</a></li>
       <li><a href="articles.html">Articles</a></li>
       <li><a href="prompts.html">Prompts</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
       <li><a href="quiz.html" style="color:var(--primary);font-weight:600">Quiz</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -1023,6 +1027,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <a href="/" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> AI Tools Directory</a>
     <a href="articles.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Articles</a>
     <a href="prompts.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 8h6M9 16h4M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg> Sample Prompts</a>
+    <a href="tutorials.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Tutorials</a>
     <a href="quiz.html" style="display:flex;align-items:center;gap:10px;color:var(--primary);font-weight:600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg> AI Personality Quiz</a>
     <a href="about.html" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg> About</a>
     <a href="#compare" onclick="toggleMenu();document.getElementById('compare').scrollIntoView({behavior:'smooth'})" style="display:flex;align-items:center;gap:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10M9 10l3-3 3 3"/></svg> Compare Tools</a>
@@ -2144,7 +2149,9 @@ function cardHTML(i){
   const rr=(t.rating||t.users)?"<div class=\"ratings\">"+( t.rating?"<span class=\"stars\">"+starHTML(t.rating)+"<b>&nbsp;"+t.rating+"</b>"+(t.reviews?" <span style=\"color:var(--text-dim);font-weight:400\">("+t.reviews+")</span>":"")+"</span>":"")+( t.users?" <span class=\"users\"><b>"+t.users+"</b> users</span>":"")+"</div>":"";
   const goUrl="go.html?url="+encodeURIComponent(url)+"&name="+encodeURIComponent(t.name);
   const slug=t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+goUrl+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Free &rarr;</a><a class=\"prompt-action-btn\" href=\"prompts.html#"+slug+"\" onclick=\"event.stopPropagation()\" title=\"Free AI prompts for "+t.name+"\">&#x1F4A1; Prompt</a><button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2696; Compare</button></div></article>";
+  const hasTut=window.TUTORIALS_DATA&&window.TUTORIALS_DATA[slug];
+  const tutBtn=hasTut?"<a class=\"tutorial-btn\" href=\"tutorials/view.html?tool="+slug+"&level=basic\" onclick=\"event.stopPropagation()\" title=\"Step-by-step tutorial for "+t.name+"\">&#x1F393; Tutorial</a>":"";
+  return"<article class=\"card"+(t.featured?" featured":"")+"\"><div class=\"top\"><div class=\"logo\"><img src=\""+favicon(t.domain||"")+"\" alt=\""+t.name+"\" loading=\"lazy\" onerror=\"this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>"+initials(t.name)+"</div>')\"></div><div class=\"meta\"><h3>"+t.name+"</h3><div class=\"badges\"><span class=\"cat-badge\">"+t.cat+"</span>"+(t.featured?"<span class=\"feat-badge\">Featured</span>":"")+(t.verified?"<span class=\"verified-mark\">&check; Verified</span>":"")+"</div></div></div>"+rr+"<div class=\"tag\">"+t.tag+"</div><div><span class=\"pill\">"+t.pill+"</span></div><div class=\"actions\"><a class=\"visit\" href=\""+goUrl+"\" target=\"_blank\" rel=\""+rel+"\" onclick=\"trackVisit("+i+")\">Try Free &rarr;</a><a class=\"prompt-action-btn\" href=\"prompts.html#"+slug+"\" onclick=\"event.stopPropagation()\" title=\"Free AI prompts for "+t.name+"\">&#x1F4A1; Prompt</a>"+tutBtn+"<button class=\"compare-btn\" id=\"cmpbtn"+i+"\" data-idx=\""+i+"\" onclick=\"toggleCompare("+i+")\">&#x2696; Compare</button></div></article>";
 }
 function rowHTML(r){
   if(!r.items.length)return"<section class=\"row\"><div class=\"row-head\"><h2>"+r.title+"</h2></div><div class=\"empty\">No tools match — try another option.</div></section>";

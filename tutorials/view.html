@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title id="page-title">Tutorial — MyAI ToolsFinder</title>
+<meta name="description" id="page-desc" content="Step-by-step AI tool tutorials"/>
+<link rel="icon" href="../favicon.ico"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f8faff;--surface:#fff;--primary:#1a56db;--primary-light:#eff6ff;
+  --text:#0f172a;--text-dim:#64748b;--border:#e2e8f0;--border-soft:rgba(0,0,0,.07);
+  --hero-grad:linear-gradient(135deg,#e0eaff 0%,#f0f7ff 40%,#e8f5ff 100%);
+  --card-shadow:0 2px 12px rgba(0,0,0,.07);--radius:14px;
+  --success:#16a34a;--warning:#d97706;--info:#0ea5e9;
+}
+[data-theme=dark]{
+  --bg:#0f172a;--surface:#1e293b;--primary:#3b82f6;--primary-light:#1e3a5f;
+  --text:#f1f5f9;--text-dim:#94a3b8;--border:#334155;--border-soft:rgba(255,255,255,.08);
+  --hero-grad:linear-gradient(135deg,#1a2a4a 0%,#0f172a 100%);
+  --card-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;
+  padding:0 24px;gap:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.85);border-bottom:1px solid var(--border-soft);
+  box-shadow:0 1px 12px rgba(0,0,0,.06)}
+[data-theme=dark] nav{background:rgba(15,23,42,.85)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:1.05rem}
+.nav-logo-mark{width:32px;height:32px;background:var(--primary);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-mark svg{width:18px;height:18px}
+.nav-links{display:flex;gap:4px;align-items:center;margin-left:auto}
+.nav-links a{padding:6px 14px;border-radius:8px;text-decoration:none;color:var(--text-dim);
+  font-size:.875rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--primary);background:var(--primary-light)}
+.nav-links a.active{color:var(--primary);font-weight:600}
+.btn-nav-cta{background:var(--primary);color:#fff!important;border-radius:20px;padding:7px 18px!important}
+.btn-nav-cta:hover{opacity:.9;background:var(--primary)!important}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);
+  background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:64px;left:0;height:3px;background:var(--primary);width:0%;
+  transition:width .1s;z-index:99}
+
+/* ── HERO STRIP ── */
+.tut-hero{background:var(--hero-grad);padding:40px 24px 32px;border-bottom:1px solid var(--border-soft)}
+.tut-hero-inner{max-width:900px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text-dim);margin-bottom:16px}
+.breadcrumb a{color:var(--text-dim);text-decoration:none}
+.breadcrumb a:hover{color:var(--primary)}
+.breadcrumb span{color:var(--text-dim)}
+.tut-hero-top{display:flex;align-items:flex-start;gap:20px}
+.tool-logo-wrap{width:64px;height:64px;border-radius:16px;background:var(--surface);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  box-shadow:var(--card-shadow);border:1px solid var(--border-soft)}
+.tool-logo-wrap img{width:44px;height:44px;object-fit:contain}
+.tool-logo-fallback{width:44px;height:44px;border-radius:10px;background:var(--primary);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem}
+.tut-hero-meta h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:6px}
+.tut-hero-meta .sub{color:var(--text-dim);font-size:.9rem}
+.level-tabs{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.level-tab{padding:8px 20px;border-radius:20px;border:2px solid var(--border);
+  background:var(--surface);color:var(--text-dim);font-size:.85rem;font-weight:600;
+  cursor:pointer;transition:.2s;display:flex;align-items:center;gap:7px;text-decoration:none}
+.level-tab:hover{border-color:var(--primary);color:var(--primary)}
+.level-tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.level-tab.locked{cursor:not-allowed;opacity:.6}
+.level-tab .lock-icon{font-size:.75rem}
+.duration-badge{display:inline-flex;align-items:center;gap:5px;background:var(--surface);
+  border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.78rem;
+  color:var(--text-dim);margin-top:12px}
+
+/* ── MAIN LAYOUT ── */
+.tut-layout{max-width:900px;margin:0 auto;padding:36px 24px;display:grid;
+  grid-template-columns:1fr 260px;gap:32px;align-items:start}
+@media(max-width:768px){.tut-layout{grid-template-columns:1fr;padding:24px 16px}}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;gap:28px}
+.step-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border-soft);
+  box-shadow:var(--card-shadow);overflow:hidden;transition:.3s}
+.step-header{display:flex;align-items:center;gap:14px;padding:20px 24px;cursor:pointer}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--primary-light);
+  color:var(--primary);font-weight:700;font-size:.9rem;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.step-card.active .step-num{background:var(--primary);color:#fff}
+.step-title{font-weight:600;font-size:1rem;flex:1}
+.step-chevron{font-size:.75rem;color:var(--text-dim);transition:.2s}
+.step-card.active .step-chevron{transform:rotate(180deg)}
+.step-body{padding:0 24px 24px;display:none}
+.step-card.active .step-body{display:block}
+.step-body p{color:var(--text-dim);font-size:.9rem;margin-bottom:12px}
+.step-body ul,.step-body ol{color:var(--text-dim);font-size:.9rem;padding-left:20px;margin-bottom:12px}
+.step-body li{margin-bottom:6px}
+.step-body strong{color:var(--text)}
+.step-body em{color:var(--primary);font-style:normal;font-weight:500}
+.callout{border-radius:10px;padding:14px 16px;font-size:.85rem;margin-top:14px;
+  display:flex;align-items:flex-start;gap:10px}
+.callout-tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d}
+.callout-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8}
+.callout-warning{background:#fffbeb;border:1px solid #fde68a;color:#b45309}
+.callout-success{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+[data-theme=dark] .callout-tip{background:#052e16;border-color:#166534;color:#86efac}
+[data-theme=dark] .callout-info{background:#1e3a5f;border-color:#1d4ed8;color:#93c5fd}
+[data-theme=dark] .callout-warning{background:#451a03;border-color:#92400e;color:#fcd34d}
+[data-theme=dark] .callout-success{background:#022c22;border-color:#065f46;color:#6ee7b7}
+.callout-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.code-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  padding:14px 16px;font-family:monospace;font-size:.82rem;color:var(--text);
+  margin:12px 0;line-height:1.6;overflow-x:auto;white-space:pre-wrap}
+.step-nav{display:flex;gap:12px;margin-top:20px}
+.step-nav button{padding:9px 20px;border-radius:20px;border:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;transition:.2s}
+.btn-prev{background:var(--surface);border:1px solid var(--border)!important;
+  color:var(--text-dim)}
+.btn-prev:hover{border-color:var(--primary)!important;color:var(--primary)}
+.btn-next{background:var(--primary);color:#fff}
+.btn-next:hover{opacity:.9}
+.step-complete{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;
+  border-radius:20px;background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;
+  font-size:.82rem;font-weight:600;margin-top:16px;cursor:pointer}
+[data-theme=dark] .step-complete{background:#052e16;border-color:#166534;color:#86efac}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:84px}
+.sidebar-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border-soft);
+  box-shadow:var(--card-shadow);padding:20px}
+.sidebar-card h3{font-size:.875rem;font-weight:700;margin-bottom:14px;color:var(--text)}
+.toc-list{list-style:none}
+.toc-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:.82rem;
+  color:var(--text-dim);cursor:pointer;transition:.2s;display:flex;align-items:center;gap:8px}
+.toc-list li:last-child{border:none}
+.toc-list li:hover{color:var(--primary)}
+.toc-list li.toc-active{color:var(--primary);font-weight:600}
+.toc-list li .toc-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.6rem;transition:.2s}
+.toc-list li.toc-done .toc-check{background:var(--primary);border-color:var(--primary);color:#fff}
+.tool-info-card{text-align:center}
+.tool-info-logo{width:56px;height:56px;border-radius:14px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:1px solid var(--border)}
+.tool-info-logo img{width:38px;height:38px;object-fit:contain}
+.tool-info-name{font-weight:700;margin-bottom:4px}
+.tool-info-tag{font-size:.78rem;color:var(--text-dim);margin-bottom:14px}
+.btn-try{display:block;background:linear-gradient(135deg,var(--primary),#4f8ef7);
+  color:#fff;border-radius:20px;padding:11px 20px;text-decoration:none;font-weight:600;
+  font-size:.875rem;text-align:center;transition:.2s}
+.btn-try:hover{opacity:.9;transform:translateY(-1px)}
+.progress-ring{display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:12px;font-size:.78rem;color:var(--text-dim)}
+.progress-dots{display:flex;gap:4px}
+.progress-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:.2s}
+.progress-dot.done{background:var(--primary)}
+
+/* ── LOCK WALL ── */
+#lock-wall{display:none;flex-direction:column;align-items:center;text-align:center;
+  padding:60px 24px;background:var(--surface);border-radius:var(--radius);
+  border:1px solid var(--border-soft);box-shadow:var(--card-shadow);gap:16px}
+#lock-wall .lock-icon-big{font-size:3rem;margin-bottom:8px}
+#lock-wall h2{font-size:1.4rem;font-weight:700}
+#lock-wall p{color:var(--text-dim);font-size:.9rem;max-width:380px}
+.btn-unlock{background:linear-gradient(135deg,var(--primary),#4f8ef7);color:#fff;
+  border:none;border-radius:24px;padding:13px 32px;font-family:'Poppins',sans-serif;
+  font-size:.95rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-unlock:hover{opacity:.9;transform:translateY(-1px)}
+.unlock-note{font-size:.78rem;color:var(--text-dim)}
+
+/* ── SUBSCRIBE MODAL ── */
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:999;align-items:center;justify-content:center;padding:20px}
+#modal-overlay.show{display:flex}
+.modal{background:var(--surface);border-radius:20px;padding:40px 32px;max-width:440px;
+  width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h2{font-size:1.5rem;font-weight:700;margin-bottom:10px}
+.modal p{color:var(--text-dim);font-size:.9rem;margin-bottom:24px}
+.modal-perks{list-style:none;text-align:left;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
+.modal-perks li{display:flex;align-items:center;gap:10px;font-size:.875rem}
+.modal-perks li::before{content:"✓";width:20px;height:20px;border-radius:50%;
+  background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;flex-shrink:0}
+.modal-input{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--border);
+  font-family:'Poppins',sans-serif;font-size:.875rem;background:var(--bg);color:var(--text);
+  margin-bottom:12px;outline:none}
+.modal-input:focus{border-color:var(--primary)}
+.btn-subscribe{width:100%;background:linear-gradient(135deg,var(--primary),#4f8ef7);
+  color:#fff;border:none;border-radius:12px;padding:14px;font-family:'Poppins',sans-serif;
+  font-size:.95rem;font-weight:700;cursor:pointer;transition:.2s;margin-bottom:10px}
+.btn-subscribe:hover{opacity:.9}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;
+  font-size:1.4rem;cursor:pointer;color:var(--text-dim)}
+.modal-skip{font-size:.78rem;color:var(--text-dim);cursor:pointer;text-decoration:underline}
+
+/* ── COMPLETION BANNER ── */
+#completion-banner{display:none;background:linear-gradient(135deg,#dcfce7,#f0fdf4);
+  border:1px solid #bbf7d0;border-radius:var(--radius);padding:32px;text-align:center;margin-top:16px}
+[data-theme=dark] #completion-banner{background:linear-gradient(135deg,#052e16,#022c22);border-color:#166534}
+#completion-banner h2{color:#15803d;font-size:1.3rem;font-weight:700;margin-bottom:8px}
+[data-theme=dark] #completion-banner h2{color:#86efac}
+#completion-banner p{color:#16a34a;font-size:.875rem;margin-bottom:20px}
+[data-theme=dark] #completion-banner p{color:#6ee7b7}
+.completion-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.completion-actions a,.completion-actions button{padding:10px 22px;border-radius:20px;
+  font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;
+  text-decoration:none;transition:.2s;border:none}
+.btn-next-level{background:var(--primary);color:#fff}
+.btn-next-level:hover{opacity:.9}
+.btn-back-tuts{background:var(--surface);border:1px solid var(--border)!important;color:var(--text)}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:40px 24px;color:var(--text-dim);font-size:.8rem;
+  border-top:1px solid var(--border-soft);margin-top:60px}
+footer a{color:var(--text-dim);text-decoration:none}
+footer a:hover{color:var(--primary)}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="7" cy="7" r="1.5" fill="#fff" stroke="none"/>
+        <circle cx="17" cy="7" r="1.5" fill="rgba(255,255,255,.6)" stroke="none"/>
+        <circle cx="7" cy="17" r="1.5" fill="rgba(255,255,255,.6)" stroke="none"/>
+        <circle cx="17" cy="17" r="1.5" fill="rgba(255,255,255,.3)" stroke="none"/>
+        <line x1="7" y1="7" x2="17" y2="7"/><line x1="7" y1="7" x2="7" y2="17"/>
+        <line x1="17" y1="7" x2="17" y2="17"/><line x1="7" y1="17" x2="17" y2="17"/>
+      </svg>
+    </div>
+    <span>MyAI ToolsFinder</span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Tools</a>
+    <a href="../tutorials.html" class="active">Tutorials</a>
+    <a href="../quiz.html">Quiz</a>
+    <a href="../index.html" class="btn-nav-cta">Explore Tools</a>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button>
+</nav>
+
+<!-- HERO STRIP (populated by JS) -->
+<div class="tut-hero">
+  <div class="tut-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> <span>›</span>
+      <a href="../tutorials.html">Tutorials</a> <span>›</span>
+      <span id="breadcrumb-tool">Loading…</span>
+    </div>
+    <div class="tut-hero-top">
+      <div class="tool-logo-wrap" id="hero-logo"></div>
+      <div class="tut-hero-meta">
+        <h1 id="hero-title">Loading tutorial…</h1>
+        <div class="sub" id="hero-sub"></div>
+        <div class="duration-badge" id="hero-duration">⏱ — min</div>
+      </div>
+    </div>
+    <div class="level-tabs" id="level-tabs"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="tut-layout" id="tut-layout">
+  <!-- Steps column -->
+  <div id="steps-col">
+    <div id="lock-wall">
+      <div class="lock-icon-big">🔒</div>
+      <h2 id="lock-title">Unlock this level</h2>
+      <p id="lock-desc">Subscribe to MyAI ToolsFinder to access Intermediate and Advanced tutorials.</p>
+      <button class="btn-unlock" id="btn-unlock">Unlock Free Access</button>
+      <span class="unlock-note" id="unlock-note"></span>
+    </div>
+    <div id="steps-list" class="steps-list"></div>
+    <div id="completion-banner">
+      <h2>🎉 Level Complete!</h2>
+      <p id="completion-msg">You've finished this tutorial level. Ready for the next challenge?</p>
+      <div class="completion-actions" id="completion-actions"></div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-card">
+      <h3>📋 Steps</h3>
+      <ul class="toc-list" id="toc-list"></ul>
+      <div class="progress-ring">
+        <div class="progress-dots" id="progress-dots"></div>
+        <span id="progress-text">0 / 0 done</span>
+      </div>
+    </div>
+    <div class="sidebar-card tool-info-card" id="tool-info-card">
+      <div class="tool-info-logo" id="sidebar-logo"></div>
+      <div class="tool-info-name" id="sidebar-name"></div>
+      <div class="tool-info-tag" id="sidebar-tag"></div>
+      <a href="#" id="sidebar-cta" class="btn-try" target="_blank" rel="sponsored noopener nofollow">Try Free →</a>
+    </div>
+  </aside>
+</div>
+
+<!-- SUBSCRIBE MODAL -->
+<div id="modal-overlay">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div style="font-size:2.5rem;margin-bottom:10px">🚀</div>
+    <h2>Unlock All Tutorials</h2>
+    <p>Free access to all Intermediate &amp; Advanced tutorials — just enter your email.</p>
+    <ul class="modal-perks">
+      <li>All 11 tool tutorial series (Basic, Intermediate, Advanced)</li>
+      <li>New tutorials added every month</li>
+      <li>Weekly AI tools digest newsletter</li>
+      <li>Exclusive deals &amp; affiliate discounts</li>
+    </ul>
+    <input type="email" class="modal-input" id="modal-email" placeholder="your@email.com"/>
+    <button class="btn-subscribe" id="btn-subscribe">Get Free Access →</button>
+    <div class="modal-skip" id="modal-skip">Skip for now (basic only)</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <a href="../index.html">MyAI ToolsFinder</a> · Tutorials powered by real user experience · <a href="../index.html">Browse all AI tools</a></p>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/tutorials-data.js"></script>
+<script src="../js/theme.js" defer></script>
+<script>
+/* ── Helpers ── */
+const params = new URLSearchParams(location.search);
+const TOOL_ID = (params.get('tool')||'').toLowerCase();
+const LEVEL   = (params.get('level')||'basic').toLowerCase();
+const SUB_KEY = 'tut_subscribed';
+const triedKey = id => 'tut_tried_' + id;
+const doneKey  = (id,lvl,step) => `tut_done_${id}_${lvl}_${step}`;
+
+function isSubscribed(){ return localStorage.getItem(SUB_KEY)==='1'; }
+function hasTried(id){ return localStorage.getItem(triedKey(id))==='1'; }
+function markTried(id){ localStorage.setItem(triedKey(id),'1'); }
+function markStep(id,lvl,s){ localStorage.setItem(doneKey(id,lvl,s),'1'); }
+function isStepDone(id,lvl,s){ return localStorage.getItem(doneKey(id,lvl,s))==='1'; }
+
+function clearbitLogo(domain){ return `https://logo.clearbit.com/${domain}`; }
+function initials(name){ return name.split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+
+/* ── Theme ── */
+(function(){
+  const saved = localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('theme-toggle');
+  btn.textContent = saved==='dark'?'☀️':'🌙';
+  btn.addEventListener('click',()=>{
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    btn.textContent = next==='dark'?'☀️':'🌙';
+  });
+})();
+
+/* ── Progress bar ── */
+window.addEventListener('scroll',()=>{
+  const h = document.documentElement;
+  const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progress-bar').style.width = pct+'%';
+});
+
+/* ── Main render ── */
+const data = window.TUTORIALS_DATA;
+if(!data || !data[TOOL_ID]){
+  document.getElementById('hero-title').textContent = 'Tutorial not found';
+  document.getElementById('steps-col').innerHTML = '<p style="color:var(--text-dim);padding:40px 0">No tutorial found for this tool. <a href="../tutorials.html">Browse all tutorials →</a></p>';
+} else {
+  renderTutorial(TOOL_ID, LEVEL);
+}
+
+function renderTutorial(toolId, level){
+  const td = data[toolId];
+  const lvlKey = ['basic','intermediate','advanced'].includes(level) ? level : 'basic';
+  const lvlData = td.levels[lvlKey];
+  if(!lvlData){ location.search = '?tool='+toolId+'&level=basic'; return; }
+
+  /* Meta */
+  document.title = `${lvlData.title} — ${td.name} Tutorial | MyAI ToolsFinder`;
+  document.getElementById('page-title').textContent = document.title;
+  document.getElementById('page-desc').content = lvlData.description;
+  document.getElementById('breadcrumb-tool').textContent = td.name + ' — ' + cap(lvlKey);
+
+  /* Hero logo */
+  const logoHtml = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback>${initials(td.name)}</div>')">`;
+  document.getElementById('hero-logo').innerHTML = logoHtml;
+  document.getElementById('hero-title').textContent = lvlData.title;
+  document.getElementById('hero-sub').textContent = lvlData.description;
+  document.getElementById('hero-duration').innerHTML = '⏱ ' + lvlData.duration;
+
+  /* Level tabs */
+  const levelDefs = [
+    { key:'basic',        label:'Basic',        icon:'📖', free:true  },
+    { key:'intermediate', label:'Intermediate', icon:'⚡', free:false },
+    { key:'advanced',     label:'Advanced',     icon:'🚀', free:false }
+  ];
+  const tabsEl = document.getElementById('level-tabs');
+  tabsEl.innerHTML = levelDefs.map(lv => {
+    const locked = !lv.free && !isSubscribed();
+    const active = lv.key === lvlKey ? ' active' : '';
+    const lockedClass = locked ? ' locked' : '';
+    const lockSpan = locked ? '<span class="lock-icon">🔒</span>' : '';
+    return `<a class="level-tab${active}${lockedClass}" href="?tool=${toolId}&level=${lv.key}" ${locked?'onclick="handleLockedTab(event)"':''}>
+      ${lv.icon} ${lv.label} ${lockSpan}
+    </a>`;
+  }).join('');
+
+  /* Sidebar tool info */
+  document.getElementById('sidebar-logo').innerHTML = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" style="width:38px;height:38px;object-fit:contain" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback style=width:38px;height:38px;font-size:.9rem>${initials(td.name)}</div>')">`;
+  document.getElementById('sidebar-name').textContent = td.name;
+  document.getElementById('sidebar-tag').textContent = td.tagline;
+  const ctaEl = document.getElementById('sidebar-cta');
+  ctaEl.href = td.affiliate_url;
+  ctaEl.onclick = () => markTried(toolId);
+
+  /* Lock wall check */
+  const lockWall = document.getElementById('lock-wall');
+  const stepsList = document.getElementById('steps-list');
+  const isLocked = (lvlKey !== 'basic' && !isSubscribed()) ||
+                   (lvlKey === 'advanced' && isSubscribed() && !hasTried(toolId));
+
+  if(isLocked){
+    lockWall.style.display = 'flex';
+    stepsList.style.display = 'none';
+    if(lvlKey === 'advanced' && isSubscribed() && !hasTried(toolId)){
+      document.getElementById('lock-title').textContent = 'Try ' + td.name + ' to Unlock';
+      document.getElementById('lock-desc').textContent = `Start your free trial of ${td.name} to unlock the Advanced tutorial. Click "Try Now" — it activates your access.`;
+      document.getElementById('btn-unlock').textContent = 'Try ' + td.name + ' Free →';
+      document.getElementById('unlock-note').textContent = 'No strings — just try the tool and the tutorial unlocks.';
+      document.getElementById('btn-unlock').onclick = () => {
+        markTried(toolId);
+        window.open(td.affiliate_url, '_blank');
+        setTimeout(() => location.reload(), 800);
+      };
+    } else {
+      document.getElementById('lock-title').textContent = 'Unlock Intermediate & Advanced';
+      document.getElementById('lock-desc').textContent = 'Enter your email for free access to all tutorial levels — no payment required.';
+      document.getElementById('btn-unlock').onclick = () => showModal(toolId, lvlKey);
+    }
+    return;
+  }
+
+  /* Render steps */
+  lockWall.style.display = 'none';
+  stepsList.style.display = 'flex';
+  renderSteps(toolId, lvlKey, lvlData);
+}
+
+function renderSteps(toolId, lvlKey, lvlData){
+  const steps = lvlData.steps;
+  const stepsEl = document.getElementById('steps-list');
+  const tocEl   = document.getElementById('toc-list');
+  const dotsEl  = document.getElementById('progress-dots');
+
+  stepsEl.innerHTML = '';
+  tocEl.innerHTML   = '';
+  dotsEl.innerHTML  = '';
+
+  steps.forEach((step, i) => {
+    const done = isStepDone(toolId, lvlKey, i);
+
+    /* Step card */
+    const callout = step.tip ? buildCallout(step.tip) : '';
+    const card = document.createElement('div');
+    card.className = 'step-card' + (i===0?' active':'');
+    card.id = 'step-' + i;
+    card.innerHTML = `
+      <div class="step-header" onclick="toggleStep(${i})">
+        <div class="step-num">${i+1}</div>
+        <div class="step-title">${step.title}</div>
+        <span class="step-chevron">▼</span>
+      </div>
+      <div class="step-body">
+        ${step.content}
+        ${callout}
+        <div class="step-nav">
+          ${i>0?`<button class="step-nav btn-prev" onclick="goStep(${i-1},event)">← Back</button>`:''}
+          ${i<steps.length-1?`<button class="step-nav btn-next" onclick="goStep(${i+1},event)">Next Step →</button>`:`<button class="step-nav btn-next" onclick="completeLevel('${toolId}','${lvlKey}',event)">Complete Level ✓</button>`}
+        </div>
+        ${done?`<div class="step-complete">✓ Completed</div>`:`<div class="step-complete" onclick="markStepUI('${toolId}','${lvlKey}',${i})">☐ Mark as done</div>`}
+      </div>`;
+    stepsEl.appendChild(card);
+
+    /* TOC */
+    const li = document.createElement('li');
+    li.id = 'toc-'+i;
+    li.className = (done?'toc-done':'') + (i===0?' toc-active':'');
+    li.onclick = () => goStep(i);
+    li.innerHTML = `<span class="toc-check">${done?'✓':''}</span>${i+1}. ${step.title}`;
+    tocEl.appendChild(li);
+
+    /* Dot */
+    const dot = document.createElement('div');
+    dot.className = 'progress-dot' + (done?' done':'');
+    dot.id = 'dot-'+i;
+    dotsEl.appendChild(dot);
+  });
+
+  updateProgress(toolId, lvlKey, steps.length);
+  checkCompletion(toolId, lvlKey, steps.length);
+}
+
+function buildCallout(tip){
+  const icons = {tip:'💡', info:'ℹ️', warning:'⚠️', success:'✅'};
+  return `<div class="callout callout-${tip.type}">
+    <span class="callout-icon">${icons[tip.type]||'💡'}</span>
+    <span>${tip.text}</span>
+  </div>`;
+}
+
+let activeStep = 0;
+function toggleStep(i){
+  document.querySelectorAll('.step-card').forEach((c,idx)=>{
+    c.classList.toggle('active', idx===i);
+  });
+  document.querySelectorAll('.toc-list li').forEach((li,idx)=>{
+    li.classList.toggle('toc-active', idx===i);
+  });
+  activeStep = i;
+  document.getElementById('step-'+i).scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function goStep(i, e){
+  if(e) e.stopPropagation();
+  toggleStep(i);
+}
+
+function markStepUI(toolId, lvlKey, i){
+  markStep(toolId, lvlKey, i);
+  const el = document.querySelector(`#step-${i} .step-complete`);
+  if(el){ el.textContent = '✓ Completed'; el.style.cursor='default'; }
+  const toc = document.getElementById('toc-'+i);
+  if(toc){ toc.classList.add('toc-done'); toc.querySelector('.toc-check').textContent='✓'; }
+  const dot = document.getElementById('dot-'+i);
+  if(dot) dot.classList.add('done');
+  const steps = window.TUTORIALS_DATA[toolId].levels[lvlKey].steps;
+  updateProgress(toolId, lvlKey, steps.length);
+  checkCompletion(toolId, lvlKey, steps.length);
+}
+
+function updateProgress(toolId, lvlKey, total){
+  let done = 0;
+  for(let i=0;i<total;i++) if(isStepDone(toolId,lvlKey,i)) done++;
+  document.getElementById('progress-text').textContent = done + ' / ' + total + ' done';
+}
+
+function checkCompletion(toolId, lvlKey, total){
+  let done = 0;
+  for(let i=0;i<total;i++) if(isStepDone(toolId,lvlKey,i)) done++;
+  if(done < total) return;
+  const banner = document.getElementById('completion-banner');
+  banner.style.display = 'block';
+  const td = window.TUTORIALS_DATA[toolId];
+  const nextMap = {basic:'intermediate', intermediate:'advanced'};
+  const next = nextMap[lvlKey];
+  const msgEl = document.getElementById('completion-msg');
+  const actEl = document.getElementById('completion-actions');
+  if(lvlKey === 'advanced'){
+    msgEl.textContent = `Amazing! You've mastered ${td.name} from basics to advanced. Time to put it into practice.`;
+    actEl.innerHTML = `<a href="${td.affiliate_url}" class="btn-next-level" target="_blank" rel="sponsored noopener nofollow" onclick="markTried('${toolId}')">Try ${td.name} Free →</a>
+      <a href="../tutorials.html" class="btn-back-tuts">More Tutorials</a>`;
+  } else {
+    msgEl.textContent = `Great work! Ready for the ${cap(next)} level? It goes much deeper.`;
+    actEl.innerHTML = `<a href="?tool=${toolId}&level=${next}" class="btn-next-level">Next: ${cap(next)} Level →</a>
+      <a href="../tutorials.html" class="btn-back-tuts">All Tutorials</a>`;
+  }
+}
+
+function completeLevel(toolId, lvlKey, e){
+  if(e) e.stopPropagation();
+  const steps = window.TUTORIALS_DATA[toolId].levels[lvlKey].steps;
+  steps.forEach((_,i) => markStep(toolId, lvlKey, i));
+  renderSteps(toolId, lvlKey, window.TUTORIALS_DATA[toolId].levels[lvlKey]);
+  document.getElementById('completion-banner').scrollIntoView({behavior:'smooth'});
+}
+
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+/* ── Locked tab handler ── */
+function handleLockedTab(e){
+  e.preventDefault();
+  showModal(TOOL_ID, LEVEL);
+}
+
+/* ── Modal ── */
+function showModal(toolId, lvlKey){
+  document.getElementById('modal-overlay').classList.add('show');
+}
+document.getElementById('modal-close').onclick = closeModal;
+document.getElementById('modal-overlay').onclick = e => { if(e.target===e.currentTarget) closeModal(); };
+document.getElementById('modal-skip').onclick = closeModal;
+function closeModal(){ document.getElementById('modal-overlay').classList.remove('show'); }
+
+document.getElementById('btn-subscribe').onclick = function(){
+  const email = document.getElementById('modal-email').value.trim();
+  if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+  localStorage.setItem(SUB_KEY, '1');
+  closeModal();
+  location.reload();
+};
+
+/* ── Keyboard nav ── */
+document.addEventListener('keydown', e => {
+  const total = window.TUTORIALS_DATA[TOOL_ID]?.levels[LEVEL]?.steps?.length || 0;
+  if(e.key === 'ArrowRight' && activeStep < total-1) goStep(activeStep+1);
+  if(e.key === 'ArrowLeft'  && activeStep > 0)       goStep(activeStep-1);
+});
+</script>
+</body>
+</html>
