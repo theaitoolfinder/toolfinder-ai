@@ -1,18 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-05-28",
-      "slot": "dinner",
-      "slug": "article-2026-05-28-pm",
-      "title": "AI Tools Digest — May 28, 2026 (Evening Edition)",
-      "type": "news_digest",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest 2026 evening",
-      "pair": "",
-      "words": 609
-    },
-    {
       "date": "2026-05-29",
       "slot": "exclusive",
       "slug": "exclusive-2026-05-29-1",
@@ -778,6 +766,21 @@
       "pair": "",
       "words": 817,
       "partners": []
+    },
+    {
+      "date": "2026-06-09",
+      "slot": "night",
+      "slug": "the-2026-content-repurposing-workflow-one-post-every-platform",
+      "title": "The 2026 Content Repurposing Workflow: One Post, Every Platform",
+      "type": "workflow",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop",
+      "topic": "2026 content repurposing workflow",
+      "pair": "",
+      "words": 794,
+      "partners": [
+        "Beehiiv"
+      ]
     }
   ],
   "hero_history": [
@@ -845,6 +848,7 @@
     "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop"
   ]
 }
