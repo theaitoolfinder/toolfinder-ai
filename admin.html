@@ -1860,7 +1860,7 @@ async function loadSubscribers(){
       // Fetch real IP and update all spots
       (async()=>{
         try{
-          const r=await fetch('https://api.ipify.org?format=json');
+          const r=await fetch('https://api64.ipify.org?format=json');
           const j=await r.json();
           if(j&&j.ip){
             ['brevo-ip-val','brevo-ip-val2','brevo-ip-debug'].forEach(id=>{
