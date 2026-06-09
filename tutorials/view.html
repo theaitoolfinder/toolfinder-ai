@@ -105,6 +105,9 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
 .step-body ul,.step-body ol{color:var(--text-dim);font-size:.9rem;padding-left:20px;margin-bottom:12px}
 .step-body li{margin-bottom:6px}
 .step-body strong{color:var(--text)}
+.step-link{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+.step-link:hover{opacity:.8}
+.step-link strong{color:var(--primary)}
 .step-body em{color:var(--primary);font-style:normal;font-weight:500}
 .callout{border-radius:10px;padding:14px 16px;font-size:.85rem;margin-top:14px;
   display:flex;align-items:flex-start;gap:10px}
@@ -464,6 +467,16 @@ function renderTutorial(toolId, level){
   renderSteps(toolId, lvlKey, lvlData);
 }
 
+function linkifyContent(html, td){
+  /* Wrap <strong>domain.tld</strong> patterns with the affiliate link (or direct URL) */
+  const link = td.affiliate_url || ('https://' + td.domain);
+  return html.replace(/<strong>([^<\s]*\.[^<\s]+)<\/strong>/g, function(match, text){
+    if(text.includes(' ')) return match; // skip multi-word bold
+    const href = td.affiliate_url || ('https://' + text);
+    return `<a href="${href}" target="_blank" rel="noopener nofollow" class="step-link"><strong>${text}</strong></a>`;
+  });
+}
+
 function renderSteps(toolId, lvlKey, lvlData){
   const steps = lvlData.steps;
   const stepsEl = document.getElementById('steps-list');
@@ -479,6 +492,8 @@ function renderSteps(toolId, lvlKey, lvlData){
 
     /* Step card */
     const callout = step.tip ? buildCallout(step.tip) : '';
+    const td = window.TUTORIALS_DATA[toolId];
+    const processedContent = linkifyContent(step.content, td);
     const card = document.createElement('div');
     card.className = 'step-card' + (i===0?' active':'');
     card.id = 'step-' + i;
@@ -489,7 +504,7 @@ function renderSteps(toolId, lvlKey, lvlData){
         <span class="step-chevron">▼</span>
       </div>
       <div class="step-body">
-        ${step.content}
+        ${processedContent}
         ${callout}
         <div class="step-nav">
           ${i>0?`<button class="step-nav btn-prev" onclick="goStep(${i-1},event)">← Back</button>`:''}
