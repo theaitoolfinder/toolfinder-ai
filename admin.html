@@ -1828,16 +1828,28 @@ async function loadSubscribers(){
     tableWrap.style.display='block';
     errEl.style.display='block';
     if(e.message.startsWith('__401__')){
-      const ip=e.message.replace('__401__','');
+      // Try to get the actual IP from ipify; use placeholder while loading
+      let ip=e.message.replace('__401__','');
+      const ipPlaceholder='<code id="brevo-ip-val" style="background:#fee2e2;padding:1px 5px;border-radius:4px">detecting…</code>';
       errEl.innerHTML=`
         <b style="font-size:14px">🔒 Brevo blocked this request (IP not authorized)</b>
-        <p style="margin:8px 0 4px">Your browser's IP address <code style="background:#fee2e2;padding:1px 5px;border-radius:4px">${escHtml(ip)}</code> is not on Brevo's authorized list for this API key.</p>
+        <p style="margin:8px 0 4px">Your browser's IP address ${ipPlaceholder} is not on Brevo's authorized list for this API key.</p>
         <p style="margin:0 0 12px"><b>Fix it in 30 seconds — choose one option:</b></p>
         <ol style="margin:0 0 14px;padding-left:20px;line-height:1.8">
           <li><b>Recommended:</b> Open your <a href="https://app.brevo.com/settings/keys/api" target="_blank" rel="noopener" style="color:#991b1b;font-weight:600">Brevo API Keys</a>, edit this key, and set "Authorized IPs" to <b>All IPs</b> (unrestricted).</li>
-          <li>Or go to <a href="https://app.brevo.com/security/authorized-ips" target="_blank" rel="noopener" style="color:#991b1b;font-weight:600">Brevo Security → Authorized IPs</a> and add <code style="background:#fee2e2;padding:1px 5px;border-radius:4px">${escHtml(ip)}</code>. Note: your home/office IP may change daily.</li>
+          <li>Or go to <a href="https://app.brevo.com/security/authorized-ips" target="_blank" rel="noopener" style="color:#991b1b;font-weight:600">Brevo Security → Authorized IPs</a> and add <code id="brevo-ip-val2" style="background:#fee2e2;padding:1px 5px;border-radius:4px">detecting…</code>. Note: your home/office IP may change daily.</li>
         </ol>
         <p style="margin:0;font-size:12.5px;color:#7f1d1d">After updating Brevo, click <b>↺ Refresh</b> above to retry.</p>`;
+      // Fetch real IP and update both spots
+      (async()=>{
+        try{
+          const r=await fetch('https://api.ipify.org?format=json');
+          const j=await r.json();
+          if(j&&j.ip){
+            document.querySelectorAll('#brevo-ip-val,#brevo-ip-val2').forEach(el=>{ el.textContent=j.ip; });
+          }
+        }catch(_){}
+      })();
     } else {
       errEl.innerHTML='⚠ '+escHtml(e.message)+'. Check your API key in Site Settings.';
     }
