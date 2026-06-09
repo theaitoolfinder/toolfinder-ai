@@ -331,18 +331,18 @@ footer a:hover{color:var(--primary)}
 <div id="modal-overlay">
   <div class="modal" style="position:relative">
     <button class="modal-close" id="modal-close">✕</button>
-    <div style="font-size:2.5rem;margin-bottom:10px">🚀</div>
-    <h2>Unlock All Tutorials</h2>
-    <p>Free access to all Intermediate &amp; Advanced tutorials — just enter your email.</p>
+    <div style="margin-bottom:10px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <h2>Unlock All Pro &amp; Elite Tutorials</h2>
+    <p>Free access to all Pro &amp; Elite tutorials — just enter your email.</p>
     <ul class="modal-perks">
-      <li>All 11 tool tutorial series (Basic, Intermediate, Advanced)</li>
+      <li>All 11 tool tutorial series (Core, Pro, Elite)</li>
       <li>New tutorials added every month</li>
       <li>Weekly AI tools digest newsletter</li>
       <li>Exclusive deals &amp; affiliate discounts</li>
     </ul>
     <input type="email" class="modal-input" id="modal-email" placeholder="your@email.com"/>
     <button class="btn-subscribe" id="btn-subscribe">Get Free Access →</button>
-    <div class="modal-skip" id="modal-skip">Skip for now (basic only)</div>
+    <div class="modal-skip" id="modal-skip">Skip for now (Core only)</div>
   </div>
 </div>
 
@@ -396,27 +396,28 @@ function renderTutorial(toolId, level){
   document.title = `${lvlData.title} — ${td.name} Tutorial | MyAI ToolsFinder`;
   document.getElementById('page-title').textContent = document.title;
   document.getElementById('page-desc').content = lvlData.description;
-  document.getElementById('breadcrumb-tool').textContent = td.name + ' — ' + cap(lvlKey);
+  const lvlLabel = {basic:'Core',intermediate:'Pro',advanced:'Elite'}[lvlKey] || cap(lvlKey);
+  document.getElementById('breadcrumb-tool').textContent = td.name + ' — ' + lvlLabel;
 
   /* Hero logo */
   const logoHtml = `<img src="${clearbitLogo(td.domain)}" alt="${td.name}" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=tool-logo-fallback>${initials(td.name)}</div>')">`;
   document.getElementById('hero-logo').innerHTML = logoHtml;
   document.getElementById('hero-title').textContent = lvlData.title;
   document.getElementById('hero-sub').textContent = lvlData.description;
-  document.getElementById('hero-duration').innerHTML = '⏱ ' + lvlData.duration;
+  document.getElementById('hero-duration').innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + lvlData.duration;
 
   /* Level tabs */
   const levelDefs = [
-    { key:'basic',        label:'Basic',        icon:'📖', free:true  },
-    { key:'intermediate', label:'Intermediate', icon:'⚡', free:false },
-    { key:'advanced',     label:'Advanced',     icon:'🚀', free:false }
+    { key:'basic',        label:'Core',  icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>', free:true  },
+    { key:'intermediate', label:'Pro',   icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', free:false },
+    { key:'advanced',     label:'Elite', icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>', free:false }
   ];
   const tabsEl = document.getElementById('level-tabs');
   tabsEl.innerHTML = levelDefs.map(lv => {
     const locked = !lv.free && !isSubscribed();
     const active = lv.key === lvlKey ? ' active' : '';
     const lockedClass = locked ? ' locked' : '';
-    const lockSpan = locked ? '<span class="lock-icon">🔒</span>' : '';
+    const lockSpan = locked ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-left:3px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' : '';
     return `<a class="level-tab${active}${lockedClass}" href="?tool=${toolId}&level=${lv.key}" ${locked?'onclick="handleLockedTab(event)"':''}>
       ${lv.icon} ${lv.label} ${lockSpan}
     </a>`;
@@ -441,7 +442,7 @@ function renderTutorial(toolId, level){
     stepsList.style.display = 'none';
     if(lvlKey === 'advanced' && isSubscribed() && !hasTried(toolId)){
       document.getElementById('lock-title').textContent = 'Try ' + td.name + ' to Unlock';
-      document.getElementById('lock-desc').textContent = `Start your free trial of ${td.name} to unlock the Advanced tutorial. Click "Try Now" — it activates your access.`;
+      document.getElementById('lock-desc').textContent = `Start your free trial of ${td.name} to unlock the Elite tutorial. Click "Try Now" — it activates your access.`;
       document.getElementById('btn-unlock').textContent = 'Try ' + td.name + ' Free →';
       document.getElementById('unlock-note').textContent = 'No strings — just try the tool and the tutorial unlocks.';
       document.getElementById('btn-unlock').onclick = () => {
@@ -450,7 +451,7 @@ function renderTutorial(toolId, level){
         setTimeout(() => location.reload(), 800);
       };
     } else {
-      document.getElementById('lock-title').textContent = 'Unlock Intermediate & Advanced';
+      document.getElementById('lock-title').textContent = 'Unlock Pro & Elite';
       document.getElementById('lock-desc').textContent = 'Enter your email for free access to all tutorial levels — no payment required.';
       document.getElementById('btn-unlock').onclick = () => showModal(toolId, lvlKey);
     }

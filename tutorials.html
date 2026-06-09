@@ -225,9 +225,9 @@ footer a:hover{color:var(--primary)}
   <h1>Learn the <span>Best AI Tools</span><br>Step by Step</h1>
   <p>Hands-on tutorials for the top AI tools — from beginner basics to advanced power-user workflows.</p>
   <div class="lock-legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#1a56db"></div> Basic — Always Free</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#d97706"></div> Intermediate — Free with Email</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#7e22ce"></div> Advanced — Try the Tool to Unlock</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1a56db"></div> Core — Always Free</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d97706"></div> Pro — Free with Email</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7e22ce"></div> Elite — Try the Tool to Unlock</div>
   </div>
 </section>
 
@@ -261,7 +261,7 @@ footer a:hover{color:var(--primary)}
 
 <!-- CTA BAND -->
 <div class="cta-band">
-  <h2>Unlock All Intermediate &amp; Advanced Tutorials</h2>
+  <h2>Unlock All Pro &amp; Elite Tutorials</h2>
   <p>Enter your email for free access — plus a weekly digest of the best new AI tools.</p>
   <div class="cta-input-row">
     <input type="email" class="cta-input" id="cta-email" placeholder="your@email.com"/>
@@ -275,7 +275,7 @@ footer a:hover{color:var(--primary)}
     <button class="modal-close" id="modal-close">✕</button>
     <div style="margin-bottom:12px;display:flex;justify-content:center"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
     <h2>Unlock All Tutorials</h2>
-    <p>Free access to Intermediate &amp; Advanced tutorials — just enter your email.</p>
+    <p>Free access to Pro &amp; Elite tutorials — just enter your email.</p>
     <ul class="modal-perks">
       <li>All 11 tool tutorial series — 3 levels each</li>
       <li>New tutorials added every month</li>
@@ -389,14 +389,14 @@ function buildGrid(){
       <div class="card-body">
         <div class="card-tagline">${tool.tagline}</div>
         <div class="level-pills">
-          <a class="level-pill pill-basic" href="tutorials/view.html?tool=${slug}&level=basic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Basic</a>
+          <a class="level-pill pill-basic" href="tutorials/view.html?tool=${slug}&level=basic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Core</a>
           <a class="level-pill pill-intermediate${intLocked?' pill-locked':''}" href="${intHref}"
             ${intLocked?'onclick="showModal(\''+slug+'\');return false"':''}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Intermediate${intLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Pro${intLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
           </a>
           <a class="level-pill pill-advanced${advLocked?' pill-locked':''}" href="${advHref}"
             ${advLocked?'onclick="showModal(\''+slug+'\');return false"':''}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Advanced${advLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Elite${advLocked?' <span class=lock><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>':''}
           </a>
         </div>
       </div>

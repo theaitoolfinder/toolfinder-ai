@@ -467,7 +467,7 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
       <div class="hero-stat"><strong>3</strong><span>Free prompts per tool</span></div>
       <div class="hero-stat"><strong>30</strong><span>Exclusive subscriber prompts</span></div>
       <div class="hero-stat"><strong>500+</strong><span>AI tools covered</span></div>
-      <div class="hero-stat"><strong>3 Levels</strong><span>Beginner · Intermediate · Advanced</span></div>
+      <div class="hero-stat"><strong>3 Levels</strong><span>Core · Pro · Elite</span></div>
     </div>
   </div>
 </section>
@@ -526,13 +526,13 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 
   <!-- Subscriber gate -->
   <div class="gate-section" id="gate-section" style="display:none">
-    <div class="gate-icon">🔐</div>
+    <div class="gate-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
     <h2 class="gate-title">Unlock 30 Exclusive Prompt Templates Per Tool</h2>
-    <p class="gate-subtitle">Subscribers get 30 premium prompts per category — 9 beginner, 12 intermediate, and 9 advanced — crafted for serious AI power users.</p>
+    <p class="gate-subtitle">Subscribers get 30 premium prompts per category — 9 Core, 12 Pro, and 9 Elite — crafted for serious AI power users.</p>
     <div class="gate-perks">
-      <div class="gate-perk">✅ 9 Beginner prompts</div>
-      <div class="gate-perk">✅ 12 Intermediate prompts</div>
-      <div class="gate-perk">✅ 9 Advanced prompts</div>
+      <div class="gate-perk">✅ 9 Core prompts</div>
+      <div class="gate-perk">✅ 12 Pro prompts</div>
+      <div class="gate-perk">✅ 9 Elite prompts</div>
       <div class="gate-perk">✅ Instant access, no payment</div>
     </div>
     <div class="gate-form">
@@ -786,10 +786,10 @@ function renderPrompts(){
 
       ${isSubscriber ? '' : `
       <div class="unlock-banner">
-        <span class="icon">🔐</span>
+        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
         <div class="text">
           <h4>+30 Exclusive ${cat} Prompts</h4>
-          <p>9 beginner · 12 intermediate · 9 advanced — subscriber access only</p>
+          <p>9 Core · 12 Pro · 9 Elite — subscriber access only</p>
         </div>
         <button class="btn-unlock" onclick="scrollToGate()">Unlock Free →</button>
       </div>`}
@@ -797,9 +797,9 @@ function renderPrompts(){
       ${isSubscriber ? `
       <div class="premium-pane">
         <div class="level-tabs">
-          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')">🌱 Beginner (${beginners.length})</button>
-          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')">🚀 Intermediate (${intermediates.length})</button>
-          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')">⚡ Advanced (${advanced.length})</button>
+          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Core (${beginners.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Pro (${intermediates.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Elite (${advanced.length})</button>
         </div>
         <div class="level-pane active" data-level="beginner" data-parent="${sectionId}">
           <div class="prompt-grid">${beginners.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
@@ -813,9 +813,9 @@ function renderPrompts(){
       </div>` : `
       <div class="premium-pane" style="display:none">
         <div class="level-tabs">
-          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')">🌱 Beginner (${beginners.length})</button>
-          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')">🚀 Intermediate (${intermediates.length})</button>
-          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')">⚡ Advanced (${advanced.length})</button>
+          <button class="level-tab active" onclick="switchLevel(this,'${sectionId}','beginner')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Core (${beginners.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','intermediate')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Pro (${intermediates.length})</button>
+          <button class="level-tab" onclick="switchLevel(this,'${sectionId}','advanced')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Elite (${advanced.length})</button>
         </div>
         <div class="level-pane active" data-level="beginner" data-parent="${sectionId}">
           <div class="prompt-grid">${beginners.map((p,i)=>promptCardHTML(p,i,'premium',cat)).join('')}</div>
