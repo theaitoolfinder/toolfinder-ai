@@ -2571,19 +2571,13 @@ function toggleTfmDD(name){
     buildTfmDDs();
     const r=btn.getBoundingClientRect();
     const ddW=dd.classList.contains('tfm-dd-wide')?260:210;
-    // iOS visual viewport offset (shifts when keyboard opens)
-    const vpTop=(window.visualViewport?window.visualViewport.offsetTop:0);
-    const vpLeft=(window.visualViewport?window.visualViewport.offsetLeft:0);
-    const vw=window.visualViewport?window.visualViewport.width:window.innerWidth;
-    // Use the sticky-wrap bottom edge when it's fixed (avoids using
-    // mid-page button coords before the bar scrolls into sticky mode)
+    const vw=window.innerWidth;
+    // Always anchor to the filter bar's bottom edge — avoids vpTop
+    // drift and works whether the bar is sticky or not.
     const barEl=document.getElementById('tfm-sticky-wrap');
-    const barR=barEl?barEl.getBoundingClientRect():null;
-    const topVal=barR&&barEl.classList.contains('is-fixed')
-      ?barR.bottom+4
-      :r.bottom+8-vpTop;
-    dd.style.top=topVal+'px';
-    dd.style.left=Math.min(r.left-vpLeft,vw-ddW-8)+'px';
+    const barBottom=barEl?barEl.getBoundingClientRect().bottom:r.bottom;
+    dd.style.top=(barBottom+4)+'px';
+    dd.style.left=Math.min(r.left,vw-ddW-8)+'px';
     dd.classList.add('open');
   }
 }
