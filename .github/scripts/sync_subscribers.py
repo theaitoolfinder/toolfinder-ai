@@ -97,47 +97,26 @@ def main():
     active   = [c for c in contacts if not c.get("emailBlacklisted", False) and c.get("email")]
     print(f"[Brevo] {len(active)} active contacts fetched ({len(contacts)} total incl. unsubscribed).")
 
-    # ── 3. Build existing email set from subscriber records ───────────────────
-    if not isinstance(db.get("subscribers"), list):
-        db["subscribers"] = []
-    existing_emails = {s["email"].strip().lower() for s in db["subscribers"] if s.get("email")}
-
-    # ── 4. Merge hashes AND subscriber records (accumulative) ─────────────────
-    # Hash set uses active-only contacts (gate should only let active subs through)
+    # ── 3. Merge hashes (accumulative — active-only, for the subscriber gate) ───
+    # SECURITY: We store ONLY hashes in this public file.
+    # Real emails stay private in Brevo — never written to the public repo.
     active_hashes = {sha256(c["email"]) for c in active}
     new_hashes    = active_hashes - existing_hashes
     if new_hashes:
         existing_hashes.update(new_hashes)
 
-    # Subscriber records include everyone (active + unsubscribed) who ever signed up
-    new_records = 0
-    for c in contacts:
-        if not c.get("email"):
-            continue
-        email_norm = c["email"].strip().lower()
-        if email_norm in existing_emails:
-            continue
-        existing_emails.add(email_norm)
-        attrs = c.get("attributes") or {}
-        first = attrs.get("FIRSTNAME") or ""
-        last  = attrs.get("LASTNAME")  or ""
-        name  = (first + " " + last).strip()
-        db["subscribers"].append({
-            "email":  c["email"].strip(),
-            "name":   name,
-            "added":  c.get("createdAt") or _now(),
-            "status": "unsubscribed" if c.get("emailBlacklisted") else "active",
-        })
-        new_records += 1
-
-    added_count = max(len(new_hashes), new_records)
+    added_count = len(new_hashes)
     if added_count:
         print(f"[DB] {added_count} new subscriber(s) added to internal database.")
     else:
         print(f"[DB] No new subscribers — database is already up to date.")
 
-    # ── 5. Write updated DB (accumulative — never shrinks) ────────────────────
+    # Strip any old subscribers array that may exist (email privacy cleanup)
+    db.pop("subscribers", None)
+
+    # ── 4. Write updated DB (accumulative — hashes only, never shrinks) ──────
     all_hashes = sorted(existing_hashes)   # sorted for stable diffs
+    db["_readme"]      = "Hashes only — subscriber emails are stored privately in Brevo, not in this public file."
     db["hashes"]       = all_hashes
     db["count"]        = len(all_hashes)
     db["last_updated"] = _now()
@@ -145,7 +124,7 @@ def main():
 
     with open(DB_FILE, "w") as f:
         json.dump(db, f, indent=2)
-    print(f"[DB] {len(all_hashes)} hashes, {len(db['subscribers'])} subscriber records → {DB_FILE}")
+    print(f"[DB] {len(all_hashes)} hashes (emails-only in Brevo) → {DB_FILE}")
 
     # ── 5. Write subscribers.json (gate file — derived from DB) ───────────────
     gate = {

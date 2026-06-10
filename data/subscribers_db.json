@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "_readme": "Internal subscriber database. Hashes are only ever added, never removed. Source of truth for subscriber gate.",
+  "_readme": "Hashes only \u2014 subscriber emails are stored privately in Brevo, not in this public file.",
   "hashes": [
     "30a996a7b74835011b3f1e9bacccf9829937c1922b9929e29450c7dfdc0853d1",
     "af4f436106a77c765a88f7a4a952ecf5862e56afb90847ce77e616db35c3dc4a"
@@ -8,19 +8,5 @@
   "count": 2,
   "brevo_active": 0,
   "first_created": "2026-06-03T00:00:00Z",
-  "last_updated": "2026-06-10T04:13:17Z",
-  "subscribers": [
-    {
-      "email": "benjie.gadiaza@gmail.com",
-      "name": "Ben",
-      "added": "2026-05-10T20:36:30.836+02:00",
-      "status": "active"
-    },
-    {
-      "email": "info.myaitoolbox@gmail.com",
-      "name": "Benj Gadiaza",
-      "added": "2026-05-10T19:19:08.557+02:00",
-      "status": "active"
-    }
-  ]
+  "last_updated": "2026-06-10T04:13:17Z"
 }

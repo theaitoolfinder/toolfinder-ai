@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="referrer" content="no-referrer" />
 <meta name="robots" content="noindex,nofollow" />
 <title>Admin · MyAI ToolsFinder</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -1607,12 +1609,9 @@ async function loadSubDB(){
     const synced=db.last_updated?new Date(db.last_updated).toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}):'—';
     document.getElementById('db-stat-synced').textContent=synced;
 
-    /* Build rows — use subscribers array if present, else show hashes only */
-    if(Array.isArray(db.subscribers)&&db.subscribers.length){
-      _dbAll=[...db.subscribers].reverse(); /* newest first */
-    }else if(Array.isArray(db.hashes)&&db.hashes.length){
-      /* Fallback: no email records yet — show hashes (will populate after next Brevo sync) */
-      _dbAll=db.hashes.map(h=>({email:'(sync from Brevo to reveal)',name:'—',added:'—',hash:h}));
+    /* Build rows — hashes only (emails are private in Brevo, not stored in public repo) */
+    if(Array.isArray(db.hashes)&&db.hashes.length){
+      _dbAll=db.hashes.map(h=>({email:'(private — view in Brevo)',name:'—',added:'—',hash:h}));
     }else{
       _dbAll=[];
     }

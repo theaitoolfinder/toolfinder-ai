@@ -1,0 +1,5 @@
+Contact: mailto:hello@myaitoolsfinder.com
+Preferred-Languages: en
+Canonical: https://myaitoolsfinder.com/.well-known/security.txt
+Policy: If you discover a security vulnerability on myaitoolsfinder.com, please email us at hello@myaitoolsfinder.com. We appreciate responsible disclosure and will respond within 48 hours.
+Expires: 2027-06-10T00:00:00.000Z

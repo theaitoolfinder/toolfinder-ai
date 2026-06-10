@@ -1,5 +1,28 @@
 User-agent: *
 Disallow: /admin.html
+Disallow: /data/
+Disallow: /.github/
+Disallow: /aiclopedia-mockup.html
+Disallow: /bg-preview.html
 Allow: /
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
 
 Sitemap: https://myaitoolsfinder.com/sitemap.xml
