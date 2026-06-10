@@ -35,6 +35,15 @@
         "Smartlead"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-06-10",
+      "tools": [
+        "Command Center",
+        "Intuned",
+        "Goldcast"
+      ],
+      "count": 3
     }
   ]
 }
