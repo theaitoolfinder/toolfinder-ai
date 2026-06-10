@@ -1135,6 +1135,13 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
           </button>
           <div class="tfm-dd" id="tfm-dd-trend"></div>
         </div>
+        <div class="tfm-filter-group">
+          <button class="tfm-filter-btn" id="tfm-btn-life" onclick="toggleTfmDD('life')" style="color:#0d6e56">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span id="tfm-life-label">LifEssentials</span> <span id="tfm-life-sign">+</span>
+          </button>
+          <div class="tfm-dd tfm-dd-wide" id="tfm-dd-life"></div>
+        </div>
       </div>
       <!-- Fixed count + clear -->
       <div class="tfm-count-wrap">
@@ -2247,6 +2254,7 @@ let tfmPricing=new Set();
 let tfmJobs=new Set();   // by Profession (multi-select, OR logic)
 let tfmNeeds=new Set();  // by Purpose (multi-select, OR logic)
 let tfmTrend='';         // by Trending (single-select)
+let tfmLife=new Set();   // by LifEssentials (multi-select, OR logic)
 function pricingType(pill){
   if(!pill)return'paid';
   const p=pill.toLowerCase().trim();
@@ -2275,6 +2283,87 @@ const NEEDS_CAT_MAP={
   "Brainstorm ideas":["Writing","Research","Chatbot"],
   "Ship faster":["Coding","Automation","Productivity"],
 };
+/* ── LifEssentials: grouped categories ──────────────────────────── */
+const LIFE_ESSENTIALS=[
+  {group:'🏃 Health & Fitness',   items:['Workout Planning','Nutrition & Meal Planning','Calorie Tracking','Sleep Optimization','Health Coaching','Habit Building']},
+  {group:'💰 Finance & Wealth',   items:['Budgeting','Expense Tracking','Saving Goals','Investing','Tax Assistance','Side Hustles','Retirement Planning']},
+  {group:'💼 Career & Work',      items:['Resume Building','Interview Preparation','Job Search','Productivity','Project Management','Meeting Assistants','Professional Development']},
+  {group:'📚 Education & Learning',items:['Tutoring','Research','Language Learning','Exam Preparation','Online Courses','Skill Development']},
+  {group:'👨‍👩‍👧 Family & Relationships',items:['Parenting Support','Relationship Coaching','Family Scheduling','Communication Assistance','Event Planning']},
+  {group:'🏠 Home & Living',      items:['Home Management','Cleaning Schedules','Grocery Planning','Interior Design','Home Maintenance']},
+  {group:'✈️ Travel & Transportation',items:['Trip Planning','Itinerary Creation','Flight Tracking','Navigation','Travel Budgeting']},
+  {group:'🔒 Safety & Security',  items:['Password Management','Identity Protection','Cybersecurity','Fraud Detection','Emergency Preparedness']},
+  {group:'🧘 Mental Wellness',    items:['Meditation','Journaling','Mood Tracking','Stress Management','Mindfulness']},
+  {group:'🚀 Business & Entrepreneurship',items:['Business Planning','Content Creation','Marketing','Sales','E-commerce','Automation','Customer Support']},
+];
+/* Keyword map: each subcategory → words searched inside tool name+tag+cat+needs+jobs */
+const LIFE_KEYWORDS_MAP={
+  'Workout Planning':['workout','exercise','fitness','training','gym'],
+  'Nutrition & Meal Planning':['nutrition','meal','diet','food','recipe','grocery'],
+  'Calorie Tracking':['calorie','nutrition','diet','food','health','fitness'],
+  'Sleep Optimization':['sleep','wellness','health','habit','rest'],
+  'Health Coaching':['health','coaching','wellness','fitness','habit'],
+  'Habit Building':['habit','routine','productivity','wellness','goal'],
+  'Budgeting':['budget','finance','money','expense','spending'],
+  'Expense Tracking':['expense','finance','budget','money','tracking'],
+  'Saving Goals':['saving','finance','money','goal','budget'],
+  'Investing':['invest','finance','stock','wealth','trading'],
+  'Tax Assistance':['tax','finance','accounting','money','irs'],
+  'Side Hustles':['freelance','side hustle','income','entrepreneur','solopreneur'],
+  'Retirement Planning':['retirement','finance','invest','wealth','pension'],
+  'Resume Building':['resume','cv','job','career','hiring'],
+  'Interview Preparation':['interview','career','job','coaching','preparation'],
+  'Job Search':['job','career','hiring','resume','professional'],
+  'Productivity':['productivity','organize','task','workflow','focus','to-do'],
+  'Project Management':['project','management','task','team','workflow','plan'],
+  'Meeting Assistants':['meeting','transcribe','note','record','minutes','audio'],
+  'Professional Development':['professional','learn','course','skill','development'],
+  'Tutoring':['tutor','education','teach','study','learn'],
+  'Research':['research','search','academic','source','citation'],
+  'Language Learning':['language','translate','learn','foreign','linguist'],
+  'Exam Preparation':['exam','study','test','quiz','education'],
+  'Online Courses':['course','learn','education','online','curriculum'],
+  'Skill Development':['skill','learn','develop','course','training'],
+  'Parenting Support':['parent','family','child','kid','baby'],
+  'Relationship Coaching':['relationship','coaching','communication','social','empathy'],
+  'Family Scheduling':['schedule','calendar','family','organize','plan'],
+  'Communication Assistance':['communication','email','message','write','compose'],
+  'Event Planning':['event','plan','schedule','organize','wedding'],
+  'Home Management':['home','organize','manage','house','chore'],
+  'Cleaning Schedules':['clean','schedule','organize','home','chore'],
+  'Grocery Planning':['grocery','food','meal','plan','shopping'],
+  'Interior Design':['interior','design','home','decor','space','room'],
+  'Home Maintenance':['maintenance','repair','home','diy','fix'],
+  'Trip Planning':['travel','trip','vacation','plan','destination'],
+  'Itinerary Creation':['itinerary','travel','plan','trip','schedule'],
+  'Flight Tracking':['flight','travel','track','airline','booking'],
+  'Navigation':['navigation','map','route','direction','gps'],
+  'Travel Budgeting':['travel','budget','expense','money','finance'],
+  'Password Management':['password','security','protect','privacy','vault'],
+  'Identity Protection':['identity','security','protect','fraud','privacy'],
+  'Cybersecurity':['cyber','security','protect','privacy','hack','threat'],
+  'Fraud Detection':['fraud','security','detect','protect','scam'],
+  'Emergency Preparedness':['emergency','safety','prepare','protect','alert'],
+  'Meditation':['meditation','mindful','calm','relax','wellness'],
+  'Journaling':['journal','diary','write','reflection','note'],
+  'Mood Tracking':['mood','emotion','mental','wellness','health'],
+  'Stress Management':['stress','anxiety','calm','wellness','mental'],
+  'Mindfulness':['mindful','meditation','calm','wellness','focus'],
+  'Business Planning':['business','plan','strategy','startup','founder'],
+  'Content Creation':['content','create','marketing','blog','social'],
+  'Marketing':['marketing','ad','campaign','brand','social media'],
+  'Sales':['sales','crm','customer','lead','convert'],
+  'E-commerce':['ecommerce','shop','store','product','sell','shopify'],
+  'Automation':['automate','workflow','integrate','zapier','n8n','make','trigger'],
+  'Customer Support':['customer','support','help','helpdesk','service','ticket'],
+};
+function tfmLifeMatch(t,sub){
+  const kws=LIFE_KEYWORDS_MAP[sub];
+  if(!kws||!kws.length)return false;
+  const hay=(t.name+' '+t.tag+' '+t.cat+' '+(t.needs||[]).join(' ')+' '+(t.jobs||[]).join(' ')+(t.life||[]).join(' ')).toLowerCase();
+  return kws.some(k=>hay.includes(k));
+}
+
 function tfmJobMatch(t,job){
   /* 1. direct tag on tool */
   if(t.jobs&&t.jobs.includes(job))return true;
@@ -2293,8 +2382,8 @@ function tfmTrendMatch(t,trend){
   if(!trend)return true;
   return LENSES.trend.rowsFor(trend).some(r=>r.filter(t));
 }
-function tfmHasActiveFilter(){return tfmCats.size>0||tfmPricing.size>0||tfmJobs.size>0||tfmNeeds.size>0||tfmTrend||searchQuery||tfmSort!=='popular';}
-function tfmHasExplicitFilter(){return tfmCats.size>0||tfmPricing.size>0||tfmJobs.size>0||tfmNeeds.size>0||tfmTrend;}
+function tfmHasActiveFilter(){return tfmCats.size>0||tfmPricing.size>0||tfmJobs.size>0||tfmNeeds.size>0||tfmTrend||tfmLife.size>0||searchQuery||tfmSort!=='popular';}
+function tfmHasExplicitFilter(){return tfmCats.size>0||tfmPricing.size>0||tfmJobs.size>0||tfmNeeds.size>0||tfmTrend||tfmLife.size>0;}
 function tfmGetFilteredTools(){
   const idxs=TOOLS.map((_,i)=>i).filter(i=>{
     const t=tool(i);if(!t)return false;
@@ -2304,6 +2393,7 @@ function tfmGetFilteredTools(){
     if(tfmJobs.size>0&&![...tfmJobs].some(j=>tfmJobMatch(t,j)))return false;
     if(tfmNeeds.size>0&&![...tfmNeeds].some(n=>tfmNeedMatch(t,n)))return false;
     if(tfmTrend&&!tfmTrendMatch(t,tfmTrend))return false;
+    if(tfmLife.size>0&&![...tfmLife].some(s=>tfmLifeMatch(t,s)))return false;
     return true;
   });
   if(tfmSort==='popular')idxs.sort((a,b)=>(tool(b).trending||0)-(tool(a).trending||0));
@@ -2424,12 +2514,18 @@ function buildTfmDDs(){
   document.getElementById('tfm-dd-need').innerHTML=LENSES.need.options.map(o=>`<button class="tfm-dd-item ${tfmNeeds.has(o)?'checked':''}" onclick="toggleTfmNeed('${o.replace(/'/g,"\\'")}')"><span class="tfm-check">${chk(tfmNeeds.has(o))}</span>${o}</button>`).join('');
   /* By Trending (single-select, radio style) */
   document.getElementById('tfm-dd-trend').innerHTML=LENSES.trend.options.map(o=>`<button class="tfm-dd-item ${tfmTrend===o?'checked':''}" onclick="setTfmTrend('${o.replace(/'/g,"\\'")}')"><span class="tfm-check">${chk(tfmTrend===o)}</span>${o}</button>`).join('');
+  /* LifEssentials (grouped, multi-select) */
+  document.getElementById('tfm-dd-life').innerHTML=LIFE_ESSENTIALS.map(g=>
+    `<div class="tfm-dd-group">${g.group}</div>`+
+    g.items.map(o=>`<button class="tfm-dd-item ${tfmLife.has(o)?'checked':''}" onclick="toggleTfmLife('${o.replace(/'/g,"\\'")}')"><span class="tfm-check">${chk(tfmLife.has(o))}</span>${o}</button>`).join('')
+  ).join('');
 }
 function toggleTfmCat(cat){if(tfmCats.has(cat))tfmCats.delete(cat);else tfmCats.add(cat);syncTfmState();}
 function toggleTfmPricing(key){if(tfmPricing.has(key))tfmPricing.delete(key);else tfmPricing.add(key);syncTfmState();}
 function toggleTfmJob(job){if(tfmJobs.has(job))tfmJobs.delete(job);else tfmJobs.add(job);syncTfmState();}
 function toggleTfmNeed(need){if(tfmNeeds.has(need))tfmNeeds.delete(need);else tfmNeeds.add(need);syncTfmState();}
 function setTfmTrend(trend){tfmTrend=(tfmTrend===trend)?'':trend;syncTfmState();}
+function toggleTfmLife(sub){if(tfmLife.has(sub))tfmLife.delete(sub);else tfmLife.add(sub);syncTfmState();}
 function syncTfmState(){
   const pLabels={free:'Free',paid:'Paid',onetime:'One-Time'};
   /* Restore button active states + signs (labels stay static) */
@@ -2439,10 +2535,15 @@ function syncTfmState(){
     ['tfm-btn-job','tfm-job-sign',tfmJobs.size>0],
     ['tfm-btn-need','tfm-need-sign',tfmNeeds.size>0],
     ['tfm-btn-trend','tfm-trend-sign',!!tfmTrend],
+    ['tfm-btn-life','tfm-life-sign',tfmLife.size>0],
   ];
   pairs.forEach(([btnId,signId,on])=>{
-    document.getElementById(btnId).classList.toggle('active',on);
-    document.getElementById(signId).textContent=on?'—':'+';
+    const btn=document.getElementById(btnId);
+    const sign=document.getElementById(signId);
+    if(btn)btn.classList.toggle('active',on);
+    // Keep the green tint on LifEssentials button when not active
+    if(btnId==='tfm-btn-life'&&btn)btn.style.color=on?'':'#0d6e56';
+    if(sign)sign.textContent=on?'—':'+';
   });
   /* Render active-filter chips below bar */
   const chipsEl=document.getElementById('tfm-active-chips');
@@ -2453,12 +2554,13 @@ function syncTfmState(){
     tfmJobs.forEach(j=>chips.push(`<span class="tfm-active-chip">${j}<button onclick="toggleTfmJob('${j.replace(/'/g,"\\'")}')">✕</button></span>`));
     tfmNeeds.forEach(n=>chips.push(`<span class="tfm-active-chip">${n}<button onclick="toggleTfmNeed('${n.replace(/'/g,"\\'")}')">✕</button></span>`));
     if(tfmTrend)chips.push(`<span class="tfm-active-chip">${tfmTrend}<button onclick="setTfmTrend('${tfmTrend.replace(/'/g,"\\'")}')">✕</button></span>`);
+    tfmLife.forEach(s=>chips.push(`<span class="tfm-active-chip" style="background:#d1fae5;color:#065f46;border-color:#6ee7b7">${s}<button onclick="toggleTfmLife('${s.replace(/'/g,"\\'")}')">✕</button></span>`));
     chipsEl.innerHTML=chips.join('');
   }
   buildTfmDDs();
   renderTfmView();
 }
-function clearTfmFilters(){tfmCats.clear();tfmPricing.clear();tfmJobs.clear();tfmNeeds.clear();tfmTrend='';syncTfmState();}
+function clearTfmFilters(){tfmCats.clear();tfmPricing.clear();tfmJobs.clear();tfmNeeds.clear();tfmTrend='';tfmLife.clear();syncTfmState();}
 function toggleTfmDD(name){
   const dd=document.getElementById('tfm-dd-'+name);
   const btn=document.getElementById('tfm-btn-'+name);
