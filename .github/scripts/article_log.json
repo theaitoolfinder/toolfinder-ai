@@ -778,6 +778,28 @@
         "OpusClip",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-10",
+      "slot": "midday",
+      "slug": "the-startup-founder-ai-roadmap-which-tools-to-add-first-and-why",
+      "title": "The Startup Founder AI Roadmap: Which Tools to Add First (and Why)",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
+      "topic": "startup founder roadmap which",
+      "pair": "",
+      "words": 2151,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
@@ -850,6 +872,7 @@
     "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop"
   ]
 }
