@@ -9,10 +9,11 @@ Schedule (Philippine Time, PHT = UTC+8):
   Friday   ×5     Exclusive articles → deep dive / workflow / strategy
 
 Sources rotated to avoid repetition:
-  hackernews · reddit · devto · venturebeat · verge · techcrunch
+  hackernews · devto · venturebeat · techcrunch
+  (Reddit excluded — datacenter IPs banned; Verge RSS invalid XML)
 
-Article types rotated (tracked in article_log.json, 14-day dedup window):
-  comparison · roundup · tutorial · news_digest · deep_dive · workflow · strategy
+Article types (tracked in article_log.json, 14-day dedup window):
+  comparison · featured · pros_cons · roadmap · controversial
 
 Every article: minimum 1,200 words. Topics + angles tracked per article to
 prevent ANY repetition across title, topic, tool pair, and angle.
@@ -872,7 +873,7 @@ def pick_article_type(log):
     return SLOT_TYPE_PREFS[SLOT][0]
 
 # ── Pick source ────────────────────────────────────────────────────────────────
-ALL_SOURCES = ["hackernews", "reddit", "devto", "venturebeat", "verge", "techcrunch"]
+ALL_SOURCES = ["hackernews", "devto", "venturebeat", "techcrunch"]  # Reddit blocked on GH Actions; Verge RSS broken
 
 def pick_source(log):
     recent = recent_values(log, "source", 4)
@@ -1023,8 +1024,8 @@ def fetch_devto(n=8):
 
 RSS_FEEDS = {
     "venturebeat": ("https://feeds.feedburner.com/venturebeat/SZYF",         "VentureBeat"),
-    "verge":       ("https://www.theverge.com/ai-artificial-intelligence/rss/index.xml", "The Verge"),
     "techcrunch":  ("https://techcrunch.com/category/artificial-intelligence/feed/", "TechCrunch"),
+    # The Verge removed — RSS feed returns invalid XML (not well-formed)
 }
 
 def fetch_rss(source_key, n=8):
@@ -1061,8 +1062,8 @@ def fetch_rss(source_key, n=8):
 def fetch_stories(source_name):
     fetchers = {
         "hackernews": fetch_hackernews,
-        "reddit":     fetch_reddit,
         "devto":      fetch_devto,
+        # Reddit excluded — GitHub Actions IPs are datacenter-banned by Reddit
     }
     if source_name in fetchers:
         return fetchers[source_name]()
@@ -1079,7 +1080,7 @@ def ensure_stories(stories, min_n=5):
     extra = [s for s in fetch_hackernews() if s["title"] not in seen]
     result = (stories + extra)
     if len(result) < min_n:
-        extra2 = [s for s in fetch_reddit() if s["title"] not in seen]
+        extra2 = [s for s in fetch_devto() if s["title"] not in seen]
         result = (result + extra2)
     return result[:max(min_n, 6)]
 
@@ -1091,34 +1092,13 @@ def ensure_stories(stories, min_n=5):
 
 def fetch_tool_research(tool_name: str) -> str:
     """
-    Pull real, current user opinions and discussions about a specific AI tool
-    from Reddit and Hacker News. Returns a research brief Claude uses as the
-    factual foundation for featured, pros_cons, and comparison articles.
+    Pull real, current discussions about a specific AI tool from Hacker News,
+    DEV.to, and RSS feeds. Returns a research brief Claude uses as the factual
+    foundation for featured, pros_cons, and comparison articles.
+    (Reddit excluded — GitHub Actions datacenter IPs are banned by Reddit.)
     """
     snippets = []
     q = tool_name
-
-    # ── Reddit: search across AI-relevant subs ────────────────────────────────
-    subs = ["artificial", "ChatGPT", "AItools", "MachineLearning",
-            "singularity", "Entrepreneur", "freelance", "productivity"]
-    for sub in subs[:5]:
-        try:
-            url = (f"https://www.reddit.com/r/{sub}/search.json"
-                   f"?q={requests.utils.quote(q)}&sort=top&t=month&limit=8&restrict_sr=1")
-            data = requests.get(url, headers=HDR, timeout=10).json()
-            for child in data.get("data", {}).get("children", [])[:4]:
-                p = child.get("data", {})
-                post_title = p.get("title", "").strip()
-                selftext   = re.sub(r"\s+", " ", p.get("selftext", "")).strip()[:400]
-                score      = p.get("score", 0)
-                n_comments = p.get("num_comments", 0)
-                if post_title and score > 5:
-                    line = f'[Reddit r/{sub} | {score} upvotes, {n_comments} comments] "{post_title}"'
-                    if selftext and len(selftext) > 30:
-                        line += f'\n  → {selftext}'
-                    snippets.append(line)
-        except Exception as e:
-            print(f"[WARN] Reddit research r/{sub}: {e}", file=sys.stderr)
 
     # ── Hacker News: recent threads ───────────────────────────────────────────
     try:
@@ -1139,8 +1119,25 @@ def fetch_tool_research(tool_name: str) -> str:
     except Exception as e:
         print(f"[WARN] HN research: {e}", file=sys.stderr)
 
+    # ── DEV.to: community articles ────────────────────────────────────────────
+    try:
+        url = (f"https://dev.to/api/articles"
+               f"?per_page=10&top=30&tag=ai")
+        articles = requests.get(url, headers=HDR, timeout=10).json()
+        if isinstance(articles, list):
+            for a in articles:
+                at = a.get("title", "").strip()
+                desc = a.get("description", "").strip()[:200]
+                reactions = a.get("positive_reactions_count", 0)
+                if q.lower() in at.lower() or q.lower() in desc.lower():
+                    snippets.append(
+                        f'[DEV.to | {reactions} reactions] "{at}" — {desc}'
+                    )
+    except Exception as e:
+        print(f"[WARN] DEV.to research: {e}", file=sys.stderr)
+
     # ── RSS feeds: recent news mentions ───────────────────────────────────────
-    for key in ("techcrunch", "verge", "venturebeat"):
+    for key in ("techcrunch", "venturebeat"):  # Verge RSS removed — invalid XML
         try:
             feed_url, label = RSS_FEEDS[key]
             r = requests.get(feed_url, headers=HDR, timeout=10)
@@ -1349,9 +1346,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
     # Sonnet gives excellent article quality at ~$0.04/article.
     # Opus is 5-10x more expensive with minimal quality gain for long-form writing.
     MODELS = [
-        "claude-3-5-sonnet-20241022",   # Best value — reliable, fast, great writing
-        "claude-3-7-sonnet-20250219",   # Newer sonnet if available
-        "claude-sonnet-4-5",            # Claude 4 sonnet if available
+        "claude-sonnet-4-5",            # ✅ Confirmed working — good balance of cost/quality
         "claude-3-5-haiku-20241022",    # Cheaper fallback — still good for articles
         "claude-sonnet-4-0",
         "claude-opus-4-0",              # Expensive — last resort only
