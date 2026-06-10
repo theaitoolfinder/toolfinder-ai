@@ -1,7 +1,8 @@
 name: Sync Subscriber List
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Runs every hour and whenever triggered manually.
+# Runs every 5 minutes, on manual trigger, or when dispatched programmatically
+# (e.g. immediately after a new subscribe form submission).
 # Fetches active Brevo contacts, SHA-256 hashes their emails, and writes
 # data/subscribers.json — which articles.html uses for the members gate.
 #
@@ -10,8 +11,10 @@ name: Sync Subscriber List
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour, on the hour
-  workflow_dispatch:        # allow manual run from GitHub Actions UI
+    - cron: '*/5 * * * *'  # every 5 minutes
+  workflow_dispatch:        # manual run from GitHub Actions UI
+  repository_dispatch:      # triggered programmatically on new subscribe
+    types: [subscriber_added]
 
 jobs:
   sync:

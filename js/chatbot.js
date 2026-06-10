@@ -255,11 +255,42 @@
     if (typeof isSubscriberCmp === 'function') return isSubscriberCmp(email);
     try {
       const hash = await mcbSha256(email);
+      // ── Check localStorage cache first (instant, same-device) ──
+      try {
+        const local = JSON.parse(localStorage.getItem('myai_sub_hashes') || '[]');
+        if (Array.isArray(local) && local.includes(hash)) return true;
+      } catch(e) {}
+      // ── Fall back to subscribers.json (synced from Brevo) ──
       const r = await fetch('/data/subscribers.json?_=' + Date.now(), { cache: 'no-store' });
       if (!r.ok) return null;
       const d = await r.json();
       return Array.isArray(d.hashes) && d.hashes.includes(hash);
     } catch (e) { return null; }
+  }
+
+  // ── Persist hash locally + trigger immediate GitHub sync ──
+  async function mcbPersistSubscriber(email) {
+    const hash = await mcbSha256(email);
+    // 1. Store in localStorage so same-device verify works instantly
+    try {
+      const existing = JSON.parse(localStorage.getItem('myai_sub_hashes') || '[]');
+      if (!existing.includes(hash)) {
+        existing.push(hash);
+        localStorage.setItem('myai_sub_hashes', JSON.stringify(existing));
+      }
+    } catch(e) {}
+    // 2. Trigger an immediate GitHub Actions sync (uses admin token if available)
+    try {
+      const token = localStorage.getItem('myai_gh_token');
+      const repo  = localStorage.getItem('myai_gh_repo') || 'theaitoolfinder/toolfinder-ai';
+      if (token) {
+        await fetch(`https://api.github.com/repos/${repo}/actions/workflows/sync-subscribers.yml/dispatches`, {
+          method: 'POST',
+          headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' },
+          body: JSON.stringify({ ref: 'main' })
+        });
+      }
+    } catch(e) {} // silently ignore — cron is the fallback
   }
 
   function mcbShowGate() {
@@ -368,6 +399,8 @@
       fd.append('html_type', 'simple');
       await fetch(BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
     } catch (e) {}
+    // Persist hash locally + trigger immediate sync in background
+    mcbPersistSubscriber(email).catch(() => {});
     if (fname) localStorage.setItem('myai_chat_name', fname);
     localStorage.setItem('pf_email', email);
     if (typeof memberLogin === 'function') memberLogin(email, fname || null);
