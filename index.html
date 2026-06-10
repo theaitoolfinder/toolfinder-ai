@@ -186,6 +186,8 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .tfm-filter-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);font-family:inherit;font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
 .tfm-filter-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 .tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
+.tfm-filter-btn.life-btn{border-color:#10b981;color:#065f46;background:rgba(16,185,129,.08)}
+.tfm-filter-btn.life-btn:hover,.tfm-filter-btn.life-btn.active{border-color:#059669;color:#fff;background:#059669}
 .tfm-dd{position:fixed;top:0;left:0;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
 .tfm-dd.open{display:flex}
 .tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
@@ -1116,7 +1118,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
           <div class="tfm-dd" id="tfm-dd-pricing"></div>
         </div>
         <div class="tfm-filter-group">
-          <button class="tfm-filter-btn" id="tfm-btn-life" onclick="toggleTfmDD('life')" style="color:#0d6e56">
+          <button class="tfm-filter-btn life-btn" id="tfm-btn-life" onclick="toggleTfmDD('life')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span id="tfm-life-label">LifEssentials</span> <span id="tfm-life-sign">+</span>
           </button>
@@ -2286,16 +2288,16 @@ const NEEDS_CAT_MAP={
 };
 /* ── LifEssentials: grouped categories ──────────────────────────── */
 const LIFE_ESSENTIALS=[
-  {group:'🏃 Health & Fitness',   items:['Workout Planning','Nutrition & Meal Planning','Calorie Tracking','Sleep Optimization','Health Coaching','Habit Building']},
-  {group:'💰 Finance & Wealth',   items:['Budgeting','Expense Tracking','Saving Goals','Investing','Tax Assistance','Side Hustles','Retirement Planning']},
-  {group:'💼 Career & Work',      items:['Resume Building','Interview Preparation','Job Search','Productivity','Project Management','Meeting Assistants','Professional Development']},
-  {group:'📚 Education & Learning',items:['Tutoring','Research','Language Learning','Exam Preparation','Online Courses','Skill Development']},
-  {group:'👨‍👩‍👧 Family & Relationships',items:['Parenting Support','Relationship Coaching','Family Scheduling','Communication Assistance','Event Planning']},
-  {group:'🏠 Home & Living',      items:['Home Management','Cleaning Schedules','Grocery Planning','Interior Design','Home Maintenance']},
-  {group:'✈️ Travel & Transportation',items:['Trip Planning','Itinerary Creation','Flight Tracking','Navigation','Travel Budgeting']},
-  {group:'🔒 Safety & Security',  items:['Password Management','Identity Protection','Cybersecurity','Fraud Detection','Emergency Preparedness']},
-  {group:'🧘 Mental Wellness',    items:['Meditation','Journaling','Mood Tracking','Stress Management','Mindfulness']},
-  {group:'🚀 Business & Entrepreneurship',items:['Business Planning','Content Creation','Marketing','Sales','E-commerce','Automation','Customer Support']},
+  {group:'Health & Fitness',        items:['Workout Planning','Nutrition & Meal Planning','Calorie Tracking','Sleep Optimization','Health Coaching','Habit Building']},
+  {group:'Finance & Wealth',        items:['Budgeting','Expense Tracking','Saving Goals','Investing','Tax Assistance','Side Hustles','Retirement Planning']},
+  {group:'Career & Work',           items:['Resume Building','Interview Preparation','Job Search','Productivity','Project Management','Meeting Assistants','Professional Development']},
+  {group:'Education & Learning',    items:['Tutoring','Research','Language Learning','Exam Preparation','Online Courses','Skill Development']},
+  {group:'Family & Relationships',  items:['Parenting Support','Relationship Coaching','Family Scheduling','Communication Assistance','Event Planning']},
+  {group:'Home & Living',           items:['Home Management','Cleaning Schedules','Grocery Planning','Interior Design','Home Maintenance']},
+  {group:'Travel & Transportation', items:['Trip Planning','Itinerary Creation','Flight Tracking','Navigation','Travel Budgeting']},
+  {group:'Safety & Security',       items:['Password Management','Identity Protection','Cybersecurity','Fraud Detection','Emergency Preparedness']},
+  {group:'Mental Wellness',         items:['Meditation','Journaling','Mood Tracking','Stress Management','Mindfulness']},
+  {group:'Business & Entrepreneurship',items:['Business Planning','Content Creation','Marketing','Sales','E-commerce','Automation','Customer Support']},
 ];
 /* Keyword map: each subcategory → words searched inside tool name+tag+cat+needs+jobs */
 const LIFE_KEYWORDS_MAP={
@@ -2542,8 +2544,6 @@ function syncTfmState(){
     const btn=document.getElementById(btnId);
     const sign=document.getElementById(signId);
     if(btn)btn.classList.toggle('active',on);
-    // Keep the green tint on LifEssentials button when not active
-    if(btnId==='tfm-btn-life'&&btn)btn.style.color=on?'':'#0d6e56';
     if(sign)sign.textContent=on?'—':'+';
   });
   /* Render active-filter chips below bar */
@@ -2575,7 +2575,14 @@ function toggleTfmDD(name){
     const vpTop=(window.visualViewport?window.visualViewport.offsetTop:0);
     const vpLeft=(window.visualViewport?window.visualViewport.offsetLeft:0);
     const vw=window.visualViewport?window.visualViewport.width:window.innerWidth;
-    dd.style.top=(r.bottom+8-vpTop)+'px';
+    // Use the sticky-wrap bottom edge when it's fixed (avoids using
+    // mid-page button coords before the bar scrolls into sticky mode)
+    const barEl=document.getElementById('tfm-sticky-wrap');
+    const barR=barEl?barEl.getBoundingClientRect():null;
+    const topVal=barR&&barEl.classList.contains('is-fixed')
+      ?barR.bottom+4
+      :r.bottom+8-vpTop;
+    dd.style.top=topVal+'px';
     dd.style.left=Math.min(r.left-vpLeft,vw-ddW-8)+'px';
     dd.classList.add('open');
   }
