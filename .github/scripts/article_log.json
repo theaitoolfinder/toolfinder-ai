@@ -1,18 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-01",
-      "slot": "evening",
-      "slug": "article-2026-06-01-eve",
-      "title": "AI Tools Digest — June 01, 2026 (Evening Edition)",
-      "type": "news_digest",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 804
-    },
-    {
       "date": "2026-06-02",
       "slot": "morning",
       "slug": "article-2026-06-02-am",
@@ -807,6 +795,22 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-10",
+      "slot": "night",
+      "slug": "choosing-between-beehiiv-and-mailchimp-read-this-first-2026",
+      "title": "Choosing Between Beehiiv and Mailchimp? Read This First (2026)",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
+      "topic": "choosing between beehiiv mailchimp",
+      "pair": "",
+      "words": 2259,
+      "partners": [
+        "Beehiiv",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -882,6 +886,7 @@
     "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop"
   ]
 }
