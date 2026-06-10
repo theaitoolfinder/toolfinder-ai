@@ -1201,8 +1201,12 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
     try:
         import anthropic
     except ImportError:
+        print("[ERROR] 'anthropic' package not installed — Claude cannot run.", file=sys.stderr)
         return None
     if not ANTHROPIC_API_KEY:
+        print("[ERROR] ANTHROPIC_API_KEY secret is not set in GitHub — Claude cannot run. "
+              "Go to: GitHub repo → Settings → Secrets → Actions → add ANTHROPIC_API_KEY",
+              file=sys.stderr)
         return None
 
     type_cfg       = ARTICLE_TYPES[article_type]
@@ -1341,8 +1345,16 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
     """).strip()
 
     # Model preference order — first available model wins
-    MODELS = ["claude-opus-4-5", "claude-sonnet-4-5", "claude-haiku-4-5",
-              "claude-opus-4-0", "claude-sonnet-4-0"]
+    MODELS = [
+        "claude-opus-4-5",
+        "claude-sonnet-4-5",
+        "claude-opus-4-0",
+        "claude-sonnet-4-0",
+        "claude-3-7-sonnet-20250219",
+        "claude-3-5-sonnet-20241022",
+        "claude-3-5-haiku-20241022",
+        "claude-3-opus-20240229",
+    ]
     max_tok = 5000 if is_excl else 4000
 
     for model in MODELS:
