@@ -126,6 +126,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .eyebrow{display:inline-block;font-size:11.5px;letter-spacing:.22em;color:var(--primary);text-transform:uppercase;margin-bottom:16px;padding:7px 14px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(219,234,254,.65);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 10px rgba(26,86,219,.10);font-weight:600}
 .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:0 0 14px;font-weight:800;letter-spacing:-.025em}
 .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--primary),#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-life{background:linear-gradient(90deg,#10b981,#6ee7b7)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;font-style:normal}
 .hero p{color:var(--text-2);max-width:640px;margin:0 auto 26px;font-size:17px}
 .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .15s}
@@ -1050,7 +1051,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 <main>
   <section class="hero container">
     <div class="eyebrow">AI Tools Directory &middot; 500+ Tools &middot; Curated Weekly</div>
-    <h1>Find the AI tools that <em>fit your work and life.</em></h1>
+    <h1>Find the AI tools that <em>fit your work and <span class="hero-life">life.</span></em></h1>
     <p>Skip the noise. Browse by your job, by the problem you need to solve, or by what&rsquo;s trending &mdash; then click straight through to the best deal.</p>
     <div class="hero-cta">
       <a class="btn-primary" href="#tools" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});return false;">Explore 500+ Tools &rarr;</a>
