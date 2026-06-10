@@ -275,6 +275,29 @@
       <label>Google Place ID</label>
       <input type="text" id="cfg-google-place-id" placeholder="ChIJ…" autocomplete="off" />
     </div>
+
+    <!-- Change Passphrase -->
+    <h3 style="margin:28px 0 4px;font-size:15px;font-weight:700;color:var(--text)">Change Admin Passphrase</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin:0 0 14px;line-height:1.6">Use a strong passphrase — at least 12 characters, mixing letters, numbers and symbols. The new hash is saved to GitHub so it works on all your devices.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:end" id="chpw-grid">
+      <div>
+        <label>Current passphrase</label>
+        <input type="password" id="chpw-current" placeholder="Current passphrase" autocomplete="current-password" />
+      </div>
+      <div>
+        <label>New passphrase</label>
+        <input type="password" id="chpw-new" placeholder="Min 12 characters" autocomplete="new-password" />
+      </div>
+      <div>
+        <label>Confirm new passphrase</label>
+        <input type="password" id="chpw-confirm" placeholder="Repeat new passphrase" autocomplete="new-password" />
+      </div>
+      <div style="grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <button class="btn primary" onclick="changePassphrase()">Update Passphrase</button>
+        <span id="chpw-status" style="font-size:13px"></span>
+      </div>
+    </div>
+    <style>@media(max-width:600px){#chpw-grid{grid-template-columns:1fr}}</style>
   </div>
 
   <!-- ANALYTICS TAB -->
@@ -593,6 +616,39 @@ async function setupPassphrase(){
   await syncFromLiveSite();
   document.getElementById('setup').style.display='none';
   showApp();
+}
+
+/* ── Change passphrase (while logged in) ─────────────────── */
+async function changePassphrase(){
+  const cur=document.getElementById('chpw-current').value;
+  const pw1=document.getElementById('chpw-new').value;
+  const pw2=document.getElementById('chpw-confirm').value;
+  const st=document.getElementById('chpw-status');
+  st.style.color='var(--danger)';
+  st.textContent='';
+  if(!cur){st.textContent='Enter your current passphrase.';return;}
+  if(!_adminCfg){st.textContent='Auth config not loaded — try refreshing.';return;}
+  const curH=await sha256(_adminCfg.salt+cur);
+  if(curH!==_adminCfg.hash){st.textContent='Current passphrase is wrong.';return;}
+  if(!pw1){st.textContent='New passphrase cannot be empty.';return;}
+  if(pw1.length<12){st.textContent='New passphrase must be at least 12 characters.';return;}
+  if(pw1!==pw2){st.textContent='New passphrases do not match.';return;}
+  if(pw1===cur){st.textContent='New passphrase must be different from current.';return;}
+  const btn=document.querySelector('#chpw-grid .btn.primary');
+  if(btn){btn.disabled=true;btn.textContent='Saving…';}
+  const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  const hash=await sha256(salt+pw1);
+  const cfg={v:1,salt,hash};
+  const res=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: update passphrase hash');
+  if(btn){btn.disabled=false;btn.textContent='Update Passphrase';}
+  if(!res.ok){st.textContent=res.msg||'Failed to save — check your GitHub token.';return;}
+  _adminCfg=cfg;
+  document.getElementById('chpw-current').value='';
+  document.getElementById('chpw-new').value='';
+  document.getElementById('chpw-confirm').value='';
+  st.style.color='var(--ok)';
+  st.textContent='✅ Passphrase updated successfully!';
+  setTimeout(()=>{st.textContent='';},5000);
 }
 
 /* ── Load cross-device overrides + site config from GitHub ── */
