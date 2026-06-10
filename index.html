@@ -2572,9 +2572,11 @@ function toggleTfmDD(name){
     const r=btn.getBoundingClientRect();
     const ddW=dd.classList.contains('tfm-dd-wide')?260:210;
     const vw=window.innerWidth;
+    // Use measured header + bar heights — immune to getBoundingClientRect drift
+    const headerEl=document.querySelector('header.site');
     const barEl=document.getElementById('tfm-sticky-wrap');
-    const barBottom=barEl?barEl.getBoundingClientRect().bottom:r.bottom;
-    dd.style.top=(barBottom+4)+'px';
+    const topPx=(headerEl?headerEl.offsetHeight:65)+(barEl?barEl.offsetHeight:50)+4;
+    dd.style.top=topPx+'px';
     dd.style.left=Math.min(r.left,vw-ddW-8)+'px';
     dd.classList.add('open');
   }
