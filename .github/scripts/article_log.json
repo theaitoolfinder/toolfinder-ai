@@ -3,18 +3,6 @@
     {
       "date": "2026-05-29",
       "slot": "exclusive",
-      "slug": "exclusive-2026-05-29-4",
-      "title": "ElevenLabs vs Murf AI: The Honest 2026 Verdict",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
-      "topic": "elevenlabs murf 2026",
-      "pair": "ElevenLabs vs Murf AI",
-      "words": 537
-    },
-    {
-      "date": "2026-05-29",
-      "slot": "exclusive",
       "slug": "exclusive-2026-05-29-5",
       "title": "9 Best Affordable AI Tools for Budget-Conscious Creators in 2026 — Ranked and Tested",
       "type": "roundup",
@@ -800,6 +788,19 @@
         "OpusClip",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-10",
+      "slot": "afternoon",
+      "slug": "github-copilot-7-genuine-pros-and-5-real-cons-you-need-to-know",
+      "title": "GitHub Copilot: 7 Genuine Pros and 5 Real Cons You Need to Know",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
+      "topic": "github copilot genuine pros",
+      "pair": "",
+      "words": 2053,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -873,6 +874,7 @@
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop"
   ]
 }
