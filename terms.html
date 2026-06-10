@@ -75,7 +75,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
 .mob-nav a:hover{background:var(--bg-off);color:var(--navy);}
 .mob-cta{background:var(--navy)!important;color:#fff!important;margin-top:8px;justify-content:center;font-weight:600!important;}
 .mob-cta:hover{background:var(--navy2)!important;}
-.mob-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.35);
+.mob-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
   opacity:0;pointer-events:none;transition:opacity 0.3s;}
 .mob-overlay.open{opacity:1;pointer-events:all;}
 
