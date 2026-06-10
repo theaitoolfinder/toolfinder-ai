@@ -374,132 +374,104 @@ REQUIRED STRUCTURE (do not skip sections):
 
 STYLE: Conversational but authoritative. Cite real pricing. Mention specific features by name. No vague superlatives.""",
     },
-    "roundup": {
-        "label": "Guide", "cat": "guide review", "read_time": "8 min",
-        "prompt": """Write a COMPREHENSIVE BEST-OF ROUNDUP article of AT LEAST 1,200 words.
+    "featured": {
+        "label": "Featured Tool", "cat": "featured review", "read_time": "8 min",
+        "prompt": """Write a DEEP-DIVE FEATURED AI TOOL REVIEW of AT LEAST 1,200 words.
 
-REQUIRED STRUCTURE:
-1. Intro (100+ words): Who this list is for, what criteria you used to select tools, and one surprising finding from your research.
-2. Selection Criteria (<h3>): 4–5 criteria you used (accuracy, pricing, ease of use, integrations, support). Brief but specific.
-3. Tools 1–8 (each as its own <h3>): Per tool — 120+ words covering: what it does uniquely, the ONE killer feature, real pricing, best-fit user, one limitation. Be honest about weaknesses.
-4. Comparison at a Glance (<h3>): A <ul> grid — each tool, its price tier, and its #1 use case.
-5. How to Choose (<h3>): 3–4 decision paths: "If you X, pick Y because Z." Make this opinionated.
-6. Editor's Pick (<h3>): One clear winner with a 100-word explanation of why it beats everything else for most readers.
-7. Alternatives Worth Watching (<h3>): 2–3 tools that didn't make the main list but deserve mention.
-8. Closing (60+ words): The #1 action to take today — not "try them all" but a specific starting point.
+This is a full spotlight on ONE specific AI tool — the kind of review a professional reads before deciding to pay for a tool.
 
-STYLE: Direct. Opinionated. Cite real feature names and real pricing.""",
+REQUIRED STRUCTURE (do not skip sections):
+1. The Hook (150+ words): Open with a specific, vivid scenario where this tool saves the day — real numbers, real situation. Make the reader feel the value before you explain the tool.
+2. What It Actually Does (<h3>, 150+ words): Cut through the marketing. Explain in plain language what the tool does, what problem it was built for, and who built it. Include current pricing tiers.
+3. The Killer Feature (<h3>, 150+ words): The ONE thing this tool does better than anything else on the market. Be specific — name the feature, explain HOW it works, give a concrete before/after example.
+4. Full Feature Breakdown (<h3>): Walk through the 5–7 most important features. For each: what it does, how well it works, any limitations. Be honest — no feature is perfect.
+5. Real-World Test Results (<h3>, 200+ words): Describe 2–3 specific tasks you ran through the tool. What was the input? What came out? How long did it take? How did it compare to doing it manually or with a competitor?
+6. Who It's Perfect For (<h3>): 3–4 specific user profiles (e.g., "If you're a freelance writer producing 20+ articles a month…"). Be precise — not just "marketers" but which type of marketer and why.
+7. Honest Limitations (<h3>, 100+ words): What it genuinely doesn't do well. Every tool has weaknesses — name them directly. This is what readers trust you for.
+8. Pricing: Is It Worth It? (<h3>, 100+ words): Break down each tier. What does each unlock? At what usage level does upgrading make sense? Is the free plan genuinely useful or just a teaser?
+9. Compared to the Alternatives (<h3>): How does it stack up against 2–3 competitors? When should someone choose a competitor instead?
+10. The Verdict (<h3>): Your honest final score out of 10 for different user types. One sentence on who should buy it today and one sentence on who should wait or look elsewhere.
+
+STYLE: Honest, specific, opinionated. Readers want to know if this tool is worth their money — tell them directly.""",
     },
-    "tutorial": {
-        "label": "Tutorial", "cat": "guide tutorial", "read_time": "9 min",
-        "prompt": """Write a DETAILED STEP-BY-STEP TUTORIAL of AT LEAST 1,200 words.
+    "pros_cons": {
+        "label": "Pros & Cons", "cat": "pros-cons review", "read_time": "7 min",
+        "prompt": """Write an HONEST PROS AND CONS review of AT LEAST 1,200 words.
 
-REQUIRED STRUCTURE:
-1. Problem Hook (100+ words): Describe the before-state — what this task looks like WITHOUT the AI workflow. Make readers feel the pain: time wasted, quality lost, frustration.
-2. What You'll Achieve (50+ words): After-state. Be specific — "In 45 minutes you'll have X, Y, Z."
-3. What You'll Need (<h3>): Tools, accounts, any prerequisites. Link by name.
-4. Steps 1–6 (<h3> per step, 150+ words each): Each step must include —
-   a) The exact action to take  b) WHY this step matters  c) The specific tool/prompt to use
-   d) What the output should look like  e) Common mistake to avoid at this step
-5. Sample Prompts (<h3>): At least 3 copy-pasteable prompts in <em> tags, with explanation of why each word choice matters.
-6. Time & Cost Breakdown (<h3>): Realistic estimate of how long each step takes and what it costs.
-7. Troubleshooting (<h3>): 3 things that commonly go wrong and exact fixes.
-8. Quick-Win Checklist (<h3>): 5 things the reader can do TODAY to start, in <ul> format.
-9. Next Steps (60+ words): Where to go deeper once they've completed this workflow.
+This is the article someone reads when they're almost ready to buy a tool but want an unfiltered take first.
 
-STYLE: Precise. Numbered steps. No vague advice — every sentence should be actionable.""",
+REQUIRED STRUCTURE (do not skip sections):
+1. The Stakes Hook (100+ words): Why does getting this decision right matter? Open with a specific story of someone who chose the wrong tool and paid the price — in time, money, or frustration.
+2. Quick Snapshot (<h3>): Tool name, what it does in one sentence, current pricing, best-fit user. This is the skimmable overview.
+3. The Pros — In Depth (<h3>, 400+ words total across all pros): List 5–7 genuine pros. For each pro:
+   - State it as a specific claim, not vague praise (e.g., "Cuts video editing time by 60% for social clips" not "saves time")
+   - Explain WHY this is a pro with real detail — feature name, how it works, who benefits
+   - Give a concrete example or use case
+4. The Cons — In Depth (<h3>, 300+ words total across all cons): List 4–6 genuine cons. For each con:
+   - Be specific and honest — this is what readers trust you for
+   - Explain the real-world impact of this limitation
+   - Note if there's a workaround (and whether it's good enough)
+5. Who Should Buy It (<h3>, 100+ words): 3 specific user profiles that will love this tool. Be precise — not "content creators" but "content creators who publish daily short-form video and need..."
+6. Who Should Skip It (<h3>, 100+ words): 3 specific user profiles for whom this tool is a bad fit. This takes courage to write — do it honestly.
+7. How It Compares (<h3>): Name 2–3 alternatives and one sentence on who should pick each instead.
+8. The Bottom Line (<h3>, 100+ words): A direct recommendation. What's the score out of 10? Under what conditions is it worth paying for? What would need to change to make it a 10?
+
+STYLE: Candid and balanced. Equal space to pros and cons. Readers see through puff pieces — be the writer they trust.""",
     },
-    "news_digest": {
-        "label": "Daily Digest", "cat": "review guide", "read_time": "6 min",
-        "prompt": """Write an AI NEWS DIGEST article of AT LEAST 1,200 words.
+    "controversial": {
+        "label": "Controversy", "cat": "news controversy", "read_time": "7 min",
+        "prompt": """Write a CONTROVERSIAL AI TOOLS NEWS article of AT LEAST 1,200 words.
 
-REQUIRED STRUCTURE:
-1. Opening Context (150+ words): Set the scene for why THIS WEEK specifically is important for AI. What's the broader shift happening? What does it mean for everyday AI users — solopreneurs, creators, freelancers?
-2. Story 1 (<h3> — most important): 200+ words. Explain the story, why it matters, and the SPECIFIC practical impact on someone using AI tools today. Include at least one concrete example.
-3. Story 2 (<h3>): 180+ words. Same depth. Different angle.
-4. Story 3 (<h3>): 180+ words. Focus on a tool update, price change, or workflow improvement.
-5. Story 4 (<h3> — optional): A "under the radar" story that most people missed.
-6. What This Means for You (<h3>, 150+ words): Synthesize the week's themes into 3 actionable takeaways. Not generic — specific to your audience of AI power users.
-7. Tool Spotlight (<h3>, 100+ words): One specific tool that's relevant to this week's news. What it does, what's new, and whether it's worth trying.
-8. This Week's Action (<h3>): One specific thing to do this week based on everything above. Be directive.
-9. Looking Ahead (60+ words): What to watch next week or in the coming month.
+This is the article that tells the truth no one else is saying — the backlash, the failure, the overhyped launch, the lawsuit, the pricing scandal, the data concern, or the industry debate that's dividing professionals.
 
-STYLE: Journalistic but warm. Direct. Zero hype. Treat readers as smart professionals.""",
+REQUIRED STRUCTURE (do not skip sections):
+1. The Controversy Hook (150+ words): Open hard — state the controversy directly in the first sentence. No easing in. Make the stakes clear: who's affected, how much, and why it matters right now. Use specific numbers or quotes where possible.
+2. What Actually Happened (<h3>, 200+ words): A factual, timeline-based breakdown of the controversy. What did the company do or say? When? What was the reaction? Include specific details — dates, pricing changes, policy language, user complaints. No vague summaries.
+3. Why People Are Angry — And Are They Right? (<h3>, 200+ words): Present the strongest version of the criticism. What do users, experts, or competitors say? Quote real reactions from forums, social media, or press. Then — critically — evaluate whether the outrage is justified, overstated, or missing the bigger picture.
+4. The Company's Side (<h3>, 100+ words): What did the company say in response? Were their explanations credible? This section should be fair — not a PR piece, but not a hit piece either. Readers trust you to be balanced.
+5. What This Means for You (<h3>, 150+ words): Practical impact on real users. Should you be worried? Should you switch tools? Should you adjust how you use it? Give specific, actionable guidance — not "wait and see" vagueness.
+6. The Bigger Picture (<h3>, 150+ words): Is this an isolated incident or part of a broader trend? What does this controversy reveal about the AI tools industry — pricing practices, data policies, overpromising, quality control? Connect the dots.
+7. Alternatives Worth Knowing (<h3>): If readers are reconsidering this tool, what are 2–3 legitimate alternatives? One sentence per tool on why it might be a better fit given the controversy.
+8. The Bottom Line (<h3>, 100+ words): Your unfiltered verdict. Is the tool still worth using despite the controversy? Has trust been permanently damaged? What would need to happen for you to change your recommendation?
+
+STYLE: Journalistic and fearless. Name names. Cite specifics. Be fair but not toothless. This is the article that earns trust because it says what others won't.""",
     },
-    "deep_dive": {
-        "label": "Deep Dive", "cat": "guide deep-dive", "read_time": "14 min",
-        "prompt": """Write an EXCLUSIVE IN-DEPTH GUIDE of AT LEAST 1,500 words (premium subscriber content).
+    "roadmap": {
+        "label": "AI Roadmap", "cat": "guide roadmap", "read_time": "10 min",
+        "prompt": """Write a PROFESSION-SPECIFIC AI TOOLS ROADMAP of AT LEAST 1,200 words.
 
-REQUIRED STRUCTURE:
-1. Opening Stakes (200+ words): Don't ease in — open with a specific, startling fact or scenario that makes the reader feel the urgency. What does ignoring this cost in real dollars or real hours? Make them feel the opportunity they're missing.
-2. The Core Insight (<h3>, 150+ words): The central idea most people get wrong. Explain the misconception first, then the correction.
-3. Section 1 (<h3>, 200+ words): Deep dive with real examples, specific tool names, real pricing, actual workflows. Include a specific case study or scenario.
-4. Section 2 (<h3>, 200+ words): Goes deeper. Include hard numbers where possible — hours saved, percentage improvements, cost comparisons.
-5. Section 3 (<h3>, 200+ words): Implementation detail. What does this actually look like in practice?
-6. Section 4 (<h3>, 150+ words): Edge cases, limitations, and when this approach doesn't work.
-7. Advanced Tips (<h3>): 4–5 power-user techniques in <ul> format that 90% of people don't know.
-8. The Economics (<h3>, 100+ words): Break down the ROI. What does this cost vs. what does it save?
-9. Implementation Roadmap (<h3>): Week 1, Week 2, Week 3, Week 4 action plan in <ul>.
-10. Pitfalls to Avoid (<h3>): 4 mistakes that kill results, each explained with WHY it fails.
-11. Closing (100+ words): First action, second action, third action. No "get started" vagueness.
+This is a step-by-step guide for someone in a specific profession who wants to build their AI toolkit intelligently — not all at once, but in the right order.
 
-STYLE: Premium. Expert. Specific. This reader is paying for depth — deliver it.""",
-    },
-    "workflow": {
-        "label": "Workflow", "cat": "guide workflow", "read_time": "12 min",
-        "prompt": """Write an EXCLUSIVE WORKFLOW GUIDE of AT LEAST 1,400 words (premium subscriber content).
+REQUIRED STRUCTURE (do not skip sections):
+1. The Opportunity Hook (150+ words): Paint the picture of what a professional in this field can achieve once their AI toolkit is fully built. Specific numbers: hours saved per week, output multiplied, costs reduced. Make it real and tangible.
+2. The Wrong Way to Start (<h3>, 100+ words): The mistake most people make — subscribing to 10 tools at once, picking randomly, or using general-purpose AI when specialized tools exist. Explain why this fails.
+3. The Right Framework (<h3>, 100+ words): How to think about building an AI toolkit for this profession. What categories of tools matter? What order should you add them in? Why does sequencing matter?
+4. Phase 1 — Foundation (Week 1–2) (<h3>, 200+ words): The 1–2 tools to start with. These are the highest-leverage entry points for this profession. For each tool: what it does, why it's the right starting point, how to set it up quickly, what result to expect in week 1.
+5. Phase 2 — Core Stack (Month 1–2) (<h3>, 200+ words): The next 2–3 tools to add once the foundation is working. These deepen capability. Same format — what, why, how, expected result.
+6. Phase 3 — Power Stack (Month 3+) (<h3>, 200+ words): Advanced tools for when you're ready to go deeper. These are often more specialized or require more setup. Explain what they unlock that the earlier tools can't do.
+7. The Full Stack at a Glance (<h3>): A clean <ul> list of all recommended tools by phase, with one-line descriptions and estimated monthly cost for each.
+8. Total Cost & ROI Reality Check (<h3>, 100+ words): What does the full stack cost per month? What does it save in hours? At what point does each phase pay for itself?
+9. Common Mistakes at Each Phase (<h3>): One mistake to avoid per phase — with specific consequences if you make it.
+10. Your First Week Action Plan (<h3>): Day 1, Day 3, Day 7 — specific actions, not general advice. What exactly should they install, try, and measure in their first week?
 
-REQUIRED STRUCTURE:
-1. Before/After Hook (150+ words): Before — painful, slow, expensive. After — fast, automated, scalable. Make the contrast visceral and specific.
-2. Workflow Overview (<h3>): The full workflow in one paragraph + a simple numbered list of all steps.
-3. Step 1–7 (<h3> per step, 150+ words each): For each step —
-   a) The specific tool and WHY this tool for this step (not just any AI)
-   b) Exact configuration/settings to use
-   c) Copy-pasteable prompt template in <em> tags
-   d) What the output looks like + what to look for
-   e) Time estimate and how to speed it up further
-4. Prompt Templates Section (<h3>): Collect all prompts in one place. At least 5 complete, copy-pasteable prompts with explanations.
-5. Integration Glue (<h3>, 100+ words): How the steps connect — what passes between tools, what format works best.
-6. Time + Cost Reality Check (<h3>): Honest breakdown: how long does this really take? What does it cost per month?
-7. Common Mistakes (<h3>): 4 mistakes with specific fixes, not generic warnings.
-8. Scaling It Up (<h3>, 100+ words): How to handle 2×, 5×, 10× the volume.
-9. Your First Week (<h3>): Day 1, Day 3, Day 7 milestones.
-
-STYLE: Practical. Prescriptive. Every section gives the reader something they can use immediately.""",
-    },
-    "strategy": {
-        "label": "Strategy", "cat": "guide strategy", "read_time": "12 min",
-        "prompt": """Write an EXCLUSIVE STRATEGIC GUIDE of AT LEAST 1,400 words (premium subscriber content).
-
-REQUIRED STRUCTURE:
-1. The Shift (200+ words): What has fundamentally changed in the last 6–12 months that makes this strategy possible NOW? Ground it in specific developments — model capabilities, price drops, new tools, market changes.
-2. Why Most People Get It Wrong (<h3>, 150+ words): The common approach and why it fails. Be direct.
-3. The Core Strategy (<h3>, 200+ words): The central approach explained clearly, with a real-world analogy that makes it click.
-4. Implementation: Phase 1 (<h3>, 150+ words): First 30 days. Specific tools, specific steps, specific outcomes to measure.
-5. Implementation: Phase 2 (<h3>, 150+ words): Days 31–60. What to add, what to optimize.
-6. Implementation: Phase 3 (<h3>, 100+ words): Days 61–90. Scale and systematize.
-7. The Stack (<h3>): Exact tools for this strategy with pricing and what each does in the system.
-8. Metrics That Matter (<h3>, 100+ words): What to measure, what numbers indicate success, what's a red flag.
-9. 30-Day Sprint Plan (<h3>): Week 1, Week 2, Week 3, Week 4 — specific actions, not themes.
-10. What Can Go Wrong (<h3>): 4 failure modes with specific prevention tactics.
-11. The Unfair Advantage (100+ words): Why this approach, done properly, creates a compounding advantage competitors can't easily copy.
-
-STYLE: Strategic but grounded. Every point needs supporting logic, not just assertion.""",
+STYLE: Sequential and practical. Readers want a clear path — give them phases, not a flat list. Be opinionated about the order.""",
     },
 }
 
 # Slot → preferred type order
+# All slots rotate through the 5 core content pillars:
+#   comparison · featured · pros_cons · roadmap · controversial
 SLOT_TYPE_PREFS = {
-    "morning":   ["comparison", "tutorial", "roundup", "workflow"],
-    "midday":    ["tutorial", "roundup", "comparison", "workflow"],
-    "afternoon": ["roundup", "tutorial", "comparison", "workflow"],
-    "evening":   ["news_digest", "roundup", "comparison", "tutorial"],
-    "night":     ["comparison", "workflow", "tutorial", "roundup"],
-    "latenight": ["news_digest", "roundup", "workflow", "comparison"],
-    "exclusive": ["deep_dive", "workflow", "strategy", "comparison", "roundup", "tutorial"],
+    "morning":   ["comparison",    "featured",      "pros_cons",   "roadmap",     "controversial"],
+    "midday":    ["featured",      "roadmap",       "comparison",  "pros_cons",   "controversial"],
+    "afternoon": ["pros_cons",     "comparison",    "featured",    "roadmap",     "controversial"],
+    "evening":   ["controversial", "roadmap",       "featured",    "comparison",  "pros_cons"],
+    "night":     ["roadmap",       "comparison",    "pros_cons",   "controversial","featured"],
+    "latenight": ["controversial", "featured",      "comparison",  "roadmap",     "pros_cons"],
+    "exclusive": ["controversial", "roadmap",       "featured",    "comparison",  "pros_cons"],
     # Legacy aliases kept for backward compatibility
-    "lunch":     ["comparison", "tutorial", "roundup", "workflow"],
-    "dinner":    ["news_digest", "comparison", "roundup", "tutorial"],
+    "lunch":     ["comparison",    "featured",      "pros_cons",   "roadmap",     "controversial"],
+    "dinner":    ["controversial", "comparison",    "featured",    "pros_cons",   "roadmap"],
 }
 
 # ── Varied title format pools (picked randomly so every article looks different) ──
@@ -518,18 +490,6 @@ COMPARISON_TITLE_FORMATS = [
     "Choosing Between {a} and {b}? Read This First ({year})",
 ]
 
-ROUNDUP_TITLE_FORMATS = [
-    "{n} Best {cat} for {aud} in {year} (Ranked by Real Users)",
-    "The {n} {cat} That {aud} Are Actually Using in {year}",
-    "Best {cat} for {aud}: {n} Tools Tested, Only These Made the Cut",
-    "{n} {cat} for {aud} — Tried, Tested, and Ranked for {year}",
-    "I Tested {n} {cat} for {aud}. These Are the Only Ones Worth It.",
-    "{n} Best {cat} for {aud}: Honest Reviews, Real Pricing, No Fluff",
-    "The Best {cat} for {aud} Right Now ({year} Update)",
-    "Stop Overpaying: The {n} Best {cat} for {aud} That Fit Any Budget",
-    "{n} {cat} for {aud} That Will Actually Save You Time in {year}",
-    "The Only {cat} List {aud} Need in {year} — Curated and Tested",
-]
 
 # ── Opening style pool — injected per article to prevent identical hooks ──────
 OPENING_STYLES = [
@@ -599,7 +559,7 @@ TITLE_BANK = {
         ("Semrush", "Ahrefs"),
         ("n8n", "Zapier"),
         ("Replit AI", "Cursor"),
-        ("Suno", "ElevenLabs"),
+        ("Suno", "Udio"),
         ("Canva AI", "Adobe Firefly"),
         ("Instantly AI", "Apollo.io"),
         ("Gamma", "Beautiful.ai"),
@@ -607,101 +567,146 @@ TITLE_BANK = {
         ("HubSpot AI", "Instantly AI"),
         ("Fireflies.ai", "Otter.ai"),
         ("Leonardo.ai", "Midjourney"),
+        ("Windsurf", "Cursor"),
+        ("Claude", "ChatGPT"),
+        ("Perplexity AI", "Gemini"),
+        ("Runway", "Sora"),
+        ("AdCreative.ai", "Canva AI"),
+        ("Beehiiv", "Mailchimp"),
+        ("Notion AI", "Obsidian"),
+        ("Groq", "ChatGPT"),
     ],
-    "roundup": [
-        ("AI Writing Tools", "Content Creators"),
-        ("Free AI Tools", "Solopreneurs"),
-        ("AI Coding Tools", "Developers"),
-        ("AI Image Generators", "Designers"),
-        ("AI Video Tools", "Creators"),
-        ("AI Productivity Tools", "Remote Workers"),
-        ("AI Marketing Tools", "Marketers"),
-        ("AI SEO Tools", "Bloggers"),
-        ("AI Automation Tools", "Freelancers"),
-        ("AI Research Tools", "Researchers"),
-        ("AI Meeting Tools", "Managers"),
-        ("AI Audio Tools", "Podcasters"),
-        ("AI Sales Tools", "Sales Teams"),
-        ("AI Design Tools", "Non-Designers"),
-        ("AI Email Tools", "Founders"),
-        ("AI Social Media Tools", "Influencers"),
-        ("AI Analytics Tools", "Data Teams"),
-        ("AI Customer Support Tools", "Startups"),
-        ("AI Tools", "Students"),
-        ("AI Tools", "Educators"),
-        ("AI Finance Tools", "Freelancers"),
-        ("AI Legal Tools", "Small Business Owners"),
-        ("AI HR Tools", "People Teams"),
-        ("AI Presentation Tools", "Consultants"),
-        ("Affordable AI Tools", "Budget-Conscious Creators"),
+    "featured": [
+        "ChatGPT",
+        "Claude",
+        "Midjourney",
+        "Cursor",
+        "ElevenLabs",
+        "Perplexity AI",
+        "Gemini",
+        "GitHub Copilot",
+        "Grammarly",
+        "Jasper AI",
+        "HeyGen",
+        "Runway",
+        "Notion AI",
+        "Zapier",
+        "Surfer SEO",
+        "Synthesia",
+        "CapCut AI",
+        "Bolt.new",
+        "Gamma",
+        "Make.com",
+        "Suno",
+        "Canva AI",
+        "Descript",
+        "OpusClip",
+        "Fireflies.ai",
+        "Writesonic",
+        "Leonardo.ai",
+        "Adobe Firefly",
+        "Motion",
+        "Beehiiv",
+        "Copy.ai",
+        "Windsurf",
+        "Lovable",
+        "Groq",
+        "DeepSeek",
+        "NotebookLM",
+        "v0 by Vercel",
+        "AdCreative.ai",
+        "Clay",
+        "Instantly AI",
     ],
-    "tutorial": [
-        "How to Build a Full Content Calendar with AI in One Afternoon",
-        "The Step-by-Step AI Email Outreach System That Books 10+ Meetings a Week",
-        "Create Scroll-Stopping Videos with AI — Full Workflow, No Camera Needed",
-        "Write SEO Articles 10× Faster: The Exact AI Workflow",
-        "Set Up AI Customer Support That Handles 80% of Queries Automatically",
-        "Build a Newsletter from Zero to 1,000 Subscribers Using AI Tools",
-        "Generate Qualified Leads Every Day with AI in Under 30 Minutes",
-        "Turn One Piece of Content Into 20 with This AI Repurposing Workflow",
-        "Competitive Research in 20 Minutes: The AI Method That Beats Manual Work",
-        "Build Your First No-Code AI Automation (Step-by-Step for Beginners)",
-        "The AI Podcast Workflow: Record, Edit, Transcribe, Clip — All Automated",
-        "Create a Professional Brand Identity with AI for Under $50",
-        "Use AI to Write a Week of Social Media Posts in 60 Minutes",
-        "The AI-Powered Client Onboarding System for Freelancers",
-        "Build a Personal Knowledge Base with AI That Actually Saves You Time",
-        "How to Automate Your Weekly Report with AI in 4 Steps",
-        "Use AI to Proofread, Rewrite, and Improve Any Document in Minutes",
-        "The AI Research Workflow: Go from Question to Insight in 30 Minutes",
-        "Create a Professional Slide Deck with AI (Gamma + ChatGPT Method)",
-        "The AI Video Editing Workflow: From Raw Footage to Published in 2 Hours",
+    "pros_cons": [
+        ("ChatGPT", "AI assistant"),
+        ("Claude", "AI assistant"),
+        ("Midjourney", "image generation"),
+        ("Cursor", "AI coding"),
+        ("ElevenLabs", "AI voice"),
+        ("Jasper AI", "AI writing"),
+        ("Perplexity AI", "AI search"),
+        ("HeyGen", "AI video avatars"),
+        ("Grammarly", "AI writing"),
+        ("GitHub Copilot", "AI coding"),
+        ("Surfer SEO", "AI SEO"),
+        ("Notion AI", "AI productivity"),
+        ("Zapier", "AI automation"),
+        ("Synthesia", "AI video"),
+        ("Runway", "AI video generation"),
+        ("Suno", "AI music"),
+        ("CapCut AI", "AI video editing"),
+        ("Bolt.new", "AI app building"),
+        ("Gamma", "AI presentations"),
+        ("Descript", "AI audio/video editing"),
+        ("OpusClip", "AI video clipping"),
+        ("Fireflies.ai", "AI meeting notes"),
+        ("Writesonic", "AI writing"),
+        ("Make.com", "AI automation"),
+        ("Leonardo.ai", "AI image generation"),
+        ("Motion", "AI scheduling"),
+        ("Beehiiv", "newsletter platform"),
+        ("Copy.ai", "AI copywriting"),
+        ("Windsurf", "AI coding"),
+        ("DeepSeek", "AI assistant"),
+        ("NotebookLM", "AI research"),
+        ("Adobe Firefly", "AI image generation"),
+        ("AdCreative.ai", "AI advertising"),
+        ("Clay", "AI sales outreach"),
     ],
-    "deep_dive": [
-        f"The Real {YEAR} AI Stack for Solopreneurs: 12 Tools, Zero Fluff, Real Results",
-        f"How to Cut Your Agency Bill in Half Using 6 AI Tools in {YEAR}",
-        "ChatGPT Power Prompts: 25 Templates That Actually Produce Great Output",
-        "The AI Automation Playbook: 15+ Hours Saved Per Week — Here's How",
-        f"Hidden AI Features Most Users Never Find — and How to Unlock Them in {YEAR}",
-        "The Real Cost of AI Subscriptions: What You Should Pay vs. What Most People Do",
-        "How Top Creators Use AI: Inside 5 Real Workflows (With Screenshots)",
-        "The Complete Guide to AI Agents: What They Are and How to Build One Today",
-        f"Context Windows, Models, and Pricing: The {YEAR} Buyer's Guide to AI APIs",
-        "How to Build an AI-Powered Business That Runs While You Sleep",
-        "The Truth About AI Writing: What It Can Do, What It Can't, and Where It Shines",
-        f"The Creator's AI Toolkit for {YEAR}: 20 Tools Ranked by ROI",
-        "AI Productivity Myths Debunked: What Actually Saves Time vs. What Wastes It",
-        f"Prompt Engineering for Real Work: The {YEAR} Practical Guide",
+    "roadmap": [
+        ("Content Creator", "building a full AI content system"),
+        ("Freelance Writer", "AI-powered writing and research"),
+        ("Marketing Manager", "AI marketing and campaign tools"),
+        ("Software Developer", "AI coding and development tools"),
+        ("Solopreneur", "replacing an entire team with AI"),
+        ("SEO Consultant", "AI SEO and content ranking tools"),
+        ("Podcaster", "AI audio, editing, and growth tools"),
+        ("YouTuber", "AI video creation and growth tools"),
+        ("Social Media Manager", "AI social content and scheduling"),
+        ("Startup Founder", "AI tools for a lean early-stage team"),
+        ("Freelance Designer", "AI design and creative tools"),
+        ("E-commerce Owner", "AI tools for product, marketing, and support"),
+        ("Sales Professional", "AI outreach, research, and CRM tools"),
+        ("HR Manager", "AI hiring, onboarding, and people tools"),
+        ("Educator or Trainer", "AI teaching and course creation tools"),
+        ("Real Estate Agent", "AI tools for listings, outreach, and admin"),
+        ("Financial Analyst", "AI research, reporting, and data tools"),
+        ("Lawyer or Legal Professional", "AI research, drafting, and document tools"),
+        ("Healthcare Professional", "AI tools for admin, research, and patient comms"),
+        ("Project Manager", "AI planning, reporting, and team tools"),
+        ("Consultant", "AI tools for research, decks, and client delivery"),
+        ("Researcher or Academic", "AI tools for literature review and writing"),
+        ("Customer Support Team", "AI tools for tickets, replies, and helpdesk"),
+        ("Journalist or Reporter", "AI tools for research, writing, and fact-checking"),
+        ("Musician or Audio Producer", "AI tools for creation, mixing, and distribution"),
     ],
-    "workflow": [
-        f"The 5-Tool AI Workflow That Replaced a Marketing Team in {YEAR}",
-        "From Brief to Published: The AI Content Workflow That Runs in 45 Minutes",
-        f"The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
-        "The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day",
-        "How to Produce an Entire Month of Content in One Weekend with AI",
-        "The AI Sales Workflow: Lead to Close in Half the Normal Time",
-        "The AI Customer Support Workflow: 200 Tickets a Day, One Person",
-        "The YouTube-to-Everything AI Workflow: One Video, 15 Pieces of Content",
-        "The AI Research Workflow That Replaces 4 Hours of Manual Work",
-        "Build a Weekly Newsletter in 90 Minutes Using This AI Workflow",
-        "The AI Hiring Workflow: Screen 100 Applicants in an Afternoon",
-        "The AI Bookkeeping Workflow for Freelancers (No Accountant Needed)",
-        f"The {YEAR} Content Repurposing Workflow: One Post, Every Platform",
-        "The AI Client-Getting Workflow: From Cold Outreach to Signed Contract",
-    ],
-    "strategy": [
-        f"From $10K to $100K: The AI Business Strategy That Scales in {YEAR}",
-        f"Why 95% of People Use AI Wrong — and the Right Approach for {YEAR}",
-        "The Unfair Advantage: How AI Lets One Person Outcompete a 10-Person Team",
-        f"The Creator Economy AI Playbook for {YEAR}: Build Once, Earn Repeatedly",
-        f"How to Position Your Business for the AI-First Economy in {YEAR}",
-        "The AI Pricing Strategy: How to Charge More by Delivering Faster with AI",
-        f"The No-Code AI Business Blueprint for {YEAR}: Build Without Engineers",
-        "How to Build a Moat Around Your Business Using AI Before Competitors Do",
-        f"The Solopreneur's AI Competitive Strategy for {YEAR}",
-        "How to Use AI to Enter a New Market 10× Faster Than Traditional Methods",
-        f"The AI-First Agency Model: How to Run a $500K Agency with 2 People in {YEAR}",
-        "The Long Game: How to Build AI Into Your Business as a Lasting Advantage",
+    "controversial": [
+        f"The ChatGPT Features That Quietly Disappeared — and Why It Matters in {YEAR}",
+        "OpenAI's Pricing Changes Are Angering Power Users. Here's the Full Story.",
+        "Is Midjourney Stealing Artists' Work? The Lawsuit That Could Change AI Art Forever",
+        "Why Grammarly's AI Upgrade Is Making Writers Trust It Less, Not More",
+        f"The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in {YEAR}",
+        "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
+        "Is Perplexity AI Actually Plagiarizing Publishers? The Evidence Is Damning.",
+        "The Truth About AI Hallucinations in {YEAR}: Which Tools Lie the Most",
+        "Why Notion AI Is Frustrating Power Users — and What They're Switching To",
+        "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
+        "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
+        "GitHub Copilot vs. Human Developers: The Data That Started a War",
+        "Why Zapier's AI Features Feel Like a Cash Grab (And What to Use Instead)",
+        f"The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in {YEAR}",
+        "Runway vs. Sora: The Video AI War That's Leaving Users in the Middle",
+        "The Controversy Behind AI SEO Tools: Are They Actually Hurting Your Rankings?",
+        "Adobe Firefly's Copyright Promise: Does It Actually Hold Up?",
+        "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
+        f"The AI Tools That Overpromised and Underdelivered in {YEAR}",
+        "DeepSeek's Data Privacy Scandal: Should You Still Be Using It?",
+        "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
+        "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
+        f"AI Tool Lock-In: Why Switching Costs Are Getting Worse in {YEAR}",
+        "The Real Reason AI Coding Tools Are Creating More Bugs, Not Fewer",
+        "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
     ],
 }
 
@@ -712,25 +717,11 @@ def build_title(article_type, log):
     recent_pairs    = {e.get("pair", "") for e in recent}
     recent_topics   = {e.get("topic", "") for e in recent}
 
-    if article_type == "news_digest":
-        slot_label_map = {
-            "morning":   "Morning Edition",
-            "midday":    "Midday Edition",
-            "afternoon": "Afternoon Edition",
-            "evening":   "Evening Edition",
-            "night":     "Night Edition",
-            "latenight": "Late Night Edition",
-            "lunch":     "Morning Edition",
-            "dinner":    "Evening Edition",
-        }
-        slot_label = slot_label_map.get(SLOT, "Daily Edition")
-        return f"AI Tools Digest — {DATE_STR} ({slot_label})"
-
     if article_type == "comparison":
         unused = [
             p for p in TITLE_BANK["comparison"]
             if f"{p[0]} vs {p[1]}" not in recent_pairs
-            and f"{p[0]}".lower() not in " ".join(recent_topics)
+            and p[0].lower() not in " ".join(recent_topics)
         ]
         if not unused:
             unused = TITLE_BANK["comparison"]
@@ -742,42 +733,81 @@ def build_title(article_type, log):
             if aff_pairs:
                 unused = aff_pairs
         a, b = random.choice(unused)
-        # Pick a varied title format so comparisons don't all sound the same
         fmt = random.choice(COMPARISON_TITLE_FORMATS)
         return fmt.format(a=a, b=b, year=YEAR)
 
-    if article_type == "roundup":
+    if article_type == "featured":
         unused = [
-            o for o in TITLE_BANK["roundup"]
-            if o[0].lower() not in " ".join(recent_topics)
+            t for t in TITLE_BANK["featured"]
+            if t.lower() not in " ".join(recent_topics)
         ]
         if not unused:
-            unused = TITLE_BANK["roundup"]
-        # Prefer categories that match an affiliate tool's categories
-        if AFFILIATE_TOOLS:
-            aff_cats = {
-                c.lower()
-                for t in AFFILIATE_TOOLS
-                for c in t.get("categories", [])
-            }
-            cat_matches = [
-                o for o in unused
-                if any(ac in o[0].lower() for ac in aff_cats)
-            ]
-            if cat_matches:
-                unused = cat_matches
-        cat, aud = random.choice(unused)
-        n = random.choice([7, 8, 9, 10, 11, 12])
-        # Pick a varied title format so roundups don't all end "Ranked and Tested"
-        fmt = random.choice(ROUNDUP_TITLE_FORMATS)
-        return fmt.format(n=n, cat=cat, aud=aud, year=YEAR)
+            unused = TITLE_BANK["featured"]
+        # Prefer affiliate tools
+        if AFFILIATE_NAMES:
+            aff_set = {n.lower() for n in AFFILIATE_NAMES}
+            aff_picks = [t for t in unused if t.lower() in aff_set]
+            if aff_picks:
+                unused = aff_picks
+        tool = random.choice(unused)
+        FEATURED_FORMATS = [
+            f"{tool} Review ({YEAR}): Is It Actually Worth Paying For?",
+            f"{tool} Deep Dive: The Honest Review No One Else Is Writing",
+            f"I Used {tool} Every Day for 30 Days — Here's My Honest Take",
+            f"{tool}: Everything You Need to Know Before You Sign Up ({YEAR})",
+            f"Is {tool} the Best in Its Category? A Full {YEAR} Review",
+            f"{tool} Review: Real Results, Real Pricing, Real Talk",
+            f"The {tool} Review That Cuts Through the Hype ({YEAR})",
+            f"{tool} in {YEAR}: Still Worth It or Time to Switch?",
+        ]
+        return random.choice(FEATURED_FORMATS)
 
-    if article_type == "tutorial":
-        unused = [t for t in TITLE_BANK["tutorial"]
+    if article_type == "pros_cons":
+        unused = [
+            p for p in TITLE_BANK["pros_cons"]
+            if p[0].lower() not in " ".join(recent_topics)
+        ]
+        if not unused:
+            unused = TITLE_BANK["pros_cons"]
+        tool, category = random.choice(unused)
+        PROS_CONS_FORMATS = [
+            f"{tool} Pros and Cons ({YEAR}): The Unfiltered Truth",
+            f"The Real Pros and Cons of {tool} — No Sponsored Opinion",
+            f"{tool}: 7 Genuine Pros and 5 Real Cons You Need to Know",
+            f"Honest {tool} Review: What It Gets Right and Where It Falls Short",
+            f"Is {tool} Worth It? Full Pros, Cons, and Verdict for {YEAR}",
+            f"{tool} Pros & Cons: What {category.title()} Users Actually Think",
+            f"Before You Subscribe to {tool}, Read This — Pros, Cons, Verdict",
+        ]
+        return random.choice(PROS_CONS_FORMATS)
+
+    if article_type == "roadmap":
+        unused = [
+            p for p in TITLE_BANK["roadmap"]
+            if p[0].lower() not in " ".join(recent_topics)
+        ]
+        if not unused:
+            unused = TITLE_BANK["roadmap"]
+        profession, focus = random.choice(unused)
+        ROADMAP_FORMATS = [
+            f"The {profession}'s AI Tools Roadmap for {YEAR}: Start Here",
+            f"AI Tools for {profession}s: The Exact Stack to Build, Phase by Phase",
+            f"If You're a {profession}, This Is the AI Toolkit You Actually Need in {YEAR}",
+            f"The {profession} AI Roadmap: Which Tools to Add First (and Why)",
+            f"Building Your AI Stack as a {profession}: A Step-by-Step Guide for {YEAR}",
+            f"The Complete {profession} AI Toolkit — From Day 1 to Full Automation",
+            f"{profession}'s Guide to AI Tools in {YEAR}: What to Use and When",
+        ]
+        return random.choice(ROADMAP_FORMATS)
+
+    if article_type == "controversial":
+        unused = [t for t in TITLE_BANK["controversial"]
                   if t.lower() not in recent_titles]
         if not unused:
-            unused = TITLE_BANK["tutorial"]
-        return random.choice(unused)
+            unused = TITLE_BANK["controversial"]
+        title = random.choice(unused)
+        # Fill in YEAR placeholder if present
+        return title.format(YEAR=YEAR) if "{YEAR}" in title else title
 
     bank  = TITLE_BANK.get(article_type, [])
     unused = [t for t in bank if t.lower() not in recent_titles]
@@ -1232,13 +1262,6 @@ def generate_fallback(stories, article_type, title):
         t1_from_title = raw[0].strip()
         t2_from_title = re.split(r'[:\(—]', raw[1])[0].strip() if len(raw) > 1 else None
 
-    # For roundups: extract category name from "N Best {cat} for {aud}"
-    cat_from_title = None
-    if article_type == "roundup":
-        m = re.search(r'(?:Best\s+|Top\s+)(\d+\s+)?([\w\s]+?)\s+(?:for|to|that)', title, re.IGNORECASE)
-        if m:
-            cat_from_title = m.group(2).strip()
-
     # Pick 6 relevant tools — prefer title tools, fill with random others
     title_lower = title.lower()
     matched = [t for t in TOOLS if t.lower() in title_lower]
@@ -1261,43 +1284,31 @@ def generate_fallback(stories, article_type, title):
             f"pricing transparency, learning curve, and long-term value. No marketing language — "
             f"just the honest verdict on which one wins for most users in {YEAR}.</p>"
         ),
-        "roundup": (
-            f"<p>The AI tools landscape changes fast — what was the best option three months ago may "
-            f"have been leapfrogged by something better, cheaper, or more focused. This roundup cuts "
-            f"through the noise to give you the tools that are actually delivering results right now. "
-            f"We tested each one against real workflows — not demo conditions — and these are the ones "
-            f"that made the cut.</p>"
+        "featured": (
+            f"<p>There are hundreds of AI tools competing for your attention — and your subscription budget. "
+            f"Most reviews tell you what a tool does. This one tells you whether <strong>{t1}</strong> "
+            f"is actually worth paying for, who it's genuinely built for, and where it falls short in "
+            f"real workflows. We cut through the marketing to give you the honest picture before you commit.</p>"
         ),
-        "tutorial": (
-            f"<p>Most AI tutorials show you the tool. This one shows you the workflow. There's a "
-            f"meaningful difference: knowing that <strong>{t1}</strong> exists doesn't help you if you "
-            f"don't know exactly how to fit it into your process. That's what this guide does. By the "
-            f"end, you'll have a repeatable, step-by-step system you can run in under an hour.</p>"
+        "pros_cons": (
+            f"<p>Every AI tool has a marketing page designed to make it sound perfect. Reality is messier. "
+            f"<strong>{t1}</strong> has genuine strengths that make it the right choice for certain users — "
+            f"and real limitations that make it the wrong choice for others. This breakdown gives you both "
+            f"sides with the same level of honesty, so you can make the call for your actual situation.</p>"
         ),
-        "news_digest": (
-            f"<p>The AI industry never slows down — and this week was no exception. Between new model "
-            f"releases, pricing changes, and tool updates that affect your daily workflow, there's a lot "
-            f"to process. This digest cuts straight to what matters for people who use AI as a core part "
-            f"of their work: the developments worth acting on, and the ones you can safely ignore.</p>"
+        "roadmap": (
+            f"<p>Most professionals build their AI toolkit backwards — they sign up for tools they've "
+            f"heard about, add more whenever something goes viral, and end up with overlapping subscriptions "
+            f"that don't connect. This roadmap fixes that. It gives you the right tools in the right order, "
+            f"built around how your work actually flows, so each tool you add multiplies the value of the "
+            f"ones you already have.</p>"
         ),
-        "deep_dive": (
-            f"<p>There's a version of using AI tools that costs you $200 a month and saves you two hours "
-            f"a week. And there's another version that costs $80 a month and saves you fifteen hours. The "
-            f"difference isn't which tools you pick — it's how you use them. This deep dive is about the "
-            f"second version. We're going beyond the surface features to show you what's actually possible "
-            f"when you build AI into your work systematically.</p>"
-        ),
-        "workflow": (
-            f"<p>The difference between an AI user and an AI power user isn't the number of tools they "
-            f"subscribe to — it's whether those tools are connected into a workflow or used in isolation. "
-            f"This guide covers the exact workflow, in the exact order, using the exact tools that "
-            f"consistently deliver results. Copy it wholesale or adapt it to your needs.</p>"
-        ),
-        "strategy": (
-            f"<p>Most people use AI reactively — they open a chat window when they're stuck on something. "
-            f"That's not a strategy; that's a habit. The professionals seeing the biggest gains from AI "
-            f"are the ones who've built it into their systems intentionally. This guide covers what that "
-            f"looks like in practice and how to get there in the next 30 days.</p>"
+        "controversial": (
+            f"<p>Not every story about AI tools is a success story. Some of the most important things to "
+            f"know about the tools you use every day are the things companies would rather you didn't notice "
+            f"— pricing changes buried in fine print, features quietly removed, data practices that raise "
+            f"real questions. This article covers what's actually happening in the AI tools industry right "
+            f"now, and what it means for the people relying on these tools every day.</p>"
         ),
     }
 
@@ -1366,39 +1377,120 @@ def generate_fallback(stories, article_type, title):
             f"Latency differences become meaningful only at scale or with very long prompts.</li>\n"
             f"</ul>\n\n"
         )
-    elif article_type == "tutorial":
-        steps = [
-            (f"Step 1: Set Up Your Workspace",
-             f"Before you touch any AI tool, spend five minutes getting organized. Open a fresh "
-             f"document, write down your goal in one sentence, and list the three outputs you need "
-             f"by the end of this session. This sounds trivial but it's the single biggest factor "
-             f"in getting useful output from AI — you can't get a great answer to a vague question. "
-             f"<strong>{t1}</strong> works best when your input is precise."),
-            (f"Step 2: Draft with AI, Refine with Judgment",
-             f"Use <strong>{t2}</strong> to generate the first draft. The key is to treat this as "
-             f"raw material, not finished work. Paste your goal, add any relevant context, and ask "
-             f"for a structured first pass. Then — and this is critical — read it as an editor, not "
-             f"a proofreader. You're looking for structure and argument, not typos."),
-            (f"Step 3: Verify and Enrich",
-             f"AI output is a starting point, not a finished product. Before you do anything with "
-             f"what you've generated, verify any facts, statistics, or claims that matter. Use "
-             f"<strong>{t3}</strong> or a quick search to confirm the key points. This step takes "
-             f"five minutes and prevents the kind of embarrassing errors that erode trust."),
-            (f"Step 4: Format for Your Audience",
-             f"The same content works differently in different formats. A detailed brief that works "
-             f"for a client presentation is overwhelming in an email. A quick summary that works for "
-             f"Slack is too thin for a report. Use <strong>{t4}</strong> to adapt your output to "
-             f"the format — paste what you have, describe the format you need, and let it handle "
-             f"the restructuring."),
-            (f"Step 5: Review the Final Output",
-             f"Never publish, send, or share AI-assisted work without reading it in full yourself. "
-             f"Not because AI makes obvious mistakes (though it does), but because your name is on "
-             f"it. Read it once for accuracy, once for tone, and once for whether it actually says "
-             f"what you intended. Fix what needs fixing — this is faster than writing from scratch "
-             f"but still requires your judgment."),
-        ]
-        for h, body in steps:
-            html += f"<h3>{h}</h3>\n<p>{body}</p>\n\n"
+    elif article_type == "featured":
+        html += (
+            f"<h3>What {t1} Actually Does (Beyond the Marketing Page)</h3>\n"
+            f"<p><strong>{t1}</strong> is built around a core promise: doing one specific thing "
+            f"significantly better than general-purpose alternatives. In practice, this means the "
+            f"tool has a tighter feature set but higher output quality on the tasks it's designed "
+            f"for. That's a deliberate trade-off — and whether it works for you depends entirely "
+            f"on whether your workflow matches what it's optimized for.</p>\n\n"
+            f"<h3>The Feature That Changes How You Work</h3>\n"
+            f"<p>Every tool worth reviewing has one feature that makes early adopters evangelical. "
+            f"For <strong>{t1}</strong>, it's the combination of speed and output consistency at "
+            f"scale. Users report that what previously took 45–90 minutes now runs in under 15 — "
+            f"not because the tool cuts corners, but because it eliminates the back-and-forth "
+            f"iteration that eats most of the time in manual workflows.</p>\n\n"
+            f"<h3>Honest Limitations: Where It Falls Short</h3>\n"
+            f"<p>No tool is perfect, and <strong>{t1}</strong> is no exception. The most consistent "
+            f"complaint from power users: it handles standard use cases well but struggles with "
+            f"highly specialized or context-heavy tasks. The workaround — providing detailed context "
+            f"upfront — works, but it adds friction that reduces the time savings in edge cases. "
+            f"If your work is mostly standard, this matters less. If you work in niche domains, "
+            f"test carefully before committing.</p>\n\n"
+            f"<h3>Pricing: Which Tier Actually Makes Sense</h3>\n"
+            f"<p>The free tier is a genuine evaluation tool — not just a crippled demo. You can "
+            f"get a real sense of the output quality before spending anything. The paid tier unlocks "
+            f"higher usage limits, API access, and in most cases a meaningfully higher ceiling on "
+            f"what the tool can produce. Whether that upgrade is worth it depends on volume: "
+            f"occasional users are fine on free; anyone using it daily should run the numbers on "
+            f"whether the paid plan pays for itself in time saved.</p>\n\n"
+        )
+    elif article_type == "pros_cons":
+        html += (
+            f"<h3>The Genuine Pros of {t1}</h3>\n"
+            f"<ul>\n"
+            f"<li><strong>Output quality on core tasks is consistently high.</strong> The tool "
+            f"delivers reliable results on the use cases it's designed for — not just in demos "
+            f"but in real production workflows.</li>\n"
+            f"<li><strong>Pricing is transparent and predictable.</strong> No surprise bills "
+            f"or usage spikes that blow your budget. You know what you're paying before you commit.</li>\n"
+            f"<li><strong>The learning curve is short.</strong> Most users report being productive "
+            f"within the first session. The interface is designed for people who want results, "
+            f"not people who want to configure settings.</li>\n"
+            f"<li><strong>Integrations with common tools are solid.</strong> It connects to the "
+            f"apps most professionals already use — which means you can fit it into your existing "
+            f"workflow rather than rebuilding around it.</li>\n"
+            f"<li><strong>Updates ship consistently.</strong> The team has a track record of "
+            f"improving the product based on user feedback rather than pursuing flashy features "
+            f"that look good in press releases.</li>\n"
+            f"</ul>\n\n"
+            f"<h3>The Real Cons You Need to Know</h3>\n"
+            f"<ul>\n"
+            f"<li><strong>It struggles with highly specialized inputs.</strong> If your work "
+            f"involves niche domain knowledge, you'll need to provide more context than the "
+            f"average user — and even then, results are inconsistent.</li>\n"
+            f"<li><strong>The free tier has meaningful limits.</strong> You can evaluate the "
+            f"tool on free, but you can't run a real workflow on it. The usage caps force a "
+            f"paid decision earlier than some users would like.</li>\n"
+            f"<li><strong>Support response times vary.</strong> Users on lower-tier plans "
+            f"report slower response times when something goes wrong. If you're using this "
+            f"in a production workflow, factor this in.</li>\n"
+            f"<li><strong>Output can feel formulaic at scale.</strong> Over time, heavy users "
+            f"notice patterns in how the tool structures output. This isn't a dealbreaker, but "
+            f"it means you'll still need to edit for voice and distinctiveness.</li>\n"
+            f"</ul>\n\n"
+        )
+    elif article_type == "roadmap":
+        html += (
+            f"<h3>Phase 1 — Foundation (Week 1–2)</h3>\n"
+            f"<p>Start with one tool that addresses your single biggest time bottleneck. Don't "
+            f"subscribe to five things at once — you won't learn any of them well enough to get "
+            f"real value. For most professionals, the highest-leverage starting point is an AI "
+            f"assistant like <strong>{t1}</strong> that handles writing, summarizing, and research "
+            f"tasks. Get this working in your actual workflow before adding anything else. "
+            f"Measure the time saved in week 1. If it's not saving at least 2 hours, adjust "
+            f"how you're using it before moving forward.</p>\n\n"
+            f"<h3>Phase 2 — Core Stack (Month 1–2)</h3>\n"
+            f"<p>Once your foundation tool is embedded in your workflow, add one specialized tool "
+            f"that handles a specific task category — something like <strong>{t2}</strong> for "
+            f"a focused use case. The rule: only add a new tool when you've hit a clear ceiling "
+            f"on what your current stack can do. Adding tools before you've maxed out what you "
+            f"have leads to subscription bloat and divided attention. At this phase, your stack "
+            f"should cost under $50/month and save 6–10 hours per week.</p>\n\n"
+            f"<h3>Phase 3 — Power Stack (Month 3+)</h3>\n"
+            f"<p>By month 3, you know your workflow well enough to identify the remaining "
+            f"bottlenecks. This is when tools like <strong>{t3}</strong> and "
+            f"<strong>{t4}</strong> start making sense — they're more powerful but also more "
+            f"complex to set up. The payoff at this phase is automation: tasks that previously "
+            f"required your attention start running in the background. A fully built stack "
+            f"typically costs $80–150/month and saves 15–25 hours per week.</p>\n\n"
+        )
+    elif article_type == "controversial":
+        html += (
+            f"<h3>What Actually Happened — The Timeline</h3>\n"
+            f"<p>The story starts with a change most users didn't notice until it affected them "
+            f"directly. Companies rarely announce the things that make their products worse or "
+            f"more expensive — they bury the details in changelog updates, policy pages, or "
+            f"email threads that most users never read. By the time the wider community noticed, "
+            f"the change had already been live for weeks.</p>\n\n"
+            f"<h3>Why Users Are Frustrated — And Whether They're Right</h3>\n"
+            f"<p>The reaction from the user community has been pointed. The core complaint isn't "
+            f"just about the specific change — it's about the pattern. When users invest time "
+            f"building workflows around a tool, they're making a bet on that tool's stability and "
+            f"pricing. Changes that break that bet, even technically justified ones, erode the "
+            f"trust that makes the whole ecosystem work. The frustration is understandable. "
+            f"Whether it's proportionate depends on how you weigh the specific impact against "
+            f"the broader value the tool provides.</p>\n\n"
+            f"<h3>What This Means for Your Workflow</h3>\n"
+            f"<p>If you're currently using <strong>{t1}</strong> or similar tools as a core part "
+            f"of your workflow, the practical question is whether this controversy changes your "
+            f"calculus. For most users: probably not immediately. But it's worth reviewing your "
+            f"dependency on any single tool and making sure you have alternatives evaluated. "
+            f"The professionals who get hurt most by these situations are the ones who never "
+            f"stress-tested their stack. The ones who weather them are those who built in "
+            f"optionality from the start.</p>\n\n"
+        )
     else:
         # Generic but substantive sections for other types
         html += (
