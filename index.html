@@ -188,7 +188,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
 .tfm-filter-btn.life-btn{border-color:#10b981;color:#065f46;background:rgba(16,185,129,.08)}
 .tfm-filter-btn.life-btn:hover,.tfm-filter-btn.life-btn.active{border-color:#059669;color:#fff;background:#059669}
-.tfm-dd{position:absolute;top:0;left:0;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
+.tfm-dd{position:fixed;top:0;left:0;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
 .tfm-dd.open{display:flex}
 .tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
 .tfm-dd-item:hover{background:var(--primary-light)}
@@ -2574,9 +2574,8 @@ function toggleTfmDD(name){
     const vw=window.innerWidth;
     const barEl=document.getElementById('tfm-sticky-wrap');
     const barBottom=barEl?barEl.getBoundingClientRect().bottom:r.bottom;
-    // position:absolute in <body> → add scrollY to convert viewport → document coords
-    dd.style.top=(window.scrollY+barBottom+4)+'px';
-    dd.style.left=(window.scrollX+Math.min(r.left,vw-ddW-8))+'px';
+    dd.style.top=(barBottom+4)+'px';
+    dd.style.left=Math.min(r.left,vw-ddW-8)+'px';
     dd.classList.add('open');
   }
 }
@@ -2590,6 +2589,9 @@ document.addEventListener('click',e=>{
   if(!e.target.closest('.tfm-filter-group')&&!e.target.closest('.tfm-dd'))
     document.querySelectorAll('.tfm-dd').forEach(d=>d.classList.remove('open'));
 });
+window.addEventListener('scroll',()=>{
+  document.querySelectorAll('.tfm-dd.open').forEach(d=>d.classList.remove('open'));
+},{passive:true});
 document.querySelectorAll("[data-quick]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();const[l,v]=a.dataset.quick.split(":");setLens(l);if(LENSES[l].options.includes(v))setValue(v);document.getElementById("tools").scrollIntoView({behavior:"smooth",block:"start"});}));
 function readHash(){const h=decodeURIComponent(location.hash.replace(/^#/,""));if(h==="admin"){location.href="/admin.html";return;}if(!h.includes(":"))return;const[l,v]=h.split(":");if(LENSES[l]){if(l==='all')setFilter('all');else{setFilter(l,LENSES[l].options.includes(v)?v:LENSES[l].options[0]);}}}
 window.dataLayer=window.dataLayer||[];
