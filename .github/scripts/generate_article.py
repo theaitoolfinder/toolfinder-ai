@@ -1085,10 +1085,118 @@ def ensure_stories(stories, min_n=5):
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# DEEP RESEARCH — fetches real current data about a specific tool or topic
+# so Claude writes about facts, not training-data guesses.
+# ══════════════════════════════════════════════════════════════════════════════
+
+def fetch_tool_research(tool_name: str) -> str:
+    """
+    Pull real, current user opinions and discussions about a specific AI tool
+    from Reddit and Hacker News. Returns a research brief Claude uses as the
+    factual foundation for featured, pros_cons, and comparison articles.
+    """
+    snippets = []
+    q = tool_name
+
+    # ── Reddit: search across AI-relevant subs ────────────────────────────────
+    subs = ["artificial", "ChatGPT", "AItools", "MachineLearning",
+            "singularity", "Entrepreneur", "freelance", "productivity"]
+    for sub in subs[:5]:
+        try:
+            url = (f"https://www.reddit.com/r/{sub}/search.json"
+                   f"?q={requests.utils.quote(q)}&sort=top&t=month&limit=8&restrict_sr=1")
+            data = requests.get(url, headers=HDR, timeout=10).json()
+            for child in data.get("data", {}).get("children", [])[:4]:
+                p = child.get("data", {})
+                post_title = p.get("title", "").strip()
+                selftext   = re.sub(r"\s+", " ", p.get("selftext", "")).strip()[:400]
+                score      = p.get("score", 0)
+                n_comments = p.get("num_comments", 0)
+                if post_title and score > 5:
+                    line = f'[Reddit r/{sub} | {score} upvotes, {n_comments} comments] "{post_title}"'
+                    if selftext and len(selftext) > 30:
+                        line += f'\n  → {selftext}'
+                    snippets.append(line)
+        except Exception as e:
+            print(f"[WARN] Reddit research r/{sub}: {e}", file=sys.stderr)
+
+    # ── Hacker News: recent threads ───────────────────────────────────────────
+    try:
+        since = int((NOW - timedelta(days=90)).timestamp())
+        url = (f"https://hn.algolia.com/api/v1/search"
+               f"?query={requests.utils.quote(q)}"
+               f"&tags=story&numericFilters=created_at_i>{since},points>5"
+               f"&hitsPerPage=8")
+        hits = requests.get(url, timeout=10).json().get("hits", [])
+        for h in hits[:5]:
+            post_title = h.get("title", "").strip()
+            pts        = h.get("points", 0)
+            comments   = h.get("num_comments", 0)
+            if post_title:
+                snippets.append(
+                    f'[Hacker News | {pts} pts, {comments} comments] "{post_title}"'
+                )
+    except Exception as e:
+        print(f"[WARN] HN research: {e}", file=sys.stderr)
+
+    # ── RSS feeds: recent news mentions ───────────────────────────────────────
+    for key in ("techcrunch", "verge", "venturebeat"):
+        try:
+            feed_url, label = RSS_FEEDS[key]
+            r = requests.get(feed_url, headers=HDR, timeout=10)
+            root = ET.fromstring(r.content)
+            for item in root.findall(".//item")[:20]:
+                t_el = item.find("title")
+                d_el = item.find("description")
+                if t_el is None:
+                    continue
+                t = re.sub(r"<[^>]+>", "", t_el.text or "").strip()
+                d = re.sub(r"<[^>]+>|\s+", " ", (d_el.text or "") if d_el is not None else "").strip()[:250]
+                if tool_name.lower() in t.lower() or tool_name.lower() in d.lower():
+                    snippets.append(f'[{label}] "{t}" — {d}')
+        except Exception as e:
+            print(f"[WARN] RSS research {key}: {e}", file=sys.stderr)
+
+    if not snippets:
+        print(f"[INFO] No research found for '{tool_name}' — Claude will rely on training data.", file=sys.stderr)
+        return ""
+
+    print(f"[INFO] Research: {len(snippets)} snippets found for '{tool_name}'", file=sys.stderr)
+    research_text = "\n\n".join(snippets[:18])  # cap at 18 to stay within token budget
+    return research_text
+
+
+def fetch_controversy_research(title: str) -> str:
+    """
+    Pull real current discussions about a controversy topic from Reddit + HN + RSS.
+    Extracts the tool or company name from the title and searches for it.
+    """
+    # Extract key terms: tool names, company names, controversy keywords
+    # Pull capitalized words from title as candidate entities
+    candidates = re.findall(r'\b([A-Z][a-zA-Z0-9]+(?:\s+[A-Z][a-zA-Z0-9]+)?)\b', title)
+    # Also pull known tool names that appear in the title
+    known = [t for t in TOOLS if t.lower() in title.lower()]
+    queries = list(dict.fromkeys(known + candidates[:3]))  # deduplicated, known tools first
+
+    all_snippets = []
+    seen_titles: set = set()
+    for q in queries[:3]:
+        snippets = fetch_tool_research(q)
+        for line in snippets.split("\n\n"):
+            line = line.strip()
+            first_line = line.split("\n")[0]
+            if first_line and first_line not in seen_titles:
+                seen_titles.add(first_line)
+                all_snippets.append(line)
+
+    return "\n\n".join(all_snippets[:20])
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # ARTICLE GENERATION
 # ══════════════════════════════════════════════════════════════════════════════
 
-def generate_with_claude(stories, article_type, title, log):
+def generate_with_claude(stories, article_type, title, log, research: str = ""):
     """Use Anthropic Claude to write a high-quality 1,200+ word article body."""
     try:
         import anthropic
@@ -1176,7 +1284,24 @@ def generate_with_claude(stories, article_type, title, log):
         TRENDING CONTEXT (use for grounding and inspiration):
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         {headlines}
+{f'''
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        REAL USER RESEARCH — THIS IS YOUR PRIMARY SOURCE MATERIAL:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        The following is REAL data pulled today from Reddit, Hacker News, and tech press
+        about this specific topic. This is what actual users are saying right now.
 
+        YOUR JOB: Use this research as the factual backbone of your article.
+        - Reference specific points from these discussions (without naming the source thread)
+        - If users praise something, your article should reflect that genuinely
+        - If users complain about something, your article must acknowledge it honestly
+        - Do NOT ignore this research and write from generic training data instead
+        - Do NOT make up pricing, features, or claims that contradict this data
+
+        RESEARCH:
+        {research}
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+''' if research else ''}
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         WRITING INSTRUCTIONS FOR THIS ARTICLE TYPE:
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1887,17 +2012,52 @@ def main():
     stories = fetch_stories(source_name)
     stories = ensure_stories(stories)
 
+    # ── Deep research — fetch real current data for tool-specific article types ─
+    # This gives Claude actual user opinions, pricing data, and recent news
+    # instead of writing from stale training-data memory.
+    research = ""
+    if article_type in ("featured", "pros_cons", "comparison", "controversial"):
+        print(f"[INFO] Running deep research for '{title}'...", file=sys.stderr)
+        if article_type == "controversial":
+            research = fetch_controversy_research(title)
+        else:
+            # Extract tool name(s) from title for targeted research
+            # Comparison: "Tool A vs Tool B: ..." → research both
+            if article_type == "comparison" and " vs " in title.lower():
+                parts = re.split(r'\s+vs\s+', title, flags=re.IGNORECASE)
+                tool_a = parts[0].strip()
+                tool_b = re.split(r'[:\(—]', parts[1])[0].strip() if len(parts) > 1 else ""
+                r_a = fetch_tool_research(tool_a)
+                r_b = fetch_tool_research(tool_b) if tool_b else ""
+                research = "\n\n".join(filter(None, [r_a, r_b]))
+            else:
+                # featured / pros_cons: find the tool name in the title
+                matched_tools = [t for t in TOOLS if t.lower() in title.lower()]
+                if matched_tools:
+                    research = fetch_tool_research(matched_tools[0])
+                else:
+                    # Try extracting first capitalized multi-word from title
+                    m = re.search(r'\b([A-Z][a-zA-Z0-9]+(?:\s+[A-Z][a-zA-Z0-9]+)?)\b', title)
+                    if m:
+                        research = fetch_tool_research(m.group(1))
+        if research:
+            print(f"[INFO] Research collected: {len(research)} chars", file=sys.stderr)
+        else:
+            print(f"[INFO] No research data found — Claude will use training knowledge.", file=sys.stderr)
+
     # ── Hero image ─────────────────────────────────────────────────────────────
     excl_offset = len([e for e in log.get("generated", [])
                         if e.get("date") == DATE_SLUG and e.get("slot") == "exclusive"])
     # Pass title + log so pick_hero uses title-hash seed (prevents concurrent-run duplication)
     hero_url = pick_hero(title=title, log=log, index_offset=excl_offset)
 
-    # ── Generate body ──────────────────────────────────────────────────────────
-    body_html = generate_with_claude(stories, article_type, title, log)
+    # ── Generate body with Claude ──────────────────────────────────────────────
+    body_html = generate_with_claude(stories, article_type, title, log, research=research)
     if not body_html:
-        print("[INFO] Falling back to template generation.", file=sys.stderr)
-        body_html = generate_fallback(stories, article_type, title)
+        # Do NOT fall back to a template — a fake fill-in-the-blank article wastes
+        # readers' time and hurts the site's credibility. Skip gracefully instead.
+        print("[WARN] Claude generation failed — skipping this slot. No article published.", file=sys.stderr)
+        return
 
     # ── Save article file ──────────────────────────────────────────────────────
     html = build_article_html(slug, title, body_html, stories, hero_url, article_type)
