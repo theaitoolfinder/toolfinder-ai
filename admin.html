@@ -570,7 +570,18 @@ async function syncFromLiveSite(){
     const r2=await fetch('/data/admin_site_config.json?_='+Date.now(),{cache:'no-store'});
     if(r2.ok){
       const cfg=await r2.json();
-      if(cfg&&typeof cfg==='object') localStorage.setItem(LS_SITECONFIG,JSON.stringify(cfg));
+      if(cfg&&typeof cfg==='object'){
+        // Smart merge: remote values overwrite local ONLY when non-empty.
+        // This preserves brevo_api_key and social links that were saved
+        // locally but not yet committed to GitHub (e.g. token not set up yet).
+        const existing=loadSite();
+        const merged=Object.assign({},existing);
+        Object.keys(cfg).forEach(k=>{
+          const v=cfg[k];
+          if(v!==''&&v!==null&&v!==undefined) merged[k]=v;
+        });
+        localStorage.setItem(LS_SITECONFIG,JSON.stringify(merged));
+      }
     }
   }catch(e){}
 }
@@ -673,7 +684,18 @@ async function loadOverridesFromGitHub(){
     if(r2.ok){
       const data2=await r2.json();
       const cfg=JSON.parse(atob(data2.content.replace(/\n/g,'')));
-      if(cfg&&typeof cfg==='object'){localStorage.setItem(LS_SITECONFIG,JSON.stringify(cfg));synced=true;}
+      if(cfg&&typeof cfg==='object'){
+        // Smart merge — same logic as syncFromLiveSite: don't wipe
+        // non-empty local values with empty remote values.
+        const existing=loadSite();
+        const merged=Object.assign({},existing);
+        Object.keys(cfg).forEach(k=>{
+          const v=cfg[k];
+          if(v!==''&&v!==null&&v!==undefined) merged[k]=v;
+        });
+        localStorage.setItem(LS_SITECONFIG,JSON.stringify(merged));
+        synced=true;
+      }
     }
   }catch(e){}
   return synced;
@@ -2149,7 +2171,15 @@ function buildAdminSiteConfigJson(){
 async function autoCommitAfterSave(){
   const repo=localStorage.getItem('myai_gh_repo');
   const token=localStorage.getItem('myai_gh_token');
-  if(!repo||!token)return;
+  if(!repo||!token){
+    // Settings saved to this browser only. Warn once per session if the user
+    // hasn't set up a GitHub token, so they know changes won't sync elsewhere.
+    if(!sessionStorage.getItem('_no_token_warned')){
+      sessionStorage.setItem('_no_token_warned','1');
+      showAdminToast('💾 Saved locally. Set a GitHub token in the GitHub tab to sync across devices.');
+    }
+    return;
+  }
   const toolsJs=buildToolsDataJs();
   const affJson=buildAffiliateToolsJson();
   const ovrJson=buildAdminOverridesJson();
