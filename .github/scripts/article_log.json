@@ -3,18 +3,6 @@
     {
       "date": "2026-05-29",
       "slot": "exclusive",
-      "slug": "exclusive-2026-05-29-2",
-      "title": "The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
-      "type": "workflow",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85&auto=format&fit=crop",
-      "topic": "freelancer stack hours saved",
-      "pair": "",
-      "words": 787
-    },
-    {
-      "date": "2026-05-29",
-      "slot": "exclusive",
       "slug": "exclusive-2026-05-29-3",
       "title": "Why 95% of People Use AI Wrong — and the Right Approach for 2026",
       "type": "strategy",
@@ -782,6 +770,19 @@
       "pair": "",
       "words": 611,
       "partners": []
+    },
+    {
+      "date": "2026-06-10",
+      "slot": "morning",
+      "slug": "generate-qualified-leads-every-day-with-ai-in-under-30-minutes",
+      "title": "Generate Qualified Leads Every Day with AI in Under 30 Minutes",
+      "type": "tutorial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
+      "topic": "generate qualified leads every",
+      "pair": "",
+      "words": 559,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -851,6 +852,7 @@
     "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop"
   ]
 }
