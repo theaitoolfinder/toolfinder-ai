@@ -1345,15 +1345,16 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
     """).strip()
 
     # Model preference order — first available model wins
+    # Start with the most cost-effective reliable models.
+    # Sonnet gives excellent article quality at ~$0.04/article.
+    # Opus is 5-10x more expensive with minimal quality gain for long-form writing.
     MODELS = [
-        "claude-opus-4-5",
-        "claude-sonnet-4-5",
-        "claude-opus-4-0",
+        "claude-3-5-sonnet-20241022",   # Best value — reliable, fast, great writing
+        "claude-3-7-sonnet-20250219",   # Newer sonnet if available
+        "claude-sonnet-4-5",            # Claude 4 sonnet if available
+        "claude-3-5-haiku-20241022",    # Cheaper fallback — still good for articles
         "claude-sonnet-4-0",
-        "claude-3-7-sonnet-20250219",
-        "claude-3-5-sonnet-20241022",
-        "claude-3-5-haiku-20241022",
-        "claude-3-opus-20240229",
+        "claude-opus-4-0",              # Expensive — last resort only
     ]
     max_tok = 5000 if is_excl else 4000
 
