@@ -188,7 +188,7 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);ba
 .tfm-filter-btn.active{border-color:var(--primary);color:#fff;background:var(--primary)}
 .tfm-filter-btn.life-btn{border-color:#10b981;color:#065f46;background:rgba(16,185,129,.08)}
 .tfm-filter-btn.life-btn:hover,.tfm-filter-btn.life-btn.active{border-color:#059669;color:#fff;background:#059669}
-.tfm-dd{position:fixed;top:0;left:0;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
+.tfm-dd{position:absolute;top:0;left:0;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);min-width:210px;max-height:360px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;flex-direction:column;gap:3px;display:none}
 .tfm-dd.open{display:flex}
 .tfm-dd-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .12s;border:none;background:none;font-family:inherit;text-align:left;width:100%}
 .tfm-dd-item:hover{background:var(--primary-light)}
@@ -2572,12 +2572,11 @@ function toggleTfmDD(name){
     const r=btn.getBoundingClientRect();
     const ddW=dd.classList.contains('tfm-dd-wide')?260:210;
     const vw=window.innerWidth;
-    // Always anchor to the filter bar's bottom edge — avoids vpTop
-    // drift and works whether the bar is sticky or not.
     const barEl=document.getElementById('tfm-sticky-wrap');
     const barBottom=barEl?barEl.getBoundingClientRect().bottom:r.bottom;
-    dd.style.top=(barBottom+4)+'px';
-    dd.style.left=Math.min(r.left,vw-ddW-8)+'px';
+    // position:absolute in <body> → add scrollY to convert viewport → document coords
+    dd.style.top=(window.scrollY+barBottom+4)+'px';
+    dd.style.left=(window.scrollX+Math.min(r.left,vw-ddW-8))+'px';
     dd.classList.add('open');
   }
 }
