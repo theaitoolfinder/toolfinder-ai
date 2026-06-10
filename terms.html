@@ -35,7 +35,7 @@ a{text-decoration:none;color:inherit;}
 button{font-family:'Poppins',sans-serif;cursor:pointer;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+nav.main-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
   background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
@@ -125,10 +125,17 @@ footer a{color:var(--gold-a);}
 
 /* MOBILE */
 @media(max-width:768px){
-  nav{padding:0 16px;}
+  nav.main-nav{padding:0 16px;}
   .nav-links .nav-a{display:none;}
   .nav-links .btn-navy{display:none;}
   .burger{display:flex;}
+  .page-hero{padding:80px 20px 36px;}
+  .page-hero h1{font-size:1.9rem;}
+  .page-body{padding:36px 16px 60px;}
+  .toc-box{padding:18px 18px;margin-bottom:32px;}
+  .section{margin-bottom:36px;}
+  .highlight-box{padding:16px 18px;}
+  .contact-box{padding:24px 18px;}
 }
 </style>
 <script>if(window.top!==window.self){window.top.location=window.self.location;}</script>
@@ -136,7 +143,7 @@ footer a{color:var(--gold-a);}
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="main-nav">
   <a href="index.html" class="logo">
     <div class="logo-mark">
       <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/><path d="M9 6h2M6 9v2M14 9v2M9 14h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
