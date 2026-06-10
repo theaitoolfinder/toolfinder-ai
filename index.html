@@ -1051,7 +1051,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
 <main>
   <section class="hero container">
     <div class="eyebrow">AI Tools Directory &middot; 500+ Tools &middot; Curated Weekly</div>
-    <h1>Find the AI tools that<br><em>fit your work and <span class="hero-life">life.</span></em></h1>
+    <h1>Find the AI tools that<br><em>fit your work and <span class="hero-life" onclick="document.getElementById('tfm-sticky-wrap').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>toggleTfmDD('life'),400)" style="cursor:pointer" title="Browse LifEssentials filters">life.</span></em></h1>
     <p>Skip the noise. Browse by your job, by the problem you need to solve, or by what&rsquo;s trending &mdash; then click straight through to the best deal.</p>
     <div class="hero-cta">
       <a class="btn-primary" href="#tools" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});return false;">Explore 500+ Tools &rarr;</a>
