@@ -1881,14 +1881,16 @@ footer a{{color:var(--primary);}}
 </div>
 
 <footer>
-  <p>© {YEAR} MyAI ToolsFinder &nbsp;·&nbsp;
+  <p>
      <a href="../index.html">Directory</a> &nbsp;·&nbsp;
      <a href="../articles.html">Articles</a> &nbsp;·&nbsp;
-     <a href="../privacy.html">Privacy</a>
+     <a href="../privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+     <a href="../terms.html">Terms of Use</a>
   </p>
-  <p style="margin-top:6px;font-size:11px;opacity:.7">
+  <p style="margin-top:8px;font-size:11px;opacity:.7">
     Some links may be affiliate links — we may earn a small commission at no extra cost to you.
   </p>
+  <p style="margin-top:6px;font-size:11px;opacity:.55">© {YEAR} MyAI ToolsFinder. All rights reserved.</p>
 </footer>
 
 <script src="../js/tools-data.js"></script>
