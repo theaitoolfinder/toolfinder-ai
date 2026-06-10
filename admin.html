@@ -186,6 +186,12 @@
 
   <!-- SITE TAB -->
   <div id="tab-site" style="display:none">
+    <!-- Sync status bar -->
+    <div id="site-sync-bar" style="display:flex;align-items:center;gap:10px;background:#f0f6ff;border:1px solid #c7d9f8;border-radius:10px;padding:10px 16px;margin-bottom:18px;font-size:13px;color:#1e3a5f">
+      <span id="site-sync-icon" style="font-size:16px">⏳</span>
+      <span id="site-sync-msg" style="flex:1">Checking sync status…</span>
+      <button class="btn" style="padding:5px 14px;font-size:12px;font-weight:600" onclick="forceSyncToGitHub()">⬆ Sync to GitHub</button>
+    </div>
     <div class="siteform">
       <div class="full">
         <label>Brand name</label>
@@ -559,15 +565,29 @@ async function fetchAdminConfig(){
  * directly from the deployed site (same origin).             *
  * Works on any device, browser, or Google account profile.   */
 async function syncFromLiveSite(){
+  // Prefer raw.githubusercontent.com when the repo is known — it bypasses the
+  // GitHub Pages CDN cache (which can lag minutes behind a fresh commit) and
+  // works on any device without a token because the repo is public.
+  const repo=localStorage.getItem('myai_gh_repo');
+  const rawBase=repo
+    ?`https://raw.githubusercontent.com/${repo}/main`
+    :'';
+
   try{
-    const r=await fetch('/data/admin_overrides.json?_='+Date.now(),{cache:'no-store'});
+    const url=rawBase
+      ?`${rawBase}/data/admin_overrides.json?_=${Date.now()}`
+      :`/data/admin_overrides.json?_=${Date.now()}`;
+    const r=await fetch(url,{cache:'no-store'});
     if(r.ok){
       const data=await r.json();
       if(data&&data.overrides) localStorage.setItem(LS_OVERRIDES,JSON.stringify(data.overrides));
     }
   }catch(e){}
   try{
-    const r2=await fetch('/data/admin_site_config.json?_='+Date.now(),{cache:'no-store'});
+    const url=rawBase
+      ?`${rawBase}/data/admin_site_config.json?_=${Date.now()}`
+      :`/data/admin_site_config.json?_=${Date.now()}`;
+    const r2=await fetch(url,{cache:'no-store'});
     if(r2.ok){
       const cfg=await r2.json();
       if(cfg&&typeof cfg==='object'){
@@ -593,7 +613,7 @@ async function unlock(){
   if(!_adminCfg){const ok=await fetchAdminConfig();if(!ok){document.getElementById('err').textContent='Could not load auth config. Check your connection.';return;}}
   const h=await sha256(_adminCfg.salt+v);
   if(h!==_adminCfg.hash){document.getElementById('err').textContent='Wrong passphrase.';return;}
-  localStorage.setItem(LS_AUTH,'1');
+  sessionStorage.setItem(LS_AUTH,'1');  // sessionStorage = auto-locks on tab/browser close
   await syncFromLiveSite();          // always works — no token needed
   await loadOverridesFromGitHub();   // also try GitHub API if token saved
   showApp();
@@ -623,7 +643,7 @@ async function setupPassphrase(){
   if(btn){btn.disabled=false;btn.textContent='Save & Unlock';}
   if(!res.ok){err.textContent=res.msg||'Failed to commit config.';return;}
   _adminCfg=cfg;
-  localStorage.setItem(LS_AUTH,'1');
+  sessionStorage.setItem(LS_AUTH,'1');  // sessionStorage = auto-locks on tab/browser close
   await syncFromLiveSite();
   document.getElementById('setup').style.display='none';
   showApp();
@@ -1281,8 +1301,8 @@ const DEFAULT_SITE = {
 };
 
 /* ===== Auth helpers ===== */
-function logout(){ localStorage.removeItem(LS_AUTH); location.reload(); }
-function isAuthed(){ return localStorage.getItem(LS_AUTH) === '1'; }
+function logout(){ sessionStorage.removeItem(LS_AUTH); location.reload(); }
+function isAuthed(){ return sessionStorage.getItem(LS_AUTH) === '1'; }
 function showApp(){
   document.getElementById('gate').style.display = 'none';
   document.getElementById('app').style.display = 'block';
@@ -1462,7 +1482,7 @@ function updateField(idx, inp){
   }
   ov[idx][inp.dataset.f] = val;
   saveOverrides(ov);
-  autoCommitAfterSave();
+  debouncedCommit();
 }
 function deleteTool(idx){
   if (!confirm('Remove this tool from your site?')) return;
@@ -1485,9 +1505,40 @@ function renderSiteForm(){
     const el = document.getElementById(id);
     if (el) {
       el.value = s[k] || '';
-      el.addEventListener('input', ()=>{ const c = loadSite(); c[k] = el.value; saveSite(c); autoCommitAfterSave(); });
+      el.addEventListener('input', ()=>{ const c = loadSite(); c[k] = el.value; saveSite(c); debouncedCommit(); });
     }
   });
+  updateSyncBar();
+}
+
+/* Update the sync status bar in Site Settings */
+function updateSyncBar(){
+  const icon=document.getElementById('site-sync-icon');
+  const msg=document.getElementById('site-sync-msg');
+  if(!icon||!msg)return;
+  const token=localStorage.getItem('myai_gh_token');
+  const repo=localStorage.getItem('myai_gh_repo');
+  if(token&&repo){
+    icon.textContent='✅';
+    msg.textContent=`GitHub connected (${repo}) — changes auto-sync after you finish typing.`;
+    icon.parentElement.style.background='#f0fdf4';
+    icon.parentElement.style.borderColor='#86efac';
+    icon.parentElement.style.color='#14532d';
+  }else{
+    icon.textContent='⚠️';
+    msg.textContent='No GitHub token set — settings saved to this browser only. Go to the GitHub tab to connect.';
+    icon.parentElement.style.background='#fffbeb';
+    icon.parentElement.style.borderColor='#fcd34d';
+    icon.parentElement.style.color='#78350f';
+  }
+}
+
+/* Force-push all settings to GitHub immediately */
+async function forceSyncToGitHub(){
+  const btn=document.querySelector('#site-sync-bar button');
+  if(btn){btn.disabled=true;btn.textContent='Syncing…';}
+  await autoCommitAfterSave();
+  if(btn){btn.disabled=false;btn.textContent='⬆ Sync to GitHub';}
 }
 
 /* ===== Export ===== */
@@ -2168,6 +2219,16 @@ function buildAdminSiteConfigJson(){
   return JSON.stringify(cfg,null,2)+'\n';
 }
 
+let _commitDebounce=null;
+function debouncedCommit(){
+  // Debounce: wait 1.2 s after the last keystroke before committing.
+  // Without this, typing 20 chars fires 20 parallel PUT requests; each
+  // fetches the file SHA, then only the first PUT succeeds — the rest
+  // 409-conflict and the user never gets a success toast.
+  clearTimeout(_commitDebounce);
+  _commitDebounce=setTimeout(()=>autoCommitAfterSave(),1200);
+}
+
 async function autoCommitAfterSave(){
   const repo=localStorage.getItem('myai_gh_repo');
   const token=localStorage.getItem('myai_gh_token');
@@ -2218,7 +2279,7 @@ async function autoCommitAfterSave(){
   if(setupToken&&savedToken)setupToken.value=savedToken;
 
   // If already authed (persisted in localStorage), show app right away
-  if(localStorage.getItem(LS_AUTH)==='1'){
+  if(sessionStorage.getItem(LS_AUTH)==='1'){
     await syncFromLiveSite();          // always works — no token needed
     await loadOverridesFromGitHub();   // also try GitHub API if token saved
     showApp();
