@@ -1,0 +1,67 @@
+name: Generate Affiliate Tutorial
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Fires whenever data/affiliate_tools.json is pushed to main.
+# Detects affiliate tools that don't yet have a tutorial entry in
+# js/tutorials-data.js and generates 3-level tutorials (basic /
+# intermediate / advanced) using Claude AI, then commits them.
+#
+# Also available via manual dispatch (Actions → Run workflow).
+#
+# Required GitHub secret: ANTHROPIC_API_KEY
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/affiliate_tools.json'   # affiliate link added / updated via admin
+  workflow_dispatch:                  # manual trigger from GitHub Actions UI
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate missing tutorials
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/generate_tutorial.py
+
+      - name: Commit and push if tutorials were added
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add js/tutorials-data.js .github/scripts/tutorial_log.json
+          if git diff --staged --quiet; then
+            echo "No new tutorials to commit."
+          else
+            COUNT=$(python3 -c "
+import re
+content = open('js/tutorials-data.js').read()
+slugs = re.findall(r\"^\s+'([a-z0-9][a-z0-9-]*)':\", content, re.MULTILINE)
+print(len(slugs))
+")
+            git commit -m "Auto-tutorial: $(TZ='Asia/Manila' date +'%b %d %Y') — ${COUNT} affiliate tutorial(s) in js/tutorials-data.js"
+            git pull --rebase origin main || true
+            git push
+            echo "✅ Tutorials committed and pushed."
+          fi
