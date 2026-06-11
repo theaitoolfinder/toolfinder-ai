@@ -2874,7 +2874,7 @@ task = client.image_to_video.create(
         ]
       }
     }
-  }
+  },
 
 
   /* ── RankMath AI ── */

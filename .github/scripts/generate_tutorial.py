@@ -352,11 +352,17 @@ def main():
             content = generate_tutorial_content(tool, info)
             entry   = build_js_entry(slug, tool, info, content)
 
-            # Insert before the closing sentinel
+            # Insert before the closing sentinel.
+            # Ensure the previous last entry has a trailing comma first.
             if CLOSING_SENTINEL in js:
-                js = js.replace(CLOSING_SENTINEL, entry + "\n\n" + CLOSING_SENTINEL)
+                idx = js.rfind(CLOSING_SENTINEL)
+                before = js[:idx].rstrip()
+                # If previous entry closes with } (no comma), add one
+                if before.endswith("}") and not before.endswith("},"):
+                    js = before + ",\n\n" + entry + "\n\n" + js[idx:]
+                else:
+                    js = js.replace(CLOSING_SENTINEL, entry + "\n\n" + CLOSING_SENTINEL, 1)
             else:
-                # Fallback: just append before final }
                 js = js.rstrip().rstrip("}").rstrip() + entry + "\n\n};\n"
 
             log["generated"].append({
