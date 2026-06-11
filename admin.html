@@ -168,6 +168,11 @@
       <select id="cat-filter" style="padding:9px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);font-size:13px;cursor:pointer;outline:0" onchange="toolCatFilter=this.value;_toolPage=0;renderToolList()">
         <option value="">All categories</option>
       </select>
+      <select id="aff-filter" style="padding:9px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);font-size:13px;cursor:pointer;outline:0" onchange="toolAffFilter=this.value;_toolPage=0;renderToolList()">
+        <option value="">All tools</option>
+        <option value="yes">With affiliate link</option>
+        <option value="no">No affiliate link</option>
+      </select>
       <button class="btn" onclick="expandAll(true)">Expand all</button>
       <button class="btn" onclick="expandAll(false)">Collapse all</button>
       <button class="btn primary" onclick="addTool()">+ Add tool</button>
@@ -1339,6 +1344,7 @@ let search = "";
 const TOOL_PAGE_SIZE = 30;
 let _toolPage = 0;
 let toolCatFilter = '';
+let toolAffFilter = '';
 
 function buildCatFilter(){
   const sel = document.getElementById('cat-filter');
@@ -1360,6 +1366,9 @@ function renderToolList(){
     .filter(t=>{
       if(t._deleted) return false;
       if(catF && t.cat.toLowerCase()!==catF) return false;
+      const hasAffUrl = !!(t.affiliate_url && t.affiliate_url.trim());
+      if(toolAffFilter==='yes' && !hasAffUrl) return false;
+      if(toolAffFilter==='no' && hasAffUrl) return false;
       if(!filter) return true;
       const hay=(t.name+' '+t.cat+' '+t.tag+' '+t.jobs.join(' ')+' '+t.needs.join(' ')).toLowerCase();
       return hay.includes(filter);
@@ -1399,7 +1408,7 @@ function renderToolList(){
         <div style="text-align:right;align-self:center"><button class="btn danger" onclick="deleteTool(${i})">Delete tool</button></div>
       </div>
     </div>`;
-  }).join('') || `<div class="info-banner" style="margin:0">No tools match${filter?' "'+escapeHtml(search)+'"':''} in ${toolCatFilter||'any category'}.</div>`;
+  }).join('') || `<div class="info-banner" style="margin:0">No tools match${filter?' "'+escapeHtml(search)+'"':''}${toolCatFilter?' in '+escapeHtml(toolCatFilter):''}${toolAffFilter==='yes'?' with an affiliate link':toolAffFilter==='no'?' without an affiliate link':''}.</div>`;
 
   // wire inputs
   document.querySelectorAll('#tool-list .tool').forEach(el=>{
