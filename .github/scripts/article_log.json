@@ -2,18 +2,6 @@
   "generated": [
     {
       "date": "2026-06-02",
-      "slot": "afternoon",
-      "slug": "article-2026-06-02-pm",
-      "title": "The AI Research Workflow That Replaces 4 Hours of Manual Work",
-      "type": "workflow",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
-      "topic": "research workflow replaces hours",
-      "pair": "",
-      "words": 807
-    },
-    {
-      "date": "2026-06-02",
       "slot": "evening",
       "slug": "article-2026-06-02-eve",
       "title": "AI Tools Digest — June 02, 2026 (Evening Edition)",
@@ -815,6 +803,25 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-11",
+      "slot": "morning",
+      "slug": "the-opusclip-review-that-cuts-through-the-hype-2026",
+      "title": "The OpusClip Review That Cuts Through the Hype (2026)",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
+      "topic": "opusclip cuts through hype",
+      "pair": "",
+      "words": 2478,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -892,6 +899,7 @@
     "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop"
   ]
 }
