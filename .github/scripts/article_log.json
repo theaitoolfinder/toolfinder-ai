@@ -2,18 +2,6 @@
   "generated": [
     {
       "date": "2026-06-03",
-      "slot": "afternoon",
-      "slug": "article-2026-06-03-pm",
-      "title": "10 Best AI Tools for Students in 2026 — Ranked and Tested",
-      "type": "roundup",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools students 2026",
-      "pair": "",
-      "words": 611
-    },
-    {
-      "date": "2026-06-03",
       "slot": "midday",
       "slug": "article-2026-06-03-md",
       "title": "Create Scroll-Stopping Videos with AI — Full Workflow, No Camera Needed",
@@ -840,6 +828,24 @@
         "OpusClip",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-06-11",
+      "slot": "evening",
+      "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes",
+      "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs voice cloning abuse",
+      "pair": "",
+      "words": 2242,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -920,6 +926,7 @@
     "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop"
   ]
 }
