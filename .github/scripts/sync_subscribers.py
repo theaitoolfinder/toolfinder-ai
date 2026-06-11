@@ -136,8 +136,8 @@ def main():
         json.dump(gate, f, separators=(",", ":"))
     print(f"[Gate] {len(all_hashes)} hashes written → {OUT_FILE}")
 
-    added = max(len(all_hashes) - before_count, new_records)
-    print(f"✅ Sync complete — {added} new subscriber(s) added this run. {len(db['subscribers'])} total records.")
+    added = len(all_hashes) - before_count
+    print(f"✅ Sync complete — {added} new subscriber(s) added this run. {len(all_hashes)} total records.")
 
 
 if __name__ == "__main__":
