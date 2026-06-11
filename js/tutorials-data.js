@@ -2876,4 +2876,113 @@ task = client.image_to_video.create(
     }
   }
 
+
+  /* ── RankMath AI ── */
+  'rankmath-ai': {
+    name: "RankMath AI",
+    domain: "",
+    affiliate_url: "https://rankmath.com/?ref=benjie-6423",
+    category: "SEO",
+    tagline: "AI-powered WordPress SEO plugin with smart optimization",
+    color: "#1A73E8",
+    levels: {
+      basic:       {
+        title: "Your First SEO Optimization with RankMath AI",
+        description: "Install RankMath and optimize your first blog post for search engines in minutes.",
+        duration: "5 min",
+        steps: [
+          {
+            title: "Install and Activate RankMath",
+            content: `<p>Log into your WordPress dashboard and navigate to <strong>Plugins → Add New</strong>. Search for <strong>Rank Math SEO</strong> in the search bar. Click <strong>Install Now</strong>, then <strong>Activate</strong> once the installation completes.</p><p>You'll be redirected to the RankMath setup wizard. Click <strong>Start Wizard</strong> to begin the configuration process.</p>`,
+            tip: { type: "info", text: "RankMath offers both free and Pro versions. The free version includes AI features like Content AI, but with usage limits." }
+          },
+          {
+            title: "Complete the Setup Wizard",
+            content: `<p>Follow the setup wizard through each screen. Connect your site by logging in with your Google account when prompted (this enables Google Search Console integration). Select <strong>Easy</strong> mode for simplified configuration.</p><p>Choose your site type (blog, business, personal, etc.) and enable <strong>Content AI</strong> when asked. This activates RankMath's AI-powered optimization features. Complete the wizard and click <strong>Finish</strong>.</p>`,
+            tip: null
+          },
+          {
+            title: "Open a Post and Access the SEO Panel",
+            content: `<p>Navigate to <strong>Posts → All Posts</strong> and either create a new post or edit an existing one. Scroll down below the content editor to find the <strong>Rank Math SEO</strong> meta box.</p><p>In the SEO panel, you'll see tabs for <strong>General</strong>, <strong>Advanced</strong>, and <strong>Schema</strong>. The General tab displays your SEO score (0-100) and actionable recommendations.</p>`,
+            tip: { type: "tip", text: "Aim for an SEO score above 80. Green checkmarks indicate completed optimizations, while yellow and red items need attention." }
+          },
+          {
+            title: "Add Your Focus Keyword",
+            content: `<p>In the <strong>Focus Keyword</strong> field at the top of the RankMath panel, enter your target keyword or phrase. Press Enter to confirm. RankMath will immediately analyze your content and update the SEO score.</p><p>Review the list of recommendations that appears. Common suggestions include adding the keyword to your title, headings, meta description, and first paragraph. Each recommendation shows whether it's satisfied (green check) or needs work (yellow or red icon).</p>`,
+            tip: { type: "info", text: "You can add up to 5 focus keywords in the free version, allowing you to optimize for multiple related terms." }
+          },
+          {
+            title: "Use Content AI for Optimization Suggestions",
+            content: `<p>Click the <strong>Content AI</strong> button in the RankMath toolbar (looks like a brain icon). A sidebar will open showing AI-powered recommendations including related keywords, questions people ask, and content gaps.</p><p>Review the <strong>Recommended Keywords</strong> section and click the plus icon next to relevant terms to add them to your content strategy. The AI analyzes top-ranking pages for your focus keyword and suggests improvements. Update your content based on these insights, and watch your SEO score improve in real-time.</p>`,
+            tip: { type: "success", text: "Content AI suggestions are based on actual SERP analysis, giving you competitive intelligence on what's working for top-ranking pages." }
+          }
+        ]
+      },
+      intermediate:       {
+        title: "Advanced Content Optimization with AI Analysis",
+        description: "Master RankMath's AI features to outrank competitors with data-driven content strategy.",
+        duration: "15 min",
+        steps: [
+          {
+            title: "Configure Advanced Content AI Settings",
+            content: `<p>Navigate to <strong>Rank Math → General Settings → Content AI</strong> in your WordPress dashboard. Here you can adjust AI analysis preferences and connect your account for additional credits.</p><p>Under <strong>Content AI Settings</strong>, enable <strong>Auto-refresh suggestions</strong> to get real-time keyword recommendations as you write. Set your preferred <strong>Country</strong> and <strong>Language</strong> for localized SERP analysis. Click <strong>Save Changes</strong> to apply your configuration.</p>`,
+            tip: { type: "tip", text: "Free users get 750 Content AI credits monthly. Each analysis costs 25 credits, so use them strategically on your most important content." }
+          },
+          {
+            title: "Analyze Competitor Content Gaps",
+            content: `<p>Open a post and launch <strong>Content AI</strong> from the RankMath panel. After entering your focus keyword, scroll to the <strong>Top 10 SERP Competitors</strong> section. Click <strong>Analyze</strong> to see detailed metrics for each ranking page.</p><p>Review the <strong>Word Count</strong>, <strong>Headings Used</strong>, and <strong>Content Structure</strong> of top performers. Click on individual competitors to see their exact keyword usage and heading hierarchy. Use this intelligence to structure your content more competitively than current top rankers.</p>`,
+            tip: { type: "info", text: "The SERP preview shows real-time ranking data. If you notice competitors with lower domain authority ranking well, it signals a keyword opportunity." }
+          },
+          {
+            title: "Implement Schema Markup for Rich Snippets",
+            content: `<p>In the RankMath SEO panel, click the <strong>Schema</strong> tab. Click <strong>Add Schema</strong> and select the appropriate schema type for your content (Article, Review, Recipe, FAQ, How-To, etc.).</p><p>Fill in the required fields marked with red asterisks. For articles, enter <strong>Headline</strong>, <strong>Author</strong>, and <strong>Publisher</strong> information. For reviews, add <strong>Rating</strong> and <strong>Review Count</strong>. RankMath auto-populates many fields from your post data, but verify accuracy before publishing.</p><p>Click <strong>Update</strong> to save. Use the <strong>Schema Preview</strong> button to validate your markup before it goes live.</p>`,
+            tip: { type: "success", text: "Proper schema markup can earn rich snippets in search results, dramatically improving click-through rates from Google." }
+          },
+          {
+            title: "Optimize for Featured Snippets",
+            content: `<p>In the Content AI panel, locate the <strong>People Also Ask</strong> section. These are questions Google shows for your target keyword. Click the expand icon next to each question to see current featured snippet content.</p><p>Add a dedicated section to your content answering 3-5 of these questions. Use <strong>H2</strong> or <strong>H3</strong> headings formatted as questions, followed by concise 40-60 word answers in paragraph form. For list-based snippets, use <strong>numbered lists</strong> or <strong>bulleted lists</strong> with clear, actionable items.</p><p>RankMath will highlight when your content matches featured snippet formats. Look for green checkmarks next to snippet optimization recommendations.</p>`,
+            tip: { type: "tip", text: "Featured snippets favor content that directly answers questions in the first 1-2 sentences, followed by supporting details." }
+          },
+          {
+            title: "Set Up Automated SEO Testing",
+            content: `<p>Navigate to <strong>Rank Math → SEO Analysis</strong> to run a comprehensive site audit. Click <strong>Start SEO Analysis</strong> to scan your site for technical issues, broken links, and optimization opportunities.</p><p>Review the results organized by severity: <strong>Critical</strong>, <strong>Warning</strong>, and <strong>Suggestions</strong>. Click <strong>View Details</strong> on any issue to see affected pages and recommended fixes. Enable <strong>Email Notifications</strong> in <strong>Rank Math → General Settings → Email Reports</strong> to receive weekly SEO health summaries.</p><p>Set up <strong>Rank Tracking</strong> by navigating to <strong>Rank Math → Rank Tracker</strong>, adding your focus keywords, and monitoring position changes over time.</p>`,
+            tip: { type: "warning", text: "SEO Analysis in the free version is limited. For automated monitoring and alerts, consider upgrading to RankMath Pro." }
+          }
+        ]
+      },
+      advanced:       {
+        title: "API Integration and Bulk SEO Automation",
+        description: "Automate SEO workflows at scale using RankMath's API and bulk optimization tools.",
+        duration: "30 min",
+        steps: [
+          {
+            title: "Enable and Configure the RankMath API",
+            content: `<p>Navigate to <strong>Rank Math → General Settings → API</strong> in your WordPress dashboard. Toggle <strong>Enable REST API</strong> to activate API access. Copy your <strong>API Key</strong> from the field below (you may need to generate one first).</p><p>Under <strong>API Permissions</strong>, configure which data endpoints are accessible. Enable <strong>Read Posts</strong>, <strong>Update Posts</strong>, and <strong>Analytics Data</strong> for full automation capabilities. Set <strong>Rate Limiting</strong> to prevent API abuse (recommended: 100 requests per hour for development).</p><p>Test the connection by making a GET request to <div class="code-box">https://yoursite.com/wp-json/rankmath/v1/posts</div> with your API key in the Authorization header.</p>`,
+            tip: { type: "warning", text: "Protect your API key like a password. Never commit it to public repositories or share it in client-side code." }
+          },
+          {
+            title: "Bulk Update SEO Metadata via Script",
+            content: `<p>Create a Python or Node.js script to bulk update meta titles and descriptions across multiple posts. Use the RankMath API endpoint <div class="code-box">/wp-json/rankmath/v1/updateMeta</div> with POST requests containing post IDs and new meta values.</p><p>Structure your request payload with fields for <strong>post_id</strong>, <strong>title</strong>, <strong>description</strong>, and <strong>focus_keywords</strong>. Loop through a CSV file of posts and their optimized metadata. Include error handling to log failed updates and retry logic for rate-limited requests.</p><p>Before running on production, test on a staging environment. Use the <strong>Dry Run</strong> parameter to preview changes without committing them. Monitor the response codes: 200 indicates success, 429 means rate limit exceeded, and 401 signals authentication issues.</p>`,
+            tip: { type: "tip", text: "Use RankMath's Content AI API endpoint to generate optimized meta descriptions programmatically based on post content and focus keywords." }
+          },
+          {
+            title: "Integrate Analytics with Google Data Studio",
+            content: `<p>Navigate to <strong>Rank Math → Analytics</strong> and ensure Google Search Console is connected. Click <strong>Settings</strong> and enable <strong>Advanced Analytics</strong> to track keyword positions, CTR, and impressions.</p><p>Export your analytics data by clicking <strong>Export</strong> and selecting <strong>CSV</strong> or use the API endpoint <div class="code-box">/wp-json/rankmath/v1/analytics/keywords</div> to fetch JSON data programmatically. Set up a scheduled script (using cron or GitHub Actions) to pull this data daily.</p><p>In Google Data Studio, create a new data source using <strong>Google Sheets</strong> or <strong>BigQuery</strong> as the connector. Import your RankMath analytics exports and build custom dashboards showing SEO performance trends, top-performing keywords, and content ROI.</p>`,
+            tip: { type: "info", text: "Combine RankMath analytics with Google Analytics 4 data for a complete picture of how SEO traffic converts on your site." }
+          },
+          {
+            title: "Automate Schema Updates with Custom Post Types",
+            content: `<p>For sites with custom post types (products, events, courses), automate schema generation using RankMath's filter hooks. In your theme's <strong>functions.php</strong> or a custom plugin, use the filter <div class="code-box">rank_math/json_ld</div> to programmatically add schema markup.</p><p>Create a function that checks the post type and adds appropriate schema. For WooCommerce products, inject <strong>Product</strong> schema with price, availability, and review data. For events, add <strong>Event</strong> schema with start date, location, and performer details pulled from custom fields.</p><p>Register your schema function with <div class="code-box">add_filter('rank_math/json_ld', 'your_custom_schema_function', 99, 2)</div>. The function receives the existing schema array and post object as parameters. Merge your custom schema and return the modified array. Test with Google's Rich Results Test tool.</p>`,
+            tip: { type: "success", text: "Automated schema ensures consistency across hundreds or thousands of posts, eliminating manual entry and reducing errors." }
+          },
+          {
+            title: "Build a Content Optimization Pipeline",
+            content: `<p>Set up a GitHub Actions workflow or Jenkins pipeline that automatically optimizes content before publishing. Configure your CI/CD to trigger on pull requests to your content repository.</p><p>In your pipeline, use the RankMath API to analyze draft content and generate optimization reports. Create a script that extracts markdown or HTML from your CMS, sends it to <div class="code-box">/wp-json/rankmath/v1/analyzeContent</div> with target keywords, and receives SEO scores and recommendations.</p><p>Parse the API response and automatically add inline comments or annotations to the pull request showing missing keywords, readability issues, and schema opportunities. Set quality gates: require an SEO score above 70 before allowing merge to production.</p><p>For final automation, trigger post-publish tasks that submit URLs to Google Search Console for indexing and send Slack notifications with the content's SEO health metrics to your marketing team.</p>`,
+            tip: { type: "tip", text: "Integrate RankMath's Content AI API in your editorial workflow to suggest optimizations before writers finish drafts, saving revision time." }
+          }
+        ]
+      }
+    }
+  },
+
 }; // end TUTORIALS_DATA
