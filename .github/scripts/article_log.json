@@ -2,18 +2,6 @@
   "generated": [
     {
       "date": "2026-06-03",
-      "slot": "midday",
-      "slug": "article-2026-06-03-md",
-      "title": "Create Scroll-Stopping Videos with AI — Full Workflow, No Camera Needed",
-      "type": "tutorial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
-      "topic": "scrollstopping videos full workflow",
-      "pair": "",
-      "words": 788
-    },
-    {
-      "date": "2026-06-03",
       "slot": "evening",
       "slug": "article-2026-06-03-eve",
       "title": "AI Tools Digest — June 03, 2026 (Evening Edition)",
@@ -846,6 +834,23 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-11",
+      "slot": "night",
+      "slug": "fireflies-ai-or-otter-ai-a-real-user-s-take-after-testing-both",
+      "title": "Fireflies.ai or Otter.ai? A Real User's Take After Testing Both",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
+      "topic": "firefliesai otterai users take",
+      "pair": "",
+      "words": 1896,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -927,6 +932,7 @@
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop"
   ]
 }
