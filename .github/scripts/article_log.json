@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-03",
-      "slot": "evening",
-      "slug": "article-2026-06-03-eve",
-      "title": "AI Tools Digest — June 03, 2026 (Evening Edition)",
-      "type": "news_digest",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 806,
-      "partners": []
-    },
-    {
-      "date": "2026-06-03",
       "slot": "night",
       "slug": "article-2026-06-03-nt",
       "title": "The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day",
@@ -851,6 +838,19 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-11",
+      "slot": "latenight",
+      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about",
+      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
+      "topic": "dark side writing tools",
+      "pair": "",
+      "words": 2318,
+      "partners": []
     }
   ],
   "hero_history": [
@@ -933,6 +933,7 @@
     "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop"
   ]
 }
