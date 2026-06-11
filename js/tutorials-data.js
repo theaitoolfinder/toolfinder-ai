@@ -2880,7 +2880,7 @@ task = client.image_to_video.create(
   /* ── RankMath AI ── */
   'rankmath-ai': {
     name: "RankMath AI",
-    domain: "",
+    domain: "rankmath.com",
     affiliate_url: "https://rankmath.com/?ref=benjie-6423",
     category: "SEO",
     tagline: "AI-powered WordPress SEO plugin with smart optimization",

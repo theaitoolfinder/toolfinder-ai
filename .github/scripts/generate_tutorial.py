@@ -348,6 +348,16 @@ def main():
             # Fill in category from affiliate_tools.json if index.html had no match
             if not info["category"] and tool.get("categories"):
                 info["category"] = tool["categories"][0]
+            # Derive domain from affiliate URL if index.html had no match
+            if not info["domain"] and tool.get("affiliate_url"):
+                import urllib.parse
+                host = urllib.parse.urlparse(tool["affiliate_url"]).netloc
+                # Strip common redirect/tracking prefixes
+                for prefix in ("try.", "go.", "get.", "app.", "www."):
+                    if host.startswith(prefix):
+                        host = host[len(prefix):]
+                        break
+                info["domain"] = host
 
             content = generate_tutorial_content(tool, info)
             entry   = build_js_entry(slug, tool, info, content)

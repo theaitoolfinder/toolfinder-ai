@@ -420,7 +420,17 @@ function buildGrid(){
   if(!td){grid.innerHTML='<p style="color:var(--text-dim)">Loading…</p>';return;}
   const subbed=isSubscribed();
 
-  Object.entries(td).forEach(([slug,tool])=>{
+  // Sort: affiliate tools first (newest → oldest based on data order), then the rest
+  const affOrder=['rankmath-ai','submagic-ai','taskade-ai','keyword-insights','opusclip','simplified','make-com','beehiiv','reclaim-ai','fireflies-ai','neuronwriter','elevenlabs'];
+  const entries=Object.entries(td).sort(([a],[b])=>{
+    const ai=affOrder.indexOf(a), bi=affOrder.indexOf(b);
+    if(ai>-1&&bi>-1) return ai-bi;
+    if(ai>-1) return -1;
+    if(bi>-1) return 1;
+    return 0;
+  });
+
+  entries.forEach(([slug,tool])=>{
     const basicSteps=tool.levels.basic.steps.length;
     const intSteps=tool.levels.intermediate.steps.length;
     const advSteps=tool.levels.advanced.steps.length;
