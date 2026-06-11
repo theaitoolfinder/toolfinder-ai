@@ -54,13 +54,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No new tutorials to commit."
           else
-            COUNT=$(python3 -c "
-import re
-content = open('js/tutorials-data.js').read()
-slugs = re.findall(r\"^\s+'([a-z0-9][a-z0-9-]*)':\", content, re.MULTILINE)
-print(len(slugs))
-")
-            git commit -m "Auto-tutorial: $(TZ='Asia/Manila' date +'%b %d %Y') — ${COUNT} affiliate tutorial(s) in js/tutorials-data.js"
+            COUNT=$(grep -c "^  '[a-z0-9]" js/tutorials-data.js || echo 0)
+            git commit -m "Auto-tutorial: $(TZ='Asia/Manila' date +'%b %d %Y') — ${COUNT} tutorial(s) total"
             git pull --rebase origin main || true
             git push
             echo "✅ Tutorials committed and pushed."

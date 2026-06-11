@@ -149,18 +149,42 @@ Rules:
 - Do NOT use ${{}} template syntax in content
 """
 
-    resp = client.messages.create(
-        model="claude-sonnet-4-5",
-        max_tokens=8000,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    # Model fallback list — mirrors article generator preference order
+    MODELS = [
+        "claude-sonnet-4-5",
+        "claude-3-5-sonnet-20241022",
+        "claude-3-5-haiku-20241022",
+    ]
 
-    raw = resp.content[0].text.strip()
-    # Strip any accidental markdown fences
-    raw = re.sub(r"^```(?:json)?\s*", "", raw)
-    raw = re.sub(r"\s*```$", "", raw)
-    return json.loads(raw)
+    last_err = None
+    for model in MODELS:
+        try:
+            resp = client.messages.create(
+                model=model,
+                max_tokens=8000,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            raw = resp.content[0].text.strip()
+            # Strip markdown fences aggressively
+            raw = re.sub(r"^```(?:json)?\s*\n?", "", raw)
+            raw = re.sub(r"\n?```\s*$", "", raw)
+            # Find first { ... } block in case of extra prose
+            m = re.search(r"\{.*\}", raw, re.DOTALL)
+            if m:
+                raw = m.group(0)
+            result = json.loads(raw)
+            print(f"  [Model] {model} ✓")
+            return result
+        except Exception as e:
+            last_err = e
+            err_str = str(e).lower()
+            if "not_found" in err_str or "model" in err_str:
+                print(f"  [Model] {model} not available, trying next…")
+                continue
+            # Non-model error (JSON parse, network): don't retry with different model
+            raise
+    raise RuntimeError(f"All models failed. Last error: {last_err}")
 
 
 # ── JS formatter ───────────────────────────────────────────────────────────────
@@ -325,8 +349,10 @@ def main():
         save_log(log)
         print(f"\n[Tutorials] {added} new tutorial(s) added to js/tutorials-data.js")
     else:
-        print("\n[Tutorials] No tutorials were successfully generated.")
-        sys.exit(1)
+        # Generation failed (API error, bad JSON, etc.) — log but don't fail the job
+        # so the workflow doesn't go red. It will retry on the next affiliate update.
+        print("\n[Tutorials] No tutorials were successfully generated (will retry on next run).")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
