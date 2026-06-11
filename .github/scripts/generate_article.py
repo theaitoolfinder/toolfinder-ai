@@ -28,6 +28,7 @@ from xml.etree import ElementTree as ET
 ROOT               = Path(__file__).resolve().parent.parent.parent
 ARTICLES_DIR       = ROOT / "articles"
 ARTICLES_HTML      = ROOT / "articles.html"
+SITEMAP_XML        = ROOT / "sitemap.xml"
 LOG_PATH           = Path(__file__).resolve().parent / "article_log.json"
 AFFILIATE_JSON     = ROOT / "data" / "affiliate_tools.json"
 ARTICLES_DIR.mkdir(exist_ok=True)
@@ -1943,6 +1944,41 @@ def build_exclusive_card(slug, title, excerpt, hero_url, article_type, date_str)
       </div>"""
 
 
+# ── Update sitemap.xml ────────────────────────────────────────────────────────
+def update_sitemap(slug, is_exclusive=False):
+    """Append a new article URL to sitemap.xml if not already present."""
+    url      = f"https://myaitoolsfinder.com/articles/{slug}.html"
+    today    = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    priority = "0.5" if is_exclusive else "0.6"
+    changefreq = "never" if is_exclusive else "monthly"
+
+    entry = (
+        f"  <url>\n"
+        f"    <loc>{url}</loc>\n"
+        f"    <lastmod>{today}</lastmod>\n"
+        f"    <changefreq>{changefreq}</changefreq>\n"
+        f"    <priority>{priority}</priority>\n"
+        f"  </url>"
+    )
+
+    if not SITEMAP_XML.exists():
+        print("[WARN] sitemap.xml not found — skipping sitemap update.", file=sys.stderr)
+        return
+
+    content = SITEMAP_XML.read_text(encoding="utf-8")
+    if url in content:
+        print(f"[sitemap] {slug}.html already in sitemap.", file=sys.stderr)
+        return
+
+    # Insert before closing </urlset>
+    if "</urlset>" in content:
+        content = content.replace("</urlset>", entry + "\n</urlset>")
+        SITEMAP_XML.write_text(content, encoding="utf-8")
+        print(f"[sitemap] Added {slug}.html → sitemap.xml", file=sys.stderr)
+    else:
+        print("[WARN] sitemap.xml has unexpected format — skipping.", file=sys.stderr)
+
+
 # ── Update articles.html ───────────────────────────────────────────────────────
 def update_articles_html(slug, title, excerpt, hero_url, article_type):
     if not ARTICLES_HTML.exists():
@@ -2082,6 +2118,9 @@ def main():
 
     # ── Update articles.html index ─────────────────────────────────────────────
     update_articles_html(slug, title, excerpt, hero_url, article_type)
+
+    # ── Update sitemap.xml ─────────────────────────────────────────────────────
+    update_sitemap(slug, is_exclusive=(article_type == "exclusive"))
 
     # ── Extract comparison pair for dedup ─────────────────────────────────────
     pair = ""

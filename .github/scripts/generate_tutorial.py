@@ -31,6 +31,7 @@ LOG_PATH       = Path(__file__).resolve().parent / "tutorial_log.json"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 CLOSING_SENTINEL  = "}; // end TUTORIALS_DATA"
+SITEMAP_XML       = ROOT / "sitemap.xml"
 
 
 # ── Slug helpers ───────────────────────────────────────────────────────────────
@@ -261,6 +262,32 @@ def build_js_entry(slug: str, tool: dict, info: dict, content: dict) -> str:
 
 
 # ── Log helpers ────────────────────────────────────────────────────────────────
+
+def update_sitemap_for_tutorials():
+    """Ensure tutorials.html and tutorials/view.html are in sitemap.xml."""
+    if not SITEMAP_XML.exists():
+        return
+    content = SITEMAP_XML.read_text(encoding="utf-8")
+    today = __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d")
+    entries_to_add = [
+        ("https://myaitoolsfinder.com/tutorials.html", "weekly", "0.8"),
+        ("https://myaitoolsfinder.com/tutorials/view.html", "weekly", "0.7"),
+    ]
+    changed = False
+    for url, freq, pri in entries_to_add:
+        if url not in content:
+            entry = (
+                f"  <url>\n    <loc>{url}</loc>\n"
+                f"    <lastmod>{today}</lastmod>\n"
+                f"    <changefreq>{freq}</changefreq>\n"
+                f"    <priority>{pri}</priority>\n  </url>"
+            )
+            content = content.replace("</urlset>", entry + "\n</urlset>")
+            changed = True
+    if changed:
+        SITEMAP_XML.write_text(content, encoding="utf-8")
+        print("[sitemap] tutorials pages ensured in sitemap.xml")
+
 
 def load_log() -> dict:
     if LOG_PATH.exists():
