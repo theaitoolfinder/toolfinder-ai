@@ -1806,24 +1806,9 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a56db'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script>try{{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t.indexOf('custom:')===-1&&_t!=='blue'){{document.documentElement.setAttribute('data-theme',_t);}}else if(_t&&_t.indexOf('custom:')===0){{var _h=parseFloat(_t.split(':')[1]);if(!isNaN(_h)){{var _r=document.documentElement,_s=function(h,s,l){{var a=s*(Math.min(l,1-l)/100),f=function(n){{var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,9-k,1));}};return'#'+[f(0),f(8),f(4)].map(function(x){{return Math.round(x*255).toString(16).padStart(2,'0');}}).join('');}};_r.style.setProperty('--primary',_s(_h,75,38));_r.style.setProperty('--primary-2',_s(_h,75,28));_r.style.setProperty('--primary-light',_s(_h,80,90));_r.style.setProperty('--bg',_s(_h,55,96));_r.style.setProperty('--border',_s(_h,60,82));_r.style.setProperty('--border-soft',_s(_h,60,90));}}}}}}catch(e){{}}</script>
+<script src="../js/theme.js"></script>
 <style>
 :root{{--bg:#f0f6ff;--surface:#fff;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--border:#c9d9f5;--border-soft:#dce9ff;--r:14px;}}
-[data-theme="purple"]{{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--bg:#f5f3ff;--border:#ddd6fe;--border-soft:#ede9fe;}}
-[data-theme="green"]{{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--bg:#ecfdf5;--border:#a7f3d0;--border-soft:#d1fae5;}}
-[data-theme="amber"]{{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--bg:#fffbeb;--border:#fde68a;--border-soft:#fef3c7;}}
-[data-theme="rose"]{{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--bg:#fff1f2;--border:#fecdd3;--border-soft:#ffe4e6;}}
-[data-theme="cyan"]{{--primary:#0891b2;--primary-2:#0e7490;--primary-light:#cffafe;--bg:#ecfeff;--border:#a5f3fc;--border-soft:#cffafe;}}
-[data-theme="indigo"]{{--primary:#4338ca;--primary-2:#3730a3;--primary-light:#e0e7ff;--bg:#eef2ff;--border:#c7d2fe;--border-soft:#e0e7ff;}}
-[data-theme="slate"]{{--primary:#475569;--primary-2:#334155;--primary-light:#e2e8f0;--bg:#f1f5f9;--border:#cbd5e1;--border-soft:#e2e8f0;}}
-[data-theme="lime"]{{--primary:#65a30d;--primary-2:#4d7c0f;--primary-light:#d9f99d;--bg:#f7fee7;--border:#bef264;--border-soft:#d9f99d;}}
-[data-theme="violet"]{{--primary:#9333ea;--primary-2:#7e22ce;--primary-light:#f3e8ff;--bg:#faf5ff;--border:#e9d5ff;--border-soft:#f3e8ff;}}
-[data-theme="orange"]{{--primary:#ea580c;--primary-2:#c2410c;--primary-light:#ffedd5;--bg:#fff7ed;--border:#fed7aa;--border-soft:#ffedd5;}}
-[data-theme="sky"]{{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--bg:#f0f9ff;--border:#bae6fd;--border-soft:#e0f2fe;}}
-[data-theme="pink"]{{--primary:#db2777;--primary-2:#be185d;--primary-light:#fce7f3;--bg:#fdf2f8;--border:#fbcfe8;--border-soft:#fce7f3;}}
-[data-theme="teal"]{{--primary:#0d9488;--primary-2:#0f766e;--primary-light:#ccfbf1;--bg:#f0fdfa;--border:#99f6e4;--border-soft:#ccfbf1;}}
-[data-theme="red"]{{--primary:#dc2626;--primary-2:#b91c1c;--primary-light:#fee2e2;--bg:#fef2f2;--border:#fecaca;--border-soft:#fee2e2;}}
-[data-theme="gold"]{{--primary:#ca8a04;--primary-2:#a16207;--primary-light:#fef9c3;--bg:#fefce8;--border:#fde047;--border-soft:#fef9c3;}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0;}}
 html{{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}}
 body{{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}}
