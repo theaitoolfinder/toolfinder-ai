@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "midday",
-      "slug": "build-a-newsletter-from-zero-to-1-000-subscribers-using-ai-tools",
-      "title": "Build a Newsletter from Zero to 1,000 Subscribers Using AI Tools",
-      "type": "tutorial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=85&auto=format&fit=crop",
-      "topic": "newsletter zero 1000 subscribers",
-      "pair": "",
-      "words": 793,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "exclusive",
       "slug": "from-brief-to-published-the-ai-content-workflow-that-runs-in-45",
       "title": "From Brief to Published: The AI Content Workflow That Runs in 45 Minutes",
@@ -901,6 +888,22 @@
         "Make.com",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "exclusive",
+      "slug": "the-canva-ai-backlash-designers-are-fed-up-here-s-the-full-story",
+      "title": "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
+      "topic": "canva backlash designers heres",
+      "pair": "",
+      "words": 2249,
+      "partners": [
+        "ElevenLabs",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -995,6 +998,7 @@
     "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop"
   ]
 }
