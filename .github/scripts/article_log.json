@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "morning",
-      "slug": "instantly-ai-vs-apollo-io-the-honest-2026-verdict",
-      "title": "Instantly AI vs Apollo.io: The Honest 2026 Verdict",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&q=85&auto=format&fit=crop",
-      "topic": "instantly apolloio 2026",
-      "pair": "Instantly AI vs Apollo.io",
-      "words": 535,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "exclusive",
       "slug": "prompt-engineering-for-real-work-the-2026-practical-guide",
       "title": "Prompt Engineering for Real Work: The 2026 Practical Guide",
@@ -887,6 +874,27 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "exclusive",
+      "slug": "the-hidden-cost-of-free-ai-tools-what-you-re-really-giving-up",
+      "title": "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
+      "topic": "hidden cost free tools",
+      "pair": "",
+      "words": 2856,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -978,6 +986,7 @@
     "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop"
   ]
 }
