@@ -1885,12 +1885,12 @@ async function syncToInternalDB(allContacts){
   if(!db.first_created) db.first_created=new Date().toISOString();
   const gate={hashes:allHashes,count:allHashes.length,updated:new Date().toISOString()};
 
-  /* 4. Commit both files to GitHub */
-  const msg=`Subscribers: ${db.subscribers.length} total, ${added} new (admin sync)`;
-  const [r1,r2]=await Promise.all([
-    commitToGitHub('data/subscribers_db.json',JSON.stringify(db,null,2)+'\n',msg),
-    commitToGitHub('data/subscribers.json',JSON.stringify(gate)+'\n',msg)
-  ]);
+  /* 4. Commit both files to GitHub — sequential to avoid SHA conflict.
+        Parallel Promise.all() causes the second commit to fail with 409
+        because the first commit changed the repo's tree SHA. */
+  const msg=`Subscribers: ${db.hashes.length} total, ${added} new (admin sync)`;
+  const r1=await commitToGitHub('data/subscribers_db.json',JSON.stringify(db,null,2)+'\n',msg);
+  const r2=await commitToGitHub('data/subscribers.json',JSON.stringify(gate)+'\n',msg);
 
   if(syncBanner) syncBanner.style.display='none';
   if(r1.ok||r2.ok){
