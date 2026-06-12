@@ -131,11 +131,12 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
 .grid-wrap{max-width:1100px;margin:32px auto;padding:0 24px}
 .section-label{font-size:.8rem;font-weight:700;color:var(--text-dim);letter-spacing:.06em;
   text-transform:uppercase;margin-bottom:20px}
-.tut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.tut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;align-items:stretch}
 @media(max-width:600px){.tut-grid{grid-template-columns:1fr}}
 
 /* TOOL CARD */
-.tut-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border-soft);
+.tut-card-wrap{height:100%;display:flex;flex-direction:column}
+.tut-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border-soft);flex:1;
   box-shadow:var(--card-shadow);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
 .tut-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.12)}
 .card-header{padding:20px 20px 0;display:flex;align-items:center;gap:14px}
@@ -147,7 +148,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);lin
 .card-meta h3{font-size:1rem;font-weight:700;margin-bottom:2px}
 .card-meta .cat{font-size:.75rem;color:var(--text-dim)}
 .card-body{padding:14px 20px;flex:1}
-.card-tagline{font-size:.85rem;color:var(--text-dim);margin-bottom:14px}
+.card-tagline{font-size:.85rem;color:var(--text-dim);margin-bottom:14px;min-height:2.55em}
 .level-pills{display:flex;gap:6px;flex-wrap:wrap}
 .level-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
   border-radius:20px;font-size:.75rem;font-weight:600;text-decoration:none;transition:.2s;border:1.5px solid transparent}
