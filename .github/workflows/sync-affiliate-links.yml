@@ -11,6 +11,8 @@ name: Sync Affiliate Links
 on:
   push:
     branches: [main]
+    paths:
+      - 'data/affiliate_tools.json'
   workflow_dispatch:
 
 jobs:
