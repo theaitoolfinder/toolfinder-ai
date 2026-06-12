@@ -87,7 +87,7 @@ try{
 .nav-drop-arrow{display:inline-block;width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-top:4px solid currentColor;opacity:.45;flex-shrink:0;margin-top:1px;transition:transform .2s}
 .nav-drop:hover .nav-drop-arrow{transform:rotate(180deg);opacity:.7}
 .nav-dropdown{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--surface,#fff);border:1px solid var(--border-soft,rgba(0,0,0,.08));border-radius:12px;box-shadow:0 8px 32px rgba(26,86,219,.12),0 2px 8px rgba(0,0,0,.06);padding:6px;min-width:172px;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;pointer-events:none;z-index:200}
-.nav-drop:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.nav-drop:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}.nav-dropdown::before{content:'';position:absolute;top:-12px;left:-8px;right:-8px;height:12px}
 .nav-dropdown a{display:flex!important;align-items:center;gap:9px;padding:9px 12px;border-radius:8px;font-size:13px!important;color:var(--text-2,#4a5568)!important;transition:all .12s;white-space:nowrap;text-decoration:none!important;font-weight:500;background:none!important}
 .nav-dropdown a:hover,.nav-dropdown a.active{background:var(--surface-2,#f0f6ff)!important;color:var(--primary,#1a56db)!important}
 .nav-dropdown a.active{font-weight:600}
