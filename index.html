@@ -2923,30 +2923,9 @@ async function isSubscriberCmp(email){
   try{
     const hash=await sha256cmp(email);
     const r=await fetch('/data/subscribers.json?_='+Date.now(),{cache:'no-store'});
-    if(r.ok){
-      const d=await r.json();
-      if(Array.isArray(d.hashes)&&d.hashes.includes(hash)) return true;
-    }
-    // Not in local DB (new subscriber not yet synced, or CDN cache stale).
-    // Fall back: check Brevo API directly so new subscribers can verify immediately.
-    try{
-      const cfgR=await fetch('/data/admin_site_config.json?_='+Date.now(),{cache:'no-store'});
-      if(cfgR.ok){
-        const cfg=await cfgR.json();
-        const apiKey=(cfg.brevo_api_key||'').trim();
-        if(apiKey){
-          const cr=await fetch('https://api.brevo.com/v3/contacts/'+encodeURIComponent(email.trim().toLowerCase()),
-            {headers:{'api-key':apiKey,'accept':'application/json'}});
-          if(cr.ok){
-            const c=await cr.json();
-            // Contact exists in Brevo and is not blacklisted = valid subscriber
-            return !c.emailBlacklisted;
-          }
-          if(cr.status===404) return false; // not in Brevo at all
-        }
-      }
-    }catch(e){}
-    return false;
+    if(!r.ok) return null;
+    const d=await r.json();
+    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
   }catch(e){ return null; }
 }
 
@@ -2980,7 +2959,7 @@ async function unlockComparisons(){
     closeAuthModal();
     showToast("Welcome, "+name+"! 🎉 All member features unlocked.");
   } else if(subscribed===false){
-    errEl.textContent="Email not found in our subscriber list.";
+    errEl.textContent="Email not found yet. Just subscribed? Access activates within 5 minutes — try again shortly.";
     const msgEl=document.getElementById("auth-msg");
     if(msgEl) msgEl.textContent="Not subscribed yet? Sign up free below to unlock unlimited comparisons.";
     btn.disabled=false; btn.textContent="Unlock Access →";
@@ -4408,7 +4387,7 @@ async function popSubscribe(){
       if (btn) { btn.disabled = false; btn.textContent = 'Verify Access →'; }
       if (msgEl) {
         msgEl.style.color = '#ef4444';
-        msgEl.innerHTML = '❌ Email not found in our list. <a href="/#newsletter" target="_blank" style="color:#1a56db">Subscribe free</a> first, then come back!';
+        msgEl.innerHTML = 'Just subscribed? Access activates within 5 minutes — try again shortly. Otherwise <a href="/#newsletter" target="_blank" style="color:#1a56db">subscribe free here</a>.';
       }
     } else {
       // Network error — let them through but not as verified subscriber
