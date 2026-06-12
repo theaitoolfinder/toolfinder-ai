@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "exclusive",
-      "slug": "how-to-build-a-moat-around-your-business-using-ai-before",
-      "title": "How to Build a Moat Around Your Business Using AI Before Competitors Do",
-      "type": "strategy",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=85&auto=format&fit=crop",
-      "topic": "moat around business before",
-      "pair": "",
-      "words": 795,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "midday",
       "slug": "build-a-newsletter-from-zero-to-1-000-subscribers-using-ai-tools",
       "title": "Build a Newsletter from Zero to 1,000 Subscribers Using AI Tools",
@@ -898,6 +885,22 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "exclusive",
+      "slug": "replit-ai-vs-cursor-2026-i-used-both-for-30-days-here-s-the-truth",
+      "title": "Replit AI vs Cursor (2026): I Used Both for 30 Days — Here's the Truth",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
+      "topic": "replit cursor 2026 used",
+      "pair": "Replit AI vs Cursor (2026)",
+      "words": 2128,
+      "partners": [
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
@@ -991,6 +994,7 @@
     "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop"
   ]
 }
