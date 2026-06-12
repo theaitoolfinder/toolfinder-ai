@@ -17,6 +17,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f0f6ff;--surface:#fff;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--border:#c9d9f5;--border-soft:#dce9ff;--r:14px;}
+[data-theme="purple"]{--primary:#7c3aed;--primary-2:#6d28d9;--primary-light:#ede9fe;--bg:#f5f3ff;--border:#ddd6fe;--border-soft:#ede9fe;}
+[data-theme="green"]{--primary:#059669;--primary-2:#047857;--primary-light:#d1fae5;--bg:#ecfdf5;--border:#a7f3d0;--border-soft:#d1fae5;}
+[data-theme="amber"]{--primary:#d97706;--primary-2:#b45309;--primary-light:#fef3c7;--bg:#fffbeb;--border:#fde68a;--border-soft:#fef3c7;}
+[data-theme="rose"]{--primary:#e11d48;--primary-2:#be123c;--primary-light:#ffe4e6;--bg:#fff1f2;--border:#fecdd3;--border-soft:#ffe4e6;}
+[data-theme="cyan"]{--primary:#0891b2;--primary-2:#0e7490;--primary-light:#cffafe;--bg:#ecfeff;--border:#a5f3fc;--border-soft:#cffafe;}
+[data-theme="indigo"]{--primary:#4338ca;--primary-2:#3730a3;--primary-light:#e0e7ff;--bg:#eef2ff;--border:#c7d2fe;--border-soft:#e0e7ff;}
+[data-theme="slate"]{--primary:#475569;--primary-2:#334155;--primary-light:#e2e8f0;--bg:#f1f5f9;--border:#cbd5e1;--border-soft:#e2e8f0;}
+[data-theme="lime"]{--primary:#65a30d;--primary-2:#4d7c0f;--primary-light:#d9f99d;--bg:#f7fee7;--border:#bef264;--border-soft:#d9f99d;}
+[data-theme="violet"]{--primary:#9333ea;--primary-2:#7e22ce;--primary-light:#f3e8ff;--bg:#faf5ff;--border:#e9d5ff;--border-soft:#f3e8ff;}
+[data-theme="orange"]{--primary:#ea580c;--primary-2:#c2410c;--primary-light:#ffedd5;--bg:#fff7ed;--border:#fed7aa;--border-soft:#ffedd5;}
+[data-theme="sky"]{--primary:#0284c7;--primary-2:#0369a1;--primary-light:#e0f2fe;--bg:#f0f9ff;--border:#bae6fd;--border-soft:#e0f2fe;}
+[data-theme="pink"]{--primary:#db2777;--primary-2:#be185d;--primary-light:#fce7f3;--bg:#fdf2f8;--border:#fbcfe8;--border-soft:#fce7f3;}
+[data-theme="teal"]{--primary:#0d9488;--primary-2:#0f766e;--primary-light:#ccfbf1;--bg:#f0fdfa;--border:#99f6e4;--border-soft:#ccfbf1;}
+[data-theme="red"]{--primary:#dc2626;--primary-2:#b91c1c;--primary-light:#fee2e2;--bg:#fef2f2;--border:#fecaca;--border-soft:#fee2e2;}
+[data-theme="gold"]{--primary:#ca8a04;--primary-2:#a16207;--primary-light:#fef9c3;--bg:#fefce8;--border:#fde047;--border-soft:#fef9c3;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
@@ -72,6 +87,7 @@ footer a{color:var(--primary);}
 <meta name="twitter:label1" content="Reading time">
 <meta name="twitter:data1" content="14 min read">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the best AI tools in 2026?","acceptedAnswer":{"@type":"Answer","text":"The most-used AI tools in 2026 are ChatGPT, Claude, Gemini, Midjourney, and Canva AI. The right choice depends on your use case \u2014 writing, design, automation, research, or video creation."}},{"@type":"Question","name":"Are AI tools free to use?","acceptedAnswer":{"@type":"Answer","text":"Most leading AI tools have free tiers. ChatGPT, Claude, Canva AI, and Notion AI all offer capable free plans. Paid plans ($10\u201330/month) unlock higher limits, faster models, and advanced features."}},{"@type":"Question","name":"How do I choose the right AI tool?","acceptedAnswer":{"@type":"Answer","text":"Define your primary use case first. Then shortlist 2-3 tools for that category, test them on real work tasks using free tiers, and pick the one that best fits your workflow. Avoid paying until you've validated it saves you time."}},{"@type":"Question","name":"Is AI safe to use for business?","acceptedAnswer":{"@type":"Answer","text":"For most tasks, yes. Use reputable tools with clear data policies. Avoid inputting trade secrets or personally identifiable customer data unless the tool explicitly offers enterprise-grade privacy. Most tools in our directory follow industry-standard security practices."}}]}</script>
+<script>try{var _t=localStorage.getItem('myai_theme_v1');if(_t&&_t.indexOf('custom:')===-1&&_t!=='blue'){document.documentElement.setAttribute('data-theme',_t);}else if(_t&&_t.indexOf('custom:')===0){var _h=parseFloat(_t.split(':')[1]);if(!isNaN(_h)){var _r=document.documentElement,_s=function(h,s,l){var a=s*(Math.min(l,1-l)/100),f=function(n){var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,9-k,1));};return'#'+[f(0),f(8),f(4)].map(function(x){return Math.round(x*255).toString(16).padStart(2,'0');}).join('');};_r.style.setProperty('--primary',_s(_h,75,38));_r.style.setProperty('--primary-2',_s(_h,75,28));_r.style.setProperty('--primary-light',_s(_h,80,90));_r.style.setProperty('--bg',_s(_h,55,96));_r.style.setProperty('--border',_s(_h,60,82));_r.style.setProperty('--border-soft',_s(_h,60,90));}}}catch(e){}</script>
 </head>
 <body>
 <nav>
@@ -146,19 +162,14 @@ footer a{color:var(--primary);}
     <li><a href="../articles/chatgpt-vs-claude-vs-gemini.html" style="color:var(--primary);text-decoration:underline;font-size:14px;font-weight:500">ChatGPT vs Claude vs Gemini: The Ultimate 2026 Comparison</a></li>
   </ul>
 </div>
-    <div class="share-row">
-      <a href="https://twitter.com/intent/tweet?text=Prompt%20Engineering%20for%20Real%20Work%3A%20The%202026%20Practical%20Guide&url=https%3A//myaitoolsfinder.com/articles/prompt-engineering-for-real-work-the-2026-practical-guide.html" target="_blank" rel="noopener nofollow" class="share-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.845L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        Share on X
-      </a>
-      <a href="../articles.html" class="share-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        All Articles
-      </a>
-      <a href="../index.html" class="share-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        Browse Tools
-      </a>
+        <div class="share-row">
+      <a href="https://twitter.com/intent/tweet?text=Prompt%20Engineering%20for%20Real%20Work%3A%20The%202026%20Practical%20Guide&url=https%3A//myaitoolsfinder.com/articles/prompt-engineering-for-real-work-the-2026-practical-guide.html" target="_blank" rel="noopener nofollow" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.845L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X / Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//myaitoolsfinder.com/articles/prompt-engineering-for-real-work-the-2026-practical-guide.html" target="_blank" rel="noopener nofollow" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//myaitoolsfinder.com/articles/prompt-engineering-for-real-work-the-2026-practical-guide.html" target="_blank" rel="noopener nofollow" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+      <a href="https://www.reddit.com/submit?url=https%3A//myaitoolsfinder.com/articles/prompt-engineering-for-real-work-the-2026-practical-guide.html&title=Prompt%20Engineering%20for%20Real%20Work%3A%20The%202026%20Practical%20Guide" target="_blank" rel="noopener nofollow" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg> Reddit</a>
+      <button onclick="(function(){var u=window.location.href;navigator.clipboard?navigator.clipboard.writeText(u).then(function(){var b=document.getElementById('copy-url-btn');var o=b.innerHTML;b.innerHTML='&#10003; Copied!';setTimeout(function(){b.innerHTML=o;},2000);}):prompt('Copy this URL:',u);})()" id="copy-url-btn" class="share-btn" style="cursor:pointer;background:none;border:1.5px solid var(--border);font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Link</button>
+      <a href="../articles.html" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> All Articles</a>
+      <a href="../index.html" class="share-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Browse Tools</a>
     </div>
   </article>
 </div>
