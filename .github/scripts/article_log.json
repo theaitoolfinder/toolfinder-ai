@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-04",
-      "slot": "midday",
-      "slug": "article-2026-06-04-md",
-      "title": "10 Best AI Productivity Tools for Remote Workers in 2026 — Ranked and Tested",
-      "type": "roundup",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
-      "topic": "productivity tools remote workers",
-      "pair": "",
-      "words": 612,
-      "partners": []
-    },
-    {
-      "date": "2026-06-04",
       "slot": "afternoon",
       "slug": "article-2026-06-04-pm",
       "title": "Build a Personal Knowledge Base with AI That Actually Saves You Time",
@@ -867,6 +854,22 @@
         "NeuronWriter",
         "Taskade AI"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "midday",
+      "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop",
+      "topic": "used firefliesai every days",
+      "pair": "",
+      "words": 2535,
+      "partners": [
+        "Fireflies.ai",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -953,6 +956,7 @@
     "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop"
   ]
 }
