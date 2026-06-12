@@ -1,12 +1,33 @@
 {
   "v": 1,
-  "_readme": "Hashes only \u2014 subscriber emails are stored privately in Brevo, not in this public file.",
+  "_readme": "Hashes only — subscriber emails are stored privately in Brevo, not in this public file.",
   "hashes": [
     "30a996a7b74835011b3f1e9bacccf9829937c1922b9929e29450c7dfdc0853d1",
+    "4b7bc79417eb2e1396745289761d5e56e3af4b9bf62878cac5bfdd7d587a41b0",
     "af4f436106a77c765a88f7a4a952ecf5862e56afb90847ce77e616db35c3dc4a"
   ],
-  "count": 2,
-  "brevo_active": 0,
+  "count": 3,
+  "brevo_active": 3,
   "first_created": "2026-06-03T00:00:00Z",
-  "last_updated": "2026-06-12T13:55:55Z"
+  "last_updated": "2026-06-12T15:09:21.633Z",
+  "subscribers": [
+    {
+      "email": "juandernow@gmail.com",
+      "name": "Bi",
+      "added": "2026-06-12T07:49:10.051+02:00",
+      "status": "active"
+    },
+    {
+      "email": "benjie.gadiaza@gmail.com",
+      "name": "Ben",
+      "added": "2026-05-10T20:36:30.836+02:00",
+      "status": "active"
+    },
+    {
+      "email": "info.myaitoolbox@gmail.com",
+      "name": "Benj Gadiaza",
+      "added": "2026-05-10T19:19:08.557+02:00",
+      "status": "active"
+    }
+  ]
 }
