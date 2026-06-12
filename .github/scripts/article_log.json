@@ -3,19 +3,6 @@
     {
       "date": "2026-06-05",
       "slot": "exclusive",
-      "slug": "prompt-engineering-for-real-work-the-2026-practical-guide",
-      "title": "Prompt Engineering for Real Work: The 2026 Practical Guide",
-      "type": "deep_dive",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=85&auto=format&fit=crop",
-      "topic": "prompt engineering work 2026",
-      "pair": "",
-      "words": 621,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
-      "slot": "exclusive",
       "slug": "how-to-build-a-moat-around-your-business-using-ai-before",
       "title": "How to Build a Moat Around Your Business Using AI Before Competitors Do",
       "type": "strategy",
@@ -895,6 +882,22 @@
         "OpusClip",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "evening",
+      "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take-2026-06-12",
+      "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
+      "topic": "used firefliesai every days",
+      "pair": "",
+      "words": 2491,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -987,6 +990,7 @@
     "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop"
   ]
 }
