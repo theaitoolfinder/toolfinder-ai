@@ -3202,6 +3202,38 @@ window.addEventListener("hashchange",readHash);readHash();
     .catch(function(){section.style.display='none';});
 })();
 
+/* ── Brevo form submit via hidden iframe ────────────────────────────────────
+   fetch() with no-cors is blocked by Cloudflare bot detection on sibforms.com
+   (browser sends Origin header; Cloudflare redirects to a challenge, which
+   no-cors mode treats as a network error and throws).
+   A real <form> submit targeting a hidden iframe is indistinguishable from
+   Brevo's own embedded form — Cloudflare passes it through cleanly.
+   ─────────────────────────────────────────────────────────────────────── */
+const _BREVO_EP_GLOBAL='https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
+
+function brevoSubmit(email, fname){
+  return new Promise(function(resolve){
+    const form=document.createElement('form');
+    form.method='POST';
+    form.action=_BREVO_EP_GLOBAL;
+    form.target='_brevo_ifr';
+    form.style.display='none';
+    const fields={EMAIL:email,locale:'en',html_type:'simple'};
+    if(fname) fields.FIRSTNAME=fname;
+    Object.keys(fields).forEach(function(k){
+      const i=document.createElement('input');
+      i.type='hidden'; i.name=k; i.value=fields[k];
+      form.appendChild(i);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    // Response is cross-origin — we can never read it.
+    // Resolve after 400 ms so the caller can show confirmation.
+    setTimeout(resolve, 400);
+  });
+}
+
 /* ── Newsletter inline subscribe ── */
 async function nlSubscribe(e){
   e.preventDefault();
@@ -3214,26 +3246,12 @@ async function nlSubscribe(e){
     msg.style.color='#ef4444'; msg.textContent='⚠ Please enter a valid email address.'; return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
-  try{
-    // POST directly to the Brevo form endpoint (no-cors — can't read response but submit works)
-    const fd=new FormData();
-    fd.append('EMAIL',email);
-    if(fname) fd.append('FIRSTNAME',fname);
-    fd.append('locale','en');
-    fd.append('html_type','simple');
-    await fetch('https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',
-      {method:'POST',body:fd,mode:'no-cors'});
-    // no-cors means we can't read the response — assume success and show confirmation
-    msg.style.color='var(--ok)';
-    msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
-    btn.textContent='✓ Subscribed!';
-    document.getElementById('nl-fname').value='';
-    document.getElementById('nl-email').value='';
-  }catch(err){
-    msg.style.color='#ef4444';
-    msg.textContent='⚠ Something went wrong. Please try again.';
-    btn.disabled=false; btn.textContent='Subscribe Free →';
-  }
+  await brevoSubmit(email, fname);
+  msg.style.color='var(--ok)';
+  msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
+  btn.textContent='✓ Subscribed!';
+  document.getElementById('nl-fname').value='';
+  document.getElementById('nl-email').value='';
 }
 
 /* ══════════════════════════════════════════
@@ -3600,25 +3618,12 @@ async function popSubscribe(){
     emailEl.focus(); return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
-  try{
-    const fd=new FormData();
-    fd.append('EMAIL',email);
-    if(fname) fd.append('FIRSTNAME',fname);
-    fd.append('locale','en');
-    fd.append('html_type','simple');
-    await fetch('https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',
-      {method:'POST',body:fd,mode:'no-cors'});
-    /* no-cors — can't read response, assume success */
-    msgEl.style.color='var(--ok)';
-    msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
-    btn.textContent='✓ Subscribed!';
-    emailEl.value=''; if(fnameEl) fnameEl.value='';
-    setTimeout(()=>dismissSubPopup(), 3500);
-  }catch(err){
-    msgEl.style.color='#ef4444';
-    msgEl.textContent='Something went wrong — please try again.';
-    btn.disabled=false; btn.textContent='Subscribe Free →';
-  }
+  await brevoSubmit(email, fname);
+  msgEl.style.color='var(--ok)';
+  msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
+  btn.textContent='✓ Subscribed!';
+  emailEl.value=''; if(fnameEl) fnameEl.value='';
+  setTimeout(()=>dismissSubPopup(), 3500);
 }
 
 </script>
@@ -4402,14 +4407,7 @@ async function popSubscribe(){
     }
     if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
     if (msgEl) { msgEl.style.color = 'var(--text-dim)'; msgEl.textContent = ''; }
-    try {
-      const fd = new FormData();
-      fd.append('EMAIL', email);
-      if (fname) fd.append('FIRSTNAME', fname);
-      fd.append('locale', 'en');
-      fd.append('html_type', 'simple');
-      await fetch(_BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
-    } catch(e) {}
+    await brevoSubmit(email, fname);
     if (fname) localStorage.setItem('myai_chat_name', fname);
     localStorage.setItem('pf_email', email); // needed by cbGateComplete → memberLogin
     memberLogin(email, fname || null);
@@ -5155,5 +5153,8 @@ async function popSubscribe(){
   });
 })();
 </script>
+
+<!-- Hidden iframe target for Brevo form submissions (avoids Cloudflare bot detection on fetch) -->
+<iframe id="_brevo_ifr" name="_brevo_ifr" style="display:none" aria-hidden="true" title="" tabindex="-1"></iframe>
 </body>
 </html>
