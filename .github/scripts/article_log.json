@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "exclusive",
-      "slug": "9-best-ai-productivity-tools-for-remote-workers-in-2026-ranked",
-      "title": "9 Best AI Productivity Tools for Remote Workers in 2026 (Ranked by Real Users)",
-      "type": "roundup",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=85&auto=format&fit=crop",
-      "topic": "productivity tools remote workers",
-      "pair": "",
-      "words": 612,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "afternoon",
       "slug": "fireflies-ai-vs-otter-ai-2026-i-used-both-for-30-days-here-s-the",
       "title": "Fireflies.ai vs Otter.ai (2026): I Used Both for 30 Days — Here's the Truth",
@@ -912,6 +899,25 @@
         "RankMath AI",
         "Taskade AI"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "exclusive",
+      "slug": "the-educator-or-trainer-ai-roadmap-which-tools-to-add-first-and",
+      "title": "The Educator or Trainer AI Roadmap: Which Tools to Add First (and Why)",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
+      "topic": "educator trainer roadmap which",
+      "pair": "",
+      "words": 2426,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1008,6 +1014,7 @@
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop"
   ]
 }
