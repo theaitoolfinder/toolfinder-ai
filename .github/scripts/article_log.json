@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-03",
-      "slot": "night",
-      "slug": "article-2026-06-03-nt",
-      "title": "The 30-Minute Morning AI Routine That Powers a 6-Figure Business Day",
-      "type": "workflow",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
-      "topic": "30minute morning routine powers",
-      "pair": "",
-      "words": 607,
-      "partners": []
-    },
-    {
-      "date": "2026-06-03",
       "slot": "latenight",
       "slug": "article-2026-06-03-ln",
       "title": "AI Tools Digest — June 03, 2026 (Late Night Edition)",
@@ -851,6 +838,25 @@
       "pair": "",
       "words": 2318,
       "partners": []
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "morning",
+      "slug": "fireflies-ai-deep-dive-the-honest-review-no-one-else-is-writing",
+      "title": "Fireflies.ai Deep Dive: The Honest Review No One Else Is Writing",
+      "type": "featured",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
+      "topic": "firefliesai deep dive else",
+      "pair": "",
+      "words": 2571,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Reclaim AI",
+        "Submagic AI"
+      ]
     }
   ],
   "hero_history": [
@@ -934,6 +940,7 @@
     "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop"
   ]
 }
