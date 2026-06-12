@@ -2923,9 +2923,30 @@ async function isSubscriberCmp(email){
   try{
     const hash=await sha256cmp(email);
     const r=await fetch('/data/subscribers.json?_='+Date.now(),{cache:'no-store'});
-    if(!r.ok) return null;
-    const d=await r.json();
-    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
+    if(r.ok){
+      const d=await r.json();
+      if(Array.isArray(d.hashes)&&d.hashes.includes(hash)) return true;
+    }
+    // Not in local DB (new subscriber not yet synced, or CDN cache stale).
+    // Fall back: check Brevo API directly so new subscribers can verify immediately.
+    try{
+      const cfgR=await fetch('/data/admin_site_config.json?_='+Date.now(),{cache:'no-store'});
+      if(cfgR.ok){
+        const cfg=await cfgR.json();
+        const apiKey=(cfg.brevo_api_key||'').trim();
+        if(apiKey){
+          const cr=await fetch('https://api.brevo.com/v3/contacts/'+encodeURIComponent(email.trim().toLowerCase()),
+            {headers:{'api-key':apiKey,'accept':'application/json'}});
+          if(cr.ok){
+            const c=await cr.json();
+            // Contact exists in Brevo and is not blacklisted = valid subscriber
+            return !c.emailBlacklisted;
+          }
+          if(cr.status===404) return false; // not in Brevo at all
+        }
+      }
+    }catch(e){}
+    return false;
   }catch(e){ return null; }
 }
 
