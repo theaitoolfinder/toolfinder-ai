@@ -3,19 +3,6 @@
     {
       "date": "2026-06-05",
       "slot": "exclusive",
-      "slug": "ai-productivity-myths-debunked-what-actually-saves-time-vs-what",
-      "title": "AI Productivity Myths Debunked: What Actually Saves Time vs. What Wastes It",
-      "type": "deep_dive",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=85&auto=format&fit=crop",
-      "topic": "productivity myths debunked actually",
-      "pair": "",
-      "words": 621,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
-      "slot": "exclusive",
       "slug": "from-10k-to-100k-the-ai-business-strategy-that-scales-in-2026",
       "title": "From $10K to $100K: The AI Business Strategy That Scales in 2026",
       "type": "strategy",
@@ -928,6 +915,26 @@
         "OpusClip",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "latenight",
+      "slug": "the-gemini-review-that-cuts-through-the-hype-2026",
+      "title": "The Gemini Review That Cuts Through the Hype (2026)",
+      "type": "featured",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
+      "topic": "gemini cuts through hype",
+      "pair": "",
+      "tool": "Gemini",
+      "words": 2400,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1026,6 +1033,7 @@
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop"
   ]
 }
