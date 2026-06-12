@@ -1896,8 +1896,22 @@ async function syncToInternalDB(allContacts){
   if(r1.ok||r2.ok){
     if(statusEl) statusEl.textContent=`✅ ${db.subscribers.length} in database (${added} new added)`;
     showAdminToast(`✅ ${added} new subscriber${added===1?'':'s'} added to My Database.`);
-    /* Refresh the DB panel if it's visible */
-    if(document.getElementById('sub-panel-db').style.display!=='none') loadSubDB();
+    /* Update the DB panel directly from in-memory data — avoids GitHub CDN cache lag
+       that would cause loadSubDB() to show the old count right after a sync commit. */
+    if(document.getElementById('sub-panel-db').style.display!=='none'){
+      const total=db.hashes.length;
+      const el=document.getElementById('db-stat-total');
+      const elB=document.getElementById('db-stat-brevo');
+      const elS=document.getElementById('db-stat-synced');
+      if(el) el.textContent=total.toLocaleString();
+      if(elB) elB.textContent=(db.brevo_active||0).toLocaleString();
+      if(elS) elS.textContent=new Date(db.last_updated).toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+      _dbAll=db.hashes.map(h=>({email:'(private — view in Brevo)',name:'—',added:'—',hash:h}));
+      _dbFiltered=[..._dbAll];
+      _dbPage=0;
+      renderDbTable();
+      document.getElementById('db-table-wrap').style.display='block';
+    }
   }else{
     if(statusEl) statusEl.textContent='⚠️ Could not sync to database — check GitHub connection';
   }
