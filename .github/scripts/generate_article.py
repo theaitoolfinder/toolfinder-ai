@@ -422,21 +422,21 @@ STYLE: Candid and balanced. Equal space to pros and cons. Readers see through pu
     },
     "controversial": {
         "label": "Controversy", "cat": "news controversy", "read_time": "7 min",
-        "prompt": """Write a CONTROVERSIAL AI TOOLS NEWS article of AT LEAST 1,200 words.
+        "prompt": """Write a BALANCED AI TOOLS CONTROVERSY article of AT LEAST 1,200 words.
 
-This is the article that tells the truth no one else is saying — the backlash, the failure, the overhyped launch, the lawsuit, the pricing scandal, the data concern, or the industry debate that's dividing professionals.
+This is the article that explores a genuine debate, concern, or criticism in the AI tools space — written fairly and professionally, presenting multiple sides so readers can make informed decisions.
 
 REQUIRED STRUCTURE (do not skip sections):
-1. The Controversy Hook (150+ words): Open hard — state the controversy directly in the first sentence. No easing in. Make the stakes clear: who's affected, how much, and why it matters right now. Use specific numbers or quotes where possible.
-2. What Actually Happened (<h3>, 200+ words): A factual, timeline-based breakdown of the controversy. What did the company do or say? When? What was the reaction? Include specific details — dates, pricing changes, policy language, user complaints. No vague summaries.
-3. Why People Are Angry — And Are They Right? (<h3>, 200+ words): Present the strongest version of the criticism. What do users, experts, or competitors say? Quote real reactions from forums, social media, or press. Then — critically — evaluate whether the outrage is justified, overstated, or missing the bigger picture.
-4. The Company's Side (<h3>, 100+ words): What did the company say in response? Were their explanations credible? This section should be fair — not a PR piece, but not a hit piece either. Readers trust you to be balanced.
-5. What This Means for You (<h3>, 150+ words): Practical impact on real users. Should you be worried? Should you switch tools? Should you adjust how you use it? Give specific, actionable guidance — not "wait and see" vagueness.
-6. The Bigger Picture (<h3>, 150+ words): Is this an isolated incident or part of a broader trend? What does this controversy reveal about the AI tools industry — pricing practices, data policies, overpromising, quality control? Connect the dots.
-7. Alternatives Worth Knowing (<h3>): If readers are reconsidering this tool, what are 2–3 legitimate alternatives? One sentence per tool on why it might be a better fit given the controversy.
-8. The Bottom Line (<h3>, 100+ words): Your unfiltered verdict. Is the tool still worth using despite the controversy? Has trust been permanently damaged? What would need to happen for you to change your recommendation?
+1. The Issue Hook (150+ words): Introduce the topic clearly in the opening paragraph. Explain what the debate or concern is about, who it affects, and why it's worth paying attention to. Keep the tone measured — informative, not alarmist.
+2. Background: What Happened (<h3>, 200+ words): A factual, even-handed breakdown of the situation. What did the company do or change? What was the user reaction? Stick to what is known — avoid speculation presented as fact.
+3. The Concerns — Are They Valid? (<h3>, 200+ words): Present the criticism fairly and in full. What are users, analysts, or professionals worried about? Evaluate whether those concerns are well-founded, overstated, or context-dependent. Acknowledge nuance where it exists.
+4. The Company's Perspective (<h3>, 100+ words): What has the company communicated in response? Present their reasoning fairly. This section should give readers a complete picture — not dismiss concerns, but also not ignore the company's rationale.
+5. What This Means for You (<h3>, 150+ words): Practical, grounded guidance for real users. Should you adjust how you use this tool? Are there precautions worth taking? What does the average user actually need to worry about versus what's overblown?
+6. The Broader Context (<h3>, 150+ words): Is this part of a wider industry trend? What does it reveal about how AI tool companies handle pricing, data, quality, or communication? Keep this analytical and measured.
+7. Worth Considering: Alternatives (<h3>): If some readers decide this tool no longer fits their needs, list 2–3 alternatives with a one-sentence note on each. Framed as options, not as "escape routes."
+8. The Bottom Line (<h3>, 100+ words): A fair, balanced verdict. Is the tool still worth using? What would reassure concerned users? What should they watch for going forward?
 
-STYLE: Journalistic and fearless. Name names. Cite specifics. Be fair but not toothless. This is the article that earns trust because it says what others won't.""",
+STYLE: Balanced, professional, and informative. Present all sides fairly. Acknowledge complexity — most controversies are not black and white. The goal is to help readers make informed decisions, not to generate outrage.""",
     },
     "roadmap": {
         "label": "AI Roadmap", "cat": "guide roadmap", "read_time": "10 min",
@@ -712,26 +712,46 @@ TITLE_BANK = {
     ],
 }
 
+def _norm(name: str) -> str:
+    """Normalise a tool name for dedup comparison — strip punctuation, lowercase."""
+    return re.sub(r"[^\w\s]", "", name.lower()).strip()
+
+
 def build_title(article_type, log):
     """Build a unique title not used in the last 45 articles."""
     recent = log.get("generated", [])[-45:]
     recent_titles   = {e.get("title", "").lower() for e in recent}
     recent_pairs    = {e.get("pair", "") for e in recent}
     recent_topics   = {e.get("topic", "") for e in recent}
+    # Normalised tool names seen recently — catches "Fireflies.ai" → "firefliesai" mismatch
+    recent_tools    = {_norm(e.get("tool", "")) for e in recent} | \
+                      {_norm(t) for topic in recent_topics for t in topic.split()}
+
+    def _tool_seen(name: str) -> bool:
+        return _norm(name) in recent_tools
+
+    def _pair_seen(a: str, b: str) -> bool:
+        """Check both orderings AND normalised forms to catch format-variant dupes."""
+        norms = {_norm(a), _norm(b)}
+        for pair in recent_pairs:
+            parts = {_norm(p) for p in re.split(r"\s+vs\s+|\s+or\s+", pair, flags=re.I)}
+            if parts == norms:
+                return True
+        return False
 
     if article_type == "comparison":
         unused = [
             p for p in TITLE_BANK["comparison"]
-            if f"{p[0]} vs {p[1]}" not in recent_pairs
-            and p[0].lower() not in " ".join(recent_topics)
+            if not _pair_seen(p[0], p[1])
+            and not _tool_seen(p[0])
         ]
         if not unused:
             unused = TITLE_BANK["comparison"]
         # Prefer pairs where at least one tool is an affiliate partner
         if AFFILIATE_NAMES:
-            aff_set = {n.lower() for n in AFFILIATE_NAMES}
+            aff_set = {_norm(n) for n in AFFILIATE_NAMES}
             aff_pairs = [p for p in unused
-                         if p[0].lower() in aff_set or p[1].lower() in aff_set]
+                         if _norm(p[0]) in aff_set or _norm(p[1]) in aff_set]
             if aff_pairs:
                 unused = aff_pairs
         a, b = random.choice(unused)
@@ -741,14 +761,14 @@ def build_title(article_type, log):
     if article_type == "featured":
         unused = [
             t for t in TITLE_BANK["featured"]
-            if t.lower() not in " ".join(recent_topics)
+            if not _tool_seen(t)
         ]
         if not unused:
             unused = TITLE_BANK["featured"]
         # Prefer affiliate tools
         if AFFILIATE_NAMES:
-            aff_set = {n.lower() for n in AFFILIATE_NAMES}
-            aff_picks = [t for t in unused if t.lower() in aff_set]
+            aff_set = {_norm(n) for n in AFFILIATE_NAMES}
+            aff_picks = [t for t in unused if _norm(t) in aff_set]
             if aff_picks:
                 unused = aff_picks
         tool = random.choice(unused)
@@ -767,7 +787,7 @@ def build_title(article_type, log):
     if article_type == "pros_cons":
         unused = [
             p for p in TITLE_BANK["pros_cons"]
-            if p[0].lower() not in " ".join(recent_topics)
+            if not _tool_seen(p[0])
         ]
         if not unused:
             unused = TITLE_BANK["pros_cons"]
@@ -786,7 +806,7 @@ def build_title(article_type, log):
     if article_type == "roadmap":
         unused = [
             p for p in TITLE_BANK["roadmap"]
-            if p[0].lower() not in " ".join(recent_topics)
+            if _norm(p[0]) not in recent_tools
         ]
         if not unused:
             unused = TITLE_BANK["roadmap"]
@@ -2122,11 +2142,25 @@ def main():
     # ── Update sitemap.xml ─────────────────────────────────────────────────────
     update_sitemap(slug, is_exclusive=(article_type == "exclusive"))
 
-    # ── Extract comparison pair for dedup ─────────────────────────────────────
+    # ── Extract comparison pair and primary tool for dedup ────────────────────
     pair = ""
-    if article_type == "comparison" and " vs " in title:
-        parts = title.split(" vs ")
-        pair  = f"{parts[0].strip()} vs {parts[1].split(':')[0].strip()}"
+    primary_tool = ""
+    if article_type == "comparison":
+        # Normalise pair key — catches "vs", "or", and format variants
+        m = re.search(r'^(.+?)\s+(?:vs\.?|or)\s+(.+?)(?:\s*[:\-–]|$)', title, re.I)
+        if m:
+            ta, tb = m.group(1).strip(), m.group(2).strip()
+            pair = f"{ta} vs {tb}"
+            primary_tool = ta
+    elif article_type in ("featured", "pros_cons"):
+        # Extract the main tool name from the title for dedup
+        for t in sorted(TITLE_BANK.get(article_type, []),
+                         key=lambda x: len(x[0] if isinstance(x, tuple) else x),
+                         reverse=True):
+            name = t[0] if isinstance(t, tuple) else t
+            if name.lower() in title.lower():
+                primary_tool = name
+                break
 
     # ── Detect which affiliate tools were mentioned (for partner audit logs) ──
     body_text_lower = re.sub(r"<[^>]+>", " ", body_html).lower()
@@ -2148,6 +2182,7 @@ def main():
         "hero":      hero_url,
         "topic":     extract_topic(title, article_type),
         "pair":      pair,
+        "tool":      primary_tool,
         "words":     word_count,
         "partners":  mentioned_partners,   # [] when no affiliate tools defined
     })
