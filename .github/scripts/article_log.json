@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "night",
-      "slug": "perplexity-ai-vs-chatgpt-stop-guessing-here-s-the-2026-verdict",
-      "title": "Perplexity AI vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
-      "type": "comparison",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=85&auto=format&fit=crop",
-      "topic": "perplexity chatgpt stop guessing",
-      "pair": "Perplexity AI vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
-      "words": 542,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "exclusive",
       "slug": "the-real-2026-ai-stack-for-solopreneurs-12-tools-zero-fluff-real",
       "title": "The Real 2026 AI Stack for Solopreneurs: 12 Tools, Zero Fluff, Real Results",
@@ -960,6 +947,29 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-13",
+      "slot": "night",
+      "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise",
+      "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
+      "topic": "tool subscription trap companies",
+      "pair": "",
+      "tool": "",
+      "words": 2064,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1063,6 +1073,7 @@
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop"
   ]
 }
