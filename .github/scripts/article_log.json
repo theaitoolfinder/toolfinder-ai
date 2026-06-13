@@ -3,19 +3,6 @@
     {
       "date": "2026-06-05",
       "slot": "exclusive",
-      "slug": "the-ai-bookkeeping-workflow-for-freelancers-no-accountant-needed",
-      "title": "The AI Bookkeeping Workflow for Freelancers (No Accountant Needed)",
-      "type": "workflow",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=85&auto=format&fit=crop",
-      "topic": "bookkeeping workflow freelancers accountant",
-      "pair": "",
-      "words": 844,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
-      "slot": "exclusive",
       "slug": "the-best-ai-productivity-tools-for-remote-workers-right-now-2026",
       "title": "The Best AI Productivity Tools for Remote Workers Right Now (2026 Update)",
       "type": "roundup",
@@ -948,6 +935,24 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-13",
+      "slot": "afternoon",
+      "slug": "descript-pros-cons-what-ai-audio-video-editing-users-actually",
+      "title": "Descript Pros & Cons: What Ai Audio/Video Editing Users Actually Think",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
+      "topic": "descript pros cons audiovideo",
+      "pair": "",
+      "tool": "Descript",
+      "words": 2152,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1049,6 +1054,7 @@
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop"
   ]
 }
