@@ -14,6 +14,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>
+// Force reload if page was served from browser cache (disk/memory hit, transferSize===0)
+// sessionStorage flag prevents infinite reload loop within the same tab
+(function(){
+  try{
+    var nav=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+    if(nav&&nav.transferSize===0&&nav.decodedBodySize>0){
+      if(!sessionStorage.getItem('_artfresh')){
+        sessionStorage.setItem('_artfresh','1');
+        location.reload(true);
+      }
+    } else {
+      sessionStorage.removeItem('_artfresh');
+    }
+  }catch(e){}
+})();
+</script>
 <title>AI Tools Reviews, Comparisons & Guides — MyAI ToolsFinder</title>
 <meta name="description" content="In-depth AI tools reviews, comparisons and practical guides for solopreneurs, freelancers and creators. Updated every week by the MyAI ToolsFinder team.">
 <link rel="canonical" href="https://myaitoolsfinder.com/articles.html">
