@@ -730,5 +730,7 @@ window.MYAI_AFF_MAP = {
   "zoominfo":              "https://zoominfo.com",
   "zoominfo ai":           "https://zoominfo.com",
   "zubtitle":              "https://zubtitle.com",
-  "hyper": "https://hyper.co"
+  "hyper": "https://hyper.co",
+  "bitboard": "https://bitboard.co",
+  "kikubot": "https://kikubot.com"
 };

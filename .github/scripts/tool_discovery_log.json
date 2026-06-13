@@ -51,6 +51,14 @@
         "Hyper"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-06-13",
+      "tools": [
+        "BitBoard",
+        "Kikubot"
+      ],
+      "count": 2
     }
   ]
 }
