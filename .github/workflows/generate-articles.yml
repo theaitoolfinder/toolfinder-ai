@@ -105,6 +105,7 @@ jobs:
       - name: Generate article
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           ARTICLE_SLOT: ${{ github.event.inputs.slot }}
         run: python .github/scripts/generate_article.py
 

@@ -50,8 +50,9 @@ AFFILIATE_TOOLS = _load_affiliate_tools()          # full dicts
 AFFILIATE_NAMES = [t["name"] for t in AFFILIATE_TOOLS]   # display names only
 
 # ── Runtime ────────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
-SLOT_OVERRIDE     = os.environ.get("ARTICLE_SLOT", "").strip().lower()
+ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+SLOT_OVERRIDE      = os.environ.get("ARTICLE_SLOT", "").strip().lower()
 # Alias map: legacy → new slot names
 _SLOT_ALIAS = {
     "lunch":      "morning",
@@ -338,60 +339,115 @@ def _scan_disk_heroes() -> set[str]:
     return used
 
 
-def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
-    """Return a hero URL that is unique to this article.
+def _title_to_search_query(title: str) -> str:
+    """Extract 2-4 meaningful keywords from an article title for Unsplash search."""
+    # Strip common filler words, keep nouns/topics
+    stop = {
+        "a","an","the","and","or","but","of","to","in","for","on","at","is","are",
+        "was","were","be","been","this","that","these","those","with","by","from",
+        "vs","vs.","how","what","why","when","which","who","will","my","your","our",
+        "best","top","i","it","its","do","does","did","has","have","had","not","no",
+        "read","here","first","after","before","you","we","they","about","can","just",
+        "than","more","most","all","any","ever","re","s","2026","2025","–","-",":",
+    }
+    words = re.sub(r"[^\w\s]", " ", title.lower()).split()
+    keywords = [w for w in words if w not in stop and len(w) > 2][:4]
+    # Always append "technology" for better Unsplash results on AI topics
+    query = " ".join(keywords) if keywords else "artificial intelligence technology"
+    return query
 
-    Strategy:
-      1. Scan ALL article files on disk → complete ground-truth used-image set.
-         This catches every published article regardless of log window size,
-         and works correctly even when concurrent GitHub Actions runs share
-         the same checkout state.
-      2. Hash the article TITLE to get a deterministic start index.
-         → Different titles always map to different pool positions.
-      3. Walk forward from that index, skipping already-used images.
-      4. Fall back to log hero_history for any pool images not found on disk.
-      5. If pool fully exhausted, reuse from hash position (last resort).
-      6. Skip any image that returns HTTP 404.
-      index_offset shifts the start for Friday exclusive multi-slot runs.
+
+def _search_unsplash(query: str, used_bases: set[str], per_page: int = 20) -> str | None:
+    """Search Unsplash for a photo matching `query` that isn't already used.
+
+    Returns a formatted URL string or None if no unused result found / API unavailable.
+    Uses UNSPLASH_ACCESS_KEY from environment. Falls back silently so the static
+    pool is always available as a safety net.
     """
-    pool = HERO_IMAGES
+    if not UNSPLASH_ACCESS_KEY:
+        return None
+    try:
+        # Try topic-specific query first, then broader fallback queries
+        queries = [query, query.split()[0] + " technology", "artificial intelligence workspace"]
+        for q in queries:
+            resp = requests.get(
+                "https://api.unsplash.com/search/photos",
+                params={"query": q, "per_page": per_page, "orientation": "landscape",
+                        "content_filter": "high"},
+                headers={"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"},
+                timeout=8,
+            )
+            if resp.status_code == 403:
+                print("[WARN] Unsplash API: rate-limited or invalid key — falling back to pool.", file=sys.stderr)
+                return None
+            if not resp.ok:
+                continue
+            results = resp.json().get("results", [])
+            for photo in results:
+                raw = photo.get("urls", {}).get("regular", "")
+                # Normalise to base ID (strip query params) for dedup check
+                base = raw.split("?")[0]
+                if base and base not in used_bases:
+                    # Build a clean, consistent URL
+                    url = base + "?w=800&q=85&auto=format&fit=crop"
+                    print(f"[INFO] Unsplash search '{q}' → {base.split('/')[-1]}", file=sys.stderr)
+                    return url
+        return None
+    except Exception as e:
+        print(f"[WARN] Unsplash search failed: {e}", file=sys.stderr)
+        return None
 
-    # Ground truth: scan every article file currently on disk
-    disk_used = _scan_disk_heroes()
 
-    # Also include log-based history for belt-and-suspenders
-    hero_history: list[str] = log.get("hero_history", [])
-    legacy = [e.get("hero", "") for e in log.get("generated", []) if e.get("hero")]
-    log_used: set[str] = set(hero_history + legacy)
+def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
+    """Return a unique hero image URL for this article.
 
-    # Normalise pool URLs to base (no query string) for comparison
+    Strategy (in order):
+      1. Scan ALL article HTML files on disk → ground-truth set of used image bases.
+      2. Search Unsplash API with keywords extracted from the article title.
+         → Fresh, topic-relevant photo guaranteed to be unused.
+      3. If Unsplash unavailable (no key, rate-limited, network error), fall back
+         to the static HERO_IMAGES pool, walking from a title-hash start index
+         and skipping any already-used images.
+      4. If the pool is exhausted, reuse the least-recently-used pool image.
+      5. Absolute last resort: the hardcoded HERO_FALLBACK_URL.
+    """
     def _base(url: str) -> str:
         return url.split("?")[0]
 
-    recently_used: set[str] = disk_used | {_base(u) for u in log_used}
+    # ── 1. Ground truth: every article currently on disk ────────────────────
+    disk_used = _scan_disk_heroes()
+    hero_history: list[str] = log.get("hero_history", [])
+    legacy      = [e.get("hero", "") for e in log.get("generated", []) if e.get("hero")]
+    log_used    = {_base(u) for u in hero_history + legacy}
+    used_bases  = disk_used | log_used
 
-    # Deterministic start index from title hash + offset
-    title_hash   = int(hashlib.md5(title.encode()).hexdigest(), 16)
-    base_idx     = (title_hash + index_offset) % len(pool)
+    # ── 2. Try Unsplash search ───────────────────────────────────────────────
+    query = _title_to_search_query(title)
+    img = _search_unsplash(query, used_bases)
+    if img:
+        return img
 
-    # Pass 1: find an unused+alive image starting from hash position
+    # ── 3. Static pool fallback ──────────────────────────────────────────────
+    pool = HERO_IMAGES
+    title_hash = int(hashlib.md5(title.encode()).hexdigest(), 16)
+    base_idx   = (title_hash + index_offset) % len(pool)
+
     for step in range(len(pool)):
-        img = pool[(base_idx + step) % len(pool)]
-        if _base(img) not in recently_used:
-            if _url_alive(img):
-                return img
-            else:
-                print(f"[WARN] Hero image 404 — skipping: {img}", file=sys.stderr)
+        candidate = pool[(base_idx + step) % len(pool)]
+        if _base(candidate) not in used_bases:
+            if _url_alive(candidate):
+                return candidate
+            print(f"[WARN] Hero image 404 — skipping: {candidate}", file=sys.stderr)
 
-    # Pass 2: pool exhausted for recent window — fall back to hash position (alive)
-    print("[INFO] Hero pool fully cycled — reusing least-recent image.", file=sys.stderr)
+    # ── 4. Pool exhausted — reuse least-recent ───────────────────────────────
+    print("[INFO] Hero pool fully cycled — reusing from hash position.", file=sys.stderr)
     for step in range(len(pool)):
-        img = pool[(base_idx + step) % len(pool)]
-        if _url_alive(img):
-            return img
+        candidate = pool[(base_idx + step) % len(pool)]
+        if _url_alive(candidate):
+            return candidate
 
-    # Absolute fallback
-    print("[ERROR] All hero images returned 404 — using fallback.", file=sys.stderr)
+    # ── 5. Absolute fallback ─────────────────────────────────────────────────
+    print("[ERROR] All hero images unavailable — using hardcoded fallback.", file=sys.stderr)
     return HERO_FALLBACK_URL
 
 
