@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "exclusive",
-      "slug": "from-10k-to-100k-the-ai-business-strategy-that-scales-in-2026",
-      "title": "From $10K to $100K: The AI Business Strategy That Scales in 2026",
-      "type": "strategy",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1698778573682-346d219402b5?w=800&q=85&auto=format&fit=crop",
-      "topic": "100k business strategy scales",
-      "pair": "",
-      "words": 795,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "evening",
       "slug": "ai-tools-digest-june-05-2026-evening-edition",
       "title": "AI Tools Digest — June 05, 2026 (Evening Edition)",
@@ -935,6 +922,26 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-13",
+      "slot": "morning",
+      "slug": "is-wordtune-finally-better-than-writesonic-2026-head-to-head",
+      "title": "Is Wordtune Finally Better Than Writesonic? (2026 Head-to-Head)",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
+      "topic": "wordtune finally better than",
+      "pair": "",
+      "tool": "",
+      "words": 1949,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1034,6 +1041,7 @@
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop"
   ]
 }
