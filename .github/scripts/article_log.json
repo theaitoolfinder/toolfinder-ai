@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-05",
-      "slot": "exclusive",
-      "slug": "how-to-position-your-business-for-the-ai-first-economy-in-2026",
-      "title": "How to Position Your Business for the AI-First Economy in 2026",
-      "type": "strategy",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
-      "topic": "position business aifirst economy",
-      "pair": "",
-      "words": 800,
-      "partners": []
-    },
-    {
-      "date": "2026-06-05",
       "slot": "latenight",
       "slug": "ai-tools-digest-june-05-2026-late-night-edition",
       "title": "AI Tools Digest — June 05, 2026 (Late Night Edition)",
@@ -980,6 +967,24 @@
         "OpusClip",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-06-14",
+      "slot": "morning",
+      "slug": "suno-vs-udio-the-honest-breakdown-for-2026",
+      "title": "Suno vs Udio: The Honest Breakdown for 2026",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
+      "topic": "suno udio breakdown 2026",
+      "pair": "Suno vs Udio",
+      "tool": "Suno",
+      "words": 2324,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1085,6 +1090,7 @@
     "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop"
   ]
 }
