@@ -44,7 +44,7 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config user.email "bot@myaitoolsfinder.com"
-          git config user.name "MyAI ToolsFinder Bot"
+          git config user.name "My AI Tools Finder Bot"
           git add data/subscribers.json data/subscribers_db.json
           if git diff --staged --quiet; then
             echo "No subscriber changes since last sync."

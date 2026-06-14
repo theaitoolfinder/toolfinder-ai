@@ -41,7 +41,7 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config user.email "bot@myaitoolsfinder.com"
-          git config user.name "MyAI ToolsFinder Bot"
+          git config user.name "My AI Tools Finder Bot"
           git add js/tools-data.js
           if git diff --staged --quiet; then
             echo "tools-data.js already up to date — nothing to commit."

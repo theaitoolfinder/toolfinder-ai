@@ -1,4 +1,4 @@
-/* MyAI ToolsFinder — shared theme loader (articles & sub-pages)
+/* My AI Tools Finder — shared theme loader (articles & sub-pages)
    Must run before first paint. Reads myai_theme_v1 from localStorage
    and applies the correct colour variables to <html>. */
 (function(){

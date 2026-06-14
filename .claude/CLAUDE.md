@@ -1,4 +1,4 @@
-# Claude Instructions — MyAI ToolsFinder
+# Claude Instructions — My AI Tools Finder
 
 ## ALWAYS DO AFTER EVERY CODE CHANGE
 

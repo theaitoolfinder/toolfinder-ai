@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-sync_subscribers.py — MyAI ToolsFinder
+sync_subscribers.py — My AI Tools Finder
 ─────────────────────────────────────────────────────────────────────────────
 Fetches all active contacts from Brevo, SHA-256 hashes their emails, and
 maintains two output files:

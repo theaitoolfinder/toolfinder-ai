@@ -1,5 +1,5 @@
 /**
- * affiliate.js — MyAI ToolsFinder
+ * affiliate.js — My AI Tools Finder
  * ─────────────────────────────────────────────────────────────────────────────
  * AUTO-LINKER: Automatically detects AI tool names anywhere on the page and
  * wraps them with the correct affiliate link. Works on article pages, the

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-sync_affiliate_links.py — MyAI ToolsFinder
+sync_affiliate_links.py — My AI Tools Finder
 ═══════════════════════════════════════════
 Reads data/affiliate_tools.json and patches js/tools-data.js so that
 every affiliate partner's entry uses their tracking URL instead of the

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_article.py — MyAI ToolsFinder Automated Article Generator
+generate_article.py — My AI Tools Finder Automated Article Generator
 ═══════════════════════════════════════════════════════════════════
 Schedule (Philippine Time, PHT = UTC+8):
   Mon–Sun   8:00  Morning article   → comparison / tutorial / roundup
@@ -1315,7 +1315,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
         p1_tools = AFFILIATE_NAMES[:8]   # priority-1 pool shown to Claude
         aff_note = (
             "\n\nAFFILIATE PARTNER TOOLS — EDITORIAL REQUIREMENT:\n"
-            "MyAI ToolsFinder has content partnerships with the following tools. "
+            "My AI Tools Finder has content partnerships with the following tools. "
             "Where genuinely relevant to the article topic, naturally include "
             "at least 2–3 of these tools with substantive mentions (not just name-drops). "
             "Treat them with the same honest, editorial voice as all other tools — "
@@ -1342,7 +1342,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
         )
 
     prompt = textwrap.dedent(f"""
-        You are the lead writer for MyAI ToolsFinder — an AI tools directory trusted by
+        You are the lead writer for My AI Tools Finder — an AI tools directory trusted by
         solopreneurs, freelancers, content creators, and professionals who use AI every day.
 
         TODAY: {DATE_STR}
@@ -1811,7 +1811,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
         _desc_raw = _sentences[0]
         meta_desc = (_desc_raw[:152] + "…") if len(_desc_raw) > 155 else _desc_raw
     else:
-        meta_desc = f"{title} — Tested and reviewed by MyAI ToolsFinder. Honest insights for solopreneurs and creators."
+        meta_desc = f"{title} — Tested and reviewed by My AI Tools Finder. Honest insights for solopreneurs and creators."
     meta_desc = meta_desc.replace('"', '&quot;')
 
     # ── Related articles: pick 3 recent articles from the log (excluding current) ──
@@ -1846,7 +1846,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title} — MyAI ToolsFinder</title>
+<title>{title} — My AI Tools Finder</title>
 <meta name="description" content="{meta_desc}">
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -1856,7 +1856,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <meta property="og:image" content="{hero_url}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="MyAI ToolsFinder">
+<meta property="og:site_name" content="My AI Tools Finder">
 <meta property="article:published_time" content="{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}">
 <meta property="article:author" content="Alex Rivera">
 <!-- Twitter Card -->
@@ -1877,7 +1877,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
   "datePublished": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
   "dateModified": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
   "author": {{"@type": "Person", "name": "Alex Rivera", "url": "https://myaitoolsfinder.com/about.html"}},
-  "publisher": {{"@type": "Organization", "name": "MyAI ToolsFinder", "url": "https://myaitoolsfinder.com", "logo": {{"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}}}},
+  "publisher": {{"@type": "Organization", "name": "My AI Tools Finder", "url": "https://myaitoolsfinder.com", "logo": {{"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}}}},
   "mainEntityOfPage": "https://myaitoolsfinder.com/articles/{slug}.html",
   "description": "{re.sub(chr(34), chr(39), meta_desc)}"
 }}
@@ -1933,7 +1933,7 @@ footer a{{color:var(--primary);}}
         <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
       </svg>
     </div>
-    MyAI ToolsFinder
+    My AI Tools Finder
   </a>
   <div class="nav-links">
     <a href="../index.html">Directory</a>
@@ -1957,7 +1957,7 @@ footer a{{color:var(--primary);}}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         {read_time} read
       </span>
-      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Alex Rivera</a> · MyAI ToolsFinder</span>
+      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Alex Rivera</a> · My AI Tools Finder</span>
     </div>
     <div class="post-body">
       {body_html}
@@ -2007,7 +2007,7 @@ footer a{{color:var(--primary);}}
   <p style="margin-top:8px;font-size:11px;opacity:.7">
     Some links may be affiliate links — we may earn a small commission at no extra cost to you.
   </p>
-  <p style="margin-top:6px;font-size:11px;opacity:.55">© {YEAR} MyAI ToolsFinder. All rights reserved.</p>
+  <p style="margin-top:6px;font-size:11px;opacity:.55">© {YEAR} My AI Tools Finder. All rights reserved.</p>
 </footer>
 
 <script src="../js/tools-data.js"></script>

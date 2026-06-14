@@ -1,5 +1,5 @@
 /**
- * tools-data.js — MyAI ToolsFinder
+ * tools-data.js — My AI Tools Finder
  * Auto-generated. Do not edit manually.
  */
 window.MYAI_AFF_MAP = {

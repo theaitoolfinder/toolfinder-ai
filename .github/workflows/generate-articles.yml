@@ -115,7 +115,7 @@ jobs:
       - name: Commit and push
         run: |
           git config user.email "bot@myaitoolsfinder.com"
-          git config user.name "MyAI ToolsFinder Bot"
+          git config user.name "My AI Tools Finder Bot"
           git add articles/ articles.html .github/scripts/article_log.json sitemap.xml feed.xml
           if git diff --staged --quiet; then
             echo "Nothing to commit — article may already exist for this slot."

@@ -35,7 +35,7 @@ window.TUTORIALS_DATA = {
             title: 'Type or paste your script',
             content: `<p>In the large text box, paste your script. Keep it under <strong>2,500 characters</strong> on the free plan per generation.</p>
 <p>Example script to try:</p>
-<div class="code-box"><em>"Welcome to MyAI ToolsFinder — your shortcut to the best AI tools on the planet. Let's explore what AI can do for you today."</em></div>`,
+<div class="code-box"><em>"Welcome to My AI Tools Finder — your shortcut to the best AI tools on the planet. Let's explore what AI can do for you today."</em></div>`,
             tip: null
           },
           {

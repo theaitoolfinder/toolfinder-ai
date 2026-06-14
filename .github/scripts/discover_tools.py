@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-discover_tools.py — MyAI ToolsFinder AI Tools Discovery
+discover_tools.py — My AI Tools Finder AI Tools Discovery
 ═══════════════════════════════════════════════════════
 Runs twice a week (Wednesday + Saturday at 14:00 PHT) to discover
 and add new AI tools to the directory.
@@ -266,7 +266,7 @@ def research_tools_with_claude(existing_names, existing_domains, mentions):
     valid_needs_str = ", ".join(VALID_NEEDS[:20]) + " ... (and more)"
 
     prompt = textwrap.dedent(f"""
-        You are the curator of MyAI ToolsFinder, an AI tools directory for solopreneurs,
+        You are the curator of My AI Tools Finder, an AI tools directory for solopreneurs,
         freelancers, and creators. Today is {DATE_STR}.
 
         TASK: Identify and document 4–5 real, currently-live AI tools that should be

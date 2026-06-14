@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_tutorial.py — MyAI ToolsFinder
+generate_tutorial.py — My AI Tools Finder
 ════════════════════════════════════════════════════════════════════
 Detects affiliate tools that do not yet have a tutorial entry and
 generates 3-level tutorials (basic / intermediate / advanced) using
@@ -87,7 +87,7 @@ def get_tool_info(tool_name: str) -> dict:
 # ── AI tutorial generation ─────────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """\
-You are a senior technical writer for MyAI ToolsFinder (myaitoolsfinder.com).
+You are a senior technical writer for My AI Tools Finder (myaitoolsfinder.com).
 You write practical, step-by-step tutorials for AI tools.
 Your audience: marketers, solopreneurs, content creators, and developers.
 Style: clear, concise, actionable — no fluff.

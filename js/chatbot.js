@@ -1,5 +1,5 @@
 /**
- * MyAI ToolsFinder — Universal Chatbot Widget
+ * My AI Tools Finder — Universal Chatbot Widget
  * Self-contained; inject via <script src="js/chatbot.js"></script>
  * Works on all pages. Uses window.TOOLS if available (index.html),
  * window.PROMPT_CATEGORY_BANK if available (prompts.html).
@@ -214,7 +214,7 @@
           const savedName = (_mcbUser?.name) || localStorage.getItem('myai_chat_name');
           mcbBotMsg(savedName
             ? `Hey ${savedName}! 👋 Good to see you again. How can I help? I know 500+ AI tools, 700+ prompts, and everything about this site.`
-            : `Hey! 👋 I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Ask me anything: find tools, browse prompts, compare options, or get site help. What do you need?`);
+            : `Hey! 👋 I'm **Teza** — your AI tools guide for My AI Tools Finder. Ask me anything: find tools, browse prompts, compare options, or get site help. What do you need?`);
         } else {
           mcbShowGate();
         }
@@ -302,7 +302,7 @@
     if (send)  { send.disabled = true; }
     if (chips) { chips.style.display = 'none'; }
 
-    mcbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for MyAI ToolsFinder. Before we dive in, I'd love to invite you to our **free Friday newsletter**: 5 AI tools, 1 comparison, 1 tip per week. 1,000+ readers. Takes 10 seconds 👇");
+    mcbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for My AI Tools Finder. Before we dive in, I'd love to invite you to our **free Friday newsletter**: 5 AI tools, 1 comparison, 1 tip per week. 1,000+ readers. Takes 10 seconds 👇");
 
     const msgs = document.getElementById('mcb-msgs');
     const wrap = document.createElement('div');
@@ -423,7 +423,7 @@
     } else if (subscribed) {
       mcbBotMsg(`🎉 Subscribed! First email lands this Friday.\n\nNow — what can I help you find? 500+ tools, 700+ prompts, honest comparisons. Just ask! 🚀`);
     } else {
-      mcbBotMsg(`No worries! I'm still here to help 😊\n\nI know **500+ AI tools**, **700+ free prompts**, and everything about MyAI ToolsFinder. What are you working on?`);
+      mcbBotMsg(`No worries! I'm still here to help 😊\n\nI know **500+ AI tools**, **700+ free prompts**, and everything about My AI Tools Finder. What are you working on?`);
     }
     setTimeout(() => document.getElementById('mcb-input')?.focus(), 150);
   }
@@ -439,7 +439,7 @@
 
     /* How it works / about */
     if (/\b(how (does|do) (this|it) work|what is this site|what.*myai|about this|site.*mission|how.*use this|site.*help)\b/.test(ql)) {
-      mcbBotMsg(`**MyAI ToolsFinder** is a free, curated directory of 500+ AI tools — built for solopreneurs, freelancers and creators.\n\n🔍 <a href="/" target="_blank">Tools Directory</a> — 500+ tools, filter by job/need/category\n✍️ <a href="/prompts.html" target="_blank">Prompts Library</a> — 700+ free prompts\n📰 <a href="/articles.html" target="_blank">Articles & Guides</a> — reviews, comparisons, tutorials\n📬 <a href="/#newsletter" target="_blank">Newsletter</a> — free Friday digest\n\nAll free. What can I help you find?`);
+      mcbBotMsg(`**My AI Tools Finder** is a free, curated directory of 500+ AI tools — built for solopreneurs, freelancers and creators.\n\n🔍 <a href="/" target="_blank">Tools Directory</a> — 500+ tools, filter by job/need/category\n✍️ <a href="/prompts.html" target="_blank">Prompts Library</a> — 700+ free prompts\n📰 <a href="/articles.html" target="_blank">Articles & Guides</a> — reviews, comparisons, tutorials\n📬 <a href="/#newsletter" target="_blank">Newsletter</a> — free Friday digest\n\nAll free. What can I help you find?`);
       return;
     }
 
@@ -529,7 +529,7 @@
     if (/^(hi|hello|hey|howdy|yo|sup)\b/.test(ql)) {
       const r = [
         "Hey! 👋 What are you working on? I can find AI tools, suggest prompts, or answer any question about this site.",
-        "Hello! 😊 I'm Teza — AI tools guide for MyAI ToolsFinder. What do you need?",
+        "Hello! 😊 I'm Teza — AI tools guide for My AI Tools Finder. What do you need?",
         "Hey there! Got a task or just exploring? Tell me what you need ✨",
       ];
       mcbBotMsg(r[Math.floor(Math.random() * r.length)]); return;

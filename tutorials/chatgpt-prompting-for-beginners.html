@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ChatGPT Prompting for Beginners — Complete 2026 Guide | My AI Tools Finder</title>
+<meta name="description" content="Learn how to write great ChatGPT prompts from scratch. Step-by-step tutorial with screenshots — covers first prompt, custom instructions, and building a prompt library.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../js/theme.js" onerror="void 0"></script>
+<style>
+:root{--bg:#f0f6ff;--surface:#fff;--surface-2:#e8f2ff;--border:#c9d9f5;--border-soft:#dce9ff;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--shadow:0 2px 12px rgba(26,86,219,.07);--shadow-lg:0 8px 28px rgba(26,86,219,.13);--radius:14px;--hero-grad:linear-gradient(160deg,#e8f0ff 0%,#f0f6ff 45%,#f0ecff 100%)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:15px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* NAV */
+nav.site{position:sticky;top:0;z-index:50;height:64px;background:rgba(255,255,255,.78);backdrop-filter:saturate(200%) blur(22px);border-bottom:1px solid rgba(255,255,255,.55);box-shadow:0 1px 0 rgba(26,86,219,.06),0 4px 24px rgba(26,86,219,.06);display:flex;align-items:center}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1180px;margin:0 auto;padding:0 24px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text)}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.28)}
+.nav-links{display:flex;gap:24px;list-style:none;font-size:14px}
+.nav-links a{font-weight:500;color:var(--text-2);padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);border-color:var(--primary)}
+.btn-nav{padding:8px 18px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(26,86,219,.28)}
+@media(max-width:640px){.nav-links{display:none}.brand span{display:none}}
+
+/* PROGRESS BAR */
+.read-progress{position:fixed;top:64px;left:0;right:0;z-index:49;height:3px;background:var(--border-soft);pointer-events:none}
+.read-fill{height:100%;background:linear-gradient(90deg,var(--primary),#60a5fa);width:0%;transition:width .1s linear}
+
+/* LAYOUT */
+.page-wrap{display:grid;grid-template-columns:1fr min(720px,100%) 1fr;padding-top:0}
+.page-wrap > *{grid-column:2}
+.full-bleed{grid-column:1/-1}
+
+/* BREADCRUMB */
+.breadcrumb{padding:20px 24px 0;max-width:768px;margin:0 auto;font-size:12px;color:var(--text-dim)}
+.breadcrumb a{color:var(--primary)}
+.breadcrumb span{margin:0 6px;color:var(--border)}
+
+/* ARTICLE HEADER */
+.art-header{max-width:768px;margin:0 auto;padding:28px 24px 0}
+.art-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.eyebrow-tag{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow-tag img{width:14px;height:14px;border-radius:3px}
+.diff-badge{padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em}
+.diff-beginner{background:#dcfce7;color:#166534}
+.art-title{font-size:clamp(26px,4.5vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--text);margin-bottom:14px}
+.art-title em{font-style:normal;background:linear-gradient(90deg,var(--primary),#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.art-sub{font-size:17px;color:var(--text-2);line-height:1.65;max-width:580px;margin-bottom:20px}
+.art-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--text-dim);padding-bottom:24px;border-bottom:1px solid var(--border-soft)}
+.art-meta-item{display:flex;align-items:center;gap:5px;font-weight:500}
+
+/* WHAT YOU LEARN BOX */
+.learn-box{background:var(--surface);border:1.5px solid rgba(26,86,219,.18);border-radius:var(--radius);padding:24px 26px;margin:28px 24px;box-shadow:var(--shadow);max-width:720px;margin-left:auto;margin-right:auto}
+.learn-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.learn-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.learn-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-2);line-height:1.5}
+.learn-list li::before{content:'✓';width:18px;height:18px;border-radius:5px;background:var(--primary);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* STEP TRACKER */
+.step-nav{background:var(--surface-2);border-bottom:1px solid var(--border-soft);padding:14px 24px;position:sticky;top:64px;z-index:40;max-width:100%;overflow-x:auto}
+.step-nav-inner{display:flex;gap:6px;min-width:max-content;max-width:768px;margin:0 auto}
+.step-dot{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--text-dim);background:transparent;border:none;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .15s;white-space:nowrap}
+.step-dot.done{background:var(--primary);color:#fff}
+.step-dot.active{background:var(--surface);border:1.5px solid var(--primary);color:var(--primary);box-shadow:0 2px 8px rgba(26,86,219,.15)}
+.step-dot-n{width:18px;height:18px;border-radius:50%;background:var(--border-soft);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;transition:background .15s}
+.step-dot.active .step-dot-n{background:var(--primary);color:#fff}
+.step-dot.done .step-dot-n{background:rgba(255,255,255,.3);color:#fff}
+
+/* BODY */
+.art-body{max-width:768px;margin:0 auto;padding:0 24px 80px}
+
+/* STEP SECTION */
+.step-section{margin-top:52px;scroll-margin-top:130px}
+.step-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.step-num{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.28)}
+.step-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);margin-bottom:2px}
+.step-title{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--text);line-height:1.15}
+.step-body p{font-size:15.5px;color:var(--text-2);line-height:1.9;margin-bottom:18px}
+.step-body strong{color:var(--text)}
+.step-body p a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}
+
+/* SCREENSHOT BLOCK */
+.screenshot{margin:24px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border-soft);box-shadow:var(--shadow-lg)}
+.ss-topbar{height:32px;background:#f1f5f9;display:flex;align-items:center;padding:0 12px;gap:6px;border-bottom:1px solid var(--border-soft)}
+.ss-dot{width:9px;height:9px;border-radius:50%}
+.ss-url{flex:1;height:18px;background:var(--surface);border-radius:999px;margin:0 10px;display:flex;align-items:center;padding:0 10px}
+.ss-url-text{font-size:10px;color:var(--text-dim);font-family:monospace}
+.ss-body{background:#fff;padding:0;position:relative}
+.ss-body img{width:100%;display:block}
+.ss-mock{padding:20px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ss-caption{padding:10px 14px;background:var(--surface-2);border-top:1px solid var(--border-soft);font-size:12px;color:var(--text-dim);display:flex;align-items:center;gap:7px}
+.ss-caption svg{flex-shrink:0;color:var(--text-dim)}
+
+/* MOCK CHAT UI */
+.chat-mock{background:#fff;border-radius:0;padding:16px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{display:flex;gap:10px;align-items:flex-start}
+.chat-msg.user{flex-direction:row-reverse}
+.chat-avatar{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff}
+.chat-avatar.user-av{background:var(--primary)}
+.chat-avatar.ai-av{background:#10a37f}
+.chat-bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.6;max-width:80%;color:var(--text-2)}
+.chat-bubble.user-b{background:var(--primary);color:#fff;border-bottom-right-radius:3px}
+.chat-bubble.ai-b{background:#f0fdf4;border:1px solid #bbf7d0;border-bottom-left-radius:3px}
+.chat-typing{display:flex;gap:4px;padding:10px 14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;border-bottom-left-radius:3px;width:fit-content}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:#10a37f;animation:bounce .9s ease-in-out infinite}
+.chat-typing span:nth-child(2){animation-delay:.15s}
+.chat-typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+
+/* CALLOUT BOXES */
+.callout{border-radius:12px;padding:16px 18px;margin:20px 0;display:flex;gap:12px;align-items:flex-start}
+.callout-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.callout-body{font-size:14px;line-height:1.7;color:var(--text-2)}
+.callout-body strong{color:var(--text);display:block;margin-bottom:3px}
+.callout.tip{background:#fffbeb;border:1px solid #fde68a}
+.callout.warning{background:#fef2f2;border:1px solid #fecaca}
+.callout.info{background:var(--primary-light);border:1px solid rgba(26,86,219,.2)}
+.callout.success{background:#f0fdf4;border:1px solid #bbf7d0}
+
+/* PROMPT BOX */
+.prompt-box{background:#0f172a;border-radius:12px;overflow:hidden;margin:20px 0}
+.prompt-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.prompt-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#60a5fa}
+.copy-prompt{font-size:11.5px;font-weight:600;color:#94a3b8;background:none;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 10px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .15s}
+.copy-prompt:hover{color:#fff;border-color:rgba(255,255,255,.25)}
+.prompt-text{padding:16px 18px;font-size:13px;line-height:1.8;color:#e2e8f0;font-family:monospace;white-space:pre-wrap}
+.prompt-text .ph{color:#f59e0b}
+
+/* COMPARISON */
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.compare-col{border-radius:12px;overflow:hidden}
+.compare-head{padding:8px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.compare-col.bad .compare-head{background:#fee2e2;color:#991b1b}
+.compare-col.good .compare-head{background:#dcfce7;color:#166534}
+.compare-body{padding:14px;font-size:13px;line-height:1.7;color:var(--text-2)}
+.compare-col.bad{border:1px solid #fecaca}
+.compare-col.good{border:1px solid #bbf7d0}
+.compare-body code{background:var(--surface-2);padding:1px 5px;border-radius:4px;font-size:12px;color:var(--primary)}
+@media(max-width:540px){.compare-row{grid-template-columns:1fr}}
+
+/* TRY IT BOX */
+.try-box{background:linear-gradient(135deg,var(--primary),var(--primary-2));border-radius:var(--radius);padding:22px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 6px 22px rgba(26,86,219,.3)}
+.try-box-copy h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.try-box-copy p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5}
+.try-box-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:999px;background:#fff;color:var(--primary);font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .15s,box-shadow .15s}
+.try-box-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.2)}
+
+/* DIVIDER */
+.step-divider{height:1px;background:var(--border-soft);margin:52px 0 0}
+
+/* NEXT / PREV */
+.nav-tuts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.nav-tut{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+.nav-tut:hover{border-color:rgba(26,86,219,.22);box-shadow:var(--shadow-lg)}
+.nav-tut-dir{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);display:flex;align-items:center;gap:4px}
+.nav-tut-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.35;letter-spacing:-.01em}
+.nav-tut.next{text-align:right;align-items:flex-end}
+@media(max-width:480px){.nav-tuts{grid-template-columns:1fr}}
+
+/* SHARE */
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--border-soft)}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:600;color:var(--text-2);transition:all .15s}
+.share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+
+/* SIDEBAR (desktop) */
+.with-sidebar{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;max-width:1060px;margin:0 auto;padding:0 24px}
+.sidebar{padding-top:52px}
+.sidebar-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:16px}
+.sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--text-dim);margin-bottom:14px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.toc-link{font-size:13px;color:var(--text-2);font-weight:500;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;transition:all .15s}
+.toc-link:hover,.toc-link.active{background:var(--primary-light);color:var(--primary)}
+.toc-num{width:20px;height:20px;border-radius:5px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;color:var(--text-dim)}
+.tool-info{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.tool-info img{width:36px;height:36px;border-radius:9px;border:1px solid var(--border-soft)}
+.tool-info-name{font-size:14px;font-weight:700;color:var(--text)}
+.tool-info-cat{font-size:11px;color:var(--text-dim)}
+.btn-try{display:block;text-align:center;padding:11px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(26,86,219,.28);transition:transform .15s}
+.btn-try:hover{transform:translateY(-2px)}
+@media(max-width:860px){.with-sidebar{grid-template-columns:1fr}.sidebar{display:none}}
+
+footer{background:var(--surface);border-top:1px solid var(--border-soft);padding:28px 24px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px}
+footer a{color:var(--primary)}
+</style>
+</head>
+<body>
+
+<nav class="site">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">
+      <div class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="2.8" fill="white"/><circle cx="14" cy="6" r="2.8" fill="white" opacity=".55"/><circle cx="6" cy="14" r="2.8" fill="white" opacity=".55"/><circle cx="14" cy="14" r="2.8" fill="white" opacity=".25"/></svg>
+      </div>
+      <span>My AI Tools Finder</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">AI Tools</a></li>
+      <li><a href="../articles.html">Articles</a></li>
+      <li><a href="../tutorials.html" class="active">Tutorials</a></li>
+      <li><a href="../prompts.html">Prompts</a></li>
+    </ul>
+    <a href="https://chat.openai.com" target="_blank" rel="noopener" class="btn-nav">Try ChatGPT →</a>
+  </div>
+</nav>
+
+<div class="read-progress"><div class="read-fill" id="readFill"></div></div>
+
+<!-- STEP TRACKER (sticky) -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav">
+    <button class="step-dot active" data-step="1" onclick="scrollToStep(1)"><div class="step-dot-n">1</div>Account</button>
+    <button class="step-dot" data-step="2" onclick="scrollToStep(2)"><div class="step-dot-n">2</div>Interface</button>
+    <button class="step-dot" data-step="3" onclick="scrollToStep(3)"><div class="step-dot-n">3</div>First Prompt</button>
+    <button class="step-dot" data-step="4" onclick="scrollToStep(4)"><div class="step-dot-n">4</div>The Formula</button>
+    <button class="step-dot" data-step="5" onclick="scrollToStep(5)"><div class="step-dot-n">5</div>Bad vs. Good</button>
+    <button class="step-dot" data-step="6" onclick="scrollToStep(6)"><div class="step-dot-n">6</div>Iterate</button>
+    <button class="step-dot" data-step="7" onclick="scrollToStep(7)"><div class="step-dot-n">7</div>Custom Instructions</button>
+    <button class="step-dot" data-step="8" onclick="scrollToStep(8)"><div class="step-dot-n">8</div>Prompt Library</button>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a><span>›</span>
+  <a href="../tutorials.html">Tutorials</a><span>›</span>
+  ChatGPT Prompting for Beginners
+</div>
+
+<!-- HEADER -->
+<header class="art-header">
+  <div class="art-eyebrow">
+    <span class="eyebrow-tag">
+      <img src="https://logo.clearbit.com/openai.com" alt="" onerror="this.style.display='none'">
+      ChatGPT
+    </span>
+    <span class="diff-badge diff-beginner">Beginner</span>
+    <span style="font-size:12px;color:var(--text-dim);font-weight:500">8 steps · 12 min read</span>
+  </div>
+  <h1 class="art-title">ChatGPT Prompting for Beginners<br><em>The Complete 2026 Guide</em></h1>
+  <p class="art-sub">You've heard about ChatGPT. Now actually learn how to use it — from your very first prompt to building a library that saves you hours every week.</p>
+  <div class="art-meta">
+    <div class="art-meta-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      June 9, 2026
+    </div>
+    <div class="art-meta-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      12 min read
+    </div>
+    <div class="art-meta-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      My AI Tools Finder
+    </div>
+  </div>
+</header>
+
+<!-- WHAT YOU'LL LEARN -->
+<div class="learn-box">
+  <div class="learn-title">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    What you'll learn in this tutorial
+  </div>
+  <ul class="learn-list">
+    <li>How to create a free ChatGPT account and navigate the interface</li>
+    <li>The 4-part prompt formula that gets professional results every time</li>
+    <li>The difference between a vague prompt and a great one (with real examples)</li>
+    <li>How to set up Custom Instructions so ChatGPT always knows your context</li>
+    <li>How to build a personal prompt library you can reuse forever</li>
+  </ul>
+</div>
+
+<!-- MAIN CONTENT WITH SIDEBAR -->
+<div class="with-sidebar">
+
+  <!-- ARTICLE BODY -->
+  <article class="art-body" style="padding-left:0;padding-right:0">
+
+    <!-- STEP 1 -->
+    <section class="step-section" id="step-1">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-label">Step 1 of 8</div>
+          <h2 class="step-title">Create your free account</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Go to <a href="https://chat.openai.com" target="_blank" rel="noopener">chat.openai.com</a> and click <strong>Sign up</strong>. You can use a Google or Microsoft account for the fastest setup — no credit card needed for the free plan.</p>
+
+        <!-- SCREENSHOT BLOCK -->
+        <div class="screenshot">
+          <div class="ss-topbar">
+            <div class="ss-dot" style="background:#ff5f57"></div>
+            <div class="ss-dot" style="background:#ffbd2e"></div>
+            <div class="ss-dot" style="background:#28c840"></div>
+            <div class="ss-url"><span class="ss-url-text">🔒 chat.openai.com</span></div>
+          </div>
+          <div class="ss-body">
+            <div style="background:#0d0d0d;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;gap:16px">
+              <div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-.02em">Welcome to ChatGPT</div>
+              <div style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:8px">Log in or sign up to continue</div>
+              <div style="width:240px;padding:12px;border-radius:8px;background:#fff;color:#0d0d0d;font-size:13px;font-weight:600;text-align:center;cursor:pointer">Log in</div>
+              <div style="width:240px;padding:12px;border-radius:8px;background:#10a37f;color:#fff;font-size:13px;font-weight:600;text-align:center;cursor:pointer">Sign up →</div>
+              <div style="display:flex;gap:10px;margin-top:4px">
+                <div style="padding:9px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:12px;font-weight:600">Continue with Google</div>
+                <div style="padding:9px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:12px;font-weight:600">Continue with Microsoft</div>
+              </div>
+            </div>
+          </div>
+          <div class="ss-caption">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Click "Sign up" — Google login is fastest. The free plan gives you full access to GPT-4o.
+          </div>
+        </div>
+
+        <p>The <strong>free plan</strong> gives you access to GPT-4o with a daily message limit — more than enough to follow this entire tutorial. If you already have an account, just log in.</p>
+
+        <div class="callout tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>Free vs. Plus</strong> The free plan is perfectly capable for learning. You only need Plus ($20/month) if you want unlimited messages or access to GPT-4o's image/voice features.</div>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 2 -->
+    <section class="step-section" id="step-2">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-label">Step 2 of 8</div>
+          <h2 class="step-title">Understand the interface</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>The ChatGPT interface is simple — but knowing exactly what each part does saves you from confusion later.</p>
+
+        <div class="screenshot">
+          <div class="ss-topbar">
+            <div class="ss-dot" style="background:#ff5f57"></div>
+            <div class="ss-dot" style="background:#ffbd2e"></div>
+            <div class="ss-dot" style="background:#28c840"></div>
+            <div class="ss-url"><span class="ss-url-text">🔒 chat.openai.com</span></div>
+          </div>
+          <div class="ss-body">
+            <div style="background:#212121;display:grid;grid-template-columns:240px 1fr;min-height:260px">
+              <!-- Sidebar -->
+              <div style="padding:16px;border-right:1px solid rgba(255,255,255,.08)">
+                <div style="font-size:12px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;padding-left:4px">Today</div>
+                <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:8px 10px;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:4px">📝 My first conversation</div>
+                <div style="padding:8px 10px;font-size:12px;color:rgba(255,255,255,.4)">New blog post ideas</div>
+                <div style="padding:8px 10px;font-size:12px;color:rgba(255,255,255,.4)">Email draft</div>
+                <div style="position:absolute;bottom:16px;left:12px;right:252px;display:flex;align-items:center;gap:8px">
+                  <div style="width:28px;height:28px;border-radius:50%;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff">U</div>
+                  <div style="font-size:12px;color:rgba(255,255,255,.6)">your@email.com</div>
+                </div>
+              </div>
+              <!-- Main -->
+              <div style="display:flex;flex-direction:column;padding:20px">
+                <div style="text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+                  <div style="font-size:22px;color:#fff;font-weight:600">How can I help you today?</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,.4)">GPT-4o</div>
+                </div>
+                <div style="display:flex;align-items:center;background:#2f2f2f;border-radius:12px;padding:10px 14px;gap:10px;border:1px solid rgba(255,255,255,.12);margin-top:auto">
+                  <div style="flex:1;font-size:13px;color:rgba(255,255,255,.35)">Message ChatGPT…</div>
+                  <div style="width:28px;height:28px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ss-caption">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Left panel = your chat history. Centre = new chat window. Bottom bar = where you type your prompt.
+          </div>
+        </div>
+
+        <p>Key things to know: <strong>Each conversation is separate</strong> — ChatGPT doesn't remember what you said in a previous chat unless you're in the same thread. Start a new chat for a new topic.</p>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body"><strong>Pro tip</strong> Keep one long conversation going for a project rather than starting fresh each time. ChatGPT builds context from earlier messages in the same thread.</div>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 3 -->
+    <section class="step-section" id="step-3">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-label">Step 3 of 8</div>
+          <h2 class="step-title">Write your first prompt</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Type anything in the message bar and press Enter (or click the send button). Let's start with something practical. Try this exact prompt:</p>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-label">📋 Copy this prompt</span>
+            <button class="copy-prompt" onclick="copyPrompt(this,'Write me a short professional bio for LinkedIn. I am a [your job title] with [X years] experience in [your industry]. Keep it under 150 words and make it sound confident but not arrogant.')">Copy</button>
+          </div>
+          <div class="prompt-text">Write me a short professional bio for LinkedIn. I am a <span class="ph">[your job title]</span> with <span class="ph">[X years]</span> experience in <span class="ph">[your industry]</span>. Keep it under 150 words and make it sound confident but not arrogant.</div>
+        </div>
+
+        <!-- CHAT MOCK -->
+        <div class="screenshot">
+          <div class="ss-topbar">
+            <div class="ss-dot" style="background:#ff5f57"></div>
+            <div class="ss-dot" style="background:#ffbd2e"></div>
+            <div class="ss-dot" style="background:#28c840"></div>
+            <div class="ss-url"><span class="ss-url-text">🔒 chat.openai.com</span></div>
+          </div>
+          <div class="chat-mock">
+            <div class="chat-msg user">
+              <div class="chat-avatar user-av">U</div>
+              <div class="chat-bubble user-b">Write me a short professional bio for LinkedIn. I am a marketing manager with 5 years experience in SaaS. Keep it under 150 words and make it sound confident but not arrogant.</div>
+            </div>
+            <div class="chat-msg">
+              <div class="chat-avatar ai-av" style="font-size:10px;font-weight:800">GPT</div>
+              <div class="chat-bubble ai-b">I'm a marketing manager with five years of experience helping SaaS companies grow through data-driven campaigns and clear messaging. I've led go-to-market launches, built content programs from scratch, and worked closely with product and sales teams to close the gap between strategy and execution.<br><br>I care about making marketing that actually moves numbers — not just looks good in a deck. Currently focused on product-led growth and community-driven acquisition.<br><br>Always happy to connect with people building interesting things.</div>
+            </div>
+          </div>
+          <div class="ss-caption">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Notice how specific instructions ("under 150 words", "confident but not arrogant") shape the output quality.
+          </div>
+        </div>
+
+        <div class="callout success">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>That's your first prompt done.</strong> The key thing you just did: you gave it a goal, a context, and a constraint. That 3-part structure is the secret to 80% of great prompts.</div>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 4 -->
+    <section class="step-section" id="step-4">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-label">Step 4 of 8</div>
+          <h2 class="step-title">The 4-part prompt formula</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Most people write one-line prompts and get generic results. The difference between a beginner and an intermediate user is knowing this formula:</p>
+
+        <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;margin:20px 0;box-shadow:var(--shadow)">
+          <div style="padding:18px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="padding:14px;background:var(--surface-2);border-radius:10px">
+              <div style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">① Role</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.5">Tell ChatGPT <strong>who to be</strong>. "Act as a senior copywriter" or "You are a friendly fitness coach."</div>
+            </div>
+            <div style="padding:14px;background:var(--surface-2);border-radius:10px">
+              <div style="font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">② Task</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.5">State exactly <strong>what you want</strong>. Use action verbs: write, analyse, summarise, compare, list.</div>
+            </div>
+            <div style="padding:14px;background:var(--surface-2);border-radius:10px">
+              <div style="font-size:11px;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">③ Context</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.5">Give it <strong>background info</strong>: your audience, the situation, what it's for.</div>
+            </div>
+            <div style="padding:14px;background:var(--surface-2);border-radius:10px">
+              <div style="font-size:11px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">④ Format</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.5">Tell it the <strong>output format</strong>: bullet list, email, 3 paragraphs, table, code block.</div>
+            </div>
+          </div>
+          <div style="padding:16px 20px;border-top:1px solid var(--border-soft);margin-top:12px;font-size:13px;color:var(--text-dim)">
+            You don't need all four every time — but the more you include, the better the result.
+          </div>
+        </div>
+
+        <p>Here's that formula in a real prompt:</p>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-label">📋 4-Part formula example</span>
+            <button class="copy-prompt" onclick="copyPrompt(this,'Act as a senior email copywriter. [ROLE]\nWrite a cold email to a potential client. [TASK]\nMy SaaS tool helps HR managers save 5 hours a week on onboarding admin. The recipient is an HR director at a 200-person tech company. [CONTEXT]\nFormat: Subject line + 3 short paragraphs + single CTA. Maximum 120 words total. [FORMAT]')">Copy</button>
+          </div>
+          <div class="prompt-text">Act as a senior email copywriter. <span class="ph">[ROLE]</span>
+Write a cold email to a potential client. <span class="ph">[TASK]</span>
+My SaaS tool helps HR managers save 5 hours a week on onboarding admin. The recipient is an HR director at a 200-person tech company. <span class="ph">[CONTEXT]</span>
+Format: Subject line + 3 short paragraphs + single CTA. Maximum 120 words total. <span class="ph">[FORMAT]</span></div>
+        </div>
+
+        <div class="try-box">
+          <div class="try-box-copy">
+            <h4>Ready to try it yourself?</h4>
+            <p>Open ChatGPT and run this prompt — replace the placeholders with your own details.</p>
+          </div>
+          <a href="https://chat.openai.com" target="_blank" rel="noopener" class="try-box-btn">
+            Open ChatGPT →
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 5 -->
+    <section class="step-section" id="step-5">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-label">Step 5 of 8</div>
+          <h2 class="step-title">Bad prompts vs. great prompts</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>The fastest way to improve your results is to see the difference side by side. Here are the most common beginner mistakes — and how to fix them.</p>
+
+        <div class="compare-row">
+          <div class="compare-col bad">
+            <div class="compare-head">❌ Vague prompt</div>
+            <div class="compare-body">"Write me a blog post about AI."</div>
+          </div>
+          <div class="compare-col good">
+            <div class="compare-head">✅ Specific prompt</div>
+            <div class="compare-body">"Write a 600-word blog post intro for a freelance designer. Topic: how AI image tools save time on client revisions. Tone: conversational, practical."</div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-col bad">
+            <div class="compare-head">❌ No context</div>
+            <div class="compare-body">"Improve my email."</div>
+          </div>
+          <div class="compare-col good">
+            <div class="compare-head">✅ With context</div>
+            <div class="compare-body">"Improve this email to sound more professional. The recipient is a potential B2B client I've never met. Here's the email: [paste email]"</div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-col bad">
+            <div class="compare-head">❌ No format</div>
+            <div class="compare-body">"Give me ideas for social media."</div>
+          </div>
+          <div class="compare-col good">
+            <div class="compare-head">✅ With format</div>
+            <div class="compare-body">"Give me 10 LinkedIn post ideas for a personal finance coach. Format: numbered list. Each idea = 1 sentence hook + 1 sentence description."</div>
+          </div>
+        </div>
+
+        <div class="callout warning">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>The most common mistake:</strong> Treating ChatGPT like a search engine. It's not — it responds to instructions, not keywords. Write in full sentences like you're briefing a smart colleague.</div>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 6 -->
+    <section class="step-section" id="step-6">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div>
+          <div class="step-label">Step 6 of 8</div>
+          <h2 class="step-title">Iterate — don't start over</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>When the first response isn't quite right, <strong>most beginners start a new chat and rewrite everything</strong>. That's the wrong move. The right move is to iterate in the same thread — ChatGPT remembers everything you've said in the current conversation.</p>
+
+        <div class="screenshot">
+          <div class="ss-topbar">
+            <div class="ss-dot" style="background:#ff5f57"></div>
+            <div class="ss-dot" style="background:#ffbd2e"></div>
+            <div class="ss-dot" style="background:#28c840"></div>
+            <div class="ss-url"><span class="ss-url-text">🔒 chat.openai.com</span></div>
+          </div>
+          <div class="chat-mock">
+            <div class="chat-msg">
+              <div class="chat-avatar ai-av" style="font-size:10px;font-weight:800">GPT</div>
+              <div class="chat-bubble ai-b">[First draft of the blog post intro...]<br><br>AI tools are changing how designers work. Here are three ways...</div>
+            </div>
+            <div class="chat-msg user">
+              <div class="chat-avatar user-av">U</div>
+              <div class="chat-bubble user-b">Good start. Make it punchier — cut the first sentence and start with a question instead. Also make it shorter, around 100 words.</div>
+            </div>
+            <div class="chat-msg">
+              <div class="chat-avatar ai-av" style="font-size:10px;font-weight:800">GPT</div>
+              <div class="chat-bubble ai-b">What if your biggest client bottleneck — revision hell — was completely avoidable?<br><br>Most designers spend more time on amends than on the actual design. AI image tools are quietly changing that. Here's how three of them are saving freelancers 4+ hours per client project...</div>
+            </div>
+          </div>
+          <div class="ss-caption">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Instead of starting over, give a follow-up instruction. ChatGPT uses the full conversation as context.
+          </div>
+        </div>
+
+        <p>Use follow-up commands like: <strong>"Make it shorter"</strong>, <strong>"Use a more casual tone"</strong>, <strong>"Give me 3 alternatives"</strong>, or <strong>"Now turn this into bullet points"</strong>.</p>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 7 -->
+    <section class="step-section" id="step-7">
+      <div class="step-header">
+        <div class="step-num">7</div>
+        <div>
+          <div class="step-label">Step 7 of 8</div>
+          <h2 class="step-title">Set up Custom Instructions</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Custom Instructions let you tell ChatGPT things about yourself <em>once</em> — and it applies them to every future conversation automatically. This is the single biggest time-saver for regular users.</p>
+
+        <p>To set it up: click your profile icon (bottom-left) → <strong>Customize ChatGPT</strong>.</p>
+
+        <div class="screenshot">
+          <div class="ss-topbar">
+            <div class="ss-dot" style="background:#ff5f57"></div>
+            <div class="ss-dot" style="background:#ffbd2e"></div>
+            <div class="ss-dot" style="background:#28c840"></div>
+            <div class="ss-url"><span class="ss-url-text">🔒 chat.openai.com</span></div>
+          </div>
+          <div class="ss-body">
+            <div style="background:#1a1a1a;padding:24px;min-height:220px">
+              <div style="max-width:480px;margin:0 auto">
+                <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:20px">Customize ChatGPT</div>
+                <div style="margin-bottom:16px">
+                  <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:8px">What would you like ChatGPT to know about you?</div>
+                  <div style="background:#2a2a2a;border-radius:8px;padding:12px;border:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.6);min-height:70px;line-height:1.6">
+                    I'm a freelance marketing consultant. My clients are B2B SaaS companies. I write mostly for LinkedIn and email. My audience is startup founders and heads of growth.</div>
+                </div>
+                <div style="margin-bottom:16px">
+                  <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:8px">How would you like ChatGPT to respond?</div>
+                  <div style="background:#2a2a2a;border-radius:8px;padding:12px;border:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.6);min-height:70px;line-height:1.6">
+                    Always be direct. No fluff. Use short sentences. Avoid corporate jargon. When writing, use an active voice. If you're unsure, ask a clarifying question before responding.</div>
+                </div>
+                <div style="background:#10a37f;border-radius:7px;padding:10px;text-align:center;font-size:13px;font-weight:600;color:#fff">Save</div>
+              </div>
+            </div>
+          </div>
+          <div class="ss-caption">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Fill in both fields — your background in the first box, your preferred response style in the second.
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>What to put in custom instructions:</strong> your job, your industry, who you write for, your preferred tone ("direct, no fluff"), things to always avoid ("no bullet points in casual writing"), and any standing context ("I use British English").</div>
+        </div>
+      </div>
+    </section>
+    <div class="step-divider"></div>
+
+    <!-- STEP 8 -->
+    <section class="step-section" id="step-8">
+      <div class="step-header">
+        <div class="step-num">8</div>
+        <div>
+          <div class="step-label">Step 8 of 8</div>
+          <h2 class="step-title">Build your first prompt library</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>The best ChatGPT users don't write prompts from scratch every time. They have a <strong>personal prompt library</strong> — a document of their best prompts that they copy, paste, and tweak.</p>
+
+        <p>Start a Notion page (or even a Google Doc) with this structure:</p>
+
+        <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;margin:20px 0;box-shadow:var(--shadow)">
+          <div style="padding:12px 16px;background:#f8fafc;border-bottom:1px solid var(--border-soft);font-size:12px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em">📚 My Prompt Library — Template</div>
+          <div style="padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+            <div style="border-left:3px solid var(--primary);padding-left:14px">
+              <div style="font-size:12px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">✍️ Writing</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.6">LinkedIn post · Cold email · Blog intro · Product description</div>
+            </div>
+            <div style="border-left:3px solid #7c3aed;padding-left:14px">
+              <div style="font-size:12px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">📊 Research</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.6">Competitor analysis · Summarise article · Generate questions</div>
+            </div>
+            <div style="border-left:3px solid #047857;padding-left:14px">
+              <div style="font-size:12px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">⚡ Quick Tasks</div>
+              <div style="font-size:13px;color:var(--text-2);line-height:1.6">Fix grammar · Translate · Reformat · Generate variations</div>
+            </div>
+          </div>
+        </div>
+
+        <p>Every time you write a prompt that gets a great result, save it. After a month you'll have a collection that makes you 10x faster.</p>
+
+        <div class="callout success">
+          <div class="callout-icon">🎉</div>
+          <div class="callout-body"><strong>Tutorial complete!</strong> You now know the 4-part formula, how to iterate, how to set custom instructions, and how to build a prompt library. That puts you ahead of 90% of ChatGPT users.</div>
+        </div>
+
+        <div class="try-box">
+          <div class="try-box-copy">
+            <h4>Start using ChatGPT now</h4>
+            <p>Free account, no credit card. Try the prompts from this tutorial.</p>
+          </div>
+          <a href="https://chat.openai.com" target="_blank" rel="noopener" class="try-box-btn">
+            Try ChatGPT free →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHARE -->
+    <div class="share-row">
+      <span style="font-size:13px;font-weight:700;color:var(--text-dim);display:flex;align-items:center;gap:6px;margin-right:4px">Share:</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=Just%20finished%20the%20ChatGPT%20beginner%20tutorial%20on%20%40myaitoolsfinder%20%F0%9F%A4%96%20Really%20useful%20%F0%9F%91%89%20https%3A%2F%2Fmyaitoolsfinder.com%2Ftutorials%2Fchatgpt-prompting-for-beginners.html" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Share on X
+      </a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmyaitoolsfinder.com%2Ftutorials%2Fchatgpt-prompting-for-beginners.html" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Share on LinkedIn
+      </a>
+    </div>
+
+    <!-- NEXT / PREV -->
+    <div class="nav-tuts">
+      <a href="../tutorials.html" class="nav-tut">
+        <div class="nav-tut-dir">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back to Tutorials
+        </div>
+        <div class="nav-tut-title">All Tutorials</div>
+      </a>
+      <a href="chatgpt-custom-instructions.html" class="nav-tut next">
+        <div class="nav-tut-dir">
+          Next Tutorial
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="nav-tut-title">Set Up Custom Instructions →</div>
+      </a>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#step-1" class="toc-link active" id="toc-1"><span class="toc-num">1</span> Create your account</a></li>
+        <li><a href="#step-2" class="toc-link" id="toc-2"><span class="toc-num">2</span> Understand the interface</a></li>
+        <li><a href="#step-3" class="toc-link" id="toc-3"><span class="toc-num">3</span> Write your first prompt</a></li>
+        <li><a href="#step-4" class="toc-link" id="toc-4"><span class="toc-num">4</span> The 4-part formula</a></li>
+        <li><a href="#step-5" class="toc-link" id="toc-5"><span class="toc-num">5</span> Bad vs. great prompts</a></li>
+        <li><a href="#step-6" class="toc-link" id="toc-6"><span class="toc-num">6</span> Iterate, don't restart</a></li>
+        <li><a href="#step-7" class="toc-link" id="toc-7"><span class="toc-num">7</span> Custom instructions</a></li>
+        <li><a href="#step-8" class="toc-link" id="toc-8"><span class="toc-num">8</span> Build a prompt library</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Tool in this tutorial</div>
+      <div class="tool-info">
+        <img src="https://logo.clearbit.com/openai.com" alt="ChatGPT" onerror="this.style.display='none'">
+        <div>
+          <div class="tool-info-name">ChatGPT</div>
+          <div class="tool-info-cat">AI Assistant · by OpenAI</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:14px">The world's most popular AI assistant. Free plan includes GPT-4o access.</p>
+      <a href="https://chat.openai.com" target="_blank" rel="noopener" class="btn-try">Try ChatGPT free →</a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Up next</div>
+      <a href="chatgpt-custom-instructions.html" style="display:flex;gap:10px;align-items:flex-start;text-decoration:none;color:inherit">
+        <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#10a37f,#0d7a5f);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚙️</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px">Set Up Custom Instructions</div>
+          <div style="font-size:12px;color:var(--text-dim)">5 min · Intermediate</div>
+        </div>
+      </a>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer>
+  <p>© 2026 My AI Tools Finder · <a href="../privacy.html">Privacy</a> · <a href="../tutorials.html">Tutorials</a> · <a href="../articles.html">Articles</a></p>
+</footer>
+
+<div id="toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:#fff;padding:10px 20px;border-radius:999px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;box-shadow:var(--shadow-lg);font-family:'Poppins',sans-serif"></div>
+
+<script>
+// Reading progress bar
+window.addEventListener('scroll',function(){
+  var winH=document.documentElement.scrollHeight-window.innerHeight;
+  var pct=winH>0?Math.min(100,(window.scrollY/winH)*100):0;
+  document.getElementById('readFill').style.width=pct+'%';
+  updateActiveStep();
+  updateTOC();
+});
+
+var steps=[1,2,3,4,5,6,7,8];
+function updateActiveStep(){
+  var active=1;
+  steps.forEach(function(n){
+    var el=document.getElementById('step-'+n);
+    if(el&&el.getBoundingClientRect().top<160)active=n;
+  });
+  document.querySelectorAll('.step-dot').forEach(function(d){
+    var n=parseInt(d.dataset.step);
+    d.classList.remove('active','done');
+    if(n===active)d.classList.add('active');
+    else if(n<active)d.classList.add('done');
+  });
+}
+
+function updateTOC(){
+  var active=1;
+  steps.forEach(function(n){
+    var el=document.getElementById('step-'+n);
+    if(el&&el.getBoundingClientRect().top<160)active=n;
+  });
+  document.querySelectorAll('.toc-link').forEach(function(l){l.classList.remove('active')});
+  var a=document.getElementById('toc-'+active);
+  if(a)a.classList.add('active');
+}
+
+function scrollToStep(n){
+  var el=document.getElementById('step-'+n);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function copyPrompt(btn,text){
+  if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){showToast('Prompt copied!');btn.textContent='Copied ✓'});}
+  btn.textContent='Copied ✓';
+  setTimeout(function(){btn.textContent='Copy';},2000);
+}
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(function(){t.style.transform='translateX(-50%) translateY(80px)';},2600);
+}
+</script>
+</body>
+</html>

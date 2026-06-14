@@ -32,7 +32,7 @@ jobs:
       - name: Commit new tools
         run: |
           git config user.email "bot@myaitoolsfinder.com"
-          git config user.name "MyAI ToolsFinder Bot"
+          git config user.name "My AI Tools Finder Bot"
           git add index.html admin.html js/tools-data.js .github/scripts/tool_discovery_log.json
           if git diff --staged --quiet; then
             echo "No new tools added today."

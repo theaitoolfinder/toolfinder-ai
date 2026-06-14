@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_feed.py — MyAI ToolsFinder
+generate_feed.py — My AI Tools Finder
 ─────────────────────────────────────────────────────────────────────────────
 Regenerates feed.xml from ALL article HTML files in /articles/.
 Reads each file's <title>, <meta name="description">, canonical URL,
@@ -18,7 +18,7 @@ ROOT        = Path(__file__).resolve().parent.parent.parent
 ARTICLES    = ROOT / "articles"
 FEED_FILE   = ROOT / "feed.xml"
 SITE        = "https://myaitoolsfinder.com"
-FEED_TITLE  = "MyAI ToolsFinder — Reviews & Guides"
+FEED_TITLE  = "My AI Tools Finder — Reviews & Guides"
 FEED_DESC   = "Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators."
 FEED_IMG    = f"{SITE}/og-image.png"
 MAX_ITEMS   = 50   # most recent N articles in the feed
@@ -41,7 +41,7 @@ def extract_title(html: str) -> str:
     m = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
     if not m:
         return ""
-    t = re.sub(r"\s*[—–-]\s*MyAI ToolsFinder\s*$", "", m.group(1).strip())
+    t = re.sub(r"\s*[—–-]\s*My AI Tools Finder\s*$", "", m.group(1).strip())
     return t.strip()
 
 

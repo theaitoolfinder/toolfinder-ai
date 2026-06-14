@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>MyAI ToolsFinder — Reviews &amp; Guides</title>
+    <title>My AI Tools Finder — Reviews &amp; Guides</title>
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
@@ -9,7 +9,7 @@
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
-      <title>MyAI ToolsFinder — Reviews &amp; Guides</title>
+      <title>My AI Tools Finder — Reviews &amp; Guides</title>
       <link>https://myaitoolsfinder.com</link>
     </image>
 
