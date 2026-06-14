@@ -1858,7 +1858,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="My AI Tools Finder">
 <meta property="article:published_time" content="{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}">
-<meta property="article:author" content="Alex Rivera">
+<meta property="article:author" content="Papabenj">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
@@ -1876,7 +1876,7 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
   "image": "{hero_url}",
   "datePublished": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
   "dateModified": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
-  "author": {{"@type": "Person", "name": "Alex Rivera", "url": "https://myaitoolsfinder.com/about.html"}},
+  "author": {{"@type": "Person", "name": "Papabenj", "url": "https://myaitoolsfinder.com/about.html"}},
   "publisher": {{"@type": "Organization", "name": "My AI Tools Finder", "url": "https://myaitoolsfinder.com", "logo": {{"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}}}},
   "mainEntityOfPage": "https://myaitoolsfinder.com/articles/{slug}.html",
   "description": "{re.sub(chr(34), chr(39), meta_desc)}"
@@ -1957,7 +1957,7 @@ footer a{{color:var(--primary);}}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         {read_time} read
       </span>
-      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Alex Rivera</a> · My AI Tools Finder</span>
+      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Papabenj</a> · My AI Tools Finder</span>
     </div>
     <div class="post-body">
       {body_html}
