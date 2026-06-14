@@ -16,7 +16,7 @@
   // ── Gemini / Teza AI Worker ──
   // After deploying workers/teza-ai.js to Cloudflare, paste your Worker URL below.
   // Leave empty ('') to keep the rule-based fallback only.
-  const TEZA_WORKER_URL = '';
+  const TEZA_WORKER_URL = 'https://teza-ai.info-myaitoolbox.workers.dev';
 
   // ── Inject CSS ──
   const style = document.createElement('style');
