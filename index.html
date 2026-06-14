@@ -3724,6 +3724,34 @@ async function popSubscribe(){
 (function(){
   'use strict';
 
+  // ── Gemini AI integration ──
+  const TEZA_WORKER_URL = 'https://teza-ai.info-myaitoolbox.workers.dev';
+  const _cbHistory = []; // conversation memory
+
+  async function cbAskGemini(userText) {
+    if (!TEZA_WORKER_URL) return null;
+    _cbHistory.push({ role: 'user', text: userText });
+    const typingEl = cbTypingIndicator();
+    try {
+      const resp = await fetch(TEZA_WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: _cbHistory.slice(-10) }),
+      });
+      typingEl.remove();
+      if (!resp.ok) throw new Error('Worker error');
+      const data = await resp.json();
+      if (data.text) {
+        _cbHistory.push({ role: 'model', text: data.text });
+        cbBotMsg(data.text);
+        return true;
+      }
+    } catch(e) {
+      typingEl.remove();
+    }
+    return null;
+  }
+
   const GREETINGS = [
     "Hey! I'm **Teza** ✨ — your AI tools guide. I know 500+ tools and can find, explain, or compare any of them. What are you working on?",
     "Hi there! 👋 I'm **Teza**, your go-to for AI tool recommendations. Ask me about a specific tool, compare two, or just tell me what you need help with.",
@@ -4231,7 +4259,10 @@ async function popSubscribe(){
     }
 
     if (!filtersUsed.length) {
-      cbBotMsg("Hmm, not sure I caught that. You can try:\n\n• \"What is Notion AI?\"\n• \"Free tools for writers\"\n• \"ChatGPT vs Claude\"\n• \"Alternatives to Midjourney\"\n• \"Trending video tools\"\n\nOr just tell me what you're trying to get done and I'll figure it out."); return;
+      cbAskGemini(q).then(handled => {
+        if (!handled) cbBotMsg("Hmm, not sure I caught that. You can try:\n\n• \"What is Notion AI?\"\n• \"Free tools for writers\"\n• \"ChatGPT vs Claude\"\n• \"Alternatives to Midjourney\"\n• \"Trending video tools\"\n\nOr just tell me what you're trying to get done and I'll figure it out.");
+      });
+      return;
     }
 
     /* Sort & show */
