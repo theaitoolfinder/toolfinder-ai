@@ -3000,7 +3000,13 @@ async function gateSubmit(){
   if(result===null){
     setGateMsg('Could not verify — please check your connection and try again.','error');
   } else if(result===true){
-    localStorage.setItem('myai_user_v1',JSON.stringify({email,ts:Date.now()}));
+    const name = email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    localStorage.setItem('myai_user_v1', JSON.stringify({name, email, ts:Date.now()}));
+    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
+    localStorage.setItem('myai_chat_gate', '1');
+    localStorage.setItem('myai_chat_name', name);
+    localStorage.setItem('pf_email', email);
+    localStorage.setItem('tut_subscribed', '1');
     setGateMsg('✅ Access granted! Loading your articles…','success');
     setTimeout(unlockExclusiveCards, 900);
   } else {
@@ -3014,11 +3020,27 @@ async function gateSubmit(){
 /* Auto-verify on page load */
 document.addEventListener('DOMContentLoaded',async function(){
   const user=getLoggedInUser();
+  /* If pf_sub is still valid, unlock immediately without a network call */
+  const subExp=parseInt(localStorage.getItem('pf_sub')||'0');
+  if(subExp>Date.now()){ unlockExclusiveCards(); return; }
   if(!user) return;
   const result=await isSubscriber(user.email);
-  if(result===true){ unlockExclusiveCards(); }
-  else if(result===false){ localStorage.removeItem('myai_user_v1'); }
-  else { unlockExclusiveCards(); } /* offline — benefit of doubt */
+  if(result===true){
+    /* Re-stamp all keys so the session is fully fresh */
+    const name=user.name||(user.email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase()));
+    localStorage.setItem('myai_user_v1', JSON.stringify({name, email:user.email, ts:Date.now()}));
+    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
+    localStorage.setItem('myai_chat_gate', '1');
+    localStorage.setItem('myai_chat_name', name);
+    localStorage.setItem('pf_email', user.email);
+    localStorage.setItem('tut_subscribed', '1');
+    unlockExclusiveCards();
+  } else if(result===false){
+    /* Don't silently log them out — just show the gate so they can re-verify */
+    showSubscribeGate();
+  } else {
+    unlockExclusiveCards(); /* offline / network error — benefit of doubt */
+  }
 });
 
 /* ── Hero image fallback — if any card thumbnail 404s, show a guaranteed working image ── */

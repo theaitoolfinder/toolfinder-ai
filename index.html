@@ -2676,6 +2676,7 @@ function memberLogin(email, name){
   localStorage.setItem('myai_chat_name', n);
   localStorage.setItem('pf_sub',String(Date.now()+365*24*60*60*1000));
   localStorage.setItem('pf_email', email);
+  localStorage.setItem('tut_subscribed','1');
   updateNavAuth();
   if(typeof refreshThemeGate==='function') refreshThemeGate();
   if(typeof renderCmpModule==='function') renderCmpModule();
@@ -2687,6 +2688,7 @@ function memberLogout(){
   localStorage.removeItem('myai_chat_name');
   localStorage.removeItem('pf_sub');
   localStorage.removeItem('pf_email');
+  localStorage.removeItem('tut_subscribed');
   updateNavAuth();
   if(typeof renderCmpModule==='function') renderCmpModule();
   if(typeof updateTray==='function') updateTray();
