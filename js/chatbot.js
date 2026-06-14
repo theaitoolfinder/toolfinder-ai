@@ -13,6 +13,10 @@
   // ── Config ──
   const BREVO_EP = 'https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
   const PAGE = window.location.pathname.split('/').pop() || 'index.html';
+  // ── Gemini / Teza AI Worker ──
+  // After deploying workers/teza-ai.js to Cloudflare, paste your Worker URL below.
+  // Leave empty ('') to keep the rule-based fallback only.
+  const TEZA_WORKER_URL = '';
 
   // ── Inject CSS ──
   const style = document.createElement('style');
@@ -429,6 +433,52 @@
   }
 
   // ══════════════════════════════════════════
+  //  GEMINI AI INTEGRATION
+  // ══════════════════════════════════════════
+
+  // Conversation history kept in memory (cleared on page reload — that's fine)
+  const _mcbHistory = [];
+
+  /**
+   * Send a message to the Gemini-backed Cloudflare Worker.
+   * Returns true if Gemini replied, null on error / not configured.
+   * Shows a typing indicator while waiting.
+   */
+  async function mcbAskGemini(userText) {
+    if (!TEZA_WORKER_URL) return null;
+
+    // Push user turn into history
+    _mcbHistory.push({ role: 'user', text: userText });
+
+    // Show "Teza is typing…" indicator using existing helper
+    const typingEl = mcbTyping();
+
+    try {
+      const resp = await fetch(TEZA_WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // Send last 10 turns for context (keeps payload small)
+        body: JSON.stringify({ messages: _mcbHistory.slice(-10) }),
+      });
+
+      typingEl.remove();
+
+      if (!resp.ok) throw new Error(`Worker ${resp.status}`);
+
+      const data = await resp.json();
+      if (data.text) {
+        _mcbHistory.push({ role: 'model', text: data.text });
+        mcbBotMsg(data.text);
+        return true;
+      }
+    } catch (e) {
+      typingEl.remove();
+      // Silently fall through — caller shows fallback message
+    }
+    return null;
+  }
+
+  // ══════════════════════════════════════════
   //  CORE PROCESSING
   // ══════════════════════════════════════════
 
@@ -546,9 +596,17 @@
     // ─── Tool search via window.TOOLS if available ───
     const allTools = typeof window.TOOLS !== 'undefined' ? window.TOOLS : [];
     if (allTools.length) {
+      // On pages with the full tool list, run the rule-based tool finder.
+      // Also pipe the query through Gemini in parallel so follow-up context is built.
       mcbFindTools(ql, allTools);
+      if (TEZA_WORKER_URL) _mcbHistory.push({ role: 'user', text: q });
     } else {
-      mcbBotMsg(`I'm not sure about that one, but here's what I can help with:\n\n🔍 <a href="/" target="_blank">Browse 500+ AI tools →</a>\n✍️ <a href="/prompts.html" target="_blank">Explore 700+ prompts →</a>\n📰 <a href="/articles.html" target="_blank">Read articles & guides →</a>\n\nOr ask me: "tools for writers", "free SEO tools", "ChatGPT vs Claude" — I've got answers!`);
+      // No tool data on this page — let Gemini answer, fall back to static links.
+      mcbAskGemini(q).then(handled => {
+        if (!handled) {
+          mcbBotMsg(`I'm not sure about that one, but here's what I can help with:\n\n🔍 <a href="/" target="_blank">Browse 500+ AI tools →</a>\n✍️ <a href="/prompts.html" target="_blank">Explore 700+ prompts →</a>\n📰 <a href="/articles.html" target="_blank">Read articles & guides →</a>\n\nOr ask me: "tools for writers", "free SEO tools", "ChatGPT vs Claude" — I've got answers!`);
+        }
+      });
     }
   }
 
