@@ -1,0 +1,57 @@
+name: Update RSS Feed
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Regenerates feed.xml whenever a new article is published.
+# Also runs daily at 00:00 UTC as a catch-all to stay fresh.
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    paths:
+      - 'articles/**'        # any article added or changed
+  schedule:
+    - cron: '0 0 * * *'     # daily at midnight UTC
+  workflow_dispatch:          # manual trigger
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate feed.xml
+        run: python .github/scripts/generate_feed.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "MyAI ToolsFinder Bot"
+          git add feed.xml
+          if git diff --staged --quiet; then
+            echo "feed.xml unchanged — nothing to commit."
+          else
+            ITEMS=$(python3 -c "
+import re
+txt = open('feed.xml').read()
+n = len(re.findall('<item>', txt))
+print(n)
+")
+            git commit -m "Update RSS feed: ${ITEMS} articles ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
+            git pull --rebase origin main || true
+            git push
+            echo "✅ feed.xml updated."
+          fi

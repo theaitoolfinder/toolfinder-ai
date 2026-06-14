@@ -1803,6 +1803,17 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
     enc_title = requests.utils.quote(title)
     enc_url   = requests.utils.quote(f"https://myaitoolsfinder.com/articles/{slug}.html")
 
+    # ── Unique meta description: extract first meaningful sentence from body ──
+    _plain = re.sub(r"<[^>]+>", " ", body_html)
+    _plain = re.sub(r"\s+", " ", _plain).strip()
+    _sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', _plain) if len(s.strip()) > 40]
+    if _sentences:
+        _desc_raw = _sentences[0]
+        meta_desc = (_desc_raw[:152] + "…") if len(_desc_raw) > 155 else _desc_raw
+    else:
+        meta_desc = f"{title} — Tested and reviewed by MyAI ToolsFinder. Honest insights for solopreneurs and creators."
+    meta_desc = meta_desc.replace('"', '&quot;')
+
     # ── Related articles: pick 3 recent articles from the log (excluding current) ──
     related_html = ""
     try:
@@ -1836,22 +1847,22 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} — MyAI ToolsFinder</title>
-<meta name="description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools guide for solopreneurs, creators and professionals. Updated {DATE_STR}.">
+<meta name="description" content="{meta_desc}">
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="{title}">
-<meta property="og:description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight from MyAI ToolsFinder. Updated {DATE_STR}.">
+<meta property="og:description" content="{meta_desc}">
 <meta property="og:url" content="https://myaitoolsfinder.com/articles/{slug}.html">
 <meta property="og:image" content="{hero_url}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="MyAI ToolsFinder">
 <meta property="article:published_time" content="{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}">
-<meta property="article:author" content="MyAI ToolsFinder">
+<meta property="article:author" content="Alex Rivera">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
-<meta name="twitter:description" content="{re.sub(chr(34),'&quot;',title)} — Practical AI tools insight from MyAI ToolsFinder.">
+<meta name="twitter:description" content="{meta_desc}">
 <meta name="twitter:image" content="{hero_url}">
 <meta name="twitter:site" content="@myaitoolsfinder">
 <!-- Canonical -->
@@ -1865,10 +1876,10 @@ def build_article_html(slug, title, body_html, stories, hero_url, article_type):
   "image": "{hero_url}",
   "datePublished": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
   "dateModified": "{NOW.strftime('%Y-%m-%dT%H:%M:%SZ')}",
-  "author": {{"@type": "Organization", "name": "MyAI ToolsFinder", "url": "https://myaitoolsfinder.com"}},
+  "author": {{"@type": "Person", "name": "Alex Rivera", "url": "https://myaitoolsfinder.com/about.html"}},
   "publisher": {{"@type": "Organization", "name": "MyAI ToolsFinder", "url": "https://myaitoolsfinder.com", "logo": {{"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}}}},
   "mainEntityOfPage": "https://myaitoolsfinder.com/articles/{slug}.html",
-  "description": "{re.sub(chr(34), chr(39), title)} — Practical AI tools guide updated {DATE_STR}."
+  "description": "{re.sub(chr(34), chr(39), meta_desc)}"
 }}
 </script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a56db'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -1946,7 +1957,7 @@ footer a{{color:var(--primary);}}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         {read_time} read
       </span>
-      <span>MyAI ToolsFinder</span>
+      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Alex Rivera</a> · MyAI ToolsFinder</span>
     </div>
     <div class="post-body">
       {body_html}

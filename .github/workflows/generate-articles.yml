@@ -109,11 +109,14 @@ jobs:
           ARTICLE_SLOT: ${{ github.event.inputs.slot }}
         run: python .github/scripts/generate_article.py
 
+      - name: Regenerate RSS feed
+        run: python .github/scripts/generate_feed.py
+
       - name: Commit and push
         run: |
           git config user.email "bot@myaitoolsfinder.com"
           git config user.name "MyAI ToolsFinder Bot"
-          git add articles/ articles.html .github/scripts/article_log.json sitemap.xml
+          git add articles/ articles.html .github/scripts/article_log.json sitemap.xml feed.xml
           if git diff --staged --quiet; then
             echo "Nothing to commit — article may already exist for this slot."
           else
