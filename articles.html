@@ -2985,13 +2985,25 @@ function showSubscribeGate(){
   }
 }
 
-async function gateSubmit(){
+function grantSubscriberAccess(email){
+  const name = email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  localStorage.setItem('myai_user_v1', JSON.stringify({name, email, ts:Date.now()}));
+  localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
+  localStorage.setItem('myai_chat_gate', '1');
+  localStorage.setItem('myai_chat_name', name);
+  localStorage.setItem('pf_email', email);
+  localStorage.setItem('tut_subscribed', '1');
+}
+
+let _gateRetryTimer=null;
+async function gateSubmit(isRetry){
   const email=(document.getElementById('gate-email').value||'').trim().toLowerCase();
   const btn=document.getElementById('gate-btn');
   setGateMsg('','');
   if(!email||!email.includes('@')){
     setGateMsg('Please enter a valid email address.','error'); return;
   }
+  if(_gateRetryTimer){ clearTimeout(_gateRetryTimer); _gateRetryTimer=null; }
   btn.textContent='Checking…'; btn.disabled=true;
 
   const result=await isSubscriber(email);
@@ -3000,20 +3012,38 @@ async function gateSubmit(){
   if(result===null){
     setGateMsg('Could not verify — please check your connection and try again.','error');
   } else if(result===true){
-    const name = email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-    localStorage.setItem('myai_user_v1', JSON.stringify({name, email, ts:Date.now()}));
-    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
-    localStorage.setItem('myai_chat_gate', '1');
-    localStorage.setItem('myai_chat_name', name);
-    localStorage.setItem('pf_email', email);
-    localStorage.setItem('tut_subscribed', '1');
+    grantSubscriberAccess(email);
     setGateMsg('✅ Access granted! Loading your articles…','success');
     setTimeout(unlockExclusiveCards, 900);
   } else {
-    setGateMsg(
-      '❌ That email isn\'t in our subscriber list yet. <a href="index.html#newsletter" style="color:#93c5fd;font-weight:700;text-decoration:underline">Subscribe free on our homepage →</a>',
-      'error'
-    );
+    /* Not found yet — may still be syncing from Brevo (up to ~5 min) */
+    const msgEl=document.getElementById('gate-msg');
+    let countdown=60;
+    function showRetryMsg(sec){
+      if(!msgEl) return;
+      msgEl.innerHTML=sec>0
+        ? '⏳ Your subscription is still syncing. Auto-retrying in <strong>'+sec+'s</strong>… '
+          +'<button onclick="if(_gateRetryTimer){clearTimeout(_gateRetryTimer);_gateRetryTimer=null;}gateSubmit(true)" '
+          +'style="background:none;border:none;color:#93c5fd;font-weight:700;cursor:pointer;text-decoration:underline;font-size:inherit;padding:0">Retry now</button>'
+        : '❌ Email not found after sync. Did you use a different address? '
+          +'<a href="index.html#newsletter" style="color:#93c5fd;font-weight:700;text-decoration:underline">Subscribe free →</a>';
+      msgEl.style.color=sec>0?'#fbbf24':'#f87171';
+    }
+    showRetryMsg(countdown);
+    _gateRetryTimer=setInterval(function(){
+      countdown--;
+      if(countdown<=0){
+        clearInterval(_gateRetryTimer); _gateRetryTimer=null;
+        showRetryMsg(0);
+      } else {
+        showRetryMsg(countdown);
+      }
+    },1000);
+    /* Auto-retry once after countdown */
+    setTimeout(function(){
+      if(_gateRetryTimer){ clearInterval(_gateRetryTimer); _gateRetryTimer=null; }
+      gateSubmit(true);
+    }, 61000);
   }
 }
 
@@ -3027,13 +3057,7 @@ document.addEventListener('DOMContentLoaded',async function(){
   const result=await isSubscriber(user.email);
   if(result===true){
     /* Re-stamp all keys so the session is fully fresh */
-    const name=user.name||(user.email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase()));
-    localStorage.setItem('myai_user_v1', JSON.stringify({name, email:user.email, ts:Date.now()}));
-    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
-    localStorage.setItem('myai_chat_gate', '1');
-    localStorage.setItem('myai_chat_name', name);
-    localStorage.setItem('pf_email', user.email);
-    localStorage.setItem('tut_subscribed', '1');
+    grantSubscriberAccess(user.email);
     unlockExclusiveCards();
   } else if(result===false){
     /* Don't silently log them out — just show the gate so they can re-verify */

@@ -3262,6 +3262,7 @@ async function nlSubscribe(e){
   }
   btn.disabled=true; btn.textContent='Subscribing…';
   await brevoSubmit(email, fname);
+  memberLogin(email, fname || null);
   msg.style.color='var(--ok)';
   msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
   btn.textContent='✓ Subscribed!';
@@ -3634,6 +3635,7 @@ async function popSubscribe(){
   }
   btn.disabled=true; btn.textContent='Subscribing…';
   await brevoSubmit(email, fname);
+  memberLogin(email, fname || null);
   msgEl.style.color='var(--ok)';
   msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
   btn.textContent='✓ Subscribed!';
