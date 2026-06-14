@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-06",
-      "slot": "morning",
-      "slug": "create-a-professional-slide-deck-with-ai-gamma-chatgpt-method",
-      "title": "Create a Professional Slide Deck with AI (Gamma + ChatGPT Method)",
-      "type": "tutorial",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
-      "topic": "professional slide deck gamma",
-      "pair": "",
-      "words": 561,
-      "partners": []
-    },
-    {
-      "date": "2026-06-06",
       "slot": "midday",
       "slug": "i-tested-7-ai-productivity-tools-for-remote-workers-these-are",
       "title": "I Tested 7 AI Productivity Tools for Remote Workers. These Are the Only Ones Worth It.",
@@ -990,6 +977,23 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-14",
+      "slot": "afternoon",
+      "slug": "gamma-7-genuine-pros-and-5-real-cons-you-need-to-know",
+      "title": "Gamma: 7 Genuine Pros and 5 Real Cons You Need to Know",
+      "type": "pros_cons",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop",
+      "topic": "gamma genuine pros cons",
+      "pair": "",
+      "tool": "Gamma",
+      "words": 2001,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1097,6 +1101,7 @@
     "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop"
   ]
 }
