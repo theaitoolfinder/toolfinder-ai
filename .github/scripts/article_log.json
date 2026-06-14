@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-06",
-      "slot": "midday",
-      "slug": "i-tested-7-ai-productivity-tools-for-remote-workers-these-are",
-      "title": "I Tested 7 AI Productivity Tools for Remote Workers. These Are the Only Ones Worth It.",
-      "type": "roundup",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
-      "topic": "productivity tools remote workers",
-      "pair": "",
-      "words": 611,
-      "partners": []
-    },
-    {
-      "date": "2026-06-06",
       "slot": "afternoon",
       "slug": "is-gemini-finally-better-than-claude-2026-head-to-head",
       "title": "Is Gemini Finally Better Than Claude? (2026 Head-to-Head)",
@@ -994,6 +981,25 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-14",
+      "slot": "evening",
+      "slug": "the-healthcare-professional-s-ai-tools-roadmap-for-2026-start",
+      "title": "The Healthcare Professional's AI Tools Roadmap for 2026: Start Here",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop",
+      "topic": "healthcare professionals tools roadmap",
+      "pair": "",
+      "tool": "",
+      "words": 2369,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
@@ -1102,6 +1108,7 @@
     "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop"
   ]
 }
