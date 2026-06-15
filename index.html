@@ -3711,6 +3711,10 @@ async function popSubscribe(){
       </svg>
     </button>
   </div>
+  <div style="text-align:center;padding:4px 0 8px;font-size:10px;color:#9ca3af;display:flex;align-items:center;justify-content:center;gap:4px;">
+    <svg width="9" height="9" viewBox="0 0 24 24" fill="#f55036"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    Powered by Groq
+  </div>
 </div>
 
 <script>
@@ -3738,7 +3742,7 @@ async function popSubscribe(){
       if (data.text) {
         _cbHistory.push({ role: 'model', text: data.text });
         cbBotMsg(data.text);
-        // ── Proof: log Groq metadata to console ──
+        // ── Groq console proof ──
         if (data._meta) {
           console.log('%c[Teza] ⚡ Powered by Groq', 'color:#f55036;font-weight:bold',
             '\nModel:', data._meta.model,
