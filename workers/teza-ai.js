@@ -4,6 +4,9 @@
  * Secure proxy between myaitoolsfinder.com and Groq API (Llama 3.3 70B).
  * The GROQ_API_KEY lives here as a Worker secret — never exposed to the browser.
  *
+ * Affiliate tools are loaded dynamically from /data/affiliate_tools.json —
+ * no need to update this Worker when you add new affiliate tools.
+ *
  * To update: go to Cloudflare Workers → teza-ai → Edit code → paste this file → Deploy
  * Add secret: GROQ_API_KEY = your key from console.groq.com (free, no credit card)
  *
@@ -11,11 +14,41 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const ALLOWED_ORIGIN = 'https://myaitoolsfinder.com';
-const GROQ_MODEL     = 'llama-3.3-70b-versatile'; // fast, free, no geo-restrictions
-const GROQ_URL       = 'https://api.groq.com/openai/v1/chat/completions';
+const ALLOWED_ORIGIN   = 'https://myaitoolsfinder.com';
+const GROQ_MODEL       = 'llama-3.3-70b-versatile'; // fast, free, no geo-restrictions
+const GROQ_URL         = 'https://api.groq.com/openai/v1/chat/completions';
+const AFFILIATE_JSON   = 'https://myaitoolsfinder.com/data/affiliate_tools.json';
 
-const SYSTEM_PROMPT = `You are Teza, the AI assistant for My AI Tools Finder (myaitoolsfinder.com). You are the site's autonomous customer service, guide, and AI expert — available on every page of the site.
+// ── In-memory affiliate cache (lives for the isolate lifetime, ~few minutes) ─
+let _affiliateCache    = null;
+let _affiliateCacheAt  = 0;
+const CACHE_TTL_MS     = 60 * 60 * 1000; // 1 hour
+
+async function fetchAffiliateTools() {
+  const now = Date.now();
+  if (_affiliateCache && now - _affiliateCacheAt < CACHE_TTL_MS) {
+    return _affiliateCache;
+  }
+  try {
+    const resp = await fetch(AFFILIATE_JSON, { cf: { cacheEverything: true, cacheTtl: 3600 } });
+    if (resp.ok) {
+      const data = await resp.json();
+      _affiliateCache   = data.tools || [];
+      _affiliateCacheAt = now;
+    }
+  } catch {
+    if (!_affiliateCache) _affiliateCache = [];
+  }
+  return _affiliateCache || [];
+}
+
+// ── Build system prompt, injecting live affiliate links ───────────────────────
+function buildSystemPrompt(affiliateTools) {
+  const affiliateSection = affiliateTools.length > 0
+    ? affiliateTools.map(t => `- [${t.name}](${t.affiliate_url})`).join('\n')
+    : '(no affiliate tools configured yet)';
+
+  return `You are Teza, the AI assistant for My AI Tools Finder (myaitoolsfinder.com). You are the site's autonomous customer service, guide, and AI expert — available on every page of the site.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SITE STRUCTURE & LINKS
@@ -44,23 +77,18 @@ Tool category pages (link when recommending a category):
 - Education: https://myaitoolsfinder.com/categories/ai-education-tools.html
 - Finance: https://myaitoolsfinder.com/categories/ai-finance-tools.html
 
-Tool links — ALWAYS link every tool name. Use the correct URL type:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AFFILIATE TOOLS (PRIORITY LINKS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+These tools have special affiliate links. When you mention ANY of these tools,
+you MUST use the affiliate URL below — not the site search URL.
 
-AFFILIATE TOOLS (use these exact affiliate URLs — they earn commission):
-- [ElevenLabs](https://try.elevenlabs.io/flxscqgtf1ys)
-- [RankMath AI](https://rankmath.com/?ref=benjie-6423)
-- [NeuronWriter](https://app.neuronwriter.com/ar/a164b2cc978873dc1a98713284d9b87a)
-- [Fireflies.ai](https://fireflies.ai/?fpr=benjie21)
-- [Reclaim AI](https://go.reclaim.ai/do7hs1jez62m)
-- [Beehiiv](https://www.beehiiv.com/?via=benjie-gadiaza)
-- [Make.com](https://www.make.com/en/register?pc=myaitoolsfinder)
-- [Simplified](https://simplified.com?fpr=benjie19)
-- [OpusClip](https://www.opus.pro/?via=myaitoolsfinder)
-- [Keyword Insights](https://www.keywordinsights.ai/?ref=myaitoolsfinder)
-- [Taskade AI](https://www.taskade.com/?via=b3q5tf)
-- [Submagic AI](https://submagic.co/?via=benjie11)
+${affiliateSection}
 
-ALL OTHER TOOLS — link to site search:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALL OTHER TOOLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+For any tool NOT in the affiliate list above, link to the site search:
 Format: https://myaitoolsfinder.com/?q=TOOLNAME (replace spaces with +)
 Examples:
 - [ChatGPT](https://myaitoolsfinder.com/?q=chatgpt)
@@ -71,7 +99,6 @@ Examples:
 - [Claude](https://myaitoolsfinder.com/?q=claude)
 - [Runway](https://myaitoolsfinder.com/?q=runway)
 - [Perplexity](https://myaitoolsfinder.com/?q=perplexity)
-- [Copy.ai](https://myaitoolsfinder.com/?q=copy.ai)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SUBSCRIBER BENEFITS
@@ -100,15 +127,8 @@ HOW TO RESPOND
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. Answer directly and naturally — no robotic openers like "Great question!"
 2. CRITICAL RULE: Every single tool name you mention MUST be a markdown link. No exceptions.
-   Format: [Tool Name](https://myaitoolsfinder.com/?q=tool+name)
-   Examples:
-   - [Jasper](https://myaitoolsfinder.com/?q=jasper)
-   - [Surfer SEO](https://myaitoolsfinder.com/?q=surfer+seo)
-   - [Midjourney](https://myaitoolsfinder.com/?q=midjourney)
-   - [ChatGPT](https://myaitoolsfinder.com/?q=chatgpt)
-   - [Semrush](https://myaitoolsfinder.com/?q=semrush)
-   - [Ahrefs](https://myaitoolsfinder.com/?q=ahrefs)
-   Use lowercase with + for spaces in the URL. NEVER mention a tool without linking it.
+   - If the tool is in the AFFILIATE list above → use its affiliate URL
+   - If not → use https://myaitoolsfinder.com/?q=tool+name
 3. Also link to category pages when relevant:
    - "Browse our [Writing Tools](https://myaitoolsfinder.com/categories/ai-writing-tools.html)"
 4. End with one natural follow-up question or next step
@@ -124,6 +144,7 @@ WHAT YOU KNOW
 - How to compare and choose between tools
 - Free vs paid options and budget-friendly picks
 - How to get started with AI even if you're a beginner`;
+}
 
 export default {
   async fetch(request, env) {
@@ -160,6 +181,10 @@ export default {
         status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     }
+
+    // ── Load affiliate tools & build prompt ───────────────────────────────────
+    const affiliateTools = await fetchAffiliateTools();
+    const SYSTEM_PROMPT  = buildSystemPrompt(affiliateTools);
 
     // ── Build Groq request (OpenAI-compatible format) ─────────────────────────
     const groqMessages = [
