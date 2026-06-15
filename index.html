@@ -4092,6 +4092,16 @@ async function popSubscribe(){
     }
 
     /* ════════════════════════════════════════
+       1b. CONVERSATIONAL / GENERAL AI QUESTIONS → Gemini
+       ════════════════════════════════════════ */
+    // These are open-ended questions that deserve a real AI answer,
+    // not just a list of tool cards.
+    if (/\b(how (do|can|should|would) (i|we|you)|how to\b|what (is|are|does|should|makes?)|why (is|are|should|do)|explain|tell me (about|how|why|what)|is (it|ai|this) (good|worth|better|safe|useful)|should i (use|try|pay|get|buy)|pros? (and|&) cons?|difference between|when (should|is|do)|can (ai|it|you) (help|do|make|create|write|generate)|what.s the best way|tips? (for|on|to)|guide (to|for|on)|how does .+ work|what.s (new|happening|trending) (in|with) ai|is .+ (worth|good|better|free|safe)|how (much|many)|what (kind|type) of)\b/.test(ql) && !/\b(tool|find|recommend|suggest|show|list|search|browse|directory)\b/.test(ql)) {
+      cbAskGemini(q);
+      return;
+    }
+
+    /* ════════════════════════════════════════
        2. TOOL INFO — "what is X", "tell me about X", "X features"
        ════════════════════════════════════════ */
 
