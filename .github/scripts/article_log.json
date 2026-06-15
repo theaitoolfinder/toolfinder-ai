@@ -1,19 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-06",
-      "slot": "latenight",
-      "slug": "ai-tools-digest-june-06-2026-late-night-edition",
-      "title": "AI Tools Digest — June 06, 2026 (Late Night Edition)",
-      "type": "news_digest",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 786,
-      "partners": []
-    },
-    {
       "date": "2026-06-07",
       "slot": "morning",
       "slug": "set-up-ai-customer-support-that-handles-80-of-queries",
@@ -1027,6 +1014,26 @@
         "OpusClip",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-15",
+      "slot": "midday",
+      "slug": "perplexity-ai-review-real-results-real-pricing-real-talk",
+      "title": "Perplexity AI Review: Real Results, Real Pricing, Real Talk",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
+      "topic": "perplexity results pricing talk",
+      "pair": "",
+      "tool": "Perplexity AI",
+      "words": 2466,
+      "partners": [
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1139,6 +1146,7 @@
     "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop"
   ]
 }
