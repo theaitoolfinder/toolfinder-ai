@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-15T16:46:26.164Z",
+  "updated": "2026-06-15T16:46:54.283Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -36,11 +36,13 @@
     },
     "88": {
       "affiliate_url": "https://www.make.com/en/register?pc=myaitoolsfinder",
-      "trending": 96
+      "trending": 96,
+      "verified": true
     },
     "157": {
       "affiliate_url": "https://simplified.com?fpr=benjie19",
-      "trending": 9
+      "trending": 96,
+      "verified": true
     },
     "168": {
       "affiliate_url": "https://www.opus.pro/?via=myaitoolsfinder",
