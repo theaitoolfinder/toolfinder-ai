@@ -3922,10 +3922,107 @@ async function popSubscribe(){
     cbShowTools([t1, t2]);
   }
 
+  /* ── Tool card search (called when user explicitly wants tools listed) ── */
+  function cbFindAndShowTools(ql, allTools) {
+    let results = [...allTools];
+
+    // Free filter
+    if (/\bfree\b/.test(ql)) results = results.filter(t => /free/i.test(t.pill));
+
+    // Job filter
+    const jobMap = [
+      [/design(er|ing)?|ui|ux|graphic/,'Designer'],
+      [/develop(er|ing)?|coder?|programmer/,'Developer'],
+      [/market(er|ing)?/,'Marketer'],
+      [/writ(er|ing)|copywriter|blogger/,'Writer'],
+      [/founder|startup|entrepreneur|solopreneur/,'Founder'],
+      [/creator|youtuber|influencer/,'Creator'],
+      [/freelancer?/,'Freelancer'],
+    ];
+    for (const [re, job] of jobMap) {
+      if (re.test(ql)) {
+        const jf = results.filter(t => t.jobs && t.jobs.some(j => j.toLowerCase().includes(job.toLowerCase())));
+        if (jf.length) { results = jf; break; }
+      }
+    }
+
+    // Category filter
+    const catMap = [
+      [/writ(e|ing)|blog|copywriting/,'Writing'],
+      [/video|film/,'Video'],
+      [/cod(e|ing)|developer/,'Coding'],
+      [/design/,'Design'],
+      [/seo|keyword/,'SEO'],
+      [/social media|instagram|twitter|tiktok/,'Social Media'],
+      [/image|art|photo/,'Image'],
+      [/audio|voice|music|podcast/,'Audio'],
+      [/automat|workflow/,'Automation'],
+      [/productiv|task|project/,'Productivity'],
+      [/research|data/,'Research'],
+      [/market/,'Marketing'],
+      [/financ|money|account/,'Finance'],
+      [/educat|learn|teach/,'Education'],
+      [/chatbot|customer/,'Chatbot'],
+    ];
+    for (const [re, cat] of catMap) {
+      if (re.test(ql)) {
+        const cf = results.filter(t => t.cat && t.cat.toLowerCase().includes(cat.toLowerCase()));
+        if (cf.length) { results = cf; break; }
+      }
+    }
+
+    results.sort((a, b) => ((b.trending||0)*2 + (b.rating||0)*10) - ((a.trending||0)*2 + (a.rating||0)*10));
+    const top = results.slice(0, 5);
+    cbShowTools(top);
+    if (results.length > 5) {
+      setTimeout(() => cbBotMsg(`Found **${results.length}** matching tools. [See all →](https://myaitoolsfinder.com/)`), 400);
+    }
+  }
+
   /* ── Core query processing ── */
   function cbProcess(q) {
     const ql = q.toLowerCase().replace(/[''`]/g, "'").trim();
     const allTools = typeof TOOLS !== 'undefined' ? TOOLS : [];
+
+    /* ════════════════════════════════════════
+       INSTANT RULES — greetings only (no latency)
+       Everything else → Gemini AI
+       ════════════════════════════════════════ */
+
+    /* Greetings — instant, no need to wait for AI */
+    if (/^(hi|hello|hey|howdy|yo|sup|good\s*(morning|afternoon|evening|night))[!,.\s]*$/i.test(ql)) {
+      const tod = new Date().getHours();
+      const t = tod < 12 ? 'morning' : tod < 17 ? 'afternoon' : 'evening';
+      const picks = [
+        `Hey! 👋 Good ${t}! I'm **Teza** — your AI tools guide. What are you working on?`,
+        `Hi there! 😊 Good ${t}! Ask me anything about AI tools, or tell me what you're trying to do and I'll point you in the right direction.`,
+        `Hey! Good ${t} ✨ I know 500+ AI tools inside out. What do you need?`,
+      ];
+      cbBotMsg(picks[Math.floor(Math.random() * picks.length)]);
+      return;
+    }
+
+    /* Explicit tool card request — show visual cards + Gemini intro */
+    const wantsCards = /\b(find|show|list|give me|what are|recommend|suggest)\b.{0,30}\b(tool|app|ai)\b|\btool(s)? for\b|\bbest (free |paid |ai )?(tool|app)/i.test(ql);
+    if (wantsCards && allTools.length) {
+      // Show tool cards from directory
+      cbFindAndShowTools(ql, allTools);
+      // Also ask Gemini for a natural intro above the cards
+      cbAskGemini(q + ' (give a 1-sentence intro before the results, no list needed)').catch(() => {});
+      return;
+    }
+
+    /* Everything else → Gemini handles it naturally */
+    cbAskGemini(q).then(handled => {
+      if (!handled) {
+        cbBotMsg("Hmm, I hit a snag there. Try asking again, or [browse the tools directory](https://myaitoolsfinder.com/) directly. 😊");
+      }
+    });
+
+    /* ════════════════════════════════════════
+       LEGACY — kept below for cbFindAndShowTools
+       ════════════════════════════════════════ */
+    return; // everything above returns — code below only reached by cbFindAndShowTools
 
     /* ════════════════════════════════════════
        0. SITE CUSTOMER SERVICE & NAVIGATION
@@ -4321,6 +4418,8 @@ async function popSubscribe(){
     bubble.className = 'cb-bubble';
     bubble.innerHTML = text
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#1a56db;text-decoration:underline">$1</a>')
+      .replace(/\[([^\]]+)\]\((\/[^)]*)\)/g, '<a href="$2" style="color:#1a56db;text-decoration:underline">$1</a>')
       .replace(/\n/g, '<br>');
     wrap.appendChild(bubble);
     msgs.appendChild(wrap);
