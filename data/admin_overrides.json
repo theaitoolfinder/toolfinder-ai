@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-15T16:44:41.612Z",
+  "updated": "2026-06-15T16:45:59.653Z",
   "overrides": {
     "48": {
       "trending": 98,
@@ -16,7 +16,8 @@
       "verified": true
     },
     "74": {
-      "affiliate_url": "https://fireflies.ai/?fpr=benjie21"
+      "affiliate_url": "https://fireflies.ai/?fpr=benjie21",
+      "trending": 0
     },
     "75": {
       "trending": 99,
