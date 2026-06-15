@@ -639,8 +639,46 @@ function initPayPal() {
 
 // initPayPal() is called via onload on the PayPal SDK script tag above
 // The _paypalDone guard prevents any accidental double-render
-// Also try after a short delay in case SDK loads late
-setTimeout(initPayPal, 2000);
+
+/* ── Owner Bypass — visit ?access=papabenj to skip PayPal ── */
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('access') !== 'papabenj') return;
+
+  // Add a visible owner banner
+  const banner = document.querySelector('.owner-setup-banner');
+  if (banner) {
+    banner.innerHTML += '<br><strong style="color:#15803d">🔓 Owner Access Mode — PayPal bypassed</strong>';
+  }
+
+  const courses = [
+    { id: 'starter',  msg: 'Thank you! You\'ll receive your AI Automation Starter course access link via email within a few hours. Check your spam folder just in case!' },
+    { id: 'pro',     msg: 'Welcome to AI Automation Pro! Your course access link and Discord community invite will be in your email shortly.' },
+    { id: 'agency',  msg: 'Welcome to the Agency level! Your course access, VIP Discord invite, and 1-on-1 booking link will be in your email within a few hours.' },
+  ];
+
+  // Wait for DOM then inject bypass buttons
+  function injectBypassButtons() {
+    courses.forEach(course => {
+      const wrap = document.getElementById('paypal-btn-' + course.id);
+      if (!wrap) return;
+      wrap.innerHTML = '';
+      const btn = document.createElement('button');
+      btn.textContent = '🔓 Grant Access (Owner Bypass)';
+      btn.style.cssText = 'width:100%;padding:14px;background:#15803d;color:#fff;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif;margin-top:8px;';
+      btn.onmouseover = () => btn.style.background = '#166534';
+      btn.onmouseout  = () => btn.style.background = '#15803d';
+      btn.onclick = () => showSuccess(course.msg);
+      wrap.appendChild(btn);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectBypassButtons);
+  } else {
+    injectBypassButtons();
+  }
+})();
 </script>
 
 </body>
