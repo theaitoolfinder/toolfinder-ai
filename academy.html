@@ -12,7 +12,7 @@
 
 <!-- ══ PayPal SDK — replace YOUR_PAYPAL_CLIENT_ID with your live client ID ══
      Get it at: https://developer.paypal.com → My Apps → Create App → Live → Client ID -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAAk7LQMEa2Pqi2mXZaorCVohcLE2y0fiYz9pfi4-zw3yFmFP8NVLXLShyz1cRLstv3eed0k9Fd9Yhziqg&currency=USD&intent=capture" defer></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAk7LQMEa2Pqi2mXZaorCVohcLE2y0fiYz9pfi4-zw3yFmFP8NVLXLShyz1cRLstv3eed0k9Fd9Yhziqg&currency=USD&intent=capture" onload="initPayPal()"></script>
 
 <style>
 /* ── Reset & Tokens ── */
@@ -569,7 +569,9 @@ function showSuccess(msg) {
 }
 
 /* ── PayPal Buttons ── */
+let _paypalDone = false;
 function initPayPal() {
+  if (_paypalDone) return;
   if (typeof paypal === 'undefined') {
     // PayPal SDK not loaded yet (client ID not set) — show placeholder
     ['starter','pro','agency'].forEach(id => {
@@ -600,7 +602,11 @@ function initPayPal() {
     }
   ];
 
+  _paypalDone = true;
   courses.forEach(course => {
+    // Clear container first to prevent duplicate renders
+    const wrap = document.getElementById('paypal-btn-' + course.id);
+    if (wrap) wrap.innerHTML = '';
     paypal.Buttons({
       style: {
         shape: 'pill',
@@ -631,12 +637,8 @@ function initPayPal() {
   });
 }
 
-// Init PayPal when SDK loads
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPayPal);
-} else {
-  initPayPal();
-}
+// initPayPal() is called via onload on the PayPal SDK script tag above
+// The _paypalDone guard prevents any accidental double-render
 // Also try after a short delay in case SDK loads late
 setTimeout(initPayPal, 2000);
 </script>
