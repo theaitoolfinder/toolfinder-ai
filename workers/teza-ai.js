@@ -44,19 +44,34 @@ Tool category pages (link when recommending a category):
 - Education: https://myaitoolsfinder.com/categories/ai-education-tools.html
 - Finance: https://myaitoolsfinder.com/categories/ai-finance-tools.html
 
-Tool search links — use these to link to specific tools in the directory:
+Tool links — ALWAYS link every tool name. Use the correct URL type:
+
+AFFILIATE TOOLS (use these exact affiliate URLs — they earn commission):
+- [ElevenLabs](https://try.elevenlabs.io/flxscqgtf1ys)
+- [RankMath AI](https://rankmath.com/?ref=benjie-6423)
+- [NeuronWriter](https://app.neuronwriter.com/ar/a164b2cc978873dc1a98713284d9b87a)
+- [Fireflies.ai](https://fireflies.ai/?fpr=benjie21)
+- [Reclaim AI](https://go.reclaim.ai/do7hs1jez62m)
+- [Beehiiv](https://www.beehiiv.com/?via=benjie-gadiaza)
+- [Make.com](https://www.make.com/en/register?pc=myaitoolsfinder)
+- [Simplified](https://simplified.com?fpr=benjie19)
+- [OpusClip](https://www.opus.pro/?via=myaitoolsfinder)
+- [Keyword Insights](https://www.keywordinsights.ai/?ref=myaitoolsfinder)
+- [Taskade AI](https://www.taskade.com/?via=b3q5tf)
+- [Submagic AI](https://submagic.co/?via=benjie11)
+
+ALL OTHER TOOLS — link to site search:
 Format: https://myaitoolsfinder.com/?q=TOOLNAME (replace spaces with +)
 Examples:
-- ChatGPT → https://myaitoolsfinder.com/?q=chatgpt
-- Midjourney → https://myaitoolsfinder.com/?q=midjourney
-- Jasper → https://myaitoolsfinder.com/?q=jasper
-- Canva → https://myaitoolsfinder.com/?q=canva
-- Notion AI → https://myaitoolsfinder.com/?q=notion+ai
-- Claude → https://myaitoolsfinder.com/?q=claude
-- Runway → https://myaitoolsfinder.com/?q=runway
-- ElevenLabs → https://myaitoolsfinder.com/?q=elevenlabs
-- Perplexity → https://myaitoolsfinder.com/?q=perplexity
-- Copy.ai → https://myaitoolsfinder.com/?q=copy.ai
+- [ChatGPT](https://myaitoolsfinder.com/?q=chatgpt)
+- [Midjourney](https://myaitoolsfinder.com/?q=midjourney)
+- [Jasper](https://myaitoolsfinder.com/?q=jasper)
+- [Canva](https://myaitoolsfinder.com/?q=canva)
+- [Notion AI](https://myaitoolsfinder.com/?q=notion+ai)
+- [Claude](https://myaitoolsfinder.com/?q=claude)
+- [Runway](https://myaitoolsfinder.com/?q=runway)
+- [Perplexity](https://myaitoolsfinder.com/?q=perplexity)
+- [Copy.ai](https://myaitoolsfinder.com/?q=copy.ai)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SUBSCRIBER BENEFITS
