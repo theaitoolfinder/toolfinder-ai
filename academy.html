@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Academy — My AI Tools Finder</title>
+<!-- NOT indexed, NOT in nav — private page for owner -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1f33'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ══ PayPal SDK — replace YOUR_PAYPAL_CLIENT_ID with your live client ID ══
+     Get it at: https://developer.paypal.com → My Apps → Create App → Live → Client ID -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&intent=capture" defer></script>
+
+<style>
+/* ── Reset & Tokens ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a56db;--primary-2:#1e40af;
+  --bg:#f0f6ff;--surface:#fff;--surface-2:#f8faff;
+  --text:#1a2a4a;--text-dim:#5c7799;
+  --border:rgba(26,86,219,.12);--border-soft:rgba(26,86,219,.08);
+  --shadow:0 4px 20px rgba(26,86,219,.08);
+  --shadow-lg:0 16px 48px rgba(26,86,219,.14);
+  --r:14px;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+
+/* ── Setup Banner (only visible to you, not customers) ── */
+.setup-banner{background:linear-gradient(135deg,#fef3c7,#fde68a);border:1.5px solid #f59e0b;border-radius:12px;padding:16px 20px;margin:20px auto;max-width:900px;font-size:13px;color:#92400e;line-height:1.6}
+.setup-banner strong{display:block;font-size:14px;margin-bottom:6px}
+.setup-banner code{background:rgba(0,0,0,.08);padding:1px 6px;border-radius:4px;font-family:monospace;font-size:12px}
+
+/* ── Nav ── */
+nav{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:1100px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-brand{font-size:15px;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}
+.nav-brand span{background:linear-gradient(135deg,var(--primary),#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-dim);display:flex;align-items:center;gap:5px;transition:color .15s}
+.nav-back:hover{color:var(--primary)}
+.nav-badge{font-size:10px;font-weight:700;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(135deg,#0d1f33 0%,#1a56db 60%,#7c3aed 100%);color:#fff;text-align:center;padding:72px 20px 56px}
+.hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#fcd34d,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;opacity:.85;max-width:560px;margin:0 auto 32px}
+.hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-size:26px;font-weight:800}
+.hero-stat span{font-size:12px;opacity:.7;font-weight:500}
+
+/* ── Tabs ── */
+.tabs-wrap{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:90}
+.tabs{max-width:1100px;margin:0 auto;display:flex;padding:0 20px;gap:4px}
+.tab-btn{padding:16px 24px;font-size:14px;font-weight:600;color:var(--text-dim);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tab-btn:hover{color:var(--primary)}
+.tab-badge{font-size:10px;background:var(--primary);color:#fff;padding:1px 7px;border-radius:999px;font-weight:700}
+
+/* ── Main ── */
+main{max-width:1100px;margin:0 auto;padding:48px 20px 80px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Section header ── */
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:clamp(22px,3vw,32px);font-weight:800;margin-bottom:10px}
+.section-header p{color:var(--text-dim);max-width:540px;margin:0 auto;font-size:15px}
+.tag-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.tag{font-size:11px;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim)}
+
+/* ── Course cards ── */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+@media(max-width:900px){.courses-grid{grid-template-columns:1fr}}
+.course-card{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);position:relative;transition:transform .2s,box-shadow .2s}
+.course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.course-card.featured{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,86,219,.12),var(--shadow-lg)}
+.course-popular{position:absolute;top:18px;right:18px;font-size:10px;font-weight:700;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:3px 10px;border-radius:999px;letter-spacing:.04em}
+.course-head{padding:28px 28px 20px;background:linear-gradient(135deg,var(--surface-2),var(--surface))}
+.course-level{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.level-dot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+.course-head h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.course-head p{font-size:13px;color:var(--text-dim);line-height:1.55}
+.course-price{display:flex;align-items:baseline;gap:4px;margin-top:14px}
+.course-price .amount{font-size:38px;font-weight:800;color:var(--primary)}
+.course-price .currency{font-size:20px;font-weight:700;color:var(--primary);margin-top:6px}
+.course-price .per{font-size:13px;color:var(--text-dim)}
+.course-body{padding:20px 28px 28px}
+.course-duration{font-size:12px;color:var(--text-dim);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.course-modules h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px}
+.module-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.module-list li{font-size:13px;color:var(--text);display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.module-list li::before{content:'✓';color:#10b981;font-weight:700;flex-shrink:0;margin-top:1px}
+.bonus-list{background:linear-gradient(135deg,#fef9c3,#fefce8);border:1px solid #fde68a;border-radius:10px;padding:12px 14px;margin-bottom:20px}
+.bonus-list h4{font-size:11px;font-weight:700;color:#92400e;margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}
+.bonus-list li{font-size:12px;color:#78350f;list-style:none;display:flex;gap:6px;align-items:flex-start;margin-bottom:4px}
+.bonus-list li::before{content:'🎁';flex-shrink:0}
+.paypal-wrap{min-height:48px}
+.paypal-placeholder{background:var(--surface-2);border:1.5px dashed var(--border);border-radius:10px;padding:14px;text-align:center;font-size:12px;color:var(--text-dim)}
+.success-msg{display:none;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1.5px solid #10b981;border-radius:12px;padding:20px;text-align:center}
+.success-msg h4{font-size:16px;font-weight:700;color:#065f46;margin-bottom:6px}
+.success-msg p{font-size:13px;color:#047857}
+
+/* ── Merch ── */
+.merch-intro{background:linear-gradient(135deg,#0d1f33,#1a56db);border-radius:20px;padding:36px;color:#fff;text-align:center;margin-bottom:40px}
+.merch-intro h2{font-size:26px;font-weight:800;margin-bottom:8px}
+.merch-intro p{opacity:.85;max-width:480px;margin:0 auto 20px}
+.merch-coming-soon{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600}
+.merch-pod-note{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:36px;font-size:13px;color:var(--text-dim);line-height:1.6}
+.merch-pod-note strong{color:var(--text);display:block;margin-bottom:4px}
+.merch-pod-note a{color:var(--primary);font-weight:600}
+.merch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.merch-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.merch-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.merch-img{aspect-ratio:1;background:linear-gradient(135deg,var(--surface-2),#e0e7ff);display:flex;align-items:center;justify-content:center;font-size:64px;position:relative}
+.merch-tag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;background:var(--primary);color:#fff;padding:2px 8px;border-radius:999px}
+.merch-body{padding:14px 16px 16px}
+.merch-body h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.merch-body p{font-size:12px;color:var(--text-dim);margin-bottom:10px;line-height:1.4}
+.merch-footer{display:flex;align-items:center;justify-content:space-between}
+.merch-price{font-size:18px;font-weight:800;color:var(--primary)}
+.merch-btn{font-size:12px;font-weight:700;padding:7px 16px;border-radius:999px;background:var(--primary);color:#fff;border:none;cursor:pointer;transition:background .15s}
+.merch-btn:hover{background:var(--primary-2)}
+.merch-btn.disabled{background:#9ca3af;cursor:not-allowed}
+.pod-platforms{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;justify-content:center}
+.pod-link{display:flex;align-items:center;gap:6px;padding:8px 18px;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;color:var(--text);background:var(--surface);transition:all .15s}
+.pod-link:hover{border-color:var(--primary);color:var(--primary)}
+
+/* ── FAQ ── */
+.faq{margin-top:56px}
+.faq h2{font-size:22px;font-weight:800;text-align:center;margin-bottom:28px}
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:720px;margin:0 auto}
+.faq-item{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-size:14px;font-weight:600;color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer}
+.faq-q:hover{color:var(--primary)}
+.faq-icon{font-size:18px;flex-shrink:0;transition:transform .2s;color:var(--text-dim)}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 20px 16px;font-size:13.5px;color:var(--text-dim);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+
+/* ── Modal ── */
+.modal-overlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:24px;padding:40px 36px;max-width:480px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.25);transform:scale(.95);transition:transform .25s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-icon{font-size:52px;margin-bottom:16px}
+.modal h3{font-size:22px;font-weight:800;margin-bottom:10px;color:#065f46}
+.modal p{font-size:14px;color:#374151;line-height:1.65;margin-bottom:20px}
+.modal-close{padding:12px 32px;background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;border:none;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;font-size:13px;color:var(--text-dim)}
+footer a{color:var(--primary);font-weight:600}
+
+@media(max-width:600px){
+  .hero{padding:48px 20px 36px}
+  main{padding:32px 16px 60px}
+  .tab-btn{padding:14px 16px;font-size:13px}
+  .course-head,.course-body{padding:20px}
+  .course-price .amount{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ Nav ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span>My AI Tools Finder</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span class="nav-badge">🔒 Private</span>
+      <a href="/" class="nav-back">
+        ← Back to site
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ Setup Banner (only you see this — remove before sharing URL publicly) ══ -->
+<div class="setup-banner">
+  <strong>⚙️ Setup Required — Owner Only</strong>
+  1. Go to <a href="https://developer.paypal.com" target="_blank" style="color:#92400e;font-weight:700">developer.paypal.com</a> → Create a <strong>Live</strong> app → copy the <strong>Client ID</strong><br>
+  2. In this file (<code>academy.html</code>), replace <code>YOUR_PAYPAL_CLIENT_ID</code> in the PayPal SDK script tag at the top<br>
+  3. For merch: set up your store on <a href="https://printify.com" target="_blank" style="color:#92400e;font-weight:700">Printify</a> or <a href="https://www.printful.com" target="_blank" style="color:#92400e;font-weight:700">Printful</a> → replace the "Shop Now" links below<br>
+  4. This page is <strong>not</strong> in the nav or sitemap — share only via direct link: <code>myaitoolsfinder.com/academy.html</code>
+</div>
+
+<!-- ══ Hero ══ -->
+<section class="hero">
+  <div class="hero-eyebrow">My AI Tools Finder Presents</div>
+  <h1>AI Automation <em>Academy</em></h1>
+  <p class="hero-sub">Stop doing manually what AI can do in seconds. Learn to automate your work, grow your income, and get ahead of 99% of people.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>3</strong><span>Skill Levels</span></div>
+    <div class="hero-stat"><strong>24+</strong><span>Video Modules</span></div>
+    <div class="hero-stat"><strong>500+</strong><span>AI Tools Covered</span></div>
+    <div class="hero-stat"><strong>Lifetime</strong><span>Access</span></div>
+  </div>
+</section>
+
+<!-- ══ Tabs ══ -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('courses',this)">
+      🎓 Courses <span class="tab-badge">3</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('merch',this)">
+      👕 Merch
+    </button>
+  </div>
+</div>
+
+<!-- ══ Main ══ -->
+<main>
+
+  <!-- ════ COURSES TAB ════ -->
+  <div class="tab-panel active" id="tab-courses">
+
+    <div class="section-header">
+      <h2>Pick Your Level, Start Today</h2>
+      <p>Every course is self-paced, beginner-friendly, and built around the most in-demand AI automation skills of 2025.</p>
+      <div class="tag-row">
+        <span class="tag">📹 Video lessons</span>
+        <span class="tag">⬇️ Templates included</span>
+        <span class="tag">♾️ Lifetime access</span>
+        <span class="tag">💬 Community access</span>
+        <span class="tag">✅ No coding needed</span>
+      </div>
+    </div>
+
+    <div class="courses-grid">
+
+      <!-- ── BEGINNER ── -->
+      <div class="course-card">
+        <div class="course-head">
+          <div class="course-level"><span class="level-dot" style="background:#10b981"></span>Beginner</div>
+          <h3>AI Automation Starter</h3>
+          <p>Zero experience? No problem. Learn how to save 10+ hours a week using AI tools — no coding, no tech background needed.</p>
+          <div class="course-price">
+            <span class="currency">$</span>
+            <span class="amount">47</span>
+            <span class="per">one-time · lifetime access</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-duration">
+            ⏱ ~4 hours of video &nbsp;·&nbsp; 6 modules &nbsp;·&nbsp; Self-paced
+          </div>
+          <div class="course-modules">
+            <h4>What You'll Learn</h4>
+            <ul class="module-list">
+              <li>What AI automation is and why it matters now</li>
+              <li>10 free AI tools you can use today</li>
+              <li>Your first automation in 30 minutes (zero code)</li>
+              <li>Automate your email inbox and calendar</li>
+              <li>Generate blog posts, social captions, and emails on autopilot</li>
+              <li>5 workflows that save 10+ hours per week</li>
+            </ul>
+          </div>
+          <div class="bonus-list">
+            <h4>Bonuses Included</h4>
+            <ul>
+              <li>20 copy-paste prompt templates</li>
+              <li>AI tools comparison cheat sheet</li>
+            </ul>
+          </div>
+          <div class="paypal-wrap" id="paypal-btn-starter"></div>
+          <div class="success-msg" id="success-starter">
+            <h4>🎉 You're in!</h4>
+            <p>Check your email for your course access link. If you don't see it, check your spam folder.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── INTERMEDIATE ── -->
+      <div class="course-card featured">
+        <div class="course-popular">⭐ Most Popular</div>
+        <div class="course-head">
+          <div class="course-level"><span class="level-dot" style="background:#f59e0b"></span>Intermediate</div>
+          <h3>AI Automation Pro</h3>
+          <p>Turn AI into your income machine. Build workflows, automate your content pipeline, and land your first automation client.</p>
+          <div class="course-price">
+            <span class="currency">$</span>
+            <span class="amount">97</span>
+            <span class="per">one-time · lifetime access</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-duration">
+            ⏱ ~8 hours of video &nbsp;·&nbsp; 7 modules &nbsp;·&nbsp; Self-paced
+          </div>
+          <div class="course-modules">
+            <h4>What You'll Learn</h4>
+            <ul class="module-list">
+              <li>Build powerful workflows with Make.com step-by-step</li>
+              <li>Connect AI tools via API — zero coding required</li>
+              <li>Full content pipeline: blog → social → email, automated</li>
+              <li>Build a client-facing AI chatbot from scratch</li>
+              <li>AI-powered lead generation system</li>
+              <li>Automate e-commerce (product listings, follow-ups, reviews)</li>
+              <li>Price and sell your first automation service</li>
+            </ul>
+          </div>
+          <div class="bonus-list">
+            <h4>Bonuses Included</h4>
+            <ul>
+              <li>5 done-for-you workflow templates</li>
+              <li>Client proposal template</li>
+              <li>Private Discord community access</li>
+            </ul>
+          </div>
+          <div class="paypal-wrap" id="paypal-btn-pro"></div>
+          <div class="success-msg" id="success-pro">
+            <h4>🎉 You're in!</h4>
+            <p>Check your email for your course access link + Discord invite. See you inside!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ADVANCED ── -->
+      <div class="course-card">
+        <div class="course-head">
+          <div class="course-level"><span class="level-dot" style="background:#7c3aed"></span>Advanced</div>
+          <h3>AI Automation Agency</h3>
+          <p>Build a real business around AI automation. Land $1K–$5K projects, build recurring revenue, and scale with AI agents.</p>
+          <div class="course-price">
+            <span class="currency">$</span>
+            <span class="amount">197</span>
+            <span class="per">one-time · lifetime access</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-duration">
+            ⏱ 12+ hours of video &nbsp;·&nbsp; 8 modules + live Q&As &nbsp;·&nbsp; Self-paced
+          </div>
+          <div class="course-modules">
+            <h4>What You'll Learn</h4>
+            <ul class="module-list">
+              <li>Build automation products people pay for monthly</li>
+              <li>White-label AI tools for clients</li>
+              <li>Land $1K–$5K automation projects (pitch scripts included)</li>
+              <li>Scale with AI agents — CrewAI, AutoGPT custom workflows</li>
+              <li>Build a no-code SaaS product with AI</li>
+              <li>Create recurring revenue from automation retainers</li>
+              <li>Hire and manage AI-assisted virtual teams</li>
+              <li>Build your personal AI automation brand</li>
+            </ul>
+          </div>
+          <div class="bonus-list">
+            <h4>Bonuses Included</h4>
+            <ul>
+              <li>Contract &amp; proposal templates</li>
+              <li>Pricing calculator spreadsheet</li>
+              <li>30-min 1-on-1 strategy call with Papabenj</li>
+              <li>VIP Discord community access</li>
+            </ul>
+          </div>
+          <div class="paypal-wrap" id="paypal-btn-agency"></div>
+          <div class="success-msg" id="success-agency">
+            <h4>🎉 Welcome to the Agency level!</h4>
+            <p>Check your email. You'll receive your course access, Discord VIP invite, and a link to book your 1-on-1 strategy call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /courses-grid -->
+
+    <!-- ── FAQ ── -->
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do I need coding or technical skills? <span class="faq-icon">+</span></button>
+          <div class="faq-a">No. All three courses are built for non-technical people. We use no-code and low-code tools throughout. If you can use Google Docs and YouTube, you can do this.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How long do I have access? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Lifetime access — including all future updates. You pay once and own it forever. We update the content regularly as AI tools evolve.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What if I buy Beginner and want to upgrade later? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Email us and we'll give you a discount equal to what you already paid. You only pay the difference to upgrade.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is there a money-back guarantee? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes — 14-day no-questions-asked refund. If you go through the first two modules and feel it's not for you, just email us and we'll refund you in full.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What jobs/industries benefit most from AI automation? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Content creators, marketers, freelancers, solopreneurs, virtual assistants, e-commerce sellers, coaches, consultants, and small business owners see the biggest ROI. If you have repetitive tasks, AI can automate them.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">When do I get access after purchase? <span class="faq-icon">+</span></button>
+          <div class="faq-a">You'll receive an email with your access link within a few hours of purchase. Check your spam folder if you don't see it. For the Advanced course, your 1-on-1 booking link will also be in that email.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tab-courses -->
+
+
+  <!-- ════ MERCH TAB ════ -->
+  <div class="tab-panel" id="tab-merch">
+
+    <div class="merch-intro">
+      <h2>👕 AI Automation Merch</h2>
+      <p>Wear your AI mindset. All products are print-on-demand — no inventory, ships worldwide.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+        <span class="merch-coming-soon">🌍 Ships Worldwide</span>
+        <span class="merch-coming-soon">♻️ Print on Demand</span>
+        <span class="merch-coming-soon">🎨 AI-Designed</span>
+      </div>
+    </div>
+
+    <!-- POD Setup Note -->
+    <div class="merch-pod-note">
+      <strong>⚙️ Owner Setup — Connect Your POD Store</strong>
+      To activate merch sales, create a free store on <a href="https://printify.com" target="_blank">Printify</a> or <a href="https://www.printful.com" target="_blank">Printful</a>, design your products using these mockups as reference, then replace the "Shop Now" button links below with your actual product URLs. Or connect a <a href="https://www.fourthwall.com" target="_blank">Fourthwall</a> storefront for an even easier all-in-one setup.
+    </div>
+
+    <div class="merch-grid">
+
+      <div class="merch-card">
+        <div class="merch-img">
+          🤖
+          <span class="merch-tag">Best Seller</span>
+        </div>
+        <div class="merch-body">
+          <h4>"I Automated That" Tee</h4>
+          <p>Classic unisex tee. Bold AI slogan. Available S–3XL.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$29</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/tee-automated')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="merch-card">
+        <div class="merch-img">🧥</div>
+        <div class="merch-body">
+          <h4>"Powered by AI" Hoodie</h4>
+          <p>Premium pullover hoodie. Cozy, lightweight, statement piece.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$49</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/hoodie-ai')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="merch-card">
+        <div class="merch-img">☕</div>
+        <div class="merch-body">
+          <h4>"Prompt Engineer" Mug</h4>
+          <p>11oz ceramic mug. Microwave &amp; dishwasher safe. Conversation starter.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$19</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/mug-prompt')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="merch-card">
+        <div class="merch-img">👜</div>
+        <div class="merch-body">
+          <h4>"AI First" Tote Bag</h4>
+          <p>Heavy-duty canvas tote. Eco-friendly. Daily carry essentials.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$22</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/tote-ai')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="merch-card">
+        <div class="merch-img">
+          🏷️
+          <span class="merch-tag">Pack of 5</span>
+        </div>
+        <div class="merch-body">
+          <h4>"No-Code No-Problem" Stickers</h4>
+          <p>Waterproof vinyl stickers. Laptop, water bottle, anywhere.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$9</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/stickers')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="merch-card">
+        <div class="merch-img">🧢</div>
+        <div class="merch-body">
+          <h4>"AI or Die" Snapback Cap</h4>
+          <p>One size fits all. Embroidered logo. Structured front panel.</p>
+          <div class="merch-footer">
+            <span class="merch-price">$35</span>
+            <button class="merch-btn disabled" onclick="openMerchLink('https://yourstore.com/cap')">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /merch-grid -->
+
+    <div style="text-align:center;margin-top:36px">
+      <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px">View the full collection on our store</p>
+      <div class="pod-platforms">
+        <a href="https://yourprintifystore.com" class="pod-link" target="_blank">🛒 Printify Store</a>
+        <a href="https://yourfourthwallstore.com" class="pod-link" target="_blank">🛒 Fourthwall Store</a>
+      </div>
+      <p style="font-size:12px;color:var(--text-dim);margin-top:20px">Replace these links with your actual store URLs after setup</p>
+    </div>
+
+  </div><!-- /tab-merch -->
+
+</main><!-- /main -->
+
+<!-- ══ Success Modal ══ -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3>Payment Successful!</h3>
+    <p id="modal-msg">Thank you for your purchase! You'll receive an email with your course access link within a few hours. Check your spam folder if you don't see it.</p>
+    <button class="modal-close" onclick="document.getElementById('success-modal').classList.remove('open')">Got it — Let's Go! 🚀</button>
+  </div>
+</div>
+
+<!-- ══ Footer ══ -->
+<footer>
+  © 2025 <a href="/">My AI Tools Finder</a> · AI Automation Academy ·
+  <a href="mailto:hello@myaitoolsfinder.com">Contact</a>
+</footer>
+
+<script>
+/* ── Tabs ── */
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── FAQ ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+/* ── Merch link handler ── */
+function openMerchLink(url) {
+  if (url.includes('yourstore')) {
+    alert('Set up your POD store first, then replace the links in this file!');
+    return;
+  }
+  window.open(url, '_blank');
+}
+
+/* ── Show success modal ── */
+function showSuccess(msg) {
+  document.getElementById('modal-msg').textContent = msg;
+  document.getElementById('success-modal').classList.add('open');
+}
+
+/* ── PayPal Buttons ── */
+function initPayPal() {
+  if (typeof paypal === 'undefined') {
+    // PayPal SDK not loaded yet (client ID not set) — show placeholder
+    ['starter','pro','agency'].forEach(id => {
+      const wrap = document.getElementById('paypal-btn-' + id);
+      if (wrap) wrap.innerHTML = '<div class="paypal-placeholder">💳 PayPal checkout will appear here once your Client ID is set</div>';
+    });
+    return;
+  }
+
+  const courses = [
+    {
+      id: 'starter',
+      name: 'AI Automation Starter',
+      price: '47.00',
+      msg: 'Thank you! You\'ll receive your AI Automation Starter course access link via email within a few hours. Check your spam folder just in case!'
+    },
+    {
+      id: 'pro',
+      name: 'AI Automation Pro',
+      price: '97.00',
+      msg: 'Welcome to AI Automation Pro! Your course access link and Discord community invite will be in your email shortly.'
+    },
+    {
+      id: 'agency',
+      name: 'AI Automation Agency',
+      price: '197.00',
+      msg: 'Welcome to the Agency level! Your course access, VIP Discord invite, and 1-on-1 booking link will be in your email within a few hours.'
+    }
+  ];
+
+  courses.forEach(course => {
+    paypal.Buttons({
+      style: {
+        shape: 'pill',
+        color: 'blue',
+        layout: 'vertical',
+        label: 'pay',
+        height: 45,
+      },
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{
+          amount: { value: course.price, currency_code: 'USD' },
+          description: course.name + ' — My AI Tools Finder Academy',
+        }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(details => {
+        showSuccess(course.msg);
+        // Optional: send to a webhook/Zapier here to automate email delivery
+        // fetch('https://hooks.zapier.com/YOUR_ZAPIER_HOOK', {
+        //   method: 'POST',
+        //   body: JSON.stringify({ course: course.name, email: details.payer.email_address, name: details.payer.name.given_name })
+        // });
+      }),
+      onError: err => {
+        console.error('PayPal error:', err);
+        alert('Something went wrong with the payment. Please try again or contact us.');
+      }
+    }).render('#paypal-btn-' + course.id);
+  });
+}
+
+// Init PayPal when SDK loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPayPal);
+} else {
+  initPayPal();
+}
+// Also try after a short delay in case SDK loads late
+setTimeout(initPayPal, 2000);
+</script>
+
+</body>
+</html>
