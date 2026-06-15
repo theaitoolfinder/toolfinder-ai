@@ -66,6 +66,7 @@ window.MYAI_AFF_MAP = {
   "beehiiv":               "https://www.beehiiv.com/?via=benjie-gadiaza",
   "bill":                  "https://bill.com",
   "bill ai":               "https://bill.com",
+  "bitboard":              "https://bitboard.co",
   "blackbox":              "https://blackbox.ai",
   "blackbox ai":           "https://blackbox.ai",
   "bland":                 "https://bland.ai",
@@ -273,6 +274,7 @@ window.MYAI_AFF_MAP = {
   "hugging face":          "https://huggingface.co",
   "hunter.io":             "https://hunter.io",
   "hypefury":              "https://hypefury.com",
+  "hyper":                 "https://hyper.co",
   "hyperwrite":            "https://hyperwrite.ai",
   "hypotenuse":            "https://hypotenuse.ai",
   "hypotenuse ai":         "https://hypotenuse.ai",
@@ -308,6 +310,7 @@ window.MYAI_AFF_MAP = {
   "khan academy":          "https://khanacademy.org/khan-labs",
   "khan academy ai":       "https://khanacademy.org/khan-labs",
   "khroma":                "https://khroma.co",
+  "kikubot":               "https://kikubot.com",
   "klap":                  "https://klap.app",
   "klarity":               "https://klaritylaw.com",
   "klarity ai":            "https://klaritylaw.com",
@@ -729,8 +732,5 @@ window.MYAI_AFF_MAP = {
   "zoho zia":              "https://zoho.com/crm/ai-sales-assistant.html",
   "zoominfo":              "https://zoominfo.com",
   "zoominfo ai":           "https://zoominfo.com",
-  "zubtitle":              "https://zubtitle.com",
-  "hyper": "https://hyper.co",
-  "bitboard": "https://bitboard.co",
-  "kikubot": "https://kikubot.com"
+  "zubtitle":              "https://zubtitle.com"
 };
