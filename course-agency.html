@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Agency — My AI Tools Finder Academy</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#f0f2f8;color:#1e293b;min-height:100vh}
+#gate{position:fixed;inset:0;background:linear-gradient(135deg,#0d1f33 0%,#1a1a2e 50%,#16213e 100%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.gate-box{background:#fff;border-radius:24px;padding:48px 40px;max-width:420px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.5)}
+.gate-logo{font-size:48px;margin-bottom:12px}
+.gate-title{font-size:22px;font-weight:800;color:#1e293b;margin-bottom:6px}
+.gate-sub{font-size:13px;color:#64748b;margin-bottom:28px}
+.gate-badge{display:inline-block;background:#f0fdf4;color:#059669;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.gate-input{width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;font-family:'Poppins',sans-serif;outline:none;transition:border .2s;margin-bottom:12px}
+.gate-input:focus{border-color:#059669}
+.gate-btn{width:100%;padding:14px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif}
+.gate-err{color:#dc2626;font-size:12px;margin-top:8px;display:none}
+.gate-hint{font-size:11px;color:#94a3b8;margin-top:16px}
+nav{background:#0f172a;border-bottom:1px solid #1e293b;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-brand{font-size:15px;font-weight:700;color:#3b82f6;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-badge{background:#f0fdf4;color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px}
+.nav-logout{font-size:12px;color:#64748b;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'Poppins',sans-serif}
+.course-wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+.course-hero{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:20px;padding:40px;color:#fff;margin-bottom:32px;position:relative;overflow:hidden}
+.course-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(5,150,105,.3),transparent 70%);pointer-events:none}
+.course-hero-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#10b981;margin-bottom:10px}
+.course-hero h1{font-size:28px;font-weight:800;margin-bottom:8px}
+.course-hero p{font-size:14px;opacity:.75;line-height:1.6;max-width:560px}
+.course-meta{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap}
+.course-meta span{font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:5px}
+.vip-banner{background:linear-gradient(135deg,#059669,#10b981);border-radius:16px;padding:20px 24px;margin-bottom:24px;color:#fff;display:flex;align-items:center;gap:16px}
+.vip-banner .vip-icon{font-size:32px;flex-shrink:0}
+.vip-banner h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.vip-banner p{font-size:12px;opacity:.85}
+.progress-bar-wrap{background:#fff;border-radius:16px;padding:20px 24px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#374151;margin-bottom:10px}
+.progress-track{background:#e5e7eb;border-radius:99px;height:10px;overflow:hidden}
+.progress-fill{background:linear-gradient(90deg,#059669,#10b981);height:100%;border-radius:99px;transition:width .4s ease;width:0%}
+.module-card{background:#fff;border-radius:16px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06);overflow:hidden}
+.module-header{padding:18px 22px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.module-header:hover{background:#f8fafc}
+.module-num{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.module-num.done{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+.module-info{flex:1}
+.module-title{font-size:15px;font-weight:700;color:#1e293b}
+.module-desc{font-size:12px;color:#64748b;margin-top:2px}
+.module-meta{font-size:11px;color:#94a3b8;margin-top:2px}
+.module-chevron{color:#94a3b8;font-size:18px;transition:transform .2s;flex-shrink:0}
+.module-card.open .module-chevron{transform:rotate(180deg)}
+.lessons{display:none;border-top:1px solid #f1f5f9;padding:8px 0}
+.module-card.open .lessons{display:block}
+.lesson{display:flex;align-items:center;gap:12px;padding:12px 22px;cursor:pointer;transition:background .15s}
+.lesson:hover{background:#f8fafc}
+.lesson-check{width:22px;height:22px;border-radius:6px;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:transparent;transition:all .2s}
+.lesson.done .lesson-check{background:#7c3aed;border-color:#7c3aed;color:#fff}
+.lesson-icon{font-size:16px;flex-shrink:0}
+.lesson-title{font-size:13px;font-weight:500;color:#374151;flex:1}
+.lesson.done .lesson-title{color:#94a3b8;text-decoration:line-through}
+.lesson-duration{font-size:11px;color:#94a3b8;flex-shrink:0}
+.lesson-placeholder{font-size:11px;color:#10b981;background:#f0fdf4;border:1px dashed #10b981;border-radius:6px;padding:2px 8px;flex-shrink:0}
+.lesson-badge{font-size:10px;background:#fef3c7;color:#d97706;border-radius:99px;padding:2px 8px;font-weight:700;flex-shrink:0}
+.lesson-viewer{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);display:none}
+.lesson-viewer.active{display:block}
+.viewer-back{background:none;border:none;color:#059669;font-size:13px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:6px;margin-bottom:20px;padding:0}
+.viewer-title{font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px}
+.viewer-meta{font-size:12px;color:#94a3b8;margin-bottom:24px}
+.video-placeholder{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:#fff;gap:12px}
+.video-placeholder .play-icon{font-size:56px;opacity:.6}
+.video-placeholder p{font-size:13px;opacity:.5;text-align:center;max-width:280px}
+.viewer-notes{background:#f8fafc;border-radius:12px;padding:20px;margin-bottom:20px}
+.viewer-notes h4{font-size:13px;font-weight:700;color:#374151;margin-bottom:12px}
+.viewer-notes ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.viewer-notes li{font-size:13px;color:#64748b;padding-left:20px;position:relative;line-height:1.6}
+.viewer-notes li::before{content:'✓';position:absolute;left:0;color:#059669;font-weight:700}
+.viewer-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-complete{padding:12px 24px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif}
+.btn-next{padding:12px 24px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif}
+.bonus-section{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.bonus-section h3{font-size:15px;font-weight:700;color:#1e293b;margin-bottom:16px}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.bonus-card{background:#f0fdf4;border:1.5px solid #a7f3d0;border-radius:12px;padding:16px;text-align:center}
+.bonus-card .bonus-icon{font-size:28px;margin-bottom:8px}
+.bonus-card h4{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:4px}
+.bonus-card p{font-size:11px;color:#64748b}
+.bonus-btn{margin-top:10px;display:inline-block;padding:6px 14px;background:#059669;color:#fff;border-radius:99px;font-size:11px;font-weight:700;cursor:pointer;border:none;font-family:'Poppins',sans-serif}
+.oneonone-banner{background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;padding:28px;color:#fff;text-align:center;margin-top:16px}
+.oneonone-banner h4{font-size:18px;font-weight:800;margin-bottom:8px}
+.oneonone-banner p{font-size:13px;opacity:.85;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto}
+.oneonone-btn{display:inline-block;padding:14px 32px;background:#fff;color:#7c3aed;border-radius:99px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Poppins',sans-serif}
+.discord-banner{background:#0f172a;border-radius:16px;padding:24px;color:#fff;display:flex;align-items:center;gap:20px;margin-top:16px}
+.discord-banner .discord-icon{font-size:40px;flex-shrink:0}
+.discord-banner h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.discord-banner p{font-size:13px;color:#94a3b8}
+.discord-btn{margin-top:12px;display:inline-block;padding:10px 20px;background:#5865f2;color:#fff;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Poppins',sans-serif}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">🏢</div>
+    <div class="gate-badge">Advanced · Agency Level</div>
+    <div class="gate-title">AI Automation Agency</div>
+    <div class="gate-sub">Enter your course password to access your lessons</div>
+    <input type="password" class="gate-input" id="gate-pw" placeholder="Enter your password" onkeydown="if(event.key==='Enter')checkGate()">
+    <button class="gate-btn" onclick="checkGate()">Access My Course →</button>
+    <div class="gate-err" id="gate-err">❌ Wrong password. Check your purchase email.</div>
+    <div class="gate-hint">Password was sent to your email after purchase.<br>Contact papabenj if you need help.</div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-brand" href="/">← My AI Tools Finder</a>
+  <div class="nav-right">
+    <span class="nav-badge">🔵 Advanced</span>
+    <button class="nav-logout" onclick="logout()">Log out</button>
+  </div>
+</nav>
+
+<div class="course-wrap" id="course-content" style="display:none">
+  <div class="course-hero">
+    <div class="course-hero-badge">🏢 Advanced Level</div>
+    <h1>AI Automation Agency</h1>
+    <p>Build a real business around AI automation. Land $1K–$5K projects, build recurring revenue, and scale with AI agents.</p>
+    <div class="course-meta">
+      <span>⏱ 12+ hours of video</span>
+      <span>📚 8 modules + Live Q&As</span>
+      <span>🎯 Self-paced</span>
+      <span>♾️ Lifetime access</span>
+    </div>
+  </div>
+
+  <div class="vip-banner">
+    <div class="vip-icon">👑</div>
+    <div>
+      <h4>Welcome to the Agency Level, Papabenj!</h4>
+      <p>You have access to 12+ hours of content, live Q&As, VIP Discord, AND a 30-min 1-on-1 strategy call. Book your call below.</p>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Your Progress</span>
+      <span id="progress-text">0 of 24 lessons complete</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <div class="lesson-viewer" id="lesson-viewer">
+    <button class="viewer-back" onclick="closeViewer()">← Back to modules</button>
+    <div class="viewer-title" id="viewer-title"></div>
+    <div class="viewer-meta" id="viewer-meta"></div>
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <p id="viewer-video-note">Add your video URL here — Loom, YouTube (unlisted), or Vimeo embed</p>
+    </div>
+    <div class="viewer-notes">
+      <h4>Key Takeaways</h4>
+      <ul id="viewer-notes-list"></ul>
+    </div>
+    <div class="viewer-actions">
+      <button class="btn-complete" onclick="markComplete()">✓ Mark Complete</button>
+      <button class="btn-next" onclick="nextLesson()">Next Lesson →</button>
+    </div>
+  </div>
+
+  <div id="modules-list">
+    <div class="module-card" id="mod-1">
+      <div class="module-header" onclick="toggleModule('mod-1')">
+        <div class="module-num" id="mod-1-num">1</div>
+        <div class="module-info"><div class="module-title">Build Automation Products People Pay For Monthly</div><div class="module-desc">Shift from one-time projects to recurring revenue</div><div class="module-meta">3 lessons · ~55 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-1-1" onclick="openLesson('l-1-1','The Productized Automation Model','Module 1 · 20 min',['Why services are a trap and products are freedom — the key mental shift','The 5 most sellable AI automation products right now','Packaging: what to include, what to withhold, how to create tiers','Recurring revenue math: 10 clients × $500/mo = $5K/mo on autopilot'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">The Productized Automation Model</span><span class="lesson-duration">20 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-1-2" onclick="openLesson('l-1-2','Build Your First SaaS-Like Automation','Module 1 · 18 min',['How to build an automation that runs on a subscription model','Multi-tenant setup: one Make.com scenario serving 10+ clients','Billing automation: PayPal or Stripe + automatic access control','Onboarding new clients without touching anything manually'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Build Your First SaaS-Like Automation</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-1-3" onclick="openLesson('l-1-3','Pricing for Recurring Revenue','Module 1 · 17 min',['Value-based pricing: charge for results, not hours','Monthly retainer packages that clients renew forever','Contracts, terms, and what to put in your SLA','How to raise prices on existing clients without losing them'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Pricing for Recurring Revenue</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-2">
+      <div class="module-header" onclick="toggleModule('mod-2')">
+        <div class="module-num" id="mod-2-num">2</div>
+        <div class="module-info"><div class="module-title">White-Label AI Tools for Clients</div><div class="module-desc">Resell and rebrand AI tools as your own service</div><div class="module-meta">3 lessons · ~50 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-2-1" onclick="openLesson('l-2-1','White-Label Strategy & Opportunities','Module 2 · 17 min',['What white-labeling is and why clients pay premium for it','The best AI tools with white-label programs (and their margin structures)','How to present white-labeled tools as your own branded platform','Legal considerations: what you can and can\'t rebrand'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">White-Label Strategy & Opportunities</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-2-2" onclick="openLesson('l-2-2','Build a Branded AI Tool','Module 2 · 18 min',['Creating a custom-branded chatbot or tool using white-label infrastructure','Custom domain, custom logo, custom color scheme — full brand experience','Client onboarding portal: how to give clients access to their branded tool','Support: how to handle client questions without revealing the underlying tech'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Build a Branded AI Tool</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-2-3" onclick="openLesson('l-2-3','Scale to 10+ White-Label Clients','Module 2 · 15 min',['Operations: how to manage 10+ clients with minimal time investment','Automated client reporting: usage stats and ROI sent monthly','Upselling within white-label accounts','Exit strategy: what your white-label business is worth and how to sell it'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Scale to 10+ White-Label Clients</span><span class="lesson-duration">15 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-3">
+      <div class="module-header" onclick="toggleModule('mod-3')">
+        <div class="module-num" id="mod-3-num">3</div>
+        <div class="module-info"><div class="module-title">Land $1K–$5K Automation Projects</div><div class="module-desc">Pitch scripts, proposals, and close calls that work</div><div class="module-meta">3 lessons · ~52 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-3-1" onclick="openLesson('l-3-1','Finding High-Value Clients','Module 3 · 18 min',['The industries that pay most for automation (and why)','LinkedIn targeting: finding decision-makers who have budget and pain','Inbound vs outbound — how to build a lead flow that comes to you','The referral machine: how one client becomes five'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Finding High-Value Clients</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-3-2" onclick="openLesson('l-3-2','The $3K Pitch Script','Module 3 · 17 min',['Word-for-word discovery call script (included in bonuses)','How to position yourself as a strategic partner, not a freelancer','The magic question that reveals budget without asking directly','Handling objections: price, timeline, "we\'ll think about it"'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">The $3K Pitch Script</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-3-3" onclick="openLesson('l-3-3','Proposals That Close at 70%+','Module 3 · 17 min',['The exact proposal format (1-page, not 10) — included in bonuses','Pricing presentation: always show 3 options','Contract terms that protect you and reassure clients','Follow-up sequence after sending a proposal: automated, of course'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Proposals That Close at 70%+</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-4">
+      <div class="module-header" onclick="toggleModule('mod-4')">
+        <div class="module-num" id="mod-4-num">4</div>
+        <div class="module-info"><div class="module-title">Scale with AI Agents — CrewAI & AutoGPT</div><div class="module-desc">Move beyond automation into autonomous AI systems</div><div class="module-meta">3 lessons · ~60 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-4-1" onclick="openLesson('l-4-1','What Are AI Agents & Why They Matter','Module 4 · 18 min',['The difference between automation (scripted) and agents (autonomous)','When to use agents vs simple workflows — the honest answer','CrewAI: multi-agent systems where AI works in teams','Real business use cases: research agent, outreach agent, content agent'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">What Are AI Agents & Why They Matter</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-4-2" onclick="openLesson('l-4-2','Build Your First CrewAI Agent','Module 4 · 22 min',['Setting up CrewAI (Python-based, we use Replit so no local setup needed)','Defining agent roles, goals, and backstory for maximum performance','Connecting agents to tools: web search, file read/write, APIs','A complete content research crew: researcher → writer → editor → publisher'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Build Your First CrewAI Agent</span><span class="lesson-duration">22 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-4-3" onclick="openLesson('l-4-3','Selling Agent Systems to Clients','Module 4 · 20 min',['How to package and price AI agent systems ($2K–$10K range)','Client education: explaining agents without the technical jargon','Monitoring and maintaining agent systems (preventing hallucinations)','Case study: client saves 40 hours/week with a 3-agent content crew'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Selling Agent Systems to Clients</span><span class="lesson-duration">20 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-5">
+      <div class="module-header" onclick="toggleModule('mod-5')">
+        <div class="module-num" id="mod-5-num">5</div>
+        <div class="module-info"><div class="module-title">Build a No-Code SaaS Product with AI</div><div class="module-desc">Launch a software product without writing a single line of code</div><div class="module-meta">3 lessons · ~58 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-5-1" onclick="openLesson('l-5-1','SaaS Validation & Niche Selection','Module 5 · 18 min',['How to find a SaaS idea that already has buyers waiting','The validation playbook: sell before you build','Picking your niche: why narrow beats broad every time','Case study: a $3K/mo AI SaaS built in 3 weeks with no code'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">SaaS Validation & Niche Selection</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-5-2" onclick="openLesson('l-5-2','Build the Product with No-Code Tools','Module 5 · 22 min",['Bubble.io or Glide for the frontend (no code)','Make.com or n8n for the backend automation logic','OpenAI/Groq API for the AI core feature','Stripe for billing — fully integrated, no developer needed','Going from idea to working MVP in under a week'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Build the Product with No-Code Tools</span><span class="lesson-duration">22 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-5-3" onclick="openLesson('l-5-3','Launch & Grow Your SaaS','Module 5 · 18 min',['Product Hunt launch playbook (the exact template to get 500+ upvotes)','Your first 10 paying customers: where to find them and how to close them','Churn reduction: the onboarding flow that keeps users paying','Scaling: when to bring in a developer (and when not to)'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Launch & Grow Your SaaS</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-6">
+      <div class="module-header" onclick="toggleModule('mod-6')">
+        <div class="module-num" id="mod-6-num">6</div>
+        <div class="module-info"><div class="module-title">Create Recurring Revenue from Automation Retainers</div><div class="module-desc">Build a $10K/month business with 5–10 clients</div><div class="module-meta">3 lessons · ~50 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-6-1" onclick="openLesson('l-6-1','The Retainer Business Model','Module 6 · 17 min',['Why retainers are better than projects (for you AND your clients)','What to include in a retainer: maintenance, updates, new automations, reporting','The "automation manager" positioning — you\'re their AI department','Retainer pricing tiers: $500, $1500, and $3000/month packages'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">The Retainer Business Model</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-6-2" onclick="openLesson('l-6-2','Converting Project Clients to Retainers','Module 6 · 16 min',['The exact conversation that moves a one-time client to monthly','Timing: when to pitch the retainer (not when you think)','What to offer as a retainer add-on that makes saying no feel expensive','Retainer contract template — included in bonuses'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Converting Project Clients to Retainers</span><span class="lesson-duration">16 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-6-3" onclick="openLesson('l-6-3','Managing 10 Retainer Clients Without Burning Out','Module 6 · 17 min',['Systems for tracking client automations, issues, and requests','Monthly reporting automation: send professional reports with zero manual work','Delegation: what to outsource and what to keep in-house','What $10K/month in retainers actually looks like day-to-day'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Managing 10 Retainer Clients Without Burning Out</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-7">
+      <div class="module-header" onclick="toggleModule('mod-7')">
+        <div class="module-num" id="mod-7-num">7</div>
+        <div class="module-info"><div class="module-title">Hire & Manage AI-Assisted Virtual Teams</div><div class="module-desc">Grow beyond yourself without the overhead</div><div class="module-meta">3 lessons · ~48 min</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-7-1" onclick="openLesson('l-7-1','Your First Virtual Team Member','Module 7 · 16 min',['When to hire (the exact revenue threshold)','Where to find AI-literate VAs and freelancers (platforms + interview questions)','The AI-assisted onboarding process: your VA learns your systems fast','SOPs that write themselves: using AI to document your processes'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Your First Virtual Team Member</span><span class="lesson-duration">16 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-7-2" onclick="openLesson('l-7-2','AI-Powered Team Management','Module 7 · 16 min',['Project management automation: task assignment, deadline tracking, status updates','Team communication with AI-assisted responses and summaries','Quality control: AI that reviews your team\'s work before it goes to clients','Performance reviews and team optimization with data, not gut feelings'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">AI-Powered Team Management</span><span class="lesson-duration">16 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-7-3" onclick="openLesson('l-7-3','Building a Self-Running Agency','Module 7 · 16 min',['The org chart of a $30K/month AI automation agency','Systems that let you step away for a week without anything breaking','Hiring for culture fit in a remote AI-first team','Your role shifts from builder to CEO — how to make that transition'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Building a Self-Running Agency</span><span class="lesson-duration">16 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-8">
+      <div class="module-header" onclick="toggleModule('mod-8')">
+        <div class="module-num" id="mod-8-num">8</div>
+        <div class="module-info"><div class="module-title">Build Your Personal AI Automation Brand</div><div class="module-desc">Become the go-to person for AI in your industry</div><div class="module-meta">3 lessons · ~50 min + Live Q&As</div></div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-8-1" onclick="openLesson('l-8-1','Personal Brand as a Business Asset','Module 8 · 17 min',['Why your personal brand is worth more than your agency brand','Content pillars for an AI automation expert: what to post and where','The "Papabenj" strategy: building authority by teaching publicly','From 0 to 10K followers in 90 days — the AI-assisted content playbook'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Personal Brand as a Business Asset</span><span class="lesson-duration">17 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-8-2" onclick="openLesson('l-8-2','Monetizing Your Brand Beyond Services','Module 8 · 18 min',['Courses, coaching, community, and content — the 4 pillars of creator income','How to launch a paid newsletter that earns $5K+/month','Speaking, consulting, and brand deals in the AI space','Building a flywheel: each income stream feeds the others'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Monetizing Your Brand Beyond Services</span><span class="lesson-duration">18 min</span><span class="lesson-placeholder">Add video</span></div>
+        <div class="lesson" id="l-8-3" onclick="openLesson('l-8-3','Your Agency Exit & Long-Term Vision','Module 8 · 15 min',['What a profitable AI automation agency is worth (valuation basics)','How to position for acquisition or passive income','Your 12-month roadmap from today to $20K/month','Graduation: what comes next, and how Papabenj can help'])"><div class="lesson-check">✓</div><span class="lesson-icon">▶</span><span class="lesson-title">Your Agency Exit & Long-Term Vision 🏆</span><span class="lesson-duration">15 min</span><span class="lesson-placeholder">Add video</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bonuses -->
+  <div class="bonus-section" style="margin-top:32px">
+    <h3>🎁 Your Agency Bonuses</h3>
+    <div class="bonus-grid">
+      <div class="bonus-card"><div class="bonus-icon">📋</div><h4>Contract & Proposal Templates</h4><p>Agency-grade contracts and proposals that close deals</p><button class="bonus-btn" onclick="alert('Add your Google Drive link here!')">Download →</button></div>
+      <div class="bonus-card"><div class="bonus-icon">📊</div><h4>Pricing Calculator Spreadsheet</h4><p>Calculate your exact price for any automation project</p><button class="bonus-btn" onclick="alert('Add your Google Sheets link here!')">Open Sheet →</button></div>
+    </div>
+  </div>
+
+  <!-- 1-on-1 Call -->
+  <div class="oneonone-banner">
+    <h4>📞 Book Your 30-Min 1-on-1 Strategy Call with Papabenj</h4>
+    <p>Your Agency-level bonus includes a private strategy session. Use it to map your first 90 days, get feedback on your business model, or work through any roadblock.</p>
+    <button class="oneonone-btn" onclick="alert('Add your Calendly booking link here!')">Book Your Call →</button>
+  </div>
+
+  <!-- Discord -->
+  <div class="discord-banner">
+    <div class="discord-icon">💬</div>
+    <div>
+      <h4>VIP Discord — Agency Members Only</h4>
+      <p>A private channel for Agency-level students. Share deals, get feedback on proposals, and network with serious AI builders.</p>
+      <button class="discord-btn" onclick="alert('Add your VIP Discord invite link here!')">Join VIP Discord →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const COURSE_KEY = 'academy_agency_auth';
+const PASS = 'agency2025';
+const TOTAL_LESSONS = 24;
+
+function checkGate() {
+  const pw = document.getElementById('gate-pw').value.trim();
+  if (pw === PASS) { localStorage.setItem(COURSE_KEY, '1'); showCourse(); }
+  else { document.getElementById('gate-err').style.display = 'block'; }
+}
+function logout() { localStorage.removeItem(COURSE_KEY); location.reload(); }
+function showCourse() { document.getElementById('gate').style.display = 'none'; document.getElementById('course-content').style.display = 'block'; updateProgress(); restoreCompleted(); }
+if (localStorage.getItem(COURSE_KEY) === '1') showCourse();
+function toggleModule(id) { document.getElementById(id).classList.toggle('open'); }
+let currentLesson = null;
+function openLesson(id, title, meta, notes) {
+  currentLesson = id;
+  document.getElementById('viewer-title').textContent = title;
+  document.getElementById('viewer-meta').textContent = meta;
+  document.getElementById('viewer-notes-list').innerHTML = notes.map(n => `<li>${n}</li>`).join('');
+  document.getElementById('lesson-viewer').classList.add('active');
+  document.getElementById('modules-list').style.display = 'none';
+  document.querySelector('.progress-bar-wrap').style.display = 'none';
+  document.querySelector('.course-hero').style.display = 'none';
+  document.querySelector('.vip-banner').style.display = 'none';
+  window.scrollTo(0,0);
+}
+function closeViewer() {
+  document.getElementById('lesson-viewer').classList.remove('active');
+  document.getElementById('modules-list').style.display = 'block';
+  document.querySelector('.progress-bar-wrap').style.display = 'block';
+  document.querySelector('.course-hero').style.display = 'block';
+  document.querySelector('.vip-banner').style.display = 'flex';
+  window.scrollTo(0,0);
+}
+function markComplete() {
+  if (!currentLesson) return;
+  document.getElementById(currentLesson).classList.add('done');
+  const done = getCompleted();
+  if (!done.includes(currentLesson)) { done.push(currentLesson); localStorage.setItem(COURSE_KEY + '_done', JSON.stringify(done)); }
+  updateProgress(); nextLesson();
+}
+function nextLesson() {
+  const lessons = [...document.querySelectorAll('.lesson')];
+  const idx = lessons.findIndex(l => l.id === currentLesson);
+  if (idx < lessons.length - 1) lessons[idx + 1].click();
+  else { closeViewer(); alert('🏆 Module complete! You\'re building something great!'); }
+}
+function getCompleted() { try { return JSON.parse(localStorage.getItem(COURSE_KEY + '_done') || '[]'); } catch { return []; } }
+function restoreCompleted() { getCompleted().forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('done'); }); }
+function updateProgress() {
+  const done = getCompleted().length;
+  document.getElementById('progress-fill').style.width = Math.round((done/TOTAL_LESSONS)*100) + '%';
+  document.getElementById('progress-text').textContent = `${done} of ${TOTAL_LESSONS} lessons complete`;
+  ['1','2','3','4','5','6','7','8'].forEach(m => {
+    const lessons = document.querySelectorAll(`[id^="l-${m}-"]`);
+    const allDone = [...lessons].every(l => getCompleted().includes(l.id));
+    const num = document.getElementById(`mod-${m}-num`);
+    if (num) num.className = 'module-num' + (allDone ? ' done' : '');
+  });
+}
+</script>
+</body>
+</html>

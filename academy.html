@@ -586,19 +586,25 @@ function initPayPal() {
       id: 'starter',
       name: 'AI Automation Starter',
       price: '47.00',
-      msg: 'Thank you! You\'ll receive your AI Automation Starter course access link via email within a few hours. Check your spam folder just in case!'
+      url: '/course-starter.html',
+      pw: 'starter2025',
+      msg: '🎉 Payment confirmed! Taking you to your course now...'
     },
     {
       id: 'pro',
       name: 'AI Automation Pro',
       price: '97.00',
-      msg: 'Welcome to AI Automation Pro! Your course access link and Discord community invite will be in your email shortly.'
+      url: '/course-pro.html',
+      pw: 'pro2025',
+      msg: '🎉 Payment confirmed! Taking you to your course now...'
     },
     {
       id: 'agency',
       name: 'AI Automation Agency',
       price: '197.00',
-      msg: 'Welcome to the Agency level! Your course access, VIP Discord invite, and 1-on-1 booking link will be in your email within a few hours.'
+      url: '/course-agency.html',
+      pw: 'agency2025',
+      msg: '🎉 Payment confirmed! Taking you to your course now...'
     }
   ];
 
@@ -622,12 +628,10 @@ function initPayPal() {
         }]
       }),
       onApprove: (data, actions) => actions.order.capture().then(details => {
+        // Auto-grant access and redirect to course
+        localStorage.setItem('academy_' + course.id + '_auth', '1');
         showSuccess(course.msg);
-        // Optional: send to a webhook/Zapier here to automate email delivery
-        // fetch('https://hooks.zapier.com/YOUR_ZAPIER_HOOK', {
-        //   method: 'POST',
-        //   body: JSON.stringify({ course: course.name, email: details.payer.email_address, name: details.payer.name.given_name })
-        // });
+        setTimeout(() => { window.location.href = course.url; }, 2000);
       }),
       onError: err => {
         console.error('PayPal error:', err);
@@ -652,9 +656,9 @@ function initPayPal() {
   }
 
   const courses = [
-    { id: 'starter',  msg: 'Thank you! You\'ll receive your AI Automation Starter course access link via email within a few hours. Check your spam folder just in case!' },
-    { id: 'pro',     msg: 'Welcome to AI Automation Pro! Your course access link and Discord community invite will be in your email shortly.' },
-    { id: 'agency',  msg: 'Welcome to the Agency level! Your course access, VIP Discord invite, and 1-on-1 booking link will be in your email within a few hours.' },
+    { id: 'starter', url: '/course-starter.html', msg: '🔓 Access granted! Taking you to the Starter course...' },
+    { id: 'pro',     url: '/course-pro.html',     msg: '🔓 Access granted! Taking you to the Pro course...' },
+    { id: 'agency',  url: '/course-agency.html',  msg: '🔓 Access granted! Taking you to the Agency course...' },
   ];
 
   // Wait for DOM then inject bypass buttons
@@ -668,7 +672,11 @@ function initPayPal() {
       btn.style.cssText = 'width:100%;padding:14px;background:#15803d;color:#fff;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif;margin-top:8px;';
       btn.onmouseover = () => btn.style.background = '#166534';
       btn.onmouseout  = () => btn.style.background = '#15803d';
-      btn.onclick = () => showSuccess(course.msg);
+      btn.onclick = () => {
+        localStorage.setItem('academy_' + course.id + '_auth', '1');
+        showSuccess(course.msg);
+        setTimeout(() => { window.location.href = course.url; }, 1500);
+      };
       wrap.appendChild(btn);
     });
   }

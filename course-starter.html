@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Starter — My AI Tools Finder Academy</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#f0f2f8;color:#1e293b;min-height:100vh}
+
+/* ── Gate ── */
+#gate{position:fixed;inset:0;background:linear-gradient(135deg,#0d1f33 0%,#1a3a5c 50%,#2d1b69 100%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.gate-box{background:#fff;border-radius:24px;padding:48px 40px;max-width:420px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.4)}
+.gate-logo{font-size:48px;margin-bottom:12px}
+.gate-title{font-size:22px;font-weight:800;color:#1e293b;margin-bottom:6px}
+.gate-sub{font-size:13px;color:#64748b;margin-bottom:28px}
+.gate-badge{display:inline-block;background:#dbeafe;color:#1a56db;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.gate-input{width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;font-family:'Poppins',sans-serif;outline:none;transition:border .2s;margin-bottom:12px}
+.gate-input:focus{border-color:#1a56db}
+.gate-btn{width:100%;padding:14px;background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:opacity .2s}
+.gate-btn:hover{opacity:.9}
+.gate-err{color:#dc2626;font-size:12px;margin-top:8px;display:none}
+.gate-hint{font-size:11px;color:#94a3b8;margin-top:16px}
+
+/* ── Nav ── */
+nav{background:#fff;border-bottom:1px solid #e5e7eb;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-brand{font-size:15px;font-weight:700;color:#1a56db;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-badge{background:#dbeafe;color:#1a56db;font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px}
+.nav-logout{font-size:12px;color:#94a3b8;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'Poppins',sans-serif}
+
+/* ── Layout ── */
+.course-wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+
+/* ── Hero ── */
+.course-hero{background:linear-gradient(135deg,#1a56db,#7c3aed);border-radius:20px;padding:40px;color:#fff;margin-bottom:32px}
+.course-hero-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.75;margin-bottom:10px}
+.course-hero h1{font-size:28px;font-weight:800;margin-bottom:8px}
+.course-hero p{font-size:14px;opacity:.85;line-height:1.6;max-width:560px}
+.course-meta{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap}
+.course-meta span{font-size:12px;opacity:.8;display:flex;align-items:center;gap:5px}
+
+/* ── Progress ── */
+.progress-bar-wrap{background:#fff;border-radius:16px;padding:20px 24px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#374151;margin-bottom:10px}
+.progress-track{background:#e5e7eb;border-radius:99px;height:10px;overflow:hidden}
+.progress-fill{background:linear-gradient(90deg,#1a56db,#7c3aed);height:100%;border-radius:99px;transition:width .4s ease;width:0%}
+
+/* ── Modules ── */
+.module-card{background:#fff;border-radius:16px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06);overflow:hidden}
+.module-header{padding:18px 22px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.module-header:hover{background:#f8fafc}
+.module-num{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.module-num.done{background:linear-gradient(135deg,#059669,#10b981)}
+.module-info{flex:1}
+.module-title{font-size:15px;font-weight:700;color:#1e293b}
+.module-desc{font-size:12px;color:#64748b;margin-top:2px}
+.module-meta{font-size:11px;color:#94a3b8;margin-top:2px}
+.module-chevron{color:#94a3b8;font-size:18px;transition:transform .2s;flex-shrink:0}
+.module-card.open .module-chevron{transform:rotate(180deg)}
+
+.lessons{display:none;border-top:1px solid #f1f5f9;padding:8px 0}
+.module-card.open .lessons{display:block}
+.lesson{display:flex;align-items:center;gap:12px;padding:12px 22px;cursor:pointer;transition:background .15s}
+.lesson:hover{background:#f8fafc}
+.lesson-check{width:22px;height:22px;border-radius:6px;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:11px;color:transparent}
+.lesson.done .lesson-check{background:#059669;border-color:#059669;color:#fff}
+.lesson-icon{font-size:16px;flex-shrink:0}
+.lesson-title{font-size:13px;font-weight:500;color:#374151;flex:1}
+.lesson.done .lesson-title{color:#94a3b8;text-decoration:line-through}
+.lesson-duration{font-size:11px;color:#94a3b8;flex-shrink:0}
+.lesson-placeholder{font-size:11px;color:#c4b5fd;background:#f5f3ff;border:1px dashed #c4b5fd;border-radius:6px;padding:2px 8px;flex-shrink:0}
+
+/* ── Lesson Viewer ── */
+.lesson-viewer{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);display:none}
+.lesson-viewer.active{display:block}
+.viewer-back{background:none;border:none;color:#1a56db;font-size:13px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:6px;margin-bottom:20px;padding:0}
+.viewer-title{font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px}
+.viewer-meta{font-size:12px;color:#94a3b8;margin-bottom:24px}
+.video-placeholder{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:#fff;gap:12px}
+.video-placeholder .play-icon{font-size:56px;opacity:.6}
+.video-placeholder p{font-size:13px;opacity:.5;text-align:center;max-width:280px}
+.viewer-notes{background:#f8fafc;border-radius:12px;padding:20px;margin-bottom:20px}
+.viewer-notes h4{font-size:13px;font-weight:700;color:#374151;margin-bottom:12px}
+.viewer-notes ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.viewer-notes li{font-size:13px;color:#64748b;padding-left:20px;position:relative;line-height:1.6}
+.viewer-notes li::before{content:'✓';position:absolute;left:0;color:#059669;font-weight:700}
+.viewer-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-complete{padding:12px 24px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:opacity .2s}
+.btn-complete:hover{opacity:.9}
+.btn-next{padding:12px 24px;background:linear-gradient(135deg,#1a56db,#7c3aed);color:#fff;border:none;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:opacity .2s}
+.btn-next:hover{opacity:.9}
+
+/* ── Bonuses ── */
+.bonus-section{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.bonus-section h3{font-size:15px;font-weight:700;color:#1e293b;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.bonus-card{background:#fefce8;border:1.5px solid #fde68a;border-radius:12px;padding:16px;text-align:center}
+.bonus-card .bonus-icon{font-size:28px;margin-bottom:8px}
+.bonus-card h4{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:4px}
+.bonus-card p{font-size:11px;color:#64748b}
+.bonus-btn{margin-top:10px;display:inline-block;padding:6px 14px;background:#1a56db;color:#fff;border-radius:99px;font-size:11px;font-weight:700;text-decoration:none;cursor:pointer;border:none;font-family:'Poppins',sans-serif}
+
+@media(max-width:640px){
+  .course-hero{padding:28px 20px}
+  .course-hero h1{font-size:22px}
+  .course-wrap{padding:20px 16px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ Password Gate ══ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">🎓</div>
+    <div class="gate-badge">Beginner Course</div>
+    <div class="gate-title">AI Automation Starter</div>
+    <div class="gate-sub">Enter your course password to access your lessons</div>
+    <input type="password" class="gate-input" id="gate-pw" placeholder="Enter your password" onkeydown="if(event.key==='Enter')checkGate()">
+    <button class="gate-btn" onclick="checkGate()">Access My Course →</button>
+    <div class="gate-err" id="gate-err">❌ Wrong password. Check your purchase email.</div>
+    <div class="gate-hint">Password was sent to your email after purchase.<br>Contact papabenj if you need help.</div>
+  </div>
+</div>
+
+<!-- ══ Nav ══ -->
+<nav>
+  <a class="nav-brand" href="/">← My AI Tools Finder</a>
+  <div class="nav-right">
+    <span class="nav-badge">🟢 Beginner</span>
+    <button class="nav-logout" onclick="logout()">Log out</button>
+  </div>
+</nav>
+
+<!-- ══ Course Content ══ -->
+<div class="course-wrap" id="course-content" style="display:none">
+
+  <!-- Hero -->
+  <div class="course-hero">
+    <div class="course-hero-badge">🎓 Beginner Level</div>
+    <h1>AI Automation Starter</h1>
+    <p>Zero experience? No problem. Learn how to save 10+ hours a week using AI tools — no coding, no tech background needed.</p>
+    <div class="course-meta">
+      <span>⏱ ~4 hours of video</span>
+      <span>📚 6 modules</span>
+      <span>🎯 Self-paced</span>
+      <span>♾️ Lifetime access</span>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Your Progress</span>
+      <span id="progress-text">0 of 18 lessons complete</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Lesson Viewer -->
+  <div class="lesson-viewer" id="lesson-viewer">
+    <button class="viewer-back" onclick="closeViewer()">← Back to modules</button>
+    <div class="viewer-title" id="viewer-title">Lesson Title</div>
+    <div class="viewer-meta" id="viewer-meta">Module 1 · 10 min</div>
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <p id="viewer-video-note">Add your video URL here — Loom, YouTube, Vimeo, or any embed</p>
+    </div>
+    <div class="viewer-notes">
+      <h4>Key Takeaways</h4>
+      <ul id="viewer-notes-list">
+        <li>Placeholder — add your lesson notes here</li>
+      </ul>
+    </div>
+    <div class="viewer-actions">
+      <button class="btn-complete" onclick="markComplete()">✓ Mark Complete</button>
+      <button class="btn-next" onclick="nextLesson()">Next Lesson →</button>
+    </div>
+  </div>
+
+  <!-- Modules -->
+  <div id="modules-list">
+
+    <div class="module-card" id="mod-1">
+      <div class="module-header" onclick="toggleModule('mod-1')">
+        <div class="module-num" id="mod-1-num">1</div>
+        <div class="module-info">
+          <div class="module-title">What is AI Automation & Why It Matters Now</div>
+          <div class="module-desc">Understand the AI landscape and how it's changing work forever</div>
+          <div class="module-meta">3 lessons · ~35 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-1-1" onclick="openLesson('l-1-1','What is AI Automation?','Module 1 · 12 min',['AI automation means using software to do tasks automatically that used to require human effort','The 3 types of automation: task, workflow, and agent-based','Why 2024-2025 is the inflection point — models are now good enough for real work','The difference between AI tools and AI automation'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">What is AI Automation?</span>
+          <span class="lesson-duration">12 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-1-2" onclick="openLesson('l-1-2','The Opportunity Right Now','Module 1 · 10 min',['Why most people are still sleeping on AI — and why that\'s your advantage','Real income examples from AI automation (freelancers, solopreneurs)','The 3 highest-ROI areas to automate first','How to spot automation opportunities in your own work'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">The Opportunity Right Now</span>
+          <span class="lesson-duration">10 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-1-3" onclick="openLesson('l-1-3','Your AI Automation Roadmap','Module 1 · 8 min',['How this course is structured and what you\'ll be able to do by the end','Setting up your AI workspace (tools you\'ll need — all free to start)','The mindset shift: from doing to orchestrating','Your first homework: list 5 repetitive tasks in your week'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Your AI Automation Roadmap</span>
+          <span class="lesson-duration">8 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-2">
+      <div class="module-header" onclick="toggleModule('mod-2')">
+        <div class="module-num" id="mod-2-num">2</div>
+        <div class="module-info">
+          <div class="module-title">10 Free AI Tools You Can Use Today</div>
+          <div class="module-desc">Your essential toolkit — free, powerful, no credit card needed</div>
+          <div class="module-meta">3 lessons · ~40 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-2-1" onclick="openLesson('l-2-1','The Essential Free Stack','Module 2 · 15 min',['ChatGPT free tier — what it can and can\'t do','Claude.ai — when to use it instead of ChatGPT','Perplexity for research automation','Canva AI for visual content without a designer','Google Gemini for Workspace integration'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">The Essential Free Stack</span>
+          <span class="lesson-duration">15 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-2-2" onclick="openLesson('l-2-2','Workflow & Automation Tools','Module 2 · 14 min',['Make.com free tier — build your first automation in 10 minutes','Zapier free plan — when it\'s better than Make','Notion AI for knowledge management','Taskade for AI project management','Which tool to use for which job'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Workflow & Automation Tools</span>
+          <span class="lesson-duration">14 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-2-3" onclick="openLesson('l-2-3','Set Up Your AI Workspace','Module 2 · 11 min',['Creating accounts and connecting tools together','Your daily AI workflow setup (15 minutes of setup saves 2 hours/day)','Browser extensions to add AI everywhere','Pro tips: how to get more from free tiers'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Set Up Your AI Workspace</span>
+          <span class="lesson-duration">11 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-3">
+      <div class="module-header" onclick="toggleModule('mod-3')">
+        <div class="module-num" id="mod-3-num">3</div>
+        <div class="module-info">
+          <div class="module-title">Your First Automation in 30 Minutes</div>
+          <div class="module-desc">Build something real — zero coding required</div>
+          <div class="module-meta">3 lessons · ~45 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-3-1" onclick="openLesson('l-3-1','Anatomy of an Automation','Module 3 · 10 min',['Trigger → Action → Output: the 3 parts of every automation','How to map out a workflow before building it','Common triggers: form submission, email received, schedule, new row in sheet','Common actions: send email, create doc, post to social, update spreadsheet'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Anatomy of an Automation</span>
+          <span class="lesson-duration">10 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-3-2" onclick="openLesson('l-3-2','Build It: Email Auto-Responder','Module 3 · 20 min',['We\'ll build a Gmail auto-responder that uses AI to write personalized replies','Step-by-step: Gmail → Make.com → ChatGPT API → send reply','How to test it without sending to real people','Customizing the AI prompt for your voice/brand'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Build It: Email Auto-Responder</span>
+          <span class="lesson-duration">20 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-3-3" onclick="openLesson('l-3-3','Fix It When It Breaks','Module 3 · 15 min',['How to read error messages in Make.com (they\'re not scary)','The 5 most common automation problems and exact fixes','How to add error handling so your automation never fully fails','Where to get help: Make.com community, ChatGPT, this course\'s Discord'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Fix It When It Breaks</span>
+          <span class="lesson-duration">15 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-4">
+      <div class="module-header" onclick="toggleModule('mod-4')">
+        <div class="module-num" id="mod-4-num">4</div>
+        <div class="module-info">
+          <div class="module-title">Automate Your Email Inbox & Calendar</div>
+          <div class="module-desc">Reclaim 2+ hours every day from your most time-wasting tasks</div>
+          <div class="module-meta">3 lessons · ~40 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-4-1" onclick="openLesson('l-4-1','AI Email Triage System','Module 4 · 14 min',['How to train AI to sort, label, and prioritize your inbox automatically','Build a system that flags urgent emails and archives noise','AI-generated draft replies for common email types','Tools: Gmail + Make.com + GPT-4o'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">AI Email Triage System</span>
+          <span class="lesson-duration">14 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-4-2" onclick="openLesson('l-4-2','Smart Calendar Automation','Module 4 · 13 min',['Auto-schedule your week based on your priorities (using Reclaim AI)','Set up meeting buffer times, focus blocks, and daily reviews automatically','Sync Google Calendar with your task manager — no manual entry ever again','Calendar-triggered automations: prep docs before meetings auto'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Smart Calendar Automation</span>
+          <span class="lesson-duration">13 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-4-3" onclick="openLesson('l-4-3','Meeting Notes on Autopilot','Module 4 · 13 min',['How to auto-record, transcribe, and summarize every meeting with Fireflies.ai','Automatically extract action items and send follow-up emails','Connect meeting notes to your project management tool','Save: 20-30 min per meeting'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Meeting Notes on Autopilot</span>
+          <span class="lesson-duration">13 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-5">
+      <div class="module-header" onclick="toggleModule('mod-5')">
+        <div class="module-num" id="mod-5-num">5</div>
+        <div class="module-info">
+          <div class="module-title">Generate Blog Posts, Captions & Emails on Autopilot</div>
+          <div class="module-desc">Content that used to take hours now takes minutes</div>
+          <div class="module-meta">3 lessons · ~42 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-5-1" onclick="openLesson('l-5-1','The Content Multiplier System','Module 5 · 15 min',['One idea → 10 pieces of content automatically','The exact AI prompt template that generates in your voice','Blog post → LinkedIn post → Twitter thread → Email newsletter, automated','Tools: ChatGPT + Make.com + Buffer/Beehiiv'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">The Content Multiplier System</span>
+          <span class="lesson-duration">15 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-5-2" onclick="openLesson('l-5-2','Auto-Post to Social Media','Module 5 · 14 min',['Schedule a month of content in 2 hours with AI','Tools: Buffer free tier + ChatGPT + Canva AI for visuals','How to create a content calendar that runs itself','Repurposing old content with AI — never run out of ideas'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Auto-Post to Social Media</span>
+          <span class="lesson-duration">14 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-5-3" onclick="openLesson('l-5-3','Email Newsletter on Autopilot','Module 5 · 13 min',['Set up a weekly newsletter that practically writes itself','How to use AI to write in your personal voice (not generic AI tone)','Beehiiv + AI: from idea to sent newsletter in 20 minutes','Growing your list with automated welcome sequences'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Email Newsletter on Autopilot</span>
+          <span class="lesson-duration">13 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card" id="mod-6">
+      <div class="module-header" onclick="toggleModule('mod-6')">
+        <div class="module-num" id="mod-6-num">6</div>
+        <div class="module-info">
+          <div class="module-title">5 Workflows That Save 10+ Hours Per Week</div>
+          <div class="module-desc">Your complete automation stack — ready to run</div>
+          <div class="module-meta">3 lessons · ~48 min</div>
+        </div>
+        <div class="module-chevron">▼</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson" id="l-6-1" onclick="openLesson('l-6-1','Workflows 1–3: Daily Essentials','Module 6 · 18 min',['Workflow 1: Morning briefing — news, tasks, weather, emails summarized and sent to you at 7am','Workflow 2: Lead capture → CRM → welcome email, fully automated','Workflow 3: Invoice generation — fill one form, PDF invoice is created and emailed automatically'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Workflows 1–3: Daily Essentials</span>
+          <span class="lesson-duration">18 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-6-2" onclick="openLesson('l-6-2','Workflows 4–5: Content & Research','Module 6 · 16 min',['Workflow 4: Research assistant — enter a topic, AI finds sources, summarizes, saves to Notion','Workflow 5: Competitor monitoring — track mentions, price changes, new content automatically','How to stack workflows for compounding time savings'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Workflows 4–5: Content & Research</span>
+          <span class="lesson-duration">16 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+        <div class="lesson" id="l-6-3" onclick="openLesson('l-6-3','Your Next Steps & Graduation','Module 6 · 14 min',['Review: your full automation stack and the hours saved','How to keep improving your automations as AI tools evolve','Upgrade path: when you\'re ready for AI Automation Pro','Community: how to get help, share wins, and keep growing'])">
+          <div class="lesson-check">✓</div><span class="lesson-icon">▶</span>
+          <span class="lesson-title">Your Next Steps & Graduation 🎓</span>
+          <span class="lesson-duration">14 min</span>
+          <span class="lesson-placeholder">Add video</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /modules-list -->
+
+  <!-- Bonuses -->
+  <div class="bonus-section" style="margin-top:32px">
+    <h3>🎁 Your Bonuses</h3>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-icon">📋</div>
+        <h4>20 Copy-Paste Prompt Templates</h4>
+        <p>Ready-to-use prompts for email, content, research & more</p>
+        <button class="bonus-btn" onclick="alert('Add your Google Drive / Notion link here for this bonus!')">Download →</button>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">📊</div>
+        <h4>AI Tools Comparison Cheat Sheet</h4>
+        <p>Side-by-side comparison of the best free AI tools by use case</p>
+        <button class="bonus-btn" onclick="alert('Add your Google Drive / Notion link here for this bonus!')">Download →</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /course-wrap -->
+
+<script>
+const COURSE_KEY = 'academy_starter_auth';
+const PASS = 'starter2025';
+const TOTAL_LESSONS = 18;
+
+// ── Gate ──
+function checkGate() {
+  const pw = document.getElementById('gate-pw').value.trim();
+  if (pw === PASS) {
+    localStorage.setItem(COURSE_KEY, '1');
+    showCourse();
+  } else {
+    document.getElementById('gate-err').style.display = 'block';
+  }
+}
+
+function logout() {
+  localStorage.removeItem(COURSE_KEY);
+  location.reload();
+}
+
+function showCourse() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('course-content').style.display = 'block';
+  updateProgress();
+  restoreCompleted();
+}
+
+// ── Auto-login if already authed ──
+if (localStorage.getItem(COURSE_KEY) === '1') showCourse();
+
+// ── Module toggle ──
+function toggleModule(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+// ── Lesson viewer ──
+let currentLesson = null;
+let allLessons = [];
+
+function openLesson(id, title, meta, notes) {
+  currentLesson = id;
+  document.getElementById('viewer-title').textContent = title;
+  document.getElementById('viewer-meta').textContent = meta;
+  document.getElementById('viewer-video-note').textContent = 'Add your video URL here — Loom, YouTube (unlisted), or Vimeo embed';
+
+  const notesList = document.getElementById('viewer-notes-list');
+  notesList.innerHTML = notes.map(n => `<li>${n}</li>`).join('');
+
+  document.getElementById('lesson-viewer').classList.add('active');
+  document.getElementById('modules-list').style.display = 'none';
+  document.querySelector('.progress-bar-wrap').style.display = 'none';
+  document.querySelector('.course-hero').style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+function closeViewer() {
+  document.getElementById('lesson-viewer').classList.remove('active');
+  document.getElementById('modules-list').style.display = 'block';
+  document.querySelector('.progress-bar-wrap').style.display = 'block';
+  document.querySelector('.course-hero').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function markComplete() {
+  if (!currentLesson) return;
+  const el = document.getElementById(currentLesson);
+  el.classList.add('done');
+  const completed = getCompleted();
+  if (!completed.includes(currentLesson)) {
+    completed.push(currentLesson);
+    localStorage.setItem(COURSE_KEY + '_done', JSON.stringify(completed));
+  }
+  updateProgress();
+  nextLesson();
+}
+
+function nextLesson() {
+  const lessons = [...document.querySelectorAll('.lesson')];
+  const idx = lessons.findIndex(l => l.id === currentLesson);
+  if (idx < lessons.length - 1) {
+    lessons[idx + 1].click();
+  } else {
+    closeViewer();
+    alert('🎉 You\'ve completed this module! Keep going!');
+  }
+}
+
+function getCompleted() {
+  try { return JSON.parse(localStorage.getItem(COURSE_KEY + '_done') || '[]'); }
+  catch { return []; }
+}
+
+function restoreCompleted() {
+  getCompleted().forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('done');
+  });
+}
+
+function updateProgress() {
+  const done = getCompleted().length;
+  const pct = Math.round((done / TOTAL_LESSONS) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${done} of ${TOTAL_LESSONS} lessons complete`;
+
+  // Check module completion
+  ['1','2','3','4','5','6'].forEach(m => {
+    const lessons = document.querySelectorAll(`[id^="l-${m}-"]`);
+    const done = [...lessons].every(l => getCompleted().includes(l.id));
+    const num = document.getElementById(`mod-${m}-num`);
+    if (num) num.className = 'module-num' + (done ? ' done' : '');
+  });
+}
+</script>
+</body>
+</html>
