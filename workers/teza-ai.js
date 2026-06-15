@@ -260,7 +260,14 @@ export default {
       });
     }
 
-    return new Response(JSON.stringify({ text }), {
+    return new Response(JSON.stringify({
+      text,
+      _meta: {
+        model: groqData.model || GROQ_MODEL,
+        tokens: groqData.usage?.total_tokens || null,
+        finish: groqData.choices?.[0]?.finish_reason || null,
+      }
+    }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
