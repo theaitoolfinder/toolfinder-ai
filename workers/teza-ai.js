@@ -1,19 +1,19 @@
 /**
  * Teza AI — Cloudflare Worker
  * ─────────────────────────────────────────────────────────────────────────────
- * Secure proxy between myaitoolsfinder.com and Google Gemini API.
- * The GEMINI_API_KEY lives here as a Worker secret — never exposed to the browser.
+ * Secure proxy between myaitoolsfinder.com and Groq API (Llama 3.3 70B).
+ * The GROQ_API_KEY lives here as a Worker secret — never exposed to the browser.
  *
  * To update: go to Cloudflare Workers → teza-ai → Edit code → paste this file → Deploy
- * Secret GEMINI_API_KEY is already saved — no need to re-add it.
+ * Add secret: GROQ_API_KEY = your key from console.groq.com (free, no credit card)
  *
- * Free tier: 100,000 Worker requests/day + 1,500 Gemini calls/day
+ * Free tier: 100,000 Worker requests/day + 14,400 Groq calls/day
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 const ALLOWED_ORIGIN = 'https://myaitoolsfinder.com';
-const GEMINI_MODEL   = 'gemini-2.5-flash-lite';
-const GEMINI_URL     = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GROQ_MODEL     = 'llama-3.3-70b-versatile'; // fast, free, no geo-restrictions
+const GROQ_URL       = 'https://api.groq.com/openai/v1/chat/completions';
 
 const SYSTEM_PROMPT = `You are Teza, the AI assistant for My AI Tools Finder (myaitoolsfinder.com). You are the site's autonomous customer service, guide, and AI expert — available on every page of the site.
 
@@ -146,64 +146,44 @@ export default {
       });
     }
 
-    // ── Build Gemini request ──────────────────────────────────────────────────
-    const contents = messages.map(m => ({
-      role: m.role === 'model' ? 'model' : 'user',
-      parts: [{ text: m.text }],
-    }));
+    // ── Build Groq request (OpenAI-compatible format) ─────────────────────────
+    const groqMessages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...messages.map(m => ({
+        role: m.role === 'model' ? 'assistant' : 'user',
+        content: m.text,
+      })),
+    ];
 
-    const geminiPayload = {
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents,
-      generationConfig: {
-        maxOutputTokens: 400,
-        temperature: 0.75,
-        topP: 0.9,
-      },
-      safetySettings: [
-        { category: 'HARM_CATEGORY_HARASSMENT',        threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_HATE_SPEECH',       threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
-      ],
+    const groqPayload = {
+      model: GROQ_MODEL,
+      messages: groqMessages,
+      max_tokens: 400,
+      temperature: 0.75,
     };
 
-    // ── Call Gemini (with retry for geo-restriction errors) ──────────────────
-    const geminiBodyStr = JSON.stringify(geminiPayload);
-    let text = null;
-    let lastError = null;
-
-    for (let attempt = 0; attempt < 5; attempt++) {
-      let geminiResp;
-      try {
-        geminiResp = await fetch(`${GEMINI_URL}?key=${env.GEMINI_API_KEY}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: geminiBodyStr,
-        });
-      } catch (err) {
-        lastError = String(err);
-        continue; // retry on network error
-      }
-
-      const geminiData = await geminiResp.json();
-
-      // Check for geo-restriction — retry on a different edge node
-      if (geminiData?.error?.status === 'FAILED_PRECONDITION' &&
-          geminiData?.error?.message?.includes('location')) {
-        lastError = 'geo-restricted';
-        continue;
-      }
-
-      text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || null;
-      if (text) break; // success
-
-      lastError = JSON.stringify(geminiData?.error || 'unknown');
-      break; // non-geo error — don't retry
+    // ── Call Groq ─────────────────────────────────────────────────────────────
+    let groqResp;
+    try {
+      groqResp = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+        },
+        body: JSON.stringify(groqPayload),
+      });
+    } catch (err) {
+      return new Response(JSON.stringify({ error: 'Groq request failed', detail: String(err) }), {
+        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
     }
 
+    const groqData = await groqResp.json();
+    const text = groqData?.choices?.[0]?.message?.content || null;
+
     if (!text) {
-      return new Response(JSON.stringify({ error: 'Gemini unavailable', detail: lastError }), {
+      return new Response(JSON.stringify({ error: 'No response from Groq', raw: groqData }), {
         status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     }
