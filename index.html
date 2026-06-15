@@ -3696,16 +3696,10 @@ async function popSubscribe(){
   </div>
   <div id="cb-msgs" aria-live="polite" aria-label="Chat messages"></div>
   <div class="cb-chips" id="cb-chips">
-    <button class="cb-chip" onclick="cbQuick('What is ChatGPT?')">📖 What is ChatGPT?</button>
-    <button class="cb-chip" onclick="cbQuick('ChatGPT vs Claude')">⚖️ ChatGPT vs Claude</button>
-    <button class="cb-chip" onclick="cbQuick('Free tools only')">🆓 Free tools</button>
-    <button class="cb-chip" onclick="cbQuick('Trending AI tools right now')">🔥 Trending</button>
-    <button class="cb-chip" onclick="cbQuick('Best tools for developers')">💻 Dev tools</button>
-    <button class="cb-chip" onclick="cbQuick('Tools to save time')">⏱️ Save time</button>
-    <button class="cb-chip" onclick="cbQuick('Show me the prompts library')">✍️ Prompts</button>
-    <button class="cb-chip" onclick="cbQuick('Latest articles and guides')">📰 Articles</button>
-    <button class="cb-chip" onclick="cbQuick('Tell me about the newsletter')">📬 Newsletter</button>
-    <button class="cb-chip" onclick="cbQuick('How does this site work?')">❓ How it works</button>
+    <button class="cb-chip" onclick="cbQuick('What are the trending AI tools right now?')">🔥 Trending</button>
+    <button class="cb-chip" onclick="cbQuick('ChatGPT vs Claude — which is better?')">⚖️ ChatGPT vs Claude</button>
+    <button class="cb-chip" onclick="cbQuick('Show me the best free AI tools')">🆓 Free tools</button>
+    <button class="cb-chip" onclick="cbQuick('I am a freelancer, what AI tools should I use?')">💼 For freelancers</button>
   </div>
   <div id="cb-input-row">
     <input id="cb-input" type="text" placeholder="Ask me anything about AI tools…"
@@ -3799,6 +3793,9 @@ async function popSubscribe(){
     if (!q) return;
     cbUserMsg(q);
     inp.value = '';
+    // Hide chips after first message — frees up space
+    const chipsEl = document.getElementById('cb-chips');
+    if (chipsEl) chipsEl.style.display = 'none';
     const typing = cbTypingIndicator();
     setTimeout(() => { typing.remove(); cbProcess(q); }, 650 + Math.random() * 450);
   };
