@@ -168,25 +168,42 @@ export default {
       ],
     };
 
-    // ── Call Gemini ───────────────────────────────────────────────────────────
-    let geminiResp;
-    try {
-      geminiResp = await fetch(`${GEMINI_URL}?key=${env.GEMINI_API_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(geminiPayload),
-      });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: 'Gemini request failed', detail: String(err) }), {
-        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+    // ── Call Gemini (with retry for geo-restriction errors) ──────────────────
+    const geminiBodyStr = JSON.stringify(geminiPayload);
+    let text = null;
+    let lastError = null;
+
+    for (let attempt = 0; attempt < 5; attempt++) {
+      let geminiResp;
+      try {
+        geminiResp = await fetch(`${GEMINI_URL}?key=${env.GEMINI_API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: geminiBodyStr,
+        });
+      } catch (err) {
+        lastError = String(err);
+        continue; // retry on network error
+      }
+
+      const geminiData = await geminiResp.json();
+
+      // Check for geo-restriction — retry on a different edge node
+      if (geminiData?.error?.status === 'FAILED_PRECONDITION' &&
+          geminiData?.error?.message?.includes('location')) {
+        lastError = 'geo-restricted';
+        continue;
+      }
+
+      text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+      if (text) break; // success
+
+      lastError = JSON.stringify(geminiData?.error || 'unknown');
+      break; // non-geo error — don't retry
     }
 
-    const geminiData = await geminiResp.json();
-    const text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || null;
-
     if (!text) {
-      return new Response(JSON.stringify({ error: 'No response from Gemini', raw: geminiData }), {
+      return new Response(JSON.stringify({ error: 'Gemini unavailable', detail: lastError }), {
         status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     }
