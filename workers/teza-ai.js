@@ -52,7 +52,7 @@ async function fetchAffiliateTools() {
 // ── Build system prompt, injecting live affiliate links ───────────────────────
 function buildSystemPrompt(affiliateTools) {
   const affiliateSection = affiliateTools.length > 0
-    ? affiliateTools.map(t => `- [${t.name}](${t.affiliate_url})`).join('\n')
+    ? affiliateTools.map(t => `- [${t.name}](${t.affiliate_url}) — ${(t.categories || []).join(', ')}`).join('\n')
     : '(no affiliate tools configured yet)';
 
   return `You are Teza, the AI assistant for My AI Tools Finder (myaitoolsfinder.com). You are the site's autonomous customer service, guide, and AI expert — available on every page of the site.
