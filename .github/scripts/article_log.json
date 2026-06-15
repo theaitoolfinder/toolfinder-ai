@@ -2,21 +2,6 @@
   "generated": [
     {
       "date": "2026-06-07",
-      "slot": "afternoon",
-      "slug": "fireflies-ai-or-otter-ai-the-2026-comparison-no-one-s-being",
-      "title": "Fireflies.ai or Otter.ai? The 2026 Comparison No One's Being Honest About",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=85&auto=format&fit=crop",
-      "topic": "firefliesai otterai 2026 comparison",
-      "pair": "",
-      "words": 653,
-      "partners": [
-        "Fireflies.ai"
-      ]
-    },
-    {
-      "date": "2026-06-07",
       "slot": "evening",
       "slug": "ai-tools-digest-june-07-2026-evening-edition",
       "title": "AI Tools Digest — June 07, 2026 (Evening Edition)",
@@ -1048,6 +1033,27 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-15",
+      "slot": "night",
+      "slug": "the-social-media-manager-s-ai-tools-roadmap-for-2026-start-here",
+      "title": "The Social Media Manager's AI Tools Roadmap for 2026: Start Here",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop",
+      "topic": "social media managers tools",
+      "pair": "",
+      "tool": "",
+      "words": 2277,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1163,6 +1169,7 @@
     "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1676272682018-b1435bad1cf0?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1676272682018-b1435bad1cf0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop"
   ]
 }
