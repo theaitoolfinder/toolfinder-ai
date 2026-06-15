@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-07",
-      "slot": "morning",
-      "slug": "set-up-ai-customer-support-that-handles-80-of-queries",
-      "title": "Set Up AI Customer Support That Handles 80% of Queries Automatically",
-      "type": "tutorial",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=800&q=85&auto=format&fit=crop",
-      "topic": "customer support handles queries",
-      "pair": "",
-      "words": 562,
-      "partners": []
-    },
-    {
-      "date": "2026-06-07",
       "slot": "midday",
       "slug": "best-ai-audio-tools-for-podcasters-10-tools-tested-only-these",
       "title": "Best AI Audio Tools for Podcasters: 10 Tools Tested, Only These Made the Cut",
@@ -1034,6 +1021,26 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-15",
+      "slot": "afternoon",
+      "slug": "honest-jasper-ai-review-what-it-gets-right-and-where-it-falls",
+      "title": "Honest Jasper AI Review: What It Gets Right and Where It Falls Short",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
+      "topic": "jasper gets where falls",
+      "pair": "",
+      "tool": "Jasper AI",
+      "words": 2518,
+      "partners": [
+        "Beehiiv",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1147,6 +1154,7 @@
     "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop"
   ]
 }
