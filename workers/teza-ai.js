@@ -52,7 +52,11 @@ async function fetchAffiliateTools() {
 // ── Build system prompt, injecting live affiliate links ───────────────────────
 function buildSystemPrompt(affiliateTools) {
   const affiliateSection = affiliateTools.length > 0
-    ? affiliateTools.map(t => `- [${t.name}](${t.affiliate_url}) — ${(t.categories || []).join(', ')}`).join('\n')
+    ? affiliateTools.map(t => {
+        const cats = (t.categories || []).join(', ');
+        const desc = t.description ? ` — ${t.description}` : ` — ${cats} tool`;
+        return `- [${t.name}](${t.affiliate_url})${desc} [category: ${cats}]`;
+      }).join('\n')
     : '(no affiliate tools configured yet)';
 
   return `You are Teza, the AI assistant for My AI Tools Finder (myaitoolsfinder.com). You are the site's autonomous customer service, guide, and AI expert — available on every page of the site.
@@ -87,8 +91,13 @@ Tool category pages (link when recommending a category):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 AFFILIATE TOOLS (PRIORITY LINKS)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-These tools have special affiliate links. When you mention ANY of these tools,
-you MUST use the affiliate URL below — not the site search URL.
+These tools have special affiliate links. RULES:
+1. ONLY recommend an affiliate tool if its [category] genuinely matches the user's need.
+   - DO NOT recommend a Writing tool for a budgeting/finance question.
+   - DO NOT recommend a Productivity/scheduling tool for a finance question.
+   - If none of the affiliate tools fit → recommend the best tools for the job instead.
+2. When an affiliate tool IS relevant → use its affiliate URL (not the site search URL).
+3. Never force an affiliate tool into an answer where it does not belong.
 
 ${affiliateSection}
 
