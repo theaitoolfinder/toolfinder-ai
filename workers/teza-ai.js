@@ -30,7 +30,14 @@ async function fetchAffiliateTools() {
     return _affiliateCache;
   }
   try {
-    const resp = await fetch(AFFILIATE_JSON, { cf: { cacheEverything: true, cacheTtl: 3600 } });
+    // 4-second timeout so a slow GitHub Pages response never blocks Groq
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const resp = await fetch(AFFILIATE_JSON, {
+      signal: controller.signal,
+      cf: { cacheEverything: true, cacheTtl: 3600 },
+    });
+    clearTimeout(timer);
     if (resp.ok) {
       const data = await resp.json();
       _affiliateCache   = data.tools || [];
@@ -202,24 +209,40 @@ export default {
       temperature: 0.75,
     };
 
-    // ── Call Groq ─────────────────────────────────────────────────────────────
-    let groqResp;
-    try {
-      groqResp = await fetch(GROQ_URL, {
+    // ── Call Groq (with one automatic retry) ─────────────────────────────────
+    const groqHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+    };
+
+    async function callGroq() {
+      const r = await fetch(GROQ_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${env.GROQ_API_KEY}`,
-        },
+        headers: groqHeaders,
         body: JSON.stringify(groqPayload),
       });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: 'Groq request failed', detail: String(err) }), {
-        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+      if (!r.ok) {
+        const errBody = await r.text();
+        throw new Error(`Groq ${r.status}: ${errBody}`);
+      }
+      return r.json();
     }
 
-    const groqData = await groqResp.json();
+    let groqData;
+    try {
+      groqData = await callGroq();
+    } catch {
+      // One retry after a short pause
+      try {
+        await new Promise(res => setTimeout(res, 800));
+        groqData = await callGroq();
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Groq request failed', detail: String(err) }), {
+          status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
     const text = groqData?.choices?.[0]?.message?.content || null;
 
     if (!text) {
