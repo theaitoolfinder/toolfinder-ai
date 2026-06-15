@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-06",
-      "slot": "night",
-      "slug": "how-to-produce-an-entire-month-of-content-in-one-weekend-with-ai",
-      "title": "How to Produce an Entire Month of Content in One Weekend with AI",
-      "type": "workflow",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=85&auto=format&fit=crop",
-      "topic": "produce entire month content",
-      "pair": "",
-      "words": 827,
-      "partners": []
-    },
-    {
-      "date": "2026-06-06",
       "slot": "latenight",
       "slug": "ai-tools-digest-june-06-2026-late-night-edition",
       "title": "AI Tools Digest — June 06, 2026 (Late Night Edition)",
@@ -1019,6 +1006,27 @@
         "OpusClip",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-06-15",
+      "slot": "morning",
+      "slug": "zapier-vs-make-com-2026-i-used-both-for-30-days-here-s-the-truth",
+      "title": "Zapier vs Make.com (2026): I Used Both for 30 Days — Here's the Truth",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
+      "topic": "zapier makecom 2026 used",
+      "pair": "Zapier vs Make.com (2026)",
+      "tool": "Zapier",
+      "words": 2534,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1130,6 +1138,7 @@
     "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop"
   ]
 }
