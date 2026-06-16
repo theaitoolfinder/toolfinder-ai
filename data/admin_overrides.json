@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-16T14:47:34.157Z",
+  "updated": "2026-06-16T14:49:52.966Z",
   "overrides": {
     "14": {
       "affiliate_url": "https://writesonic.com?fp_ref=myaitoolsfinder",
@@ -38,6 +38,9 @@
     "82": {
       "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza",
       "trending": 90
+    },
+    "86": {
+      "affiliate_url": "https://predis.ai?ref=myaitoolsfinder"
     },
     "88": {
       "affiliate_url": "https://www.make.com/en/register?pc=myaitoolsfinder",
