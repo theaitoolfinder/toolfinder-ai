@@ -716,7 +716,7 @@ window.MYAI_AFF_MAP = {
   "writecream":            "https://writecream.com",
   "writer":                "https://writer.com",
   "writerzen":             "https://writerzen.net",
-  "writesonic":            "https://writesonic.com",
+  "writesonic":            "https://writesonic.com?fp_ref=myaitoolsfinder",
   "xano":                  "https://xano.com",
   "xano ai":               "https://xano.com",
   "xembly":                "https://xembly.com",
