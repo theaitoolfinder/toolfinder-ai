@@ -2985,4 +2985,113 @@ task = client.image_to_video.create(
     }
   },
 
+
+  /* ── Writesonic ── */
+  'writesonic': {
+    name: "Writesonic",
+    domain: "writesonic.com",
+    affiliate_url: "https://writesonic.com?fp_ref=myaitoolsfinder",
+    category: "Writing",
+    tagline: "Generate high-quality content with AI in seconds",
+    color: "#6C5CE7",
+    levels: {
+      basic:       {
+        title: "Your First Blog Post with Writesonic",
+        description: "Create a complete blog article using AI-powered writing templates",
+        duration: "5 min",
+        steps: [
+          {
+            title: "Sign up and choose your workspace",
+            content: `<p>Visit writesonic.com and click <strong>Get Started for Free</strong>. Sign up using your email, Google, or Microsoft account. Once logged in, you'll land on the main dashboard.</p><p>Select your preferred language from the dropdown in the top-right corner. Writesonic supports 25+ languages, so choose the one that matches your target audience.</p>`,
+            tip: { type: "info", text: "The free plan includes 10,000 words per month \u2014 perfect for testing the platform before upgrading." }
+          },
+          {
+            title: "Select the AI Article Writer template",
+            content: `<p>From the left sidebar, click <strong>AI Article Writer 6.0</strong> under the <strong>Blog & Articles</strong> section. This is Writesonic's most powerful long-form content generator.</p><p>You'll see a clean input form with fields for your article topic, keywords, and tone. This template can generate complete articles up to 5,000 words in a single run.</p>`,
+            tip: null
+          },
+          {
+            title: "Enter your topic and configure settings",
+            content: `<p>In the <strong>Article Topic</strong> field, type a clear, specific topic like "Benefits of Remote Work for Small Businesses". Add 2-3 <strong>Keywords</strong> you want the article to rank for, separated by commas.</p><p>Select your <strong>Tone of Voice</strong> (professional, casual, enthusiastic, etc.) and choose <strong>Point of View</strong> (first person, second person, or third person). Set the <strong>Article Length</strong> slider to your desired word count.</p>`,
+            tip: { type: "tip", text: "More specific topics produce better results. Instead of \"Marketing Tips\", try \"Email Marketing Tips for E-commerce Brands\"." }
+          },
+          {
+            title: "Generate and review your article",
+            content: `<p>Click the purple <strong>Generate Article</strong> button at the bottom. Writesonic will create an outline first, then generate the full article section by section. This takes 30-60 seconds depending on length.</p><p>Review the generated content in the editor. You'll see formatted headings, paragraphs, and a logical structure. The AI includes introductions, body sections, and conclusions automatically.</p>`,
+            tip: { type: "info", text: "Each generation consumes words from your monthly quota. A 1,500-word article uses approximately 1,500 words from your plan." }
+          },
+          {
+            title: "Edit and export your content",
+            content: `<p>Use the built-in editor to refine sentences, adjust headings, or add your own insights. You can highlight text and use the toolbar to make it bold, italic, or convert it to a list.</p><p>When satisfied, click <strong>Export</strong> in the top-right corner. Choose to download as a <strong>Word document</strong>, copy to clipboard, or export directly to WordPress, Medium, or Shopify if you've connected those integrations.</p>`,
+            tip: { type: "success", text: "You've just created your first AI-generated article. Always fact-check and add your unique perspective before publishing." }
+          }
+        ]
+      },
+      intermediate:       {
+        title: "Build a Content Campaign with Brand Voice",
+        description: "Create multiple on-brand pieces using custom tone and SEO optimization",
+        duration: "15 min",
+        steps: [
+          {
+            title: "Set up your Brand Voice profile",
+            content: `<p>Navigate to <strong>Settings</strong> from the left sidebar, then click <strong>Brand Voice</strong>. This feature lets you train Writesonic to match your company's unique writing style.</p><p>Click <strong>Create Brand Voice</strong> and paste 3-5 samples of your existing content (blog posts, emails, landing pages). Writesonic analyzes tone, vocabulary, sentence structure, and formatting patterns. Give your brand voice a name like "Tech Startup Casual" or "Enterprise Professional".</p>`,
+            tip: { type: "tip", text: "Use content written by the same author or team for consistency. Mixed writing styles will confuse the AI's learning." }
+          },
+          {
+            title: "Create an SEO-optimized article with your brand voice",
+            content: `<p>Return to <strong>AI Article Writer 6.0</strong> and enter your topic. This time, expand the <strong>Advanced Options</strong> section at the bottom of the form.</p><p>Under <strong>Brand Voice</strong>, select the profile you just created. Enable <strong>SEO Mode</strong> and enter your primary keyword. Writesonic will analyze top-ranking pages and suggest semantic keywords to include. Select 5-8 suggested keywords from the list that appears.</p>`,
+            tip: { type: "info", text: "SEO Mode requires the paid plan but significantly improves content relevance and ranking potential for target keywords." }
+          },
+          {
+            title: "Generate supporting content pieces",
+            content: `<p>With your main article complete, create supporting content. Click <strong>Social Media Posts</strong> from the sidebar and select <strong>LinkedIn Post</strong> or <strong>Twitter Thread</strong>.</p><p>Paste your article title or key points in the input field. Select your brand voice again to maintain consistency. Generate 3-5 variations and pick the best performer. Repeat for <strong>Email Subject Lines</strong> and <strong>Meta Descriptions</strong> to build a complete content campaign.</p>`,
+            tip: { type: "tip", text: "Save high-performing outputs to your Saved Items folder (star icon) for future reference and iteration." }
+          },
+          {
+            title: "Use the Sonic Editor for real-time collaboration",
+            content: `<p>Click <strong>Sonic Editor</strong> from the sidebar to access Writesonic's Google Docs-style interface. Start a new document and type <strong>forward slash (/)</strong> to open the AI command menu.</p><p>Type commands like "write an introduction about renewable energy" or "expand this paragraph" directly in your document. The AI generates content inline, maintaining your brand voice if selected. Highlight any text and click <strong>Ask AI</strong> to rephrase, summarize, or continue writing from that point.</p>`,
+            tip: { type: "success", text: "Sonic Editor is perfect for long-form content that needs human oversight at every step. Invite team members to collaborate in real-time." }
+          },
+          {
+            title: "Analyze and optimize with AI insights",
+            content: `<p>Before finalizing, click the <strong>SEO Checker</strong> tab in Sonic Editor (appears when SEO Mode is active). Review your content score, keyword density, and readability metrics.</p><p>Writesonic highlights sections that need improvement with color-coded suggestions. Click any suggestion to see recommended fixes. Aim for a score above 80 for well-optimized content. Export when ready or schedule directly to WordPress with publication date and time.</p>`,
+            tip: { type: "warning", text: "Don't over-optimize for keywords. Maintain natural language flow \u2014 Google's algorithms prioritize user experience over keyword stuffing." }
+          }
+        ]
+      },
+      advanced:       {
+        title: "Automate Content Production with API and Workflows",
+        description: "Build scalable content systems using Writesonic's API and Zapier integration",
+        duration: "30 min",
+        steps: [
+          {
+            title: "Generate your API key and test the endpoint",
+            content: `<p>Go to <strong>Settings</strong> and select <strong>API Access</strong> from the left menu. Click <strong>Generate New Key</strong> and copy your API key. Store it securely — it won't be shown again.</p><p>Review the API documentation at docs.writesonic.com. The primary endpoint is https://api.writesonic.com/v2/business/content/article-writer. Test a basic POST request using your preferred tool (Postman, Insomnia, or curl). Include your API key in the header as <strong>X-API-KEY</strong> and send a JSON payload with topic, language, and output count parameters.</p><div class="code-box">Example JSON payload:<br>{<br>  "topic": "AI Content Marketing Trends 2024",<br>  "language": "en",<br>  "num_copies": 1,<br>  "quality": "premium"<br>}</div>`,
+            tip: { type: "warning", text: "API access requires the Business plan or higher. Rate limits apply: 60 requests per minute on Business, 120 on Enterprise." }
+          },
+          {
+            title: "Build a content automation with Zapier",
+            content: `<p>Connect Writesonic to your workflow using Zapier. Create a new Zap and select your trigger (for example, <strong>New Row in Google Sheets</strong> or <strong>New Item in Airtable</strong>).</p><p>Add <strong>Writesonic</strong> as the action app. Choose <strong>Generate Article</strong> and authenticate with your API key. Map spreadsheet columns to Writesonic fields: column A for topic, column B for keywords, column C for tone. Set the output to automatically save to Google Docs or send to your CMS via webhook.</p><p>Test your Zap with sample data. Once confirmed, turn it on. Now every new row triggers automatic article generation without manual intervention.</p>`,
+            tip: { type: "tip", text: "Add a filter step to skip rows where topic is empty or word count exceeds your plan limits. This prevents wasted API calls." }
+          },
+          {
+            title: "Create a bulk content generation script",
+            content: `<p>For larger scale operations, write a Python script using the requests library. Import your content topics from a CSV file containing columns for topic, keywords, tone, and target word count.</p><p>Loop through each row, construct the API payload dynamically, and make POST requests to the article-writer endpoint. Implement error handling for rate limits (HTTP 429) with exponential backoff. Save each generated article to a separate file named with timestamp and sanitized topic title.</p><div class="code-box">Key libraries to import:<br>import requests<br>import time<br>import csv<br>import json</div><p>Add a progress bar using the tqdm library and log all API responses to a file for debugging. Schedule this script with cron (Linux/Mac) or Task Scheduler (Windows) to run daily during off-peak hours.</p>`,
+            tip: { type: "info", text: "Premium and Business plans have higher quality settings in the API. Set quality parameter to \"premium\" for best results, though this consumes more words per generation." }
+          },
+          {
+            title: "Implement multi-language content workflows",
+            content: `<p>Leverage Writesonic's 25+ language support for international content. Create separate brand voice profiles for each language by uploading native content samples in Settings.</p><p>In your API calls or Zapier workflows, add a language routing logic. Use a lookup table mapping country codes to language codes (US to en, DE to de, FR to fr, etc.). Pass the appropriate language code and brand voice ID in each API request.</p><p>For localized SEO, fetch country-specific keywords using Writesonic's keyword research endpoint before generating articles. Combine this with translation memory to maintain consistent terminology across markets.</p>`,
+            tip: { type: "tip", text: "Always have native speakers review AI-generated content in languages other than English. Nuances and cultural context still require human oversight." }
+          },
+          {
+            title: "Monitor usage and optimize costs with analytics",
+            content: `<p>Access <strong>Usage Analytics</strong> in Settings to track word consumption, API calls, and content performance. Export monthly reports showing which templates and workflows consume the most credits.</p><p>Set up usage alerts by configuring webhooks that notify your team when you reach 80% of monthly quota. Implement a content priority queue in your automation: high-priority topics use premium quality, while bulk content generation uses economy mode to stretch your word budget.</p><p>Review the <strong>Content Performance</strong> dashboard to identify which AI-generated pieces drive the most engagement. Use these insights to refine your prompts, adjust brand voice samples, and optimize your content templates for better ROI per word spent.</p>`,
+            tip: { type: "success", text: "You've built a scalable content production system. Continuously A/B test different prompts and settings to improve output quality while managing costs." }
+          }
+        ]
+      }
+    }
+  },
+
 }; // end TUTORIALS_DATA
