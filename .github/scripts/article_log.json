@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-07",
-      "slot": "night",
-      "slug": "the-ai-hiring-workflow-screen-100-applicants-in-an-afternoon",
-      "title": "The AI Hiring Workflow: Screen 100 Applicants in an Afternoon",
-      "type": "workflow",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
-      "topic": "hiring workflow screen applicants",
-      "pair": "",
-      "words": 818,
-      "partners": []
-    },
-    {
-      "date": "2026-06-07",
       "slot": "latenight",
       "slug": "ai-tools-digest-june-07-2026-late-night-edition",
       "title": "AI Tools Digest — June 07, 2026 (Late Night Edition)",
@@ -1058,6 +1045,25 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-16",
+      "slot": "morning",
+      "slug": "surfer-seo-or-ahrefs-a-real-user-s-take-after-testing-both",
+      "title": "Surfer SEO or Ahrefs? A Real User's Take After Testing Both",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
+      "topic": "surfer ahrefs users take",
+      "pair": "Surfer SEO vs Ahrefs? A Real User's Take After Testing Both",
+      "tool": "Surfer SEO",
+      "words": 2244,
+      "partners": [
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1175,6 +1181,7 @@
     "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676272682018-b1435bad1cf0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop"
   ]
 }
