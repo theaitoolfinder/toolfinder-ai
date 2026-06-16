@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-08",
-      "slot": "morning",
-      "slug": "turn-one-piece-of-content-into-20-with-this-ai-repurposing",
-      "title": "Turn One Piece of Content Into 20 with This AI Repurposing Workflow",
-      "type": "tutorial",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
-      "topic": "turn piece content repurposing",
-      "pair": "",
-      "words": 559,
-      "partners": []
-    },
-    {
-      "date": "2026-06-08",
       "slot": "midday",
       "slug": "the-only-ai-productivity-tools-list-remote-workers-need-in-2026",
       "title": "The Only AI Productivity Tools List Remote Workers Need in 2026 — Curated and Tested",
@@ -1070,6 +1057,24 @@
         "Keyword Insights",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-16",
+      "slot": "afternoon",
+      "slug": "before-you-subscribe-to-heygen-read-this-pros-cons-verdict",
+      "title": "Before You Subscribe to HeyGen, Read This — Pros, Cons, Verdict",
+      "type": "pros_cons",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
+      "topic": "before subscribe heygen read",
+      "pair": "",
+      "tool": "HeyGen",
+      "words": 2624,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1189,6 +1194,7 @@
     "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop"
   ]
 }
