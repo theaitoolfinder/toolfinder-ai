@@ -500,7 +500,7 @@ window.MYAI_AFF_MAP = {
   "polymer":               "https://polymersearch.com",
   "power bi":              "https://powerbi.microsoft.com",
   "power bi ai":           "https://powerbi.microsoft.com",
-  "predis.ai":             "https://predis.ai",
+  "predis.ai":             "https://predis.ai?ref=myaitoolsfinder",
   "privy":                 "https://privy.com",
   "privy ai":              "https://privy.com",
   "prowritingaid":         "https://prowritingaid.com",
