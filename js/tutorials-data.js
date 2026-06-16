@@ -3094,4 +3094,113 @@ task = client.image_to_video.create(
     }
   },
 
+
+  /* ── Predis.ai ── */
+  'predis-ai': {
+    name: "Predis.ai",
+    domain: "predis.ai",
+    affiliate_url: "https://predis.ai?ref=myaitoolsfinder",
+    category: "Marketing",
+    tagline: "AI social media content creation in seconds",
+    color: "#6C5CE7",
+    levels: {
+      basic:       {
+        title: "Your First AI-Generated Social Post with Predis.ai",
+        description: "Create a complete social media post with visuals in under 5 minutes",
+        duration: "5 min",
+        steps: [
+          {
+            title: "Sign up and select your content type",
+            content: `<p>Navigate to <strong>predis.ai</strong> and click <strong>Get Started Free</strong> in the top-right corner. Complete the registration using your email or Google account. Once inside the dashboard, you'll see multiple content creation options.</p><p>Click on <strong>Single Post</strong> from the main menu. This is the simplest way to generate standalone social media content for platforms like Instagram, Facebook, LinkedIn, or Twitter.</p>`,
+            tip: { type: "info", text: "Predis.ai offers a free trial with limited credits \u2014 no credit card required to start." }
+          },
+          {
+            title: "Enter your topic or brand information",
+            content: `<p>In the content creation interface, you'll see a text field labeled <strong>What do you want to post about?</strong> Type a brief description of your topic, product, or campaign idea. For example: 'Launching a new organic coffee blend with Colombian beans' or 'Tips for remote work productivity'.</p><p>Below that, select your <strong>Brand Voice</strong> from the dropdown menu — options include Professional, Casual, Inspirational, or Humorous. Choose the tone that matches your brand personality.</p>`,
+            tip: { type: "tip", text: "Be specific with your topic description. More detail helps the AI generate more relevant and targeted content." }
+          },
+          {
+            title: "Choose your target platform and generate content",
+            content: `<p>Select which social media platform you're creating for by clicking the platform icons below the text field. Each platform has different optimal formats — Instagram favors square visuals, LinkedIn prefers professional imagery, and Twitter focuses on concise text.</p><p>Click the <strong>Generate Post</strong> button. Predis.ai will process your input and create multiple post variations in 15-30 seconds, complete with AI-generated captions, hashtags, and visual designs.</p>`,
+            tip: null
+          },
+          {
+            title: "Review and customize your generated post",
+            content: `<p>Browse through the generated post options displayed as cards. Each variation shows a complete post with image and caption. Click on any post to open the editor view.</p><p>In the editor, you can modify the caption text directly, adjust hashtags, change fonts, swap background images, or alter color schemes. The left sidebar contains editing tools: <strong>Text</strong>, <strong>Background</strong>, <strong>Elements</strong>, and <strong>Brand Kit</strong>. Make any necessary adjustments to align with your brand guidelines.</p>`,
+            tip: { type: "tip", text: "Use the Brand Kit feature to save your brand colors, fonts, and logos for consistent future posts." }
+          },
+          {
+            title: "Download or schedule your post",
+            content: `<p>Once satisfied with your post, click the <strong>Download</strong> button in the top-right corner to save the image to your device. You can choose the format and resolution from the download options.</p><p>Alternatively, click <strong>Schedule Post</strong> to connect your social media accounts and publish directly. Select the date and time, add the caption, and click <strong>Schedule</strong>. Your post will automatically publish at the chosen time.</p>`,
+            tip: { type: "success", text: "You've just created your first AI-powered social media post! Try generating multiple variations to A/B test performance." }
+          }
+        ]
+      },
+      intermediate:       {
+        title: "Building a Week of Content with Content Calendar",
+        description: "Generate and schedule a full week of cohesive social media content automatically",
+        duration: "15 min",
+        steps: [
+          {
+            title: "Access the Content Calendar feature",
+            content: `<p>From your Predis.ai dashboard, locate and click <strong>Content Calendar</strong> in the left navigation menu. This feature allows you to create multiple posts at once and visualize your content schedule across different platforms.</p><p>Click the <strong>Create Campaign</strong> button to start a new content series. You'll be prompted to choose between generating content for a specific product, event, or general brand awareness.</p>`,
+            tip: { type: "info", text: "Content Calendar uses AI to ensure thematic consistency across all posts in your campaign." }
+          },
+          {
+            title: "Configure your campaign parameters",
+            content: `<p>In the campaign setup wizard, enter your <strong>Campaign Name</strong> and select the <strong>Campaign Duration</strong> (typically 7-30 days). Choose which platforms you want to target — you can select multiple platforms simultaneously.</p><p>Set your <strong>Posting Frequency</strong> for each platform. For example, you might choose daily posts for Instagram but 3 times per week for LinkedIn. Input your main campaign theme or product details in the <strong>Campaign Brief</strong> text area, including key messages, offers, or calls-to-action you want to emphasize.</p>`,
+            tip: { type: "tip", text: "Different platforms perform better with different posting frequencies. Instagram and Twitter can handle daily posts, while LinkedIn works well with 2-3 posts per week." }
+          },
+          {
+            title: "Generate your content batch",
+            content: `<p>Click <strong>Generate Content</strong> and wait while Predis.ai creates your entire campaign. The AI will generate posts with varied formats — carousels, single images, quote graphics, and promotional posts — to keep your feed diverse and engaging.</p><p>Once generation is complete, you'll see all posts laid out in a calendar view. Each day shows thumbnails of scheduled posts with their respective platforms indicated by icons. Review the overall content mix to ensure good variety and thematic flow throughout the week.</p>`,
+            tip: null
+          },
+          {
+            title: "Refine individual posts and adjust scheduling",
+            content: `<p>Click on any post in the calendar to open it in the editor. Make platform-specific adjustments — for instance, LinkedIn posts might need more professional language while Instagram captions can be more casual and emoji-rich.</p><p>To adjust scheduling, drag and drop posts to different dates or click the <strong>clock icon</strong> on each post to set specific times. Consider optimal posting times: typically 8-10 AM or 5-7 PM in your audience's timezone for maximum engagement.</p>`,
+            tip: { type: "warning", text: "Remember to account for time zones if you have an international audience. Predis.ai uses your account timezone by default." }
+          },
+          {
+            title: "Connect accounts and activate your campaign",
+            content: `<p>Before scheduling, ensure your social media accounts are connected. Click <strong>Connected Accounts</strong> in the top navigation and authorize each platform you want to publish to. Predis.ai supports direct posting to Instagram, Facebook, LinkedIn, Twitter, Pinterest, and Google My Business.</p><p>Return to your calendar and click <strong>Activate Campaign</strong>. Review the summary showing total posts, platforms, and schedule. Confirm to activate — your posts will now automatically publish according to the calendar. You can monitor performance from the <strong>Analytics</strong> tab.</p>`,
+            tip: { type: "success", text: "Your week of content is now running on autopilot! Check back mid-week to review engagement metrics and adjust future campaigns accordingly." }
+          }
+        ]
+      },
+      advanced:       {
+        title: "Automating Content Workflows with Brand Voice Training and Competitor Analysis",
+        description: "Create AI-powered content systems that learn from your brand and competitors",
+        duration: "30 min",
+        steps: [
+          {
+            title: "Train your custom brand voice profile",
+            content: `<p>Navigate to <strong>Settings</strong> and select <strong>Brand Voice</strong> from the submenu. Click <strong>Create New Brand Voice</strong> to begin training a custom AI model on your specific brand personality and messaging.</p><p>Upload 5-10 examples of your best-performing social posts or copy from your website, email campaigns, or marketing materials. The AI will analyze tone, vocabulary, sentence structure, and style patterns. Add detailed notes about your target audience, brand values, and any specific terminology or phrases you always use or avoid. Click <strong>Train Model</strong> and wait 2-3 minutes for processing.</p>`,
+            tip: { type: "tip", text: "Include both high-performing and representative content. The AI learns better from authentic brand voice than from generic marketing copy." }
+          },
+          {
+            title: "Set up competitor analysis monitoring",
+            content: `<p>Go to <strong>Competitor Analysis</strong> in the main menu and click <strong>Add Competitor</strong>. Enter the social media handles of up to 5 competitors you want to track across platforms. Predis.ai will begin monitoring their posting patterns, content themes, engagement rates, and trending topics.</p><p>Configure alert settings by clicking <strong>Alert Preferences</strong>. Choose to receive notifications when competitors post viral content, launch campaigns, or achieve engagement spikes. Set your monitoring frequency — daily digests work well for most users. The AI will also identify content gaps and opportunities where your competitors aren't active.</p>`,
+            tip: { type: "info", text: "Competitor insights update every 24 hours. Use the Trends tab to see what content types are working best in your industry." }
+          },
+          {
+            title: "Create automated content workflows with triggers",
+            content: `<p>Access <strong>Automation Rules</strong> from the advanced features menu. Click <strong>New Workflow</strong> to create an automated content generation rule. Set up triggers such as: when a competitor posts about a specific topic, when a trending hashtag emerges in your industry, or on specific dates (product launches, holidays).</p><p>Define the action: automatically generate responsive content using your trained brand voice, create counter-positioning posts, or draft trend-jacking content. For example, create a rule that says: <em>When competitor posts about 'sustainable packaging', generate 3 Instagram posts highlighting our eco-friendly initiatives using Professional brand voice</em>. Set the workflow to generate drafts for review or auto-schedule if you're confident in your brand voice training.</p>`,
+            tip: { type: "warning", text: "Start with draft-only workflows until you're confident in output quality. Auto-scheduling without review carries brand risk." }
+          },
+          {
+            title: "Integrate Predis.ai with your marketing stack",
+            content: `<p>Navigate to <strong>Integrations</strong> and connect Predis.ai to your existing tools. Set up the <strong>Zapier integration</strong> to trigger content creation from external events — for example, when a new blog post is published in WordPress, automatically generate 5 social promotion posts.</p><p>Connect your <strong>Google Analytics</strong> to feed website performance data back into content optimization. Enable the <strong>Slack integration</strong> to receive content approval requests in your team channel. For e-commerce users, connect <strong>Shopify</strong> or <strong>WooCommerce</strong> to automatically generate product showcase posts when new items are added to your store.</p>`,
+            tip: { type: "tip", text: "The RSS feed integration is powerful for content curation \u2014 add industry news feeds and Predis.ai will suggest timely, relevant posts automatically." }
+          },
+          {
+            title: "Build a performance optimization loop",
+            content: `<p>In the <strong>Analytics</strong> section, click <strong>Performance Insights</strong> to access AI-powered recommendations. Enable <strong>Auto-Optimization</strong> which uses machine learning to analyze which post types, times, captions, and visuals perform best for your specific audience.</p><p>Set up <strong>A/B testing workflows</strong> by creating post variants with different hooks, CTAs, or visuals. Predis.ai will automatically publish the variants at optimal times and pause underperforming versions. Configure the <strong>Learning Dashboard</strong> to show weekly reports highlighting: best-performing content themes, optimal posting times per platform, trending hashtags in your niche, and audience growth patterns. Use these insights to refine your brand voice training and automation rules monthly.</p>`,
+            tip: { type: "success", text: "You've created a self-improving content system! Your AI will get smarter over time as it learns from your performance data and audience responses." }
+          }
+        ]
+      }
+    }
+  },
+
 }; // end TUTORIALS_DATA
