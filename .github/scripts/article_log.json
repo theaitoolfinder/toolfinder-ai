@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-08",
-      "slot": "midday",
-      "slug": "the-only-ai-productivity-tools-list-remote-workers-need-in-2026",
-      "title": "The Only AI Productivity Tools List Remote Workers Need in 2026 — Curated and Tested",
-      "type": "roundup",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
-      "topic": "only productivity tools list",
-      "pair": "",
-      "words": 613,
-      "partners": []
-    },
-    {
-      "date": "2026-06-08",
       "slot": "afternoon",
       "slug": "choosing-between-zapier-and-make-com-read-this-first-2026",
       "title": "Choosing Between Zapier and Make.com? Read This First (2026)",
@@ -1075,6 +1062,23 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-16",
+      "slot": "evening",
+      "slug": "why-tech-experts-are-quietly-warning-against-trusting-ai-meeting",
+      "title": "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
+      "topic": "tech experts quietly warning",
+      "pair": "",
+      "tool": "",
+      "words": 2160,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1195,6 +1199,7 @@
     "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop"
   ]
 }
