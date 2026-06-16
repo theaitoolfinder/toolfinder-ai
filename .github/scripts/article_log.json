@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-08",
-      "slot": "evening",
-      "slug": "ai-tools-digest-june-08-2026-evening-edition",
-      "title": "AI Tools Digest — June 08, 2026 (Evening Edition)",
-      "type": "news_digest",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 816,
-      "partners": []
-    },
-    {
-      "date": "2026-06-08",
       "slot": "night",
       "slug": "the-freelancer-ai-stack-20-hours-saved-per-week-exact-workflow",
       "title": "The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
@@ -1086,6 +1073,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-16",
+      "slot": "latenight",
+      "slug": "jasper-ai-s-pricing-controversy-users-are-leaving-here-s-why",
+      "title": "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
+      "topic": "jasper pricing controversy users",
+      "pair": "",
+      "tool": "",
+      "words": 2279,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
@@ -1208,6 +1217,7 @@
     "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop"
   ]
 }
