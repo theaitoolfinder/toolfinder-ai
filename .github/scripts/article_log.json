@@ -2,21 +2,6 @@
   "generated": [
     {
       "date": "2026-06-09",
-      "slot": "afternoon",
-      "slug": "elevenlabs-vs-murf-ai-2026-i-used-both-for-30-days-here-s-the",
-      "title": "ElevenLabs vs Murf AI (2026): I Used Both for 30 Days — Here's the Truth",
-      "type": "comparison",
-      "source": "reddit",
-      "hero": "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
-      "topic": "elevenlabs murf 2026 used",
-      "pair": "ElevenLabs vs Murf AI (2026)",
-      "words": 660,
-      "partners": [
-        "ElevenLabs"
-      ]
-    },
-    {
-      "date": "2026-06-09",
       "slot": "evening",
       "slug": "ai-tools-digest-june-09-2026-evening-edition",
       "title": "AI Tools Digest — June 09, 2026 (Evening Edition)",
@@ -1115,6 +1100,26 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-17",
+      "slot": "night",
+      "slug": "journalist-or-reporter-s-guide-to-ai-tools-in-2026-what-to-use",
+      "title": "Journalist or Reporter's Guide to AI Tools in 2026: What to Use and When",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop",
+      "topic": "journalist reporters tools 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2646,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
@@ -1242,6 +1247,7 @@
     "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1766695782111-15e89e4b3abe?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop"
   ]
 }
