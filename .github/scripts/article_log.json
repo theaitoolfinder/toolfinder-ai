@@ -2,21 +2,6 @@
   "generated": [
     {
       "date": "2026-06-08",
-      "slot": "night",
-      "slug": "the-freelancer-ai-stack-20-hours-saved-per-week-exact-workflow",
-      "title": "The Freelancer AI Stack: 20 Hours Saved Per Week — Exact Workflow",
-      "type": "workflow",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
-      "topic": "freelancer stack hours saved",
-      "pair": "",
-      "words": 771,
-      "partners": [
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-08",
       "slot": "latenight",
       "slug": "ai-tools-digest-june-08-2026-late-night-edition",
       "title": "AI Tools Digest — June 08, 2026 (Late Night Edition)",
@@ -1095,6 +1080,26 @@
         "Predis.ai",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-17",
+      "slot": "morning",
+      "slug": "opusclip-vs-descript-2026-i-used-both-for-30-days-here-s-the",
+      "title": "OpusClip vs Descript (2026): I Used Both for 30 Days — Here's the Truth",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
+      "topic": "opusclip descript 2026 used",
+      "pair": "OpusClip vs Descript (2026)",
+      "tool": "OpusClip",
+      "words": 2043,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai",
+        "Submagic AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1218,6 +1223,7 @@
     "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop"
   ]
 }
