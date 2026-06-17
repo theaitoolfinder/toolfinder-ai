@@ -1,21 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-08",
-      "slot": "latenight",
-      "slug": "ai-tools-digest-june-08-2026-late-night-edition",
-      "title": "AI Tools Digest — June 08, 2026 (Late Night Edition)",
-      "type": "news_digest",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 611,
-      "partners": [
-        "ElevenLabs"
-      ]
-    },
-    {
       "date": "2026-06-09",
       "slot": "morning",
       "slug": "write-seo-articles-10-faster-the-exact-ai-workflow",
@@ -1100,6 +1085,24 @@
         "Predis.ai",
         "Submagic AI"
       ]
+    },
+    {
+      "date": "2026-06-17",
+      "slot": "midday",
+      "slug": "is-writesonic-the-best-in-its-category-a-full-2026-review",
+      "title": "Is Writesonic the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop",
+      "topic": "writesonic category full 2026",
+      "pair": "",
+      "tool": "Writesonic",
+      "words": 2353,
+      "partners": [
+        "Beehiiv",
+        "NeuronWriter",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
@@ -1224,6 +1227,7 @@
     "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop"
   ]
 }
