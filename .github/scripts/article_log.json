@@ -1,19 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-09",
-      "slot": "latenight",
-      "slug": "ai-tools-digest-june-09-2026-late-night-edition",
-      "title": "AI Tools Digest — June 09, 2026 (Late Night Edition)",
-      "type": "news_digest",
-      "source": "verge",
-      "hero": "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools digest june 2026",
-      "pair": "",
-      "words": 611,
-      "partners": []
-    },
-    {
       "date": "2026-06-10",
       "slot": "morning",
       "slug": "make-com-review-2026-is-it-actually-worth-paying-for",
@@ -1133,6 +1120,26 @@
         "ElevenLabs",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-18",
+      "slot": "midday",
+      "slug": "is-elevenlabs-the-best-in-its-category-a-full-2026-review",
+      "title": "Is ElevenLabs the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs category full 2026",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2476,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1263,6 +1270,7 @@
     "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop"
   ]
 }
