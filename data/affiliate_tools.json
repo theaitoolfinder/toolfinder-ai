@@ -74,6 +74,14 @@
       "priority": 1
     },
     {
+      "name": "SciSpace",
+      "affiliate_url": "https://scispace.com/?via=myaitoolsfinder",
+      "categories": [
+        "Education"
+      ],
+      "priority": 1
+    },
+    {
       "name": "Simplified",
       "affiliate_url": "https://simplified.com?fpr=benjie19",
       "categories": [
