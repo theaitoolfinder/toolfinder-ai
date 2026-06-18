@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-16T14:50:02.325Z",
+  "updated": "2026-06-18T00:11:50.482Z",
   "overrides": {
     "14": {
       "affiliate_url": "https://writesonic.com?fp_ref=myaitoolsfinder",
@@ -48,6 +48,9 @@
       "affiliate_url": "https://www.make.com/en/register?pc=myaitoolsfinder",
       "trending": 96,
       "verified": true
+    },
+    "115": {
+      "affiliate_url": "https://scispace.com/?via=myaitoolsfinder"
     },
     "157": {
       "affiliate_url": "https://simplified.com?fpr=benjie19",
