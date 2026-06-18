@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-18T00:13:50.007Z",
+  "updated": "2026-06-18T00:16:59.428Z",
   "overrides": {
     "0": {
       "trending": 85
@@ -55,7 +55,12 @@
     "115": {
       "affiliate_url": "https://scispace.com/?via=myaitoolsfinder",
       "trending": 98,
-      "verified": true
+      "verified": true,
+      "jobs": [
+        "Researcher",
+        "Student",
+        "Academic"
+      ]
     },
     "157": {
       "affiliate_url": "https://simplified.com?fpr=benjie19",
