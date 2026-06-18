@@ -1,7 +1,10 @@
 {
   "v": 1,
-  "updated": "2026-06-18T00:11:59.506Z",
+  "updated": "2026-06-18T00:13:32.338Z",
   "overrides": {
+    "0": {
+      "trending": 80
+    },
     "14": {
       "affiliate_url": "https://writesonic.com?fp_ref=myaitoolsfinder",
       "verified": true,
