@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-10",
-      "slot": "midday",
-      "slug": "the-startup-founder-ai-roadmap-which-tools-to-add-first-and-why",
-      "title": "The Startup Founder AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
-      "topic": "startup founder roadmap which",
-      "pair": "",
-      "words": 2151,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-06-10",
       "slot": "afternoon",
       "slug": "github-copilot-7-genuine-pros-and-5-real-cons-you-need-to-know",
       "title": "GitHub Copilot: 7 Genuine Pros and 5 Real Cons You Need to Know",
@@ -1137,6 +1115,30 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-18",
+      "slot": "evening",
+      "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-06-18",
+      "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
+      "topic": "truth hallucinations 2026 which",
+      "pair": "",
+      "tool": "",
+      "words": 1939,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1269,6 +1271,7 @@
     "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop"
   ]
 }
