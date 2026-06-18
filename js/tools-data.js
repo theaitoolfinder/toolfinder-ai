@@ -569,7 +569,7 @@ window.MYAI_AFF_MAP = {
   "scenario":              "https://scenario.com",
   "scenario ai":           "https://scenario.com",
   "scholarcy":             "https://scholarcy.com",
-  "scispace":              "https://typeset.io",
+  "scispace":              "https://scispace.com/?via=myaitoolsfinder",
   "scite":                 "https://scite.ai",
   "se ranking":            "https://seranking.com",
   "se ranking ai":         "https://seranking.com",
