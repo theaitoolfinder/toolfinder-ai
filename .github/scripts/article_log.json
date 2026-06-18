@@ -2,19 +2,6 @@
   "generated": [
     {
       "date": "2026-06-10",
-      "slot": "afternoon",
-      "slug": "github-copilot-7-genuine-pros-and-5-real-cons-you-need-to-know",
-      "title": "GitHub Copilot: 7 Genuine Pros and 5 Real Cons You Need to Know",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
-      "topic": "github copilot genuine pros",
-      "pair": "",
-      "words": 2053,
-      "partners": []
-    },
-    {
-      "date": "2026-06-10",
       "slot": "evening",
       "slug": "is-perplexity-ai-actually-plagiarizing-publishers-the-evidence",
       "title": "Is Perplexity AI Actually Plagiarizing Publishers? The Evidence Is Damning.",
@@ -1139,6 +1126,29 @@
         "Predis.ai",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-18",
+      "slot": "night",
+      "slug": "if-you-re-a-startup-founder-this-is-the-ai-toolkit-you-actually",
+      "title": "If You're a Startup Founder, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre startup founder toolkit",
+      "pair": "",
+      "tool": "",
+      "words": 2396,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1272,6 +1282,7 @@
     "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop"
   ]
 }
