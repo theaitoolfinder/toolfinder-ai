@@ -3203,4 +3203,113 @@ task = client.image_to_video.create(
     }
   },
 
+
+  /* ── SciSpace ── */
+  'scispace': {
+    name: "SciSpace",
+    domain: "scispace.com",
+    affiliate_url: "https://scispace.com/?via=myaitoolsfinder",
+    category: "Education",
+    tagline: "AI assistant that explains any research paper in seconds",
+    color: "#6366F1",
+    levels: {
+      basic:       {
+        title: "Your First Research Paper Analysis with SciSpace",
+        description: "Upload a PDF and get instant explanations of complex research concepts.",
+        duration: "5 min",
+        steps: [
+          {
+            title: "Create Your Free Account",
+            content: `<p>Navigate to <strong>scispace.com</strong> and click <strong>Sign Up</strong> in the top-right corner. You can register using your Google account, Microsoft account, or email address. Once registered, you'll land on the main dashboard where you can upload papers or search the database.</p><p>The free plan gives you access to basic AI explanations and limited monthly queries, which is perfect for getting started with academic research assistance.</p>`,
+            tip: { type: "info", text: "Students can often access premium features through institutional partnerships\u2014check if your university has a SciSpace subscription." }
+          },
+          {
+            title: "Upload Your First Research Paper",
+            content: `<p>Click the <strong>Upload PDF</strong> button on your dashboard or drag and drop a PDF file directly into the browser window. SciSpace supports most academic paper formats and will begin processing the document immediately.</p><p>You'll see a progress indicator while the AI analyzes the paper structure, extracts key sections, and prepares the interactive reading interface. This typically takes 10-30 seconds depending on paper length.</p>`,
+            tip: null
+          },
+          {
+            title: "Ask Questions About the Paper",
+            content: `<p>Once your paper loads, you'll see the PDF on the left and a chat interface on the right. Highlight any text, equation, or table that confuses you, and the <strong>Explain</strong> button will appear. Click it to get an instant AI-generated explanation in simple language.</p><p>Alternatively, type questions in the chat box like <em>What is the main hypothesis?</em> or <em>Explain this methodology in simple terms</em> to get contextual answers based on the entire paper.</p>`,
+            tip: { type: "tip", text: "Highlight mathematical equations or technical jargon for the clearest explanations\u2014SciSpace excels at simplifying complex notation." }
+          },
+          {
+            title: "Explore the Paper Summary",
+            content: `<p>Click the <strong>Summary</strong> tab at the top of the reading interface to view an AI-generated overview of the paper. This includes the research objective, methodology, key findings, and limitations—all condensed into digestible paragraphs.</p><p>Use the <strong>TL;DR</strong> section for a one-paragraph overview, perfect when you need to quickly assess if a paper is relevant to your research before diving deeper.</p>`,
+            tip: null
+          },
+          {
+            title: "Save Papers to Your Library",
+            content: `<p>Click the <strong>Save to Library</strong> icon (bookmark symbol) in the top-right corner to organize papers for future reference. You can create custom folders like <em>Thesis Research</em> or <em>Literature Review</em> by clicking <strong>New Collection</strong> in the left sidebar.</p><p>Saved papers retain all your highlights, notes, and chat history, making it easy to return to your research without losing context.</p>`,
+            tip: { type: "success", text: "Your library syncs across devices, so you can start reading on desktop and continue on mobile or tablet." }
+          }
+        ]
+      },
+      intermediate:       {
+        title: "Advanced Paper Analysis and Literature Review Workflows",
+        description: "Build comparative analyses and extract insights across multiple research papers.",
+        duration: "15 min",
+        steps: [
+          {
+            title: "Set Up a Multi-Paper Literature Review",
+            content: `<p>Navigate to <strong>Library</strong> and create a new collection for your research topic by clicking <strong>New Collection</strong>. Upload 5-10 related papers by dragging PDFs directly onto the collection folder or using the <strong>Add Papers</strong> button.</p><p>Once uploaded, click <strong>Compare Papers</strong> at the top of the collection view. SciSpace will generate a comparison matrix showing how each paper approaches the topic, including methodology differences, conflicting findings, and citation relationships.</p>`,
+            tip: { type: "tip", text: "Use the search bar to find papers directly from the SciSpace database of 200+ million papers instead of uploading PDFs manually." }
+          },
+          {
+            title: "Use Copilot for Cross-Paper Queries",
+            content: `<p>With multiple papers open in a collection, activate <strong>Copilot</strong> mode by clicking the robot icon in the chat panel. Ask questions that span all papers like <em>What are the common limitations across these studies?</em> or <em>Which paper has the largest sample size?</em></p><p>Copilot will analyze all documents in your collection and provide synthesized answers with citations showing which specific paper each point came from. This is invaluable for identifying research gaps or contradictory findings.</p>`,
+            tip: { type: "info", text: "Copilot works best with 3-15 papers in a collection\u2014too few limits insights, too many may dilute precision." }
+          },
+          {
+            title: "Extract and Export Data Tables",
+            content: `<p>Open any paper and click on a data table or figure. Select <strong>Extract Table</strong> from the context menu to convert the image or PDF table into editable format. SciSpace uses OCR and AI to recognize rows, columns, and values.</p><p>Review the extracted data for accuracy, make any corrections, then click <strong>Export to CSV</strong> or <strong>Copy to Clipboard</strong>. You can paste directly into Excel, Google Sheets, or statistical software for meta-analysis or replication studies.</p>`,
+            tip: { type: "warning", text: "Always verify extracted numerical data against the original\u2014OCR accuracy is high but not perfect for complex tables." }
+          },
+          {
+            title: "Generate Citation Networks",
+            content: `<p>Open any paper and scroll to the <strong>References</strong> section. Click <strong>View Citation Graph</strong> to see a visual network of papers that cite this work and papers it references. Each node is clickable and opens that paper if available in the SciSpace database.</p><p>Use the <strong>Filter</strong> controls to show only highly-cited papers or recent publications. This helps you quickly find seminal works or discover emerging research directions in your field.</p>`,
+            tip: null
+          },
+          {
+            title: "Create Shareable Research Notes",
+            content: `<p>While reading, use the <strong>Notes</strong> panel on the right to write observations, critiques, or synthesis ideas. Format your notes with headings using the toolbar, and add highlights from the paper by clicking <strong>Insert Quote</strong>.</p><p>Click <strong>Share Notes</strong> at the top of the notes panel to generate a public link. Anyone with the link can view your annotated insights without needing a SciSpace account—perfect for collaborating with advisors or sharing literature summaries with study groups.</p>`,
+            tip: { type: "success", text: "Your notes automatically include citations in APA, MLA, or Chicago format\u2014click the format dropdown to change style." }
+          }
+        ]
+      },
+      advanced:       {
+        title: "Automating Research Workflows with SciSpace API",
+        description: "Integrate SciSpace into custom tools for automated paper analysis and discovery.",
+        duration: "30 min",
+        steps: [
+          {
+            title: "Generate Your API Key",
+            content: `<p>Log into SciSpace and navigate to <strong>Settings</strong> from your profile dropdown. Select <strong>API Access</strong> from the left menu and click <strong>Create New API Key</strong>. Give your key a descriptive name like <em>Research Automation Script</em> and set appropriate rate limits.</p><p>Copy the API key immediately—it will only be shown once. Store it securely in an environment variable or secrets manager. The free tier allows 100 requests per day, while paid plans offer up to 10,000 requests monthly.</p>`,
+            tip: { type: "warning", text: "Never commit API keys to version control or share them publicly\u2014treat them like passwords." }
+          },
+          {
+            title: "Set Up Automated Paper Ingestion",
+            content: `<p>Use the <strong>/upload</strong> endpoint to programmatically add papers to your library. Send a POST request with your API key in the header and the PDF as multipart form data. The response includes a unique paper ID and extraction status.</p><div class="code-box">POST https://api.scispace.com/v1/upload<br>Headers: Authorization: Bearer YOUR_API_KEY<br>Body: file=@research_paper.pdf</div><p>Set up a scheduled task or webhook that monitors a folder or email inbox for new papers, automatically uploads them to SciSpace, and organizes them into collections based on keywords in the title or abstract.</p>`,
+            tip: { type: "tip", text: "Include metadata like author names and publication date in your upload request to improve organization and searchability." }
+          },
+          {
+            title: "Query Papers Programmatically",
+            content: `<p>Use the <strong>/ask</strong> endpoint to send questions to specific papers or collections. Structure your request with the paper ID and your question as a JSON payload. The API returns structured answers with text, confidence scores, and source page numbers.</p><div class="code-box">POST https://api.scispace.com/v1/ask<br>Body: {<br>  "paper_id": "abc123",<br>  "question": "What is the sample size?",<br>  "mode": "precise"<br>}</div><p>Build automated literature review scripts that ask the same standardized questions across dozens of papers, then aggregate responses into a comparison spreadsheet or database for systematic review.</p>`,
+            tip: null
+          },
+          {
+            title: "Integrate with Zotero or Mendeley",
+            content: `<p>Install the SciSpace browser extension and enable the <strong>Reference Manager Sync</strong> option in settings. Select your preferred manager (Zotero, Mendeley, or EndNote) and authenticate with your credentials.</p><p>Any paper you save in SciSpace will automatically export to your reference manager with complete metadata, PDF attachment, and your SciSpace annotations as notes. Set up bidirectional sync so highlights made in Zotero appear in SciSpace and vice versa.</p><p>For custom integrations, use the <strong>/export</strong> API endpoint to retrieve papers in BibTeX, RIS, or JSON format, then parse and import into your workflow using Python libraries like <em>bibtexparser</em>.</p>`,
+            tip: { type: "info", text: "Bidirectional sync requires a premium SciSpace subscription and works best with Zotero version 6.0 or higher." }
+          },
+          {
+            title: "Build a Custom Research Alert System",
+            content: `<p>Combine the <strong>/search</strong> API endpoint with a scheduler to create automated alerts for new papers matching your criteria. Set up a daily or weekly script that searches for specific keywords, authors, or journals, then filters results by publication date.</p><div class="code-box">GET https://api.scispace.com/v1/search?query=machine+learning+healthcare&published_after=2024-01-01</div><p>Parse the JSON response to extract paper titles and abstracts, run them through SciSpace's <strong>/summarize</strong> endpoint to generate brief summaries, then email yourself a digest of relevant new research. Include direct links to open papers in SciSpace with your API key embedded for one-click access.</p>`,
+            tip: { type: "success", text: "Combine this with sentiment analysis or relevance scoring to prioritize which papers appear at the top of your digest." }
+          }
+        ]
+      }
+    }
+  },
+
 }; // end TUTORIALS_DATA
