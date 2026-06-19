@@ -3,22 +3,6 @@
     {
       "date": "2026-06-12",
       "slot": "exclusive",
-      "slug": "fireflies-ai-vs-otter-ai-the-honest-breakdown-for-2026",
-      "title": "Fireflies.ai vs Otter.ai: The Honest Breakdown for 2026",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=85&auto=format&fit=crop",
-      "topic": "firefliesai otterai breakdown 2026",
-      "pair": "Fireflies.ai vs Otter.ai",
-      "words": 2428,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-12",
-      "slot": "exclusive",
       "slug": "is-midjourney-stealing-artists-work-the-lawsuit-that-could",
       "title": "Is Midjourney Stealing Artists' Work? The Lawsuit That Could Change AI Art Forever",
       "type": "controversial",
@@ -1164,6 +1148,23 @@
         "Make.com",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "night",
+      "slug": "replit-ai-vs-cursor-stop-guessing-here-s-the-2026-verdict",
+      "title": "Replit AI vs Cursor — Stop Guessing. Here's the 2026 Verdict.",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
+      "topic": "replit cursor stop guessing",
+      "pair": "Replit AI vs Cursor — Stop Guessing. Here's the 2026 Verdict.",
+      "tool": "Replit AI",
+      "words": 2166,
+      "partners": [
+        "Beehiiv",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1311,6 +1312,7 @@
     "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop"
   ]
 }
