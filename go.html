@@ -57,8 +57,12 @@ html,body{margin:0;padding:0;background:#f0f6ff;color:#0d1f3c;font:15px/1.55 "Po
 <script>
 (function(){
   const params=new URLSearchParams(location.search);
-  const url=params.get('url')||'';
+  const rawUrl=params.get('url')||'';
   const name=params.get('name')||'the tool';
+
+  // Security: only allow http/https URLs to prevent javascript: XSS and open-redirect abuse
+  const url=/^https?:\/\//i.test(rawUrl)?rawUrl:'';
+
   const domain=url?new URL(url).hostname.replace(/^www\./,''):'';
 
   document.getElementById('tool-name').textContent=name;
