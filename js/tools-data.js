@@ -600,7 +600,7 @@ window.MYAI_AFF_MAP = {
   "softr ai":              "https://softr.io",
   "sora":                  "https://sora.com",
   "soundful":              "https://soundful.com",
-  "soundraw":              "https://soundraw.io",
+  "soundraw":              "https://soundraw.io/?ref=myaitoolsfinder",
   "sourcely":              "https://sourcely.net",
   "speechify":             "https://speechify.com",
   "speechmatics":          "https://speechmatics.com",
