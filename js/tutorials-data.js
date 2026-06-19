@@ -3312,4 +3312,113 @@ task = client.image_to_video.create(
     }
   },
 
+
+  /* ── Soundraw ── */
+  'soundraw': {
+    name: "Soundraw",
+    domain: "soundraw.io",
+    affiliate_url: "https://soundraw.io/?ref=myaitoolsfinder",
+    category: "Audio",
+    tagline: "Generate royalty-free music with AI in minutes",
+    color: "#FF6B35",
+    levels: {
+      basic:       {
+        title: "Your First AI-Generated Track with Soundraw",
+        description: "Create and download a custom royalty-free music track in under 5 minutes.",
+        duration: "5 min",
+        steps: [
+          {
+            title: "Create Your Free Account",
+            content: `<p>Navigate to <strong>soundraw.io</strong> and click the <strong>Sign Up</strong> button in the top-right corner. You can register using your email address or sign in with Google for faster access.</p><p>Once registered, you'll land on the main dashboard where you can start creating music immediately. The free tier allows you to generate unlimited tracks and preview them before purchasing.</p>`,
+            tip: { type: "info", text: "Free accounts can generate and preview unlimited tracks, but require a paid plan to download without watermarks." }
+          },
+          {
+            title: "Select Your Music Parameters",
+            content: `<p>On the dashboard, you'll see several filter options at the top: <strong>Mood</strong>, <strong>Genre</strong>, <strong>Theme</strong>, and <strong>Length</strong>. Start by selecting a <strong>Genre</strong> (like Pop, Cinematic, or Hip Hop), then choose a <strong>Mood</strong> that matches your project (Bright, Dark, Relaxing, etc.).</p><p>Next, pick a <strong>Theme</strong> if applicable (Travel, Documentary, Gaming) and set your desired <strong>Length</strong>. For your first track, try selecting Genre: Electronic, Mood: Energetic, Length: 1-2 minutes.</p>`,
+            tip: { type: "tip", text: "Start with broader selections first, then refine. You can always adjust parameters after hearing the initial results." }
+          },
+          {
+            title: "Generate and Browse AI Tracks",
+            content: `<p>Click the <strong>Create Music</strong> button and Soundraw will generate multiple track options based on your parameters. You'll see a grid of music tracks, each with a waveform visualization and play button.</p><p>Click the <strong>play icon</strong> on any track to preview it. Browse through at least 5-10 options to understand how the AI interprets your parameters differently each time.</p>`,
+            tip: null
+          },
+          {
+            title: "Customize Your Selected Track",
+            content: `<p>When you find a track you like, click on it to open the <strong>Customization Panel</strong>. Here you'll see the track broken into sections with controls for <strong>Melody</strong>, <strong>Backing</strong>, <strong>Bass</strong>, <strong>Drums</strong>, and <strong>Fill</strong>.</p><p>Use the intensity sliders to adjust each element. Try turning down the <strong>Drums</strong> slider for a softer intro, or boost <strong>Melody</strong> during the chorus. The changes apply in real-time as the track plays.</p>`,
+            tip: { type: "tip", text: "Click the scissors icon to trim or rearrange sections. You can delete entire segments or loop favorite parts." }
+          },
+          {
+            title: "Download Your Track",
+            content: `<p>Once satisfied with your customizations, click the <strong>Download</strong> button in the top-right corner of the editor. If you have a paid subscription, select your preferred format (WAV or MP3) and quality settings.</p><p>The download includes a perpetual license for the track, meaning you can use it in commercial projects without attribution. Your downloaded tracks are also saved in <strong>My Music</strong> for future access.</p>`,
+            tip: { type: "success", text: "All Soundraw tracks are 100% royalty-free with no copyright claims, perfect for YouTube, podcasts, and client work." }
+          }
+        ]
+      },
+      intermediate:       {
+        title: "Custom Track Arrangement with Pro Features",
+        description: "Master advanced editing tools to create perfectly timed music for video projects.",
+        duration: "15 min",
+        steps: [
+          {
+            title: "Use the Beat-by-Beat Editor",
+            content: `<p>Open any track in the editor and look for the <strong>Pro Edit</strong> toggle at the top. This unlocks the beat-by-beat timeline view where you can see individual measures and beats.</p><p>Click on any measure in the timeline to set markers. You can now adjust intensity, energy, and instrumentation at precise points. For example, build energy gradually by increasing intensity every 4 bars leading to a chorus.</p>`,
+            tip: { type: "tip", text: "Use the spacebar to play/pause and arrow keys to navigate between beats for precise editing control." }
+          },
+          {
+            title: "Match Music to Video Length",
+            content: `<p>In the editor toolbar, click <strong>Length</strong> and select <strong>Custom Duration</strong>. Enter your exact video length (e.g., 2:47) and Soundraw will regenerate the track structure to match precisely.</p><p>The AI intelligently adds or removes musical phrases while maintaining proper intro, build-up, climax, and outro sections. This eliminates the need for manual fade-outs or awkward cuts.</p>`,
+            tip: { type: "info", text: "Custom duration works best between 15 seconds and 5 minutes. Extreme lengths may result in repetitive patterns." }
+          },
+          {
+            title: "Create Energy Curves for Storytelling",
+            content: `<p>Use the <strong>Energy</strong> control to shape emotional dynamics. Click and drag the energy line graph that appears above your track timeline. Pull it down for quiet, contemplative moments and raise it for action or excitement.</p><p>For a product demo video, try this pattern: start at 40% energy (introduction), rise to 80% at 30 seconds (feature showcase), drop to 50% at 1:15 (testimonial), then peak at 100% for the call-to-action finale.</p><p>The AI adjusts instrumentation, rhythm complexity, and volume dynamics to match your energy curve while keeping the track musically coherent.</p>`,
+            tip: { type: "warning", text: "Extreme energy changes within short timeframes (under 8 bars) can sound jarring. Gradual transitions work best." }
+          },
+          {
+            title: "Layer Multiple Instrument Variations",
+            content: `<p>In the customization panel, click <strong>Change instruments</strong> for any layer (Melody, Backing, etc.). You'll see 4-6 alternative instrument options for that part.</p><p>Experiment by swapping the main melody from piano to synth lead, or changing backing strings to pad synths. Each variation maintains the same notes but completely changes the texture and mood.</p><p>For advanced users: enable <strong>Multi-layer view</strong> to see all five instrument tracks simultaneously and create complex arrangements by selectively muting layers in different sections.</p>`,
+            tip: { type: "success", text: "Save multiple versions with different instrument combinations. This gives you variations for A/B testing in your content." }
+          },
+          {
+            title: "Build a Personal Music Library",
+            content: `<p>As you create tracks, organize them using the <strong>My Music</strong> section. Click the folder icon to create collections like Client Projects, YouTube Intros, or Podcast Themes.</p><p>Add tags to each track (e.g., upbeat, corporate, 30sec) using the <strong>Add Tags</strong> field. When you need music quickly, use the search and filter tools in My Music to find exactly what you need from your past creations.</p>`,
+            tip: { type: "tip", text: "Star your favorite tracks for quick access. Build a go-to collection of 10-15 versatile tracks for common project types." }
+          }
+        ]
+      },
+      advanced:       {
+        title: "Production-Ready Workflow Integration",
+        description: "Optimize Soundraw for professional video production with stems and DAW integration.",
+        duration: "30 min",
+        steps: [
+          {
+            title: "Export Multi-Track Stems",
+            content: `<p>When downloading a track, look for the <strong>Download Stems</strong> option (available on Artist plan and above). This exports each instrument layer as a separate audio file: Melody, Backing, Bass, Drums, and Fill.</p><p>In your DAW (Digital Audio Workstation) like Adobe Audition, Logic Pro, or Ableton, import all stems and align them on your timeline. This gives you complete mixing control — adjust individual instrument volumes, apply effects like reverb only to melody, or duck the music under dialogue using sidechain compression.</p><p>Stems also allow you to create music edits that follow your video precisely. Need silence during a speaking segment? Mute all stems except subtle backing. Want drums only for a transition? Solo the drum stem.</p>`,
+            tip: { type: "info", text: "All stems are perfectly synchronized and loop-ready, making them ideal for extending tracks beyond the original length." }
+          },
+          {
+            title: "Automate Music Cue Points",
+            content: `<p>Create a spreadsheet mapping your video's key moments: timestamp, event type (intro/build/climax/outro), and desired energy level. Use this as a brief for systematic track creation.</p><p>In Soundraw's editor, use the <strong>Add Marker</strong> feature (right-click on timeline) to label these moments. Name markers clearly: 0:00 - Intro Low, 0:23 - Product Reveal Build, 1:45 - CTA Peak.</p><p>Set energy and intensity controls at each marker to match your spreadsheet specifications. This systematic approach ensures consistent music pacing across multiple videos in a series.</p>`,
+            tip: { type: "tip", text: "Save your marker template tracks in a dedicated folder. Duplicate and adjust them for new projects to maintain brand consistency." }
+          },
+          {
+            title: "Batch Create Project Variations",
+            content: `<p>For projects needing multiple versions (15-sec, 30-sec, 60-sec cuts), start with your longest version fully edited. Click the <strong>Duplicate Track</strong> button in My Music.</p><p>Open the duplicate, change the length setting to your next duration (e.g., 30 seconds), and click <strong>Adapt Structure</strong>. Soundraw intelligently condenses the arrangement while preserving your customizations and energy curve shape.</p><p>Repeat for each needed length. Download all versions with consistent naming: ProjectName-60s, ProjectName-30s, ProjectName-15s. This workflow is essential for social media content that needs multiple aspect ratios and lengths.</p>`,
+            tip: { type: "warning", text: "Review adapted versions carefully. Very short durations (under 20 seconds) may lose important musical elements during compression." }
+          },
+          {
+            title: "Create Branded Audio Signatures",
+            content: `<p>Develop a consistent sonic brand by identifying common parameters across your best-performing content. Analyze your top 10 tracks: do they share a genre, instrument preference, or energy pattern?</p><p>In Soundraw, create a master template track that embodies these elements. Use specific instrument combinations (e.g., always electric piano for melody, muted guitar for backing) and a signature energy curve shape.</p><p>Save this template with a clear name like Brand_Master_Template. For new projects, duplicate this template and make minimal adjustments. This creates audio consistency similar to how brands maintain visual identity.</p><p>Document your choices in a simple brand guide: Genre: Chill Hop, Primary Mood: Hopeful, Melody Instrument: Electric Piano, Energy Range: 40-75%, Never use: Heavy drums or distorted guitars.</p>`,
+            tip: { type: "success", text: "Consistent audio branding increases audience recognition by up to 40% according to marketing studies." }
+          },
+          {
+            title: "Optimize Export Settings for Distribution",
+            content: `<p>Different platforms have different audio requirements. Create a distribution checklist: YouTube needs -14 LUFS, podcasts prefer -16 LUFS, and broadcast may require -23 LUFS.</p><p>When downloading from Soundraw, select <strong>WAV format</strong> for maximum flexibility. In your DAW, apply a limiter plugin to hit your target loudness standard. Use tools like Youlean Loudness Meter (free) to measure LUFS accurately.</p><p>For podcast integration, export your music as separate files: intro_music.wav, transition_stinger.wav, outro_music.wav. Keep these under -16 LUFS so they don't overpower speech content.</p><p>For video platforms, create a two-pass workflow: first, balance music against dialogue in your video editor (music typically sits at -20dB to -25dB when dialogue is present), then export the full mix normalized to the platform standard.</p>`,
+            tip: { type: "tip", text: "Save your export settings as presets in your DAW. Name them by platform (YouTube_Music, Podcast_Intro) for one-click consistency." }
+          }
+        ]
+      }
+    }
+  },
+
 }; // end TUTORIALS_DATA
