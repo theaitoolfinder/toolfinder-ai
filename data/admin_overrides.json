@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-06-19T19:09:29.592Z",
+  "updated": "2026-06-19T19:09:33.629Z",
   "overrides": {
     "0": {
       "trending": 85
@@ -73,7 +73,8 @@
       "trending": 95
     },
     "179": {
-      "affiliate_url": "https://soundraw.io/?ref=myaitoolsfinder"
+      "affiliate_url": "https://soundraw.io/?ref=myaitoolsfinder",
+      "trending": 98
     },
     "181": {
       "affiliate_url": "https://www.keywordinsights.ai/?ref=myaitoolsfinder",
