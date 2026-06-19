@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-11",
-      "slot": "midday",
-      "slug": "building-your-ai-stack-as-a-content-creator-a-step-by-step-guide",
-      "title": "Building Your AI Stack as a Content Creator: A Step-by-Step Guide for 2026",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
-      "topic": "building stack content creator",
-      "pair": "",
-      "words": 2236,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-11",
       "slot": "afternoon",
       "slug": "perplexity-ai-pros-and-cons-2026-the-unfiltered-truth",
       "title": "Perplexity AI Pros and Cons (2026): The Unfiltered Truth",
@@ -1151,6 +1130,27 @@
       "partners": [
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "midday",
+      "slug": "fireflies-ai-review-real-results-real-pricing-real-talk",
+      "title": "Fireflies.ai Review: Real Results, Real Pricing, Real Talk",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
+      "topic": "firefliesai results pricing talk",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2073,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1289,6 +1289,7 @@
     "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop"
   ]
 }
