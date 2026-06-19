@@ -3,23 +3,6 @@
     {
       "date": "2026-06-12",
       "slot": "exclusive",
-      "slug": "ai-tools-for-financial-analysts-the-exact-stack-to-build-phase",
-      "title": "AI Tools for Financial Analysts: The Exact Stack to Build, Phase by Phase",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools financial analysts exact",
-      "pair": "",
-      "words": 2536,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter"
-      ]
-    },
-    {
-      "date": "2026-06-12",
-      "slot": "exclusive",
       "slug": "honest-notion-ai-review-what-it-gets-right-and-where-it-falls",
       "title": "Honest Notion AI Review: What It Gets Right and Where It Falls Short",
       "type": "pros_cons",
@@ -1162,6 +1145,24 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "evening",
+      "slug": "i-used-runway-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used Runway Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
+      "topic": "used runway every days",
+      "pair": "",
+      "tool": "Runway",
+      "words": 2501,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1306,6 +1307,7 @@
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop"
   ]
 }
