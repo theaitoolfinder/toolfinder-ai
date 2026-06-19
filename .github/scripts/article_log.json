@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-11",
-      "slot": "afternoon",
-      "slug": "perplexity-ai-pros-and-cons-2026-the-unfiltered-truth",
-      "title": "Perplexity AI Pros and Cons (2026): The Unfiltered Truth",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
-      "topic": "perplexity pros cons 2026",
-      "pair": "",
-      "words": 2193,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-11",
       "slot": "evening",
       "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes",
       "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
@@ -1151,6 +1130,28 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "youtuber-s-guide-to-ai-tools-in-2026-what-to-use-and-when",
+      "title": "YouTuber's Guide to AI Tools in 2026: What to Use and When",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
+      "topic": "youtubers tools 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2677,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1290,6 +1291,7 @@
     "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop"
   ]
 }
