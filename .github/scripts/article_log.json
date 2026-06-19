@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "morning",
-      "slug": "fireflies-ai-deep-dive-the-honest-review-no-one-else-is-writing",
-      "title": "Fireflies.ai Deep Dive: The Honest Review No One Else Is Writing",
-      "type": "featured",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
-      "topic": "firefliesai deep dive else",
-      "pair": "",
-      "words": 2571,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Reclaim AI",
-        "Submagic AI"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "exclusive",
       "slug": "ai-tools-for-financial-analysts-the-exact-stack-to-build-phase",
       "title": "AI Tools for Financial Analysts: The Exact Stack to Build, Phase by Phase",
@@ -1159,6 +1140,28 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "midjourney-pros-and-cons-2026-the-unfiltered-truth",
+      "title": "Midjourney Pros and Cons (2026): The Unfiltered Truth",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
+      "topic": "midjourney pros cons 2026",
+      "pair": "",
+      "tool": "Midjourney",
+      "words": 2705,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1302,6 +1305,7 @@
     "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop"
   ]
 }
