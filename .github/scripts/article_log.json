@@ -3,25 +3,6 @@
     {
       "date": "2026-06-12",
       "slot": "exclusive",
-      "slug": "the-e-commerce-owner-ai-roadmap-which-tools-to-add-first-and-why",
-      "title": "The E-commerce Owner AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
-      "topic": "ecommerce owner roadmap which",
-      "pair": "",
-      "words": 2634,
-      "partners": [
-        "Beehiiv",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-12",
-      "slot": "exclusive",
       "slug": "the-hidden-cost-of-free-ai-tools-what-you-re-really-giving-up",
       "title": "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
       "type": "controversial",
@@ -1168,6 +1149,25 @@
         "Make.com",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "latenight",
+      "slug": "synthesia-review-real-results-real-pricing-real-talk",
+      "title": "Synthesia Review: Real Results, Real Pricing, Real Talk",
+      "type": "featured",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop",
+      "topic": "synthesia results pricing talk",
+      "pair": "",
+      "tool": "Synthesia",
+      "words": 2574,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1318,6 +1318,7 @@
     "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop"
   ]
 }
