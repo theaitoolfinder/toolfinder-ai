@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-10",
-      "slot": "night",
-      "slug": "choosing-between-beehiiv-and-mailchimp-read-this-first-2026",
-      "title": "Choosing Between Beehiiv and Mailchimp? Read This First (2026)",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
-      "topic": "choosing between beehiiv mailchimp",
-      "pair": "",
-      "words": 2259,
-      "partners": [
-        "Beehiiv",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-10",
       "slot": "latenight",
       "slug": "runway-vs-sora-the-video-ai-war-that-s-leaving-users-in-the",
       "title": "Runway vs. Sora: The Video AI War That's Leaving Users in the Middle",
@@ -1151,6 +1135,22 @@
         "NeuronWriter",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "morning",
+      "slug": "apollo-io-vs-clay-which-ai-tool-should-you-pay-for-in-2026",
+      "title": "Apollo.io vs Clay: Which AI Tool Should You Pay For in 2026?",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
+      "topic": "apolloio clay which tool",
+      "pair": "Apollo.io vs Clay",
+      "tool": "Apollo.io",
+      "words": 2022,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1286,6 +1286,7 @@
     "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop"
   ]
 }
