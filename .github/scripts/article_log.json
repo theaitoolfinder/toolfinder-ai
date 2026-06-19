@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "afternoon",
-      "slug": "the-real-pros-and-cons-of-clay-no-sponsored-opinion",
-      "title": "The Real Pros and Cons of Clay — No Sponsored Opinion",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
-      "topic": "pros cons clay sponsored",
-      "pair": "",
-      "words": 2585,
-      "partners": [
-        "Make.com",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "exclusive",
       "slug": "the-e-commerce-owner-ai-roadmap-which-tools-to-add-first-and-why",
       "title": "The E-commerce Owner AI Roadmap: Which Tools to Add First (and Why)",
@@ -1165,6 +1149,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "is-motion-worth-it-full-pros-cons-and-verdict-for-2026",
+      "title": "Is Motion Worth It? Full Pros, Cons, and Verdict for 2026",
+      "type": "pros_cons",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
+      "topic": "motion worth full pros",
+      "pair": "",
+      "tool": "Motion",
+      "words": 2682,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1314,6 +1317,7 @@
     "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop"
   ]
 }
