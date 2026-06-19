@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-06-11",
-      "slot": "evening",
-      "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes",
-      "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
-      "topic": "elevenlabs voice cloning abuse",
-      "pair": "",
-      "words": 2242,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-11",
       "slot": "night",
       "slug": "fireflies-ai-or-otter-ai-a-real-user-s-take-after-testing-both",
       "title": "Fireflies.ai or Otter.ai? A Real User's Take After Testing Both",
@@ -1152,6 +1134,26 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "the-canva-ai-backlash-designers-are-fed-up-here-s-the-full-story-2026-06-19",
+      "title": "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
+      "topic": "canva backlash designers heres",
+      "pair": "",
+      "tool": "",
+      "words": 2202,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1292,6 +1294,7 @@
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop"
   ]
 }
