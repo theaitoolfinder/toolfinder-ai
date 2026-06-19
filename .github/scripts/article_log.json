@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "midday",
-      "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take",
-      "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop",
-      "topic": "used firefliesai every days",
-      "pair": "",
-      "words": 2535,
-      "partners": [
-        "Fireflies.ai",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "exclusive",
       "slug": "fireflies-ai-vs-otter-ai-the-honest-breakdown-for-2026",
       "title": "Fireflies.ai vs Otter.ai: The Honest Breakdown for 2026",
@@ -1162,6 +1146,24 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "why-notion-ai-is-frustrating-power-users-and-what-they-re",
+      "title": "Why Notion AI Is Frustrating Power Users — and What They're Switching To",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
+      "topic": "notion frustrating power users",
+      "pair": "",
+      "tool": "",
+      "words": 2337,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
@@ -1308,6 +1310,7 @@
     "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop"
   ]
 }
