@@ -1,19 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-11",
-      "slot": "latenight",
-      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about",
-      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
-      "type": "controversial",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
-      "topic": "dark side writing tools",
-      "pair": "",
-      "words": 2318,
-      "partners": []
-    },
-    {
       "date": "2026-06-12",
       "slot": "morning",
       "slug": "fireflies-ai-deep-dive-the-honest-review-no-one-else-is-writing",
@@ -1154,6 +1141,24 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-19",
+      "slot": "exclusive",
+      "slug": "why-zapier-s-ai-features-feel-like-a-cash-grab-and-what-to-use",
+      "title": "Why Zapier's AI Features Feel Like a Cash Grab (And What to Use Instead)",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
+      "topic": "zapiers features feel like",
+      "pair": "",
+      "tool": "",
+      "words": 2109,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1296,6 +1301,7 @@
     "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop"
   ]
 }
