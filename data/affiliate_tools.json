@@ -4,7 +4,7 @@
     {
       "name": "Writesonic",
       "affiliate_url": "https://writesonic.com?fp_ref=myaitoolsfinder",
-      "promo_image": "",
+      "promo_image": "https://writesonic.com/opengraph-image",
       "categories": [
         "Writing"
       ],
@@ -13,7 +13,7 @@
     {
       "name": "ElevenLabs",
       "affiliate_url": "https://try.elevenlabs.io/flxscqgtf1ys",
-      "promo_image": "",
+      "promo_image": "https://elevenlabs.io/cover.png",
       "categories": [
         "Audio"
       ],
@@ -22,7 +22,7 @@
     {
       "name": "RankMath AI",
       "affiliate_url": "https://rankmath.com/?ref=benjie-6423",
-      "promo_image": "",
+      "promo_image": "https://rankmath.com/wp-content/uploads/2021/12/Rank-Math.png",
       "categories": [
         "SEO"
       ],
@@ -31,7 +31,7 @@
     {
       "name": "NeuronWriter",
       "affiliate_url": "https://app.neuronwriter.com/ar/a164b2cc978873dc1a98713284d9b87a",
-      "promo_image": "",
+      "promo_image": "https://neuronwriter.com/wp-content/uploads/2025/06/NW4.png",
       "categories": [
         "SEO"
       ],
@@ -40,7 +40,7 @@
     {
       "name": "Fireflies.ai",
       "affiliate_url": "https://fireflies.ai/?fpr=benjie21",
-      "promo_image": "",
+      "promo_image": "https://fireflies.ai/thumbnail.png",
       "categories": [
         "Productivity"
       ],
@@ -49,7 +49,7 @@
     {
       "name": "Reclaim AI",
       "affiliate_url": "https://go.reclaim.ai/do7hs1jez62m",
-      "promo_image": "",
+      "promo_image": "https://cdn.prod.website-files.com/5ec848ec2b50b6cfae06f6cc/65e2563b7c0658aed71828ac_open_graph_final.png",
       "categories": [
         "Productivity"
       ],
@@ -58,7 +58,7 @@
     {
       "name": "Beehiiv",
       "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza",
-      "promo_image": "",
+      "promo_image": "https://media.beehiiv.com/www/og-image/og-beehiiv.png",
       "categories": [
         "Marketing"
       ],
@@ -67,7 +67,7 @@
     {
       "name": "Predis.ai",
       "affiliate_url": "https://predis.ai?ref=myaitoolsfinder",
-      "promo_image": "",
+      "promo_image": "https://predis.ai/assets/img/try-out/temp-thumb/ads/ai-ad-generator.webp",
       "categories": [
         "Marketing"
       ],
@@ -94,7 +94,7 @@
     {
       "name": "Simplified",
       "affiliate_url": "https://simplified.com?fpr=benjie19",
-      "promo_image": "",
+      "promo_image": "https://simplified.co/siteimages/all/simplified-home-page-og-image.png",
       "categories": [
         "Writing"
       ],
@@ -103,7 +103,7 @@
     {
       "name": "OpusClip",
       "affiliate_url": "https://www.opus.pro/?via=myaitoolsfinder",
-      "promo_image": "",
+      "promo_image": "https://cdn.prod.website-files.com/6388604483b03a9ecb34d695/6893fad68d6058a917d7f3c6_mainpage_thumbnail.jpg",
       "categories": [
         "Video"
       ],
@@ -112,7 +112,7 @@
     {
       "name": "Soundraw",
       "affiliate_url": "https://soundraw.io/?ref=myaitoolsfinder",
-      "promo_image": "",
+      "promo_image": "https://cdn.soundraw.io/soundraw_ogp_EN.png",
       "categories": [
         "Audio"
       ],
@@ -121,7 +121,7 @@
     {
       "name": "Keyword Insights",
       "affiliate_url": "https://www.keywordinsights.ai/?ref=myaitoolsfinder",
-      "promo_image": "",
+      "promo_image": "https://keywordinsigh1.wpenginepowered.com/wp-content/uploads/2025/08/og-banner-scaled.png",
       "categories": [
         "SEO"
       ],
@@ -130,7 +130,7 @@
     {
       "name": "Taskade AI",
       "affiliate_url": "https://www.taskade.com/?via=b3q5tf",
-      "promo_image": "",
+      "promo_image": "https://www.taskade.com/static_images/taskade-genesis-mascot-2026.png",
       "categories": [
         "Productivity"
       ],
@@ -139,7 +139,7 @@
     {
       "name": "Submagic AI",
       "affiliate_url": "https://submagic.co/?via=benjie11",
-      "promo_image": "",
+      "promo_image": "https://cdn.prod.website-files.com/6469e2294ac68c3d5caea327/67582fde54b44b92ce325aa3_Submagic%20-%20Link%20Thumbnail%402x.png",
       "categories": [
         "Video"
       ],
