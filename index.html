@@ -3462,23 +3462,19 @@ async function submitReview(){
       'Design':   'linear-gradient(135deg,#ec4899 0%,#7c3aed 100%)',
     };
     function catGrad(cat){return CAT_GRADS[cat]||'linear-gradient(135deg,#1a56db 0%,#7c3aed 100%)';}
+    function shot(domain){return'https://image.thum.io/get/width/1200/crop/630/viewportWidth/1440/noanimate/https://'+domain;}
     function promoRight(p, domain, tag, cat){
       const ini2=ini(p.name);
       const grad=catGrad(cat);
-      if(p.promo_image){
-        return `<img class="pp-spot-promo-img" src="${p.promo_image}" alt="${p.name} promotional image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="pp-spot-promo-placeholder" style="display:none;--pp-grad:${grad}">
+      const gradCard=`<div class="pp-spot-promo-placeholder" style="display:none;--pp-grad:${grad}">
             <div class="pp-spot-promo-logo-wrap"><img src="${fav(domain)}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<span>${ini2}</span>'"><span style="display:none">${ini2}</span></div>
             <div class="pp-spot-promo-name">${p.name}</div>
             ${tag?`<div class="pp-spot-promo-tag">${tag}</div>`:''}
+            <div class="pp-spot-promo-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Featured Partner</div>
           </div>`;
-      }
-      return `<div class="pp-spot-promo-placeholder" style="--pp-grad:${grad}">
-        <div class="pp-spot-promo-logo-wrap"><img src="${fav(domain)}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<span>${ini2}</span>'"></div>
-        <div class="pp-spot-promo-name">${p.name}</div>
-        ${tag?`<div class="pp-spot-promo-tag">${tag}</div>`:''}
-        <div class="pp-spot-promo-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Featured Partner</div>
-      </div>`;
+      const imgSrc=p.promo_image||shot(domain);
+      return `<img class="pp-spot-promo-img" src="${imgSrc}" alt="${p.name} promotional image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          ${gradCard}`;
     }
 
     /* ── Build spotlight hero slider from affiliate partners ── */
