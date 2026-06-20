@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "night",
-      "slug": "before-you-subscribe-to-claude-read-this-pros-cons-verdict",
-      "title": "Before You Subscribe to Claude, Read This — Pros, Cons, Verdict",
-      "type": "pros_cons",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
-      "topic": "before subscribe claude read",
-      "pair": "",
-      "words": 2378,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI",
-        "Taskade AI"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "exclusive",
       "slug": "the-educator-or-trainer-ai-roadmap-which-tools-to-add-first-and",
       "title": "The Educator or Trainer AI Roadmap: Which Tools to Add First (and Why)",
@@ -1179,6 +1158,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-20",
+      "slot": "night",
+      "slug": "is-copy-ai-worth-it-full-pros-cons-and-verdict-for-2026",
+      "title": "Is Copy.ai Worth It? Full Pros, Cons, and Verdict for 2026",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
+      "topic": "copyai worth full pros",
+      "pair": "",
+      "tool": "Copy.ai",
+      "words": 2578,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1334,6 +1335,7 @@
     "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608699565448-9492aaf3c708?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop"
   ]
 }
