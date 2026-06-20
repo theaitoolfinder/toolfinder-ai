@@ -3,25 +3,6 @@
     {
       "date": "2026-06-12",
       "slot": "exclusive",
-      "slug": "the-educator-or-trainer-ai-roadmap-which-tools-to-add-first-and",
-      "title": "The Educator or Trainer AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
-      "topic": "educator trainer roadmap which",
-      "pair": "",
-      "words": 2426,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-12",
-      "slot": "exclusive",
       "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the",
       "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
       "type": "controversial",
@@ -1180,6 +1161,30 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-20",
+      "slot": "latenight",
+      "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise-2026-06-20",
+      "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
+      "topic": "tool subscription trap companies",
+      "pair": "",
+      "tool": "",
+      "words": 1996,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
@@ -1336,6 +1341,7 @@
     "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608699565448-9492aaf3c708?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop"
   ]
 }
