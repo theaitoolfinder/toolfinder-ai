@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "exclusive",
-      "slug": "the-hidden-cost-of-free-ai-tools-what-you-re-really-giving-up",
-      "title": "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
-      "topic": "hidden cost free tools",
-      "pair": "",
-      "words": 2856,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "evening",
       "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take-2026-06-12",
       "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
@@ -1168,6 +1147,26 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-20",
+      "slot": "morning",
+      "slug": "ai-tools-for-sales-professionals-the-exact-stack-to-build-phase",
+      "title": "AI Tools for Sales Professionals: The Exact Stack to Build, Phase by Phase",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools sales professionals exact",
+      "pair": "",
+      "tool": "",
+      "words": 2418,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "Predis.ai",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1319,6 +1318,7 @@
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop"
   ]
 }
