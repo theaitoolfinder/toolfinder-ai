@@ -732,5 +732,6 @@ window.MYAI_AFF_MAP = {
   "zoho zia":              "https://zoho.com/crm/ai-sales-assistant.html",
   "zoominfo":              "https://zoominfo.com",
   "zoominfo ai":           "https://zoominfo.com",
-  "zubtitle":              "https://zubtitle.com"
+  "zubtitle":              "https://zubtitle.com",
+  "viggle": "https://viggle.ai"
 };
