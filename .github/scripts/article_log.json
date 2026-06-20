@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-12",
-      "slot": "evening",
-      "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take-2026-06-12",
-      "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
-      "topic": "used firefliesai every days",
-      "pair": "",
-      "words": 2491,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-12",
       "slot": "exclusive",
       "slug": "replit-ai-vs-cursor-2026-i-used-both-for-30-days-here-s-the-truth",
       "title": "Replit AI vs Cursor (2026): I Used Both for 30 Days — Here's the Truth",
@@ -1167,6 +1151,28 @@
         "Predis.ai",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-20",
+      "slot": "midday",
+      "slug": "i-used-deepseek-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used DeepSeek Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
+      "topic": "used deepseek every days",
+      "pair": "",
+      "tool": "DeepSeek",
+      "words": 1992,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1319,6 +1325,7 @@
     "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop"
   ]
 }
