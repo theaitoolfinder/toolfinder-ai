@@ -690,16 +690,20 @@ body::before{
   background:#e0f2fe;border:1.5px solid rgba(2,132,199,.22);
   transition:all .2s}
 .pp-spot-tutorial-btn:hover{background:#0284c7;color:#fff;border-color:#0284c7;transform:translateY(-2px)}
-/* Right: website screenshot preview */
-.pp-spot-right{flex:1;min-width:0;position:relative;background:#e8edf3;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
-.pp-spot-browser-bar{background:#f1f5f9;border-bottom:1px solid rgba(0,0,0,.08);height:32px;padding:0 14px;display:flex;align-items:center;gap:6px;flex-shrink:0}
-.pp-spot-browser-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.pp-spot-browser-dot.r{background:#ff5f56}.pp-spot-browser-dot.y{background:#ffbd2e}.pp-spot-browser-dot.g{background:#27c93f}
-.pp-spot-url-bar{flex:1;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:6px;height:19px;margin:0 12px;display:flex;align-items:center;padding:0 8px;gap:5px;overflow:hidden}
-.pp-spot-url-bar svg{flex-shrink:0;color:#64748b}
-.pp-spot-url-text{font-size:10px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-.pp-spot-screenshot-wrap{flex:1;overflow:hidden;position:relative}
-.pp-spot-screenshot{width:100%;height:100%;display:block;object-fit:cover;object-position:top}
+/* Right: promo image or branded gradient fallback */
+.pp-spot-right{flex:1;min-width:0;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
+.pp-spot-promo-img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;flex:1}
+/* Gradient fallback when no promo image is set */
+.pp-spot-promo-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 28px;text-align:center;position:relative;overflow:hidden}
+.pp-spot-promo-placeholder::before{content:'';position:absolute;inset:0;background:var(--pp-grad,linear-gradient(135deg,#1a56db 0%,#7c3aed 100%));opacity:.92}
+.pp-spot-promo-placeholder::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 30% 20%,rgba(255,255,255,.12) 0%,transparent 60%)}
+.pp-spot-promo-logo-wrap{width:80px;height:80px;border-radius:22px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;backdrop-filter:blur(4px);flex-shrink:0}
+.pp-spot-promo-logo-wrap img{width:52px;height:52px;border-radius:12px;object-fit:contain}
+.pp-spot-promo-logo-wrap span{font-size:26px;font-weight:900;color:#fff;letter-spacing:-.02em}
+.pp-spot-promo-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;position:relative;z-index:1;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.pp-spot-promo-tag{font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;position:relative;z-index:1;max-width:280px}
+.pp-spot-promo-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:12px;font-weight:700;color:#fff;position:relative;z-index:1;backdrop-filter:blur(4px)}
+.pp-spot-promo-badge svg{opacity:.8}
 /* Nav */
 .pp-spot-nav{position:absolute;bottom:14px;right:16px;display:flex;align-items:center;gap:8px;z-index:4}
 .pp-spot-arrow{width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--border);color:var(--text-2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;padding:0;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.08)}
@@ -722,6 +726,11 @@ body::before{
   .pp-spot-prompt-btn{padding:9px 10px;font-size:11.5px}
   .pp-spot-tutorial-btn{padding:9px 10px;font-size:11.5px}
   .pp-spot-right{min-height:200px;flex-shrink:0}
+  .pp-spot-promo-placeholder{padding:24px 20px;gap:10px}
+  .pp-spot-promo-logo-wrap{width:64px;height:64px;border-radius:18px}
+  .pp-spot-promo-logo-wrap img{width:40px;height:40px}
+  .pp-spot-promo-name{font-size:18px}
+  .pp-spot-promo-tag{font-size:12px}
 }
 /* ── Partner picks carousel — cards use same .card layout as tool directory ── */
 /* Gold partner card tint */
@@ -3440,23 +3449,36 @@ async function submitReview(){
     }
     function ini(n){return (n||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
     function fav(domain){return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;}
-    /* Static screenshots for domains that block bot screenshot services */
-    var LOCAL_SHOTS = {
-      'make.com': '/img/screenshots/make-com.jpg',
-      'www.make.com': '/img/screenshots/make-com.jpg',
-      'keywordinsights.ai': '/img/screenshots/keywordinsights-ai.jpg',
-      'www.keywordinsights.ai': '/img/screenshots/keywordinsights-ai.jpg'
+    /* Category → gradient for promo placeholder */
+    var CAT_GRADS={
+      'Writing':  'linear-gradient(135deg,#1a56db 0%,#7c3aed 100%)',
+      'Audio':    'linear-gradient(135deg,#7c3aed 0%,#ec4899 100%)',
+      'SEO':      'linear-gradient(135deg,#059669 0%,#0891b2 100%)',
+      'Productivity':'linear-gradient(135deg,#0891b2 0%,#1a56db 100%)',
+      'Marketing':'linear-gradient(135deg,#d97706 0%,#dc2626 100%)',
+      'Automation':'linear-gradient(135deg,#7c3aed 0%,#1a56db 100%)',
+      'Education':'linear-gradient(135deg,#059669 0%,#7c3aed 100%)',
+      'Video':    'linear-gradient(135deg,#dc2626 0%,#d97706 100%)',
+      'Design':   'linear-gradient(135deg,#ec4899 0%,#7c3aed 100%)',
     };
-    function shot(domain){
-      if(LOCAL_SHOTS[domain]) return LOCAL_SHOTS[domain];
-      return 'https://s0.wordpress.com/mshots/v1/https%3A%2F%2F'+domain+'?w=1200&h=750';
-    }
-    function shotErr(el, domain){
-      if(LOCAL_SHOTS[domain]) return; /* already using local, don't fallback */
-      if(!el.dataset.f){
-        el.dataset.f='1';
-        el.src='https://image.thum.io/get/width/1200/crop/750/https://'+domain;
+    function catGrad(cat){return CAT_GRADS[cat]||'linear-gradient(135deg,#1a56db 0%,#7c3aed 100%)';}
+    function promoRight(p, domain, tag, cat){
+      const ini2=ini(p.name);
+      const grad=catGrad(cat);
+      if(p.promo_image){
+        return `<img class="pp-spot-promo-img" src="${p.promo_image}" alt="${p.name} promotional image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pp-spot-promo-placeholder" style="display:none;--pp-grad:${grad}">
+            <div class="pp-spot-promo-logo-wrap"><img src="${fav(domain)}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<span>${ini2}</span>'"><span style="display:none">${ini2}</span></div>
+            <div class="pp-spot-promo-name">${p.name}</div>
+            ${tag?`<div class="pp-spot-promo-tag">${tag}</div>`:''}
+          </div>`;
       }
+      return `<div class="pp-spot-promo-placeholder" style="--pp-grad:${grad}">
+        <div class="pp-spot-promo-logo-wrap"><img src="${fav(domain)}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<span>${ini2}</span>'"></div>
+        <div class="pp-spot-promo-name">${p.name}</div>
+        ${tag?`<div class="pp-spot-promo-tag">${tag}</div>`:''}
+        <div class="pp-spot-promo-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Featured Partner</div>
+      </div>`;
     }
 
     /* ── Build spotlight hero slider from affiliate partners ── */
@@ -3519,18 +3541,7 @@ async function submitReview(){
               </div>
             </div>
           </div>
-          <div class="pp-spot-right">
-            <div class="pp-spot-browser-bar">
-              <span class="pp-spot-browser-dot r"></span><span class="pp-spot-browser-dot y"></span><span class="pp-spot-browser-dot g"></span>
-              <div class="pp-spot-url-bar">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="pp-spot-url-text">${domain}</span>
-              </div>
-            </div>
-            <div class="pp-spot-screenshot-wrap">
-              <img class="pp-spot-screenshot" src="${shot(domain)}" alt="${p.name} website" loading="${i===0?'eager':'lazy'}" onerror="shotErr(this,'${domain}')">
-            </div>
-          </div>
+          <div class="pp-spot-right">${promoRight(p,domain,tag,cat)}</div>
         </div>`;
       });
       const nav=partners.length>1?`<div class="pp-spot-nav">
@@ -3563,6 +3574,14 @@ async function submitReview(){
           dotEls[_si]&&dotEls[_si].classList.add('active');
           _st=setInterval(()=>ppSpot(1),4000);
         };
+        /* Touch swipe support */
+        let _tx=0,_ty=0;
+        el.addEventListener('touchstart',e=>{_tx=e.touches[0].clientX;_ty=e.touches[0].clientY;},{passive:true});
+        el.addEventListener('touchend',e=>{
+          const dx=e.changedTouches[0].clientX-_tx;
+          const dy=e.changedTouches[0].clientY-_ty;
+          if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>44) ppSpot(dx<0?1:-1);
+        },{passive:true});
       }
     })();
 
