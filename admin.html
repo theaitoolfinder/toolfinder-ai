@@ -1406,7 +1406,7 @@ function renderToolList(){
         <div><label>Trending score (0–100)</label><input type="number" min="0" max="100" data-f="trending" value="${t.trending}"></div>
         <div class="full"><label>Plain URL (fallback)</label><input type="url" data-f="url" value="${escapeAttr(t.url)}"></div>
         <div class="full"><label>🪙 Affiliate URL</label><input type="url" data-f="affiliate_url" placeholder="https://your-affiliate-link.com/?ref=..." value="${escapeAttr(t.affiliate_url||'')}"></div>
-        <div class="full"><label>🖼 Promo Image URL <span style="font-weight:400;color:var(--text-dim)">(promotional/marketing image shown in the featured carousel)</span></label><input type="url" data-f="promo_image" placeholder="https://…/promo-banner.jpg" value="${escapeAttr(t.promo_image||'')}"></div>
+        <div class="full"><label>🖼 Promo Image URL <span style="font-weight:400;color:var(--text-dim)">(promotional/marketing image shown in the featured carousel)</span></label><div style="display:flex;gap:8px;align-items:center"><input type="url" data-f="promo_image" placeholder="https://…/promo-banner.jpg" value="${escapeAttr(t.promo_image||'')}" style="flex:1"><button class="btn" type="button" onclick="fetchPromoImage(${i})" title="Auto-fetch og:image from tool homepage" style="white-space:nowrap;flex-shrink:0">&#x1F50D; Auto-fetch</button></div></div>
         <div class="full"><label>Jobs (comma-separated)</label><input type="text" data-f="jobs" value="${escapeAttr(t.jobs.join(', '))}"></div>
         <div class="full"><label>Needs (comma-separated)</label><input type="text" data-f="needs" value="${escapeAttr(t.needs.join(', '))}"></div>
         <div class="checkbox"><input type="checkbox" data-f="verified" ${t.verified?'checked':''}><span>Verified vendor</span></div>
@@ -1500,6 +1500,40 @@ function updateField(idx, inp){
   ov[idx][inp.dataset.f] = val;
   saveOverrides(ov);
   debouncedCommit();
+}
+async function fetchPromoImage(idx){
+  const el = document.querySelector(`.tool[data-idx="${idx}"]`);
+  if(!el) return;
+  const affInp = el.querySelector('input[data-f="affiliate_url"]');
+  const promoInp = el.querySelector('input[data-f="promo_image"]');
+  if(!affInp || !promoInp) return;
+
+  let origin = '';
+  try { origin = new URL(affInp.value.trim()).origin; } catch(e) {
+    alert('Enter a valid affiliate URL first so I know which site to fetch the image from.');
+    return;
+  }
+
+  const btn = el.querySelector('button[onclick^="fetchPromoImage"]');
+  const origText = btn ? btn.innerHTML : '';
+  if(btn){ btn.disabled = true; btn.textContent = 'Fetching…'; }
+
+  try {
+    const res = await fetch('https://api.microlink.io/?url=' + encodeURIComponent(origin) + '&meta=true');
+    const json = await res.json();
+    const img = json?.data?.image?.url || json?.data?.og?.image || '';
+    if(img){
+      promoInp.value = img;
+      promoInp.dispatchEvent(new Event('input'));
+      promoInp.dispatchEvent(new Event('change'));
+    } else {
+      alert('No OG image found for ' + origin + '. Paste the promo image URL manually.');
+    }
+  } catch(e) {
+    alert('Fetch failed: ' + e.message);
+  } finally {
+    if(btn){ btn.disabled = false; btn.innerHTML = origText; }
+  }
 }
 function deleteTool(idx){
   if (!confirm('Remove this tool from your site?')) return;
