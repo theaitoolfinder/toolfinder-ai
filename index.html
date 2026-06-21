@@ -3473,7 +3473,7 @@ async function submitReview(){
             <div class="pp-spot-promo-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Featured Partner</div>
           </div>`;
       const imgSrc=p.promo_image||shot(domain);
-      return `<img class="pp-spot-promo-img" src="${imgSrc}" alt="${p.name} promotional image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      return `<img class="pp-spot-promo-img" src="${imgSrc}" alt="${p.name} promotional image" loading="lazy" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           ${gradCard}`;
     }
 
@@ -3580,7 +3580,11 @@ async function submitReview(){
         },{passive:true});
         /* Desktop drag/swipe support */
         let _mx=0,_my=0,_mdrag=false;
-        el.addEventListener('mousedown',e=>{_mx=e.clientX;_my=e.clientY;_mdrag=true;el.style.cursor='grabbing';});
+        el.addEventListener('mousedown',e=>{
+          if(e.button!==0)return;
+          e.preventDefault(); /* prevent native image drag */
+          _mx=e.clientX;_my=e.clientY;_mdrag=true;el.style.cursor='grabbing';
+        });
         document.addEventListener('mousemove',e=>{if(_mdrag)e.preventDefault();},{passive:false});
         document.addEventListener('mouseup',e=>{
           if(!_mdrag)return;
