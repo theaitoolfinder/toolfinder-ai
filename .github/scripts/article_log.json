@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-13",
-      "slot": "evening",
-      "slug": "ai-tools-for-educator-or-trainers-the-exact-stack-to-build-phase",
-      "title": "AI Tools for Educator or Trainers: The Exact Stack to Build, Phase by Phase",
-      "type": "roadmap",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools educator trainers exact",
-      "pair": "",
-      "tool": "",
-      "words": 2232,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-13",
       "slot": "night",
       "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise",
       "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
@@ -1195,6 +1175,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-21",
+      "slot": "latenight",
+      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-06-21",
+      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop",
+      "topic": "tool lockin switching costs",
+      "pair": "",
+      "tool": "",
+      "words": 1913,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "RankMath AI",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
@@ -1357,6 +1362,7 @@
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop"
   ]
 }
