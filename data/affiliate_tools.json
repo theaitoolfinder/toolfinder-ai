@@ -4,7 +4,7 @@
     {
       "name": "Writesonic",
       "affiliate_url": "https://writesonic.com?fp_ref=myaitoolsfinder",
-      "promo_image": "https://writesonic.com/opengraph-image",
+      "promo_image": "https://cdn.sanity.io/images/uvdgu5ti/production/27fa3cd502dcfe6d62579ccb7a58c3c3f77d52e2-3360x1680.jpg",
       "categories": [
         "Writing"
       ],
@@ -13,7 +13,7 @@
     {
       "name": "ElevenLabs",
       "affiliate_url": "https://try.elevenlabs.io/flxscqgtf1ys",
-      "promo_image": "https://elevenlabs.io/cover.png",
+      "promo_image": "https://eleven-public-cdn.elevenlabs.io/marketing_website/_next/static/media/creative-1.f3361dab.png",
       "categories": [
         "Audio"
       ],
@@ -22,7 +22,7 @@
     {
       "name": "RankMath AI",
       "affiliate_url": "https://rankmath.com/?ref=benjie-6423",
-      "promo_image": "https://rankmath.com/wp-content/uploads/2021/12/Rank-Math.png",
+      "promo_image": "https://rankmath.com/wp-content/themes/rm/images/home/rank-math-modules-page.jpg",
       "categories": [
         "SEO"
       ],
@@ -40,7 +40,7 @@
     {
       "name": "Fireflies.ai",
       "affiliate_url": "https://fireflies.ai/?fpr=benjie21",
-      "promo_image": "https://fireflies.ai/thumbnail.png",
+      "promo_image": "https://fireflies.ai/api/media/file/hero-desktop.webp?prefix=payload",
       "categories": [
         "Productivity"
       ],
@@ -58,7 +58,7 @@
     {
       "name": "Beehiiv",
       "affiliate_url": "https://www.beehiiv.com/?via=benjie-gadiaza",
-      "promo_image": "https://media.beehiiv.com/www/og-image/og-beehiiv.png",
+      "promo_image": "https://media.beehiiv.com/www/homepage/hero-images/ab-test/hero-1.png",
       "categories": [
         "Marketing"
       ],
@@ -67,7 +67,7 @@
     {
       "name": "Predis.ai",
       "affiliate_url": "https://predis.ai?ref=myaitoolsfinder",
-      "promo_image": "https://predis.ai/assets/img/try-out/temp-thumb/ads/ai-ad-generator.webp",
+      "promo_image": "https://predis.ai/assets/img/new-design/home/download-ad.webp",
       "categories": [
         "Marketing"
       ],
@@ -112,7 +112,7 @@
     {
       "name": "Soundraw",
       "affiliate_url": "https://soundraw.io/?ref=myaitoolsfinder",
-      "promo_image": "https://cdn.soundraw.io/soundraw_ogp_EN.png",
+      "promo_image": "https://cdn.soundraw.io/promo_drummix/diverse_music.jpg",
       "categories": [
         "Audio"
       ],
