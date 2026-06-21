@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-06-13",
-      "slot": "afternoon",
-      "slug": "descript-pros-cons-what-ai-audio-video-editing-users-actually",
-      "title": "Descript Pros & Cons: What Ai Audio/Video Editing Users Actually Think",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
-      "topic": "descript pros cons audiovideo",
-      "pair": "",
-      "tool": "Descript",
-      "words": 2152,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-13",
       "slot": "evening",
       "slug": "ai-tools-for-educator-or-trainers-the-exact-stack-to-build-phase",
       "title": "AI Tools for Educator or Trainers: The Exact Stack to Build, Phase by Phase",
@@ -1191,6 +1173,28 @@
         "Predis.ai",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-21",
+      "slot": "night",
+      "slug": "before-you-subscribe-to-perplexity-ai-read-this-pros-cons-verdict",
+      "title": "Before You Subscribe to Perplexity AI, Read This — Pros, Cons, Verdict",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
+      "topic": "before subscribe perplexity read",
+      "pair": "",
+      "tool": "Perplexity AI",
+      "words": 2265,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1352,6 +1356,7 @@
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop"
   ]
 }
