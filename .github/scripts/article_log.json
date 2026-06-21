@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-13",
-      "slot": "midday",
-      "slug": "chatgpt-everything-you-need-to-know-before-you-sign-up-2026",
-      "title": "ChatGPT: Everything You Need to Know Before You Sign Up (2026)",
-      "type": "featured",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop",
-      "topic": "chatgpt everything need know",
-      "pair": "",
-      "tool": "ChatGPT",
-      "words": 2473,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-13",
       "slot": "afternoon",
       "slug": "descript-pros-cons-what-ai-audio-video-editing-users-actually",
       "title": "Descript Pros & Cons: What Ai Audio/Video Editing Users Actually Think",
@@ -1187,6 +1168,29 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-21",
+      "slot": "evening",
+      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-06-21",
+      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
+      "topic": "dark side writing tools",
+      "pair": "",
+      "tool": "",
+      "words": 2353,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
@@ -1347,6 +1351,7 @@
     "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop"
   ]
 }
