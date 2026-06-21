@@ -1501,6 +1501,46 @@ function updateField(idx, inp){
   saveOverrides(ov);
   debouncedCommit();
 }
+/* Parse raw HTML for the best promotional image using the same priority
+   order used when we curate images manually:
+   1. fetchpriority="high" preloaded image  → actual above-fold hero
+   2. <meta name="twitter:image">           → usually more intentional than og
+   3. <meta property="og:image">            → last resort
+   Relative URLs are resolved against the site origin. */
+function extractBestPromoImage(html, origin){
+  // 1. fetchpriority="high" hero preload — strip Next.js proxy to get real URL
+  let m = html.match(/fetchpriority=["']high["'][^>]*href=["']([^"']+)["']/i)
+         || html.match(/href=["']([^"']+)["'][^>]*fetchpriority=["']high["']/i);
+  if(m){
+    const raw = m[1];
+    const qs = raw.match(/[?&]url=([^&"'\s]+)/i);
+    const img = qs ? decodeURIComponent(qs[1]) : raw;
+    // Skip non-image or noise (fonts, css, svg backgrounds)
+    if(img && /\.(png|jpg|jpeg|webp|avif)(\?|$)/i.test(img) && !img.includes('noise')){
+      return img.startsWith('http') ? img : origin + img;
+    }
+  }
+  // 2. imageSrcSet high-priority (Next.js pattern)
+  m = html.match(/imageSrcSet=["']([^"']+)["'][^>]*fetchPriority=["']high["']/i)
+    || html.match(/fetchPriority=["']high["'][^>]*imageSrcSet=["']([^"']+)["']/i);
+  if(m){
+    const first = m[1].split(',')[0].trim().split(' ')[0];
+    const qs = first.match(/[?&]url=([^&"'\s]+)/i);
+    const img = qs ? decodeURIComponent(qs[1]) : first;
+    if(img && /\.(png|jpg|jpeg|webp|avif)(\?|$)/i.test(img))
+      return img.startsWith('http') ? img : origin + img;
+  }
+  // 3. twitter:image
+  m = html.match(/twitter:image["'][^>]*content=["']([^"']+)["']/i)
+    || html.match(/content=["']([^"']+)["'][^>]*twitter:image/i);
+  if(m && m[1].startsWith('http')) return m[1];
+  // 4. og:image
+  m = html.match(/og:image["'][^>]*content=["'](https?:\/\/[^"']+)["']/i)
+    || html.match(/content=["'](https?:\/\/[^"']+)["'][^>]*og:image/i);
+  if(m) return m[1];
+  return '';
+}
+
 async function fetchPromoImage(idx){
   const el = document.querySelector(`.tool[data-idx="${idx}"]`);
   if(!el) return;
@@ -1519,15 +1559,31 @@ async function fetchPromoImage(idx){
   if(btn){ btn.disabled = true; btn.textContent = 'Fetching…'; }
 
   try {
-    const res = await fetch('https://api.microlink.io/?url=' + encodeURIComponent(origin) + '&meta=true');
-    const json = await res.json();
-    const img = json?.data?.image?.url || json?.data?.og?.image || '';
+    // Fetch raw HTML via CORS proxy — gives us the actual hero image, not just og:image
+    const proxy = 'https://corsproxy.io/?' + encodeURIComponent(origin);
+    let img = '';
+    try {
+      const res = await fetch(proxy, {signal: AbortSignal.timeout(12000)});
+      if(res.ok){
+        const html = await res.text();
+        img = extractBestPromoImage(html, origin);
+      }
+    } catch(_){}
+
+    // Fallback: microlink meta API
+    if(!img){
+      const res = await fetch('https://api.microlink.io/?url=' + encodeURIComponent(origin) + '&meta=true',
+        {signal: AbortSignal.timeout(10000)});
+      const json = await res.json();
+      img = json?.data?.image?.url || '';
+    }
+
     if(img){
       promoInp.value = img;
       promoInp.dispatchEvent(new Event('input'));
       promoInp.dispatchEvent(new Event('change'));
     } else {
-      alert('No OG image found for ' + origin + '. Paste the promo image URL manually.');
+      alert('Could not find a promotional image for ' + origin + '. Paste the URL manually.');
     }
   } catch(e) {
     alert('Fetch failed: ' + e.message);
