@@ -691,8 +691,17 @@ body::before{
   transition:all .2s}
 .pp-spot-tutorial-btn:hover{background:#0284c7;color:#fff;border-color:#0284c7;transform:translateY(-2px)}
 /* Right: promo image or branded gradient fallback */
-.pp-spot-right{flex:1;min-width:0;position:relative;overflow:hidden;display:flex;flex-direction:column;height:380px}
-.pp-spot-promo-img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;position:absolute;inset:0}
+.pp-spot-right{flex:1;min-width:0;position:relative;overflow:hidden;display:flex;flex-direction:column;height:380px;background:#1a1a2e;align-items:center;justify-content:center;padding:16px}
+.pp-spot-browser-frame{width:100%;height:100%;border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.35);display:flex;flex-direction:column;position:relative}
+.pp-spot-browser-bar{background:#e8e8e8;padding:8px 12px;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.pp-spot-browser-dots{display:flex;gap:5px;flex-shrink:0}
+.pp-spot-browser-dots span{width:10px;height:10px;border-radius:50%;display:block}
+.pp-spot-browser-dots span:nth-child(1){background:#ff5f57}
+.pp-spot-browser-dots span:nth-child(2){background:#febc2e}
+.pp-spot-browser-dots span:nth-child(3){background:#28c840}
+.pp-spot-browser-url{background:#fff;border-radius:4px;padding:3px 10px;font-size:11px;color:#555;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace}
+.pp-spot-browser-content{flex:1;position:relative;overflow:hidden}
+.pp-spot-promo-img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;position:absolute;inset:0}
 /* Gradient fallback when no promo image is set */
 .pp-spot-promo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 28px;text-align:center;overflow:hidden}
 .pp-spot-promo-placeholder::before{content:'';position:absolute;inset:0;background:var(--pp-grad,linear-gradient(135deg,#1a56db 0%,#7c3aed 100%));opacity:.92}
@@ -3473,8 +3482,16 @@ async function submitReview(){
             <div class="pp-spot-promo-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Featured Partner</div>
           </div>`;
       const imgSrc=p.promo_image||shot(domain);
-      return `<img class="pp-spot-promo-img" src="${imgSrc}" alt="${p.name} promotional image" loading="lazy" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          ${gradCard}`;
+      return `<div class="pp-spot-browser-frame">
+          <div class="pp-spot-browser-bar">
+            <div class="pp-spot-browser-dots"><span></span><span></span><span></span></div>
+            <div class="pp-spot-browser-url">${domain||p.name.toLowerCase().replace(/\s+/g,'')}.com</div>
+          </div>
+          <div class="pp-spot-browser-content">
+            <img class="pp-spot-promo-img" src="${imgSrc}" alt="${p.name} promotional image" loading="lazy" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            ${gradCard}
+          </div>
+        </div>`;
     }
 
     /* ── Build spotlight hero slider from affiliate partners ── */
