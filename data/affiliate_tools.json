@@ -13,7 +13,7 @@
     {
       "name": "ElevenLabs",
       "affiliate_url": "https://try.elevenlabs.io/flxscqgtf1ys",
-      "promo_image": "https://eleven-public-cdn.elevenlabs.io/marketing_website/_next/static/media/creative-1.f3361dab.png",
+      "promo_image": "",
       "categories": [
         "Audio"
       ],
@@ -22,7 +22,7 @@
     {
       "name": "RankMath AI",
       "affiliate_url": "https://rankmath.com/?ref=benjie-6423",
-      "promo_image": "https://rankmath.com/wp-content/themes/rm/images/home/rank-math-modules-page.jpg",
+      "promo_image": "https://rankmath.com/wp-content/uploads/2021/12/Rank-Math.png",
       "categories": [
         "SEO"
       ],
@@ -67,7 +67,7 @@
     {
       "name": "Predis.ai",
       "affiliate_url": "https://predis.ai?ref=myaitoolsfinder",
-      "promo_image": "https://predis.ai/assets/img/new-design/home/download-ad.webp",
+      "promo_image": "",
       "categories": [
         "Marketing"
       ],
@@ -112,7 +112,7 @@
     {
       "name": "Soundraw",
       "affiliate_url": "https://soundraw.io/?ref=myaitoolsfinder",
-      "promo_image": "https://cdn.soundraw.io/promo_drummix/diverse_music.jpg",
+      "promo_image": "",
       "categories": [
         "Audio"
       ],
