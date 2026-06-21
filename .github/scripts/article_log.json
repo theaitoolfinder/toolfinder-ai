@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-13",
-      "slot": "morning",
-      "slug": "is-wordtune-finally-better-than-writesonic-2026-head-to-head",
-      "title": "Is Wordtune Finally Better Than Writesonic? (2026 Head-to-Head)",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
-      "topic": "wordtune finally better than",
-      "pair": "",
-      "tool": "",
-      "words": 1949,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-13",
       "slot": "midday",
       "slug": "chatgpt-everything-you-need-to-know-before-you-sign-up-2026",
       "title": "ChatGPT: Everything You Need to Know Before You Sign Up (2026)",
@@ -1185,6 +1165,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-21",
+      "slot": "afternoon",
+      "slug": "zapier-vs-make-com-pricing-features-and-which-one-wins-for-most",
+      "title": "Zapier vs Make.com: Pricing, Features, and Which One Wins for Most Users",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
+      "topic": "zapier makecom pricing features",
+      "pair": "Zapier vs Make.com",
+      "tool": "Zapier",
+      "words": 2063,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1344,6 +1346,7 @@
     "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop"
   ]
 }
