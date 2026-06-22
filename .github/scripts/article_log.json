@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-14",
-      "slot": "afternoon",
-      "slug": "gamma-7-genuine-pros-and-5-real-cons-you-need-to-know",
-      "title": "Gamma: 7 Genuine Pros and 5 Real Cons You Need to Know",
-      "type": "pros_cons",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop",
-      "topic": "gamma genuine pros cons",
-      "pair": "",
-      "tool": "Gamma",
-      "words": 2001,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-14",
       "slot": "evening",
       "slug": "the-healthcare-professional-s-ai-tools-roadmap-for-2026-start",
       "title": "The Healthcare Professional's AI Tools Roadmap for 2026: Start Here",
@@ -1203,6 +1186,24 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-22",
+      "slot": "night",
+      "slug": "before-you-subscribe-to-surfer-seo-read-this-pros-cons-verdict",
+      "title": "Before You Subscribe to Surfer SEO, Read This — Pros, Cons, Verdict",
+      "type": "pros_cons",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1746608943506-bb1663f3f61a?w=800&q=85&auto=format&fit=crop",
+      "topic": "before subscribe surfer read",
+      "pair": "",
+      "tool": "Surfer SEO",
+      "words": 2040,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1370,6 +1371,7 @@
     "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1729860649094-12000c94f4b0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1750365919971-7dd273e7b317?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1746608943506-bb1663f3f61a?w=800&q=85&auto=format&fit=crop"
   ]
 }
