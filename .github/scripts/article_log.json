@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-06-13",
-      "slot": "night",
-      "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise",
-      "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool subscription trap companies",
-      "pair": "",
-      "tool": "",
-      "words": 2064,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-13",
       "slot": "latenight",
       "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026",
       "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
@@ -1200,6 +1177,27 @@
         "RankMath AI",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-22",
+      "slot": "morning",
+      "slug": "the-podcaster-ai-roadmap-which-tools-to-add-first-and-why",
+      "title": "The Podcaster AI Roadmap: Which Tools to Add First (and Why)",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop",
+      "topic": "podcaster roadmap which tools",
+      "pair": "",
+      "tool": "",
+      "words": 2345,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1363,6 +1361,7 @@
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop"
   ]
 }
