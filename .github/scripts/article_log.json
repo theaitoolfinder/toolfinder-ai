@@ -1,29 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-13",
-      "slot": "latenight",
-      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026",
-      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
-      "type": "controversial",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool lockin switching costs",
-      "pair": "",
-      "tool": "",
-      "words": 2540,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI"
-      ]
-    },
-    {
       "date": "2026-06-14",
       "slot": "morning",
       "slug": "suno-vs-udio-the-honest-breakdown-for-2026",
@@ -1198,6 +1175,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-22",
+      "slot": "midday",
+      "slug": "canva-ai-review-real-results-real-pricing-real-talk",
+      "title": "Canva AI Review: Real Results, Real Pricing, Real Talk",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1729860649094-12000c94f4b0?w=800&q=85&auto=format&fit=crop",
+      "topic": "canva results pricing talk",
+      "pair": "",
+      "tool": "Canva AI",
+      "words": 2574,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1362,6 +1360,7 @@
     "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1729860649094-12000c94f4b0?w=800&q=85&auto=format&fit=crop"
   ]
 }
