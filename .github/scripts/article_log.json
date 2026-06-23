@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-15",
-      "slot": "afternoon",
-      "slug": "honest-jasper-ai-review-what-it-gets-right-and-where-it-falls",
-      "title": "Honest Jasper AI Review: What It Gets Right and Where It Falls Short",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
-      "topic": "jasper gets where falls",
-      "pair": "",
-      "tool": "Jasper AI",
-      "words": 2518,
-      "partners": [
-        "Beehiiv",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-15",
       "slot": "evening",
       "slug": "openai-s-pricing-changes-are-angering-power-users-here-s-the",
       "title": "OpenAI's Pricing Changes Are Angering Power Users. Here's the Full Story.",
@@ -1202,6 +1182,28 @@
         "Predis.ai",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-23",
+      "slot": "night",
+      "slug": "leonardo-ai-7-genuine-pros-and-5-real-cons-you-need-to-know",
+      "title": "Leonardo.ai: 7 Genuine Pros and 5 Real Cons You Need to Know",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1682795735660-a789079d5623?w=800&q=85&auto=format&fit=crop",
+      "topic": "leonardoai genuine pros cons",
+      "pair": "",
+      "tool": "Leonardo.ai",
+      "words": 2550,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1375,6 +1377,7 @@
     "https://images.unsplash.com/photo-1740818576358-7596eb883cf3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1682795735660-a789079d5623?w=800&q=85&auto=format&fit=crop"
   ]
 }
