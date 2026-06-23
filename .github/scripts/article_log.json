@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-15",
-      "slot": "morning",
-      "slug": "zapier-vs-make-com-2026-i-used-both-for-30-days-here-s-the-truth",
-      "title": "Zapier vs Make.com (2026): I Used Both for 30 Days — Here's the Truth",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
-      "topic": "zapier makecom 2026 used",
-      "pair": "Zapier vs Make.com (2026)",
-      "tool": "Zapier",
-      "words": 2534,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-06-15",
       "slot": "midday",
       "slug": "perplexity-ai-review-real-results-real-pricing-real-talk",
       "title": "Perplexity AI Review: Real Results, Real Pricing, Real Talk",
@@ -1199,6 +1178,26 @@
         "Simplified",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-23",
+      "slot": "afternoon",
+      "slug": "opusclip-vs-descript-the-honest-breakdown-for-2026",
+      "title": "OpusClip vs Descript: The Honest Breakdown for 2026",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop",
+      "topic": "opusclip descript breakdown 2026",
+      "pair": "OpusClip vs Descript",
+      "tool": "OpusClip",
+      "words": 2263,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1370,6 +1369,7 @@
     "https://images.unsplash.com/photo-1746608943506-bb1663f3f61a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740818576358-7596eb883cf3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop"
   ]
 }
