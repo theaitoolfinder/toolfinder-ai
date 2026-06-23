@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-15",
-      "slot": "midday",
-      "slug": "perplexity-ai-review-real-results-real-pricing-real-talk",
-      "title": "Perplexity AI Review: Real Results, Real Pricing, Real Talk",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
-      "topic": "perplexity results pricing talk",
-      "pair": "",
-      "tool": "Perplexity AI",
-      "words": 2466,
-      "partners": [
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-15",
       "slot": "afternoon",
       "slug": "honest-jasper-ai-review-what-it-gets-right-and-where-it-falls",
       "title": "Honest Jasper AI Review: What It Gets Right and Where It Falls Short",
@@ -1198,6 +1178,30 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-23",
+      "slot": "evening",
+      "slug": "the-chatgpt-features-that-quietly-disappeared-and-why-it-matters-2026-06-23",
+      "title": "The ChatGPT Features That Quietly Disappeared — and Why It Matters in 2026",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop",
+      "topic": "chatgpt features quietly disappeared",
+      "pair": "",
+      "tool": "",
+      "words": 1908,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1370,6 +1374,7 @@
     "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740818576358-7596eb883cf3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop"
   ]
 }
