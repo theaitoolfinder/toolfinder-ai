@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-16",
-      "slot": "morning",
-      "slug": "surfer-seo-or-ahrefs-a-real-user-s-take-after-testing-both",
-      "title": "Surfer SEO or Ahrefs? A Real User's Take After Testing Both",
-      "type": "comparison",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
-      "topic": "surfer ahrefs users take",
-      "pair": "Surfer SEO vs Ahrefs? A Real User's Take After Testing Both",
-      "tool": "Surfer SEO",
-      "words": 2244,
-      "partners": [
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-06-16",
       "slot": "midday",
       "slug": "instantly-ai-review-real-results-real-pricing-real-talk",
       "title": "Instantly AI Review: Real Results, Real Pricing, Real Talk",
@@ -1204,6 +1185,27 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "slot": "afternoon",
+      "slug": "grammarly-vs-prowritingaid-which-is-actually-worth-it-in-2026",
+      "title": "Grammarly vs ProWritingAid: Which Is Actually Worth It in 2026?",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop",
+      "topic": "grammarly prowritingaid which actually",
+      "pair": "Grammarly vs ProWritingAid",
+      "tool": "Grammarly",
+      "words": 1804,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1381,6 +1383,7 @@
     "https://images.unsplash.com/photo-1682795735660-a789079d5623?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1623252218176-34a5ec287783?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop"
   ]
 }
