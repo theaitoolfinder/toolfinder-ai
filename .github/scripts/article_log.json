@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-15",
-      "slot": "night",
-      "slug": "the-social-media-manager-s-ai-tools-roadmap-for-2026-start-here",
-      "title": "The Social Media Manager's AI Tools Roadmap for 2026: Start Here",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop",
-      "topic": "social media managers tools",
-      "pair": "",
-      "tool": "",
-      "words": 2277,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-15",
       "slot": "latenight",
       "slug": "github-copilot-vs-human-developers-the-data-that-started-a-war",
       "title": "GitHub Copilot vs. Human Developers: The Data That Started a War",
@@ -1205,6 +1184,25 @@
         "Predis.ai",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "slot": "morning",
+      "slug": "ai-tools-for-hr-managers-the-exact-stack-to-build-phase-by-phase",
+      "title": "AI Tools for HR Managers: The Exact Stack to Build, Phase by Phase",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools managers exact stack",
+      "pair": "",
+      "tool": "",
+      "words": 2469,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
@@ -1380,6 +1378,7 @@
     "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682795735660-a789079d5623?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1623252218176-34a5ec287783?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1623252218176-34a5ec287783?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop"
   ]
 }
