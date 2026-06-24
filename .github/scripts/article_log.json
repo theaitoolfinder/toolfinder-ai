@@ -1,23 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-15",
-      "slot": "latenight",
-      "slug": "github-copilot-vs-human-developers-the-data-that-started-a-war",
-      "title": "GitHub Copilot vs. Human Developers: The Data That Started a War",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
-      "topic": "github copilot human developers",
-      "pair": "",
-      "tool": "",
-      "words": 2747,
-      "partners": [
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
       "date": "2026-06-16",
       "slot": "morning",
       "slug": "surfer-seo-or-ahrefs-a-real-user-s-take-after-testing-both",
@@ -1203,6 +1186,24 @@
         "Make.com",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "slot": "midday",
+      "slug": "i-used-elevenlabs-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used ElevenLabs Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop",
+      "topic": "used elevenlabs every days",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2495,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1379,6 +1380,7 @@
     "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682795735660-a789079d5623?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1623252218176-34a5ec287783?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop"
   ]
 }
