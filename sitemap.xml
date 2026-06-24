@@ -1127,4 +1127,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://myaitoolsfinder.com/articles/the-real-reason-ai-coding-tools-are-creating-more-bugs-not-fewer.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
