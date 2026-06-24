@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-06-16",
-      "slot": "afternoon",
-      "slug": "before-you-subscribe-to-heygen-read-this-pros-cons-verdict",
-      "title": "Before You Subscribe to HeyGen, Read This — Pros, Cons, Verdict",
-      "type": "pros_cons",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
-      "topic": "before subscribe heygen read",
-      "pair": "",
-      "tool": "HeyGen",
-      "words": 2624,
-      "partners": [
-        "ElevenLabs",
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-16",
       "slot": "evening",
       "slug": "why-tech-experts-are-quietly-warning-against-trusting-ai-meeting",
       "title": "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
@@ -1208,6 +1190,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "slot": "night",
+      "slug": "the-real-pros-and-cons-of-capcut-ai-no-sponsored-opinion",
+      "title": "The Real Pros and Cons of CapCut AI — No Sponsored Opinion",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1597551468142-93fedfbc5bb5?w=800&q=85&auto=format&fit=crop",
+      "topic": "pros cons capcut sponsored",
+      "pair": "",
+      "tool": "CapCut AI",
+      "words": 2309,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1387,6 +1388,7 @@
     "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1597551468142-93fedfbc5bb5?w=800&q=85&auto=format&fit=crop"
   ]
 }
