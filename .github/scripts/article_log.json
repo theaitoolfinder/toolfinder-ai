@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-16",
-      "slot": "midday",
-      "slug": "instantly-ai-review-real-results-real-pricing-real-talk",
-      "title": "Instantly AI Review: Real Results, Real Pricing, Real Talk",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
-      "topic": "instantly results pricing talk",
-      "pair": "",
-      "tool": "Instantly AI",
-      "words": 2589,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-16",
       "slot": "afternoon",
       "slug": "before-you-subscribe-to-heygen-read-this-pros-cons-verdict",
       "title": "Before You Subscribe to HeyGen, Read This — Pros, Cons, Verdict",
@@ -1206,6 +1187,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "slot": "evening",
+      "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences-2026-06-24",
+      "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop",
+      "topic": "claude actually safer than",
+      "pair": "",
+      "tool": "",
+      "words": 2039,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1384,6 +1386,7 @@
     "https://images.unsplash.com/photo-1623252218176-34a5ec287783?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1613206485381-b028e578e791?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576141546153-3e04370b5ff7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop"
   ]
 }
