@@ -66,6 +66,14 @@
         "Viggle"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-06-24",
+      "tools": [
+        "ElevenLabs Reader",
+        "Afforai"
+      ],
+      "count": 2
     }
   ]
 }

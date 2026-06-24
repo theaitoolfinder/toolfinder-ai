@@ -733,5 +733,7 @@ window.MYAI_AFF_MAP = {
   "zoominfo":              "https://zoominfo.com",
   "zoominfo ai":           "https://zoominfo.com",
   "zubtitle":              "https://zubtitle.com",
-  "viggle": "https://viggle.ai"
+  "viggle": "https://viggle.ai",
+  "elevenlabs reader": "https://reader.elevenlabs.io",
+  "afforai": "https://afforai.com"
 };
