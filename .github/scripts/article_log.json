@@ -1,28 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-16",
-      "slot": "latenight",
-      "slug": "jasper-ai-s-pricing-controversy-users-are-leaving-here-s-why",
-      "title": "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
-      "topic": "jasper pricing controversy users",
-      "pair": "",
-      "tool": "",
-      "words": 2279,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-06-17",
       "slot": "morning",
       "slug": "opusclip-vs-descript-2026-i-used-both-for-30-days-here-s-the",
@@ -1210,6 +1188,23 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-25",
+      "slot": "midday",
+      "slug": "bolt-new-review-2026-is-it-actually-worth-paying-for",
+      "title": "Bolt.new Review (2026): Is It Actually Worth Paying For?",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop",
+      "topic": "boltnew 2026 actually worth",
+      "pair": "",
+      "tool": "Bolt.new",
+      "words": 2536,
+      "partners": [
+        "Fireflies.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1392,6 +1387,7 @@
     "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1597551468142-93fedfbc5bb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop"
   ]
 }
