@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-17",
-      "slot": "morning",
-      "slug": "opusclip-vs-descript-2026-i-used-both-for-30-days-here-s-the",
-      "title": "OpusClip vs Descript (2026): I Used Both for 30 Days — Here's the Truth",
-      "type": "comparison",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
-      "topic": "opusclip descript 2026 used",
-      "pair": "OpusClip vs Descript (2026)",
-      "tool": "OpusClip",
-      "words": 2043,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai",
-        "Submagic AI"
-      ]
-    },
-    {
-      "date": "2026-06-17",
       "slot": "midday",
       "slug": "is-writesonic-the-best-in-its-category-a-full-2026-review",
       "title": "Is Writesonic the Best in Its Category? A Full 2026 Review",
@@ -1205,6 +1185,25 @@
         "Fireflies.ai",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-25",
+      "slot": "afternoon",
+      "slug": "notion-ai-vs-obsidian-the-honest-breakdown-for-2026",
+      "title": "Notion AI vs Obsidian: The Honest Breakdown for 2026",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1663813251302-e5d2c7199e86?w=800&q=85&auto=format&fit=crop",
+      "topic": "notion obsidian breakdown 2026",
+      "pair": "Notion AI vs Obsidian",
+      "tool": "Notion AI",
+      "words": 2272,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
@@ -1388,6 +1387,7 @@
     "https://images.unsplash.com/photo-1597551468142-93fedfbc5bb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1663813251302-e5d2c7199e86?w=800&q=85&auto=format&fit=crop"
   ]
 }
