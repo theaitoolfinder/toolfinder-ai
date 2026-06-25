@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-16",
-      "slot": "night",
-      "slug": "building-your-ai-stack-as-a-marketing-manager-a-step-by-step",
-      "title": "Building Your AI Stack as a Marketing Manager: A Step-by-Step Guide for 2026",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
-      "topic": "building stack marketing manager",
-      "pair": "",
-      "tool": "",
-      "words": 2225,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-16",
       "slot": "latenight",
       "slug": "jasper-ai-s-pricing-controversy-users-are-leaving-here-s-why",
       "title": "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
@@ -1210,6 +1188,28 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-25",
+      "slot": "morning",
+      "slug": "building-your-ai-stack-as-a-content-creator-a-step-by-step-guide-2026-06-25",
+      "title": "Building Your AI Stack as a Content Creator: A Step-by-Step Guide for 2026",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop",
+      "topic": "building stack content creator",
+      "pair": "",
+      "tool": "",
+      "words": 1852,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1391,6 +1391,7 @@
     "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1597551468142-93fedfbc5bb5?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop"
   ]
 }
