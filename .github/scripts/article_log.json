@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-17",
-      "slot": "evening",
-      "slug": "adobe-firefly-s-copyright-promise-does-it-actually-hold-up",
-      "title": "Adobe Firefly's Copyright Promise: Does It Actually Hold Up?",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
-      "topic": "adobe fireflys copyright promise",
-      "pair": "",
-      "tool": "",
-      "words": 1778,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-17",
       "slot": "night",
       "slug": "journalist-or-reporter-s-guide-to-ai-tools-in-2026-what-to-use",
       "title": "Journalist or Reporter's Guide to AI Tools in 2026: What to Use and When",
@@ -1205,6 +1185,26 @@
         "OpusClip",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-06-25",
+      "slot": "latenight",
+      "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes-2026-06-25",
+      "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs voice cloning abuse",
+      "pair": "",
+      "tool": "",
+      "words": 2316,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1391,6 +1391,7 @@
     "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1663813251302-e5d2c7199e86?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1769413085127-8381b222ae30?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1775440299329-8ccd74053052?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1775440299329-8ccd74053052?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop"
   ]
 }
