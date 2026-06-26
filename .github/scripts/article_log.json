@@ -1,26 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-18",
-      "slot": "latenight",
-      "slug": "why-grammarly-s-ai-upgrade-is-making-writers-trust-it-less-not",
-      "title": "Why Grammarly's AI Upgrade Is Making Writers Trust It Less, Not More",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
-      "topic": "grammarlys upgrade making writers",
-      "pair": "",
-      "tool": "",
-      "words": 2066,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "Simplified"
-      ]
-    },
-    {
       "date": "2026-06-19",
       "slot": "morning",
       "slug": "apollo-io-vs-clay-which-ai-tool-should-you-pay-for-in-2026",
@@ -1190,6 +1170,25 @@
         "NeuronWriter",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "adobe-firefly-s-copyright-promise-does-it-actually-hold-up-2026-06-26",
+      "title": "Adobe Firefly's Copyright Promise: Does It Actually Hold Up?",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop",
+      "topic": "adobe fireflys copyright promise",
+      "pair": "",
+      "tool": "",
+      "words": 2481,
+      "partners": [
+        "ElevenLabs",
+        "Keyword Insights",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1384,6 +1383,7 @@
     "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop"
   ]
 }
