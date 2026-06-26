@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-06-18",
-      "slot": "morning",
-      "slug": "i-switched-from-beehiiv-to-convertkit-here-s-what-actually",
-      "title": "I Switched from Beehiiv to ConvertKit — Here's What Actually Happened",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
-      "topic": "switched beehiiv convertkit heres",
-      "pair": "",
-      "tool": "",
-      "words": 2504,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-18",
       "slot": "midday",
       "slug": "is-elevenlabs-the-best-in-its-category-a-full-2026-review",
       "title": "Is ElevenLabs the Best in Its Category? A Full 2026 Review",
@@ -1199,6 +1181,23 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "i-switched-from-apollo-io-to-clay-here-s-what-actually-happened",
+      "title": "I Switched from Apollo.io to Clay — Here's What Actually Happened",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop",
+      "topic": "switched apolloio clay heres",
+      "pair": "",
+      "tool": "",
+      "words": 2107,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1388,6 +1387,7 @@
     "https://images.unsplash.com/photo-1775440299329-8ccd74053052?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop"
   ]
 }
