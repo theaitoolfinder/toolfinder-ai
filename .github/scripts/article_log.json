@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "afternoon",
-      "slug": "windsurf-or-cursor-the-2026-comparison-no-one-s-being-honest",
-      "title": "Windsurf or Cursor? The 2026 Comparison No One's Being Honest About",
-      "type": "comparison",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
-      "topic": "windsurf cursor 2026 comparison",
-      "pair": "Windsurf vs Cursor? The 2026 Comparison No One's Being Honest About",
-      "tool": "Windsurf",
-      "words": 1874,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "exclusive",
       "slug": "why-zapier-s-ai-features-feel-like-a-cash-grab-and-what-to-use",
       "title": "Why Zapier's AI Features Feel Like a Cash Grab (And What to Use Instead)",
@@ -1184,6 +1167,29 @@
         "ElevenLabs",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "choosing-between-groq-and-chatgpt-read-this-first-2026",
+      "title": "Choosing Between Groq and ChatGPT? Read This First (2026)",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop",
+      "topic": "choosing between groq chatgpt",
+      "pair": "",
+      "tool": "",
+      "words": 2485,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1385,6 +1391,7 @@
     "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618609377864-68609b857e90?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop"
   ]
 }
