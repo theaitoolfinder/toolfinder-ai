@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "morning",
-      "slug": "apollo-io-vs-clay-which-ai-tool-should-you-pay-for-in-2026",
-      "title": "Apollo.io vs Clay: Which AI Tool Should You Pay For in 2026?",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
-      "topic": "apolloio clay which tool",
-      "pair": "Apollo.io vs Clay",
-      "tool": "Apollo.io",
-      "words": 2022,
-      "partners": [
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "exclusive",
       "slug": "the-adcreative-ai-review-that-cuts-through-the-hype-2026",
       "title": "The AdCreative.ai Review That Cuts Through the Hype (2026)",
@@ -1189,6 +1173,23 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "replit-ai-or-cursor-the-2026-comparison-no-one-s-being-honest",
+      "title": "Replit AI or Cursor? The 2026 Comparison No One's Being Honest About",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1656711111035-e9a5d6fb3c29?w=800&q=85&auto=format&fit=crop",
+      "topic": "replit cursor 2026 comparison",
+      "pair": "Replit AI vs Cursor? The 2026 Comparison No One's Being Honest About",
+      "tool": "Replit AI",
+      "words": 2409,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1384,6 +1385,7 @@
     "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1656711111035-e9a5d6fb3c29?w=800&q=85&auto=format&fit=crop"
   ]
 }
