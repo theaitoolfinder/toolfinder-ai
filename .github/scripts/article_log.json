@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-18",
-      "slot": "midday",
-      "slug": "is-elevenlabs-the-best-in-its-category-a-full-2026-review",
-      "title": "Is ElevenLabs the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
-      "topic": "elevenlabs category full 2026",
-      "pair": "",
-      "tool": "ElevenLabs",
-      "words": 2476,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-18",
       "slot": "afternoon",
       "slug": "grammarly-pros-and-cons-2026-the-unfiltered-truth",
       "title": "Grammarly Pros and Cons (2026): The Unfiltered Truth",
@@ -1198,6 +1178,23 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "midday",
+      "slug": "instantly-ai-deep-dive-the-honest-review-no-one-else-is-writing",
+      "title": "Instantly AI Deep Dive: The Honest Review No One Else Is Writing",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop",
+      "topic": "instantly deep dive else",
+      "pair": "",
+      "tool": "Instantly AI",
+      "words": 2510,
+      "partners": [
+        "Keyword Insights",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1388,6 +1385,7 @@
     "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop"
   ]
 }
