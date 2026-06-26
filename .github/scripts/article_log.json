@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "exclusive",
-      "slug": "the-canva-ai-backlash-designers-are-fed-up-here-s-the-full-story-2026-06-19",
-      "title": "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
-      "topic": "canva backlash designers heres",
-      "pair": "",
-      "tool": "",
-      "words": 2202,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "afternoon",
       "slug": "windsurf-or-cursor-the-2026-comparison-no-one-s-being-honest",
       "title": "Windsurf or Cursor? The 2026 Comparison No One's Being Honest About",
@@ -1186,6 +1166,24 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "github-copilot-vs-human-developers-the-data-that-started-a-war-2026-06-26",
+      "title": "GitHub Copilot vs. Human Developers: The Data That Started a War",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop",
+      "topic": "github copilot human developers",
+      "pair": "",
+      "tool": "",
+      "words": 2065,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
@@ -1386,6 +1384,7 @@
     "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618609377864-68609b857e90?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1618609377864-68609b857e90?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop"
   ]
 }
