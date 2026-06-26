@@ -3,24 +3,6 @@
     {
       "date": "2026-06-19",
       "slot": "exclusive",
-      "slug": "why-zapier-s-ai-features-feel-like-a-cash-grab-and-what-to-use",
-      "title": "Why Zapier's AI Features Feel Like a Cash Grab (And What to Use Instead)",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
-      "topic": "zapiers features feel like",
-      "pair": "",
-      "tool": "",
-      "words": 2109,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-19",
-      "slot": "exclusive",
       "slug": "midjourney-pros-and-cons-2026-the-unfiltered-truth",
       "title": "Midjourney Pros and Cons (2026): The Unfiltered Truth",
       "type": "pros_cons",
@@ -1190,10 +1172,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "latenight",
+      "slug": "is-lovable-the-best-in-its-category-a-full-2026-review",
+      "title": "Is Lovable the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1556375767-65b200d9d3dc?w=800&q=85&auto=format&fit=crop",
+      "topic": "lovable category full 2026",
+      "pair": "",
+      "tool": "Lovable",
+      "words": 2415,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&auto=format&fit=crop",
@@ -1392,6 +1389,7 @@
     "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618609377864-68609b857e90?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556375767-65b200d9d3dc?w=800&q=85&auto=format&fit=crop"
   ]
 }
