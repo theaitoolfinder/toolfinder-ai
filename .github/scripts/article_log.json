@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "exclusive",
-      "slug": "before-you-subscribe-to-github-copilot-read-this-pros-cons",
-      "title": "Before You Subscribe to GitHub Copilot, Read This — Pros, Cons, Verdict",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
-      "topic": "before subscribe github copilot",
-      "pair": "",
-      "tool": "GitHub Copilot",
-      "words": 1999,
-      "partners": [
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "midday",
       "slug": "fireflies-ai-review-real-results-real-pricing-real-talk",
       "title": "Fireflies.ai Review: Real Results, Real Pricing, Real Talk",
@@ -1185,6 +1169,25 @@
       "tool": "GitHub Copilot",
       "words": 2472,
       "partners": []
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "is-adcreative-ai-worth-it-full-pros-cons-and-verdict-for-2026",
+      "title": "Is AdCreative.ai Worth It? Full Pros, Cons, and Verdict for 2026",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop",
+      "topic": "adcreativeai worth full pros",
+      "pair": "",
+      "tool": "AdCreative.ai",
+      "words": 2491,
+      "partners": [
+        "Make.com",
+        "OpusClip",
+        "Predis.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
@@ -1382,6 +1385,7 @@
     "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1656711111035-e9a5d6fb3c29?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop"
   ]
 }
