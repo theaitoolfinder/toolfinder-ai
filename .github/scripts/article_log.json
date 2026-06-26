@@ -2,30 +2,6 @@
   "generated": [
     {
       "date": "2026-06-18",
-      "slot": "evening",
-      "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-06-18",
-      "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
-      "topic": "truth hallucinations 2026 which",
-      "pair": "",
-      "tool": "",
-      "words": 1939,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-06-18",
       "slot": "night",
       "slug": "if-you-re-a-startup-founder-this-is-the-ai-toolkit-you-actually",
       "title": "If You're a Startup Founder, This Is the AI Toolkit You Actually Need in 2026",
@@ -1197,6 +1173,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "runway-vs-sora-the-video-ai-war-that-s-leaving-users-in-the-2026-06-26",
+      "title": "Runway vs. Sora: The Video AI War That's Leaving Users in the Middle",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=800&q=85&auto=format&fit=crop",
+      "topic": "runway sora video thats",
+      "pair": "",
+      "tool": "",
+      "words": 1936,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1389,6 +1384,7 @@
     "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=800&q=85&auto=format&fit=crop"
   ]
 }
