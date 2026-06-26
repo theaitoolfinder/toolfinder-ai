@@ -1,29 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-17",
-      "slot": "latenight",
-      "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences",
-      "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
-      "type": "controversial",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
-      "topic": "claude actually safer than",
-      "pair": "",
-      "tool": "",
-      "words": 2058,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-06-18",
       "slot": "morning",
       "slug": "i-switched-from-beehiiv-to-convertkit-here-s-what-actually",
@@ -1205,6 +1182,23 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take-2026-06-26",
+      "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop",
+      "topic": "used firefliesai every days",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2681,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
@@ -1393,6 +1387,7 @@
     "https://images.unsplash.com/photo-1769413085127-8381b222ae30?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1775440299329-8ccd74053052?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop"
   ]
 }
