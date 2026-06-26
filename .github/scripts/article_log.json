@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-18",
-      "slot": "afternoon",
-      "slug": "grammarly-pros-and-cons-2026-the-unfiltered-truth",
-      "title": "Grammarly Pros and Cons (2026): The Unfiltered Truth",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
-      "topic": "grammarly pros cons 2026",
-      "pair": "",
-      "tool": "Grammarly",
-      "words": 2542,
-      "partners": [
-        "NeuronWriter",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-18",
       "slot": "evening",
       "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-06-18",
       "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
@@ -1195,6 +1178,25 @@
         "Keyword Insights",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "heygen-pros-and-cons-2026-the-unfiltered-truth",
+      "title": "HeyGen Pros and Cons (2026): The Unfiltered Truth",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop",
+      "topic": "heygen pros cons 2026",
+      "pair": "",
+      "tool": "HeyGen",
+      "words": 2405,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
@@ -1386,6 +1388,7 @@
     "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1594193880547-65f4ba1b00fa?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1631700023489-2ab7f47f1e75?w=800&q=85&auto=format&fit=crop"
   ]
 }
