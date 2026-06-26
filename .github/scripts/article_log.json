@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "midday",
-      "slug": "fireflies-ai-review-real-results-real-pricing-real-talk",
-      "title": "Fireflies.ai Review: Real Results, Real Pricing, Real Talk",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
-      "topic": "firefliesai results pricing talk",
-      "pair": "",
-      "tool": "Fireflies.ai",
-      "words": 2073,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "exclusive",
       "slug": "youtuber-s-guide-to-ai-tools-in-2026-what-to-use-and-when",
       "title": "YouTuber's Guide to AI Tools in 2026: What to Use and When",
@@ -1188,6 +1167,28 @@
         "Predis.ai",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "slot": "exclusive",
+      "slug": "jasper-ai-s-pricing-controversy-users-are-leaving-here-s-why-2026-06-26",
+      "title": "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop",
+      "topic": "jasper pricing controversy users",
+      "pair": "",
+      "tool": "",
+      "words": 1994,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
@@ -1386,6 +1387,7 @@
     "https://images.unsplash.com/photo-1764601841403-5c43713923c7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1656711111035-e9a5d6fb3c29?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1758626052247-79003b45f802?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop"
   ]
 }
