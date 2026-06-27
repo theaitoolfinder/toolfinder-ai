@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "night",
-      "slug": "replit-ai-vs-cursor-stop-guessing-here-s-the-2026-verdict",
-      "title": "Replit AI vs Cursor — Stop Guessing. Here's the 2026 Verdict.",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
-      "topic": "replit cursor stop guessing",
-      "pair": "Replit AI vs Cursor — Stop Guessing. Here's the 2026 Verdict.",
-      "tool": "Replit AI",
-      "words": 2166,
-      "partners": [
-        "Beehiiv",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "exclusive",
       "slug": "is-midjourney-stealing-artists-work-the-lawsuit-that-could-2026-06-19",
       "title": "Is Midjourney Stealing Artists' Work? The Lawsuit That Could Change AI Art Forever",
@@ -1194,10 +1177,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-27",
+      "slot": "night",
+      "slug": "zapier-vs-make-com-pricing-features-and-which-one-wins-for-most-2026-06-27",
+      "title": "Zapier vs Make.com: Pricing, Features, and Which One Wins for Most Users",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop",
+      "topic": "zapier makecom pricing features",
+      "pair": "Zapier vs Make.com",
+      "tool": "Zapier",
+      "words": 2200,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85&auto=format&fit=crop",
@@ -1396,6 +1400,7 @@
     "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519399224017-87a75eb50df9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762330464824-21e95b769038?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1731963094554-c5c981ccdefd?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1731963094554-c5c981ccdefd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop"
   ]
 }
