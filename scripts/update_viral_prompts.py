@@ -64,9 +64,8 @@ Output only the array. Nothing else.
 
 def generate_prompts(client: anthropic.Anthropic) -> str:
     response = client.messages.create(
-        model="claude-opus-4-8",
+        model="claude-haiku-4-5",
         max_tokens=4096,
-        thinking={"type": "adaptive"},
         system=SYSTEM,
         messages=[{"role": "user", "content": USER}],
     )
