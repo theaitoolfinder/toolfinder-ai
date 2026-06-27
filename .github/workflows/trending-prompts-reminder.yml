@@ -1,102 +1,45 @@
-name: Weekly Trending Prompts Update Reminder
+name: Weekly Trending Prompts Auto-Update
 
 on:
   schedule:
     # Every Friday at 9:00 AM UTC (5 PM Manila / 2 AM LA)
     - cron: '0 9 * * 5'
   workflow_dispatch:
-    # Also allows manual trigger from GitHub Actions tab
+    # Manual trigger from GitHub Actions tab
 
 jobs:
-  create-reminder-issue:
+  update-trending-prompts:
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      contents: write
 
     steps:
-      - name: Get next Friday date
-        id: dates
-        run: |
-          TODAY=$(date '+%B %-d, %Y')
-          NEXT_FRIDAY=$(date -d 'next friday' '+%B %-d, %Y' 2>/dev/null || date -v+7d '+%B %-d, %Y')
-          echo "today=$TODAY" >> $GITHUB_OUTPUT
-          echo "next_friday=$NEXT_FRIDAY" >> $GITHUB_OUTPUT
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Create weekly update issue
-        uses: actions/github-script@v7
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const today = '${{ steps.dates.outputs.today }}';
-            const nextFriday = '${{ steps.dates.outputs.next_friday }}';
+          python-version: '3.12'
 
-            const body = `
-## 🔥 Weekly Trending Prompts Update — ${today}
+      - name: Install Anthropic SDK
+        run: pip install anthropic
 
-Time to refresh the **Top 10 Trending Viral Prompts** on the prompts page!
-Next update due: **${nextFriday}**
+      - name: Generate and update trending prompts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/update_viral_prompts.py
 
----
-
-### 📋 Research Checklist
-
-**Where to look (30 min research):**
-- [ ] Search Instagram Reels: \`"AI prompt" trending\`, \`"ChatGPT photo" viral\`
-- [ ] Check TikTok: \`#AIphoto\`, \`#ChatGPTtrend\`, \`#viralAIprompt\`
-- [ ] Facebook Groups: "AI Nano Banana", "ChatGPT Prompts", "Midjourney AI"
-- [ ] Pinterest: search "AI generated photo 2026 trending"
-- [ ] Check: [media.io trending prompts](https://www.media.io/image-effects/chatgpt-trending-prompts.html)
-- [ ] Check: [digitbin viral prompts](https://www.digitbin.com/chatgpt-image-prompts-viral/)
-
----
-
-### ✏️ What to Update
-
-**File:** \`js/prompts-data.js\`
-- Update \`window.TRENDING_PROMPTS\` array
-- Replace any prompts that dropped in popularity
-- Add new entries that have gone viral this week
-- Update \`shares\` and \`trendScore\` values
-- Update \`rank\` order based on current virality
-
-**File:** \`prompts.html\`
-- Update the date in the trending section header:
-  \`\`\`html
-  <span class="trending-updated">Updated weekly · <strong>${today}</strong></span>
-  \`\`\`
-
----
-
-### 📊 Current Top 10 (last week)
-
-| Rank | Prompt | Shares | Score |
-|------|--------|--------|-------|
-| #1 | Chibi Doll Photo Generator | 2.4M+ | 99 |
-| #2 | Emotion Sticker Pack | 1.8M+ | 97 |
-| #3 | Action Figure Unboxing | 1.5M+ | 96 |
-| #4 | Studio Ghibli Portrait | 3.1M+ | 95 |
-| #5 | Y2K Flash Selfie | 980K+ | 91 |
-| #6 | Cinematic Neo-Noir Portrait | 760K+ | 88 |
-| #7 | Vintage Scrapbook Collage | 640K+ | 85 |
-| #8 | Retro Rubber Hose Cartoon | 520K+ | 82 |
-| #9 | 3×3 Polaroid Grid | 490K+ | 80 |
-| #10 | Kawaii Character Design Sheet | 410K+ | 78 |
-
----
-
-### 🚀 Quick Commit Message to Use
-\`\`\`
-chore: update trending prompts for week of ${today}
-\`\`\`
-
----
-_This issue was auto-created by the weekly trending-prompts-reminder workflow. Close it when the update is done._
-            `;
-
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `🔥 Update Trending Prompts — Week of ${today}`,
-              body: body.trim(),
-              labels: ['content-update', 'trending-prompts']
-            });
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/prompts-data.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            WEEK=$(date '+%B %-d, %Y')
+            git commit -m "chore: auto-update trending viral prompts for week of $WEEK"
+            git push
+            echo "Pushed updated prompts."
+          fi
