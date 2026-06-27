@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "evening",
-      "slug": "i-used-runway-every-day-for-30-days-here-s-my-honest-take",
-      "title": "I Used Runway Every Day for 30 Days — Here's My Honest Take",
-      "type": "featured",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
-      "topic": "used runway every days",
-      "pair": "",
-      "tool": "Runway",
-      "words": 2501,
-      "partners": [
-        "ElevenLabs",
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "exclusive",
       "slug": "the-complete-lawyer-or-legal-professional-ai-toolkit-from-day-1",
       "title": "The Complete Lawyer or Legal Professional AI Toolkit — From Day 1 to Full Automation",
@@ -1187,10 +1169,26 @@
         "SciSpace",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-27",
+      "slot": "midday",
+      "slug": "is-windsurf-the-best-in-its-category-a-full-2026-review",
+      "title": "Is Windsurf the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1519399224017-87a75eb50df9?w=800&q=85&auto=format&fit=crop",
+      "topic": "windsurf category full 2026",
+      "pair": "",
+      "tool": "Windsurf",
+      "words": 2548,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&q=85&auto=format&fit=crop",
@@ -1389,6 +1387,7 @@
     "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556375767-65b200d9d3dc?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519399224017-87a75eb50df9?w=800&q=85&auto=format&fit=crop"
   ]
 }
