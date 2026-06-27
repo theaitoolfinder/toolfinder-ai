@@ -3,24 +3,6 @@
     {
       "date": "2026-06-19",
       "slot": "exclusive",
-      "slug": "is-midjourney-stealing-artists-work-the-lawsuit-that-could-2026-06-19",
-      "title": "Is Midjourney Stealing Artists' Work? The Lawsuit That Could Change AI Art Forever",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
-      "topic": "midjourney stealing artists work",
-      "pair": "",
-      "tool": "",
-      "words": 2220,
-      "partners": [
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-19",
-      "slot": "exclusive",
       "slug": "is-motion-worth-it-full-pros-cons-and-verdict-for-2026",
       "title": "Is Motion Worth It? Full Pros, Cons, and Verdict for 2026",
       "type": "pros_cons",
@@ -1199,10 +1181,29 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-27",
+      "slot": "latenight",
+      "slug": "why-notion-ai-is-frustrating-power-users-and-what-they-re-2026-06-27",
+      "title": "Why Notion AI Is Frustrating Power Users — and What They're Switching To",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop",
+      "topic": "notion frustrating power users",
+      "pair": "",
+      "tool": "",
+      "words": 1952,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
@@ -1401,6 +1402,7 @@
     "https://images.unsplash.com/photo-1519399224017-87a75eb50df9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762330464824-21e95b769038?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1731963094554-c5c981ccdefd?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop"
   ]
 }
