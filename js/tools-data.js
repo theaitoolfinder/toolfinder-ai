@@ -735,5 +735,8 @@ window.MYAI_AFF_MAP = {
   "zubtitle":              "https://zubtitle.com",
   "viggle": "https://viggle.ai",
   "elevenlabs reader": "https://reader.elevenlabs.io",
-  "afforai": "https://afforai.com"
+  "afforai": "https://afforai.com",
+  "napkin ai": "https://napkin.ai",
+  "turboscribe": "https://turboscribe.ai",
+  "hix ai": "https://hix.ai"
 };
