@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-20",
-      "slot": "midday",
-      "slug": "i-used-deepseek-every-day-for-30-days-here-s-my-honest-take",
-      "title": "I Used DeepSeek Every Day for 30 Days — Here's My Honest Take",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
-      "topic": "used deepseek every days",
-      "pair": "",
-      "tool": "DeepSeek",
-      "words": 1992,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-20",
       "slot": "afternoon",
       "slug": "gamma-vs-beautiful-ai-features-price-and-the-winner-for-your-use",
       "title": "Gamma vs Beautiful.ai: Features, Price, and the Winner for Your Use Case",
@@ -1204,10 +1182,32 @@
         "Predis.ai",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-06-28",
+      "slot": "evening",
+      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-06-28",
+      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1588689653688-9b312cd6bc2b?w=800&q=85&auto=format&fit=crop",
+      "topic": "tool lockin switching costs",
+      "pair": "",
+      "tool": "",
+      "words": 1732,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
@@ -1406,6 +1406,7 @@
     "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1659823300663-93084f1795d7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1651130534291-db109d4c3ba7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1588689653688-9b312cd6bc2b?w=800&q=85&auto=format&fit=crop"
   ]
 }
