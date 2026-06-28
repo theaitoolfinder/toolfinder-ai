@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-20",
-      "slot": "evening",
-      "slug": "the-ai-tools-that-overpromised-and-underdelivered-in-2026",
-      "title": "The AI Tools That Overpromised and Underdelivered in 2026",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools overpromised underdelivered 2026",
-      "pair": "",
-      "tool": "",
-      "words": 2182,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-20",
       "slot": "night",
       "slug": "is-copy-ai-worth-it-full-pros-cons-and-verdict-for-2026",
       "title": "Is Copy.ai Worth It? Full Pros, Cons, and Verdict for 2026",
@@ -1212,10 +1190,32 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-28",
+      "slot": "latenight",
+      "slug": "openai-s-pricing-changes-are-angering-power-users-here-s-the-2026-06-28",
+      "title": "OpenAI's Pricing Changes Are Angering Power Users. Here's the Full Story.",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1782511742843-1b901be04a3a?w=800&q=85&auto=format&fit=crop",
+      "topic": "openais pricing changes angering",
+      "pair": "",
+      "tool": "",
+      "words": 2065,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",
@@ -1414,6 +1414,7 @@
     "https://images.unsplash.com/photo-1651130534291-db109d4c3ba7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1588689653688-9b312cd6bc2b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1536697651086-707247210af6?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1536697651086-707247210af6?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1782511742843-1b901be04a3a?w=800&q=85&auto=format&fit=crop"
   ]
 }
