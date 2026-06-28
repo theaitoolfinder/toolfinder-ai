@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-19",
-      "slot": "exclusive",
-      "slug": "is-motion-worth-it-full-pros-cons-and-verdict-for-2026",
-      "title": "Is Motion Worth It? Full Pros, Cons, and Verdict for 2026",
-      "type": "pros_cons",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
-      "topic": "motion worth full pros",
-      "pair": "",
-      "tool": "Motion",
-      "words": 2682,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-06-19",
       "slot": "latenight",
       "slug": "synthesia-review-real-results-real-pricing-real-talk",
       "title": "Synthesia Review: Real Results, Real Pricing, Real Talk",
@@ -1201,10 +1182,26 @@
         "Make.com",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-06-28",
+      "slot": "morning",
+      "slug": "before-you-subscribe-to-adobe-firefly-read-this-pros-cons-verdict",
+      "title": "Before You Subscribe to Adobe Firefly, Read This — Pros, Cons, Verdict",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1659823300663-93084f1795d7?w=800&q=85&auto=format&fit=crop",
+      "topic": "before subscribe adobe firefly",
+      "pair": "",
+      "tool": "Adobe Firefly",
+      "words": 2539,
+      "partners": [
+        "Beehiiv",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=85&auto=format&fit=crop",
@@ -1403,6 +1400,7 @@
     "https://images.unsplash.com/photo-1762330464824-21e95b769038?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1731963094554-c5c981ccdefd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1659823300663-93084f1795d7?w=800&q=85&auto=format&fit=crop"
   ]
 }
