@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-20",
-      "slot": "morning",
-      "slug": "ai-tools-for-sales-professionals-the-exact-stack-to-build-phase",
-      "title": "AI Tools for Sales Professionals: The Exact Stack to Build, Phase by Phase",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools sales professionals exact",
-      "pair": "",
-      "tool": "",
-      "words": 2418,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "Predis.ai",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-06-20",
       "slot": "midday",
       "slug": "i-used-deepseek-every-day-for-30-days-here-s-my-honest-take",
       "title": "I Used DeepSeek Every Day for 30 Days — Here's My Honest Take",
@@ -1202,10 +1182,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-28",
+      "slot": "afternoon",
+      "slug": "ai-tools-for-educator-or-trainers-the-exact-stack-to-build-phase-2026-06-28",
+      "title": "AI Tools for Educator or Trainers: The Exact Stack to Build, Phase by Phase",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools educator trainers exact",
+      "pair": "",
+      "tool": "",
+      "words": 2564,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai",
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
@@ -1404,6 +1405,7 @@
     "https://images.unsplash.com/photo-1770171323762-7b9a517a7094?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611591594311-6eb9b7c7e340?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1659823300663-93084f1795d7?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1651130534291-db109d4c3ba7?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1651130534291-db109d4c3ba7?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=85&auto=format&fit=crop"
   ]
 }
