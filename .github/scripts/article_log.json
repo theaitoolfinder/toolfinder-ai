@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-21",
-      "slot": "afternoon",
-      "slug": "zapier-vs-make-com-pricing-features-and-which-one-wins-for-most",
-      "title": "Zapier vs Make.com: Pricing, Features, and Which One Wins for Most Users",
-      "type": "comparison",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
-      "topic": "zapier makecom pricing features",
-      "pair": "Zapier vs Make.com",
-      "tool": "Zapier",
-      "words": 2063,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-21",
       "slot": "evening",
       "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-06-21",
       "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
@@ -1207,10 +1185,30 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-29",
+      "slot": "night",
+      "slug": "is-convertkit-finally-better-than-beehiiv-2026-head-to-head",
+      "title": "Is ConvertKit Finally Better Than Beehiiv? (2026 Head-to-Head)",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
+      "topic": "convertkit finally better than",
+      "pair": "",
+      "tool": "",
+      "words": 2375,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop",
@@ -1409,6 +1407,7 @@
     "https://images.unsplash.com/photo-1627563265109-b60106174769?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop"
   ]
 }
