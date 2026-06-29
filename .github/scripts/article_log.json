@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-06-21",
-      "slot": "evening",
-      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-06-21",
-      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
-      "topic": "dark side writing tools",
-      "pair": "",
-      "tool": "",
-      "words": 2353,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-06-21",
       "slot": "night",
       "slug": "before-you-subscribe-to-perplexity-ai-read-this-pros-cons-verdict",
       "title": "Before You Subscribe to Perplexity AI, Read This — Pros, Cons, Verdict",
@@ -1206,10 +1183,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-29",
+      "slot": "latenight",
+      "slug": "the-ai-tools-that-overpromised-and-underdelivered-in-2026-2026-06-29",
+      "title": "The AI Tools That Overpromised and Underdelivered in 2026",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools overpromised underdelivered 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2337,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
@@ -1408,6 +1406,7 @@
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop"
   ]
 }
