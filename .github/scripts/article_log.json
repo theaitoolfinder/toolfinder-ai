@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-21",
-      "slot": "morning",
-      "slug": "the-complete-youtuber-ai-toolkit-from-day-1-to-full-automation",
-      "title": "The Complete YouTuber AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
-      "topic": "youtuber toolkit full automation",
-      "pair": "",
-      "tool": "",
-      "words": 2082,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-21",
       "slot": "midday",
       "slug": "the-make-com-review-that-cuts-through-the-hype-2026",
       "title": "The Make.com Review That Cuts Through the Hype (2026)",
@@ -1206,10 +1184,32 @@
         "Reclaim AI",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-29",
+      "slot": "afternoon",
+      "slug": "the-complete-content-creator-ai-toolkit-from-day-1-to-full",
+      "title": "The Complete Content Creator AI Toolkit — From Day 1 to Full Automation",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop",
+      "topic": "content creator toolkit full",
+      "pair": "",
+      "tool": "",
+      "words": 2232,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=85&auto=format&fit=crop",
@@ -1408,6 +1408,7 @@
     "https://images.unsplash.com/photo-1536697651086-707247210af6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1782511742843-1b901be04a3a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1627563265109-b60106174769?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop"
   ]
 }
