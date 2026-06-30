@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-22",
-      "slot": "afternoon",
-      "slug": "jasper-ai-vs-copy-ai-2026-i-used-both-for-30-days-here-s-the",
-      "title": "Jasper AI vs Copy.ai (2026): I Used Both for 30 Days — Here's the Truth",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1750365919971-7dd273e7b317?w=800&q=85&auto=format&fit=crop",
-      "topic": "jasper copyai 2026 used",
-      "pair": "Jasper AI vs Copy.ai (2026)",
-      "tool": "Jasper AI",
-      "words": 2205,
-      "partners": [
-        "Beehiiv",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-22",
       "slot": "evening",
       "slug": "the-controversy-behind-ai-seo-tools-are-they-actually-hurting",
       "title": "The Controversy Behind AI SEO Tools: Are They Actually Hurting Your Rankings?",
@@ -1194,10 +1173,28 @@
         "Beehiiv",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "night",
+      "slug": "semrush-or-ahrefs-the-2026-comparison-no-one-s-being-honest-about",
+      "title": "Semrush or Ahrefs? The 2026 Comparison No One's Being Honest About",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=85&auto=format&fit=crop",
+      "topic": "semrush ahrefs 2026 comparison",
+      "pair": "Semrush vs Ahrefs? The 2026 Comparison No One's Being Honest About",
+      "tool": "Semrush",
+      "words": 2461,
+      "partners": [
+        "ElevenLabs",
+        "Keyword Insights",
+        "NeuronWriter",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&auto=format&fit=crop",
@@ -1396,6 +1393,7 @@
     "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=85&auto=format&fit=crop"
   ]
 }
