@@ -1,31 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-21",
-      "slot": "latenight",
-      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-06-21",
-      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1592744254966-58c65cfd2e69?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool lockin switching costs",
-      "pair": "",
-      "tool": "",
-      "words": 1913,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "RankMath AI",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-06-22",
       "slot": "morning",
       "slug": "the-podcaster-ai-roadmap-which-tools-to-add-first-and-why",
@@ -1202,10 +1177,29 @@
         "NeuronWriter",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "midday",
+      "slug": "i-used-opusclip-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used OpusClip Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
+      "topic": "used opusclip every days",
+      "pair": "",
+      "tool": "OpusClip",
+      "words": 2416,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
@@ -1404,6 +1398,7 @@
     "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop"
   ]
 }
