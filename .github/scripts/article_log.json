@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-22",
-      "slot": "midday",
-      "slug": "canva-ai-review-real-results-real-pricing-real-talk",
-      "title": "Canva AI Review: Real Results, Real Pricing, Real Talk",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1729860649094-12000c94f4b0?w=800&q=85&auto=format&fit=crop",
-      "topic": "canva results pricing talk",
-      "pair": "",
-      "tool": "Canva AI",
-      "words": 2574,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-22",
       "slot": "afternoon",
       "slug": "jasper-ai-vs-copy-ai-2026-i-used-both-for-30-days-here-s-the",
       "title": "Jasper AI vs Copy.ai (2026): I Used Both for 30 Days — Here's the Truth",
@@ -1198,10 +1177,26 @@
         "Predis.ai",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "evening",
+      "slug": "beehiiv-vs-substack-the-feud-that-s-splitting-the-creator-economy-2026-06-30",
+      "title": "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
+      "topic": "beehiiv substack feud thats",
+      "pair": "",
+      "tool": "",
+      "words": 1925,
+      "partners": [
+        "Beehiiv",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85&auto=format&fit=crop",
@@ -1400,6 +1395,7 @@
     "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop"
   ]
 }
