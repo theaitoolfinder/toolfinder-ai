@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-21",
-      "slot": "night",
-      "slug": "before-you-subscribe-to-perplexity-ai-read-this-pros-cons-verdict",
-      "title": "Before You Subscribe to Perplexity AI, Read This — Pros, Cons, Verdict",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
-      "topic": "before subscribe perplexity read",
-      "pair": "",
-      "tool": "Perplexity AI",
-      "words": 2265,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-21",
       "slot": "latenight",
       "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-06-21",
       "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
@@ -1205,10 +1183,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "morning",
+      "slug": "copy-ai-pros-and-cons-2026-the-unfiltered-truth",
+      "title": "Copy.ai Pros and Cons (2026): The Unfiltered Truth",
+      "type": "pros_cons",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop",
+      "topic": "copyai pros cons 2026",
+      "pair": "",
+      "tool": "Copy.ai",
+      "words": 2009,
+      "partners": [
+        "Beehiiv",
+        "Make.com",
+        "NeuronWriter",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
@@ -1407,6 +1403,7 @@
     "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop"
   ]
 }
