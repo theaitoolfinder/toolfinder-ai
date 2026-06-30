@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-22",
-      "slot": "morning",
-      "slug": "the-podcaster-ai-roadmap-which-tools-to-add-first-and-why",
-      "title": "The Podcaster AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop",
-      "topic": "podcaster roadmap which tools",
-      "pair": "",
-      "tool": "",
-      "words": 2345,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-22",
       "slot": "midday",
       "slug": "canva-ai-review-real-results-real-pricing-real-talk",
       "title": "Canva AI Review: Real Results, Real Pricing, Real Talk",
@@ -1197,10 +1176,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "afternoon",
+      "slug": "the-complete-educator-or-trainer-ai-toolkit-from-day-1-to-full",
+      "title": "The Complete Educator or Trainer AI Toolkit — From Day 1 to Full Automation",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop",
+      "topic": "educator trainer toolkit full",
+      "pair": "",
+      "tool": "",
+      "words": 2294,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
@@ -1399,6 +1399,7 @@
     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1774023092610-acd110d189a1?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop"
   ]
 }
