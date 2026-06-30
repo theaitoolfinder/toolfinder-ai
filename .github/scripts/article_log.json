@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-22",
-      "slot": "evening",
-      "slug": "the-controversy-behind-ai-seo-tools-are-they-actually-hurting",
-      "title": "The Controversy Behind AI SEO Tools: Are They Actually Hurting Your Rankings?",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&q=85&auto=format&fit=crop",
-      "topic": "controversy behind tools they",
-      "pair": "",
-      "tool": "",
-      "words": 2167,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-22",
       "slot": "night",
       "slug": "before-you-subscribe-to-surfer-seo-read-this-pros-cons-verdict",
       "title": "Before You Subscribe to Surfer SEO, Read This — Pros, Cons, Verdict",
@@ -1192,10 +1170,29 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "slot": "latenight",
+      "slug": "why-grammarly-s-ai-upgrade-is-making-writers-trust-it-less-not-2026-06-30",
+      "title": "Why Grammarly's AI Upgrade Is Making Writers Trust It Less, Not More",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop",
+      "topic": "grammarlys upgrade making writers",
+      "pair": "",
+      "tool": "",
+      "words": 1935,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&q=85&auto=format&fit=crop",
@@ -1394,6 +1391,7 @@
     "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop"
   ]
 }
