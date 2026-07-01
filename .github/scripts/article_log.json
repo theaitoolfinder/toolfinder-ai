@@ -2,30 +2,6 @@
   "generated": [
     {
       "date": "2026-06-23",
-      "slot": "evening",
-      "slug": "the-chatgpt-features-that-quietly-disappeared-and-why-it-matters-2026-06-23",
-      "title": "The ChatGPT Features That Quietly Disappeared — and Why It Matters in 2026",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1751448582395-27fc57293f1a?w=800&q=85&auto=format&fit=crop",
-      "topic": "chatgpt features quietly disappeared",
-      "pair": "",
-      "tool": "",
-      "words": 1908,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-06-23",
       "slot": "night",
       "slug": "leonardo-ai-7-genuine-pros-and-5-real-cons-you-need-to-know",
       "title": "Leonardo.ai: 7 Genuine Pros and 5 Real Cons You Need to Know",
@@ -1193,10 +1169,29 @@
         "Beehiiv",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "latenight",
+      "slug": "the-canva-ai-backlash-designers-are-fed-up-here-s-the-full-story-2026-07-01",
+      "title": "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
+      "type": "controversial",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1745848413078-f85af10e5bf2?w=800&q=85&auto=format&fit=crop",
+      "topic": "canva backlash designers heres",
+      "pair": "",
+      "tool": "",
+      "words": 1998,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550645612-83f5d594b671?w=800&q=85&auto=format&fit=crop",
@@ -1395,6 +1390,7 @@
     "https://images.unsplash.com/photo-1674505894454-2348c906d464?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1638866412987-e4663ec0ab8a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1601128422122-df77d3d1bea0?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1601128422122-df77d3d1bea0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1745848413078-f85af10e5bf2?w=800&q=85&auto=format&fit=crop"
   ]
 }
