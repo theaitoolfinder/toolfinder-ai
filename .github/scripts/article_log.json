@@ -1,23 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-22",
-      "slot": "latenight",
-      "slug": "beehiiv-vs-substack-the-feud-that-s-splitting-the-creator-economy",
-      "title": "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
-      "topic": "beehiiv substack feud thats",
-      "pair": "",
-      "tool": "",
-      "words": 2156,
-      "partners": [
-        "Beehiiv",
-        "Make.com"
-      ]
-    },
-    {
       "date": "2026-06-23",
       "slot": "morning",
       "slug": "if-you-re-a-consultant-this-is-the-ai-toolkit-you-actually-need",
@@ -1191,10 +1174,27 @@
         "NeuronWriter",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "midday",
+      "slug": "i-used-capcut-ai-every-day-for-30-days-here-s-my-honest-take",
+      "title": "I Used CapCut AI Every Day for 30 Days — Here's My Honest Take",
+      "type": "featured",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1674505894454-2348c906d464?w=800&q=85&auto=format&fit=crop",
+      "topic": "used capcut every days",
+      "pair": "",
+      "tool": "CapCut AI",
+      "words": 2333,
+      "partners": [
+        "ElevenLabs",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=85&auto=format&fit=crop",
@@ -1393,6 +1393,7 @@
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1674505894454-2348c906d464?w=800&q=85&auto=format&fit=crop"
   ]
 }
