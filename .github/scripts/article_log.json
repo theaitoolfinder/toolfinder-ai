@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-23",
-      "slot": "midday",
-      "slug": "is-writesonic-the-best-in-its-category-a-full-2026-review-2026-06-23",
-      "title": "Is Writesonic the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
-      "topic": "writesonic category full 2026",
-      "pair": "",
-      "tool": "Writesonic",
-      "words": 2500,
-      "partners": [
-        "Beehiiv",
-        "Make.com",
-        "NeuronWriter",
-        "Predis.ai",
-        "Simplified",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-06-23",
       "slot": "afternoon",
       "slug": "opusclip-vs-descript-the-honest-breakdown-for-2026",
       "title": "OpusClip vs Descript: The Honest Breakdown for 2026",
@@ -1192,10 +1171,34 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "evening",
+      "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-07-01",
+      "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1638866412987-e4663ec0ab8a?w=800&q=85&auto=format&fit=crop",
+      "topic": "truth hallucinations 2026 which",
+      "pair": "",
+      "tool": "",
+      "words": 2430,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "SciSpace",
+        "Simplified",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=85&auto=format&fit=crop",
@@ -1394,6 +1397,7 @@
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1674505894454-2348c906d464?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1638866412987-e4663ec0ab8a?w=800&q=85&auto=format&fit=crop"
   ]
 }
