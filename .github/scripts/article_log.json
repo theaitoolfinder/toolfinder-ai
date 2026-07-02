@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-24",
-      "slot": "afternoon",
-      "slug": "grammarly-vs-prowritingaid-which-is-actually-worth-it-in-2026",
-      "title": "Grammarly vs ProWritingAid: Which Is Actually Worth It in 2026?",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1586943759341-be5595944989?w=800&q=85&auto=format&fit=crop",
-      "topic": "grammarly prowritingaid which actually",
-      "pair": "Grammarly vs ProWritingAid",
-      "tool": "Grammarly",
-      "words": 1804,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-24",
       "slot": "evening",
       "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences-2026-06-24",
       "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
@@ -1185,10 +1164,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-02",
+      "slot": "night",
+      "slug": "fireflies-ai-vs-otter-ai-which-ai-tool-should-you-pay-for-in-2026",
+      "title": "Fireflies.ai vs Otter.ai: Which AI Tool Should You Pay For in 2026?",
+      "type": "comparison",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop",
+      "topic": "firefliesai otterai which tool",
+      "pair": "Fireflies.ai vs Otter.ai",
+      "tool": "Fireflies.ai",
+      "words": 2430,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1698778573682-346d219402b5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=85&auto=format&fit=crop",
@@ -1387,6 +1384,7 @@
     "https://images.unsplash.com/photo-1560227314-eccfec50b4be?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1522832712787-3fbd36c9fe2d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1761544775976-0c81b00e81d3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1761544775976-0c81b00e81d3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop"
   ]
 }
