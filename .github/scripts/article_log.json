@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-24",
-      "slot": "evening",
-      "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences-2026-06-24",
-      "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1675557009875-436f71457475?w=800&q=85&auto=format&fit=crop",
-      "topic": "claude actually safer than",
-      "pair": "",
-      "tool": "",
-      "words": 2039,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-24",
       "slot": "night",
       "slug": "the-real-pros-and-cons-of-capcut-ai-no-sponsored-opinion",
       "title": "The Real Pros and Cons of CapCut AI — No Sponsored Opinion",
@@ -1183,10 +1162,31 @@
         "Make.com",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-07-02",
+      "slot": "latenight",
+      "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences-2026-07-02",
+      "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop",
+      "topic": "claude actually safer than",
+      "pair": "",
+      "tool": "",
+      "words": 2121,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=85&auto=format&fit=crop",
@@ -1385,6 +1385,7 @@
     "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1522832712787-3fbd36c9fe2d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1761544775976-0c81b00e81d3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop"
   ]
 }
