@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-25",
-      "slot": "morning",
-      "slug": "building-your-ai-stack-as-a-content-creator-a-step-by-step-guide-2026-06-25",
-      "title": "Building Your AI Stack as a Content Creator: A Step-by-Step Guide for 2026",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1780686616280-9c6ca8ce6f38?w=800&q=85&auto=format&fit=crop",
-      "topic": "building stack content creator",
-      "pair": "",
-      "tool": "",
-      "words": 1852,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-25",
       "slot": "midday",
       "slug": "bolt-new-review-2026-is-it-actually-worth-paying-for",
       "title": "Bolt.new Review (2026): Is It Actually Worth Paying For?",
@@ -1183,10 +1161,28 @@
         "Make.com",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "seo-consultant-s-guide-to-ai-tools-in-2026-what-to-use-and-when",
+      "title": "SEO Consultant's Guide to AI Tools in 2026: What to Use and When",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
+      "topic": "consultants tools 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2733,
+      "partners": [
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=85&auto=format&fit=crop",
@@ -1385,6 +1381,7 @@
     "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop"
   ]
 }
