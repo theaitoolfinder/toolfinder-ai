@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-25",
-      "slot": "midday",
-      "slug": "bolt-new-review-2026-is-it-actually-worth-paying-for",
-      "title": "Bolt.new Review (2026): Is It Actually Worth Paying For?",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1616414945119-48d63a7dfcd2?w=800&q=85&auto=format&fit=crop",
-      "topic": "boltnew 2026 actually worth",
-      "pair": "",
-      "tool": "Bolt.new",
-      "words": 2536,
-      "partners": [
-        "Fireflies.ai",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-06-25",
       "slot": "afternoon",
       "slug": "notion-ai-vs-obsidian-the-honest-breakdown-for-2026",
       "title": "Notion AI vs Obsidian: The Honest Breakdown for 2026",
@@ -1180,10 +1163,30 @@
         "Make.com",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "midday",
+      "slug": "deepseek-in-2026-still-worth-it-or-time-to-switch",
+      "title": "DeepSeek in 2026: Still Worth It or Time to Switch?",
+      "type": "featured",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
+      "topic": "deepseek 2026 still worth",
+      "pair": "",
+      "tool": "DeepSeek",
+      "words": 2304,
+      "partners": [
+        "Beehiiv",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
@@ -1382,6 +1385,7 @@
     "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop"
   ]
 }
