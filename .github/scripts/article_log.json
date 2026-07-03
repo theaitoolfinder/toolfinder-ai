@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-25",
-      "slot": "afternoon",
-      "slug": "notion-ai-vs-obsidian-the-honest-breakdown-for-2026",
-      "title": "Notion AI vs Obsidian: The Honest Breakdown for 2026",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1663813251302-e5d2c7199e86?w=800&q=85&auto=format&fit=crop",
-      "topic": "notion obsidian breakdown 2026",
-      "pair": "Notion AI vs Obsidian",
-      "tool": "Notion AI",
-      "words": 2272,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter"
-      ]
-    },
-    {
-      "date": "2026-06-25",
       "slot": "evening",
       "slug": "why-tech-experts-are-quietly-warning-against-trusting-ai-meeting-2026-06-25",
       "title": "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
@@ -1184,10 +1165,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "choosing-between-leonardo-ai-and-midjourney-read-this-first-2026",
+      "title": "Choosing Between Leonardo.ai and Midjourney? Read This First (2026)",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
+      "topic": "choosing between leonardoai midjourney",
+      "pair": "",
+      "tool": "",
+      "words": 2627,
+      "partners": [
+        "Beehiiv",
+        "Make.com",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
@@ -1386,6 +1384,7 @@
     "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop"
   ]
 }
