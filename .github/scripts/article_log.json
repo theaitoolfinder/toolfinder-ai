@@ -2,22 +2,6 @@
   "generated": [
     {
       "date": "2026-06-25",
-      "slot": "evening",
-      "slug": "why-tech-experts-are-quietly-warning-against-trusting-ai-meeting-2026-06-25",
-      "title": "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1769413085127-8381b222ae30?w=800&q=85&auto=format&fit=crop",
-      "topic": "tech experts quietly warning",
-      "pair": "",
-      "tool": "",
-      "words": 2299,
-      "partners": [
-        "Fireflies.ai"
-      ]
-    },
-    {
-      "date": "2026-06-25",
       "slot": "night",
       "slug": "honest-notebooklm-review-what-it-gets-right-and-where-it-falls",
       "title": "Honest NotebookLM Review: What It Gets Right and Where It Falls Short",
@@ -1183,10 +1167,32 @@
         "Make.com",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "the-hidden-cost-of-free-ai-tools-what-you-re-really-giving-up-2026-07-03",
+      "title": "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
+      "type": "controversial",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop",
+      "topic": "hidden cost free tools",
+      "pair": "",
+      "tool": "",
+      "words": 2465,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
@@ -1385,6 +1391,7 @@
     "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop"
   ]
 }
