@@ -1,24 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-24",
-      "slot": "latenight",
-      "slug": "the-real-reason-ai-coding-tools-are-creating-more-bugs-not-fewer",
-      "title": "The Real Reason AI Coding Tools Are Creating More Bugs, Not Fewer",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&q=85&auto=format&fit=crop",
-      "topic": "reason coding tools creating",
-      "pair": "",
-      "tool": "",
-      "words": 2083,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
       "date": "2026-06-25",
       "slot": "morning",
       "slug": "building-your-ai-stack-as-a-content-creator-a-step-by-step-guide-2026-06-25",
@@ -1183,10 +1165,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "runway-everything-you-need-to-know-before-you-sign-up-2026",
+      "title": "Runway: Everything You Need to Know Before You Sign Up (2026)",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop",
+      "topic": "runway everything need know",
+      "pair": "",
+      "tool": "Runway",
+      "words": 2443,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=800&q=85&auto=format&fit=crop",
@@ -1385,6 +1384,7 @@
     "https://images.unsplash.com/photo-1761544775976-0c81b00e81d3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589446819574-0c68dfd8b11b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1601296200639-89349ce76a48?w=800&q=85&auto=format&fit=crop"
   ]
 }
