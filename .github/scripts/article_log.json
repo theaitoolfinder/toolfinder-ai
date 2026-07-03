@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-25",
-      "slot": "night",
-      "slug": "honest-notebooklm-review-what-it-gets-right-and-where-it-falls",
-      "title": "Honest NotebookLM Review: What It Gets Right and Where It Falls Short",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1775440299329-8ccd74053052?w=800&q=85&auto=format&fit=crop",
-      "topic": "notebooklm gets where falls",
-      "pair": "",
-      "tool": "NotebookLM",
-      "words": 2338,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "SciSpace"
-      ]
-    },
-    {
-      "date": "2026-06-25",
       "slot": "latenight",
       "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes-2026-06-25",
       "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
@@ -1190,10 +1169,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "afternoon",
+      "slug": "surfer-seo-pros-cons-what-ai-seo-users-actually-think",
+      "title": "Surfer SEO Pros & Cons: What Ai Seo Users Actually Think",
+      "type": "pros_cons",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop",
+      "topic": "surfer pros cons users",
+      "pair": "",
+      "tool": "Surfer SEO",
+      "words": 2478,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
@@ -1392,6 +1388,7 @@
     "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop"
   ]
 }
