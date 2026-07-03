@@ -1,26 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-25",
-      "slot": "latenight",
-      "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes-2026-06-25",
-      "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=800&q=85&auto=format&fit=crop",
-      "topic": "elevenlabs voice cloning abuse",
-      "pair": "",
-      "tool": "",
-      "words": 2316,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-06-26",
       "slot": "morning",
       "slug": "the-complete-seo-consultant-ai-toolkit-from-day-1-to-full",
@@ -1187,10 +1167,27 @@
         "NeuronWriter",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes-2026-07-03",
+      "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1677691824304-279660ceece3?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs voice cloning abuse",
+      "pair": "",
+      "tool": "",
+      "words": 2460,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=85&auto=format&fit=crop",
@@ -1389,6 +1386,7 @@
     "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1677691824304-279660ceece3?w=800&q=85&auto=format&fit=crop"
   ]
 }
