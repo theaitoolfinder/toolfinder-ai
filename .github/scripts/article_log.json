@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "morning",
-      "slug": "the-complete-seo-consultant-ai-toolkit-from-day-1-to-full",
-      "title": "The Complete SEO Consultant AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1709281847802-9aef10b6d4bf?w=800&q=85&auto=format&fit=crop",
-      "topic": "consultant toolkit full automation",
-      "pair": "",
-      "tool": "",
-      "words": 2111,
-      "partners": [
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-26",
       "slot": "exclusive",
       "slug": "i-used-fireflies-ai-every-day-for-30-days-here-s-my-honest-take-2026-06-26",
       "title": "I Used Fireflies.ai Every Day for 30 Days — Here's My Honest Take",
@@ -1185,10 +1165,28 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "if-you-re-a-researcher-or-academic-this-is-the-ai-toolkit-you",
+      "title": "If You're a Researcher or Academic, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1630852722667-ef9764a76b3e?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre researcher academic toolkit",
+      "pair": "",
+      "tool": "",
+      "words": 2086,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85&auto=format&fit=crop",
@@ -1387,6 +1385,7 @@
     "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677691824304-279660ceece3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677691824304-279660ceece3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630852722667-ef9764a76b3e?w=800&q=85&auto=format&fit=crop"
   ]
 }
