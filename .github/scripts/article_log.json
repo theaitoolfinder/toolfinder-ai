@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "exclusive",
-      "slug": "i-switched-from-apollo-io-to-clay-here-s-what-actually-happened",
-      "title": "I Switched from Apollo.io to Clay — Here's What Actually Happened",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=800&q=85&auto=format&fit=crop",
-      "topic": "switched apolloio clay heres",
-      "pair": "",
-      "tool": "",
-      "words": 2107,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-26",
       "slot": "midday",
       "slug": "instantly-ai-deep-dive-the-honest-review-no-one-else-is-writing",
       "title": "Instantly AI Deep Dive: The Honest Review No One Else Is Writing",
@@ -1186,10 +1169,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "slot": "exclusive",
+      "slug": "groq-vs-chatgpt-stop-guessing-here-s-the-2026-verdict",
+      "title": "Groq vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
+      "type": "comparison",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1677691824257-5772713ac90a?w=800&q=85&auto=format&fit=crop",
+      "topic": "groq chatgpt stop guessing",
+      "pair": "Groq vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
+      "tool": "Groq",
+      "words": 2101,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&auto=format&fit=crop",
@@ -1388,6 +1392,7 @@
     "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677691824304-279660ceece3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1630852722667-ef9764a76b3e?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1578930955087-58a5d98e7a95?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1578930955087-58a5d98e7a95?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1677691824257-5772713ac90a?w=800&q=85&auto=format&fit=crop"
   ]
 }
