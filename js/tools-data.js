@@ -738,5 +738,7 @@ window.MYAI_AFF_MAP = {
   "afforai": "https://afforai.com",
   "napkin ai": "https://napkin.ai",
   "turboscribe": "https://turboscribe.ai",
-  "hix ai": "https://hix.ai"
+  "hix ai": "https://hix.ai",
+  "elevenlabs dubbing": "https://elevenlabs.io/dubbing",
+  "gumloop": "https://gumloop.com"
 };
