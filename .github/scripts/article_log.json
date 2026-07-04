@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "exclusive",
-      "slug": "jasper-ai-s-pricing-controversy-users-are-leaving-here-s-why-2026-06-26",
-      "title": "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=85&auto=format&fit=crop",
-      "topic": "jasper pricing controversy users",
-      "pair": "",
-      "tool": "",
-      "words": 1994,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-06-26",
       "slot": "night",
       "slug": "the-complete-musician-or-audio-producer-ai-toolkit-from-day-1-to",
       "title": "The Complete Musician or Audio Producer AI Toolkit — From Day 1 to Full Automation",
@@ -1203,10 +1181,32 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-04",
+      "slot": "evening",
+      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-07-04",
+      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
+      "type": "controversial",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
+      "topic": "tool lockin switching costs",
+      "pair": "",
+      "tool": "",
+      "words": 1811,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
@@ -1405,6 +1405,7 @@
     "https://images.unsplash.com/photo-1779696304995-d04faa5ed8f8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677691820099-a6e8040aa077?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1724754608848-cdd8d5cd8538?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1724754608848-cdd8d5cd8538?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop"
   ]
 }
