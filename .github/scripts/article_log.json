@@ -2,20 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "evening",
-      "slug": "github-copilot-in-2026-still-worth-it-or-time-to-switch",
-      "title": "GitHub Copilot in 2026: Still Worth It or Time to Switch?",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=85&auto=format&fit=crop",
-      "topic": "github copilot 2026 still",
-      "pair": "",
-      "tool": "GitHub Copilot",
-      "words": 2472,
-      "partners": []
-    },
-    {
-      "date": "2026-06-26",
       "slot": "exclusive",
       "slug": "is-adcreative-ai-worth-it-full-pros-cons-and-verdict-for-2026",
       "title": "Is AdCreative.ai Worth It? Full Pros, Cons, and Verdict for 2026",
@@ -1202,10 +1188,26 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-04",
+      "slot": "midday",
+      "slug": "grammarly-deep-dive-the-honest-review-no-one-else-is-writing",
+      "title": "Grammarly Deep Dive: The Honest Review No One Else Is Writing",
+      "type": "featured",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop",
+      "topic": "grammarly deep dive else",
+      "pair": "",
+      "tool": "Grammarly",
+      "words": 2445,
+      "partners": [
+        "Beehiiv",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635241161466-541f065683ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
@@ -1404,6 +1406,7 @@
     "https://images.unsplash.com/photo-1647545895483-a8138a12685c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1779696304995-d04faa5ed8f8?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677691820099-a6e8040aa077?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677691820099-a6e8040aa077?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop"
   ]
 }
