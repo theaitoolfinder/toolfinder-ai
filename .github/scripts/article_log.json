@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "night",
-      "slug": "the-complete-musician-or-audio-producer-ai-toolkit-from-day-1-to",
-      "title": "The Complete Musician or Audio Producer AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1618609377864-68609b857e90?w=800&q=85&auto=format&fit=crop",
-      "topic": "musician audio producer toolkit",
-      "pair": "",
-      "tool": "",
-      "words": 2330,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-26",
       "slot": "exclusive",
       "slug": "github-copilot-vs-human-developers-the-data-that-started-a-war-2026-06-26",
       "title": "GitHub Copilot vs. Human Developers: The Data That Started a War",
@@ -1204,10 +1185,30 @@
         "Predis.ai",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-07-04",
+      "slot": "night",
+      "slug": "if-you-re-a-youtuber-this-is-the-ai-toolkit-you-actually-need-in",
+      "title": "If You're a YouTuber, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre youtuber toolkit actually",
+      "pair": "",
+      "tool": "",
+      "words": 2278,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1671726203390-cdc4354ee2eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
@@ -1406,6 +1407,7 @@
     "https://images.unsplash.com/photo-1677691820099-a6e8040aa077?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1724754608848-cdd8d5cd8538?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop"
   ]
 }
