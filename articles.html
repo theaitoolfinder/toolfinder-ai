@@ -5899,6 +5899,15 @@ document.addEventListener('DOMContentLoaded',async function(){
     buildFeatured(regular);
     buildLatest(regular);
     buildExclusive(exclusive);
+    /* The gate script's DOMContentLoaded handler runs BEFORE this one,
+       so its unlock pass found an empty #excl-track. If the visitor is
+       already a member, unlock the freshly built cards now. */
+    try{
+      if(parseInt(localStorage.getItem('pf_sub')||'0')>Date.now()
+         && typeof unlockExclusiveCards==='function'){
+        unlockExclusiveCards();
+      }
+    }catch(e){}
   });
 })();
 </script>
