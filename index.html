@@ -3247,36 +3247,48 @@ window.addEventListener("hashchange",readHash);readHash();
     .catch(function(){section.style.display='none';});
 })();
 
-/* ── Brevo form submit via hidden iframe ────────────────────────────────────
-   fetch() with no-cors is blocked by Cloudflare bot detection on sibforms.com
-   (browser sends Origin header; Cloudflare redirects to a challenge, which
-   no-cors mode treats as a network error and throws).
-   A real <form> submit targeting a hidden iframe is indistinguishable from
-   Brevo's own embedded form — Cloudflare passes it through cleanly.
+/* ── Brevo form submit (v2 endpoint) ────────────────────────────────────────
+   Brevo migrated sibforms to /v2/serve/ — the old /serve/ path returns an
+   empty 200 and silently DROPS the contact. The v2 endpoint requires
+   multipart/form-data (FormData) and returns readable JSON with CORS
+   headers, so we can confirm {"success":true} directly.
+   Falls back to a hidden-iframe multipart form submit if fetch fails.
    ─────────────────────────────────────────────────────────────────────── */
-const _BREVO_EP_GLOBAL='https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
+const _BREVO_EP_GLOBAL='https://bb0b0867.sibforms.com/v2/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
 
-function brevoSubmit(email, fname){
-  return new Promise(function(resolve){
-    const form=document.createElement('form');
-    form.method='POST';
-    form.action=_BREVO_EP_GLOBAL;
-    form.target='_brevo_ifr';
-    form.style.display='none';
-    const fields={EMAIL:email,locale:'en',html_type:'simple'};
-    if(fname) fields.FIRSTNAME=fname;
-    Object.keys(fields).forEach(function(k){
-      const i=document.createElement('input');
-      i.type='hidden'; i.name=k; i.value=fields[k];
-      form.appendChild(i);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-    // Response is cross-origin — we can never read it.
-    // Resolve after 400 ms so the caller can show confirmation.
-    setTimeout(resolve, 400);
-  });
+async function brevoSubmit(email, fname){
+  const fd=new FormData();
+  fd.append('EMAIL',email);
+  if(fname) fd.append('FIRSTNAME',fname);
+  fd.append('email_address_check','');   /* honeypot — must stay empty */
+  fd.append('locale','en');
+  try{
+    const r=await fetch(_BREVO_EP_GLOBAL,{method:'POST',body:fd,mode:'cors'});
+    const d=await r.json().catch(function(){return null;});
+    return !!(d&&d.success);
+  }catch(e){
+    /* Network/CORS failure — blind fallback via hidden iframe form */
+    try{
+      const form=document.createElement('form');
+      form.method='POST';
+      form.action=_BREVO_EP_GLOBAL;
+      form.enctype='multipart/form-data';
+      form.target='_brevo_ifr';
+      form.style.display='none';
+      const fields={EMAIL:email,email_address_check:'',locale:'en'};
+      if(fname) fields.FIRSTNAME=fname;
+      Object.keys(fields).forEach(function(k){
+        const i=document.createElement('input');
+        i.type='hidden'; i.name=k; i.value=fields[k];
+        form.appendChild(i);
+      });
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      await new Promise(function(res){setTimeout(res,400);});
+      return true; /* iframe response unreadable — assume delivered */
+    }catch(e2){ return false; }
+  }
 }
 
 /* ── Newsletter inline subscribe ── */
@@ -3291,7 +3303,13 @@ async function nlSubscribe(e){
     msg.style.color='#ef4444'; msg.textContent='⚠ Please enter a valid email address.'; return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
-  await brevoSubmit(email, fname);
+  const ok=await brevoSubmit(email, fname);
+  if(!ok){
+    msg.style.color='#ef4444';
+    msg.textContent='⚠ Subscription failed — please check your connection and try again.';
+    btn.disabled=false; btn.textContent='Subscribe Free';
+    return;
+  }
   memberLogin(email, fname || null);
   msg.style.color='var(--ok)';
   msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
@@ -3694,7 +3712,13 @@ async function popSubscribe(){
     emailEl.focus(); return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
-  await brevoSubmit(email, fname);
+  const ok=await brevoSubmit(email, fname);
+  if(!ok){
+    msgEl.style.color='#ef4444';
+    msgEl.textContent='⚠ Subscription failed — please check your connection and try again.';
+    btn.disabled=false; btn.textContent='Subscribe Free →';
+    return;
+  }
   memberLogin(email, fname || null);
   msgEl.style.color='var(--ok)';
   msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
@@ -4527,7 +4551,7 @@ async function popSubscribe(){
      SUBSCRIPTION GATE (Brevo)
      ══════════════════════════════════════════ */
 
-  const _BREVO_EP = 'https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
+  const _BREVO_EP = _BREVO_EP_GLOBAL; /* v2 endpoint — see brevoSubmit() */
 
   function cbShowGate() {
     window._cbGateActive = true;
@@ -4634,7 +4658,12 @@ async function popSubscribe(){
     }
     if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
     if (msgEl) { msgEl.style.color = 'var(--text-dim)'; msgEl.textContent = ''; }
-    await brevoSubmit(email, fname);
+    const ok = await brevoSubmit(email, fname);
+    if (!ok) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe Free 🎉'; }
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Subscription failed — please try again.'; }
+      return;
+    }
     if (fname) localStorage.setItem('myai_chat_name', fname);
     localStorage.setItem('pf_email', email); // needed by cbGateComplete → memberLogin
     memberLogin(email, fname || null);

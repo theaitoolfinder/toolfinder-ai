@@ -11,7 +11,8 @@
   if (document.getElementById('cb-btn') || document.getElementById('mcb-btn')) return;
 
   // ── Config ──
-  const BREVO_EP = 'https://bb0b0867.sibforms.com/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
+  /* Brevo v2 sibforms endpoint — the old /serve/ path silently drops contacts */
+  const BREVO_EP = 'https://bb0b0867.sibforms.com/v2/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==';
   const PAGE = window.location.pathname.split('/').pop() || 'index.html';
   // ── Gemini / Teza AI Worker ──
   // After deploying workers/teza-ai.js to Cloudflare, paste your Worker URL below.
@@ -398,14 +399,22 @@
     }
     if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
     if (msgEl) { msgEl.style.color = '#64748b'; msgEl.textContent = ''; }
+    let subOk = false;
     try {
       const fd = new FormData();
       fd.append('EMAIL', email);
       if (fname) fd.append('FIRSTNAME', fname);
+      fd.append('email_address_check', ''); /* honeypot — must stay empty */
       fd.append('locale', 'en');
-      fd.append('html_type', 'simple');
-      await fetch(BREVO_EP, { method: 'POST', body: fd, mode: 'no-cors' });
+      const r = await fetch(BREVO_EP, { method: 'POST', body: fd, mode: 'cors' });
+      const d = await r.json().catch(() => null);
+      subOk = !!(d && d.success);
     } catch (e) {}
+    if (!subOk) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe Free 🎉'; }
+      if (msgEl) { msgEl.style.color = '#ef4444'; msgEl.textContent = '⚠ Subscription failed — please try again.'; }
+      return;
+    }
     // Persist hash locally + trigger immediate sync in background
     mcbPersistSubscriber(email).catch(() => {});
     if (fname) localStorage.setItem('myai_chat_name', fname);
