@@ -3,24 +3,6 @@
     {
       "date": "2026-06-26",
       "slot": "exclusive",
-      "slug": "github-copilot-vs-human-developers-the-data-that-started-a-war-2026-06-26",
-      "title": "GitHub Copilot vs. Human Developers: The Data That Started a War",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85&auto=format&fit=crop",
-      "topic": "github copilot human developers",
-      "pair": "",
-      "tool": "",
-      "words": 2065,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-06-26",
-      "slot": "exclusive",
       "slug": "choosing-between-groq-and-chatgpt-read-this-first-2026",
       "title": "Choosing Between Groq and ChatGPT? Read This First (2026)",
       "type": "comparison",
@@ -1206,10 +1188,31 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-04",
+      "slot": "latenight",
+      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-07-04",
+      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
+      "type": "controversial",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
+      "topic": "dark side writing tools",
+      "pair": "",
+      "tool": "",
+      "words": 2029,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
@@ -1408,6 +1411,7 @@
     "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1724754608848-cdd8d5cd8538?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop"
   ]
 }
