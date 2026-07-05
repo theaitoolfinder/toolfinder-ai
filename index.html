@@ -300,10 +300,40 @@ footer a:hover{color:var(--primary)}
 .social-icon:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
 
 /* ══ Articles Carousel ══════════════════════════════════════════════════════ */
-.art-carousel-section{margin:60px auto 0}
-.art-carousel-section .eyebrow{display:block;text-align:center;margin-bottom:8px}
-.art-carousel-section h2{text-align:center;font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
-.art-carousel-section .carousel-sub{text-align:center;color:var(--text-2);font-size:15px;margin:0 0 28px}
+.art-carousel-section{margin:48px auto 0}
+.art-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px}
+.art-carousel-section .eyebrow{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px}
+.art-live-dot{width:8px;height:8px;border-radius:50%;background:#16a34a;display:inline-block;position:relative;flex-shrink:0}
+.art-live-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid #16a34a;opacity:.5;animation:artPulse 1.8s ease-out infinite}
+@keyframes artPulse{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.4);opacity:0}}
+.art-carousel-section h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
+.art-carousel-section h2 em{font-style:normal;background:linear-gradient(135deg,var(--primary),var(--primary-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.art-carousel-section .carousel-sub{color:var(--text-2);font-size:15px;margin:0}
+.art-head-cta{flex-shrink:0}
+/* ── Featured (newest) article hero card ── */
+.art-featured{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--border-soft);box-shadow:var(--shadow-lg);text-decoration:none;margin-bottom:22px;transition:transform .22s,box-shadow .22s}
+.art-featured:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(26,86,219,.18)}
+.art-featured-img{position:relative;min-height:280px;overflow:hidden}
+.art-featured-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.art-featured:hover .art-featured-img img{transform:scale(1.045)}
+.art-featured-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,var(--surface) 100%)}
+.art-featured-body{padding:30px 32px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.art-featured-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.art-new-badge{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:#fff;background:linear-gradient(135deg,#ef4444,#f97316);padding:4px 10px;border-radius:999px;animation:artBadge 2.4s ease-in-out infinite}
+@keyframes artBadge{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.45)}50%{box-shadow:0 0 0 7px rgba(239,68,68,0)}}
+.art-featured-cat{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--primary)}
+.art-featured-title{font-size:clamp(17px,2.2vw,23px);font-weight:800;line-height:1.32;letter-spacing:-.015em;color:var(--text);margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.art-featured-excerpt{font-size:14px;line-height:1.7;color:var(--text-2);margin:0 0 18px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.art-featured-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--text-dim)}
+.art-featured-read{color:var(--primary);font-weight:700;font-size:13.5px;transition:gap .15s}
+@media(max-width:760px){
+  .art-head-row{flex-direction:column;align-items:flex-start}
+  .art-head-cta{display:none}
+  .art-featured{grid-template-columns:1fr}
+  .art-featured-img{min-height:190px}
+  .art-featured-img::after{background:linear-gradient(180deg,transparent 55%,var(--surface) 100%)}
+  .art-featured-body{padding:20px 20px 22px}
+}
 .art-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 8px}
 .art-carousel::-webkit-scrollbar{display:none}
 .art-carousel-card{flex:0 0 290px;border-radius:16px;background:var(--surface);border:1px solid var(--border-soft);box-shadow:var(--shadow);overflow:hidden;scroll-snap-align:start;text-decoration:none;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
@@ -1103,6 +1133,42 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <div class="marquee-track" id="marquee-track"></div>
   </div>
 
+  <!-- ── Articles Spotlight — newest article hero + latest carousel ── -->
+  <section class="container art-carousel-section" id="articles-preview">
+    <div class="art-head-row">
+      <div>
+        <div class="eyebrow"><span class="art-live-dot" aria-hidden="true"></span> Fresh Off the Press</div>
+        <h2>Today's <em>AI Insights</em></h2>
+        <p class="carousel-sub">New comparisons, playbooks &amp; honest reviews published every day.</p>
+      </div>
+      <a href="articles.html" class="art-carousel-all art-head-cta">View All Articles &rarr;</a>
+    </div>
+    <!-- Featured (newest) article — populated by JS -->
+    <a class="art-featured" id="art-featured" href="articles.html" style="display:none">
+      <div class="art-featured-img"><img id="art-featured-img" src="" alt="" loading="lazy"></div>
+      <div class="art-featured-body">
+        <div class="art-featured-top">
+          <span class="art-new-badge">NEW</span>
+          <span class="art-featured-cat" id="art-featured-cat"></span>
+        </div>
+        <h3 class="art-featured-title" id="art-featured-title"></h3>
+        <p class="art-featured-excerpt" id="art-featured-excerpt"></p>
+        <div class="art-featured-meta">
+          <span id="art-featured-date"></span>
+          <span class="art-featured-read">Read the story &rarr;</span>
+        </div>
+      </div>
+    </a>
+    <div class="art-carousel" id="art-carousel">
+      <!-- populated by JS -->
+    </div>
+    <div class="art-carousel-nav">
+      <button class="art-carousel-btn" id="art-carousel-prev" aria-label="Previous articles">&#8592;</button>
+      <a href="articles.html" class="art-carousel-all">View All Articles</a>
+      <button class="art-carousel-btn" id="art-carousel-next" aria-label="Next articles">&#8594;</button>
+    </div>
+  </section>
+
   <!-- ── Partner Picks (affiliate tools) — populated by JS if any tools have affiliate_url set ── -->
   <section class="partner-picks" id="partner-picks" style="display:none">
     <div class="partner-picks-head container">
@@ -1206,20 +1272,6 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <div id="tfm-load-more-label" style="margin-top:8px;font-size:12.5px;color:var(--text-dim)"></div>
   </div>
   <div class="container" id="rows"></div>
-  <!-- ── Articles Carousel ── -->
-  <section class="container art-carousel-section" id="articles-preview">
-    <div class="eyebrow">From the Blog</div>
-    <h2>Latest AI Insights</h2>
-    <p class="carousel-sub">Fresh articles published 3× daily — comparisons, tutorials, and tool guides.</p>
-    <div class="art-carousel" id="art-carousel">
-      <!-- populated by JS -->
-    </div>
-    <div class="art-carousel-nav">
-      <button class="art-carousel-btn" id="art-carousel-prev" aria-label="Previous articles">&#8592;</button>
-      <a href="articles.html" class="art-carousel-all">View All Articles</a>
-      <button class="art-carousel-btn" id="art-carousel-next" aria-label="Next articles">&#8594;</button>
-    </div>
-  </section>
 
   <section class="container newsletter" id="newsletter">
     <div class="eyebrow">The AI Toolbox Newsletter</div>
@@ -3185,17 +3237,34 @@ window.addEventListener("hashchange",readHash);readHash();
     window.addEventListener('touchend',function(){requestAnimationFrame(check);},{passive:true});
     check();
   }
-  // Tools filter bar — releases when articles-preview section enters
-  initSticky('tfm-sentinel','tfm-sticky-wrap','articles-preview','tfm-spacer');
+  // Tools filter bar — releases when the newsletter section enters
+  // (articles-preview moved above the tools section, so it can't be the release target)
+  initSticky('tfm-sentinel','tfm-sticky-wrap','newsletter','tfm-spacer');
   // Directory tabs — releases when compare section enters
   initSticky('dir-sentinel','dir-sticky-wrap','compare','dir-spacer');
 })();
 
-// ── Articles Carousel ──────────────────────────────────────────────────────
+// ── Articles Spotlight (featured hero + carousel) ──────────────────────────
 (function(){
   const carousel=document.getElementById('art-carousel');
   const section=document.getElementById('articles-preview');
   if(!carousel||!section)return;
+
+  function cardField(card,sel){var el=card.querySelector(sel);return el?el.textContent.trim():'';}
+
+  function buildFeatured(card){
+    var wrap=document.getElementById('art-featured');
+    if(!wrap||!card)return;
+    var img=card.querySelector('img');
+    var imgEl=document.getElementById('art-featured-img');
+    if(img&&imgEl){imgEl.src=img.getAttribute('src');imgEl.alt=cardField(card,'.art-card-title');}
+    wrap.href=card.getAttribute('href')||'articles.html';
+    document.getElementById('art-featured-cat').textContent=cardField(card,'.art-card-cat');
+    document.getElementById('art-featured-title').textContent=cardField(card,'.art-card-title');
+    document.getElementById('art-featured-excerpt').textContent=cardField(card,'.art-card-excerpt');
+    document.getElementById('art-featured-date').textContent=cardField(card,'.art-card-date');
+    wrap.style.display='';
+  }
 
   function buildCarousel(cards){
     if(!cards.length){section.style.display='none';return;}
@@ -3241,8 +3310,9 @@ window.addEventListener("hashchange",readHash);readHash();
       tmp.innerHTML=html;
       var cards=Array.from(tmp.querySelectorAll('#art-grid .art-card')).filter(function(c){
         return !c.classList.contains('exclusive-card');
-      }).slice(0,8);
-      buildCarousel(cards);
+      }).slice(0,9);
+      buildFeatured(cards[0]);
+      buildCarousel(cards.slice(1));
     })
     .catch(function(){section.style.display='none';});
 })();
