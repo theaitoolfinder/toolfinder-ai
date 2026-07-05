@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-26",
-      "slot": "latenight",
-      "slug": "is-lovable-the-best-in-its-category-a-full-2026-review",
-      "title": "Is Lovable the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1556375767-65b200d9d3dc?w=800&q=85&auto=format&fit=crop",
-      "topic": "lovable category full 2026",
-      "pair": "",
-      "tool": "Lovable",
-      "words": 2415,
-      "partners": [
-        "Make.com"
-      ]
-    },
-    {
       "date": "2026-06-27",
       "slot": "morning",
       "slug": "is-gamma-worth-it-full-pros-cons-and-verdict-for-2026",
@@ -1210,10 +1194,27 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-05",
+      "slot": "midday",
+      "slug": "is-writesonic-the-best-in-its-category-a-full-2026-review-2026-07-05",
+      "title": "Is Writesonic the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop",
+      "topic": "writesonic category full 2026",
+      "pair": "",
+      "tool": "Writesonic",
+      "words": 2486,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
@@ -1412,6 +1413,7 @@
     "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop"
   ]
 }
