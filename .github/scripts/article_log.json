@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-27",
-      "slot": "afternoon",
-      "slug": "the-complete-marketing-manager-ai-toolkit-from-day-1-to-full",
-      "title": "The Complete Marketing Manager AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1762330464824-21e95b769038?w=800&q=85&auto=format&fit=crop",
-      "topic": "marketing manager toolkit full",
-      "pair": "",
-      "tool": "",
-      "words": 2402,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-27",
       "slot": "evening",
       "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-06-27",
       "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
@@ -1216,10 +1194,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-05",
+      "slot": "night",
+      "slug": "educator-or-trainer-s-guide-to-ai-tools-in-2026-what-to-use-and",
+      "title": "Educator or Trainer's Guide to AI Tools in 2026: What to Use and When",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1673515335513-8c6f8e686634?w=800&q=85&auto=format&fit=crop",
+      "topic": "educator trainers tools 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2456,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=85&auto=format&fit=crop",
@@ -1418,6 +1414,7 @@
     "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1673767297196-ce9739933932?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1673767297196-ce9739933932?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673515335513-8c6f8e686634?w=800&q=85&auto=format&fit=crop"
   ]
 }
