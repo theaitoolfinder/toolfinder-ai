@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-06-26",
-      "slot": "exclusive",
-      "slug": "choosing-between-groq-and-chatgpt-read-this-first-2026",
-      "title": "Choosing Between Groq and ChatGPT? Read This First (2026)",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1573164713712-03790a178651?w=800&q=85&auto=format&fit=crop",
-      "topic": "choosing between groq chatgpt",
-      "pair": "",
-      "tool": "",
-      "words": 2485,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-26",
       "slot": "latenight",
       "slug": "is-lovable-the-best-in-its-category-a-full-2026-review",
       "title": "Is Lovable the Best in Its Category? A Full 2026 Review",
@@ -1210,10 +1187,32 @@
         "Predis.ai",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-05",
+      "slot": "morning",
+      "slug": "i-switched-from-zapier-to-make-com-here-s-what-actually-happened",
+      "title": "I Switched from Zapier to Make.com — Here's What Actually Happened",
+      "type": "comparison",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
+      "topic": "switched zapier makecom heres",
+      "pair": "",
+      "tool": "",
+      "words": 2213,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
@@ -1412,6 +1411,7 @@
     "https://images.unsplash.com/photo-1724754608848-cdd8d5cd8538?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop"
   ]
 }
