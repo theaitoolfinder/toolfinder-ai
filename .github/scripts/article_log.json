@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-27",
-      "slot": "midday",
-      "slug": "is-windsurf-the-best-in-its-category-a-full-2026-review",
-      "title": "Is Windsurf the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1519399224017-87a75eb50df9?w=800&q=85&auto=format&fit=crop",
-      "topic": "windsurf category full 2026",
-      "pair": "",
-      "tool": "Windsurf",
-      "words": 2548,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-27",
       "slot": "afternoon",
       "slug": "the-complete-marketing-manager-ai-toolkit-from-day-1-to-full",
       "title": "The Complete Marketing Manager AI Toolkit — From Day 1 to Full Automation",
@@ -1212,10 +1195,30 @@
         "RankMath AI",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-07-05",
+      "slot": "evening",
+      "slug": "how-solo-creators-produce-a-month-of-social-content-in-one",
+      "title": "How Solo Creators Produce a Month of Social Content in One Afternoon",
+      "type": "playbook",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1673767297196-ce9739933932?w=800&q=85&auto=format&fit=crop",
+      "topic": "solo creators produce month",
+      "pair": "",
+      "tool": "",
+      "words": 2303,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop",
@@ -1414,6 +1417,7 @@
     "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673767297196-ce9739933932?w=800&q=85&auto=format&fit=crop"
   ]
 }
