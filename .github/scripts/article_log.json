@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-27",
-      "slot": "morning",
-      "slug": "is-gamma-worth-it-full-pros-cons-and-verdict-for-2026",
-      "title": "Is Gamma Worth It? Full Pros, Cons, and Verdict for 2026",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=800&q=85&auto=format&fit=crop",
-      "topic": "gamma worth full pros",
-      "pair": "",
-      "tool": "Gamma",
-      "words": 2247,
-      "partners": [
-        "Beehiiv",
-        "Make.com",
-        "NeuronWriter",
-        "Predis.ai",
-        "SciSpace",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-06-27",
       "slot": "midday",
       "slug": "is-windsurf-the-best-in-its-category-a-full-2026-review",
       "title": "Is Windsurf the Best in Its Category? A Full 2026 Review",
@@ -1212,10 +1191,30 @@
         "NeuronWriter",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-05",
+      "slot": "afternoon",
+      "slug": "rankmath-ai-7-genuine-pros-and-5-real-cons-you-need-to-know",
+      "title": "RankMath AI: 7 Genuine Pros and 5 Real Cons You Need to Know",
+      "type": "pros_cons",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop",
+      "topic": "rankmath genuine pros cons",
+      "pair": "",
+      "tool": "RankMath AI",
+      "words": 2516,
+      "partners": [
+        "Beehiiv",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "RankMath AI",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654157925394-4b7809721149?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&q=85&auto=format&fit=crop",
@@ -1414,6 +1413,7 @@
     "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1662568769733-e88566751dfd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop"
   ]
 }
