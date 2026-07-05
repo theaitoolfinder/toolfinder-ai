@@ -13,7 +13,7 @@ Sources rotated to avoid repetition:
   (Reddit excluded — datacenter IPs banned; Verge RSS invalid XML)
 
 Article types (tracked in article_log.json, 14-day dedup window):
-  comparison · featured · pros_cons · roadmap · controversial
+  comparison · featured · pros_cons · roadmap · playbook
 
 Every article: minimum 1,200 words. Topics + angles tracked per article to
 prevent ANY repetition across title, topic, tool pair, and angle.
@@ -145,6 +145,11 @@ TOOLS = [
     "Gamma","Beautiful.ai","HubSpot AI","Beehiiv","Instantly AI","Apollo.io","Clay",
     "Tidio","Intercom AI","AdCreative.ai","NotebookLM","Groq","Hugging Face",
 ]
+
+# Ensure every affiliate partner is recognisable for research + in-text mentions
+for _aff in AFFILIATE_NAMES:
+    if _aff not in TOOLS:
+        TOOLS.append(_aff)
 
 # ── Hero images — verified tech/AI visuals (100+ pool for uniqueness) ─────────
 # Pool size ≥ 100 ensures unique covers for weeks of high-frequency publishing.
@@ -488,23 +493,23 @@ REQUIRED STRUCTURE (do not skip sections):
 
 STYLE: Candid and balanced. Equal space to pros and cons. Readers see through puff pieces — be the writer they trust.""",
     },
-    "controversial": {
-        "label": "Controversy", "cat": "news controversy", "read_time": "7 min",
-        "prompt": """Write a BALANCED AI TOOLS CONTROVERSY article of AT LEAST 1,200 words.
+    "playbook": {
+        "label": "Insider Playbook", "cat": "playbook guide", "read_time": "8 min",
+        "prompt": """Write an INSIDER AI PLAYBOOK article of AT LEAST 1,200 words.
 
-This is the article that explores a genuine debate, concern, or criticism in the AI tools space — written fairly and professionally, presenting multiple sides so readers can make informed decisions.
+This is the article readers screenshot and bookmark — a concrete, replicable workflow or money-story showing exactly how real people use AI tools to save hours or earn income. It reads like a friend revealing their exact system, not a product brochure.
 
 REQUIRED STRUCTURE (do not skip sections):
-1. The Issue Hook (150+ words): Introduce the topic clearly in the opening paragraph. Explain what the debate or concern is about, who it affects, and why it's worth paying attention to. Keep the tone measured — informative, not alarmist.
-2. Background: What Happened (<h3>, 200+ words): A factual, even-handed breakdown of the situation. What did the company do or change? What was the user reaction? Stick to what is known — avoid speculation presented as fact.
-3. The Concerns — Are They Valid? (<h3>, 200+ words): Present the criticism fairly and in full. What are users, analysts, or professionals worried about? Evaluate whether those concerns are well-founded, overstated, or context-dependent. Acknowledge nuance where it exists.
-4. The Company's Perspective (<h3>, 100+ words): What has the company communicated in response? Present their reasoning fairly. This section should give readers a complete picture — not dismiss concerns, but also not ignore the company's rationale.
-5. What This Means for You (<h3>, 150+ words): Practical, grounded guidance for real users. Should you adjust how you use this tool? Are there precautions worth taking? What does the average user actually need to worry about versus what's overblown?
-6. The Broader Context (<h3>, 150+ words): Is this part of a wider industry trend? What does it reveal about how AI tool companies handle pricing, data, quality, or communication? Keep this analytical and measured.
-7. Worth Considering: Alternatives (<h3>): If some readers decide this tool no longer fits their needs, list 2–3 alternatives with a one-sentence note on each. Framed as options, not as "escape routes."
-8. The Bottom Line (<h3>, 100+ words): A fair, balanced verdict. Is the tool still worth using? What would reassure concerned users? What should they watch for going forward?
+1. The Result Hook (150+ words): Open with the specific outcome — hours saved per week, dollars earned or saved, output multiplied. Real numbers, a real person/scenario. Make the reader think "wait, I could do this."
+2. The Old Way vs. The New Way (<h3>, 150+ words): What this task/workflow looked like before AI (time, cost, frustration) versus after. Sharp contrast, specific numbers.
+3. The Exact Stack (<h3>): List every tool in the workflow as a <ul> — for each: the tool name, what role it plays, its monthly cost, and the one feature that matters here. Total the monthly cost at the end.
+4. The Step-by-Step Playbook (<h3>, 400+ words): The heart of the article. Walk through the workflow step by step (Step 1, Step 2…). For each step: which tool, exactly what to do in it, real example inputs/outputs (include an actual example prompt where relevant), how long the step takes. A reader should be able to replicate this today.
+5. The Numbers (<h3>, 100+ words): Total time invested vs. saved per week, total cost vs. value produced, break-even point. Be honest — include the learning-curve cost.
+6. Mistakes That Kill This Workflow (<h3>): 3–4 specific mistakes beginners make trying this, and how to avoid each.
+7. How to Level It Up (<h3>, 100+ words): Once the basic workflow runs, what to add or automate next — the "phase 2" that doubles the payoff.
+8. Your First 48 Hours (<h3>): A mini action plan — what to sign up for, set up, and test in the first two days. Specific, not generic.
 
-STYLE: Balanced, professional, and informative. Present all sides fairly. Acknowledge complexity — most controversies are not black and white. The goal is to help readers make informed decisions, not to generate outrage.""",
+STYLE: Generous, specific, energizing. Write like you're handing over a system that works — real prompts, real numbers, real tool names. Never trash any tool; if a tool has a limitation, frame it as "what to know" not "what's wrong". Every tool mention should make the reader curious to try it.""",
     },
     "roadmap": {
         "label": "AI Roadmap", "cat": "guide roadmap", "read_time": "10 min",
@@ -530,18 +535,18 @@ STYLE: Sequential and practical. Readers want a clear path — give them phases,
 
 # Slot → preferred type order
 # All slots rotate through the 5 core content pillars:
-#   comparison · featured · pros_cons · roadmap · controversial
+#   comparison · featured · pros_cons · roadmap · playbook
 SLOT_TYPE_PREFS = {
-    "morning":   ["comparison",    "featured",      "pros_cons",   "roadmap",     "controversial"],
-    "midday":    ["featured",      "roadmap",       "comparison",  "pros_cons",   "controversial"],
-    "afternoon": ["pros_cons",     "comparison",    "featured",    "roadmap",     "controversial"],
-    "evening":   ["controversial", "roadmap",       "featured",    "comparison",  "pros_cons"],
-    "night":     ["roadmap",       "comparison",    "pros_cons",   "controversial","featured"],
-    "latenight": ["controversial", "featured",      "comparison",  "roadmap",     "pros_cons"],
-    "exclusive": ["controversial", "roadmap",       "featured",    "comparison",  "pros_cons"],
+    "morning":   ["comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
+    "midday":    ["featured",   "roadmap",    "comparison", "pros_cons", "playbook"],
+    "afternoon": ["pros_cons",  "comparison", "featured",   "roadmap",   "playbook"],
+    "evening":   ["playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
+    "night":     ["roadmap",    "comparison", "pros_cons",  "playbook",  "featured"],
+    "latenight": ["playbook",   "featured",   "comparison", "roadmap",   "pros_cons"],
+    "exclusive": ["playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
     # Legacy aliases kept for backward compatibility
-    "lunch":     ["comparison",    "featured",      "pros_cons",   "roadmap",     "controversial"],
-    "dinner":    ["controversial", "comparison",    "featured",    "pros_cons",   "roadmap"],
+    "lunch":     ["comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
+    "dinner":    ["playbook",   "comparison", "featured",   "pros_cons", "roadmap"],
 }
 
 # ── Varied title format pools (picked randomly so every article looks different) ──
@@ -607,101 +612,125 @@ FORBIDDEN_PHRASES = [
 # ── Expanded title banks ───────────────────────────────────────────────────────
 TITLE_BANK = {
     "comparison": [
+        # ── Affiliate-partner pairs (preferred automatically by build_title) ──
+        ("Writesonic", "Jasper AI"),
+        ("Writesonic", "Copy.ai"),
+        ("ElevenLabs", "Murf AI"),
+        ("ElevenLabs", "PlayHT"),
+        ("RankMath AI", "Yoast SEO"),
+        ("NeuronWriter", "Surfer SEO"),
+        ("Keyword Insights", "Semrush"),
+        ("Keyword Insights", "Ahrefs"),
+        ("Fireflies.ai", "Otter.ai"),
+        ("Fireflies.ai", "Granola"),
+        ("Reclaim AI", "Motion"),
+        ("Reclaim AI", "Google Calendar"),
+        ("Beehiiv", "Substack"),
+        ("Beehiiv", "ConvertKit"),
+        ("Beehiiv", "Mailchimp"),
+        ("Predis.ai", "AdCreative.ai"),
+        ("Predis.ai", "Canva AI"),
+        ("Make.com", "Zapier"),
+        ("Make.com", "n8n"),
+        ("SciSpace", "NotebookLM"),
+        ("SciSpace", "Perplexity AI"),
+        ("Simplified", "Canva AI"),
+        ("OpusClip", "Descript"),
+        ("OpusClip", "CapCut AI"),
+        ("Soundraw", "Suno"),
+        ("Soundraw", "Epidemic Sound"),
+        ("Taskade AI", "Notion AI"),
+        ("Taskade AI", "ClickUp"),
+        ("Submagic AI", "Captions AI"),
+        ("Submagic AI", "Veed.io"),
+        # ── High-search-volume pairs (traffic magnets) ──
         ("ChatGPT", "Claude"),
         ("Cursor", "GitHub Copilot"),
         ("Midjourney", "DALL-E 3"),
-        ("Jasper AI", "Copy.ai"),
         ("Grammarly", "ProWritingAid"),
-        ("Zapier", "Make.com"),
-        ("ElevenLabs", "Murf AI"),
-        ("Surfer SEO", "Ahrefs"),
         ("HeyGen", "Synthesia"),
-        ("Notion AI", "Granola"),
-        ("Writesonic", "Wordtune"),
         ("Perplexity AI", "ChatGPT"),
         ("Claude", "Gemini"),
         ("Bolt.new", "Lovable"),
-        ("DeepSeek", "ChatGPT"),
-        ("Runway", "Descript"),
-        ("Motion", "Notion AI"),
-        ("Beehiiv", "ConvertKit"),
-        ("Apollo.io", "Clay"),
-        ("Semrush", "Ahrefs"),
-        ("n8n", "Zapier"),
-        ("Replit AI", "Cursor"),
-        ("Suno", "Udio"),
-        ("Canva AI", "Adobe Firefly"),
-        ("Instantly AI", "Apollo.io"),
-        ("Gamma", "Beautiful.ai"),
-        ("OpusClip", "Descript"),
-        ("HubSpot AI", "Instantly AI"),
-        ("Fireflies.ai", "Otter.ai"),
-        ("Leonardo.ai", "Midjourney"),
-        ("Windsurf", "Cursor"),
-        ("Claude", "ChatGPT"),
-        ("Perplexity AI", "Gemini"),
         ("Runway", "Sora"),
-        ("AdCreative.ai", "Canva AI"),
-        ("Beehiiv", "Mailchimp"),
+        ("Suno", "Udio"),
+        ("Gamma", "Beautiful.ai"),
+        ("Windsurf", "Cursor"),
+        ("Canva AI", "Adobe Firefly"),
         ("Notion AI", "Obsidian"),
-        ("Groq", "ChatGPT"),
     ],
     "featured": [
+        # ── Affiliate partners (preferred automatically by build_title) ──
+        "Writesonic",
+        "ElevenLabs",
+        "RankMath AI",
+        "NeuronWriter",
+        "Fireflies.ai",
+        "Reclaim AI",
+        "Beehiiv",
+        "Predis.ai",
+        "Make.com",
+        "SciSpace",
+        "Simplified",
+        "OpusClip",
+        "Soundraw",
+        "Keyword Insights",
+        "Taskade AI",
+        "Submagic AI",
+        # ── High-traffic tools ──
         "ChatGPT",
         "Claude",
         "Midjourney",
         "Cursor",
-        "ElevenLabs",
         "Perplexity AI",
         "Gemini",
         "GitHub Copilot",
         "Grammarly",
-        "Jasper AI",
         "HeyGen",
         "Runway",
         "Notion AI",
-        "Zapier",
-        "Surfer SEO",
         "Synthesia",
         "CapCut AI",
         "Bolt.new",
         "Gamma",
-        "Make.com",
         "Suno",
         "Canva AI",
         "Descript",
-        "OpusClip",
-        "Fireflies.ai",
-        "Writesonic",
         "Leonardo.ai",
         "Adobe Firefly",
-        "Motion",
-        "Beehiiv",
-        "Copy.ai",
         "Windsurf",
         "Lovable",
-        "Groq",
-        "DeepSeek",
         "NotebookLM",
         "v0 by Vercel",
-        "AdCreative.ai",
-        "Clay",
-        "Instantly AI",
     ],
     "pros_cons": [
+        # ── Affiliate partners first ──
+        ("Writesonic", "AI writing"),
+        ("ElevenLabs", "AI voice"),
+        ("RankMath AI", "AI SEO"),
+        ("NeuronWriter", "AI content optimization"),
+        ("Fireflies.ai", "AI meeting notes"),
+        ("Reclaim AI", "AI scheduling"),
+        ("Beehiiv", "newsletter platform"),
+        ("Predis.ai", "AI social media"),
+        ("Make.com", "AI automation"),
+        ("SciSpace", "AI research"),
+        ("Simplified", "AI design and content"),
+        ("OpusClip", "AI video clipping"),
+        ("Soundraw", "AI music"),
+        ("Keyword Insights", "AI keyword research"),
+        ("Taskade AI", "AI productivity"),
+        ("Submagic AI", "AI captions and video"),
+        # ── High-traffic tools ──
         ("ChatGPT", "AI assistant"),
         ("Claude", "AI assistant"),
         ("Midjourney", "image generation"),
         ("Cursor", "AI coding"),
-        ("ElevenLabs", "AI voice"),
-        ("Jasper AI", "AI writing"),
         ("Perplexity AI", "AI search"),
         ("HeyGen", "AI video avatars"),
         ("Grammarly", "AI writing"),
         ("GitHub Copilot", "AI coding"),
-        ("Surfer SEO", "AI SEO"),
         ("Notion AI", "AI productivity"),
-        ("Zapier", "AI automation"),
         ("Synthesia", "AI video"),
         ("Runway", "AI video generation"),
         ("Suno", "AI music"),
@@ -709,20 +738,9 @@ TITLE_BANK = {
         ("Bolt.new", "AI app building"),
         ("Gamma", "AI presentations"),
         ("Descript", "AI audio/video editing"),
-        ("OpusClip", "AI video clipping"),
-        ("Fireflies.ai", "AI meeting notes"),
-        ("Writesonic", "AI writing"),
-        ("Make.com", "AI automation"),
         ("Leonardo.ai", "AI image generation"),
-        ("Motion", "AI scheduling"),
-        ("Beehiiv", "newsletter platform"),
-        ("Copy.ai", "AI copywriting"),
-        ("Windsurf", "AI coding"),
-        ("DeepSeek", "AI assistant"),
         ("NotebookLM", "AI research"),
         ("Adobe Firefly", "AI image generation"),
-        ("AdCreative.ai", "AI advertising"),
-        ("Clay", "AI sales outreach"),
     ],
     "roadmap": [
         ("Content Creator", "building a full AI content system"),
@@ -750,33 +768,41 @@ TITLE_BANK = {
         ("Customer Support Team", "AI tools for tickets, replies, and helpdesk"),
         ("Journalist or Reporter", "AI tools for research, writing, and fact-checking"),
         ("Musician or Audio Producer", "AI tools for creation, mixing, and distribution"),
+        ("Virtual Assistant", "AI tools to serve more clients in less time"),
+        ("Online Coach or Course Creator", "AI tools for content, community, and course delivery"),
+        ("Affiliate Marketer", "AI tools for content, SEO, and conversion"),
+        ("Newsletter Writer", "AI tools for research, writing, and audience growth"),
+        ("Etsy or Print-on-Demand Seller", "AI tools for designs, listings, and marketing"),
     ],
-    "controversial": [
-        f"The ChatGPT Features That Quietly Disappeared — and Why It Matters in {YEAR}",
-        "OpenAI's Pricing Changes Are Angering Power Users. Here's the Full Story.",
-        "Is Midjourney Stealing Artists' Work? The Lawsuit That Could Change AI Art Forever",
-        "Why Grammarly's AI Upgrade Is Making Writers Trust It Less, Not More",
-        f"The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in {YEAR}",
-        "Jasper AI's Pricing Controversy: Users Are Leaving. Here's Why.",
-        "Is Perplexity AI Actually Plagiarizing Publishers? The Evidence Is Damning.",
-        "The Truth About AI Hallucinations in {YEAR}: Which Tools Lie the Most",
-        "Why Notion AI Is Frustrating Power Users — and What They're Switching To",
-        "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
-        "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
-        "GitHub Copilot vs. Human Developers: The Data That Started a War",
-        "Why Zapier's AI Features Feel Like a Cash Grab (And What to Use Instead)",
-        f"The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in {YEAR}",
-        "Runway vs. Sora: The Video AI War That's Leaving Users in the Middle",
-        "The Controversy Behind AI SEO Tools: Are They Actually Hurting Your Rankings?",
-        "Adobe Firefly's Copyright Promise: Does It Actually Hold Up?",
-        "Why Tech Experts Are Quietly Warning Against Trusting AI Meeting Transcription Tools",
-        f"The AI Tools That Overpromised and Underdelivered in {YEAR}",
-        "DeepSeek's Data Privacy Scandal: Should You Still Be Using It?",
-        "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
-        "The Canva AI Backlash: Designers Are Fed Up. Here's the Full Story.",
-        f"AI Tool Lock-In: Why Switching Costs Are Getting Worse in {YEAR}",
-        "The Real Reason AI Coding Tools Are Creating More Bugs, Not Fewer",
-        "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
+    "playbook": [
+        # ── Money & income playbooks ──
+        f"How Freelancers Are Earning an Extra $2K/Month With a 3-Tool AI Stack ({YEAR})",
+        "The Exact AI Workflow That Turns One Blog Post Into 30 Pieces of Content",
+        f"From Zero to Paid Newsletter: The Beehiiv + AI Playbook Working in {YEAR}",
+        "How Solo Creators Produce a Month of Social Content in One Afternoon",
+        "The $40/Month AI Stack That Replaces a $3,000 Marketing Agency",
+        f"How Virtual Assistants Are Doubling Their Rates With AI in {YEAR}",
+        "The Faceless YouTube Channel Playbook: AI Voice, Music, and Clips Explained",
+        "Turn Meeting Chaos Into Billable Hours: The Fireflies.ai Workflow Consultants Swear By",
+        # ── Time-saving workflow playbooks ──
+        "The 15-Minute Morning Routine That Automates Your Whole Content Day",
+        f"I Rebuilt My Week Around Reclaim AI — Here's the Exact Setup ({YEAR})",
+        "The Make.com Recipes That Save Small Businesses 20 Hours a Week",
+        "One Podcast Episode → 10 Viral Clips: The OpusClip + Submagic Pipeline",
+        "The SEO Content System That Ranks: Keyword Insights → NeuronWriter → Publish",
+        "How to Research a Paper in 2 Hours Instead of 2 Weeks With SciSpace",
+        "The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough",
+        f"Batch-Create a Month of Instagram Posts in 90 Minutes With Predis.ai ({YEAR})",
+        # ── Curiosity & hidden-gem angles (brand-positive) ──
+        f"7 Hidden Features in Popular AI Tools That Power Users Won't Shut Up About ({YEAR})",
+        "The Underrated AI Tools Quietly Outperforming the Big Names",
+        f"10 AI Tools That Pay for Themselves in the First Week ({YEAR})",
+        "The AI Stack Behind a 6-Figure Solopreneur: Every Tool, Every Cost",
+        "What Happens When You Automate Everything for 30 Days — A Real Experiment",
+        f"The Free-Plan Stack: How Far Can You Get With $0 in AI Tools in {YEAR}?",
+        "5 AI Workflows So Good They Feel Like Cheating (All Beginner-Friendly)",
+        f"The Taskade AI Setup That Replaced My Project Manager, Notes App, and To-Do List",
+        "Students Are Using These AI Research Tools to Cut Study Time in Half",
     ],
 }
 
@@ -890,11 +916,11 @@ def build_title(article_type, log):
         ]
         return random.choice(ROADMAP_FORMATS)
 
-    if article_type == "controversial":
-        unused = [t for t in TITLE_BANK["controversial"]
+    if article_type == "playbook":
+        unused = [t for t in TITLE_BANK["playbook"]
                   if t.lower() not in recent_titles]
         if not unused:
-            unused = TITLE_BANK["controversial"]
+            unused = TITLE_BANK["playbook"]
         title = random.choice(unused)
         # Fill in YEAR placeholder if present
         return title.format(YEAR=YEAR) if "{YEAR}" in title else title
@@ -1254,10 +1280,11 @@ def fetch_tool_research(tool_name: str) -> str:
 
 def fetch_controversy_research(title: str) -> str:
     """
-    Pull real current discussions about a controversy topic from Reddit + HN + RSS.
+    Pull real current discussions about the tools named in a title from HN + RSS.
     Extracts the tool or company name from the title and searches for it.
+    (Named for its original controversy use — now also powers playbook research.)
     """
-    # Extract key terms: tool names, company names, controversy keywords
+    # Extract key terms: tool names, company names, topic keywords
     # Pull capitalized words from title as candidate entities
     candidates = re.findall(r'\b([A-Z][a-zA-Z0-9]+(?:\s+[A-Z][a-zA-Z0-9]+)?)\b', title)
     # Also pull known tool names that appear in the title
@@ -1525,12 +1552,12 @@ def generate_fallback(stories, article_type, title):
             f"built around how your work actually flows, so each tool you add multiplies the value of the "
             f"ones you already have.</p>"
         ),
-        "controversial": (
-            f"<p>Not every story about AI tools is a success story. Some of the most important things to "
-            f"know about the tools you use every day are the things companies would rather you didn't notice "
-            f"— pricing changes buried in fine print, features quietly removed, data practices that raise "
-            f"real questions. This article covers what's actually happening in the AI tools industry right "
-            f"now, and what it means for the people relying on these tools every day.</p>"
+        "playbook": (
+            f"<p>The gap between people who talk about AI and people who profit from it comes down to one "
+            f"thing: a working system. Not a list of tools — an actual step-by-step workflow where each tool "
+            f"hands off to the next and the output is something you can publish, sell, or bill for. This "
+            f"playbook lays out one of those systems end to end: the exact tools, the exact steps, the real "
+            f"costs, and the numbers you can expect once it's running.</p>"
         ),
     }
 
@@ -1688,30 +1715,26 @@ def generate_fallback(stories, article_type, title):
             f"required your attention start running in the background. A fully built stack "
             f"typically costs $80–150/month and saves 15–25 hours per week.</p>\n\n"
         )
-    elif article_type == "controversial":
+    elif article_type == "playbook":
         html += (
-            f"<h3>What Actually Happened — The Timeline</h3>\n"
-            f"<p>The story starts with a change most users didn't notice until it affected them "
-            f"directly. Companies rarely announce the things that make their products worse or "
-            f"more expensive — they bury the details in changelog updates, policy pages, or "
-            f"email threads that most users never read. By the time the wider community noticed, "
-            f"the change had already been live for weeks.</p>\n\n"
-            f"<h3>Why Users Are Frustrated — And Whether They're Right</h3>\n"
-            f"<p>The reaction from the user community has been pointed. The core complaint isn't "
-            f"just about the specific change — it's about the pattern. When users invest time "
-            f"building workflows around a tool, they're making a bet on that tool's stability and "
-            f"pricing. Changes that break that bet, even technically justified ones, erode the "
-            f"trust that makes the whole ecosystem work. The frustration is understandable. "
-            f"Whether it's proportionate depends on how you weigh the specific impact against "
-            f"the broader value the tool provides.</p>\n\n"
-            f"<h3>What This Means for Your Workflow</h3>\n"
-            f"<p>If you're currently using <strong>{t1}</strong> or similar tools as a core part "
-            f"of your workflow, the practical question is whether this controversy changes your "
-            f"calculus. For most users: probably not immediately. But it's worth reviewing your "
-            f"dependency on any single tool and making sure you have alternatives evaluated. "
-            f"The professionals who get hurt most by these situations are the ones who never "
-            f"stress-tested their stack. The ones who weather them are those who built in "
-            f"optionality from the start.</p>\n\n"
+            f"<h3>The Old Way vs. The New Way</h3>\n"
+            f"<p>Before this workflow existed, the same output took a full day of manual work — "
+            f"drafting, formatting, exporting, uploading, scheduling, all by hand. The system "
+            f"described here compresses that into a repeatable sequence where each tool hands "
+            f"its output to the next. The first run takes an afternoon to set up. Every run "
+            f"after that takes under an hour.</p>\n\n"
+            f"<h3>The Exact Stack</h3>\n"
+            f"<p>The workflow runs on a small, deliberate set of tools — starting with "
+            f"<strong>{t1}</strong> as the engine and <strong>{t2}</strong> handling the "
+            f"specialized step most people do manually. Each tool earns its place: if a step "
+            f"can be done well by a tool already in the stack, no new subscription is added. "
+            f"Total cost stays under what a single hour of outsourced work would cost.</p>\n\n"
+            f"<h3>Why This Works When Random Tool-Hopping Doesn't</h3>\n"
+            f"<p>Most people try AI tools one at a time, in isolation, and give up when a single "
+            f"tool doesn't transform their work. The compounding effect only shows up when tools "
+            f"are chained: research feeds writing, writing feeds design, design feeds scheduling. "
+            f"The system is the product — the tools are just the parts. Start with the two core "
+            f"tools, run the loop end to end once, and only then decide what to add.</p>\n\n"
         )
     else:
         # Generic but substantive sections for other types
@@ -2178,9 +2201,10 @@ def main():
     # This gives Claude actual user opinions, pricing data, and recent news
     # instead of writing from stale training-data memory.
     research = ""
-    if article_type in ("featured", "pros_cons", "comparison", "controversial"):
+    if article_type in ("featured", "pros_cons", "comparison", "playbook"):
         print(f"[INFO] Running deep research for '{title}'...", file=sys.stderr)
-        if article_type == "controversial":
+        if article_type == "playbook":
+            # Research every known tool mentioned in the playbook title
             research = fetch_controversy_research(title)
         else:
             # Extract tool name(s) from title for targeted research
