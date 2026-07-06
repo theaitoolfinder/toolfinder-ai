@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-28",
-      "slot": "morning",
-      "slug": "before-you-subscribe-to-adobe-firefly-read-this-pros-cons-verdict",
-      "title": "Before You Subscribe to Adobe Firefly, Read This — Pros, Cons, Verdict",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1659823300663-93084f1795d7?w=800&q=85&auto=format&fit=crop",
-      "topic": "before subscribe adobe firefly",
-      "pair": "",
-      "tool": "Adobe Firefly",
-      "words": 2539,
-      "partners": [
-        "Beehiiv",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-28",
       "slot": "midday",
       "slug": "gemini-review-real-results-real-pricing-real-talk",
       "title": "Gemini Review: Real Results, Real Pricing, Real Talk",
@@ -1211,10 +1194,27 @@
         "Predis.ai",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-07-06",
+      "slot": "afternoon",
+      "slug": "soundraw-pros-cons-what-ai-music-users-actually-think",
+      "title": "Soundraw Pros & Cons: What Ai Music Users Actually Think",
+      "type": "pros_cons",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1758626099012-2904337e9c60?w=800&q=85&auto=format&fit=crop",
+      "topic": "soundraw pros cons music",
+      "pair": "",
+      "tool": "Soundraw",
+      "words": 2504,
+      "partners": [
+        "ElevenLabs",
+        "OpusClip",
+        "Soundraw"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
@@ -1413,6 +1413,7 @@
     "https://images.unsplash.com/photo-1673515335513-8c6f8e686634?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677691824654-080253698493?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594997792070-3e3deff4c283?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1594997792070-3e3deff4c283?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1758626099012-2904337e9c60?w=800&q=85&auto=format&fit=crop"
   ]
 }
