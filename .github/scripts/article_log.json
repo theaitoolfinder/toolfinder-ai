@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-06-28",
-      "slot": "evening",
-      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-06-28",
-      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
-      "type": "controversial",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1588689653688-9b312cd6bc2b?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool lockin switching costs",
-      "pair": "",
-      "tool": "",
-      "words": 1732,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-28",
       "slot": "night",
       "slug": "n8n-or-zapier-a-real-user-s-take-after-testing-both",
       "title": "n8n or Zapier? A Real User's Take After Testing Both",
@@ -1211,10 +1188,32 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-06",
+      "slot": "latenight",
+      "slug": "what-happens-when-you-automate-everything-for-30-days-a-real",
+      "title": "What Happens When You Automate Everything for 30 Days — A Real Experiment",
+      "type": "playbook",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1762330470070-249e7c23c8c0?w=800&q=85&auto=format&fit=crop",
+      "topic": "happens automate everything days",
+      "pair": "",
+      "tool": "",
+      "words": 2420,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "OpusClip",
+        "Predis.ai",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
@@ -1413,6 +1412,7 @@
     "https://images.unsplash.com/photo-1594997792070-3e3deff4c283?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626099012-2904337e9c60?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1569783899817-a49d2d25287c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1762330470070-249e7c23c8c0?w=800&q=85&auto=format&fit=crop"
   ]
 }
