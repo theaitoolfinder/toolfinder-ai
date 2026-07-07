@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-29",
-      "slot": "evening",
-      "slug": "the-chatgpt-features-that-quietly-disappeared-and-why-it-matters-2026-06-29",
-      "title": "The ChatGPT Features That Quietly Disappeared — and Why It Matters in 2026",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1738152878203-ee54be4e34e4?w=800&q=85&auto=format&fit=crop",
-      "topic": "chatgpt features quietly disappeared",
-      "pair": "",
-      "tool": "",
-      "words": 2205,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-29",
       "slot": "night",
       "slug": "is-convertkit-finally-better-than-beehiiv-2026-head-to-head",
       "title": "Is ConvertKit Finally Better Than Beehiiv? (2026 Head-to-Head)",
@@ -1207,10 +1186,26 @@
         "Fireflies.ai",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-07-07",
+      "slot": "latenight",
+      "slug": "publishing-content-around-the-wrong-keywords-because-proper",
+      "title": "Publishing content around the wrong keywords because proper keyword research takes too long to do right? Keyword Insights Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop",
+      "topic": "publishing content around keywords",
+      "pair": "",
+      "tool": "Keyword Insights",
+      "words": 2502,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
@@ -1409,6 +1404,7 @@
     "https://images.unsplash.com/photo-1562776903-cc60d622df72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1704463858759-7696a2c1dd7e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop"
   ]
 }
