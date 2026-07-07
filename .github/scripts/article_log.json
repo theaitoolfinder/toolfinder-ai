@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-06-29",
-      "slot": "afternoon",
-      "slug": "the-complete-content-creator-ai-toolkit-from-day-1-to-full",
-      "title": "The Complete Content Creator AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1636971828014-0f3493cba88a?w=800&q=85&auto=format&fit=crop",
-      "topic": "content creator toolkit full",
-      "pair": "",
-      "tool": "",
-      "words": 2232,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-06-29",
       "slot": "evening",
       "slug": "the-chatgpt-features-that-quietly-disappeared-and-why-it-matters-2026-06-29",
       "title": "The ChatGPT Features That Quietly Disappeared — and Why It Matters in 2026",
@@ -1211,10 +1188,28 @@
         "Make.com",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-07-07",
+      "slot": "night",
+      "slug": "if-you-re-a-customer-support-team-this-is-the-ai-toolkit-you",
+      "title": "If You're a Customer Support Team, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre customer support team",
+      "pair": "",
+      "tool": "",
+      "words": 2260,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
@@ -1413,6 +1408,7 @@
     "https://images.unsplash.com/photo-1667372283545-1261fb5c427a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562776903-cc60d622df72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1704463858759-7696a2c1dd7e?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop"
   ]
 }
