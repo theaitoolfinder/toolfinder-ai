@@ -432,6 +432,23 @@ def pick_hero(title: str, log: dict, index_offset: int = 0) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 ARTICLE_TYPES = {
+    "problem_solution": {
+        "label": "Problem → Solution", "cat": "problem solution guide", "read_time": "7 min",
+        "prompt": """Write a PROBLEM-SOLUTION article of AT LEAST 1,200 words. This is the highest-converting content format on the site — built entirely around ONE specific reader problem, with an affiliate-partner tool positioned as the direct fix. Every section should make the reader feel personally understood, then walk them straight to the solution.
+
+REQUIRED STRUCTURE (do not skip sections, do not reorder):
+1. The Problem, Named Exactly (150+ words): Open by describing the reader's exact daily frustration in vivid, specific detail — as if you've watched them struggle with it. Quantify the cost: hours lost per week, money wasted, opportunities missed, stress caused. No tool names yet — pure empathy and stakes.
+2. Why the Obvious Fixes Don't Work (<h3>, 100+ words): Name the workarounds most people already try (hiring help, a generic tool, manual workarounds, "just working harder") and explain honestly why each one falls short. This builds trust before you pitch anything.
+3. What Changes Once This Is Solved (<h3>, 100+ words): Paint a specific, believable picture of the reader's life/work after the problem is gone — hours back, money saved, stress removed, output up. Make the reader want this outcome before you ever name the tool. This is the "what's in it for me" payoff — the emotional turning point of the article.
+4. The Fix (<h3>, 250+ words): Introduce this article's assigned tool as the direct solution to the exact problem from section 1. Explain what it does in plain language, why it's built specifically for this problem (not just "AI" in general), and current pricing. This section should read like genuine enthusiasm, not an ad — because it IS the actual answer to what you just described.
+5. Exactly How to Use It to Solve This (<h3>, 300+ words): A step-by-step walkthrough — Step 1, Step 2, Step 3 — showing exactly how the reader sets this up and solves their specific problem today. Include a real example prompt/input and what the output looks like. A reader should be able to do this in the next 20 minutes.
+6. Real Numbers: Before vs. After (<h3>, 100+ words): A concrete comparison — time, cost, or effort before this tool vs. after. Specific and believable, never hyperbolic.
+7. "But What If…" — Answering the Real Objections (<h3>, 150+ words): Address the 3 objections a skeptical reader actually has — usually price, learning curve, and "will this really work for my exact situation." Answer each honestly and directly.
+8. Worth Knowing: Other Options (<h3>, 80+ words): Briefly and fairly mention 1–2 alternative tools for readers whose situation genuinely doesn't fit the primary recommendation. Keep this short — this article has one clear hero product.
+9. Your Next 20 Minutes (<h3>): A direct, specific call to action — sign up, start the free plan or trial, and the exact first thing to do with it. Close with urgency grounded in the reader's original problem, not generic hype.
+
+STYLE: Empathetic, direct, conversion-focused but never pushy or fake. The reader should feel like you solved their actual problem, and the tool recommendation should feel like the natural, obvious answer — not an ad interrupting the article. Every fact about the tool should tie back to the specific problem from section 1.""",
+    },
     "comparison": {
         "label": "Comparison", "cat": "comparison review", "read_time": "8 min",
         "prompt": """Write a THOROUGH AI TOOLS COMPARISON article of AT LEAST 1,200 words.
@@ -534,19 +551,22 @@ STYLE: Sequential and practical. Readers want a clear path — give them phases,
 }
 
 # Slot → preferred type order
-# All slots rotate through the 5 core content pillars:
-#   comparison · featured · pros_cons · roadmap · playbook
+# "problem_solution" LEADS every slot — it's the highest-converting, most
+# audience-centric format (pain point → affiliate tool as the fix) and should
+# be picked most often. pick_article_type() only skips it if it ran in the
+# last 5 articles, so the remaining 5 pillars still rotate in for variety and
+# SEO breadth: comparison · featured · pros_cons · roadmap · playbook
 SLOT_TYPE_PREFS = {
-    "morning":   ["comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
-    "midday":    ["featured",   "roadmap",    "comparison", "pros_cons", "playbook"],
-    "afternoon": ["pros_cons",  "comparison", "featured",   "roadmap",   "playbook"],
-    "evening":   ["playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
-    "night":     ["roadmap",    "comparison", "pros_cons",  "playbook",  "featured"],
-    "latenight": ["playbook",   "featured",   "comparison", "roadmap",   "pros_cons"],
-    "exclusive": ["playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
+    "morning":   ["problem_solution", "comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
+    "midday":    ["problem_solution", "featured",   "roadmap",    "comparison", "pros_cons", "playbook"],
+    "afternoon": ["problem_solution", "pros_cons",  "comparison", "featured",   "roadmap",   "playbook"],
+    "evening":   ["problem_solution", "playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
+    "night":     ["problem_solution", "roadmap",    "comparison", "pros_cons",  "playbook",  "featured"],
+    "latenight": ["problem_solution", "playbook",   "featured",   "comparison", "roadmap",   "pros_cons"],
+    "exclusive": ["problem_solution", "playbook",   "roadmap",    "featured",   "comparison","pros_cons"],
     # Legacy aliases kept for backward compatibility
-    "lunch":     ["comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
-    "dinner":    ["playbook",   "comparison", "featured",   "pros_cons", "roadmap"],
+    "lunch":     ["problem_solution", "comparison", "featured",   "pros_cons",  "roadmap",   "playbook"],
+    "dinner":    ["problem_solution", "playbook",   "comparison", "featured",   "pros_cons", "roadmap"],
 }
 
 # ── Varied title format pools (picked randomly so every article looks different) ──
@@ -806,6 +826,50 @@ TITLE_BANK = {
     ],
 }
 
+# ── PROBLEM → SOLUTION bank — one real pain point per affiliate partner ────────
+# Each entry pairs a specific, relatable audience problem with the affiliate
+# tool that solves it. build_title() turns these into audience-centric,
+# "what's-in-it-for-me" headlines; generate_with_claude() uses the same entry
+# to ground the whole article around that exact problem + that exact tool.
+PROBLEM_SOLUTION_BANK = [
+    {"audience": "Content Creators", "problem": "spending hours every week turning one idea into blog posts, captions, and emails that still sound robotic", "stakes": "6+ hours a week", "tool": "Writesonic"},
+    {"audience": "Podcasters and YouTubers", "problem": "needing a professional voiceover but not having the budget for studio time or a hired narrator", "stakes": "$200+ per episode", "tool": "ElevenLabs"},
+    {"audience": "Bloggers and Site Owners", "problem": "publishing content that never ranks because it's missing the exact structure and terms Google actually rewards", "stakes": "months of missed search traffic", "tool": "RankMath AI"},
+    {"audience": "Content Marketers", "problem": "guessing at keywords instead of knowing exactly what will actually rank before you write a single word", "stakes": "a chunk of your content budget", "tool": "NeuronWriter"},
+    {"audience": "Consultants and Founders", "problem": "losing the important details from every client call because no one has time to take notes during the meeting", "stakes": "hours of note-taking and re-explaining", "tool": "Fireflies.ai"},
+    {"audience": "Solopreneurs and Freelancers", "problem": "letting your calendar get hijacked by back-to-back calls with zero time left for the work that actually pays", "stakes": "10+ hours of focus time a week", "tool": "Reclaim AI"},
+    {"audience": "Creators and Writers", "problem": "wanting to start a newsletter but losing momentum fighting clunky software just to send one email", "stakes": "weeks of momentum", "tool": "Beehiiv"},
+    {"audience": "Small Business Owners", "problem": "knowing you need to post on social media daily but not having hours to spend writing captions and designing graphics", "stakes": "hours every week on captions and graphics", "tool": "Predis.ai"},
+    {"audience": "Agencies and Ops Teams", "problem": "manually copying the same data between five different apps every single day", "stakes": "hours of repetitive busywork every week", "tool": "Make.com"},
+    {"audience": "Students and Researchers", "problem": "spending days digging through academic papers just to find the handful that actually matter", "stakes": "weeks on every literature review", "tool": "SciSpace"},
+    {"audience": "Freelance Designers and Marketers", "problem": "juggling four different apps just to write the copy, design the graphic, and resize it for every platform", "stakes": "hours juggling four different apps", "tool": "Simplified"},
+    {"audience": "Podcasters and Video Editors", "problem": "spending hours manually clipping one long recording into shareable short-form videos", "stakes": "a full day of editing per episode", "tool": "OpusClip"},
+    {"audience": "Video Creators and Musicians", "problem": "not being able to use the music you want in your videos without risking a copyright strike", "stakes": "hours hunting for royalty-free music", "tool": "Soundraw"},
+    {"audience": "SEO Teams and Bloggers", "problem": "publishing content around the wrong keywords because proper keyword research takes too long to do right", "stakes": "months writing content that never ranks", "tool": "Keyword Insights"},
+    {"audience": "Solopreneurs and Small Teams", "problem": "running your to-do list, notes, and project plans across three apps that don't talk to each other", "stakes": "hours untangling three different apps", "tool": "Taskade AI"},
+    {"audience": "Faceless Channel Creators", "problem": "spending hours manually adding captions and effects to every short-form video before you can post it", "stakes": "hours manually captioning every clip", "tool": "Submagic AI"},
+]
+
+PROBLEM_SOLUTION_TITLE_FORMATS = [
+    "Tired of {problem}? Here's the {tool} Fix {audience} Are Using in {year}",
+    "{audience}: Stop Losing {stakes} — {tool} Solves This in Minutes",
+    "The Real Reason {audience} Waste {stakes} (And the {tool} Fix for It)",
+    "Still {problem}? {tool} Just Solved Your Biggest Time-Waster",
+    "How {audience} Are Getting Back {stakes} With {tool}",
+    "{problem_cap}? {tool} Is the Fastest Fix in {year}",
+    "The {tool} Trick That Saves {audience} {stakes}, Starting Today",
+    "{audience} Are Quietly Switching to {tool} to Stop {problem}",
+]
+
+def find_problem_entry(title: str):
+    """Find the PROBLEM_SOLUTION_BANK entry whose tool name appears in this title."""
+    tl = title.lower()
+    for entry in PROBLEM_SOLUTION_BANK:
+        if entry["tool"].lower() in tl:
+            return entry
+    return None
+
+
 def _norm(name: str) -> str:
     """Normalise a tool name for dedup comparison — strip punctuation, lowercase."""
     return re.sub(r"[^\w\s]", "", name.lower()).strip()
@@ -832,6 +896,19 @@ def build_title(article_type, log):
             if parts == norms:
                 return True
         return False
+
+    if article_type == "problem_solution":
+        unused = [e for e in PROBLEM_SOLUTION_BANK if not _tool_seen(e["tool"])]
+        if not unused:
+            unused = PROBLEM_SOLUTION_BANK
+        entry = random.choice(unused)
+        fmt = random.choice(PROBLEM_SOLUTION_TITLE_FORMATS)
+        problem_cap = entry["problem"][0].upper() + entry["problem"][1:]
+        return fmt.format(
+            audience=entry["audience"], problem=entry["problem"],
+            problem_cap=problem_cap, stakes=entry["stakes"],
+            tool=entry["tool"], year=YEAR,
+        )
 
     if article_type == "comparison":
         unused = [
@@ -1368,6 +1445,29 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
             "Subscribers expect premium depth — deliver it."
         )
 
+    # ── Problem-solution grounding — pulls the exact audience/pain/tool assigned
+    # to this title, so Claude builds the whole article around it instead of
+    # guessing from the headline alone ──────────────────────────────────────
+    ps_note = ""
+    tools_style_note = f"Naturally mention 4–8 specific tools where genuinely relevant. Use: {tools_pick}"
+    if article_type == "problem_solution":
+        entry = find_problem_entry(title)
+        if entry:
+            ps_note = (
+                "\n\nPROBLEM-SOLUTION CONTEXT — BUILD THE ENTIRE ARTICLE AROUND THIS:\n"
+                f"  Target audience: {entry['audience']}\n"
+                f"  Their specific problem: {entry['problem']}\n"
+                f"  What it costs them: {entry['stakes']}\n"
+                f"  The tool that solves it (this article's hero product): {entry['tool']}\n"
+                "Do NOT substitute a different tool as the primary recommendation — "
+                f"{entry['tool']} IS the fix this article delivers."
+            )
+        tools_style_note = (
+            "Keep the tool focus TIGHT: this article's hero tool (named in the PROBLEM-SOLUTION "
+            "CONTEXT above) should be mentioned 4–6 times throughout, naturally. Mention at most "
+            "1–2 alternative tools total, and only in the 'Worth Knowing' section."
+        )
+
     prompt = textwrap.dedent(f"""
         You are the lead writer for My AI Tools Finder — an AI tools directory trusted by
         solopreneurs, freelancers, content creators, and professionals who use AI every day.
@@ -1382,7 +1482,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
         comparison of two specific tools, write ONLY about those two tools. If it's
         a roundup of a specific category, cover ONLY that category. Never drift off-topic.
         A reader who clicks this title must find exactly what the title promises.
-        {excl_note}{aff_note}
+        {excl_note}{aff_note}{ps_note}
 
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         CRITICAL REQUIREMENT — READ FIRST:
@@ -1444,7 +1544,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
         - Voice: Write like a knowledgeable friend, not a marketing brochure.
         - Vary your section headings — do NOT use generic labels like "Introduction",
           "Overview", "Conclusion". Every <h3> should be a specific, interesting claim.
-        - Naturally mention 4–8 specific tools where genuinely relevant. Use: {tools_pick}
+        - {tools_style_note}
         - HTML ONLY: use <p>, <h3>, <ul>, <li>, <strong>, <em>, <a href="...">.
         - NEVER use: h1, h2, html, head, body, nav, script, style, or layout tags.
         - Every paragraph must move the reader forward — zero filler sentences.
@@ -2201,7 +2301,7 @@ def main():
     # This gives Claude actual user opinions, pricing data, and recent news
     # instead of writing from stale training-data memory.
     research = ""
-    if article_type in ("featured", "pros_cons", "comparison", "playbook"):
+    if article_type in ("featured", "pros_cons", "comparison", "playbook", "problem_solution"):
         print(f"[INFO] Running deep research for '{title}'...", file=sys.stderr)
         if article_type == "playbook":
             # Research every known tool mentioned in the playbook title
@@ -2281,6 +2381,10 @@ def main():
             if name.lower() in title.lower():
                 primary_tool = name
                 break
+    elif article_type == "problem_solution":
+        entry = find_problem_entry(title)
+        if entry:
+            primary_tool = entry["tool"]
 
     # ── Detect which affiliate tools were mentioned (for partner audit logs) ──
     body_text_lower = re.sub(r"<[^>]+>", " ", body_html).lower()
