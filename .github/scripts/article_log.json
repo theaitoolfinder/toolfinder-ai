@@ -1,28 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-06-29",
-      "slot": "latenight",
-      "slug": "the-ai-tools-that-overpromised-and-underdelivered-in-2026-2026-06-29",
-      "title": "The AI Tools That Overpromised and Underdelivered in 2026",
-      "type": "controversial",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools overpromised underdelivered 2026",
-      "pair": "",
-      "tool": "",
-      "words": 2337,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-06-30",
       "slot": "morning",
       "slug": "copy-ai-pros-and-cons-2026-the-unfiltered-truth",
@@ -1199,10 +1177,28 @@
         "Beehiiv",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-07-08",
+      "slot": "midday",
+      "slug": "is-opusclip-the-best-in-its-category-a-full-2026-review",
+      "title": "Is OpusClip the Best in Its Category? A Full 2026 Review",
+      "type": "featured",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop",
+      "topic": "opusclip category full 2026",
+      "pair": "",
+      "tool": "OpusClip",
+      "words": 2269,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
@@ -1401,6 +1397,7 @@
     "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop"
   ]
 }
