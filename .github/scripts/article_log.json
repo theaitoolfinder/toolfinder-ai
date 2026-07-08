@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-06-29",
-      "slot": "night",
-      "slug": "is-convertkit-finally-better-than-beehiiv-2026-head-to-head",
-      "title": "Is ConvertKit Finally Better Than Beehiiv? (2026 Head-to-Head)",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85&auto=format&fit=crop",
-      "topic": "convertkit finally better than",
-      "pair": "",
-      "tool": "",
-      "words": 2375,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-29",
       "slot": "latenight",
       "slug": "the-ai-tools-that-overpromised-and-underdelivered-in-2026-2026-06-29",
       "title": "The AI Tools That Overpromised and Underdelivered in 2026",
@@ -1203,10 +1182,26 @@
         "Keyword Insights",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-07-08",
+      "slot": "morning",
+      "slug": "is-mailchimp-finally-better-than-beehiiv-2026-head-to-head",
+      "title": "Is Mailchimp Finally Better Than Beehiiv? (2026 Head-to-Head)",
+      "type": "comparison",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop",
+      "topic": "mailchimp finally better than",
+      "pair": "",
+      "tool": "",
+      "words": 2286,
+      "partners": [
+        "Beehiiv",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
@@ -1405,6 +1400,7 @@
     "https://images.unsplash.com/photo-1704463858759-7696a2c1dd7e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop"
   ]
 }
