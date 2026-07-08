@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-06-30",
-      "slot": "midday",
-      "slug": "i-used-opusclip-every-day-for-30-days-here-s-my-honest-take",
-      "title": "I Used OpusClip Every Day for 30 Days — Here's My Honest Take",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1678697892687-b81b68612eeb?w=800&q=85&auto=format&fit=crop",
-      "topic": "used opusclip every days",
-      "pair": "",
-      "tool": "OpusClip",
-      "words": 2416,
-      "partners": [
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-06-30",
       "slot": "afternoon",
       "slug": "the-complete-educator-or-trainer-ai-toolkit-from-day-1-to-full",
       "title": "The Complete Educator or Trainer AI Toolkit — From Day 1 to Full Automation",
@@ -1198,10 +1178,27 @@
         "Predis.ai",
         "Soundraw"
       ]
+    },
+    {
+      "date": "2026-07-08",
+      "slot": "evening",
+      "slug": "from-zero-to-paid-newsletter-the-beehiiv-ai-playbook-working-in",
+      "title": "From Zero to Paid Newsletter: The Beehiiv + AI Playbook Working in 2026",
+      "type": "playbook",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop",
+      "topic": "zero paid newsletter beehiiv",
+      "pair": "",
+      "tool": "",
+      "words": 2489,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop",
@@ -1400,6 +1397,7 @@
     "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop"
   ]
 }
