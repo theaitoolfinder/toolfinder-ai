@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-06-30",
-      "slot": "evening",
-      "slug": "beehiiv-vs-substack-the-feud-that-s-splitting-the-creator-economy-2026-06-30",
-      "title": "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=85&auto=format&fit=crop",
-      "topic": "beehiiv substack feud thats",
-      "pair": "",
-      "tool": "",
-      "words": 1925,
-      "partners": [
-        "Beehiiv",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-06-30",
       "slot": "night",
       "slug": "semrush-or-ahrefs-the-2026-comparison-no-one-s-being-honest-about",
       "title": "Semrush or Ahrefs? The 2026 Comparison No One's Being Honest About",
@@ -1194,10 +1177,25 @@
         "NeuronWriter",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-07-08",
+      "slot": "latenight",
+      "slug": "losing-the-important-details-from-every-client-call-because-no",
+      "title": "Losing the important details from every client call because no one has time to take notes during the meeting? Fireflies.ai Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1539614712445-33db8da8b8ea?w=800&q=85&auto=format&fit=crop",
+      "topic": "losing important details every",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2733,
+      "partners": [
+        "Fireflies.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=85&auto=format&fit=crop",
@@ -1396,6 +1394,7 @@
     "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1539614712445-33db8da8b8ea?w=800&q=85&auto=format&fit=crop"
   ]
 }
