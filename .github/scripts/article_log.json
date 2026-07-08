@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-06-30",
-      "slot": "afternoon",
-      "slug": "the-complete-educator-or-trainer-ai-toolkit-from-day-1-to-full",
-      "title": "The Complete Educator or Trainer AI Toolkit — From Day 1 to Full Automation",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1610187224249-1c5aa1841c2c?w=800&q=85&auto=format&fit=crop",
-      "topic": "educator trainer toolkit full",
-      "pair": "",
-      "tool": "",
-      "words": 2294,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-06-30",
       "slot": "evening",
       "slug": "beehiiv-vs-substack-the-feud-that-s-splitting-the-creator-economy-2026-06-30",
       "title": "Beehiiv vs. Substack: The Feud That's Splitting the Creator Economy",
@@ -1196,10 +1174,29 @@
         "ElevenLabs",
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-07-08",
+      "slot": "night",
+      "slug": "the-researcher-or-academic-ai-roadmap-which-tools-to-add-first",
+      "title": "The Researcher or Academic AI Roadmap: Which Tools to Add First (and Why)",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?w=800&q=85&auto=format&fit=crop",
+      "topic": "researcher academic roadmap which",
+      "pair": "",
+      "tool": "",
+      "words": 2282,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=800&q=85&auto=format&fit=crop",
@@ -1398,6 +1395,7 @@
     "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?w=800&q=85&auto=format&fit=crop"
   ]
 }
