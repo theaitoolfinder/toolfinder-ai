@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-01",
-      "slot": "afternoon",
-      "slug": "the-freelance-designer-s-ai-tools-roadmap-for-2026-start-here",
-      "title": "The Freelance Designer's AI Tools Roadmap for 2026: Start Here",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=85&auto=format&fit=crop",
-      "topic": "freelance designers tools roadmap",
-      "pair": "",
-      "tool": "",
-      "words": 2321,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-01",
       "slot": "evening",
       "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-07-01",
       "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
@@ -1193,10 +1172,32 @@
         "NeuronWriter",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-07-09",
+      "slot": "night",
+      "slug": "the-solopreneur-ai-roadmap-which-tools-to-add-first-and-why",
+      "title": "The Solopreneur AI Roadmap: Which Tools to Add First (and Why)",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop",
+      "topic": "solopreneur roadmap which tools",
+      "pair": "",
+      "tool": "",
+      "words": 2485,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
@@ -1395,6 +1396,7 @@
     "https://images.unsplash.com/photo-1764663908286-b6b6ec959d1a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1612537538844-58db865aefc1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1615827690357-1f4db574486b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop"
   ]
 }
