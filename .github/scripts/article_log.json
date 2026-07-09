@@ -2,31 +2,6 @@
   "generated": [
     {
       "date": "2026-07-01",
-      "slot": "evening",
-      "slug": "the-truth-about-ai-hallucinations-in-2026-which-tools-lie-the-2026-07-01",
-      "title": "The Truth About AI Hallucinations in 2026: Which Tools Lie the Most",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1638866412987-e4663ec0ab8a?w=800&q=85&auto=format&fit=crop",
-      "topic": "truth hallucinations 2026 which",
-      "pair": "",
-      "tool": "",
-      "words": 2430,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "SciSpace",
-        "Simplified",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-07-01",
       "slot": "night",
       "slug": "midjourney-vs-dall-e-3-the-honest-breakdown-for-2026",
       "title": "Midjourney vs DALL-E 3: The Honest Breakdown for 2026",
@@ -1195,10 +1170,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-09",
+      "slot": "latenight",
+      "slug": "spending-days-digging-through-academic-papers-just-to-find-the",
+      "title": "Spending days digging through academic papers just to find the handful that actually matter? SciSpace Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1559327437-4f87b63db9eb?w=800&q=85&auto=format&fit=crop",
+      "topic": "spending days digging through",
+      "pair": "",
+      "tool": "SciSpace",
+      "words": 2502,
+      "partners": [
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
@@ -1397,6 +1387,7 @@
     "https://images.unsplash.com/photo-1612537538844-58db865aefc1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1615827690357-1f4db574486b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559327437-4f87b63db9eb?w=800&q=85&auto=format&fit=crop"
   ]
 }
