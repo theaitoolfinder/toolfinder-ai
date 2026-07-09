@@ -310,7 +310,7 @@
     if (send)  { send.disabled = true; }
     if (chips) { chips.style.display = 'none'; }
 
-    mcbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for My AI Tools Finder. Before we dive in, I'd love to invite you to our **free Friday newsletter**: 5 AI tools, 1 comparison, 1 tip per week. 1,000+ readers. Takes 10 seconds 👇");
+    mcbBotMsg("👋 Hey! I'm **Teza** — your AI tools guide for My AI Tools Finder. Before we dive in, I'd love to invite you to our **free Friday newsletter**: 5 AI tools, 1 comparison, 1 tip per week. Takes 10 seconds 👇");
 
     const msgs = document.getElementById('mcb-msgs');
     const wrap = document.createElement('div');
@@ -320,7 +320,7 @@
 
       <!-- VIEW 1: Subscribe -->
       <div id="mcb-gate-sub-view">
-        <p style="font-size:12px;color:#64748b;margin:0 0 10px;line-height:1.5;font-family:'Poppins',sans-serif">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
+        <p style="font-size:12px;color:#64748b;margin:0 0 10px;line-height:1.5;font-family:'Poppins',sans-serif">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. Free forever.</p>
         <div class="mcb-gate-fields">
           <input id="mcb-gate-fname" class="mcb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
           <input id="mcb-gate-email" class="mcb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
@@ -553,7 +553,7 @@
 
     /* Newsletter */
     if (/\bnewsletter|friday.*(email|digest)|subscribe.*weekly|weekly.*email\b/.test(ql)) {
-      mcbBotMsg(`Our **AI Toolbox Newsletter** is free every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest comparison\n✅ 1 practical tip\n✅ an exclusive Friday deep-dive for members\n\n**1,000+ readers** weekly — free forever.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>`);
+      mcbBotMsg(`Our **AI Toolbox Newsletter** is free every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest comparison\n✅ 1 practical tip\n✅ an exclusive Friday deep-dive for members\n\nFree forever, every week.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>`);
       return;
     }
 

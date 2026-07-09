@@ -1107,7 +1107,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
           <div id="theme-gate">
             <span class="theme-gate-icon">🎨</span>
             <p class="theme-gate-title">Subscriber Perk</p>
-            <p class="theme-gate-sub">Custom colour themes are free for subscribers. Join 1,000+ weekly readers.</p>
+            <p class="theme-gate-sub">Custom colour themes are free for subscribers — join our weekly readers list.</p>
             <button class="theme-gate-btn" onclick="showThemeGateSubscribe()">Subscribe Free →</button>
             <button class="theme-gate-login" onclick="handleNavLogin()">Already subscribed? Log In</button>
           </div>
@@ -1182,7 +1182,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
         <div class="stat-bar" role="list" aria-label="Site statistics">
           <div class="stat-item" role="listitem"><b id="stat-tools">0</b><span>AI Tools</span></div>
           <div class="stat-item" role="listitem"><b id="stat-cats">0</b><span>Categories</span></div>
-          <div class="stat-item" role="listitem"><b>1K+</b><span>Subscribers</span></div>
+          <div class="stat-item" role="listitem"><b>700+</b><span>Prompts</span></div>
         </div>
       </div>
 
@@ -1196,7 +1196,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
           <button type="submit" id="nl-btn" class="hs-btn">Subscribe Free &rarr;</button>
         </form>
         <div id="nl-msg" class="hs-msg"></div>
-        <p class="hs-disclaimer">No spam. Unsubscribe any time. 1,000+ readers every Friday.</p>
+        <p class="hs-disclaimer">No spam. Unsubscribe any time. Fresh picks every Friday.</p>
       </div>
     </div>
   </section>
@@ -1349,7 +1349,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
   <section class="container reviews-section" id="reviews">
     <div class="sec-head">
       <div class="eyebrow">What Our Users Say</div>
-      <h2>Loved by 1,000+ solopreneurs &amp; creators</h2>
+      <h2>Loved by Solopreneurs & Creators</h2>
       <p>Real reviews from real people who found their go-to AI tools here.</p>
       <div class="reviews-avg" id="reviews-avg">
         <span class="avg-num">5.0</span>
@@ -4286,7 +4286,7 @@ async function popSubscribe(){
 
     /* Newsletter */
     if (/\bnewsletter|friday.*(email|digest|drop|tips)|subscribe.*weekly|weekly.*email\b/.test(ql)) {
-      cbBotMsg(`Our free **AI Toolbox Newsletter** drops every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest tool comparison\n✅ 1 practical time-saving tip\n✅ an exclusive Friday deep-dive for members\n\n**1,000+ solopreneurs & creators** read it weekly — free forever, no credit card.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>\n\nOr just drop your email here and I'll add you right now!`);
+      cbBotMsg(`Our free **AI Toolbox Newsletter** drops every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest tool comparison\n✅ 1 practical time-saving tip\n✅ an exclusive Friday deep-dive for members\n\nBuilt for solopreneurs & creators — free forever, no credit card.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>\n\nOr just drop your email here and I'll add you right now!`);
       return;
     }
 
@@ -4298,7 +4298,7 @@ async function popSubscribe(){
 
     /* About the site */
     if (/\b(about this site|about myai|who (built|made|runs)|what is this (site|website)|site.*mission|myai.*toolsfinder)\b/.test(ql)) {
-      cbBotMsg(`**My AI Tools Finder** is a free, curated directory of 500+ AI tools — built for solopreneurs, freelancers, and creators.\n\n🔍 **Tools Directory** — 500+ tools, filterable by job/need/category\n✍️ **Prompts Library** — 700+ free ready-to-use prompts\n📰 **Articles** — honest reviews, comparisons & tutorials\n📬 **Newsletter** — free Friday digest to 1,000+ readers\n\nAll free. What can I help you find today?`);
+      cbBotMsg(`**My AI Tools Finder** is a free, curated directory of 500+ AI tools — built for solopreneurs, freelancers, and creators.\n\n🔍 **Tools Directory** — 500+ tools, filterable by job/need/category\n✍️ **Prompts Library** — 700+ free ready-to-use prompts\n📰 **Articles** — honest reviews, comparisons & tutorials\n📬 **Newsletter** — free Friday digest for solopreneurs & creators\n\nAll free. What can I help you find today?`);
       return;
     }
 
@@ -4708,7 +4708,7 @@ async function popSubscribe(){
 
       <!-- ── VIEW 1: Subscribe ── -->
       <div id="cb-gate-sub-view">
-        <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. <strong>1,000+ readers.</strong> Free forever.</p>
+        <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5">Every Friday: 5 hand-picked AI tools, 1 comparison, 1 tip. Free forever.</p>
         <div class="cb-gate-fields">
           <input id="cb-gate-fname" class="cb-gate-input" type="text" placeholder="First name (optional)" autocomplete="given-name">
           <input id="cb-gate-email" class="cb-gate-input" type="email" placeholder="your@email.com" autocomplete="email"
