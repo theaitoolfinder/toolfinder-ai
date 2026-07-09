@@ -2,18 +2,21 @@
 """
 generate_article.py — My AI Tools Finder Automated Article Generator
 ═══════════════════════════════════════════════════════════════════
-Schedule (Philippine Time, PHT = UTC+8):
-  Mon–Sun   8:00  Morning article   → comparison / tutorial / roundup
-  Mon–Sun  13:00  Afternoon article → roundup / tutorial / comparison
-  Mon–Sun  19:00  Evening article   → news digest / roundup / comparison
-  Friday   ×5     Exclusive articles → deep dive / workflow / strategy
+Schedule (Philippine Time, PHT = UTC+8) — THROTTLED 2026-07-09:
+  Mon–Thu, Sat–Sun   8:00  One article  → problem_solution / roadmap / playbook
+  Friday             8:00  One exclusive article (subscriber-only)
+
+Previously 6 regular slots/day + up to 10 Friday exclusives (~311 articles
+in 7 weeks). That volume read as scaled content abuse to Google and the
+title banks cycled back into duplicate topics within about a week. Cut to
+one article per day — see .github/workflows/generate-articles.yml.
 
 Sources rotated to avoid repetition:
   hackernews · devto · venturebeat · techcrunch
   (Reddit excluded — datacenter IPs banned; Verge RSS invalid XML)
 
-Article types (tracked in article_log.json, 14-day dedup window):
-  comparison · featured · pros_cons · roadmap · playbook
+Article types (tracked in article_log.json, 45-article dedup window):
+  problem_solution · roadmap · playbook
 
 Every article: minimum 1,200 words. Topics + angles tracked per article to
 prevent ANY repetition across title, topic, tool pair, and angle.
@@ -53,78 +56,44 @@ AFFILIATE_NAMES = [t["name"] for t in AFFILIATE_TOOLS]   # display names only
 ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
 SLOT_OVERRIDE      = os.environ.get("ARTICLE_SLOT", "").strip().lower()
-# Alias map: legacy → new slot names
+# Alias map: legacy slot names from the old 6-slots/day schedule → "morning",
+# so old workflow_dispatch inputs don't silently no-op. Use "exclusive"
+# directly for subscriber-only content — it isn't tied to any of these.
 _SLOT_ALIAS = {
-    "lunch":      "morning",
-    "dinner":     "evening",
-    "afternoon":  "afternoon",   # kept for manual dispatch
+    "lunch": "morning", "midday": "morning", "afternoon": "morning",
+    "dinner": "morning", "evening": "morning", "night": "morning", "latenight": "morning",
 }
 NOW               = datetime.now(timezone.utc)
 DATE_SLUG         = NOW.strftime("%Y-%m-%d")
 DATE_STR          = NOW.strftime("%B %d, %Y")
 YEAR              = NOW.strftime("%Y")
 
-# ── 6 regular slots per day (UTC hour thresholds) ─────────────────────────────
-# Slot name          UTC starts   PHT equivalent
-REGULAR_SLOTS = [
-    ( 0, "morning"),    # 00:00 UTC = 08:00 PHT
-    ( 4, "midday"),     # 04:00 UTC = 12:00 PHT
-    ( 8, "afternoon"),  # 08:00 UTC = 16:00 PHT
-    (12, "evening"),    # 12:00 UTC = 20:00 PHT
-    (16, "night"),      # 16:00 UTC = 00:00 PHT
-    (20, "latenight"),  # 20:00 UTC = 04:00 PHT
-]
-
-# 10 Friday exclusive hours (UTC) — odd hours, interleaved with regular slots
-EXCL_HOURS = (1, 3, 5, 7, 9, 11, 13, 15, 17, 19)
-
-# ── Determine slot from time + weekday ────────────────────────────────────────
+# ── One article per day (throttled 2026-07-09 — see module docstring) ────────
+# Friday's single daily slot is the subscriber-only exclusive; every other
+# day it's a regular "morning" article. The old REGULAR_SLOTS/EXCL_HOURS
+# hour-of-day gating is gone — the workflow now fires the cron once a day,
+# so today's slot only depends on the weekday, not the hour.
 def determine_slot():
     # Accept override (manual dispatch or forced slot)
-    _valid = {"morning","midday","afternoon","evening","night","latenight",
-              "exclusive","lunch","dinner"}
+    _valid = {"morning", "exclusive"}
     if SLOT_OVERRIDE in _valid:
-        return _SLOT_ALIAS.get(SLOT_OVERRIDE, SLOT_OVERRIDE)
+        return SLOT_OVERRIDE
+    if SLOT_OVERRIDE in _SLOT_ALIAS:
+        return _SLOT_ALIAS[SLOT_OVERRIDE]
 
-    hour = NOW.hour
     is_friday = NOW.weekday() == 4
+    todays_slot = "exclusive" if is_friday else "morning"
 
-    # Load today's already-generated slots from the log (for catchup logic)
-    generated_today: set = set()
-    excl_today = 0
     if LOG_PATH.exists():
         try:
             log = json.loads(LOG_PATH.read_text())
             for e in log.get("generated", []):
-                if e.get("date") == DATE_SLUG:
-                    generated_today.add(e.get("slot"))
-                    if e.get("slot") == "exclusive":
-                        excl_today += 1
+                if e.get("date") == DATE_SLUG and e.get("slot") == todays_slot:
+                    return None   # today's article already exists
         except Exception:
             pass
 
-    # Build a unified chronological schedule of all slots due today.
-    # Regular and exclusive slots interleave by UTC hour — process them in order
-    # so neither type starves the other (fixes Friday regular slots being skipped).
-    combined = list(REGULAR_SLOTS)  # [(0, "morning"), (4, "midday"), ...]
-    if is_friday:
-        for h in EXCL_HOURS:
-            combined.append((h, "exclusive"))
-    combined.sort(key=lambda x: x[0])
-
-    excl_seen = 0
-    for min_hour, slot_name in combined:
-        if hour < min_hour:
-            break   # haven't reached this slot's scheduled time yet
-        if slot_name == "exclusive":
-            excl_seen += 1
-            if excl_seen > excl_today:
-                return "exclusive"
-        else:
-            if slot_name not in generated_today:
-                return slot_name
-
-    return None   # all expected slots are already done for today
+    return todays_slot
 
 SLOT = determine_slot()
 if SLOT is None:
@@ -499,15 +468,7 @@ STYLE: Sequential and practical. Readers want a clear path — give them phases,
 # formats.
 SLOT_TYPE_PREFS = {
     "morning":   ["problem_solution", "roadmap",  "playbook"],
-    "midday":    ["problem_solution", "playbook", "roadmap"],
-    "afternoon": ["problem_solution", "roadmap",  "playbook"],
-    "evening":   ["problem_solution", "playbook", "roadmap"],
-    "night":     ["problem_solution", "roadmap",  "playbook"],
-    "latenight": ["problem_solution", "playbook", "roadmap"],
     "exclusive": ["problem_solution", "playbook", "roadmap"],
-    # Legacy aliases kept for backward compatibility
-    "lunch":     ["problem_solution", "roadmap",  "playbook"],
-    "dinner":    ["problem_solution", "playbook", "roadmap"],
 }
 
 # ── Opening style pool — injected per article to prevent identical hooks ──────

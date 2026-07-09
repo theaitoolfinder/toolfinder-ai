@@ -3,77 +3,36 @@ name: Article Generator
 # ─────────────────────────────────────────────────────────────────────────────
 # Schedule (all times in Philippine Time, PHT = UTC+8)
 #
-#  6 regular slots per day (every 4 hours):
-#  Mon–Sun  08:00 PHT → slot: morning    (00:00 UTC)
-#  Mon–Sun  12:00 PHT → slot: midday     (04:00 UTC)
-#  Mon–Sun  16:00 PHT → slot: afternoon  (08:00 UTC)
-#  Mon–Sun  20:00 PHT → slot: evening    (12:00 UTC)
-#  Mon–Sun  00:00 PHT → slot: night      (16:00 UTC)
-#  Mon–Sun  04:00 PHT → slot: latenight  (20:00 UTC)
+#  THROTTLED (2026-07-09): was 6 regular slots/day + up to 16 on Fridays (311
+#  articles in ~7 weeks). That publishing rate reads as scaled content abuse
+#  to Google — impressions collapsed to near-zero after the initial indexing
+#  window closed. Cut to ONE article per day to stop the bleeding and let the
+#  title banks (comparison/roadmap/playbook pools) stop cycling back into
+#  duplicate topics within a week.
 #
-#  10 Friday exclusives at odd hours (interleaved between regular slots):
-#  09:00 PHT → Exclusive #1   (01:00 UTC)
-#  11:00 PHT → Exclusive #2   (03:00 UTC)
-#  13:00 PHT → Exclusive #3   (05:00 UTC)
-#  15:00 PHT → Exclusive #4   (07:00 UTC)
-#  17:00 PHT → Exclusive #5   (09:00 UTC)
-#  19:00 PHT → Exclusive #6   (11:00 UTC)
-#  21:00 PHT → Exclusive #7   (13:00 UTC)
-#  23:00 PHT → Exclusive #8   (15:00 UTC)
-#  01:00 PHT → Exclusive #9   (17:00 UTC)
-#  03:00 PHT → Exclusive #10  (19:00 UTC)
+#  Mon–Thu, Sat–Sun  08:00 PHT (00:00 UTC) → slot: morning
+#  Friday            08:00 PHT (00:00 UTC) → slot: exclusive (subscriber-only)
 #
-#  Hourly catchup (30 * * * *): runs every hour at :30 — if GitHub delayed or
-#  skipped a scheduled run, the script detects the missing slot and generates it.
-#  The script exits early (no-op) when all expected articles are already done.
+#  Daily catchup (00:00 UTC + 12h = 12:00 UTC): safety net only, in case the
+#  primary run failed — the script is idempotent and no-ops if today's single
+#  article already exists.
 # ─────────────────────────────────────────────────────────────────────────────
 
 on:
   schedule:
-    # ── 6 regular slots (every 4 hours) ──
-    - cron: '0 0  * * *'   # morning    08:00 PHT
-    - cron: '0 4  * * *'   # midday     12:00 PHT
-    - cron: '0 8  * * *'   # afternoon  16:00 PHT
-    - cron: '0 12 * * *'   # evening    20:00 PHT
-    - cron: '0 16 * * *'   # night      00:00 PHT
-    - cron: '0 20 * * *'   # latenight  04:00 PHT
-    # ── Friday exclusives × 10 (odd hours, interleaved) ──
-    - cron: '0 1  * * 5'
-    - cron: '0 3  * * 5'
-    - cron: '0 5  * * 5'
-    - cron: '0 7  * * 5'
-    - cron: '0 9  * * 5'
-    - cron: '0 11 * * 5'
-    - cron: '0 13 * * 5'
-    - cron: '0 15 * * 5'
-    - cron: '0 17 * * 5'
-    - cron: '0 19 * * 5'
-    # ── Hourly catchup ──
-    - cron: '30 * * * *'
-
-  # Also fires whenever the subscriber-sync workflow completes — that runs every
-  # hour reliably and acts as a second heartbeat for article generation.
-  workflow_run:
-    workflows: ["Sync Subscriber List"]
-    types: [completed]
-
-  # Push trigger: any commit to main also runs the catchup check.
-  # The script is idempotent — it exits early if all slots are already done.
-  # Path-ignore prevents bot article-pushes from re-triggering themselves.
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'articles/**'
-      - 'articles.html'
-      - '.github/scripts/article_log.json'
-      - 'data/**'
+    - cron: '0 0  * * *'   # primary run — 08:00 PHT daily
+    - cron: '0 12 * * *'   # catchup — 20:00 PHT, only fires the script if the primary run failed
 
   workflow_dispatch:
     inputs:
       slot:
-        description: 'Force slot (morning | afternoon | evening | exclusive). Leave blank to auto-detect.'
+        description: 'Force slot (morning | exclusive). Leave blank to auto-detect.'
         required: false
         default: ''
+
+concurrency:
+  group: article-generator
+  cancel-in-progress: false
 
 jobs:
   generate-article:
@@ -118,7 +77,7 @@ jobs:
           git config user.name "My AI Tools Finder Bot"
           git add articles/ articles.html .github/scripts/article_log.json sitemap.xml feed.xml
           if git diff --staged --quiet; then
-            echo "Nothing to commit — article may already exist for this slot."
+            echo "Nothing to commit — today's article already exists."
           else
             MSG="Auto-article: $(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT')"
             git commit -m "$MSG"
