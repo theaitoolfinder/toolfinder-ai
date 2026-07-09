@@ -1476,7 +1476,7 @@ header.site{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:sa
     <p class="pop-sub">Subscribe and instantly get access to perks available only to members of our growing community.</p>
     <div class="pop-perks">
       <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Unlimited AI tool comparisons</span>
-      <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>10 exclusive articles every Friday</span>
+      <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>a fresh exclusive deep-dive every Friday</span>
       <span class="pop-perk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free forever — no credit card</span>
     </div>
     <div class="pop-fields">
@@ -4286,7 +4286,7 @@ async function popSubscribe(){
 
     /* Newsletter */
     if (/\bnewsletter|friday.*(email|digest|drop|tips)|subscribe.*weekly|weekly.*email\b/.test(ql)) {
-      cbBotMsg(`Our free **AI Toolbox Newsletter** drops every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest tool comparison\n✅ 1 practical time-saving tip\n✅ 10 exclusive Friday articles for members\n\n**1,000+ solopreneurs & creators** read it weekly — free forever, no credit card.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>\n\nOr just drop your email here and I'll add you right now!`);
+      cbBotMsg(`Our free **AI Toolbox Newsletter** drops every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest tool comparison\n✅ 1 practical time-saving tip\n✅ an exclusive Friday deep-dive for members\n\n**1,000+ solopreneurs & creators** read it weekly — free forever, no credit card.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>\n\nOr just drop your email here and I'll add you right now!`);
       return;
     }
 
@@ -4311,7 +4311,7 @@ async function popSubscribe(){
     /* Is the site free */
     if (/\b(is this|the site|this website|myai|it)\b.*(free|paid|cost|charge|subscription|pricing)\b/.test(ql)
      || /\bhow much.*use|do.*pay.*to (use|access)\b/.test(ql)) {
-      cbBotMsg(`**Totally free!** 🎉\n\nThe Tools Directory, Prompts Library, and Articles are all 100% free.\n\nThe Compare feature and Friday exclusive articles require a **free newsletter subscription** — no credit card, just your email. That's it.\n\nAny other questions?`);
+      cbBotMsg(`**Totally free!** 🎉\n\nThe Tools Directory, Prompts Library, and Articles are all 100% free.\n\nThe Compare feature and the Friday exclusive require a **free newsletter subscription** — no credit card, just your email. That's it.\n\nAny other questions?`);
       return;
     }
 

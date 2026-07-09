@@ -122,7 +122,7 @@ SUBSCRIBER BENEFITS
 Free for everyone: Tools directory, Prompts library, Articles, Tutorials
 Free with newsletter subscription (no credit card needed):
 - AI Tool Compare feature (side-by-side comparison)
-- 10 exclusive Friday articles per week
+- 1 exclusive Friday deep-dive per week
 - Intermediate & advanced tutorials
 To subscribe: https://myaitoolsfinder.com/#newsletter
 

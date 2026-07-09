@@ -553,7 +553,7 @@
 
     /* Newsletter */
     if (/\bnewsletter|friday.*(email|digest)|subscribe.*weekly|weekly.*email\b/.test(ql)) {
-      mcbBotMsg(`Our **AI Toolbox Newsletter** is free every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest comparison\n✅ 1 practical tip\n✅ 10 exclusive Friday articles for members\n\n**1,000+ readers** weekly — free forever.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>`);
+      mcbBotMsg(`Our **AI Toolbox Newsletter** is free every Friday 📬\n\n✅ 5 hand-picked AI tools\n✅ 1 honest comparison\n✅ 1 practical tip\n✅ an exclusive Friday deep-dive for members\n\n**1,000+ readers** weekly — free forever.\n\n<a href="/#newsletter" target="_blank">📩 Subscribe free →</a>`);
       return;
     }
 
@@ -571,7 +571,7 @@
 
     /* Free / cost */
     if (/\b(is this|the site|myai).*(free|paid|cost)\b/.test(ql) || /\bhow much.*use\b/.test(ql)) {
-      mcbBotMsg(`**Totally free!** 🎉 The Tools Directory, Prompts Library and Articles are all free.\n\nThe Compare feature and Friday exclusive articles need a free newsletter subscription — no credit card, just your email.`);
+      mcbBotMsg(`**Totally free!** 🎉 The Tools Directory, Prompts Library and Articles are all free.\n\nThe Compare feature and the Friday exclusive need a free newsletter subscription — no credit card, just your email.`);
       return;
     }
 
