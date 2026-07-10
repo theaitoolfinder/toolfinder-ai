@@ -700,6 +700,9 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache, banner_c
     rel = "sponsored noopener nofollow" if is_aff else "noopener nofollow"
 
     description = f"{tag} Pricing: {pill}." if pill else tag
+    value_bits = f"Includes free {name} prompts"
+    value_bits += " and a step-by-step tutorial." if has_tutorial(slug) else "."
+    description = f"{description} {value_bits}"
     description = description[:300]
 
     # Ratings row — SVG star icons, not Unicode glyphs
