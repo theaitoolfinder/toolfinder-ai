@@ -494,10 +494,10 @@ def build_fallback_story(t, is_free: bool) -> str:
         )
     else:
         impact_body = f"{name} is designed to save you time on the specific tasks it covers, so those hours go back into your actual work."
-    impact_html = f'<h3>What You Get</h3><p>{esc(impact_lede)}</p><p>{esc(impact_body)}</p>'
+    impact_html = f'<h3>What Do You Get?</h3><p>{esc(impact_lede)}</p><p>{esc(impact_body)}</p>'
 
     how_text = tag or f"{name} is an AI tool in the {cat} category."
-    how_html = f'<h3>How It Works</h3><p>{esc(how_text)}</p>'
+    how_html = f'<h3>How Does It Help?</h3><p>{esc(how_text)}</p>'
 
     verdict_parts = []
     if rating:
@@ -560,11 +560,11 @@ def generate_story_with_claude(t, is_free: bool):
         f"REAL DATA — use only these facts, do not invent features, quotes, statistics, or "
         f"outcomes beyond what's listed:\n{facts}\n\n"
         f"Write it as a short story, not a spec sheet. Structure:\n"
-        f"1. <h3>What You Get</h3> — open with a specific, vivid scene of the exact "
+        f"1. <h3>What Do You Get?</h3> — open with a specific, vivid scene of the exact "
         f"person this tool is for (use the 'Who it's for' / 'What it helps with' fields), caught "
         f"in the actual moment of the pain point this tool solves. Make the reader recognize "
         f"themselves. 2-3 sentences of scene, then 1-2 sentences on what's different after.\n"
-        f"2. <h3>How It Works</h3> — plain-language explanation grounded in 'What it "
+        f"2. <h3>How Does It Help?</h3> — plain-language explanation grounded in 'What it "
         f"does', told as the next beat of the story (what the person does now, using this tool, "
         f"instead of the old painful way).\n"
         f"3. <h3>Should You Try It?</h3> — an honest, specific verdict using the real "
