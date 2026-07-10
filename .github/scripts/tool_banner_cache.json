@@ -1,0 +1,2607 @@
+{
+ "chatgpt": {
+  "url": "https://chat.openai.com",
+  "banner": "https://cdn.openai.com/chatgpt/share-og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "claude": {
+  "url": "https://claude.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gemini": {
+  "url": "https://gemini.google.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "perplexity-ai": {
+  "url": "https://perplexity.ai",
+  "banner": "https://ppl-ai-public.s3.amazonaws.com/static/img/pplx-default-preview.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "microsoft-copilot": {
+  "url": "https://copilot.microsoft.com",
+  "banner": "https://copilot.microsoft.com/static/cmc/images/meta-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "grok": {
+  "url": "https://grok.com",
+  "banner": "https://grok.com/icon-512x512.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "deepseek": {
+  "url": "https://chat.deepseek.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "poe": {
+  "url": "https://poe.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "character-ai": {
+  "url": "https://character.ai",
+  "banner": "https://character.ai/character-ai.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "meta-ai": {
+  "url": "https://meta.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mistral-ai": {
+  "url": "https://mistral.ai",
+  "banner": "https://mistral.ai/cms-media/api/media/file/OG-mistral-main_1x.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pi": {
+  "url": "https://pi.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "grammarly": {
+  "url": "https://grammarly.com",
+  "banner": "https://static-web.grammarly.com/1e6ajr2k4140/1kGiUxfxoLhCPH7wGcvknN/c218a7bbcdfc24301fbbfb6ae9892ec6/default_social_share.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "jasper-ai": {
+  "url": "https://jasper.ai",
+  "banner": "https://cdn.prod.website-files.com/6807ee8d73c233fb82842313/6846454bda26628fcf51d54c_9650916b48ce089735bcc21cc8e43f2f_OpenGraph%20-%20Home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "writesonic": {
+  "url": "https://writesonic.com",
+  "banner": "https://writesonic.com/opengraph-image",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "deepl": {
+  "url": "https://deepl.com",
+  "banner": "https://www.deepl.com/img/favicon/automatic_social_share_deepl.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "copy-ai": {
+  "url": "https://copy.ai",
+  "banner": "https://cdn.prod.website-files.com/628288c5cd3e8411b90a36a4/67111b6951504ebf1467be96_6708d064807b31c351b41284_share-og-image%20(1)-min.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rytr": {
+  "url": "https://rytr.me",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "quillbot": {
+  "url": "https://quillbot.com",
+  "banner": "https://assets.quillbot.com/images/og-quillbot.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wordtune": {
+  "url": "https://wordtune.com",
+  "banner": "https://cdn.prod.website-files.com/5f7e0f9d75fee6f6f546df46/66bc50ae0f2962888d8e06a2_OG%20-%20HOME%20PAGE%20.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "sudowrite": {
+  "url": "https://sudowrite.com",
+  "banner": "https://framerusercontent.com/assets/1k2TYC2YpFUOb9cH9JmDo6QyUp8.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "prowritingaid": {
+  "url": "https://prowritingaid.com",
+  "banner": "https://assets.prowritingaid.com/f/145420/1200x627/cdd4c29a9e/open-graph-prowritingaid.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hemingway-editor": {
+  "url": "https://hemingwayapp.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hyperwrite": {
+  "url": "https://hyperwrite.ai",
+  "banner": "https://cdn.prod.website-files.com/63fcd79d410b22ddf397e1b8/65cbc3bd3337c9f598fb1f7e_hyperwrite.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "midjourney": {
+  "url": "https://midjourney.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "adobe-firefly": {
+  "url": "https://firefly.adobe.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "leonardo-ai": {
+  "url": "https://leonardo.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "dall-e-3": {
+  "url": "https://openai.com/dall-e-3",
+  "banner": "https://images.ctfassets.net/kftzwdyauwt9/oTUHVfoemkHiNasFEeEEB/101442a48b1e9ee0998a5df6bafa1e26/oai-dalle.png?w=1600&amp;h=900&amp;fit=fill",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ideogram": {
+  "url": "https://ideogram.ai",
+  "banner": "https://storage.googleapis.com/ideogram-static/website/images/ba16d402d8d0b906.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kling-ai": {
+  "url": "https://klingai.com",
+  "banner": "https://s16-kling.klingai.com/kos/s101/nlav112918/kling-web/kling-logo-payment-en.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "playground-ai": {
+  "url": "https://playground.com",
+  "banner": "https://playgroundai.com/og/default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "stable-diffusion": {
+  "url": "https://stability.ai",
+  "banner": "http://static1.squarespace.com/static/6213c340453c3f502425776e/t/69dc368ec5c83b60b25c6a07/1775660945221/Homepage+Meta+Image.png?format=1500w",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "nightcafe": {
+  "url": "https://nightcafe.studio",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "flux-ai": {
+  "url": "https://blackforestlabs.ai",
+  "banner": "https://bfl.ai/opengraph-image-j8qpfc.png?47e2121a0eb4d5b0",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "canva": {
+  "url": "https://canva.com",
+  "banner": "https://content-management-files.canva.com/c37135f6-6d9a-4920-b659-4f5e12698b8d/og-image-global-1200x630.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "figma-ai": {
+  "url": "https://figma.com",
+  "banner": "https://cdn.sanity.io/images/599r6htc/regionalized/b08d37520f7d5ad8d6562975b5932dd2d9a862bb-1200x630.gif?w=1200&amp;q=70&amp;fit=max&amp;auto=format",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "framer-ai": {
+  "url": "https://framer.com",
+  "banner": "https://framerusercontent.com/images/qAuYmOzzj4F8wIEJiqfcOgjFdiY.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "uizard": {
+  "url": "https://uizard.io",
+  "banner": "https://uizard.io/opengraph-2021-04-26-10-35.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "looka": {
+  "url": "https://looka.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "designs-ai": {
+  "url": "https://designs.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "runway": {
+  "url": "https://runwayml.com",
+  "banner": "https://runwayml.com/twitter-image.png?twitter-image.1066gbuqgwttu.png?dpl=dpl_6cR32gSnrF899SPxfiWz7V912Lhc",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "heygen": {
+  "url": "https://heygen.com",
+  "banner": "https://cdn.sanity.io/images/pdhqcmb1/production/579e83ff34c4c832744efaedb9681d255e58dc13-1200x630.png?fit=max&amp;fm=png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "synthesia": {
+  "url": "https://synthesia.io",
+  "banner": "https://cdn.prod.website-files.com/65e89895c5a4b8d764c0d710/67dad5d5c238a51c2327e203_OG-Image_2025.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "descript": {
+  "url": "https://descript.com",
+  "banner": "https://cdn.builder.io/api/v1/image/assets%2Ffcea5005d671451e9b07839c893228d0%2Fb1cf2c175fbe4a028dff4622ee1ce727",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "veed-io": {
+  "url": "https://veed.io",
+  "banner": "https://cdn-site-assets.veed.io/global_og_image_b90c2ac2f9/global_og_image_b90c2ac2f9.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "invideo-ai": {
+  "url": "https://invideo.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pictory": {
+  "url": "https://pictory.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lumen5": {
+  "url": "https://lumen5.com",
+  "banner": "https://cdn.lumen5.com/lumen5-site-images/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elevenlabs": {
+  "url": "https://elevenlabs.io",
+  "banner": "https://elevenlabs.io/cover.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "murf-ai": {
+  "url": "https://murf.ai",
+  "banner": "https://cdn.prod.website-files.com/66b3765153a8a0c399c70981/670584e2dab709883eed3793_Home.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "suno": {
+  "url": "https://suno.com",
+  "banner": "https://cdn-o.suno.com/meta-preview.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "udio": {
+  "url": "https://udio.com",
+  "banner": "https://imagedelivery.net/C9yUr1FL21Q6JwfYYh2ozQ/1647e9a2-47d6-4d95-5ae0-02bae7a44000/public",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "adobe-podcast": {
+  "url": "https://podcast.adobe.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "otter-ai": {
+  "url": "https://otter.ai",
+  "banner": "https://cdn.prod.website-files.com/618e9316785b3582a5178502/67dd5a945aeed07e329d4e10_og-image-otter-optim.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "resemble-ai": {
+  "url": "https://resemble.ai",
+  "banner": "https://cdn.prod.website-files.com/69bc3de63d285e297507b3ef/69e17438fd97a84522288776_5d699e328d580edfe2a53aac2ff01057_resemble-ograph-0326.avif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rankmath-ai": {
+  "url": "https://rankmath.com",
+  "banner": "https://rankmath.com/wp-content/uploads/2021/12/Rank-Math.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "surfer-seo": {
+  "url": "https://surferseo.com",
+  "banner": "https://marketing-assets.surferseo.art/wf-cdn/62666115cfab458794bd512f/6a1d9411dd14b078c94328eb_4fafb0f70a45b96e9a7c000f89edfa37_surfer-3-og.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ahrefs": {
+  "url": "https://ahrefs.com",
+  "banner": "https://static.ahrefs.com/assets/img/og/ahrefs.png?v=2",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "semrush": {
+  "url": "https://semrush.com",
+  "banner": "https://www.semrush.com/__static__/semrush-logo-700.43215feb8faa.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "clearscope": {
+  "url": "https://clearscope.io",
+  "banner": "https://www.clearscope.io/assets/og-logo-7a11ea5e.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "neuronwriter": {
+  "url": "https://neuronwriter.com",
+  "banner": "https://neuronwriter.com/wp-content/uploads/2025/06/NW4.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "marketmuse": {
+  "url": "https://marketmuse.com",
+  "banner": "https://mms-app.s3.amazonaws.com/wordpress/2021/06/15120226/marketmuse-share.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "cursor": {
+  "url": "https://cursor.com",
+  "banner": "https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/og/opengraph-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "github-copilot": {
+  "url": "https://github.com/features/copilot",
+  "banner": "https://images.ctfassets.net/wfutmusr1t3h/4KxWJH8PVVXdqBLs1V3UJ8/0079958c464847c85fe7708ddd990889/github-copilot-social-img.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bolt-new": {
+  "url": "https://bolt.new",
+  "banner": "https://bolt.new/static/social_preview_index.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "windsurf": {
+  "url": "https://codeium.com/windsurf",
+  "banner": "https://devin.ai/assets/images/desktop/og-desktop.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lovable": {
+  "url": "https://lovable.dev",
+  "banner": "https://lovable.dev/img/opengraph-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "v0-by-vercel": {
+  "url": "https://v0.dev",
+  "banner": "https://v0.app/chat/api/og",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "replit-ai": {
+  "url": "https://replit.com",
+  "banner": "https://replit.com/public/images/opengraph_rebrand.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tabnine": {
+  "url": "https://tabnine.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "codeium": {
+  "url": "https://codeium.com",
+  "banner": "https://devin.ai/assets/images/desktop/og-desktop.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "notion-ai": {
+  "url": "https://notion.so/product/ai",
+  "banner": "https://www.notion.com/front-static/meta/teams-and-agents.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "granola": {
+  "url": "https://granola.ai",
+  "banner": "https://www.granola.ai/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "motion": {
+  "url": "https://usemotion.com",
+  "banner": "https://www-cdn.usemotion.com/default-og-image-1764610536.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fireflies-ai": {
+  "url": "https://fireflies.ai",
+  "banner": "https://fireflies.ai/thumbnail.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "reclaim-ai": {
+  "url": "https://reclaim.ai",
+  "banner": "https://cdn.prod.website-files.com/5ec848ec2b50b6cfae06f6cc/65e2563b7c0658aed71828ac_open_graph_final.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "taskade": {
+  "url": "https://taskade.com",
+  "banner": "https://www.taskade.com/static_images/taskade-genesis-mascot-2026.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "krisp": {
+  "url": "https://krisp.ai",
+  "banner": "https://krisp.ai/wp-content/uploads/2025/08/thumb1.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mem-ai": {
+  "url": "https://mem.ai",
+  "banner": "https://storage.googleapis.com/mem-public-assets/sq-f.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "magical": {
+  "url": "https://getmagical.com",
+  "banner": "https://framerusercontent.com/images/4W4qGTMY995fenJ45r3aDDjZIag.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "reflect": {
+  "url": "https://reflect.app",
+  "banner": "https://site.reflect.app/home/build/q-11289093.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "adcreative-ai": {
+  "url": "https://adcreative.ai",
+  "banner": "https://cdn.prod.website-files.com/661ce890f68a1d352ebbed35/6798994af847e3d5f12f2e3f_Home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "beehiiv": {
+  "url": "https://beehiiv.com",
+  "banner": "https://media.beehiiv.com/www/og-image/og-beehiiv.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hubspot-ai": {
+  "url": "https://hubspot.com",
+  "banner": "https://www.hubspot.com/hubfs/assets/hubspot.com/homepage/hero-backgrounds-2025/HS_Full_Bleed_1.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mailchimp-ai": {
+  "url": "https://mailchimp.com",
+  "banner": "https://mailchimp.com/ctf/images/yzco4xsimv0y/1SB1jCYU95Dh5YDdrucTh0/add18363e44ff00d54254592c7c0860c/Intuit_Mailchimp_-_Wordmark_2023_-_Recirculation_.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "instantly-ai": {
+  "url": "https://instantly.ai",
+  "banner": "https://cdn.prod.website-files.com/63860c8c65e7bef4a1eeebeb/69bbbe355f4fdb68458b987d_Banner%20(1)%20(1).webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "predis-ai": {
+  "url": "https://predis.ai",
+  "banner": "https://predis.ai/assets/img/try-out/temp-thumb/ads/ai-ad-generator.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pencil": {
+  "url": "https://trypencil.com",
+  "banner": "https://cdn.prod.website-files.com/682b822e50ceee37e06f059a/6849a85f429034496e406ca0_OG-image-dark%20(1).webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "make-com": {
+  "url": "https://make.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zapier": {
+  "url": "https://zapier.com",
+  "banner": "https://res.cloudinary.com/zapier-media/image/upload/q_auto/f_auto/v1776210705/Governance/og-image-homepage_mskeaq.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "n8n": {
+  "url": "https://n8n.io",
+  "banner": "https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-stage/assets/og_image_website_3_afd66761a9.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bardeen": {
+  "url": "https://bardeen.ai",
+  "banner": "https://cdn.prod.website-files.com/67a4e756231fbcd6386ec06a/691114ccec0d8e60edae6ee4_Meta%20Image%20-%20Home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "activepieces": {
+  "url": "https://activepieces.com",
+  "banner": "https://www.activepieces.com/meta1.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elicit": {
+  "url": "https://elicit.com",
+  "banner": "https://framerusercontent.com/images/s7irwYwOOfdSFu6EPduaB8EDsIg.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "consensus": {
+  "url": "https://consensus.app",
+  "banner": "https://consensus.app/images/og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "scite": {
+  "url": "https://scite.ai",
+  "banner": "http://image.thum.io/get/ogImage/https://scite.ai?bannerClosed=true&amp;v=2",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "scholarcy": {
+  "url": "https://scholarcy.com",
+  "banner": "https://cdn.prod.website-files.com/65388e98a52fc34922751f84/6601b6f5e8082a7096745bf9_og__home.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gamma": {
+  "url": "https://gamma.app",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "beautiful-ai": {
+  "url": "https://beautiful.ai",
+  "banner": "https://cdn.prod.website-files.com/59deb588800ae30001ec19c9/679345319c7f2f3d2301228b_Open%20Graph_final.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tome": {
+  "url": "https://tome.app",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "slidesai": {
+  "url": "https://slidesai.io",
+  "banner": "https://cdn.slidesai.io/website/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tidio": {
+  "url": "https://tidio.com",
+  "banner": "https://www.tidio.com/wp-content/uploads/tidio-og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "intercom-ai": {
+  "url": "https://intercom.com",
+  "banner": "https://www.intercom.com/intercom-marketing-site/img/social/default.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zendesk-ai": {
+  "url": "https://zendesk.com",
+  "banner": "https://d1eipm3vz40hy0.cloudfront.net/images/logos/favicons/zendesk-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "freshdesk-ai": {
+  "url": "https://freshdesk.com",
+  "banner": "https://dam.freshworks.com/m/541afb2fa140d046/original/OGImage_CX-Freshdesk.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "crisp": {
+  "url": "https://crisp.chat",
+  "banner": "https://crisp.chat/__og-image__/static/en/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "happyfox": {
+  "url": "https://happyfox.com",
+  "banner": "https://assets.www.happyfox.com/media/original_images/OpenGraph.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "khan-academy-ai": {
+  "url": "https://khanacademy.org/khan-labs",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "duolingo-max": {
+  "url": "https://duolingo.com",
+  "banner": "https://www.duolingo.com/images/facebook/duo200.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "coursera-ai": {
+  "url": "https://coursera.org",
+  "banner": "https://s3.amazonaws.com/coursera/media/Grid_Coursera_Partners_updated.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "notebooklm": {
+  "url": "https://notebooklm.google.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "photomath": {
+  "url": "https://photomath.com",
+  "banner": "https://lh3.googleusercontent.com/ixDnQdZmvXyRbkWcSsccWiu6P4-GXljK9_uAxlYiLQCTNjGQnoVlbf0ok0OktMTcI4M7TgONNd4UMMk4WOFsupLiUv7JAiLNpdM=e365-pa-nu-w1200",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "quizlet-ai": {
+  "url": "https://quizlet.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "socratic": {
+  "url": "https://socratic.org",
+  "banner": "https://lh3.googleusercontent.com/OU0eVSuMf7hzLaeIkAWX23ytBaTpvhmn0nHU4fVFfCPBLYoYMyCdLjvdIImjpuDS0ajuaB32jzlc7tTyOwAdFxp4NycAckMJYBivxpyJTBTuTcaeZLzZ",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "synthesis": {
+  "url": "https://synthesis.com",
+  "banner": "https://cdn.prod.website-files.com/61254e5d00ea9e494d66b322/696fdb8d95a8ba81114576db_opengraph%20%E2%80%94%20tutor%20(2).png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "scispace": {
+  "url": "https://typeset.io",
+  "banner": "https://scispace.com/vs/meta-images/agent-banner.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wolfram-alpha": {
+  "url": "https://wolframalpha.com",
+  "banner": "https://www.wolframalpha.com/_next/static/images/share_9016222d6b2fadaacc58b484cb3edace.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "brainly": {
+  "url": "https://brainly.com",
+  "banner": "https://brainly.com/nx-images/favicon/x200.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "memrise": {
+  "url": "https://memrise.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tableau-ai": {
+  "url": "https://tableau.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "obviously-ai": {
+  "url": "https://obviously.ai",
+  "banner": "https://i.imgur.com/q8Hu76D.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "monkeylearn": {
+  "url": "https://monkeylearn.com",
+  "banner": "https://www.medallia.com/wp-content/themes/medallia2024-new/assets/static/img/medallia-og-default-new.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "akkio": {
+  "url": "https://akkio.com",
+  "banner": "https://cdn.prod.website-files.com/5c97e8c9de94e8a3480419a5/6959836988084dcbb9ac3605_Screenshot%202026-01-03%20at%2012.58.19%E2%80%AFPM.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "polymer": {
+  "url": "https://polymersearch.com",
+  "banner": "https://cdn.prod.website-files.com/6141c766b4919f865b6cb85b/66eafe210cfe53a8b2872456_OG%20Image%207.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mixpanel": {
+  "url": "https://mixpanel.com",
+  "banner": "https://framerusercontent.com/assets/KHyJwfBzTDm8CBtgWokK94nAuQ.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "amplitude-ai": {
+  "url": "https://amplitude.com",
+  "banner": "https://amplitude.com/nextjs-public/amplitude-default-seo.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "segment": {
+  "url": "https://segment.com",
+  "banner": "https://www.twilio.com/content/dam/twilio-com/core-assets/social/twilio-com-default-ogimage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "salesforce-einstein": {
+  "url": "https://salesforce.com/artificial-intelligence",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hubspot-sales-ai": {
+  "url": "https://hubspot.com/products/sales",
+  "banner": "https://wtcfns.hubspot.com/wt-api/social-sharing?domain=www.hubspot.com",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "apollo-io": {
+  "url": "https://apollo.io",
+  "banner": "https://www.apollo.io/og-images/home.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gong-ai": {
+  "url": "https://gong.io",
+  "banner": "https://cdn.sanity.io/images/ww20clc6/production/e5b5bf0e084b83ad6b6607c10f026a91a4cfc1f3-2400x1256.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "outreach-ai": {
+  "url": "https://outreach.io",
+  "banner": "https://cdn.prod.website-files.com/696ea7504e736c595e9a2313/69a5ef938abb3b562ab745e3_64e82f81f73bfb9fd94919d53cd1862b_amp-up-revenue.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "clay": {
+  "url": "https://clay.com",
+  "banner": "https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6a3ab15061812432ead96f56_Clay_Homepage_og-image%201000.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lavender": {
+  "url": "https://lavender.ai",
+  "banner": "https://cdn.prod.website-files.com/658433a0cbce340e298ba330/6597e6c2db66b522a9ee07ab_openGraph.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lemlist": {
+  "url": "https://lemlist.com",
+  "banner": "https://web-assets.lemlist.com/lemlist/Home - Graph URL.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pipedrive-ai": {
+  "url": "https://pipedrive.com",
+  "banner": "https://www-cms.pipedriveassets.com/brand-half-page-illustrations/Pipedrive-product-view.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "salesloft": {
+  "url": "https://salesloft.com",
+  "banner": "https://images.contentstack.io/v3/assets/blt48e9deb40787970b/blt2607f8a7de21821c/6584c4c54135c43708568254/salesloft-meta-graphic.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "alphasense": {
+  "url": "https://alpha-sense.com",
+  "banner": "https://cdn.sanity.io/images/ewv2vq7j/production/d032490807040a9143db481b37b983c677cc1ba1-2100x1400.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kensho": {
+  "url": "https://kensho.com",
+  "banner": "http://static1.squarespace.com/static/6970e57a847a982ccab43554/t/6a04d0d9450ea4655a6d8fea/1778700505864/Kensho+spg+rev+cmyk_Large-PNG.png?format=1500w",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "domo-ai": {
+  "url": "https://domo.com",
+  "banner": "https://cdn.prod.website-files.com/679b91372d2e093f2a4287aa/67d9796865de4f215384d6a6_domo-home-og-march-2025.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "digits": {
+  "url": "https://digits.com",
+  "banner": "https://ram.digitscpu.com/_astro-assets/digits-og.BBSAo2lm_2uqKzy.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "expensify": {
+  "url": "https://expensify.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "workday-ai": {
+  "url": "https://workday.com",
+  "banner": "https://www.workday.com/content/dam/web/en-us/images/social/workday-og-theme.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "paradox-ai": {
+  "url": "https://paradox.ai",
+  "banner": "https://cdn.prod.website-files.com/611dc730a416cbf8f5934ebc/656fa2fa7219a492bbd2eff4_Open%20Graph-Home-1200x600.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hirevue": {
+  "url": "https://hirevue.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "eightfold-ai": {
+  "url": "https://eightfold.ai",
+  "banner": "https://eightfold.ai/wp-content/uploads/li-eightfold-ai-system-of-intelligene-workforce-decisions.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "leena-ai": {
+  "url": "https://leena.ai",
+  "banner": "https://assets.leena.ai/images/og/homepage_OG_image.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "cohere": {
+  "url": "https://cohere.com",
+  "banner": "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/b966213f9f46bb9cec6ec5a3406e893530b8b292-1200x630.png?w=1200&amp;h=630",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hugging-face": {
+  "url": "https://huggingface.co",
+  "banner": "https://huggingface.co/front/thumbnails/v2-2.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "groq": {
+  "url": "https://groq.com",
+  "banner": "https://cdn.sanity.io/images/chol0sk5/production/ce0b2266373b3c9722b0bccb9a98441c26c89696-1200x630.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "together-ai": {
+  "url": "https://together.ai",
+  "banner": "https://cdn.prod.website-files.com/69654e88dce9154b5f1206dd/69a49f86fc70648ca04854f6_OG-image-home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "replicate": {
+  "url": "https://replicate.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "phind": {
+  "url": "https://phind.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "anyword": {
+  "url": "https://anyword.com",
+  "banner": "https://cdn.prod.website-files.com/65a5365ee6f4219bc2d2f822/65d85069221f999621761943_Group%201261159146.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "longshot-ai": {
+  "url": "https://longshot.ai",
+  "banner": "https://www.longshot.ai/Long%20Shot%201x1-01.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "frase": {
+  "url": "https://frase.io",
+  "banner": "https://www.frase.io/api/og?title=Rank+on+Google.&amp;titleGreen=Get+cited+by+AI.&amp;sub=Frase+runs+the+whole+content+loop%3A+research%2C+write%2C+optimize%2C+publish%2C+and+monitor.&amp;pills=SEO%2CGEO%2CAI+Visibility",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "typeface": {
+  "url": "https://typeface.ai",
+  "banner": "https://images.ctfassets.net/x690ow8339ug/g36Rl9hYe43Kx6buA0HBv/752c90259d7655c7accbb0ce0697a67e/Agentic-AI.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "simplified": {
+  "url": "https://simplified.com",
+  "banner": "https://simplified.co/siteimages/all/simplified-home-page-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "content-at-scale": {
+  "url": "https://contentatscale.ai",
+  "banner": "https://contentatscale.ai/wp-content/uploads/2024/06/content-at-scale-rankwell.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ai-writer": {
+  "url": "https://ai-writer.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "magnific-ai": {
+  "url": "https://magnific.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "clipdrop": {
+  "url": "https://clipdrop.co",
+  "banner": "https://assets.reactbricks.com/G-dH90DZVcB0SiT/images/original/Lxv-0lCYYQgvMU7.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "remove-bg": {
+  "url": "https://remove.bg",
+  "banner": "https://sb.kaleidousercontent.com/67418/600x315/48eb30a742/emilia-og-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "canva-ai": {
+  "url": "https://canva.com/ai-image-generator",
+  "banner": "https://content-management-files.canva.com/34d16ddd-5cf7-4b6b-908e-ddd00666e569/AIimagegenerator-AI-.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "krea-ai": {
+  "url": "https://krea.ai",
+  "banner": "https://s.krea.ai/KreaOpenGraph2.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "picwish": {
+  "url": "https://picwish.com",
+  "banner": "https://cfcdn.apowersoft.info/astro/picwish/_astro/seo-image.ZWK5Yj2N.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "luminar-neo": {
+  "url": "https://skylum.com",
+  "banner": "https://media.macphun.com/img/uploads/uploads/skylum/l/skylum-com-share-new-min.jpg?q=75",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pika-labs": {
+  "url": "https://pika.art",
+  "banner": "https://pika.art/images/og.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "opusclip": {
+  "url": "https://opus.pro",
+  "banner": "https://cdn.prod.website-files.com/6388604483b03a9ecb34d695/6893fad68d6058a917d7f3c6_mainpage_thumbnail.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "captions-ai": {
+  "url": "https://captions.ai",
+  "banner": "https://captions.ai/mrkt-static/captions-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fliki": {
+  "url": "https://fliki.ai",
+  "banner": "https://cdn.fliki.ai/public/image/ogp/default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "submagic": {
+  "url": "https://submagic.co",
+  "banner": "https://cdn.prod.website-files.com/6469e2294ac68c3d5caea327/67582fde54b44b92ce325aa3_Submagic%20-%20Link%20Thumbnail%402x.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "capcut-ai": {
+  "url": "https://capcut.com",
+  "banner": "https://p16-seeyou-sg.ibyteimg.com/tos-alisg-i-2zwwjm3azk-sg/af60401275b14f6684c2af1f7564d717~tplv-2zwwjm3azk-image.image",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vizard": {
+  "url": "https://vizard.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wisecut": {
+  "url": "https://wisecut.video",
+  "banner": "https://static.wixstatic.com/media/b7657c_7db60d8d434c41478dfe4ac0b22bc2df%7Emv2.png/v1/fit/w_2500,h_1330,al_c/b7657c_7db60d8d434c41478dfe4ac0b22bc2df%7Emv2.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "speechify": {
+  "url": "https://speechify.com",
+  "banner": "https://website.cdn.speechify.com/speechify-og-image.jpg?quality=95",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "play-ht": {
+  "url": "https://play.ht",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "podcastle": {
+  "url": "https://podcastle.ai",
+  "banner": "https://m.podcastle.ai/og/async-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lalal-ai": {
+  "url": "https://lalal.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "soundraw": {
+  "url": "https://soundraw.io",
+  "banner": "https://cdn.soundraw.io/soundraw_ogp_EN.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "beatoven-ai": {
+  "url": "https://beatoven.ai",
+  "banner": "https://cdn.prod.website-files.com/65d772a7cbf713010f7736f6/67069ba14456f823d9d11717_website%20preview%20image.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "keyword-insights": {
+  "url": "https://keywordinsights.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "outranking": {
+  "url": "https://outranking.io",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "seo-ai": {
+  "url": "https://seo.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pageoptimizer-pro": {
+  "url": "https://pageoptimizer.pro",
+  "banner": "https://cdn.prod.website-files.com/636d46826480fa5819504cd6/645fa3bd5e4b02b72cf7ca34_pop2section-05.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "writerzen": {
+  "url": "https://writerzen.net",
+  "banner": "https://writerzen.net/themes/writerzen/img/opengraph.png?version=1.40.7.1",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "devin-ai": {
+  "url": "https://cognition.ai",
+  "banner": "https://cognition.com/opengraph-image.jpg?opengraph-image.0mzhc99j4lsox.jpg?dpl=dpl_FKZxNhJSkMgZygxgbPHhnfZqnMn3",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "continue-dev": {
+  "url": "https://continue.dev",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "blackbox-ai": {
+  "url": "https://blackbox.ai",
+  "banner": "https://www.blackbox.ai/opengraph.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "supermaven": {
+  "url": "https://supermaven.com",
+  "banner": "https://supermaven.com/desc-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "askcodi": {
+  "url": "https://askcodi.com",
+  "banner": "https://www.askcodi.com/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pieces-for-developers": {
+  "url": "https://pieces.app",
+  "banner": "https://framerusercontent.com/assets/NuuCyGwhkxALQlh1TKukWAtELH4.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "aws-codewhisperer": {
+  "url": "https://aws.amazon.com/codewhisperer",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "adobe-express-ai": {
+  "url": "https://adobe.com/express",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "durable-ai": {
+  "url": "https://durable.co",
+  "banner": "https://rjdavx8ozyznxeyh.public.blob.vercel-storage.com/production/seo/durable-business-og-Image-hpl5Y1p98iv6R9HUClFUzRAbCbNoan.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "khroma": {
+  "url": "https://khroma.co",
+  "banner": "https://www.khroma.co/assets/images/social.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "brandmark": {
+  "url": "https://brandmark.io",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wix-ai": {
+  "url": "https://wix.com/ai-website-builder",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "relume-ai": {
+  "url": "https://relume.io",
+  "banner": "https://www.relume.io/__assets/6177739448baa66404ce1d9c/65b756c9cebba152b52fccc8_Opengraph%20-%20Home%20for%20Twitter.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "obsidian-ai": {
+  "url": "https://obsidian.md",
+  "banner": "https://obsidian.md/images/banner.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tana": {
+  "url": "https://tana.inc",
+  "banner": "https://tana.inc/opengraph-image/default?93ca01e1efb16d88",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "sunsama": {
+  "url": "https://sunsama.com",
+  "banner": "https://cdn.prod.website-files.com/62d1ff8aa73d90740883d447/632d75c435342c54efe7c40d_OG%20IMage.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "craft-ai": {
+  "url": "https://craft.do",
+  "banner": "https://www.craft.do/craft_og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "routine": {
+  "url": "https://routine.co",
+  "banner": "https://routine.co/cover.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "morgen": {
+  "url": "https://morgen.so",
+  "banner": "https://cdn.prod.website-files.com/64f1cb4a73596e4aeb543ab2/65afe1358577f74a7c2475ad_cover.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "capacities": {
+  "url": "https://capacities.io",
+  "banner": "https://capacities.io/__og-image__/static/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "xembly": {
+  "url": "https://xembly.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "klaviyo-ai": {
+  "url": "https://klaviyo.com",
+  "banner": "https://www.klaviyo.com/static/klaviyo-social-share-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "phantombuster": {
+  "url": "https://phantombuster.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "taplio": {
+  "url": "https://taplio.com",
+  "banner": "https://cdn.prod.website-files.com/6939243f5769a4de787769c3/6a4e768601c9cd5a4e8177f6_og-home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "buffer-ai": {
+  "url": "https://buffer.com",
+  "banner": "https://buffer.com/ogImages/homepage-og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hootsuite-ai": {
+  "url": "https://hootsuite.com",
+  "banner": "https://images.ctfassets.net/ta4ffdi8h2om/2e939I9iQUeZCq5jO7cXP3/ee5e562f3e215343daade4f303b7b5c1/Webpreview__1_.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "typeform-ai": {
+  "url": "https://typeform.com",
+  "banner": "https://cdn.prod.website-files.com/66ffe2174aa8e8d5661c2708/6889ccfec828e151ddd96537_ogimage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pipedream": {
+  "url": "https://pipedream.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pabbly-connect": {
+  "url": "https://pabbly.com/connect",
+  "banner": "https://www.pabbly.com/wp-content/uploads/2024/01/Pabbly-Connect.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "microsoft-power-automate": {
+  "url": "https://powerautomate.microsoft.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "workato": {
+  "url": "https://workato.com",
+  "banner": "https://public-workato-files.s3.us-east-2.amazonaws.com/Uploads/workato-logo-1.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tray-ai": {
+  "url": "https://tray.ai",
+  "banner": "https://tray.ai/images/og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "researchrabbit": {
+  "url": "https://researchrabbit.ai",
+  "banner": "https://cdn.prod.website-files.com/68367775ca3b1655a71e1698/69a142248805bae6f2148552_ResearchRabbit-visualize-collections.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "connected-papers": {
+  "url": "https://connectedpapers.com",
+  "banner": "https://www.connectedpapers.com/share-preview-img.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "explainpaper": {
+  "url": "https://explainpaper.com",
+  "banner": "https://explainpaper.com/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "iris-ai": {
+  "url": "https://iris.ai",
+  "banner": "https://corporate-cdn.iris.ai/iris-open-graph-cover-1200x626.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "semantic-scholar": {
+  "url": "https://semanticscholar.org",
+  "banner": "https://www.semanticscholar.org/img/semantic_scholar_og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pitch": {
+  "url": "https://pitch.com",
+  "banner": "https://framerusercontent.com/assets/WJrArV3ktU515VCNK75vEu7SjNg.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "visme-ai": {
+  "url": "https://visme.co",
+  "banner": "https://www.visme.co/wp-content/uploads/2026/07/visme.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "storydoc": {
+  "url": "https://storydoc.com",
+  "banner": "https://www.storydoc.com/assets/images/og.gif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "slidebean": {
+  "url": "https://slidebean.com",
+  "banner": "https://cdn.prod.website-files.com/6179a66d5f9cc70024c6185c/623ba0ca7fb0e20114fe3055_Slidebean-Hub-Home-Thumbnail.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "luma-dream-machine": {
+  "url": "https://lumalabs.ai/dream-machine",
+  "banner": "https://cdn.sanity.io/images/2ylxvaa2/production/b31d99c8312ed2f74080e118e9d58bf6b2b6e953-1200x630.png?w=1200&amp;h=630&amp;fm=jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "recraft": {
+  "url": "https://recraft.ai",
+  "banner": "https://framerusercontent.com/images/DQYq5TdScDK93Z2wZVneS7R3xOU.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wordware": {
+  "url": "https://wordware.ai",
+  "banner": "https://wordware-sauna-landing-page-36kriq4l4-wordware.vercel.app/Wordware%20Social%20Card.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fal-ai": {
+  "url": "https://fal.ai",
+  "banner": "https://fal.ai/og-thumbnail.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "sora": {
+  "url": "https://sora.com",
+  "banner": "https://cdn.openai.com/sora/images/og-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "convergence-proxy": {
+  "url": "https://convergence.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wispr-flow": {
+  "url": "https://wispr.ai",
+  "banner": "https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c611aba65ade013982bcd_wispr-og-min.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "you-com": {
+  "url": "https://you.com",
+  "banner": "https://cdn.prod.website-files.com/687f2dca0cbe61df74670d33/69dfc6c67eb34da4f7a472b3_YDC-Opengraph%20Image_1200x630_041526.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "amazon-q": {
+  "url": "https://aws.amazon.com/q",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "google-ai-studio": {
+  "url": "https://aistudio.google.com",
+  "banner": "https://ai.google.dev/static/site-assets/images/share-ais-513315318.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "copilot-studio": {
+  "url": "https://copilotstudio.microsoft.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "replika": {
+  "url": "https://replika.com",
+  "banner": "https://1637693156.rsc.cdn77.org/web/main-page/manhattan-landing/open_graph_image_v1.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "openrouter": {
+  "url": "https://openrouter.ai",
+  "banner": "https://openrouter.ai/dynamic-og?pathname=default&amp;title=OpenRouter&amp;description=The+unified+interface+for+LLMs.+Find+the+best+models+%26+prices+for+your+prompts",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "writer": {
+  "url": "https://writer.com",
+  "banner": "https://writer.com/wp-content/uploads/2026/03/hp-share-2026-03.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "copysmith": {
+  "url": "https://copysmith.ai",
+  "banner": "https://copysmith.ai/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hypotenuse-ai": {
+  "url": "https://hypotenuse.ai",
+  "banner": "https://cdn.prod.website-files.com/5f23b456c81e6bebb921e9cb/68faf34db5cab4f4e99b0353_hypotenuseai-opengraph%20(1).webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "narrato": {
+  "url": "https://narrato.io",
+  "banner": "https://images.ctfassets.net/x690ow8339ug/g36Rl9hYe43Kx6buA0HBv/752c90259d7655c7accbb0ce0697a67e/Agentic-AI.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "article-forge": {
+  "url": "https://articleforge.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "writecream": {
+  "url": "https://writecream.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ink-ai": {
+  "url": "https://inkforall.com",
+  "banner": "https://smythos.com/wp-content/uploads/2025/11/OG-IMAGE-Homepage.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "textblaze": {
+  "url": "https://blaze.today",
+  "banner": "https://blaze.today/images/feature-landingpage.gif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "languagetool": {
+  "url": "https://languagetool.org",
+  "banner": "https://languagetool.org/images/social/og_image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "journalist-ai": {
+  "url": "https://journalist.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "texta-ai": {
+  "url": "https://texta.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "seowind": {
+  "url": "https://seowind.io",
+  "banner": "https://seowind.io/wp-content/uploads/2024/03/Home-feature-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kafkai": {
+  "url": "https://kafkai.com",
+  "banner": "https://kafkai.com/static/images/social/kafkai.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "junia-ai": {
+  "url": "https://junia.ai",
+  "banner": "https://www.junia.ai/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "freepik-ai": {
+  "url": "https://freepik.com/ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "picsart-ai": {
+  "url": "https://picsart.com",
+  "banner": "https://cdn-cms-uploads.picsart.com/cms-uploads/3ceeb21d-405b-4062-ab27-216905e74624.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fotor-ai": {
+  "url": "https://fotor.com",
+  "banner": "https://imgv3.fotor.com/images/share/Fotor-free-online-photo-editor.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "photoroom": {
+  "url": "https://photoroom.com",
+  "banner": "https://a.storyblok.com/f/191576/2400x1260/5c12e4c46c/photoroom-og-generic.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pixelcut": {
+  "url": "https://pixelcut.ai",
+  "banner": "https://cdn3.pixelcut.app/web/assets/OG-Image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "artbreeder": {
+  "url": "https://artbreeder.com",
+  "banner": "https://www.artbreeder.com/image/grid_512.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "dreamstudio": {
+  "url": "https://dreamstudio.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "getimg-ai": {
+  "url": "https://getimg.ai",
+  "banner": "https://static.getimg.ai/media/og-image-1.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "microsoft-designer": {
+  "url": "https://designer.microsoft.com",
+  "banner": "https://cdn.designerapp.osi.office.net/assets/public/designer-generic-social.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "craiyon": {
+  "url": "https://craiyon.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "magnific-upscale": {
+  "url": "https://magnific.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lexica-art": {
+  "url": "https://lexica.art",
+  "banner": "https://lexica.art/lexica-meta.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "luminar-ai": {
+  "url": "https://skylum.com/luminar-ai",
+  "banner": "https://media.macphun.com/img/uploads/uploads/skylum/l/skylum-com-share-new-min.jpg?q=75",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "haiper-ai": {
+  "url": "https://haiper.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hailuo-ai": {
+  "url": "https://hailuoai.com",
+  "banner": "https://cdn.hailuoai.com/hailuo-video-web/public_assets/favicon.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "steve-ai": {
+  "url": "https://steve.ai",
+  "banner": "https://www.steve.ai/assets/steve-3.0-homepage/steve-3.0-og.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "klap": {
+  "url": "https://klap.app",
+  "banner": "https://klap.app/images/og.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "colossyan": {
+  "url": "https://colossyan.com",
+  "banner": "https://lp-assets.colossyan.com/website-images/images/webflow/68b70a157fca96effa05b9a0-image-38.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tavus": {
+  "url": "https://tavus.io",
+  "banner": "https://cdn.prod.website-files.com/68a3622d17312a5dc16e5cc6/68c726371c9da69ce10a4895_Frame%202147228889.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "d-id": {
+  "url": "https://d-id.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "deepbrain-ai": {
+  "url": "https://deepbrain.io",
+  "banner": "https://cdn.prod.website-files.com/63da3362f67ed6f71c9489c1/69047f747c871f4cbc58dffb_og_AIStudios.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vidyo-ai": {
+  "url": "https://vidyo.ai",
+  "banner": "https://quso.ai/og-home.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vmaker-ai": {
+  "url": "https://vmaker.com",
+  "banner": "https://www.vmaker.com/static/img/vmakerhomenew/ai-home-og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zubtitle": {
+  "url": "https://zubtitle.com",
+  "banner": "https://cdn.prod.website-files.com/628f37915670b51c4608a234/62c2c88559319867d67eddeb_Home.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "deepgram": {
+  "url": "https://deepgram.com",
+  "banner": "https://cdn.sanity.io/images/10fppwnn/production/0418428f854c966e333d3657f13fee40a205f914-1800x945.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "assemblyai": {
+  "url": "https://assemblyai.com",
+  "banner": "https://www.assemblyai.com/_aai/images/meta/og-default.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "cleanvoice-ai": {
+  "url": "https://cleanvoice.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "auphonic": {
+  "url": "https://auphonic.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "soundful": {
+  "url": "https://soundful.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "boomy": {
+  "url": "https://boomy.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "voicemod-ai": {
+  "url": "https://voicemod.net",
+  "banner": "https://www.voicemod.net/new/wp-content/uploads/2024/09/def-feat-e1730565560273.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lovo-ai": {
+  "url": "https://lovo.ai",
+  "banner": "https://lovo.ai/image/lovo-ai.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wellsaid-labs": {
+  "url": "https://wellsaidlabs.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "dubverse": {
+  "url": "https://dubverse.ai",
+  "banner": "https://dubverse.ai/wp-content/uploads/2024/10/Dubverse-AI-Video-Dubbing-Subtitles-TTS-API.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "speechmatics": {
+  "url": "https://speechmatics.com",
+  "banner": "https://images.ctfassets.net/yze1aysi0225/1Pn0orFuPGpHBoOotXoJSD/379b051edad7809a8385daa8bc0d9f4d/SM-Social_sharing_01.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "audo-studio": {
+  "url": "https://audo.ai",
+  "banner": "https://www.audo.ai/lib_viHepyjXusRiJdoN/qvnblswt5hugwocr.png?w=1200&amp;h=630&amp;fit=crop",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "listnr-ai": {
+  "url": "https://listnr.tech",
+  "banner": "https://listnr.ai/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "jetbrains-ai": {
+  "url": "https://jetbrains.com/ai",
+  "banner": "https://resources.jetbrains.com/storage/products/ai/img/meta/ai_solutions_preview.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "qodo": {
+  "url": "https://qodo.ai",
+  "banner": "https://www.qodo.ai/wp-content/uploads/2025/06/social-share-new.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mintlify": {
+  "url": "https://mintlify.com",
+  "banner": "https://www.mintlify.com/_next/static/media/og.28576e75.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "swimm": {
+  "url": "https://swimm.io",
+  "banner": "https://swimm.io/wp-content/uploads/2026/03/OG-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mutableai": {
+  "url": "https://mutable.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gpt-engineer": {
+  "url": "https://gptengineer.app",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "marblism": {
+  "url": "https://marblism.com",
+  "banner": "https://www.marblism.com/images/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "supermaven-ai": {
+  "url": "https://supermaven.com",
+  "banner": "https://supermaven.com/desc-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "clickup-ai": {
+  "url": "https://clickup.com",
+  "banner": "https://clickup.com/assets/brand/clickup-meta.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "asana-intelligence": {
+  "url": "https://asana.com/product/ai",
+  "banner": "https://assets.asana.biz/transform/2cc4a02a-37b4-456d-a661-2444b2835f2b/AWM_hero_static",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "monday-com-ai": {
+  "url": "https://monday.com",
+  "banner": "https://s3.amazonaws.com/general-assets/monday-1200x628.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "miro-ai": {
+  "url": "https://miro.com/ai",
+  "banner": "https://framerusercontent.com/assets/Bab0War93Jeq5MpDPwqKFiyI.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "whimsical-ai": {
+  "url": "https://whimsical.com",
+  "banner": "https://whimsical.com/_next_public/cards/default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "akiflow": {
+  "url": "https://akiflow.com",
+  "banner": "https://framerusercontent.com/assets/4Gxi74kOT8XyoFWliuXnlk3LC4.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "amie": {
+  "url": "https://amie.so",
+  "banner": "https://amie.so/images/meta.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "coda-ai": {
+  "url": "https://coda.io",
+  "banner": "https://sanity-images.imgix.net/production/6b46953798756d87bc1ad579a32d2af427ba6d3d-1200x628.png?w=&amp;auto=format%2Ccompress",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "airtable-ai": {
+  "url": "https://airtable.com",
+  "banner": "https://cdn.sanity.io/images/hlcyrtq5/production/00c20d5108d1335f5a243ddcd70ea4a2d6d9a844-1200x630.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "loom-ai": {
+  "url": "https://loom.com",
+  "banner": "https://cdn.sanity.io/images/pvn35iyy/production/6f62a5ee8e9e6a4a980876e632eb1f58c3125591-2400x1254.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "taskade-ai": {
+  "url": "https://taskade.com",
+  "banner": "https://www.taskade.com/static_images/taskade-genesis-mascot-2026.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "activecampaign-ai": {
+  "url": "https://activecampaign.com",
+  "banner": "https://active-campaign.transforms.svdcdn.com/production/general/AC_Opengraph-1.png?w=1200&amp;h=630&amp;q=82&amp;auto=format&amp;fit=clip&amp;dm=1753306175&amp;s=1b0f698fac52d45ef9b2f8a250d6f8f5",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "klaviyo-email": {
+  "url": "https://klaviyo.com",
+  "banner": "https://www.klaviyo.com/static/klaviyo-social-share-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "omnisend-ai": {
+  "url": "https://omnisend.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "drip-ai": {
+  "url": "https://drip.com",
+  "banner": "https://www.drip.com/hubfs/homepage-og.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "getresponse-ai": {
+  "url": "https://getresponse.com",
+  "banner": "https://us-wn-g.gr-cdn.com/_next/static/media/share.5be0c165.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mailerlite-ai": {
+  "url": "https://mailerlite.com",
+  "banner": "https://www.mailerlite.com/img/containers/assets/SEO/homepage-meta.jpg/a271969696ccb718c1a26ea27c86ef53.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "attentive-ai": {
+  "url": "https://attentive.com",
+  "banner": "https://cdn.prod.website-files.com/684306b795a2c402456e92ba/6a037c0d3dadcc6de287311a_Rebrand-OpenGraphImage_5005x2622.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "smartly-io": {
+  "url": "https://smartly.io",
+  "banner": "https://cdn.prod.website-files.com/67ed4ab7f914accf87aa070c/684dd443a06692292b21e4e1_673caa136abb194c4b51dc8f_Open%20graph%20image_1200x630.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "contentstudio-ai": {
+  "url": "https://contentstudio.io",
+  "banner": "https://contentstudio.io/images/og/home-facebook.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "feedhive": {
+  "url": "https://feedhive.com",
+  "banner": "https://www.feedhive.com/images/og-image.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "socialbee-ai": {
+  "url": "https://socialbee.com",
+  "banner": "https://socialbee.com/wp-content/uploads/2023/11/SocialBee-AI-powered-social-media-management-tool.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hypefury": {
+  "url": "https://hypefury.com",
+  "banner": "https://hypefury.com/wp-content/uploads/2021/02/Try-Hypefury@2x.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vista-social": {
+  "url": "https://vistasocial.com",
+  "banner": "https://vistasocial.com/img/vistasocial-meta.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "metricool-ai": {
+  "url": "https://metricool.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "se-ranking-ai": {
+  "url": "https://seranking.com",
+  "banner": "https://seranking.com/wp-content/uploads/sites/9/2024/09/1200\u0445675.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "growthbar-seo": {
+  "url": "https://growthbarseo.com",
+  "banner": "https://www.seoptimer.com/img/report-preview.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "alli-ai": {
+  "url": "https://alliai.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "moz-pro-ai": {
+  "url": "https://moz.com",
+  "banner": "https://moz.com/images/cms/Moz-OG-Image-2024.jpg?w=800&amp;h=418&amp;q=82&amp;auto=format&amp;fit=crop&amp;dm=1705016118&amp;s=382fa1efdc97cbc624590db812b19882",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "spyfu-ai": {
+  "url": "https://spyfu.com",
+  "banner": "https://cdn1.spyfu.com/dist/img/og/spyfu-og.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "conductor": {
+  "url": "https://conductor.com",
+  "banner": "https://cdn.sanity.io/images/tkl0o0xu/production/7906538f11377cae96cd9e42f8d4ad57216fc6b9-2500x1313.png?fit=min&amp;w=1200&amp;h=629&amp;q=95&amp;fm=jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "looker-ai": {
+  "url": "https://looker.google.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "power-bi-ai": {
+  "url": "https://powerbi.microsoft.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "heap-ai": {
+  "url": "https://heap.io",
+  "banner": "https://images.ctfassets.net/jicu8fwm4fvs/57SlD3uXZskS7cHKEOwGEm/793173d449f782f05fad3531ee05a1a5/heap-logo-social-twitter-1200x675__2_.png?w=1200&amp;h=627&amp;fit=fill&amp;q=60&amp;fm=jpg&amp;fl=progressive",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fullstory-ai": {
+  "url": "https://fullstory.com",
+  "banner": "https://images.ctfassets.net/dkgr2j75jrom/fPDyljfB4mKO28pNT4XX2/e3c10932a4335a3b50d6b49fefc846f6/HP_-_OG_image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hotjar-ai": {
+  "url": "https://hotjar.com",
+  "banner": "https://images.ctfassets.net/lh3zuq09vnm2/zsJe5ujXWMeNJScarO5jX/92ee747a96ef4a5998f9a1b10b2bb737/hotjar_og_image_Jul22.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "microsoft-clarity": {
+  "url": "https://clarity.microsoft.com",
+  "banner": "https://clarity.microsoft.com/static/Facebook_og_image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "triple-whale": {
+  "url": "https://triplewhale.com",
+  "banner": "https://cdn.prod.website-files.com/61bcbae3ae2e8ee49aa790b0/69fe42044dbb3f62b7434395_tw-logo.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "supermetrics-ai": {
+  "url": "https://supermetrics.com",
+  "banner": "https://cdn.sanity.io/images/8ly2m84z/production-2025/eee7774699fe786de151ef9785e5392dc2da9d5a-3840x2160.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "databox-ai": {
+  "url": "https://databox.com",
+  "banner": "https://cdnwebsite.databox.com/wp-content/uploads/2026/04/13063752/databox-ai-powered-analytics-preview.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "visily-ai": {
+  "url": "https://visily.ai",
+  "banner": "https://www.visily.ai/wp-content/uploads/2025/08/OG-1-1.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "galileo-ai": {
+  "url": "https://usegalileo.ai",
+  "banner": "https://app-companion-430619.appspot.com/static/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "meshy-ai": {
+  "url": "https://meshy.ai",
+  "banner": "https://cdn.meshy.ai/landing-assets/og-images/website_og.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "spline-ai": {
+  "url": "https://spline.design",
+  "banner": "https://spline.design/_next/static/media/spline_image_banner.77c2eb63.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "scenario-ai": {
+  "url": "https://scenario.com",
+  "banner": "https://www.scenario.com/opengraph-image-pwu6ef?07536303fb3f8627",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rive-ai": {
+  "url": "https://rive.app",
+  "banner": "https://framerusercontent.com/images/yEWMbP7UtsS81SlkoxTasfabvc.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "undermind": {
+  "url": "https://undermind.ai",
+  "banner": "https://www.undermind.ai/share-card.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "paperpal": {
+  "url": "https://paperpal.com",
+  "banner": "https://cdn.paperpal.com/assets/images/paperpal-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "sourcely": {
+  "url": "https://sourcely.net",
+  "banner": "https://www.sourcely.net/opengraph-image.png?c4fda2ac15184397",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "greenhouse-ai": {
+  "url": "https://greenhouse.io",
+  "banner": "https://cdn.prod.website-files.com/6668a687e71e2722fccb8357/6838cce6a2c87094baa9dfd6_Web-Home-SEO-clusters-of-three-workflows-with-photos-of-people-working-together-and-UI.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ashby-hr": {
+  "url": "https://ashbyhq.com",
+  "banner": "https://www.ashbyhq.com/og/default.png?v5",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "manatal-ai": {
+  "url": "https://manatal.com",
+  "banner": "https://cdn.prod.website-files.com/627cdcca8bc0d25e49b26705/6295e3ad41b00fa13ed32a19_pipe.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fetcher-ai": {
+  "url": "https://fetcher.ai",
+  "banner": "https://fetcher.ai/_next/static/media/fetcher.ai-opengraph-1200x630.4e6dbc31.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "seekout-ai": {
+  "url": "https://seekout.io",
+  "banner": "https://app.seekout.io/seekout_og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bamboohr-ai": {
+  "url": "https://bamboohr.com",
+  "banner": "https://www.bamboohr.com/media_115e701ac04beaf329bff3e3855a6c76267d2b007.png?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rippling-ai": {
+  "url": "https://rippling.com",
+  "banner": "https://images.ctfassets.net/k0itp0ir7ty4/3kY0HlA6r398ZS1hLhq2Pf/5da93caeafeaef92645161efe8759827/SEO_-_General_blank.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lattice-ai": {
+  "url": "https://lattice.com",
+  "banner": "https://cdn.prod.website-files.com/64ad6f1aef87635bd23449f1/681d1463b7130290651a6126_og-lattice.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "leapsome-ai": {
+  "url": "https://leapsome.com",
+  "banner": "https://cdn.prod.website-files.com/5f55ff47b6d23a0bb0496a65/67210ccd80357065a7b9db3f_Homepage_Social_Preview_01.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "15five-ai": {
+  "url": "https://15five.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "brex-ai": {
+  "url": "https://brex.com",
+  "banner": "https://www.brex.com/api/proxy-image?url=https%3A%2F%2Fbrand.brex.com%2Ftransform%2F7b10bdf8-ed31-4a40-8429-c9fe54f83aa5%2FHomepage-preview%3Fio%3Dtransform%3Afit%2Cwidth%3A1200",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ramp-ai": {
+  "url": "https://ramp.com",
+  "banner": "https://next.ramp.com/assets/images/default-og-image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bill-ai": {
+  "url": "https://bill.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "stampli-ai": {
+  "url": "https://stampli.com",
+  "banner": "https://www.stampli.com/wp-content/uploads/2026/05/Stampli-Social-Card-2026-alt1v3.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "navan-ai": {
+  "url": "https://navan.com",
+  "banner": "https://images.ctfassets.net/r49k2skuorjz/6FIv7ITxTTSkfATgwmVUN6/d991df51e415434ccd32ca0c609a6a3d/Share-image.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mercury-ai": {
+  "url": "https://mercury.com",
+  "banner": "https://www.datocms-assets.com/115132/1746056008-2025-04-30_fem_homepage-social_1200x630.webp?auto=format&amp;fit=crop&amp;w=1200",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "freshbooks-ai": {
+  "url": "https://freshbooks.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "quickbooks-ai": {
+  "url": "https://quickbooks.intuit.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "trullion-ai": {
+  "url": "https://trullion.com",
+  "banner": "https://trullion.com/wp-content/uploads/2026/02/meta-cover-website.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "harvey-ai": {
+  "url": "https://harvey.ai",
+  "banner": "https://cdn.sanity.io/images/07s0r5r6/production/9a4b2e0eec438fb56057db128a11ade2c04c01cf-2400x1260.png?fm=jpg&amp;q=95&amp;dpr=2",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "casetext-ai": {
+  "url": "https://casetext.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "spellbook-ai": {
+  "url": "https://spellbook.legal",
+  "banner": "https://cdn.prod.website-files.com/66fc4a00d70e086034b6699f/673fa3324b6c0b26078d4620_open-graph-screen.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ironclad-ai": {
+  "url": "https://ironcladapp.com",
+  "banner": "https://ironcladapp.com/wp-content/uploads/2025/07/IC_ShareImage_Plain-1.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "luminance": {
+  "url": "https://luminance.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "evisort-ai": {
+  "url": "https://evisort.com",
+  "banner": "https://www.workday.com/content/dam/web/en-us/images/social/workday-og-theme.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "juro-ai": {
+  "url": "https://juro.com",
+  "banner": "https://cdn.prod.website-files.com/612c95056c9d4b399ddfd2ef/681b76bdf3051d222fd5d9cc_photo_2025-05-07_18-05-20.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "klarity-ai": {
+  "url": "https://klaritylaw.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ada-health": {
+  "url": "https://ada.com",
+  "banner": "https://ada.com/social-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "nabla-copilot": {
+  "url": "https://nabla.com",
+  "banner": "https://www-assets.nabla.com/photos/Previews/Nabla%20AI%20assistant-89a78f9cc794.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "suki-ai": {
+  "url": "https://suki.ai",
+  "banner": "https://cdn.sanity.io/images/ofbc1rsx/production/ae8028e861b9948400830b17e630c92f8531481e-1200x630.jpg?w=1200&amp;h=630&amp;max-h=3840&amp;max-w=3840&amp;q=85&amp;fit=crop&amp;auto=format",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "abridge-ai": {
+  "url": "https://abridge.com",
+  "banner": "https://cdn.prod.website-files.com/6279c9d10eb860662e5ec006/665f41408181f8fdda5f1e7e_abridge-opengraph-home.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "nuance-dax": {
+  "url": "https://nuance.com/healthcare",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "corti-ai": {
+  "url": "https://corti.ai",
+  "banner": "https://cdn.prod.website-files.com/679910de24e675a93f045f3b/6981c7f01bdf91be71d560cb_og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "shopify-magic": {
+  "url": "https://shopify.com/magic",
+  "banner": "https://cdn.shopify.com/b/shopify-brochure2-assets/c506a8ff7950cfc9e9bc376119792be2.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "yotpo-ai": {
+  "url": "https://yotpo.com",
+  "banner": "https://www.yotpo.com/wp-content/uploads/2024/02/SEO-HP@2x-1024x536.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rebuy-ai": {
+  "url": "https://rebuyengine.com",
+  "banner": "https://www.rebuyengine.com/hubfs/Homepage%20_%20Open%20Graph.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "limespot-ai": {
+  "url": "https://limespot.io",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "privy-ai": {
+  "url": "https://privy.com",
+  "banner": "https://cdn.sanity.io/images/6xiedbds/production/8a2f0a82aa90abfd1cf334a716c4cca1c968993b-2400x1260.png?w=1200&amp;fit=max&amp;auto=format",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "smsbump": {
+  "url": "https://smsbump.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tapcart-ai": {
+  "url": "https://tapcart.com",
+  "banner": "https://cdn.prod.website-files.com/616f0a7a027baaf59a43390b/693886b1460be74c44ae2eca_Open%20graphic%20home.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "reply-io": {
+  "url": "https://reply.io",
+  "banner": "https://reply.io/wp-content/uploads/OG-Image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "amplemarket-ai": {
+  "url": "https://amplemarket.com",
+  "banner": "https://cdn.prod.website-files.com/6350808bc45bd0c902af10e6/671bb77ae2ed5e51f8dcae2b_e05a75f5cee34196fe6f70e9d7f57d31_am-opengraph-v2.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "woodpecker-ai": {
+  "url": "https://woodpecker.co",
+  "banner": "https://woodpecker.co/wp-content/uploads/2026/06/Woodpecker-homepage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "klenty-ai": {
+  "url": "https://klenty.com",
+  "banner": "https://www.klenty.com/images/ogImage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "seamless-ai": {
+  "url": "https://seamless.ai",
+  "banner": "https://cdn.prod.website-files.com/62226180d38a78472cd35dd2/698a4de6ea5c3c3eaa59b2d5_2026-01_Open-Graph_Generic_Dark.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lusha-ai": {
+  "url": "https://lusha.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hunter-io": {
+  "url": "https://hunter.io",
+  "banner": "https://hunter.io/assets/default-DZUisU9p.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "snov-io": {
+  "url": "https://snov.io",
+  "banner": "https://snov.io/images/og/index-new.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "saleshandy-ai": {
+  "url": "https://saleshandy.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "qualified-ai": {
+  "url": "https://qualified.com",
+  "banner": "https://cdn.prod.website-files.com/5bf5b410e2ba0f030f3e22cd/69cd6abca0a78e5347ae79f9_social%20(12).webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "drift-ai": {
+  "url": "https://drift.com",
+  "banner": "https://images.contentstack.io/v3/assets/blt48e9deb40787970b/blt281bdf2aabcc2720/65ae971bbad37d320b9e0f1c/meta-salesloft.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ada-ai": {
+  "url": "https://ada.cx",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "yuma-ai": {
+  "url": "https://yuma.ai",
+  "banner": "https://yuma.ai/opengraph-image",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "forethought-ai": {
+  "url": "https://forethought.ai",
+  "banner": "https://cdn.prod.website-files.com/67d3f59af6cbe778200469c9/681a74099404ef925e8b2f96_c91f6d150d01433062a41af94ea0ddee_FT%20OG.avif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kustomer-ai": {
+  "url": "https://kustomer.com",
+  "banner": "https://www.kustomer.com/images/kustomer/og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "livechat-ai": {
+  "url": "https://livechat.com",
+  "banner": "https://www.livechat.com/og-image.c0c23c8b3f4c7fe5838f696d5259554584bb8d420649997c2c89d9213bdf1513.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "netomi-ai": {
+  "url": "https://netomi.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gorgias-ai": {
+  "url": "https://gorgias.com",
+  "banner": "https://cdn.prod.website-files.com/5e4ff204e7b6f80e402d407a/67dc2aaa397e7fd64e08d315_Homepage%20Thumbnail.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "helpshift-ai": {
+  "url": "https://helpshift.com",
+  "banner": "https://www.helpshift.com/wp-content/uploads/2026/03/Helpshift_OG.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fireworks-ai": {
+  "url": "https://fireworks.ai",
+  "banner": "https://cdn.sanity.io/images/pv37i0yn/production/c33db052f8afd1af58bc0342cf8ce06cbeb84467-600x314.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "modal": {
+  "url": "https://modal.com",
+  "banner": "https://modal.com/assets/social-image-4.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pinecone": {
+  "url": "https://pinecone.io",
+  "banner": "https://www.pinecone.io/api/og/?title=The+vector+database+for&amp;highlight=scale+in+production&amp;alignment=center",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "weaviate": {
+  "url": "https://weaviate.io",
+  "banner": "https://weaviate.io/og/website/home.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "qdrant": {
+  "url": "https://qdrant.tech",
+  "banner": "https://qdrant.tech/images/social_preview.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "voyage-ai": {
+  "url": "https://voyageai.com",
+  "banner": "https://www.voyageai.com/share2.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "cerebras": {
+  "url": "https://cerebras.ai",
+  "banner": "https://cdn.sanity.io/images/e4qjo92p/production/21fa43f6d541115e57887beb1155bddc7541ae71-2400x1260.jpg?w=1200&amp;h=630&amp;fit=max&amp;auto=format",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lambda-labs": {
+  "url": "https://lambdalabs.com",
+  "banner": "https://lambda.ai/hubfs/OPENGRAPH%20-%20Main-1.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "haystack-ai": {
+  "url": "https://haystack.deepset.ai",
+  "banner": "https://haystack.deepset.ai/images/haystack-ogimage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "nomic-ai": {
+  "url": "https://nomic.ai",
+  "banner": "https://www.nomic.ai/images/og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bubble-ai": {
+  "url": "https://bubble.io",
+  "banner": "https://meta-q.cdn.bubble.io/cdn-cgi/image/w=,h=,f=auto,dpr=1,fit=contain/f1762463484754x595287411041153000/Bubbleio%20opengraph.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "flutterflow-ai": {
+  "url": "https://flutterflow.io",
+  "banner": "https://www.flutterflow.io/social-share.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "glide-ai": {
+  "url": "https://glideapps.com",
+  "banner": "https://www.glideapps.com/opengraph-image-1udkml.jpg?opengraph-image.17dzzryfiu_y8.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "softr-ai": {
+  "url": "https://softr.io",
+  "banner": "https://cdn.prod.website-files.com/6772e8855f7859bc8df95c78/69cb9d33b244d44a7d3d428c_AI%20Launch%20Image.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "weweb-ai": {
+  "url": "https://weweb.io",
+  "banner": "https://cdn.prod.website-files.com/62e9199d4976608473849e5a/6847ea4ecd327bbabf972aef_weweb-apps.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "retool-ai": {
+  "url": "https://retool.com",
+  "banner": "https://retool-dot-com.s3.us-west-2.amazonaws.com/page-assets/homepage/homepage-meta-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "xano-ai": {
+  "url": "https://xano.com",
+  "banner": "https://www.xano.com/assets/img/og/og.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zoho-zia": {
+  "url": "https://zoho.com/crm/ai-sales-assistant.html",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "folk-ai-crm": {
+  "url": "https://folk.app",
+  "banner": "https://cdn.prod.website-files.com/626be00c396339c5a816353b/677e4924b4b4eb32886d59ca_Open-graph.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "smartsheet-ai": {
+  "url": "https://smartsheet.com",
+  "banner": "https://www.smartsheet.com/sites/default/files/2024-10/smartsheet-og-teaser-image-dusk-on-light.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lindy-ai": {
+  "url": "https://lindy.ai",
+  "banner": "https://cdn.prod.website-files.com/63e15df811f9df22b231e58f/69a20da89a23a65ce1b211c3_Lindy%20OG.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zapier-ai": {
+  "url": "https://zapier.com/ai",
+  "banner": "https://res.cloudinary.com/zapier-media/image/upload/q_auto/f_auto/v1776210704/Governance/og-image-ai_mroshs.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "glean-ai": {
+  "url": "https://glean.com",
+  "banner": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/6a32d8d3a0ba8d6de9564470_Homepage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "guru-ai": {
+  "url": "https://getguru.com",
+  "banner": "https://cdn.prod.website-files.com/5d8d029013ffd80bbb91320d/6931c149b46c659b76ebbde5_OG_Nov-2025%402x.avif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tettra-ai": {
+  "url": "https://tettra.com",
+  "banner": "https://tettra.com/wp-content/uploads/2023/12/tettra-social-graph.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "trainual-ai": {
+  "url": "https://trainual.com",
+  "banner": "https://cdn.prod.website-files.com/61aa482275701e897156da77/68a5fd9ea9ca647ae2674e56_trainual-og-thumbnail.avif",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "replit-agent": {
+  "url": "https://replit.com/ai",
+  "banner": "https://cdn.sanity.io/images/bj34pdbp/migration/f957e195237fea65362557c1d7d299df89f5348d-1200x650.jpg?auto=format&amp;q=75&amp;w=1200&amp;format=png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elpass-ai": {
+  "url": "https://elpass.app",
+  "banner": "https://elpass.app/v2/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lumalabs-ai": {
+  "url": "https://lumalabs.ai",
+  "banner": "https://cdn.sanity.io/images/2ylxvaa2/production/ff7469d468f6f7e447ccb4a50276f1cb03c6664d-1200x630.jpg?w=1200&amp;h=630&amp;fm=jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vapi-ai": {
+  "url": "https://vapi.ai",
+  "banner": "https://vapi.ai/opengraph-image.png?opengraph-image.0dryxzls5gf-2.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bland-ai": {
+  "url": "https://bland.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "perplexity-labs": {
+  "url": "https://perplexity.ai/labs",
+  "banner": "https://framerusercontent.com/assets/qW7FkHg05HT8I3sjOq7n4bYMk.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "notion-calendar": {
+  "url": "https://calendar.notion.so",
+  "banner": "https://calendar.notion.so/notion-calendar-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "relay-app": {
+  "url": "https://relay.app",
+  "banner": "https://framerusercontent.com/images/0G1NyBSFSQsxjO6wG14LjRiMbmc.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "respell-ai": {
+  "url": "https://respell.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pabbly-connect-ai": {
+  "url": "https://pabbly.com/connect",
+  "banner": "https://www.pabbly.com/wp-content/uploads/2024/01/Pabbly-Connect.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "albato": {
+  "url": "https://albato.com",
+  "banner": "https://albato.com/images/previews/en/embedded-ai.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tally-forms-ai": {
+  "url": "https://tally.so",
+  "banner": "https://tally.so/images/og.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fillout-ai": {
+  "url": "https://fillout.com",
+  "banner": "https://static.fillout.com/fillout-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "formsort-ai": {
+  "url": "https://formsort.com",
+  "banner": "https://formsort.com/formsort-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "laxis-ai": {
+  "url": "https://laxis.com",
+  "banner": "https://cdn.prod.website-files.com/64c8fd7a9618c26a4378702d/66bb8aae3e69d4d86adee695_%5BSECTION%5D--Frame%2048047.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "avoma-ai": {
+  "url": "https://avoma.com",
+  "banner": "https://cdn.prod.website-files.com/5de236b4d41434460ade73ac/675b1cc5e923eddc26d5aa07_Og%20Image.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tl-dv-ai": {
+  "url": "https://tldv.io",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "fathom-ai": {
+  "url": "https://fathom.video",
+  "banner": "https://cdn.prod.website-files.com/6899da9beccbdbe92be49b5d/68f20f5cd1c6d0de365b8849_Fathom-Visual_Identity_Concepts-Stage_07-Website_Thumbnail-01.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "notta-ai": {
+  "url": "https://notta.ai",
+  "banner": "https://www.notta.ai/pictures/en-home-page-image-202408211723.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "reflect-ai": {
+  "url": "https://reflect.app",
+  "banner": "https://site.reflect.app/home/build/q-11289093.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "anytype-ai": {
+  "url": "https://anytype.io",
+  "banner": "https://anytype.io/ogimage.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "saga-ai": {
+  "url": "https://saga.so",
+  "banner": "https://saga.so/saga-thumbnail.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elicit-ai": {
+  "url": "https://elicit.com",
+  "banner": "https://framerusercontent.com/images/s7irwYwOOfdSFu6EPduaB8EDsIg.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "consensus-ai": {
+  "url": "https://consensus.app",
+  "banner": "https://consensus.app/images/og-default.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "clearbit-ai": {
+  "url": "https://clearbit.com",
+  "banner": "https://clearbit.com/sharing/social-share-2.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "6sense-ai": {
+  "url": "https://6sense.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "zoominfo-ai": {
+  "url": "https://zoominfo.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "chili-piper-ai": {
+  "url": "https://chilipiper.com",
+  "banner": "https://cdn.prod.website-files.com/61c9fe00acd90d7271f7014e/63d3ced9ad95e57120cd4d8b_Website-Default-Thumnail.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "salesloft-ai": {
+  "url": "https://salesloft.com",
+  "banner": "https://images.contentstack.io/v3/assets/blt48e9deb40787970b/blt2607f8a7de21821c/6584c4c54135c43708568254/salesloft-meta-graphic.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "chorus-ai": {
+  "url": "https://chorus.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "outreach-kaia": {
+  "url": "https://outreach.io/kaia",
+  "banner": "https://cdn.prod.website-files.com/696ea7504e736c595e9a2313/69a5ef938abb3b562ab745e3_64e82f81f73bfb9fd94919d53cd1862b_amp-up-revenue.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "regie-ai": {
+  "url": "https://regie.ai",
+  "banner": "https://cdn.prod.website-files.com/6595d530bcf001adceb21212/65ac11d7e7f9caa582bcc887_og%20img.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "neverinstall": {
+  "url": "https://neverinstall.com",
+  "banner": "https://neverinstall.com/cdn-cgi/imagedelivery/AvFws3zK3WPu5k1TtWLA1A/images/og/main-og-image.png/public",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tana-ai": {
+  "url": "https://tana.inc",
+  "banner": "https://tana.inc/opengraph-image/default?93ca01e1efb16d88",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "heights-platform-ai": {
+  "url": "https://heightsplatform.com",
+  "banner": "https://uploads.heightsplatform.com/static/Heights-Platform-Social-og.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "teachable-ai": {
+  "url": "https://teachable.com",
+  "banner": "https://cdn.prod.website-files.com/687904fb2b26c434698c47e9/68f7dd90eed5bf0a9cb37cd1_teachable-og-main.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "thinkific-ai": {
+  "url": "https://thinkific.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "podia-ai": {
+  "url": "https://podia.com",
+  "banner": "https://cdn.sanity.io/images/f6u8j0m2/production/cd66d39c97c89b457840f964d1e3dfd192d6c31c-5760x3843.png?w=1200&amp;q=90&amp;fit=max&amp;auto=format",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kajabi-ai": {
+  "url": "https://kajabi.com",
+  "banner": "https://cdn.prod.website-files.com/693317e747432cd054b3bdc6/6945afe48a3d5c04269841e5_LOGO.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "stan-ai": {
+  "url": "https://stan.store",
+  "banner": "https://assets.stanwith.me/graphics/stan-url-preview.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gumroad-ai": {
+  "url": "https://gumroad.com",
+  "banner": "https://assets.gumroad.com/images/opengraph_image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "beacons-ai": {
+  "url": "https://beacons.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kleo-ai": {
+  "url": "https://kleo.so",
+  "banner": "https://cdn.prod.website-files.com/69607e83cc9c94cbf1739b41/6972849379ea6779fc319079_WhatsApp%20Image%202026-01-22%20at%2021.00.45.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "tribescaler": {
+  "url": "https://tribescaler.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "authoredup": {
+  "url": "https://authoredup.com",
+  "banner": "https://cdn.prod.website-files.com/6526c17b5fa3bc01030d024f/657b752236bb1b5c792e57b3_OpenGraphimg.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "loomly-ai": {
+  "url": "https://loomly.com",
+  "banner": "https://cdn-web.loomly.com/hubfs/Featured%20image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "publer-ai": {
+  "url": "https://publer.com",
+  "banner": "https://framerusercontent.com/assets/20xDElBhD9Xg3L7Cx7jVMwL56FU.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ocoya-ai": {
+  "url": "https://ocoya.com",
+  "banner": "https://framerusercontent.com/images/klkIdeaU0FueLSw2b6L1NS3wRbM.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pallyy-ai": {
+  "url": "https://pallyy.com",
+  "banner": "https://pallyy.com/__og-image__/static/og.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "brand24-ai": {
+  "url": "https://brand24.com",
+  "banner": "https://brand24.com/app/themes/b24/assets/v4/images/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "talkwalker-ai": {
+  "url": "https://talkwalker.com",
+  "banner": "https://www.talkwalker.com/images/social-preview-tw.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "mention-ai": {
+  "url": "https://mention.com",
+  "banner": "https://mention.com/wp-content/uploads/2023/12/mention.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "podcastle-ai": {
+  "url": "https://podcastle.ai",
+  "banner": "https://m.podcastle.ai/og/async-og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "riverside-ai": {
+  "url": "https://riverside.fm",
+  "banner": "https://cdn.prod.website-files.com/5f996b22b00afe35a55e6f79/67f92c5268b90dfee63e3719_social-share.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "descript-ai": {
+  "url": "https://descript.com",
+  "banner": "https://cdn.builder.io/api/v1/image/assets%2Ffcea5005d671451e9b07839c893228d0%2Fb1cf2c175fbe4a028dff4622ee1ce727",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elai-io": {
+  "url": "https://elai.io",
+  "banner": "https://elai.io/wp-content/uploads/2025/07/medal__8_.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "canva-ai-video": {
+  "url": "https://canva.com/video",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "lumen5-ai": {
+  "url": "https://lumen5.com",
+  "banner": "https://cdn.lumen5.com/lumen5-site-images/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "pictory-ai": {
+  "url": "https://pictory.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "heygen-ai": {
+  "url": "https://heygen.com",
+  "banner": "https://cdn.sanity.io/images/pdhqcmb1/production/579e83ff34c4c832744efaedb9681d255e58dc13-1200x630.png?fit=max&amp;fm=png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "submagic-ai": {
+  "url": "https://submagic.co",
+  "banner": "https://cdn.prod.website-files.com/6469e2294ac68c3d5caea327/67582fde54b44b92ce325aa3_Submagic%20-%20Link%20Thumbnail%402x.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "arcads-ai": {
+  "url": "https://arcads.ai",
+  "banner": "https://cdn.prod.website-files.com/685001cf708232477ed43d3f/690d3cf1d1d846c515a2c5fd_OG.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "vidnoz-ai": {
+  "url": "https://vidnoz.com",
+  "banner": "https://www.vidnoz.com/img/indexNew/banner.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rendernet-ai": {
+  "url": "https://rendernet.ai",
+  "banner": "https://affogato.ai/opengraph-image?f5d6892a9685c2f7",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "krea-canvas": {
+  "url": "https://krea.ai",
+  "banner": "https://s.krea.ai/KreaOpenGraph2.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "nightcafe-ai": {
+  "url": "https://nightcafe.studio",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "seaart-ai": {
+  "url": "https://seaart.ai",
+  "banner": "https://image.cdn2.seaart.me/static/images/seaart.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "ideogram-ai": {
+  "url": "https://ideogram.ai",
+  "banner": "https://storage.googleapis.com/ideogram-static/website/images/ba16d402d8d0b906.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "wombo-dream": {
+  "url": "https://dream.ai",
+  "banner": "https://dream.ai/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "rows-ai": {
+  "url": "https://rows.com",
+  "banner": "https://rows.com/_next/static/chunks/media/images/share.b1a7b2709519894.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "browse-ai": {
+  "url": "https://browse.ai",
+  "banner": "https://www.browse.ai/static/browseai-home-og-249b1c28b522385cde75740c534a5b85.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "read-ai": {
+  "url": "https://read.ai",
+  "banner": "https://readai-assets-production.s3.us-east-1.amazonaws.com/readai_images/Instant_Meeting_Summary.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "dovetail": {
+  "url": "https://dovetail.com",
+  "banner": "https://dovetail.com/media/Social_Meta1.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "smartlead": {
+  "url": "https://smartlead.ai",
+  "banner": "https://all-blog-assets.s3.ap-southeast-2.amazonaws.com/og/Smartlead-banner.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "command-center": {
+  "url": "https://commandcenter.dev",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "intuned": {
+  "url": "https://intuned.io",
+  "banner": "https://intunedhq.com/og-image.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "goldcast": {
+  "url": "https://goldcast.io",
+  "banner": "https://www.goldcast.io/www.goldcast.io/images/og-images/homepage.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hyper": {
+  "url": "https://hyper.co",
+  "banner": "https://whop.com/_static/network/og.jpg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "bitboard": {
+  "url": "https://bitboard.co",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "kikubot": {
+  "url": "https://kikubot.com",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "viggle": {
+  "url": "https://viggle.ai",
+  "banner": "https://assets.viggle.ai/pub/20241016-135707.jpeg",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elevenlabs-reader": {
+  "url": "https://reader.elevenlabs.io",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "afforai": {
+  "url": "https://afforai.com",
+  "banner": "https://logically.app/og_logically.png",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "napkin-ai": {
+  "url": "https://napkin.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "turboscribe": {
+  "url": "https://turboscribe.ai",
+  "banner": null,
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "hix-ai": {
+  "url": "https://hix.ai",
+  "banner": "https://hix.ai/cdn/public/images/hix-ai.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "elevenlabs-dubbing": {
+  "url": "https://elevenlabs.io/dubbing",
+  "banner": "https://eleven-public-cdn.elevenlabs.io/payloadcms/dbikahhxtf-Dubbing%20OG.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "gumloop": {
+  "url": "https://gumloop.com",
+  "banner": "https://gumloop.com/images/link-preview.webp",
+  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ }
+}

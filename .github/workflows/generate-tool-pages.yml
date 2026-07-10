@@ -44,7 +44,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install anthropic
+        run: pip install anthropic requests
+
+      - name: Fetch tool marketing banners (og:image)
+        run: python .github/scripts/fetch_tool_banners.py
 
       - name: Generate tool pages
         env:
@@ -55,7 +58,7 @@ jobs:
         run: |
           git config user.email "bot@myaitoolsfinder.com"
           git config user.name "My AI Tools Finder Bot"
-          git add tools/ sitemap.xml .github/scripts/tool_story_cache.json
+          git add tools/ sitemap.xml .github/scripts/tool_story_cache.json .github/scripts/tool_banner_cache.json
           if git diff --staged --quiet; then
             echo "No tool page changes."
           else

@@ -47,6 +47,7 @@ ARTICLES_DIR = ROOT / "articles"
 TOOLS_DIR = ROOT / "tools"
 SITEMAP = ROOT / "sitemap.xml"
 STORY_CACHE_PATH = Path(__file__).resolve().parent / "tool_story_cache.json"
+BANNER_CACHE_PATH = Path(__file__).resolve().parent / "tool_banner_cache.json"
 BASE = "https://myaitoolsfinder.com"
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 
@@ -220,8 +221,14 @@ nav{{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(
 .wrap{{max-width:820px;margin:0 auto;padding:88px 20px 80px;}}
 .breadcrumb{{font-size:12.5px;color:var(--text-dim);margin-bottom:20px;}}
 .breadcrumb a{{color:var(--primary);}}
-.hero{{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px;}}
-.tool-logo{{width:64px;height:64px;border-radius:16px;flex-shrink:0;object-fit:cover;background:var(--surface);border:1px solid var(--border-soft);box-shadow:0 4px 14px rgba(26,86,219,.1);}}
+.hero{{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px;position:relative;min-height:64px;}}
+.tool-logo{{width:64px;height:64px;border-radius:16px;flex-shrink:0;object-fit:cover;background:var(--surface);border:1px solid var(--border-soft);box-shadow:0 4px 14px rgba(26,86,219,.1);position:relative;z-index:1;}}
+.hero>div{{position:relative;z-index:1;}}
+.hero-banner{{position:absolute;top:-8px;right:0;bottom:-8px;width:340px;max-width:55%;object-fit:cover;object-position:center;
+  -webkit-mask-image:linear-gradient(to right,transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 100%);
+  mask-image:linear-gradient(to right,transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 100%);
+  border-radius:18px;pointer-events:none;z-index:0;}}
+@media(max-width:700px){{.hero-banner{{display:none;}}}}
 h1{{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--text);margin-bottom:8px;}}
 .cat-pill{{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);background:var(--primary-light);padding:4px 11px;border-radius:999px;}}
 .ratings-row{{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0;font-size:13.5px;color:var(--text-2);}}
@@ -302,6 +309,7 @@ footer a{{color:var(--primary);}}
   <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="../index.html#tools">AI Tools</a> &rsaquo; <a href="../index.html#tools">{cat}</a> &rsaquo; {name}</div>
 
   <div class="hero">
+    {hero_banner_html}
     <img class="tool-logo" src="{favicon}" alt="{name}" loading="eager" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain={domain_enc}&sz=128'">
     <div>
       <span class="cat-pill">{cat}</span>
@@ -487,6 +495,18 @@ def save_story_cache(cache: dict):
     STORY_CACHE_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def load_banner_cache() -> dict:
+    """Tool homepage og:image URLs, fetched separately by fetch_tool_banners.py
+    (needs network access this script doesn't require otherwise). Missing file
+    or missing entries just mean no banner renders — never a hard failure."""
+    if BANNER_CACHE_PATH.exists():
+        try:
+            return json.loads(BANNER_CACHE_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
 def build_fallback_story(t, is_free: bool) -> str:
     """Templated version used when ANTHROPIC_API_KEY isn't set or the API
     call fails. Deliberately plain — the real narrative comes from Claude;
@@ -640,10 +660,15 @@ def get_story_html(t, is_free: bool, cache: dict) -> str:
     return build_fallback_story(t, is_free)
 
 
-def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
+def build_page(t, all_tools, tools_by_cat, articles_index, story_cache, banner_cache=None):
     name = t["name"]
     slug = slugify(name)
     domain = t.get("domain", "")
+    banner_url = (banner_cache or {}).get(slug, {}).get("banner") or ""
+    hero_banner_html = (
+        f'<img class="hero-banner" src="{esc(banner_url)}" alt="" loading="lazy" onerror="this.remove()">'
+        if banner_url else ""
+    )
     cat = t.get("cat", "AI Tool")
     tag = t.get("tag", "")
     pill = t.get("pill", "")
@@ -810,6 +835,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
         cat=esc(cat),
         favicon=favicon,
         domain_enc=domain.replace("&", "%26"),
+        hero_banner_html=hero_banner_html,
         ratings_row=ratings_row,
         pill=esc(pill),
         tag=esc(tag),
@@ -861,6 +887,7 @@ def main():
     print(f"[INFO] Indexed {len(articles_index)} real articles for related-content matching")
 
     story_cache = load_story_cache()
+    banner_cache = load_banner_cache()
     if not ANTHROPIC_API_KEY:
         print("[WARN] ANTHROPIC_API_KEY not set — 'Should You Actually Use This?' sections "
               "will use the plain templated fallback instead of Claude-written stories.")
@@ -874,7 +901,7 @@ def main():
             continue  # skip dupes/blank names defensively
         seen_slugs.add(slug)
         slugs.append(slug)
-        html = build_page(t, tools, tools_by_cat, articles_index, story_cache)
+        html = build_page(t, tools, tools_by_cat, articles_index, story_cache, banner_cache)
         (TOOLS_DIR / f"{slug}.html").write_text(html, encoding="utf-8")
         written += 1
         if written % 25 == 0:
