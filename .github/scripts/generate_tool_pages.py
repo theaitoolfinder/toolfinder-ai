@@ -144,6 +144,16 @@ def esc(s: str) -> str:
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 
+_STAR_FILLED = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" style="vertical-align:-2px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'
+_STAR_EMPTY = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5" style="vertical-align:-2px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'
+
+
+def star_icons_html(rating: float) -> str:
+    """5 real SVG star icons (filled/outline), not Unicode ★/☆ glyphs."""
+    full = round(rating)
+    return (_STAR_FILLED * full) + (_STAR_EMPTY * (5 - full))
+
+
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -203,7 +213,8 @@ h1{{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.02em;line-he
 .btn-primary{{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 6px 20px rgba(26,86,219,.32);}}
 .btn-secondary{{display:inline-flex;align-items:center;gap:7px;padding:13px 22px;border-radius:12px;background:var(--surface);color:var(--text);font-weight:600;font-size:14px;border:1.5px solid var(--border);}}
 section.block{{margin:32px 0;}}
-section.block h2{{font-size:19px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.01em;}}
+section.block h2{{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.01em;}}
+section.block h2 svg{{flex-shrink:0;color:var(--primary);}}
 .chip-list{{display:flex;flex-wrap:wrap;gap:8px;}}
 .chip{{font-size:13px;color:var(--text-2);background:var(--surface);border:1.5px solid var(--border-soft);padding:7px 14px;border-radius:999px;}}
 .faq-item{{border-bottom:1px solid var(--border-soft);padding:16px 0;}}
@@ -292,7 +303,7 @@ footer a{{color:var(--primary);}}
   {needs_block}
 
   <section class="block">
-    <h2>Should You Actually Use {name}?</h2>
+    <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use {name}?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
         {story_html}
@@ -314,7 +325,7 @@ footer a{{color:var(--primary);}}
   </section>
 
   <section class="block">
-    <h2>Frequently Asked Questions</h2>
+    <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Frequently Asked Questions</h2>
     {faq_html}
   </section>
 
@@ -622,27 +633,30 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
     description = f"{tag} Pricing: {pill}." if pill else tag
     description = description[:300]
 
-    # Ratings row
+    # Ratings row — SVG star icons, not Unicode glyphs
     ratings_row = ""
     if rating or users:
         parts = []
         if rating:
-            stars = "★" * round(rating) + "☆" * (5 - round(rating))
+            stars = star_icons_html(rating)
             parts.append(f'<span class="stars">{stars}</span> <strong>{rating}</strong>' + (f" ({esc(str(reviews))})" if reviews else ""))
         if users:
-            parts.append(f"<strong>{esc(str(users))}</strong> users")
+            parts.append(
+                '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:3px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+                f"<strong>{esc(str(users))}</strong> users"
+            )
         ratings_row = '<div class="ratings-row">' + " &middot; ".join(parts) + "</div>"
 
     # Jobs / needs blocks
     jobs_block = ""
     if jobs:
         chips = "".join(f'<span class="chip">{esc(j)}</span>' for j in jobs[:8])
-        jobs_block = f'<section class="block"><h2>Best For</h2><div class="chip-list">{chips}</div></section>'
+        jobs_block = f'<section class="block"><h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>Best For</h2><div class="chip-list">{chips}</div></section>'
 
     needs_block = ""
     if needs:
         chips = "".join(f'<span class="chip">{esc(n)}</span>' for n in needs[:8])
-        needs_block = f'<section class="block"><h2>What {esc(name)} Helps You Do</h2><div class="chip-list">{chips}</div></section>'
+        needs_block = f'<section class="block"><h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>What {esc(name)} Helps You Do</h2><div class="chip-list">{chips}</div></section>'
 
     # ── Gated "Should You Actually Use This?" content ──────────────────────
     # A short story-driven narrative naming the reader's real pain point and
@@ -704,7 +718,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
                 f'<div class="alt-cat">{esc(a.get("cat",""))}</div></div></a>'
             )
         alternatives_block = (
-            f'<section class="block"><h2>Alternatives to {esc(name)}</h2>'
+            f'<section class="block"><h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 7v10"/></svg>Alternatives to {esc(name)}</h2>'
             f'<div class="alt-grid">{"".join(cards)}</div></section>'
         )
 
@@ -735,7 +749,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
                 + '</div></a>'
             )
         related_block = (
-            f'<section class="block"><h2>Related Articles</h2>'
+            f'<section class="block"><h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Related Articles</h2>'
             f'<div class="related-scroller">{"".join(items)}</div></section>'
         )
 
