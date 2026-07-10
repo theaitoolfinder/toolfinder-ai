@@ -103,11 +103,13 @@ def load_articles_index():
             continue
         desc_m = re.search(r'<meta name="description" content="([^"]*)"', text)
         date_m = re.search(r'<meta property="article:published_time" content="([^"]*)"', text)
+        img_m = re.search(r'<meta property="og:image" content="([^"]*)"', text)
         index.append({
             "slug": f.stem,
             "title": title,
             "excerpt": (desc_m.group(1) if desc_m else "").strip(),
             "date": date_m.group(1) if date_m else "",
+            "image": img_m.group(1) if img_m else "",
         })
     index.sort(key=lambda a: a["date"], reverse=True)
     return index
@@ -195,10 +197,15 @@ section.block h2{{font-size:19px;font-weight:700;color:var(--text);margin-bottom
 .alt-logo{{width:32px;height:32px;border-radius:8px;flex-shrink:0;object-fit:cover;}}
 .alt-name{{font-size:13.5px;font-weight:600;color:var(--text);}}
 .alt-cat{{font-size:11px;color:var(--text-dim);}}
-.related-item{{display:block;padding:14px 16px;background:var(--surface);border:1.5px solid var(--border-soft);border-radius:12px;margin-bottom:10px;transition:all .15s;}}
-.related-item:hover{{border-color:var(--primary);transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,86,219,.08);}}
-.related-item .r-title{{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:4px;}}
-.related-item .r-excerpt{{font-size:13px;color:var(--text-dim);line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}}
+.related-scroller{{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 10px;margin:0 -20px;padding-left:20px;padding-right:20px;}}
+.related-scroller::-webkit-scrollbar{{display:none;}}
+.related-item{{flex:0 0 250px;display:flex;flex-direction:column;background:var(--surface);border:1.5px solid var(--border-soft);border-radius:14px;overflow:hidden;scroll-snap-align:start;transition:all .15s;}}
+.related-item:hover{{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,86,219,.10);}}
+.related-item img{{width:100%;height:130px;object-fit:cover;display:block;background:var(--primary-light);}}
+.related-item .r-body{{padding:14px 15px;display:flex;flex-direction:column;flex:1;}}
+.related-item .r-title{{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}}
+.related-item .r-excerpt{{font-size:12px;color:var(--text-dim);line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:8px;flex:1;}}
+.related-item .r-date{{font-size:11px;color:var(--text-dim);font-weight:600;}}
 .verdict-box{{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}}
 .verdict-content{{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}}
 .verdict-content h3{{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}}
@@ -523,7 +530,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index):
         )
 
     # Related articles — real articles whose title actually mentions this tool
-    related = find_related_articles(name, articles_index)
+    related = find_related_articles(name, articles_index, limit=6)
     related_block = ""
     if related:
         items = []
@@ -534,15 +541,23 @@ def build_page(t, all_tools, tools_by_cat, articles_index):
                     date_disp = datetime.fromisoformat(a["date"].replace("Z", "+00:00")).strftime("%b %d, %Y")
                 except ValueError:
                     date_disp = ""
+            img = a.get("image", "")
+            img_html = (
+                f'<img src="{img}" alt="{esc(a["title"])}" loading="lazy" '
+                f'onerror="this.style.display=\'none\'">'
+            ) if img else ""
             items.append(
                 f'<a class="related-item" href="../articles/{a["slug"]}.html">'
+                f'{img_html}'
+                f'<div class="r-body">'
                 f'<div class="r-title">{esc(a["title"])}</div>'
                 + (f'<div class="r-excerpt">{esc(a["excerpt"])}</div>' if a["excerpt"] else "")
-                + (f'<div class="alt-cat" style="margin-top:6px">{date_disp}</div>' if date_disp else "")
-                + '</a>'
+                + (f'<div class="r-date">{date_disp}</div>' if date_disp else "")
+                + '</div></a>'
             )
         related_block = (
-            f'<section class="block"><h2>Related Articles</h2>{"".join(items)}</section>'
+            f'<section class="block"><h2>Related Articles</h2>'
+            f'<div class="related-scroller">{"".join(items)}</div></section>'
         )
 
     # aggregateRating schema fragment (only if we have real numeric data)
