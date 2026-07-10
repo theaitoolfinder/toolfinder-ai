@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -159,8 +160,7 @@ footer a{color:var(--primary);}
     <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use Salesforce Einstein?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        ```html
-<h3>What Changes For You</h3>
+        <h3>What Changes For You</h3>
 
 <p>You're staring at 47 open deals in your pipeline and you have no idea which three are actually going to close this month. Your manager wants a forecast by end of day. You've got 90 emails to write to prospects at different stages, and they all need to sound personal, not templated. This is the part of the job that eats time and produces nothing but anxiety.</p>
 
@@ -175,7 +175,6 @@ footer a{color:var(--primary);}
 <h3>Is It Worth Trying?</h3>
 
 <p>150K+ people use it. It rates 4.4/5. Here's the honest part: it's an add-on, so you're paying extra on top of Salesforce itself. The bet is whether saving 5-10 hours a week on email and admin work, plus better deal visibility, justifies that cost for your role. For managers trying to forecast accurately or salespeople drowning in email volume, it probably does. Start by using the deal prediction for one week—if you're making smarter decisions about what to chase, expand to email automation next.</p>
-```
         <a class="verdict-cta" href="../go.html?url=https://salesforce.com/artificial-intelligence&name=Salesforce%20Einstein" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Salesforce Einstein",is_affiliate:false,destination:"https://salesforce.com/artificial-intelligence",click_type:'tool_page_gated_cta'})">Try Salesforce Einstein Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -258,7 +257,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){

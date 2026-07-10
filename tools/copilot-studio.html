@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -159,8 +160,7 @@ footer a{color:var(--primary);}
     <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use Copilot Studio?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        ```html
-<h3>What Changes For You</h3>
+        <h3>What Changes For You</h3>
 
 <p>You're sitting in a meeting where someone asks: "Can we build a chatbot that actually knows our internal processes?" Everyone looks at the developer. The developer looks exhausted. Today, that question gets answered differently. Instead of waiting three sprints for custom code, you build it yourself—or hand it to someone who isn't a programmer. The chatbot launches in days, not months, and it pulls answers directly from your company's real data.</p>
 
@@ -175,7 +175,6 @@ footer a{color:var(--primary);}
 <h3>Is It Worth Trying?</h3>
 
 <p><strong>Yes, if you own the decision or influence it.</strong> 200K+ teams are already using it. The 4.4/5 rating from 9K reviews is solid—not "everyone loves it," but consistent. At $200/month, it's low enough to test without a budget war. Start by automating one repetitive process—answering the same question your team fields weekly. If that lands, you've already found your ROI. If it doesn't fit, you know in a month.</p>
-```
         <a class="verdict-cta" href="../go.html?url=https://copilotstudio.microsoft.com&name=Copilot%20Studio" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Copilot Studio",is_affiliate:false,destination:"https://copilotstudio.microsoft.com",click_type:'tool_page_gated_cta'})">Try Copilot Studio Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -258,7 +257,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){

@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -159,8 +160,7 @@ footer a{color:var(--primary);}
     <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use Scenario AI?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        ```html
-<h3>What Changes For You</h3>
+        <h3>What Changes For You</h3>
 
 <p>You're three assets deep into a game build when you realize your freelance character designer just ghosted mid-project. Or you're a solo creator and you've spent the last four hours trying to wrangle Midjourney into producing NPCs that actually look like they belong in the same world. The style keeps drifting. Nothing matches. You need 40 more props before next week.</p>
 
@@ -175,7 +175,6 @@ footer a{color:var(--primary);}
 <h3>Is It Worth Trying?</h3>
 
 <p>200K+ users, 4.5/5 rating from 8.4K reviews. That's not hype—that's people actually using it on shipped work. Start free. Upload one character sheet and generate 10 variations. If they feel like they belong in your world, not against it, you've found what you need. If they don't, you've lost nothing.</p>
-```
         <a class="verdict-cta" href="../go.html?url=https://scenario.com&name=Scenario%20AI" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Scenario AI",is_affiliate:false,destination:"https://scenario.com",click_type:'tool_page_gated_cta'})">Try Scenario AI Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -258,7 +257,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){

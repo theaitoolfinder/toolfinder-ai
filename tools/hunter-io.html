@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -159,8 +160,7 @@ footer a{color:var(--primary);}
     <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use Hunter.io?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        ```html
-<h3>What Changes For You</h3>
+        <h3>What Changes For You</h3>
 
 <p>You're a founder sitting at your desk at 11 PM, staring at a company's website. You found someone you need to reach—the right person, at the right company—but their email isn't listed anywhere. You could spend the next hour digging through LinkedIn, guessing at domain patterns, or cold-calling reception. Or you could just… not know if the address you're about to send to actually exists. Either way, you lose momentum. With Hunter.io, you type the domain and get a verified email in seconds. You send the message tonight instead of tomorrow. That's the shift: from blocked to moving.</p>
 
@@ -171,7 +171,6 @@ footer a{color:var(--primary);}
 <h3>Is It Worth Trying?</h3>
 
 <p>Hunter.io has 4M+ users and a 4.6/5 rating from 14K reviews—solid signal that it does what it claims. The free tier lets you verify whether it actually saves you time before you decide to pay. Start there. If you're doing even occasional outreach, competitive intel, or need to move on a lead today instead of next week, it pays for itself in speed alone. The only honest catch: it only works if the email exists in the public record. But for what it does, it works.</p>
-```
         <a class="verdict-cta" href="../go.html?url=https://hunter.io&name=Hunter.io" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Hunter.io",is_affiliate:false,destination:"https://hunter.io",click_type:'tool_page_gated_cta'})">Try Hunter.io Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -254,7 +253,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){

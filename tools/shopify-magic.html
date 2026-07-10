@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -159,8 +160,7 @@ footer a{color:var(--primary);}
     <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-2 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9 8 11z"/><path d="M9 12l2 2 4-4"/></svg>Should You Actually Use Shopify Magic?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        ```html
-<h3>What Changes For You</h3>
+        <h3>What Changes For You</h3>
 
 <p>You're staring at 47 products that need descriptions before you can launch next week. Each one requires you to find the right tone, highlight the actual differentiators, and make sure it doesn't sound like every other listing in your category. You're a founder running solo or a marketer with too many campaigns live at once—and writing copy at scale is the thing that never stops eating your day. After you start using Shopify Magic, that same batch takes a fraction of the time. You're no longer choosing between shipping on schedule and shipping with decent marketing.</p>
 
@@ -171,7 +171,6 @@ footer a{color:var(--primary);}
 <h3>Is It Worth Trying?</h3>
 
 <p>Yes, specifically because it's included and free. The 4.5/5 rating across 28K reviews and 2M+ users suggests it's solid enough for daily work, not a gimmick. Start by running it on your next 5-10 product descriptions. If it cuts your writing time in half and the output is usable with light edits, it's paid for itself immediately. If the tone misses or you need heavier customization, you'll know within an hour.</p>
-```
         <a class="verdict-cta" href="../go.html?url=https://shopify.com/magic&name=Shopify%20Magic" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Shopify Magic",is_affiliate:false,destination:"https://shopify.com/magic",click_type:'tool_page_gated_cta'})">Try Shopify Magic Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -254,7 +253,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){

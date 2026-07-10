@@ -240,6 +240,7 @@ section.block h2 svg{{flex-shrink:0;color:var(--primary);}}
 .share-btn:hover{{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}}
 .verdict-box{{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}}
 .verdict-content{{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}}
+.verdict-content.unlocked{{filter:none !important;user-select:auto !important;pointer-events:auto !important;}}
 .verdict-content h3{{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}}
 .verdict-content h3:first-child{{margin-top:0;}}
 .verdict-content p{{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}}
@@ -389,7 +390,7 @@ function grantSubscriberAccess(email){{
 function unlockToolGate(){{
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){{ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }}
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }}
 async function brevoSubscribe(email){{
@@ -591,6 +592,9 @@ def generate_story_with_claude(t, is_free: bool):
                 messages=[{"role": "user", "content": prompt}],
             )
             text = msg.content[0].text.strip()
+            text = re.sub(r"^```(?:html)?\s*|\s*```$", "", text.strip())
+            text = re.sub(r"</?div[^>]*>", "", text)
+            text = text.strip()
             if "<h3>" in text:
                 return text
         except Exception as e:

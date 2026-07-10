@@ -93,6 +93,7 @@ section.block h2 svg{flex-shrink:0;color:var(--primary);}
 .share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
 .verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
 .verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content.unlocked{filter:none !important;user-select:auto !important;pointer-events:auto !important;}
 .verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
 .verdict-content h3:first-child{margin-top:0;}
 .verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
@@ -163,13 +164,13 @@ footer a{color:var(--primary);}
 
 <p>You're three paragraphs into a story when you realize you have no idea what your protagonist's world actually looks like. Or you're pitching a content idea and need *something* visual to show what you mean, but you don't have a budget for a designer and your own sketches look like they were made by someone who gave up. The blank space where an image should be kills momentum—in your writing, your brainstorming, your pitch. After you use WOMBO Dream, you stop staring at that blank space. Instead you're looking at an actual visual starting point in under a minute.</p>
 
-</div>
+
 
 <h3>How It Actually Works</h3>
 
 <p>You describe what you want to see—the mood, the objects, the style—and WOMBO generates it. No Photoshop skills required. You pick from dozens of artistic styles (watercolor, oil painting, cyberpunk, anime) that reframe the same prompt in completely different ways. If the first result doesn't land, you regenerate. Most of the time, one of those variations breaks through and gives you exactly the visual reference or spark you needed to move forward.</p>
 
-</div>
+
 
 <h3>Is It Worth Trying?</h3>
 
@@ -256,7 +257,7 @@ function grantSubscriberAccess(email){
 function unlockToolGate(){
   const content=document.getElementById('gate-content');
   const overlay=document.getElementById('gate-overlay');
-  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(content) content.classList.add('unlocked');
   if(overlay) overlay.style.display='none';
 }
 async function brevoSubscribe(email){
