@@ -5585,6 +5585,18 @@ function grantSubscriberAccess(email){
   localStorage.setItem('tut_subscribed', '1');
 }
 
+async function brevoSubscribe(email){
+  try{
+    const fd=new FormData();
+    fd.append('EMAIL',email);
+    fd.append('email_address_check','');
+    fd.append('locale','en');
+    const r=await fetch('https://bb0b0867.sibforms.com/v2/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',{method:'POST',body:fd,mode:'cors'});
+    const d=await r.json().catch(()=>null);
+    return !!(d&&d.success);
+  }catch(e){ return false; }
+}
+
 let _gateRetryTimer=null;
 async function gateSubmit(isRetry){
   const email=(document.getElementById('gate-email').value||'').trim().toLowerCase();
@@ -5597,14 +5609,26 @@ async function gateSubmit(isRetry){
   btn.textContent='Checking…'; btn.disabled=true;
 
   const result=await isSubscriber(email);
+
+  if(result===true){
+    btn.textContent='Unlock →'; btn.disabled=false;
+    grantSubscriberAccess(email);
+    setGateMsg('✅ Access granted! Loading your articles…','success');
+    setTimeout(unlockExclusiveCards, 900);
+    return;
+  }
+
+  if(result===false && !isRetry){
+    /* Not an existing subscriber yet — actually subscribe them via Brevo
+       before entering the sync-wait loop, otherwise there is nothing to
+       sync and the retry would run forever. */
+    btn.textContent='Subscribing…';
+    await brevoSubscribe(email);
+  }
   btn.textContent='Unlock →'; btn.disabled=false;
 
   if(result===null){
     setGateMsg('Could not verify — please check your connection and try again.','error');
-  } else if(result===true){
-    grantSubscriberAccess(email);
-    setGateMsg('✅ Access granted! Loading your articles…','success');
-    setTimeout(unlockExclusiveCards, 900);
   } else {
     /* Not found yet — may still be syncing from Brevo (up to ~5 min) */
     const msgEl=document.getElementById('gate-msg');
