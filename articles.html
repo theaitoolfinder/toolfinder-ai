@@ -5556,13 +5556,8 @@ function unlockExclusiveCards(){
     if(lock){ lock.innerHTML='✅ Member Access'; lock.style.background='rgba(22,163,74,.1)'; lock.style.color='#16a34a'; }
     const readEl=card.querySelector('.car-card-read');
     const href=card.dataset.href;
-    if(href){
-      if(readEl) readEl.textContent='Read now →';
-      card.onclick=function(){ location.href=href; };
-    } else {
-      if(readEl) readEl.textContent='Coming soon →';
-      card.onclick=null; card.style.cursor='default';
-    }
+    if(readEl) readEl.textContent=href?'Read now →':'Coming soon →';
+    if(!href) card.style.cursor='default';
   });
 
   /* Hide the gate form */
@@ -5826,7 +5821,14 @@ document.addEventListener('DOMContentLoaded',async function(){
     track.innerHTML=html;
     track.querySelectorAll('.excl-card').forEach(function(card){
       card.style.cursor='pointer';
-      card.addEventListener('click',function(){ showSubscribeGate(); });
+      card.addEventListener('click',function(){
+        if(card.classList.contains('unlocked')){
+          var href=card.dataset.href;
+          if(href) location.href=href;
+        } else {
+          showSubscribeGate();
+        }
+      });
     });
     document.getElementById('excl-prev').onclick=function(){ scrollTrack(track,-1); };
     document.getElementById('excl-next').onclick=function(){ scrollTrack(track,1); };
