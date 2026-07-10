@@ -161,17 +161,17 @@ footer a{color:var(--primary);}
       <div class="verdict-content" id="gate-content">
         <h3>What Changes For You</h3>
 
-<p>It's 10 PM. You're reviewing pull requests before merge, and you spot a edge case in someone's validation logic that could fail under load. You flag it. Then you realize: you've now spent the last two hours doing what a machine should do—reading code line-by-line, imagining failure scenarios, mentally running test cases. The work gets done, but it's you burning out, not the problem getting solved faster.</p>
+<p>You write a feature. You push it. Three hours later, a reviewer flags a bug you didn't catch—something in an edge case you didn't think to test. You fix it. Push again. Repeat. The gap between "done" and "actually done" keeps costing you cycles, and the tests you *should* be writing feel like debt you'll pay later.</p>
 
-<p>With Qodo, that two-hour slog becomes: paste the code, let it generate tests that actually catch those edge cases, and review what it found in minutes. You're not replaced—you're freed to think about architecture instead of syntax.</p>
+<p>With Qodo, that review happens before the pull request. The tool generates test cases against your code and flags potential issues automatically. You spend less time in the fix-push-review loop and more time on what actually matters.</p>
 
 <h3>How It Actually Works</h3>
 
-<p>You submit code to Qodo. It analyzes the pull request, generates tests automatically, and flags potential bugs before they reach production. No manual test-writing. No guessing what could break. The tool does the repetitive cognitive work—the test generation, the pattern-matching for common bugs—while you stay in control of what matters: deciding if the tests are thorough enough and if the flagged issues matter.</p>
+<p>You write code. Instead of manually building test coverage or hoping your PR reviewer catches gaps, Qodo analyzes your pull request directly—generating tests and surfacing bugs before you submit. The repetitive work of test scaffolding and pattern-matching for common mistakes gets automated. You still write the logic; Qodo handles the tedious safety net.</p>
 
 <h3>Is It Worth Trying?</h3>
 
-<p>Over 200K developers are using it. It rates 4.5/5 across 6.8K reviews, which means it's solving a real problem consistently. Start free—there's no commitment. If you're writing tests manually or reviewing code by hand, spend a week with Qodo's free tier and see if it actually saves you the hours you think it will.</p>
+<p>200K+ developers are already using it, and it holds a 4.5/5 rating across 6.8K reviews—solid enough to tell you the core idea works. The free tier lets you test this friction point without risk. Start by running it on your next PR and watch whether it catches something you would have missed. That one bug caught is the entire verdict.</p>
         <a class="verdict-cta" href="../go.html?url=https://qodo.ai&name=Qodo" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Qodo",is_affiliate:false,destination:"https://qodo.ai",click_type:'tool_page_gated_cta'})">Try Qodo Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">

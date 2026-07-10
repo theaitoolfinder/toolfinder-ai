@@ -160,13 +160,22 @@ footer a{color:var(--primary);}
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
         <h3>What Changes For You</h3>
-<p>It's 2 AM and you're still wrestling with infrastructure. You've got a Python script that trains a model—it works locally, but deploying it means provisioning servers, managing scaling, handling the inevitable crashes at 3 AM when load spikes. You're a developer or researcher, not a DevOps engineer. You want to ship the thing and move on. Modal removes that entire layer: you write your function, you deploy it, it runs in the cloud and scales automatically. The infrastructure disappears.</p>
+
+<p>You're three weeks into building an AI chatbot. You've written the logic, trained a model, and now you're stuck in infrastructure hell—wrestling with Docker, figuring out GPU allocation, deciding between cloud providers, writing deployment scripts that keep breaking. You're a developer or researcher, not a DevOps engineer. Every hour spent on this is an hour you're not coding or experimenting.</p>
+
+<p>With Modal, you write a Python function, decorate it, and it runs in the cloud. No containers to manage. No infrastructure to provision. You deploy what you built.</p>
 
 <h3>How It Actually Works</h3>
-<p>You take the Python code you already have—whether that's a training job, a model serving endpoint, or an AI chatbot—and Modal runs it serverlessly on their cloud. No container wrangling. No capacity planning. You pay only for what you actually use. The repetitive work of managing infrastructure is automated away, which means you're actually coding faster and shipping features instead of debugging deployment configs.</p>
+
+<p>Instead of packaging your code, configuring servers, and debugging deployments, you write your function—train a model, run a batch job, serve an API endpoint—and Modal handles where it runs. You define what resources it needs (CPU, GPU, memory), and Modal allocates them on-demand. You pay only for what executes. No idle instances. No guessing capacity.</p>
+
+<p>The repetitive work—spinning up environments, managing dependencies, scaling—disappears. You focus on the code logic. For chatbots specifically, you deploy your inference function once and it scales automatically when traffic spikes.</p>
 
 <h3>Is It Worth Trying?</h3>
-<p>Modal has a 4.7/5 rating across 8,200 reviews with 100K+ active users—this isn't theoretical anymore. It's a pay-per-use model, so there's no commitment. The risk is low. Try it by deploying one model endpoint or one training job and see if the friction actually disappears. If you're tired of infrastructure work, you'll know within an hour.</p>
+
+<p>Modal has a 4.7/5 rating across 8.2K reviews with 100K+ users—solid evidence it works for the people it's built for. Pay-per-use pricing means zero commitment: deploy a test function, see if the developer experience clicks for you.</p>
+
+<p>Try it with a small AI task first—a batch job or a simple endpoint. If you spend less time fighting deployment than writing code, it's working.</p>
         <a class="verdict-cta" href="../go.html?url=https://modal.com&name=Modal" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Modal",is_affiliate:false,destination:"https://modal.com",click_type:'tool_page_gated_cta'})">Try Modal Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
