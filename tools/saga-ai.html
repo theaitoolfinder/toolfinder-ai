@@ -78,6 +78,24 @@ section.block h2{font-size:19px;font-weight:700;color:var(--text);margin-bottom:
 .alt-logo{width:32px;height:32px;border-radius:8px;flex-shrink:0;object-fit:cover;}
 .alt-name{font-size:13.5px;font-weight:600;color:var(--text);}
 .alt-cat{font-size:11px;color:var(--text-dim);}
+.related-item{display:block;padding:14px 16px;background:var(--surface);border:1.5px solid var(--border-soft);border-radius:12px;margin-bottom:10px;transition:all .15s;}
+.related-item:hover{border-color:var(--primary);transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,86,219,.08);}
+.related-item .r-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.related-item .r-excerpt{font-size:13px;color:var(--text-dim);line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.verdict-box{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}
+.verdict-content{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}
+.verdict-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+.verdict-content h3:first-child{margin-top:0;}
+.verdict-content p{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}
+.verdict-cta{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 6px 20px rgba(26,86,219,.32);margin-top:18px;}
+.gate-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 24px;background:rgba(255,255,255,.82);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}
+.gate-lock{width:44px;height:44px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.gate-overlay h3{font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.gate-overlay p{font-size:13.5px;color:var(--text-2);max-width:360px;margin-bottom:16px;}
+.gate-form-row{display:flex;gap:8px;width:100%;max-width:360px;flex-wrap:wrap;justify-content:center;}
+.gate-input{flex:1;min-width:180px;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);font:14px 'Poppins',sans-serif;outline:none;}
+.gate-btn{padding:11px 20px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 13.5px 'Poppins',sans-serif;cursor:pointer;white-space:nowrap;}
+.gate-msg{font-size:12.5px;margin-top:10px;min-height:16px;max-width:360px;}
 footer{background:var(--surface);border-top:1px solid var(--border-soft);padding:32px 20px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px;}
 footer a{color:var(--primary);}
 @media(max-width:600px){nav{padding:0 16px;}.nav-links{display:none;}.hero{flex-direction:column;align-items:flex-start;}}
@@ -129,16 +147,114 @@ footer a{color:var(--primary);}
   <section class="block"><h2>What Saga AI Helps You Do</h2><div class="chip-list"><span class="chip">Write faster</span><span class="chip">Organize work</span><span class="chip">Brainstorm ideas</span></div></section>
 
   <section class="block">
+    <h2>Should You Actually Use Saga AI?</h2>
+    <div class="verdict-box">
+      <div class="verdict-content" id="gate-content">
+        <h3>What Changes For You</h3><p>If you're a writer, solopreneur, and researcher, Saga AI is built for exactly this kind of work.</p><p>Right now, write faster, organize work, and brainstorm ideas probably eats up real hours in your week. Saga AI takes that off your plate — instead of starting from a blank page or doing it by hand, you hand it to Saga AI and get a usable result back in minutes.</p>
+        <h3>How It Actually Works</h3><p>AI-powered workspace for notes, docs, and wikis with an AI assistant that lives right inside your writing.</p>
+        <h3>Is It Worth Trying?</h3><p>With a 4.4/5 rating from 4.2K reviews, 100K+ people already using it, and a Free + Pro plan, Saga AI has already cleared the bar for a lot of people in the same position you're in. The realistic move: try the free tier on one real task this week and judge it by whether it actually saves you time — not by the marketing.</p>
+        <a class="verdict-cta" href="../go.html?url=https://saga.so&name=Saga%20AI" target="_blank" rel="noopener nofollow" onclick="if(window.dataLayer)window.dataLayer.push({event:'tool_click',tool_name:"Saga AI",is_affiliate:false,destination:"https://saga.so",click_type:'tool_page_gated_cta'})">Try Saga AI Free &rarr;</a>
+      </div>
+      <div class="gate-overlay" id="gate-overlay">
+        <div class="gate-lock">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        </div>
+        <h3>Subscribers Only</h3>
+        <p>See exactly how Saga AI can change your work and whether it's worth trying — free for newsletter subscribers.</p>
+        <div class="gate-form-row">
+          <input type="email" id="tool-gate-email" class="gate-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')toolGateSubmit()">
+          <button id="tool-gate-btn" class="gate-btn" onclick="toolGateSubmit()">Unlock Free &rarr;</button>
+        </div>
+        <div id="tool-gate-msg" class="gate-msg"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item"><h3>Is Saga AI free to use?</h3><p>Saga AI offers a free tier (Free + Pro).</p></div><div class="faq-item"><h3>What is Saga AI used for?</h3><p>AI-powered workspace for notes, docs, and wikis with an AI assistant that lives right inside your writing.</p></div><div class="faq-item"><h3>Who is Saga AI best for?</h3><p>Saga AI is popular with Writer, Solopreneur, Researcher.</p></div><div class="faq-item"><h3>What do users say about Saga AI?</h3><p>Saga AI has a 4.4/5 rating from 4.2K reviews.</p></div>
   </section>
 
+  
   <section class="block"><h2>Alternatives to Saga AI</h2><div class="alt-grid"><a class="alt-card" href="granola.html"><img class="alt-logo" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="Granola" loading="lazy"><div><div class="alt-name">Granola</div><div class="alt-cat">Productivity</div></div></a><a class="alt-card" href="notion-ai.html"><img class="alt-logo" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion AI" loading="lazy"><div><div class="alt-name">Notion AI</div><div class="alt-cat">Productivity</div></div></a><a class="alt-card" href="fathom-ai.html"><img class="alt-logo" src="https://www.google.com/s2/favicons?domain=fathom.video&sz=64" alt="Fathom AI" loading="lazy"><div><div class="alt-name">Fathom AI</div><div class="alt-cat">Productivity</div></div></a><a class="alt-card" href="clickup-ai.html"><img class="alt-logo" src="https://www.google.com/s2/favicons?domain=clickup.com&sz=64" alt="ClickUp AI" loading="lazy"><div><div class="alt-name">ClickUp AI</div><div class="alt-cat">Productivity</div></div></a></div></section>
 </div>
 
 <footer>
   <p>&copy; 2026 My AI Tools Finder &middot; <a href="../about.html">About</a> &middot; <a href="../index.html">Browse all 500+ AI tools</a></p>
 </footer>
+<script>
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str.trim().toLowerCase()));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function isSubscriber(email){
+  try{
+    const hash=await sha256(email);
+    const r=await fetch('/data/subscribers.json?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) return null;
+    const d=await r.json();
+    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
+  }catch(e){ return null; }
+}
+function grantSubscriberAccess(email){
+  const name=email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  try{
+    localStorage.setItem('myai_user_v1', JSON.stringify({name, email, ts:Date.now()}));
+    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
+    localStorage.setItem('pf_email', email);
+    localStorage.setItem('tut_subscribed', '1');
+  }catch(e){}
+}
+function unlockToolGate(){
+  const content=document.getElementById('gate-content');
+  const overlay=document.getElementById('gate-overlay');
+  if(content){ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }
+  if(overlay) overlay.style.display='none';
+}
+async function brevoSubscribe(email){
+  try{
+    const fd=new FormData();
+    fd.append('EMAIL',email);
+    fd.append('email_address_check','');
+    fd.append('locale','en');
+    const r=await fetch('https://bb0b0867.sibforms.com/v2/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',{method:'POST',body:fd,mode:'cors'});
+    const d=await r.json().catch(()=>null);
+    return !!(d&&d.success);
+  }catch(e){ return false; }
+}
+async function toolGateSubmit(){
+  const email=(document.getElementById('tool-gate-email').value||'').trim().toLowerCase();
+  const msgEl=document.getElementById('tool-gate-msg');
+  const btn=document.getElementById('tool-gate-btn');
+  if(!email||!email.includes('@')){ msgEl.style.color='#ef4444'; msgEl.textContent='Please enter a valid email address.'; return; }
+  btn.textContent='Checking…'; btn.disabled=true; msgEl.textContent='';
+  const already=await isSubscriber(email);
+  if(already===true){
+    grantSubscriberAccess(email);
+    unlockToolGate();
+    return;
+  }
+  const ok=await brevoSubscribe(email);
+  btn.textContent='Unlock Free →'; btn.disabled=false;
+  if(ok){
+    grantSubscriberAccess(email);
+    unlockToolGate();
+  } else {
+    msgEl.style.color='#ef4444';
+    msgEl.textContent='Could not subscribe — check your connection and try again.';
+  }
+}
+document.addEventListener('DOMContentLoaded', async function(){
+  const subExp=parseInt(localStorage.getItem('pf_sub')||'0');
+  if(subExp>Date.now()){ unlockToolGate(); return; }
+  let saved=null;
+  try{ saved=JSON.parse(localStorage.getItem('myai_user_v1')||'null'); }catch(e){}
+  if(saved&&saved.email){
+    const result=await isSubscriber(saved.email);
+    if(result===true){ grantSubscriberAccess(saved.email); unlockToolGate(); }
+  }
+});
+</script>
 <script src="../js/mobile-nav.js"></script>
 <script src="../js/affiliate.js"></script>
 </body>

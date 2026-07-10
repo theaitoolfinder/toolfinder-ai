@@ -27,6 +27,7 @@ from datetime import datetime, timezone
 ROOT = Path(__file__).resolve().parent.parent.parent
 INDEX_HTML = ROOT / "index.html"
 TUTORIALS_JS = ROOT / "js" / "tutorials-data.js"
+ARTICLES_DIR = ROOT / "articles"
 TOOLS_DIR = ROOT / "tools"
 SITEMAP = ROOT / "sitemap.xml"
 BASE = "https://myaitoolsfinder.com"
@@ -53,6 +54,18 @@ def slugify(name: str) -> str:
     return s.strip("-")
 
 
+def join_natural(items, max_items=3):
+    """['a','b','c'] -> 'a, b, and c'. Used to turn data arrays into real sentences."""
+    items = [i for i in items if i][:max_items]
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return ", ".join(items[:-1]) + f", and {items[-1]}"
+
+
 def parse_count(s):
     """'2.1M' -> 2100000, '320K' -> 320000, '1.4K' -> 1400. Returns None if unparseable."""
     if not s:
@@ -69,6 +82,42 @@ def has_tutorial(slug: str) -> bool:
     if not TUTORIALS_JS.exists():
         return False
     return f"'{slug}':" in TUTORIALS_JS.read_text(encoding="utf-8")
+
+
+def load_articles_index():
+    """Scan articles/*.html once and return a list of real (non-redirect-stub)
+    articles with the fields needed to match + display them: title, slug,
+    excerpt, and published date. Redirect stubs (noindex + meta-refresh, used
+    for the duplicate-article cleanup) are skipped via their literal
+    "Redirecting..." title."""
+    index = []
+    if not ARTICLES_DIR.exists():
+        return index
+    for f in ARTICLES_DIR.glob("*.html"):
+        text = f.read_text(encoding="utf-8", errors="ignore")
+        m = re.search(r"<title>([^<]*)</title>", text)
+        if not m:
+            continue
+        title = re.sub(r"\s*—\s*My AI Tools Finder\s*$", "", m.group(1)).strip()
+        if not title or title.lower() == "redirecting...":
+            continue
+        desc_m = re.search(r'<meta name="description" content="([^"]*)"', text)
+        date_m = re.search(r'<meta property="article:published_time" content="([^"]*)"', text)
+        index.append({
+            "slug": f.stem,
+            "title": title,
+            "excerpt": (desc_m.group(1) if desc_m else "").strip(),
+            "date": date_m.group(1) if date_m else "",
+        })
+    index.sort(key=lambda a: a["date"], reverse=True)
+    return index
+
+
+def find_related_articles(name: str, articles_index, limit=3):
+    """Articles whose title mentions this tool by name — a simple, honest
+    'related content' signal since these articles are literally about it."""
+    matches = [a for a in articles_index if name.lower() in a["title"].lower()]
+    return matches[:limit]
 
 
 def esc(s: str) -> str:
@@ -146,6 +195,24 @@ section.block h2{{font-size:19px;font-weight:700;color:var(--text);margin-bottom
 .alt-logo{{width:32px;height:32px;border-radius:8px;flex-shrink:0;object-fit:cover;}}
 .alt-name{{font-size:13.5px;font-weight:600;color:var(--text);}}
 .alt-cat{{font-size:11px;color:var(--text-dim);}}
+.related-item{{display:block;padding:14px 16px;background:var(--surface);border:1.5px solid var(--border-soft);border-radius:12px;margin-bottom:10px;transition:all .15s;}}
+.related-item:hover{{border-color:var(--primary);transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,86,219,.08);}}
+.related-item .r-title{{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:4px;}}
+.related-item .r-excerpt{{font-size:13px;color:var(--text-dim);line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}}
+.verdict-box{{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1.5px solid var(--border-soft);}}
+.verdict-content{{padding:28px 26px;transition:filter .3s;filter:blur(7px);user-select:none;pointer-events:none;min-height:180px;}}
+.verdict-content h3{{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}}
+.verdict-content h3:first-child{{margin-top:0;}}
+.verdict-content p{{font-size:14.5px;color:var(--text-2);line-height:1.75;margin-bottom:6px;}}
+.verdict-cta{{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 6px 20px rgba(26,86,219,.32);margin-top:18px;}}
+.gate-overlay{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 24px;background:rgba(255,255,255,.82);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}}
+.gate-lock{{width:44px;height:44px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}}
+.gate-overlay h3{{font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;}}
+.gate-overlay p{{font-size:13.5px;color:var(--text-2);max-width:360px;margin-bottom:16px;}}
+.gate-form-row{{display:flex;gap:8px;width:100%;max-width:360px;flex-wrap:wrap;justify-content:center;}}
+.gate-input{{flex:1;min-width:180px;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);font:14px 'Poppins',sans-serif;outline:none;}}
+.gate-btn{{padding:11px 20px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:none;font:700 13.5px 'Poppins',sans-serif;cursor:pointer;white-space:nowrap;}}
+.gate-msg{{font-size:12.5px;margin-top:10px;min-height:16px;max-width:360px;}}
 footer{{background:var(--surface);border-top:1px solid var(--border-soft);padding:32px 20px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px;}}
 footer a{{color:var(--primary);}}
 @media(max-width:600px){{nav{{padding:0 16px;}}.nav-links{{display:none;}}.hero{{flex-direction:column;align-items:flex-start;}}}}
@@ -197,16 +264,114 @@ footer a{{color:var(--primary);}}
   {needs_block}
 
   <section class="block">
+    <h2>Should You Actually Use {name}?</h2>
+    <div class="verdict-box">
+      <div class="verdict-content" id="gate-content">
+        {impact_html}
+        {how_html}
+        {verdict_html}
+        <a class="verdict-cta" href="{go_url}" target="_blank" rel="{rel}" onclick="if(window.dataLayer)window.dataLayer.push({{event:'tool_click',tool_name:{name_json},is_affiliate:{is_aff_json},destination:{active_url_json},click_type:'tool_page_gated_cta'}})">Try {name} Free &rarr;</a>
+      </div>
+      <div class="gate-overlay" id="gate-overlay">
+        <div class="gate-lock">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        </div>
+        <h3>Subscribers Only</h3>
+        <p>See exactly how {name} can change your work and whether it's worth trying — free for newsletter subscribers.</p>
+        <div class="gate-form-row">
+          <input type="email" id="tool-gate-email" class="gate-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')toolGateSubmit()">
+          <button id="tool-gate-btn" class="gate-btn" onclick="toolGateSubmit()">Unlock Free &rarr;</button>
+        </div>
+        <div id="tool-gate-msg" class="gate-msg"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
     <h2>Frequently Asked Questions</h2>
     {faq_html}
   </section>
 
+  {related_block}
   {alternatives_block}
 </div>
 
 <footer>
   <p>&copy; {year} My AI Tools Finder &middot; <a href="../about.html">About</a> &middot; <a href="../index.html">Browse all 500+ AI tools</a></p>
 </footer>
+<script>
+async function sha256(str){{
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str.trim().toLowerCase()));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}}
+async function isSubscriber(email){{
+  try{{
+    const hash=await sha256(email);
+    const r=await fetch('/data/subscribers.json?_='+Date.now(),{{cache:'no-store'}});
+    if(!r.ok) return null;
+    const d=await r.json();
+    return Array.isArray(d.hashes)&&d.hashes.includes(hash);
+  }}catch(e){{ return null; }}
+}}
+function grantSubscriberAccess(email){{
+  const name=email.split('@')[0].replace(/[._-]/g,' ').replace(/\\b\\w/g,c=>c.toUpperCase());
+  try{{
+    localStorage.setItem('myai_user_v1', JSON.stringify({{name, email, ts:Date.now()}}));
+    localStorage.setItem('pf_sub', String(Date.now()+365*24*60*60*1000));
+    localStorage.setItem('pf_email', email);
+    localStorage.setItem('tut_subscribed', '1');
+  }}catch(e){{}}
+}}
+function unlockToolGate(){{
+  const content=document.getElementById('gate-content');
+  const overlay=document.getElementById('gate-overlay');
+  if(content){{ content.style.filter='none'; content.style.userSelect='auto'; content.style.pointerEvents='auto'; }}
+  if(overlay) overlay.style.display='none';
+}}
+async function brevoSubscribe(email){{
+  try{{
+    const fd=new FormData();
+    fd.append('EMAIL',email);
+    fd.append('email_address_check','');
+    fd.append('locale','en');
+    const r=await fetch('https://bb0b0867.sibforms.com/v2/serve/MUIFAOGDJeXWoD51BjwMfv68XSaz0v90tEtIP4j7fWleHs6hcXvvW59DvRO_ULI5cVeWpFz--du9WCjUPi-wuhIhngKkkv4OkRXymONeiAKq6NUmSsZaxZEjzXzPwOQPwIAYEnFwUugNyHeTgKFv4i9Kv4nuKKNy3zM4zlwgk6coRZy63tOLzVnlVoVBq5AN2uiZDuQW-rU1Kgz9GQ==',{{method:'POST',body:fd,mode:'cors'}});
+    const d=await r.json().catch(()=>null);
+    return !!(d&&d.success);
+  }}catch(e){{ return false; }}
+}}
+async function toolGateSubmit(){{
+  const email=(document.getElementById('tool-gate-email').value||'').trim().toLowerCase();
+  const msgEl=document.getElementById('tool-gate-msg');
+  const btn=document.getElementById('tool-gate-btn');
+  if(!email||!email.includes('@')){{ msgEl.style.color='#ef4444'; msgEl.textContent='Please enter a valid email address.'; return; }}
+  btn.textContent='Checking…'; btn.disabled=true; msgEl.textContent='';
+  const already=await isSubscriber(email);
+  if(already===true){{
+    grantSubscriberAccess(email);
+    unlockToolGate();
+    return;
+  }}
+  const ok=await brevoSubscribe(email);
+  btn.textContent='Unlock Free →'; btn.disabled=false;
+  if(ok){{
+    grantSubscriberAccess(email);
+    unlockToolGate();
+  }} else {{
+    msgEl.style.color='#ef4444';
+    msgEl.textContent='Could not subscribe — check your connection and try again.';
+  }}
+}}
+document.addEventListener('DOMContentLoaded', async function(){{
+  const subExp=parseInt(localStorage.getItem('pf_sub')||'0');
+  if(subExp>Date.now()){{ unlockToolGate(); return; }}
+  let saved=null;
+  try{{ saved=JSON.parse(localStorage.getItem('myai_user_v1')||'null'); }}catch(e){{}}
+  if(saved&&saved.email){{
+    const result=await isSubscriber(saved.email);
+    if(result===true){{ grantSubscriberAccess(saved.email); unlockToolGate(); }}
+  }}
+}});
+</script>
 <script src="../js/mobile-nav.js"></script>
 <script src="../js/affiliate.js"></script>
 </body>
@@ -214,7 +379,7 @@ footer a{{color:var(--primary);}}
 """
 
 
-def build_page(t, all_tools, tools_by_cat):
+def build_page(t, all_tools, tools_by_cat, articles_index):
     name = t["name"]
     slug = slugify(name)
     domain = t.get("domain", "")
@@ -257,13 +422,56 @@ def build_page(t, all_tools, tools_by_cat):
         chips = "".join(f'<span class="chip">{esc(n)}</span>' for n in needs[:8])
         needs_block = f'<section class="block"><h2>What {esc(name)} Helps You Do</h2><div class="chip-list">{chips}</div></section>'
 
+    # ── Gated "Should You Actually Use This?" content ──────────────────────
+    # Answers, from real data only: what changes for the reader, how the
+    # tool does it, and whether it's worth trying — ending in the affiliate
+    # CTA. This is the content gated behind the subscriber check.
+    jobs_lower = [j.lower() for j in jobs]
+    needs_lower = [n.lower() for n in needs]
+
+    if jobs_lower:
+        who = join_natural(jobs_lower)
+        impact_lede = f"If you're a {who}, {name} is built for exactly this kind of work."
+    else:
+        impact_lede = f"{name} is built for people doing {cat.lower()} work every day."
+    if needs_lower:
+        impact_body = (
+            f"Right now, {join_natural(needs_lower)} probably eats up real hours in your week. "
+            f"{name} takes that off your plate — instead of starting from a blank page or doing it by hand, "
+            f"you hand it to {name} and get a usable result back in minutes."
+        )
+    else:
+        impact_body = f"{name} is designed to save you time on the specific tasks it covers, so those hours go back into your actual work."
+    impact_html = f'<h3>What Changes For You</h3><p>{esc(impact_lede)}</p><p>{esc(impact_body)}</p>'
+
+    how_text = tag or f"{name} is an AI tool in the {cat} category."
+    how_html = f'<h3>How It Actually Works</h3><p>{esc(how_text)}</p>'
+
+    is_free = bool(re.search(r"free", pill, re.I)) if pill else False
+    verdict_parts = []
+    if rating:
+        verdict_parts.append(f"a {rating}/5 rating" + (f" from {reviews} reviews" if reviews else ""))
+    if users:
+        verdict_parts.append(f"{users} people already using it")
+    if pill:
+        verdict_parts.append(f"a {pill} plan")
+    if verdict_parts:
+        verdict_text = (
+            f"With {join_natural(verdict_parts)}, {name} has already cleared the bar for a lot of people "
+            f"in the same position you're in. The realistic move: try the "
+            + (f"free tier" if is_free else "trial")
+            + f" on one real task this week and judge it by whether it actually saves you time — not by the marketing."
+        )
+    else:
+        verdict_text = f"The only real way to know if {name} fits your workflow is to try it on one real task — not a demo, an actual thing you need done this week."
+    verdict_html = f'<h3>Is It Worth Trying?</h3><p>{esc(verdict_text)}</p>'
+
     # Tutorial button
     tutorial_btn = ""
     if has_tutorial(slug):
         tutorial_btn = f'<a class="btn-secondary" href="../tutorials/view.html?tool={slug}&level=basic">Step-by-Step Tutorial</a>'
 
     # FAQ (schema + visible) — built from real fields, no invented claims
-    is_free = bool(re.search(r"free", pill, re.I)) if pill else False
     faq_pairs = [
         (f"Is {name} free to use?",
          (f"{name} offers a free tier ({pill})." if is_free else f"{name}'s pricing is {pill}.") if pill
@@ -314,6 +522,29 @@ def build_page(t, all_tools, tools_by_cat):
             f'<div class="alt-grid">{"".join(cards)}</div></section>'
         )
 
+    # Related articles — real articles whose title actually mentions this tool
+    related = find_related_articles(name, articles_index)
+    related_block = ""
+    if related:
+        items = []
+        for a in related:
+            date_disp = ""
+            if a["date"]:
+                try:
+                    date_disp = datetime.fromisoformat(a["date"].replace("Z", "+00:00")).strftime("%b %d, %Y")
+                except ValueError:
+                    date_disp = ""
+            items.append(
+                f'<a class="related-item" href="../articles/{a["slug"]}.html">'
+                f'<div class="r-title">{esc(a["title"])}</div>'
+                + (f'<div class="r-excerpt">{esc(a["excerpt"])}</div>' if a["excerpt"] else "")
+                + (f'<div class="alt-cat" style="margin-top:6px">{date_disp}</div>' if date_disp else "")
+                + '</a>'
+            )
+        related_block = (
+            f'<section class="block"><h2>Related Articles</h2>{"".join(items)}</section>'
+        )
+
     # aggregateRating schema fragment (only if we have real numeric data)
     aggregate_rating = ""
     review_count = parse_count(reviews)
@@ -350,7 +581,11 @@ def build_page(t, all_tools, tools_by_cat):
         tutorial_btn=tutorial_btn,
         jobs_block=jobs_block,
         needs_block=needs_block,
+        impact_html=impact_html,
+        how_html=how_html,
+        verdict_html=verdict_html,
         faq_html=faq_html,
+        related_block=related_block,
         alternatives_block=alternatives_block,
         year=datetime.now(timezone.utc).year,
     )
@@ -384,6 +619,9 @@ def main():
     for t in tools:
         tools_by_cat.setdefault(t.get("cat", ""), []).append(t)
 
+    articles_index = load_articles_index()
+    print(f"[INFO] Indexed {len(articles_index)} real articles for related-content matching")
+
     slugs = []
     seen_slugs = set()
     written = 0
@@ -393,7 +631,7 @@ def main():
             continue  # skip dupes/blank names defensively
         seen_slugs.add(slug)
         slugs.append(slug)
-        html = build_page(t, tools, tools_by_cat)
+        html = build_page(t, tools, tools_by_cat, articles_index)
         (TOOLS_DIR / f"{slug}.html").write_text(html, encoding="utf-8")
         written += 1
 
