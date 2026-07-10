@@ -187,10 +187,10 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <meta property="og:title" content="{name} Review — Pricing, Features &amp; Alternatives">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:site_name" content="My AI Tools Finder">
-<meta name="twitter:card" content="summary">
+<meta property="og:site_name" content="My AI Tools Finder">{og_image_tags}
+<meta name="twitter:card" content="{twitter_card}">
 <meta name="twitter:title" content="{name} Review — Pricing, Features &amp; Alternatives">
-<meta name="twitter:description" content="{description}">
+<meta name="twitter:description" content="{description}">{twitter_image_tag}
 <link rel="canonical" href="{canonical}">
 <script type="application/ld+json">
 {{
@@ -672,6 +672,17 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache, banner_c
         banner_url = f"https://image.thum.io/get/width/700/noanimate/{tool_homepage}"
     hero_class = "hero has-banner" if banner_url else "hero"
     hero_style = f" style=\"background-image:url('{esc(banner_url)}')\"" if banner_url else ""
+
+    # Social share preview — use the tool's own marketing banner, not a
+    # generic site image, so sharing a tool page shows that tool's brand.
+    if banner_url:
+        og_image_tags = f'\n<meta property="og:image" content="{esc(banner_url)}">\n<meta property="og:image:alt" content="{esc(name)}">'
+        twitter_card = "summary_large_image"
+        twitter_image_tag = f'\n<meta name="twitter:image" content="{esc(banner_url)}">'
+    else:
+        og_image_tags = ""
+        twitter_card = "summary"
+        twitter_image_tag = ""
     cat = t.get("cat", "AI Tool")
     tag = t.get("tag", "")
     pill = t.get("pill", "")
@@ -838,6 +849,9 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache, banner_c
         cat=esc(cat),
         favicon=favicon,
         domain_enc=domain.replace("&", "%26"),
+        og_image_tags=og_image_tags,
+        twitter_card=twitter_card,
+        twitter_image_tag=twitter_image_tag,
         hero_class=hero_class,
         hero_style=hero_style,
         ratings_row=ratings_row,
