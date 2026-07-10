@@ -9,18 +9,33 @@ index.html — zero individually-crawlable/rankable URLs for queries like
 "Writesonic pricing" or "Fireflies.ai alternatives". Competitors
 (There's An AI For That, Futurepedia, Toolify) win primarily through
 programmatic SEO: one indexable page per tool, built from real structured
-data (pricing, rating, category, use cases) rather than AI-generated prose.
-That's what this script produces — no LLM calls, just templated real data,
-which is also why it doesn't carry the "scaled content abuse" risk that the
-article generator's volume did.
+data (pricing, rating, category, use cases).
 
-Re-run any time data/affiliate_tools.json or the TOOLS array changes —
-it's idempotent (regenerates every page fresh each run).
+The gated "Should You Actually Use X?" section is the one part of each
+page that IS Claude-written (claude-haiku-4-5) — a short story-driven
+narrative naming the reader's actual pain point and walking through
+whether this specific tool solves it, grounded in the tool's real
+jobs/needs/pricing/rating fields (no invented facts, no fabricated
+quotes). Everything else on the page (title, pricing, FAQ, alternatives,
+related articles) stays pure templated data. Results are cached in
+tool_story_cache.json keyed by a hash of each tool's own data, so
+re-running this script only pays for tools whose data actually changed —
+important both for cost and so this doesn't turn into 521 pages of
+LLM output regenerated (and silently drifting) on every run.
+
+Requires ANTHROPIC_API_KEY (same GitHub secret the article generator
+already uses). Without it, falls back to a short templated version of
+the section so the script still runs end-to-end in dev/CI without the
+key — see build_fallback_story().
+
+Re-run any time data/affiliate_tools.json or the TOOLS array changes.
 
 Usage: python .github/scripts/generate_tool_pages.py
 """
+import os
 import re
 import json
+import hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -30,7 +45,9 @@ TUTORIALS_JS = ROOT / "js" / "tutorials-data.js"
 ARTICLES_DIR = ROOT / "articles"
 TOOLS_DIR = ROOT / "tools"
 SITEMAP = ROOT / "sitemap.xml"
+STORY_CACHE_PATH = Path(__file__).resolve().parent / "tool_story_cache.json"
 BASE = "https://myaitoolsfinder.com"
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 
 TOOLS_DIR.mkdir(exist_ok=True)
 
@@ -274,9 +291,7 @@ footer a{{color:var(--primary);}}
     <h2>Should You Actually Use {name}?</h2>
     <div class="verdict-box">
       <div class="verdict-content" id="gate-content">
-        {impact_html}
-        {how_html}
-        {verdict_html}
+        {story_html}
         <a class="verdict-cta" href="{go_url}" target="_blank" rel="{rel}" onclick="if(window.dataLayer)window.dataLayer.push({{event:'tool_click',tool_name:{name_json},is_affiliate:{is_aff_json},destination:{active_url_json},click_type:'tool_page_gated_cta'}})">Try {name} Free &rarr;</a>
       </div>
       <div class="gate-overlay" id="gate-overlay">
@@ -386,7 +401,174 @@ document.addEventListener('DOMContentLoaded', async function(){{
 """
 
 
-def build_page(t, all_tools, tools_by_cat, articles_index):
+def story_cache_key(t) -> str:
+    """Hash of the fields that actually affect the story's content — if none
+    of these changed since the last run, the cached story is still valid."""
+    fields = {
+        "name": t.get("name"), "cat": t.get("cat"), "tag": t.get("tag"),
+        "pill": t.get("pill"), "rating": t.get("rating"), "reviews": t.get("reviews"),
+        "users": t.get("users"), "jobs": t.get("jobs"), "needs": t.get("needs"),
+    }
+    return hashlib.sha256(json.dumps(fields, sort_keys=True).encode()).hexdigest()[:16]
+
+
+def load_story_cache() -> dict:
+    if STORY_CACHE_PATH.exists():
+        try:
+            return json.loads(STORY_CACHE_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def save_story_cache(cache: dict):
+    STORY_CACHE_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def build_fallback_story(t, is_free: bool) -> str:
+    """Templated version used when ANTHROPIC_API_KEY isn't set or the API
+    call fails. Deliberately plain — the real narrative comes from Claude;
+    this just keeps the script runnable without a key."""
+    name = t["name"]
+    cat = t.get("cat", "AI Tool")
+    tag = t.get("tag", "")
+    pill = t.get("pill", "")
+    rating = t.get("rating")
+    reviews = t.get("reviews")
+    users = t.get("users")
+    jobs_lower = [j.lower() for j in t.get("jobs", [])]
+    needs_lower = [n.lower() for n in t.get("needs", [])]
+
+    if jobs_lower:
+        impact_lede = f"If you're a {join_natural(jobs_lower)}, {name} is built for exactly this kind of work."
+    else:
+        impact_lede = f"{name} is built for people doing {cat.lower()} work every day."
+    if needs_lower:
+        impact_body = (
+            f"Right now, {join_natural(needs_lower)} probably eats up real hours in your week. "
+            f"{name} takes that off your plate — instead of starting from a blank page or doing it by hand, "
+            f"you hand it to {name} and get a usable result back in minutes."
+        )
+    else:
+        impact_body = f"{name} is designed to save you time on the specific tasks it covers, so those hours go back into your actual work."
+    impact_html = f'<h3>What Changes For You</h3><p>{esc(impact_lede)}</p><p>{esc(impact_body)}</p>'
+
+    how_text = tag or f"{name} is an AI tool in the {cat} category."
+    how_html = f'<h3>How It Actually Works</h3><p>{esc(how_text)}</p>'
+
+    verdict_parts = []
+    if rating:
+        verdict_parts.append(f"a {rating}/5 rating" + (f" from {reviews} reviews" if reviews else ""))
+    if users:
+        verdict_parts.append(f"{users} people already using it")
+    if pill:
+        verdict_parts.append(f"a {pill} plan")
+    if verdict_parts:
+        verdict_text = (
+            f"With {join_natural(verdict_parts)}, {name} has already cleared the bar for a lot of people "
+            f"in the same position you're in. The realistic move: try the "
+            + ("free tier" if is_free else "trial")
+            + " on one real task this week and judge it by whether it actually saves you time — not by the marketing."
+        )
+    else:
+        verdict_text = f"The only real way to know if {name} fits your workflow is to try it on one real task — not a demo, an actual thing you need done this week."
+    verdict_html = f'<h3>Is It Worth Trying?</h3><p>{esc(verdict_text)}</p>'
+
+    return impact_html + how_html + verdict_html
+
+
+def generate_story_with_claude(t, is_free: bool):
+    """One short, story-driven 'Should You Actually Use This?' section,
+    grounded strictly in this tool's real data fields. Returns HTML
+    (<h3>/<p> only) or None on any failure — caller falls back to the
+    templated version."""
+    try:
+        import anthropic
+    except ImportError:
+        return None
+    if not ANTHROPIC_API_KEY:
+        return None
+
+    name = t["name"]
+    cat = t.get("cat", "AI Tool")
+    tag = t.get("tag", "")
+    pill = t.get("pill", "")
+    rating = t.get("rating")
+    reviews = t.get("reviews")
+    users = t.get("users")
+    jobs = t.get("jobs", [])
+    needs = t.get("needs", [])
+
+    facts = "\n".join(filter(None, [
+        f"Tool name: {name}",
+        f"Category: {cat}",
+        f"What it does: {tag}",
+        f"Pricing: {pill}" if pill else "",
+        f"Rating: {rating}/5" + (f" from {reviews} reviews" if reviews else "") if rating else "",
+        f"User base: {users}" if users else "",
+        f"Who it's for: {', '.join(jobs)}" if jobs else "",
+        f"What it helps with: {', '.join(needs)}" if needs else "",
+    ]))
+
+    prompt = (
+        f"Write the 'Should You Actually Use {name}?' section for a tool review page. "
+        f"This is gated content a subscriber unlocks, so it needs to actually deliver — not "
+        f"restate the obvious.\n\n"
+        f"REAL DATA — use only these facts, do not invent features, quotes, statistics, or "
+        f"outcomes beyond what's listed:\n{facts}\n\n"
+        f"Write it as a short story, not a spec sheet. Structure:\n"
+        f"1. <h3>What Changes For You</h3> — open with a specific, vivid scene of the exact "
+        f"person this tool is for (use the 'Who it's for' / 'What it helps with' fields), caught "
+        f"in the actual moment of the pain point this tool solves. Make the reader recognize "
+        f"themselves. 2-3 sentences of scene, then 1-2 sentences on what's different after.\n"
+        f"2. <h3>How It Actually Works</h3> — plain-language explanation grounded in 'What it "
+        f"does', told as the next beat of the story (what the person does now, using this tool, "
+        f"instead of the old painful way).\n"
+        f"3. <h3>Is It Worth Trying?</h3> — an honest, specific verdict using the real "
+        f"rating/users/pricing data. Tell them exactly what to try and how to judge it.\n\n"
+        f"Rules: HTML only (<h3>, <p>, <strong>) — no markdown, no preamble. Each section "
+        f"1-3 short paragraphs. No invented user names, no fake specific dollar figures or "
+        f"percentages that aren't in the data above. Write like a sharp friend, not a brochure. "
+        f"Total length: 180-260 words."
+    )
+
+    MODELS = ["claude-haiku-4-5", "claude-sonnet-4-5"]
+    for model in MODELS:
+        try:
+            client = anthropic.Anthropic()
+            msg = client.messages.create(
+                model=model,
+                max_tokens=700,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = msg.content[0].text.strip()
+            if "<h3>" in text:
+                return text
+        except Exception as e:
+            print(f"[WARN] Claude story generation failed for {name} with {model}: {e}")
+            continue
+    return None
+
+
+def get_story_html(t, is_free: bool, cache: dict) -> str:
+    key = slugify(t["name"])
+    data_hash = story_cache_key(t)
+    cached = cache.get(key)
+    if cached and cached.get("hash") == data_hash:
+        return cached["html"]
+
+    html = generate_story_with_claude(t, is_free)
+    if html:
+        cache[key] = {"hash": data_hash, "html": html}
+        return html
+
+    # No API key / call failed — use the fallback, but don't cache it, so
+    # the next run (once a key is available) tries Claude again instead of
+    # locking in the weaker templated version.
+    return build_fallback_story(t, is_free)
+
+
+def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
     name = t["name"]
     slug = slugify(name)
     domain = t.get("domain", "")
@@ -430,48 +612,12 @@ def build_page(t, all_tools, tools_by_cat, articles_index):
         needs_block = f'<section class="block"><h2>What {esc(name)} Helps You Do</h2><div class="chip-list">{chips}</div></section>'
 
     # ── Gated "Should You Actually Use This?" content ──────────────────────
-    # Answers, from real data only: what changes for the reader, how the
-    # tool does it, and whether it's worth trying — ending in the affiliate
-    # CTA. This is the content gated behind the subscriber check.
-    jobs_lower = [j.lower() for j in jobs]
-    needs_lower = [n.lower() for n in needs]
-
-    if jobs_lower:
-        who = join_natural(jobs_lower)
-        impact_lede = f"If you're a {who}, {name} is built for exactly this kind of work."
-    else:
-        impact_lede = f"{name} is built for people doing {cat.lower()} work every day."
-    if needs_lower:
-        impact_body = (
-            f"Right now, {join_natural(needs_lower)} probably eats up real hours in your week. "
-            f"{name} takes that off your plate — instead of starting from a blank page or doing it by hand, "
-            f"you hand it to {name} and get a usable result back in minutes."
-        )
-    else:
-        impact_body = f"{name} is designed to save you time on the specific tasks it covers, so those hours go back into your actual work."
-    impact_html = f'<h3>What Changes For You</h3><p>{esc(impact_lede)}</p><p>{esc(impact_body)}</p>'
-
-    how_text = tag or f"{name} is an AI tool in the {cat} category."
-    how_html = f'<h3>How It Actually Works</h3><p>{esc(how_text)}</p>'
-
+    # A short story-driven narrative naming the reader's real pain point and
+    # walking through whether this tool solves it — Claude-written when an
+    # API key is available (cached by data hash), templated fallback
+    # otherwise. See get_story_html() / build_fallback_story().
     is_free = bool(re.search(r"free", pill, re.I)) if pill else False
-    verdict_parts = []
-    if rating:
-        verdict_parts.append(f"a {rating}/5 rating" + (f" from {reviews} reviews" if reviews else ""))
-    if users:
-        verdict_parts.append(f"{users} people already using it")
-    if pill:
-        verdict_parts.append(f"a {pill} plan")
-    if verdict_parts:
-        verdict_text = (
-            f"With {join_natural(verdict_parts)}, {name} has already cleared the bar for a lot of people "
-            f"in the same position you're in. The realistic move: try the "
-            + (f"free tier" if is_free else "trial")
-            + f" on one real task this week and judge it by whether it actually saves you time — not by the marketing."
-        )
-    else:
-        verdict_text = f"The only real way to know if {name} fits your workflow is to try it on one real task — not a demo, an actual thing you need done this week."
-    verdict_html = f'<h3>Is It Worth Trying?</h3><p>{esc(verdict_text)}</p>'
+    story_html = get_story_html(t, is_free, story_cache)
 
     # Tutorial button
     tutorial_btn = ""
@@ -596,9 +742,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index):
         tutorial_btn=tutorial_btn,
         jobs_block=jobs_block,
         needs_block=needs_block,
-        impact_html=impact_html,
-        how_html=how_html,
-        verdict_html=verdict_html,
+        story_html=story_html,
         faq_html=faq_html,
         related_block=related_block,
         alternatives_block=alternatives_block,
@@ -637,6 +781,11 @@ def main():
     articles_index = load_articles_index()
     print(f"[INFO] Indexed {len(articles_index)} real articles for related-content matching")
 
+    story_cache = load_story_cache()
+    if not ANTHROPIC_API_KEY:
+        print("[WARN] ANTHROPIC_API_KEY not set — 'Should You Actually Use This?' sections "
+              "will use the plain templated fallback instead of Claude-written stories.")
+
     slugs = []
     seen_slugs = set()
     written = 0
@@ -646,10 +795,13 @@ def main():
             continue  # skip dupes/blank names defensively
         seen_slugs.add(slug)
         slugs.append(slug)
-        html = build_page(t, tools, tools_by_cat, articles_index)
+        html = build_page(t, tools, tools_by_cat, articles_index, story_cache)
         (TOOLS_DIR / f"{slug}.html").write_text(html, encoding="utf-8")
         written += 1
+        if written % 25 == 0:
+            save_story_cache(story_cache)  # checkpoint periodically during long API runs
 
+    save_story_cache(story_cache)
     print(f"[OK] Wrote {written} tool pages to {TOOLS_DIR}/")
     update_sitemap(slugs)
 

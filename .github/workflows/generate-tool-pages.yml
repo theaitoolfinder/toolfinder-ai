@@ -1,0 +1,66 @@
+name: Generate Tool Pages
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Rebuilds every /tools/{slug}.html page from the TOOLS array + affiliate data.
+# The "Should You Actually Use This?" section on each page is written by
+# Claude (claude-haiku-4-5), grounded strictly in that tool's own real data
+# fields — cached by a hash of those fields in
+# .github/scripts/tool_story_cache.json, so a re-run only pays for tools
+# whose data actually changed.
+#
+# Fires when the tools data or affiliate list changes, or manually via
+# Actions → Run workflow.
+#
+# Required GitHub secret: ANTHROPIC_API_KEY (already used by the article
+# and tutorial generators — no new secret needed)
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/affiliate_tools.json'
+      - 'index.html'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate tool pages
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/generate_tool_pages.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "My AI Tools Finder Bot"
+          git add tools/ sitemap.xml .github/scripts/tool_story_cache.json
+          if git diff --staged --quiet; then
+            echo "No tool page changes."
+          else
+            git commit -m "Auto: regenerate tool pages ($(TZ='Asia/Manila' date +'%b %d %Y %I:%M %p PHT'))"
+            git pull --rebase origin main || true
+            git push
+            echo "✅ Tool pages updated."
+          fi
