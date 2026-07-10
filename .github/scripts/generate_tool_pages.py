@@ -154,6 +154,25 @@ def star_icons_html(rating: float) -> str:
     return (_STAR_FILLED * full) + (_STAR_EMPTY * (5 - full))
 
 
+_VERDICT_ICON_STYLE = 'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:6px"'
+_ICON_PROBLEM = f'<svg {_VERDICT_ICON_STYLE}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+_ICON_FIX = f'<svg {_VERDICT_ICON_STYLE}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg>'
+_ICON_TRUST = f'<svg {_VERDICT_ICON_STYLE}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+
+_VERDICT_HEADER_ICONS = {
+    "Sound Familiar?": _ICON_PROBLEM,
+    "Here's the Fix": _ICON_FIX,
+    "Why Trust It?": _ICON_TRUST,
+}
+
+
+def add_verdict_icons(html: str) -> str:
+    """Prefix each gated-content <h3> with an icon matching its narrative role."""
+    for heading, icon in _VERDICT_HEADER_ICONS.items():
+        html = html.replace(f"<h3>{heading}</h3>", f"<h3>{icon}{heading}</h3>")
+    return html
+
+
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -675,7 +694,7 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache):
     # API key is available (cached by data hash), templated fallback
     # otherwise. See get_story_html() / build_fallback_story().
     is_free = bool(re.search(r"free", pill, re.I)) if pill else False
-    story_html = get_story_html(t, is_free, story_cache)
+    story_html = add_verdict_icons(get_story_html(t, is_free, story_cache))
 
     # Tutorial button
     tutorial_btn = ""
