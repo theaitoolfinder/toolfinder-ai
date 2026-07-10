@@ -5563,6 +5563,10 @@ function unlockExclusiveCards(){
   /* Hide the gate form */
   const gate=document.getElementById('excl-gate-form');
   if(gate) gate.style.display='none';
+
+  /* Remove the "Unlock All Friday Exclusives" CTA card from the carousel —
+     it's only relevant to locked-out visitors. */
+  document.querySelectorAll('#excl-track .car-unlock-card').forEach(el=>el.remove());
 }
 
 /* Clicking a locked card scrolls to the gate form */
