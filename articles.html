@@ -5338,10 +5338,8 @@ footer a:hover{color:#e2c06a;}
         <h3>Exclusive Subscriber Content</h3>
         <p class="excl-sub">These Friday deep-dives are reserved for newsletter subscribers. Already subscribed? Enter your email to unlock.</p>
         <div class="excl-form-row">
-          <input id="gate-email" type="email" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')gateSubmit()">
-          <button id="gate-btn" onclick="gateSubmit()">Unlock →</button>
+          <button onclick="showSubscribeGate()">Enter Email to Unlock →</button>
         </div>
-        <div id="gate-msg"></div>
         <p class="excl-subscribe-hint">Not subscribed yet? <a href="index.html#newsletter">Sign up free — it's a weekly email →</a></p>
       </div>
     </div>
