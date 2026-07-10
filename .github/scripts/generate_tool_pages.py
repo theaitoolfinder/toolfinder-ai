@@ -228,7 +228,12 @@ nav{{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(
   -webkit-mask-image:linear-gradient(to right,transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 100%);
   mask-image:linear-gradient(to right,transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 100%);
   border-radius:18px;pointer-events:none;z-index:0;}}
-@media(max-width:700px){{.hero-banner{{display:none;}}}}
+@media(max-width:600px){{
+  .hero-banner{{position:static;width:calc(100% + 40px);max-width:none;height:140px;margin:0 -20px 16px;
+    border-radius:16px 16px 0 0;
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),rgba(0,0,0,.55) 65%,transparent);
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),rgba(0,0,0,.55) 65%,transparent);}}
+}}
 h1{{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--text);margin-bottom:8px;}}
 .cat-pill{{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);background:var(--primary-light);padding:4px 11px;border-radius:999px;}}
 .ratings-row{{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0;font-size:13.5px;color:var(--text-2);}}
@@ -665,6 +670,13 @@ def build_page(t, all_tools, tools_by_cat, articles_index, story_cache, banner_c
     slug = slugify(name)
     domain = t.get("domain", "")
     banner_url = (banner_cache or {}).get(slug, {}).get("banner") or ""
+    tool_homepage = (t.get("url") or "").strip()
+    if not banner_url and tool_homepage:
+        # No og:image found (bot-blocked site, or a JS-rendered SPA with no
+        # server-side meta tags) — fall back to a live screenshot service
+        # so every tool still gets a visual, not just the ones with a
+        # scrapeable marketing banner.
+        banner_url = f"https://image.thum.io/get/width/700/noanimate/{tool_homepage}"
     hero_banner_html = (
         f'<img class="hero-banner" src="{esc(banner_url)}" alt="" loading="lazy" onerror="this.remove()">'
         if banner_url else ""
