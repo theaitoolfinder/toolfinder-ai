@@ -571,7 +571,14 @@ def generate_story_with_claude(t, is_free: bool):
         f"Rules: HTML only (<h3>, <p>, <strong>) — no markdown, no preamble. Each section "
         f"1-3 short paragraphs. No invented user names, no fake specific dollar figures or "
         f"percentages that aren't in the data above. Write like a sharp friend, not a brochure. "
-        f"Total length: 180-260 words."
+        f"Total length: 180-260 words.\n\n"
+        f"CRITICAL — vary your opening: do NOT open with a clock-time scene ('It's 11 PM...', "
+        f"'It's 2 AM...', 'It's Friday afternoon...' or any 'It's [time]' construction) — this "
+        f"is being generated across hundreds of tools and that opener is overused. Instead pick "
+        f"a different device each time: a blunt question, a specific number, a mid-task moment "
+        f"with no clock reference, a contrast ('X used to mean...'), a direct address to the "
+        f"reader, or dropping straight into the action. Make the opening line distinct to {name}, "
+        f"not swappable with any other tool's page."
     )
 
     MODELS = ["claude-haiku-4-5", "claude-sonnet-4-5"]
