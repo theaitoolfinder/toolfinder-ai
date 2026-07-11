@@ -90,7 +90,11 @@ html,body{margin:0;padding:0;background:#f0f6ff;color:#0d1f3c;font:15px/1.55 "Po
     if(secs<=0){
       clearInterval(tick);
       counter.textContent='Opening '+name+'…';
-      window.open(url,'_blank','noopener,nofollow');
+      // Same-tab navigation, not window.open() — this fires 3s after the
+      // click (inside setInterval), not synchronously with a user gesture,
+      // so browsers' popup blockers were silently blocking window.open()
+      // here. location.href always works regardless of timing.
+      window.location.href=url;
     } else {
       counter.textContent='Redirecting in '+secs+'…';
     }
