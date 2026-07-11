@@ -227,7 +227,7 @@
  "invideo-ai": {
   "url": "https://invideo.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-07-11T15:22:01.748330+00:00"
  },
  "pictory": {
   "url": "https://pictory.ai",
@@ -2603,5 +2603,15 @@
   "url": "https://gumloop.com",
   "banner": "https://gumloop.com/images/link-preview.webp",
   "checked_at": "2026-07-10T22:56:44.875240+00:00"
+ },
+ "manufact": {
+  "url": "https://manufact.dev",
+  "banner": null,
+  "checked_at": "2026-07-11T15:22:01.748330+00:00"
+ },
+ "outlier-ai": {
+  "url": "https://outlier.ai",
+  "banner": "https://framerusercontent.com/assets/W97xgVbkAOe9QWwqhMuBINE.png",
+  "checked_at": "2026-07-11T15:22:01.748330+00:00"
  }
 }
