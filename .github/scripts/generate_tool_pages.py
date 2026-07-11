@@ -39,6 +39,7 @@ import hashlib
 from urllib.parse import quote
 from pathlib import Path
 from datetime import datetime, timezone
+import usage_tracker
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 INDEX_HTML = ROOT / "index.html"
@@ -50,6 +51,14 @@ STORY_CACHE_PATH = Path(__file__).resolve().parent / "tool_story_cache.json"
 BANNER_CACHE_PATH = Path(__file__).resolve().parent / "tool_banner_cache.json"
 BASE = "https://myaitoolsfinder.com"
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+_USAGE_BY_MODEL: dict = {}  # model -> {"input_tokens": int, "output_tokens": int, "requests": int}
+
+
+def _track_usage(model: str, usage) -> None:
+    b = _USAGE_BY_MODEL.setdefault(model, {"input_tokens": 0, "output_tokens": 0, "requests": 0})
+    b["input_tokens"] += getattr(usage, "input_tokens", 0) or 0
+    b["output_tokens"] += getattr(usage, "output_tokens", 0) or 0
+    b["requests"] += 1
 
 TOOLS_DIR.mkdir(exist_ok=True)
 
@@ -628,6 +637,7 @@ def generate_story_with_claude(t, is_free: bool):
                 max_tokens=700,
                 messages=[{"role": "user", "content": prompt}],
             )
+            _track_usage(model, msg.usage)
             text = msg.content[0].text.strip()
             text = re.sub(r"^```(?:html)?\s*|\s*```$", "", text.strip())
             text = re.sub(r"</?div[^>]*>", "", text)
@@ -931,6 +941,9 @@ def main():
     save_story_cache(story_cache)
     print(f"[OK] Wrote {written} tool pages to {TOOLS_DIR}/")
     update_sitemap(slugs)
+
+    for model, b in _USAGE_BY_MODEL.items():
+        usage_tracker.record_usage("generate_tool_pages", model, b["input_tokens"], b["output_tokens"], b["requests"])
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ Process:
 import os, re, sys, json, random, textwrap, requests, time
 from datetime import datetime, timezone
 from pathlib import Path
+import usage_tracker
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 ROOT          = Path(__file__).resolve().parent.parent.parent
@@ -351,6 +352,7 @@ def research_tools_with_claude(existing_names, existing_domains, mentions):
                 print(f"[WARN] Model {model_name} failed: {model_err}", file=sys.stderr)
         else:
             raise RuntimeError("All models failed")
+        usage_tracker.record_usage("discover_tools", model_name, msg.usage.input_tokens, msg.usage.output_tokens)
         raw = msg.content[0].text.strip()
         # Extract JSON array from response (in case of any preamble)
         m = re.search(r'\[.*\]', raw, re.DOTALL)

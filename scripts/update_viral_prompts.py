@@ -9,6 +9,10 @@ import anthropic
 import re
 import sys
 from datetime import date, timedelta
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / ".github" / "scripts"))
+import usage_tracker
 
 PROMPTS_FILE = "js/prompts-data.js"
 
@@ -69,6 +73,8 @@ def generate_prompts(client: anthropic.Anthropic) -> str:
         system=SYSTEM,
         messages=[{"role": "user", "content": USER}],
     )
+    usage_tracker.record_usage("update_viral_prompts", "claude-haiku-4-5",
+                                response.usage.input_tokens, response.usage.output_tokens)
     # Extract only text blocks (skip thinking blocks)
     text_parts = [b.text for b in response.content if b.type == "text"]
     return "\n".join(text_parts).strip()

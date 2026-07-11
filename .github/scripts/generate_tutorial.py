@@ -15,6 +15,7 @@ Required env var: ANTHROPIC_API_KEY
 
 import os, re, json, sys
 from pathlib import Path
+import usage_tracker
 
 try:
     import anthropic
@@ -32,6 +33,14 @@ LOG_PATH       = Path(__file__).resolve().parent / "tutorial_log.json"
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 CLOSING_SENTINEL  = "}; // end TUTORIALS_DATA"
 SITEMAP_XML       = ROOT / "sitemap.xml"
+_USAGE_BY_MODEL: dict = {}
+
+
+def _track_usage(model: str, usage) -> None:
+    b = _USAGE_BY_MODEL.setdefault(model, {"input_tokens": 0, "output_tokens": 0, "requests": 0})
+    b["input_tokens"] += getattr(usage, "input_tokens", 0) or 0
+    b["output_tokens"] += getattr(usage, "output_tokens", 0) or 0
+    b["requests"] += 1
 
 
 # ── Slug helpers ───────────────────────────────────────────────────────────────
@@ -166,6 +175,7 @@ Rules:
                 system=SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": prompt}],
             )
+            _track_usage(model, resp.usage)
             raw = resp.content[0].text.strip()
             # Strip markdown fences aggressively
             raw = re.sub(r"^```(?:json)?\s*\n?", "", raw)
@@ -386,6 +396,9 @@ def main():
             print(f"  ✗ Failed for {tool['name']}: {exc}")
             import traceback; traceback.print_exc()
             continue
+
+    for model, b in _USAGE_BY_MODEL.items():
+        usage_tracker.record_usage("generate_tutorial", model, b["input_tokens"], b["output_tokens"], b["requests"])
 
     if added:
         TUTORIALS_JS.write_text(js, encoding="utf-8")

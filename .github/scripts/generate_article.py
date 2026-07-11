@@ -26,6 +26,7 @@ import os, re, sys, json, random, textwrap, requests, hashlib
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from xml.etree import ElementTree as ET
+import usage_tracker
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 ROOT               = Path(__file__).resolve().parent.parent.parent
@@ -1257,6 +1258,7 @@ def generate_with_claude(stories, article_type, title, log, research: str = ""):
                 max_tokens=max_tok,
                 messages=[{"role": "user", "content": prompt}]
             )
+            usage_tracker.record_usage("generate_article", model, msg.usage.input_tokens, msg.usage.output_tokens)
             text = msg.content[0].text.strip()
             word_count = len(re.sub(r"<[^>]+>", " ", text).split())
             print(f"[OK] {model} generated ~{word_count} words ({len(text)} chars)", file=sys.stderr)

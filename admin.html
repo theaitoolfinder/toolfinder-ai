@@ -157,6 +157,7 @@
     <button class="tab" data-tab="subscribers">Subscribers</button>
     <button class="tab" data-tab="reviews">Reviews</button>
     <button class="tab" data-tab="analytics">Analytics</button>
+    <button class="tab" data-tab="apiusage">API Usage</button>
     <button class="tab" data-tab="site">Site settings</button>
     <button class="tab" data-tab="github">GitHub Sync</button>
   </div>
@@ -348,6 +349,59 @@
           </tr></thead>
           <tbody id="analytics-log-body"></tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- API USAGE TAB -->
+  <div id="tab-apiusage" style="display:none">
+    <div style="margin-bottom:18px">
+      <h3 style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">API Credits Used</h3>
+      <p style="font-size:13px;color:var(--text-dim);margin:0 0 16px">Anthropic (Claude) token usage and estimated cost, per automated worker. Logged by every worker itself in <code>data/api_usage.json</code> — no separate tracking service needed.</p>
+    </div>
+
+    <div id="apiusage-error" class="danger-banner" style="display:none"></div>
+    <div id="apiusage-loading" style="color:var(--text-dim);font-size:13px">Loading…</div>
+
+    <div id="apiusage-content" style="display:none">
+      <div class="stats" style="grid-template-columns:repeat(4,1fr)">
+        <div class="stat"><b id="au-stat-cost">$0.00</b><span>All-Time Est. Cost</span></div>
+        <div class="stat"><b id="au-stat-requests">0</b><span>Total API Calls</span></div>
+        <div class="stat"><b id="au-stat-input">0</b><span>Input Tokens</span></div>
+        <div class="stat"><b id="au-stat-output">0</b><span>Output Tokens</span></div>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">By Worker <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(all-time)</span></h4>
+        <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <thead><tr style="background:var(--bg-soft);border-bottom:1px solid var(--border)">
+              <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Worker</th>
+              <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Model</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Calls</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Input Tok.</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Output Tok.</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Est. Cost</th>
+            </tr></thead>
+            <tbody id="apiusage-worker-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Recent Runs <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(last 50)</span></h4>
+        <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <thead><tr style="background:var(--bg-soft);border-bottom:1px solid var(--border)">
+              <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Date</th>
+              <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Worker</th>
+              <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim)">Model</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Tokens (in/out)</th>
+              <th style="padding:8px 12px;text-align:right;font-weight:600;color:var(--text-dim)">Est. Cost</th>
+            </tr></thead>
+            <tbody id="apiusage-log-body"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -1733,12 +1787,92 @@ function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,
 /* ===== Tab + search wiring ===== */
 function switchToTab(name){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
-  ['tools','subscribers','reviews','analytics','site','github'].forEach(n=>{
+  ['tools','subscribers','reviews','analytics','apiusage','site','github'].forEach(n=>{
     document.getElementById('tab-'+n).style.display = (n===name)?'block':'none';
   });
   if(name==='subscribers') loadSubDB();
   if(name==='reviews') initReviewsTab();
   if(name==='analytics') renderAnalyticsTab();
+  if(name==='apiusage') loadApiUsage();
+}
+
+/* ===== API Usage (Anthropic credits per worker) ===== */
+function escApiUsage(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+async function loadApiUsage(){
+  const repo=localStorage.getItem('myai_gh_repo');
+  const errEl=document.getElementById('apiusage-error');
+  const loading=document.getElementById('apiusage-loading');
+  const content=document.getElementById('apiusage-content');
+  errEl.style.display='none';
+  content.style.display='none';
+  if(!repo){
+    errEl.textContent='No GitHub repo configured — go to the GitHub Sync tab first.';
+    errEl.style.display='block';
+    loading.style.display='none';
+    return;
+  }
+  loading.style.display='block';
+  try{
+    const url=`https://raw.githubusercontent.com/${repo}/main/data/api_usage.json?_=${Date.now()}`;
+    const r=await fetch(url);
+    if(r.status===404){
+      loading.style.display='none';
+      errEl.textContent='No usage recorded yet — data/api_usage.json is created automatically the first time a worker calls Claude.';
+      errEl.style.display='block';
+      return;
+    }
+    if(!r.ok) throw new Error(`Could not load usage log (HTTP ${r.status}).`);
+    const data=await r.json();
+    const totals=Object.values(data.totals||{});
+    const runs=(data.runs||[]).slice().reverse();
+
+    const grand=totals.reduce((a,t)=>({
+      cost:a.cost+(t.cost_usd||0), requests:a.requests+(t.requests||0),
+      input:a.input+(t.input_tokens||0), output:a.output+(t.output_tokens||0)
+    }),{cost:0,requests:0,input:0,output:0});
+
+    document.getElementById('au-stat-cost').textContent='$'+grand.cost.toFixed(2);
+    document.getElementById('au-stat-requests').textContent=grand.requests.toLocaleString();
+    document.getElementById('au-stat-input').textContent=grand.input.toLocaleString();
+    document.getElementById('au-stat-output').textContent=grand.output.toLocaleString();
+
+    const workerLabels={
+      generate_tool_pages:'Tool Page Generator', generate_article:'Article Generator',
+      generate_tutorial:'Tutorial Generator', discover_tools:'Tool Discovery',
+      update_viral_prompts:'Trending Prompts'
+    };
+
+    totals.sort((a,b)=>(b.cost_usd||0)-(a.cost_usd||0));
+    document.getElementById('apiusage-worker-body').innerHTML = totals.length ? totals.map(t=>`
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:8px 12px">${escApiUsage(workerLabels[t.worker]||t.worker)}</td>
+        <td style="padding:8px 12px;color:var(--text-dim)">${escApiUsage(t.model)}</td>
+        <td style="padding:8px 12px;text-align:right">${(t.requests||0).toLocaleString()}</td>
+        <td style="padding:8px 12px;text-align:right">${(t.input_tokens||0).toLocaleString()}</td>
+        <td style="padding:8px 12px;text-align:right">${(t.output_tokens||0).toLocaleString()}</td>
+        <td style="padding:8px 12px;text-align:right;font-weight:600">$${(t.cost_usd||0).toFixed(3)}</td>
+      </tr>`).join('') : `<tr><td colspan="6" style="padding:14px;text-align:center;color:var(--text-dim)">No usage yet.</td></tr>`;
+
+    document.getElementById('apiusage-log-body').innerHTML = runs.length ? runs.slice(0,50).map(r=>{
+      const d=new Date(r.date);
+      const when=isNaN(d)?r.date:d.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+      return `<tr style="border-bottom:1px solid var(--border-soft)">
+        <td style="padding:7px 12px;color:var(--text-dim)">${escApiUsage(when)}</td>
+        <td style="padding:7px 12px">${escApiUsage(workerLabels[r.worker]||r.worker)}</td>
+        <td style="padding:7px 12px;color:var(--text-dim)">${escApiUsage(r.model)}</td>
+        <td style="padding:7px 12px;text-align:right">${(r.input_tokens||0).toLocaleString()} / ${(r.output_tokens||0).toLocaleString()}</td>
+        <td style="padding:7px 12px;text-align:right">$${(r.cost_usd||0).toFixed(4)}</td>
+      </tr>`;
+    }).join('') : `<tr><td colspan="5" style="padding:14px;text-align:center;color:var(--text-dim)">No runs logged yet.</td></tr>`;
+
+    loading.style.display='none';
+    content.style.display='block';
+  }catch(e){
+    loading.style.display='none';
+    errEl.textContent='Error loading usage log: '+e.message;
+    errEl.style.display='block';
+  }
 }
 
 function renderAnalyticsTab(){
