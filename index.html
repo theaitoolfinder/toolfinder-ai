@@ -2962,9 +2962,11 @@ function showCmpModal(indices){
         <th></th>
         ${tools_.map(t=>`
           <th>
-            <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
-            <div class="cmp-tbl-name">${t.name}${t.rating===maxRating&&tools_.length>1?'<span class="cmp-win-badge">Top Rated</span>':''}</div>
-            <div class="cmp-tbl-cat">${t.cat}</div>
+            <a href="tools/${t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}.html" style="display:block;color:inherit;text-decoration:none">
+              <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
+              <div class="cmp-tbl-name">${t.name}${t.rating===maxRating&&tools_.length>1?'<span class="cmp-win-badge">Top Rated</span>':''}</div>
+              <div class="cmp-tbl-cat">${t.cat}</div>
+            </a>
           </th>
         `).join("")}
       </tr>
@@ -4638,9 +4640,8 @@ async function popSubscribe(){
     tools.forEach(t => {
       const a = document.createElement('a');
       a.className = 'cb-tool-chip';
-      a.href = t.affiliate_url || t.url || '#';
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
+      const slug = t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      a.href = `tools/${slug}.html`;
       const stars = t.rating ? ` ⭐ ${t.rating}` : '';
       a.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" width="16" height="16" alt="" loading="lazy" style="border-radius:3px;flex-shrink:0"><span><b>${t.name}</b> — ${t.pill}${stars}</span>`;
       inner.appendChild(a);
