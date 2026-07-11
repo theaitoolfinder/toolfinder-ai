@@ -740,5 +740,7 @@ window.MYAI_AFF_MAP = {
   "turboscribe": "https://turboscribe.ai",
   "hix ai": "https://hix.ai",
   "elevenlabs dubbing": "https://elevenlabs.io/dubbing",
-  "gumloop": "https://gumloop.com"
+  "gumloop": "https://gumloop.com",
+  "manufact": "https://manufact.dev",
+  "outlier ai": "https://outlier.ai"
 };
