@@ -426,13 +426,16 @@ footer a:hover{color:var(--primary)}
 .dir-see-all{font-size:12.5px;color:var(--primary);background:none;border:none;font-family:inherit;cursor:pointer;font-weight:600;padding:4px 10px;border-radius:6px;transition:background .12s}
 .dir-see-all:hover{background:var(--primary-light)}
 .dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.dir-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--border-soft);border-radius:12px;cursor:pointer;transition:all .15s;text-decoration:none;color:inherit}
+.dir-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--border-soft);border-radius:12px;transition:all .15s}
 .dir-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-1px)}
+.dir-card-link{display:flex;align-items:center;gap:12px;flex:1;min-width:0;text-decoration:none;color:inherit;cursor:pointer}
 .dir-card img{width:32px;height:32px;border-radius:8px;flex-shrink:0;object-fit:contain}
 .dir-card-info{flex:1;min-width:0}
 .dir-card-name{font-size:13.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dir-card-cat{font-size:11.5px;color:var(--text-dim);margin-top:1px}
 .dir-card-pill{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--primary-light);color:var(--primary);font-weight:600;white-space:nowrap;flex-shrink:0}
+.dir-card-visit{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;color:var(--text-dim);transition:all .15s}
+.dir-card-visit:hover{background:var(--primary-light);color:var(--primary)}
 .dir-card.verified .dir-card-name::after{content:" \2713";color:var(--ok);font-size:11px}
 @media(max-width:760px){.dir-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.dir-grid{grid-template-columns:1fr}}
@@ -3188,14 +3191,20 @@ function renderDirectory(){
   const hasMore=indices.length>DIR_SHOW;
   const cards=visible.map(i=>{
     const t=tool(i);
-    return`<a href="go.html?url=${encodeURIComponent(activeUrl(t))}&name=${encodeURIComponent(t.name)}" target="_blank" rel="noopener nofollow" class="dir-card${t.verified?' verified':''}" onclick="trackVisit(${i})">
-      <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
-      <div class="dir-card-info">
-        <div class="dir-card-name">${t.name}</div>
-        <div class="dir-card-cat">${t.tag.length>60?t.tag.slice(0,60)+'…':t.tag}</div>
-      </div>
+    const slug=t.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    return`<div class="dir-card${t.verified?' verified':''}">
+      <a class="dir-card-link" href="tools/${slug}.html" aria-label="${t.name} profile">
+        <img src="https://www.google.com/s2/favicons?domain=${t.domain}&sz=32" alt="${t.name}" onerror="this.style.display='none'">
+        <div class="dir-card-info">
+          <div class="dir-card-name">${t.name}</div>
+          <div class="dir-card-cat">${t.tag.length>60?t.tag.slice(0,60)+'…':t.tag}</div>
+        </div>
+      </a>
       <span class="dir-card-pill">${t.pill}</span>
-    </a>`;
+      <a class="dir-card-visit" href="go.html?url=${encodeURIComponent(activeUrl(t))}&name=${encodeURIComponent(t.name)}" target="_blank" rel="noopener nofollow" onclick="trackVisit(${i})" title="Visit ${t.name}" aria-label="Visit ${t.name}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>`;
   }).join('');
   content.innerHTML=`<div class="dir-cat-block">
     <div class="dir-cat-head">
