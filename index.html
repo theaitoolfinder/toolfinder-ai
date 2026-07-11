@@ -3778,6 +3778,7 @@ async function submitReview(){
         let _mx=0,_my=0,_mdrag=false;
         el.addEventListener('pointerdown',e=>{
           if(e.pointerType!=='mouse'||e.button!==0)return;
+          if(e.target.closest('a,button'))return; /* let real button/link clicks through untouched */
           e.preventDefault();
           el.setPointerCapture(e.pointerId);
           _mx=e.clientX;_my=e.clientY;_mdrag=true;el.style.cursor='grabbing';
