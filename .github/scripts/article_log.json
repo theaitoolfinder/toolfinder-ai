@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-02",
-      "slot": "morning",
-      "slug": "honest-notebooklm-review-what-it-gets-right-and-where-it-falls-2026-07-02",
-      "title": "Honest NotebookLM Review: What It Gets Right and Where It Falls Short",
-      "type": "pros_cons",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1560227314-eccfec50b4be?w=800&q=85&auto=format&fit=crop",
-      "topic": "notebooklm gets where falls",
-      "pair": "",
-      "tool": "NotebookLM",
-      "words": 2307,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-07-02",
       "slot": "midday",
       "slug": "the-elevenlabs-review-that-cuts-through-the-hype-2026",
       "title": "The ElevenLabs Review That Cuts Through the Hype (2026)",
@@ -1182,10 +1164,26 @@
       "partners": [
         "ElevenLabs"
       ]
+    },
+    {
+      "date": "2026-07-12",
+      "slot": "morning",
+      "slug": "the-keyword-insights-trick-that-saves-seo-teams-and-bloggers",
+      "title": "The Keyword Insights Trick That Saves SEO Teams and Bloggers months writing content that never ranks, Starting Today",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1595896424050-f70867364590?w=800&q=85&auto=format&fit=crop",
+      "topic": "keyword insights trick saves",
+      "pair": "",
+      "tool": "Keyword Insights",
+      "words": 2323,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
@@ -1384,6 +1382,7 @@
     "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1559327437-4f87b63db9eb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763568258474-7c2330c1a893?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576250671051-8937769d186c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1576250671051-8937769d186c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595896424050-f70867364590?w=800&q=85&auto=format&fit=crop"
   ]
 }
