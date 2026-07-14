@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-02",
-      "slot": "afternoon",
-      "slug": "ai-tools-for-hr-managers-the-exact-stack-to-build-phase-by-phase-2026-07-02",
-      "title": "AI Tools for HR Managers: The Exact Stack to Build, Phase by Phase",
-      "type": "roadmap",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1522832712787-3fbd36c9fe2d?w=800&q=85&auto=format&fit=crop",
-      "topic": "tools managers exact stack",
-      "pair": "",
-      "tool": "",
-      "words": 2062,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-07-02",
       "slot": "evening",
       "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise-2026-07-02",
       "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
@@ -1180,10 +1162,30 @@
         "NeuronWriter",
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-07-14",
+      "slot": "morning",
+      "slug": "if-you-re-a-e-commerce-owner-this-is-the-ai-toolkit-you-actually",
+      "title": "If You're a E-commerce Owner, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre ecommerce owner toolkit",
+      "pair": "",
+      "tool": "",
+      "words": 2262,
+      "partners": [
+        "Beehiiv",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
@@ -1382,6 +1384,7 @@
     "https://images.unsplash.com/photo-1763568258474-7c2330c1a893?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576250671051-8937769d186c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1595896424050-f70867364590?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop"
   ]
 }
