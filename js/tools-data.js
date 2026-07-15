@@ -742,5 +742,6 @@ window.MYAI_AFF_MAP = {
   "elevenlabs dubbing": "https://elevenlabs.io/dubbing",
   "gumloop": "https://gumloop.com",
   "manufact": "https://manufact.dev",
-  "outlier ai": "https://outlier.ai"
+  "outlier ai": "https://outlier.ai",
+  "agnost ai": "https://agnost.ai"
 };

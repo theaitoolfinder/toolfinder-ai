@@ -99,6 +99,13 @@
         "Outlier AI"
       ],
       "count": 2
+    },
+    {
+      "date": "2026-07-15",
+      "tools": [
+        "Agnost AI"
+      ],
+      "count": 1
     }
   ]
 }
