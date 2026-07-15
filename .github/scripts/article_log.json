@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-02",
-      "slot": "evening",
-      "slug": "the-ai-tool-subscription-trap-how-companies-hook-you-and-raise-2026-07-02",
-      "title": "The AI Tool Subscription Trap: How Companies Hook You and Raise Prices in 2026",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1761544775976-0c81b00e81d3?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool subscription trap companies",
-      "pair": "",
-      "tool": "",
-      "words": 2294,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-02",
       "slot": "night",
       "slug": "fireflies-ai-vs-otter-ai-which-ai-tool-should-you-pay-for-in-2026",
       "title": "Fireflies.ai vs Otter.ai: Which AI Tool Should You Pay For in 2026?",
@@ -1183,10 +1160,26 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-15",
+      "slot": "morning",
+      "slug": "how-solopreneurs-and-small-teams-are-getting-back-hours",
+      "title": "How Solopreneurs and Small Teams Are Getting Back hours untangling three different apps With Taskade AI",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1622258415402-d6f597973b03?w=800&q=85&auto=format&fit=crop",
+      "topic": "solopreneurs small teams getting",
+      "pair": "",
+      "tool": "Taskade AI",
+      "words": 2637,
+      "partners": [
+        "Make.com",
+        "Taskade AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
@@ -1385,6 +1378,7 @@
     "https://images.unsplash.com/photo-1576250671051-8937769d186c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1595896424050-f70867364590?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622258415402-d6f597973b03?w=800&q=85&auto=format&fit=crop"
   ]
 }
