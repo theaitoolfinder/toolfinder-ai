@@ -1,28 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-02",
-      "slot": "latenight",
-      "slug": "is-claude-actually-safer-than-chatgpt-the-real-differences-2026-07-02",
-      "title": "Is Claude Actually Safer Than ChatGPT? The Real Differences Nobody Talks About",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1676272748285-2cee8e35db69?w=800&q=85&auto=format&fit=crop",
-      "topic": "claude actually safer than",
-      "pair": "",
-      "tool": "",
-      "words": 2121,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-07-03",
       "slot": "morning",
       "slug": "is-notion-ai-worth-it-full-pros-cons-and-verdict-for-2026",
@@ -1174,10 +1152,28 @@
       "partners": [
         "Taskade AI"
       ]
+    },
+    {
+      "date": "2026-07-17",
+      "slot": "exclusive",
+      "slug": "how-content-creators-are-getting-back-6-hours-a-week-with",
+      "title": "How Content Creators Are Getting Back 6+ hours a week With Writesonic",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop",
+      "topic": "content creators getting back",
+      "pair": "",
+      "tool": "Writesonic",
+      "words": 2302,
+      "partners": [
+        "Beehiiv",
+        "OpusClip",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
@@ -1376,6 +1372,7 @@
     "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1622258415402-d6f597973b03?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop"
   ]
 }
