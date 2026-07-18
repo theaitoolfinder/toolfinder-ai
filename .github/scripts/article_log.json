@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "morning",
-      "slug": "is-notion-ai-worth-it-full-pros-cons-and-verdict-for-2026",
-      "title": "Is Notion AI Worth It? Full Pros, Cons, and Verdict for 2026",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1632961974870-14d1f4fe4e1e?w=800&q=85&auto=format&fit=crop",
-      "topic": "notion worth full pros",
-      "pair": "",
-      "tool": "Notion AI",
-      "words": 2307,
-      "partners": [
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "exclusive",
       "slug": "runway-everything-you-need-to-know-before-you-sign-up-2026",
       "title": "Runway: Everything You Need to Know Before You Sign Up (2026)",
@@ -1171,10 +1153,25 @@
         "Predis.ai",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-18",
+      "slot": "morning",
+      "slug": "tired-of-manually-copying-the-same-data-between-five-different",
+      "title": "Tired of manually copying the same data between five different apps every single day? Here's the Make.com Fix Agencies and Ops Teams Are Using in 2026",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1646776174801-0d1918cb4d2b?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired manually copying same",
+      "pair": "",
+      "tool": "Make.com",
+      "words": 2167,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675557010061-315772f6efef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
@@ -1373,6 +1370,7 @@
     "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1622258415402-d6f597973b03?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1646776174801-0d1918cb4d2b?w=800&q=85&auto=format&fit=crop"
   ]
 }
