@@ -106,6 +106,15 @@
         "Agnost AI"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-07-18",
+      "tools": [
+        "Traceforce",
+        "Trickle AI",
+        "Genspark"
+      ],
+      "count": 3
     }
   ]
 }

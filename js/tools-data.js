@@ -743,5 +743,8 @@ window.MYAI_AFF_MAP = {
   "gumloop": "https://gumloop.com",
   "manufact": "https://manufact.dev",
   "outlier ai": "https://outlier.ai",
-  "agnost ai": "https://agnost.ai"
+  "agnost ai": "https://agnost.ai",
+  "traceforce": "https://traceforce.ai",
+  "trickle ai": "https://trickle.so",
+  "genspark": "https://genspark.ai"
 };
