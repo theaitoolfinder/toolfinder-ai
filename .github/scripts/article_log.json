@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "exclusive",
-      "slug": "seo-consultant-s-guide-to-ai-tools-in-2026-what-to-use-and-when",
-      "title": "SEO Consultant's Guide to AI Tools in 2026: What to Use and When",
-      "type": "roadmap",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1657727534668-4104c475b292?w=800&q=85&auto=format&fit=crop",
-      "topic": "consultants tools 2026",
-      "pair": "",
-      "tool": "",
-      "words": 2733,
-      "partners": [
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "midday",
       "slug": "deepseek-in-2026-still-worth-it-or-time-to-switch",
       "title": "DeepSeek in 2026: Still Worth It or Time to Switch?",
@@ -1174,10 +1155,29 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-07-20",
+      "slot": "morning",
+      "slug": "the-project-manager-s-ai-tools-roadmap-for-2026-start-here",
+      "title": "The Project Manager's AI Tools Roadmap for 2026: Start Here",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop",
+      "topic": "project managers tools roadmap",
+      "pair": "",
+      "tool": "",
+      "words": 2087,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "Predis.ai",
+        "Reclaim AI",
+        "Taskade AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1506704888326-3b8834edb40a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
@@ -1376,6 +1376,7 @@
     "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1646776174801-0d1918cb4d2b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1711303622990-fe0709e6326c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1711303622990-fe0709e6326c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop"
   ]
 }
