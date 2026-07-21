@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "midday",
-      "slug": "deepseek-in-2026-still-worth-it-or-time-to-switch",
-      "title": "DeepSeek in 2026: Still Worth It or Time to Switch?",
-      "type": "featured",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1738107450287-8ccd5a2f8806?w=800&q=85&auto=format&fit=crop",
-      "topic": "deepseek 2026 still worth",
-      "pair": "",
-      "tool": "DeepSeek",
-      "words": 2304,
-      "partners": [
-        "Beehiiv",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "exclusive",
       "slug": "choosing-between-leonardo-ai-and-midjourney-read-this-first-2026",
       "title": "Choosing Between Leonardo.ai and Midjourney? Read This First (2026)",
@@ -1175,10 +1154,27 @@
         "Reclaim AI",
         "Taskade AI"
       ]
+    },
+    {
+      "date": "2026-07-21",
+      "slot": "morning",
+      "slug": "bloggers-and-site-owners-stop-losing-months-of-missed-search",
+      "title": "Bloggers and Site Owners: Stop Losing months of missed search traffic — RankMath AI Solves This in Minutes",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&q=85&auto=format&fit=crop",
+      "topic": "bloggers site owners stop",
+      "pair": "",
+      "tool": "RankMath AI",
+      "words": 2234,
+      "partners": [
+        "Beehiiv",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
@@ -1377,6 +1373,7 @@
     "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1646776174801-0d1918cb4d2b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1711303622990-fe0709e6326c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&q=85&auto=format&fit=crop"
   ]
 }
