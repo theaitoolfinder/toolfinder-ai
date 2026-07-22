@@ -116,6 +116,15 @@
    "output_tokens": 3850,
    "requests": 1,
    "cost_usd": 0.067881
+  },
+  {
+   "worker": "discover_tools",
+   "model": "claude-opus-4-5",
+   "date": "2026-07-22T08:18:33.757205+00:00",
+   "input_tokens": 1427,
+   "output_tokens": 956,
+   "requests": 1,
+   "cost_usd": 0.031035
   }
  ],
  "totals": {
@@ -130,11 +139,11 @@
   "discover_tools::claude-opus-4-5": {
    "worker": "discover_tools",
    "model": "claude-opus-4-5",
-   "input_tokens": 2656,
-   "output_tokens": 1930,
-   "requests": 2,
-   "cost_usd": 0.06153
+   "input_tokens": 4083,
+   "output_tokens": 2886,
+   "requests": 3,
+   "cost_usd": 0.092565
   }
  },
- "updated_at": "2026-07-22T00:02:18.985426+00:00"
+ "updated_at": "2026-07-22T08:18:33.757236+00:00"
 }

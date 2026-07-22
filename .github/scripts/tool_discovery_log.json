@@ -115,6 +115,14 @@
         "Genspark"
       ],
       "count": 3
+    },
+    {
+      "date": "2026-07-22",
+      "tools": [
+        "Bloomy",
+        "Cohere Coral"
+      ],
+      "count": 2
     }
   ]
 }

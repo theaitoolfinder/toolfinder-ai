@@ -746,5 +746,7 @@ window.MYAI_AFF_MAP = {
   "agnost ai": "https://agnost.ai",
   "traceforce": "https://traceforce.ai",
   "trickle ai": "https://trickle.so",
-  "genspark": "https://genspark.ai"
+  "genspark": "https://genspark.ai",
+  "bloomy": "https://bloomy.ai",
+  "cohere coral": "https://coral.cohere.com"
 };
