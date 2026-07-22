@@ -3,24 +3,6 @@
     {
       "date": "2026-07-03",
       "slot": "exclusive",
-      "slug": "choosing-between-leonardo-ai-and-midjourney-read-this-first-2026",
-      "title": "Choosing Between Leonardo.ai and Midjourney? Read This First (2026)",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?w=800&q=85&auto=format&fit=crop",
-      "topic": "choosing between leonardoai midjourney",
-      "pair": "",
-      "tool": "",
-      "words": 2627,
-      "partners": [
-        "Beehiiv",
-        "Make.com",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
-      "slot": "exclusive",
       "slug": "the-hidden-cost-of-free-ai-tools-what-you-re-really-giving-up-2026-07-03",
       "title": "The Hidden Cost of 'Free' AI Tools: What You're Really Giving Up",
       "type": "controversial",
@@ -1172,10 +1154,25 @@
         "NeuronWriter",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-07-22",
+      "slot": "morning",
+      "slug": "the-real-reason-podcasters-and-video-editors-waste-a-full-day-of",
+      "title": "The Real Reason Podcasters and Video Editors Waste a full day of editing per episode (And the OpusClip Fix for It)",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1676380364777-d53c900178fa?w=800&q=85&auto=format&fit=crop",
+      "topic": "reason podcasters video editors",
+      "pair": "",
+      "tool": "OpusClip",
+      "words": 2392,
+      "partners": [
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/reserve/oIpwxeeSPy1cnwYpqJ1w_Dufer%20Collateral%20test.jpg?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1635602739175-bab409a6e94c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?w=800&q=85&auto=format&fit=crop",
@@ -1374,6 +1371,7 @@
     "https://images.unsplash.com/photo-1646776174801-0d1918cb4d2b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1711303622990-fe0709e6326c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1676380364777-d53c900178fa?w=800&q=85&auto=format&fit=crop"
   ]
 }
