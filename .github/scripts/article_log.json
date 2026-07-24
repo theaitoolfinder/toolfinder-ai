@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "afternoon",
-      "slug": "surfer-seo-pros-cons-what-ai-seo-users-actually-think",
-      "title": "Surfer SEO Pros & Cons: What Ai Seo Users Actually Think",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1535182463927-440364075d9c?w=800&q=85&auto=format&fit=crop",
-      "topic": "surfer pros cons users",
-      "pair": "",
-      "tool": "Surfer SEO",
-      "words": 2478,
-      "partners": [
-        "Keyword Insights",
-        "NeuronWriter",
-        "RankMath AI"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "exclusive",
       "slug": "elevenlabs-voice-cloning-abuse-who-s-responsible-when-ai-goes-2026-07-03",
       "title": "ElevenLabs Voice Cloning Abuse: Who's Responsible When AI Goes Wrong?",
@@ -1164,10 +1146,25 @@
         "Beehiiv",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-24",
+      "slot": "exclusive",
+      "slug": "agencies-and-ops-teams-stop-losing-hours-of-repetitive-busywork",
+      "title": "Agencies and Ops Teams: Stop Losing hours of repetitive busywork every week — Make.com Solves This in Minutes",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&q=85&auto=format&fit=crop",
+      "topic": "agencies teams stop losing",
+      "pair": "",
+      "tool": "Make.com",
+      "words": 2567,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1510759395231-72b17d622279?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1709120395858-92f1c7c577f5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop",
@@ -1366,6 +1363,7 @@
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676380364777-d53c900178fa?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1673767297353-0a4c8ad61b05?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1673767297353-0a4c8ad61b05?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&q=85&auto=format&fit=crop"
   ]
 }
