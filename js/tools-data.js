@@ -748,5 +748,9 @@ window.MYAI_AFF_MAP = {
   "trickle ai": "https://trickle.so",
   "genspark": "https://genspark.ai",
   "bloomy": "https://bloomy.ai",
-  "cohere coral": "https://coral.cohere.com"
+  "cohere coral": "https://coral.cohere.com",
+  "palmier pro": "https://palmier.pro",
+  "screenpipe": "https://screenpipe.com",
+  "unlayer": "https://unlayer.com",
+  "langy": "https://langy.ai"
 };

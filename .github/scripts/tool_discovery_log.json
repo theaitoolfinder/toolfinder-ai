@@ -123,6 +123,16 @@
         "Cohere Coral"
       ],
       "count": 2
+    },
+    {
+      "date": "2026-07-25",
+      "tools": [
+        "Palmier Pro",
+        "Screenpipe",
+        "Unlayer",
+        "Langy"
+      ],
+      "count": 4
     }
   ]
 }
