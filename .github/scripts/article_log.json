@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "evening",
-      "slug": "heygen-everything-you-need-to-know-before-you-sign-up-2026",
-      "title": "HeyGen: Everything You Need to Know Before You Sign Up (2026)",
-      "type": "featured",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1578930955087-58a5d98e7a95?w=800&q=85&auto=format&fit=crop",
-      "topic": "heygen everything need know",
-      "pair": "",
-      "tool": "HeyGen",
-      "words": 2554,
-      "partners": [
-        "ElevenLabs",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "exclusive",
       "slug": "groq-vs-chatgpt-stop-guessing-here-s-the-2026-verdict",
       "title": "Groq vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
@@ -1165,10 +1146,27 @@
         "NeuronWriter",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-27",
+      "slot": "morning",
+      "slug": "still-spending-hours-every-week-turning-one-idea-into-blog-posts",
+      "title": "Still spending hours every week turning one idea into blog posts, captions, and emails that still sound robotic? Writesonic Just Solved Your Biggest Time-Waster",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop",
+      "topic": "still spending hours every",
+      "pair": "",
+      "tool": "Writesonic",
+      "words": 1848,
+      "partners": [
+        "Beehiiv",
+        "OpusClip",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
@@ -1367,6 +1365,7 @@
     "https://images.unsplash.com/photo-1673767297353-0a4c8ad61b05?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop"
   ]
 }
