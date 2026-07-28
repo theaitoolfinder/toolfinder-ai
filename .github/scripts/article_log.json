@@ -3,28 +3,6 @@
     {
       "date": "2026-07-03",
       "slot": "exclusive",
-      "slug": "groq-vs-chatgpt-stop-guessing-here-s-the-2026-verdict",
-      "title": "Groq vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
-      "type": "comparison",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1677691824257-5772713ac90a?w=800&q=85&auto=format&fit=crop",
-      "topic": "groq chatgpt stop guessing",
-      "pair": "Groq vs ChatGPT — Stop Guessing. Here's the 2026 Verdict.",
-      "tool": "Groq",
-      "words": 2101,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
-      "slot": "exclusive",
       "slug": "is-perplexity-ai-actually-plagiarizing-publishers-the-evidence-2026-07-03",
       "title": "Is Perplexity AI Actually Plagiarizing Publishers? The Evidence Is Damning.",
       "type": "controversial",
@@ -1164,10 +1142,28 @@
         "OpusClip",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-07-28",
+      "slot": "morning",
+      "slug": "tired-of-publishing-content-that-never-ranks-because-it-s",
+      "title": "Tired of publishing content that never ranks because it's missing the exact structure and terms Google actually rewards? Here's the RankMath AI Fix Bloggers and Site Owners Are Using in 2026",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1605827211207-194dc6ec319b?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired publishing content never",
+      "pair": "",
+      "tool": "RankMath AI",
+      "words": 2706,
+      "partners": [
+        "Beehiiv",
+        "Keyword Insights",
+        "NeuronWriter",
+        "RankMath AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
@@ -1366,6 +1362,7 @@
     "https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605827211207-194dc6ec319b?w=800&q=85&auto=format&fit=crop"
   ]
 }
