@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "exclusive",
-      "slug": "is-perplexity-ai-actually-plagiarizing-publishers-the-evidence-2026-07-03",
-      "title": "Is Perplexity AI Actually Plagiarizing Publishers? The Evidence Is Damning.",
-      "type": "controversial",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1490004047268-5259045aa2b4?w=800&q=85&auto=format&fit=crop",
-      "topic": "perplexity actually plagiarizing publishers",
-      "pair": "",
-      "tool": "",
-      "words": 2027,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "SciSpace"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "night",
       "slug": "synthesia-7-genuine-pros-and-5-real-cons-you-need-to-know",
       "title": "Synthesia: 7 Genuine Pros and 5 Real Cons You Need to Know",
@@ -1161,10 +1139,27 @@
         "NeuronWriter",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-07-29",
+      "slot": "morning",
+      "slug": "still-spending-hours-manually-adding-captions-and-effects-to",
+      "title": "Still spending hours manually adding captions and effects to every short-form video before you can post it? Submagic AI Just Solved Your Biggest Time-Waster",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1592495981488-073153776d9a?w=800&q=85&auto=format&fit=crop",
+      "topic": "still spending hours manually",
+      "pair": "",
+      "tool": "Submagic AI",
+      "words": 2323,
+      "partners": [
+        "OpusClip",
+        "Predis.ai",
+        "Submagic AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
@@ -1363,6 +1358,7 @@
     "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1605827211207-194dc6ec319b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1605827211207-194dc6ec319b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1592495981488-073153776d9a?w=800&q=85&auto=format&fit=crop"
   ]
 }
