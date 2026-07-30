@@ -2,26 +2,6 @@
   "generated": [
     {
       "date": "2026-07-03",
-      "slot": "night",
-      "slug": "synthesia-7-genuine-pros-and-5-real-cons-you-need-to-know",
-      "title": "Synthesia: 7 Genuine Pros and 5 Real Cons You Need to Know",
-      "type": "pros_cons",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1762028891980-4f84403b138a?w=800&q=85&auto=format&fit=crop",
-      "topic": "synthesia genuine pros cons",
-      "pair": "",
-      "tool": "Synthesia",
-      "words": 1899,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-03",
       "slot": "exclusive",
       "slug": "runway-vs-sora-the-video-ai-war-that-s-leaving-users-in-the-2026-07-03",
       "title": "Runway vs. Sora: The Video AI War That's Leaving Users in the Middle",
@@ -1157,10 +1137,25 @@
         "Predis.ai",
         "Submagic AI"
       ]
+    },
+    {
+      "date": "2026-07-30",
+      "slot": "morning",
+      "slug": "the-real-reason-agencies-and-ops-teams-waste-hours-of-repetitive",
+      "title": "The Real Reason Agencies and Ops Teams Waste hours of repetitive busywork every week (And the Make.com Fix for It)",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1746059876599-b914dbde0417?w=800&q=85&auto=format&fit=crop",
+      "topic": "reason agencies teams waste",
+      "pair": "",
+      "tool": "Make.com",
+      "words": 2412,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1764601842093-ac07d758aa66?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758874384700-68bfae2bb58e?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1561912031-16fa7bd76838?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676272682018-b1435bad1cf0?w=800&q=85&auto=format&fit=crop",
@@ -1359,6 +1354,7 @@
     "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1605827211207-194dc6ec319b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1592495981488-073153776d9a?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1592495981488-073153776d9a?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1746059876599-b914dbde0417?w=800&q=85&auto=format&fit=crop"
   ]
 }
