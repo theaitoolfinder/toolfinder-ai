@@ -1,26 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-03",
-      "slot": "latenight",
-      "slug": "is-make-com-the-best-in-its-category-a-full-2026-review",
-      "title": "Is Make.com the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1779696304995-d04faa5ed8f8?w=800&q=85&auto=format&fit=crop",
-      "topic": "makecom category full 2026",
-      "pair": "",
-      "tool": "Make.com",
-      "words": 2608,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-07-04",
       "slot": "morning",
       "slug": "replit-ai-vs-cursor-pricing-features-and-which-one-wins-for-most",
@@ -1157,10 +1137,26 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-02",
+      "slot": "morning",
+      "slug": "letting-your-calendar-get-hijacked-by-back-to-back-calls-with",
+      "title": "Letting your calendar get hijacked by back-to-back calls with zero time left for the work that actually pays? Reclaim AI Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1633526543814-9718c8922b7a?w=800&q=85&auto=format&fit=crop",
+      "topic": "letting calendar hijacked backtoback",
+      "pair": "",
+      "tool": "Reclaim AI",
+      "words": 2412,
+      "partners": [
+        "Fireflies.ai",
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1676272682018-b1435bad1cf0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
@@ -1359,6 +1355,7 @@
     "https://images.unsplash.com/photo-1592495981488-073153776d9a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1746059876599-b914dbde0417?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1717323454555-f053c31ff4b4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1763872011479-aa293bf083a8?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1763872011479-aa293bf083a8?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1633526543814-9718c8922b7a?w=800&q=85&auto=format&fit=crop"
   ]
 }
