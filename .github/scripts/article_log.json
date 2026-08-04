@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-07-04",
-      "slot": "midday",
-      "slug": "grammarly-deep-dive-the-honest-review-no-one-else-is-writing",
-      "title": "Grammarly Deep Dive: The Honest Review No One Else Is Writing",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1631613423802-c52d08096a58?w=800&q=85&auto=format&fit=crop",
-      "topic": "grammarly deep dive else",
-      "pair": "",
-      "tool": "Grammarly",
-      "words": 2445,
-      "partners": [
-        "Beehiiv",
-        "NeuronWriter"
-      ]
-    },
-    {
-      "date": "2026-07-04",
       "slot": "afternoon",
       "slug": "adobe-firefly-7-genuine-pros-and-5-real-cons-you-need-to-know",
       "title": "Adobe Firefly: 7 Genuine Pros and 5 Real Cons You Need to Know",
@@ -1148,10 +1131,25 @@
         "ElevenLabs",
         "Soundraw"
       ]
+    },
+    {
+      "date": "2026-08-04",
+      "slot": "morning",
+      "slug": "the-soundraw-trick-that-saves-video-creators-and-musicians-hours",
+      "title": "The Soundraw Trick That Saves Video Creators and Musicians hours hunting for royalty-free music, Starting Today",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&q=85&auto=format&fit=crop",
+      "topic": "soundraw trick saves video",
+      "pair": "",
+      "tool": "Soundraw",
+      "words": 1953,
+      "partners": [
+        "Soundraw"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1654277041218-84424c78f0ae?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
@@ -1350,6 +1348,7 @@
     "https://images.unsplash.com/photo-1717323454555-f053c31ff4b4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763872011479-aa293bf083a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1633526543814-9718c8922b7a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560785218-893cc779709b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1560785218-893cc779709b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&q=85&auto=format&fit=crop"
   ]
 }
