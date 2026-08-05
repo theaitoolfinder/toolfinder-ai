@@ -752,5 +752,9 @@ window.MYAI_AFF_MAP = {
   "palmier pro": "https://palmier.pro",
   "screenpipe": "https://screenpipe.com",
   "unlayer": "https://unlayer.com",
-  "langy": "https://langy.ai"
+  "langy": "https://langy.ai",
+  "sixb": "https://sixb.ai",
+  "metaview": "https://metaview.ai",
+  "langtrace": "https://langtrace.ai",
+  "typeframes": "https://typeframes.com"
 };
