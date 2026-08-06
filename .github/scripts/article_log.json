@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-04",
-      "slot": "evening",
-      "slug": "ai-tool-lock-in-why-switching-costs-are-getting-worse-in-2026-2026-07-04",
-      "title": "AI Tool Lock-In: Why Switching Costs Are Getting Worse in 2026",
-      "type": "controversial",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=800&q=85&auto=format&fit=crop",
-      "topic": "tool lockin switching costs",
-      "pair": "",
-      "tool": "",
-      "words": 1811,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-07-04",
       "slot": "night",
       "slug": "if-you-re-a-youtuber-this-is-the-ai-toolkit-you-actually-need-in",
       "title": "If You're a YouTuber, This Is the AI Toolkit You Actually Need in 2026",
@@ -1147,10 +1124,28 @@
         "OpusClip",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-08-06",
+      "slot": "morning",
+      "slug": "how-freelancers-are-earning-an-extra-2k-month-with-a-3-tool-ai",
+      "title": "How Freelancers Are Earning an Extra $2K/Month With a 3-Tool AI Stack (2026)",
+      "type": "playbook",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop",
+      "topic": "freelancers earning extra 2kmonth",
+      "pair": "",
+      "tool": "",
+      "words": 2365,
+      "partners": [
+        "Beehiiv",
+        "Make.com",
+        "NeuronWriter",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1544819679-57b273c027a3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
@@ -1349,6 +1344,7 @@
     "https://images.unsplash.com/photo-1633526543814-9718c8922b7a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1560785218-893cc779709b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop"
   ]
 }
