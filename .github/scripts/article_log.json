@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-04",
-      "slot": "night",
-      "slug": "if-you-re-a-youtuber-this-is-the-ai-toolkit-you-actually-need-in",
-      "title": "If You're a YouTuber, This Is the AI Toolkit You Actually Need in 2026",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1585569695919-db237e7cc455?w=800&q=85&auto=format&fit=crop",
-      "topic": "youre youtuber toolkit actually",
-      "pair": "",
-      "tool": "",
-      "words": 2278,
-      "partners": [
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-04",
       "slot": "latenight",
       "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-07-04",
       "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
@@ -1143,10 +1122,29 @@
         "NeuronWriter",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-07",
+      "slot": "exclusive",
+      "slug": "if-you-re-a-freelance-designer-this-is-the-ai-toolkit-you",
+      "title": "If You're a Freelance Designer, This Is the AI Toolkit You Actually Need in 2026",
+      "type": "roadmap",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop",
+      "topic": "youre freelance designer toolkit",
+      "pair": "",
+      "tool": "",
+      "words": 2362,
+      "partners": [
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1740645581672-757325fc75a5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
@@ -1345,6 +1343,7 @@
     "https://images.unsplash.com/photo-1560785218-893cc779709b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop"
   ]
 }
