@@ -756,5 +756,8 @@ window.MYAI_AFF_MAP = {
   "sixb": "https://sixb.ai",
   "metaview": "https://metaview.ai",
   "langtrace": "https://langtrace.ai",
-  "typeframes": "https://typeframes.com"
+  "typeframes": "https://typeframes.com",
+  "hyperprobe": "https://hyperprobe.dev",
+  "hirenewtalent": "https://hirenewtalent.ai",
+  "outset": "https://outset.ai"
 };
