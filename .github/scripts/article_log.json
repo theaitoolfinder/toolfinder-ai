@@ -1,28 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-04",
-      "slot": "latenight",
-      "slug": "the-dark-side-of-ai-writing-tools-what-they-don-t-tell-you-about-2026-07-04",
-      "title": "The Dark Side of AI Writing Tools: What They Don't Tell You About Your Data in 2026",
-      "type": "controversial",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=800&q=85&auto=format&fit=crop",
-      "topic": "dark side writing tools",
-      "pair": "",
-      "tool": "",
-      "words": 2029,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-07-05",
       "slot": "morning",
       "slug": "i-switched-from-zapier-to-make-com-here-s-what-actually-happened",
@@ -1142,10 +1120,28 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-08",
+      "slot": "morning",
+      "slug": "freelance-designers-and-marketers-are-quietly-switching-to",
+      "title": "Freelance Designers and Marketers Are Quietly Switching to Simplified to Stop juggling four different apps just to write the copy, design the graphic, and resize it for every platform",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop",
+      "topic": "freelance designers marketers quietly",
+      "pair": "",
+      "tool": "Simplified",
+      "words": 2646,
+      "partners": [
+        "Make.com",
+        "Predis.ai",
+        "Simplified",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1744751249852-77d9078175f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
@@ -1344,6 +1340,7 @@
     "https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop"
   ]
 }
