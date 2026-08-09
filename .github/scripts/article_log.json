@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-05",
-      "slot": "morning",
-      "slug": "i-switched-from-zapier-to-make-com-here-s-what-actually-happened",
-      "title": "I Switched from Zapier to Make.com — Here's What Actually Happened",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1677442135136-760c813028c0?w=800&q=85&auto=format&fit=crop",
-      "topic": "switched zapier makecom heres",
-      "pair": "",
-      "tool": "",
-      "words": 2213,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-05",
       "slot": "midday",
       "slug": "is-writesonic-the-best-in-its-category-a-full-2026-review-2026-07-05",
       "title": "Is Writesonic the Best in Its Category? A Full 2026 Review",
@@ -1139,10 +1116,26 @@
         "Simplified",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-08-09",
+      "slot": "morning",
+      "slug": "the-predis-ai-trick-that-saves-small-business-owners-hours-every",
+      "title": "The Predis.ai Trick That Saves Small Business Owners hours every week on captions and graphics, Starting Today",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1758626101945-ed0068aad9f9?w=800&q=85&auto=format&fit=crop",
+      "topic": "predisai trick saves small",
+      "pair": "",
+      "tool": "Predis.ai",
+      "words": 2204,
+      "partners": [
+        "Predis.ai",
+        "Simplified"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1762130099623-2891e68da37c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop",
@@ -1341,6 +1334,7 @@
     "https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1758626101945-ed0068aad9f9?w=800&q=85&auto=format&fit=crop"
   ]
 }
