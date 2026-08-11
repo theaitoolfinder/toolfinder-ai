@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-05",
-      "slot": "afternoon",
-      "slug": "rankmath-ai-7-genuine-pros-and-5-real-cons-you-need-to-know",
-      "title": "RankMath AI: 7 Genuine Pros and 5 Real Cons You Need to Know",
-      "type": "pros_cons",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1618599924319-8bfd9559c3f4?w=800&q=85&auto=format&fit=crop",
-      "topic": "rankmath genuine pros cons",
-      "pair": "",
-      "tool": "RankMath AI",
-      "words": 2516,
-      "partners": [
-        "Beehiiv",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "RankMath AI",
-        "Simplified"
-      ]
-    },
-    {
-      "date": "2026-07-05",
       "slot": "evening",
       "slug": "how-solo-creators-produce-a-month-of-social-content-in-one",
       "title": "How Solo Creators Produce a Month of Social Content in One Afternoon",
@@ -1132,10 +1111,25 @@
         "Keyword Insights",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-08-11",
+      "slot": "morning",
+      "slug": "tired-of-letting-your-calendar-get-hijacked-by-back-to-back",
+      "title": "Tired of letting your calendar get hijacked by back-to-back calls with zero time left for the work that actually pays? Here's the Reclaim AI Fix Solopreneurs and Freelancers Are Using in 2026",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired letting calendar hijacked",
+      "pair": "",
+      "tool": "Reclaim AI",
+      "words": 2429,
+      "partners": [
+        "Reclaim AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1766695782111-15e89e4b3abe?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
@@ -1334,6 +1328,7 @@
     "https://images.unsplash.com/photo-1581521911838-451ec295edf3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626101945-ed0068aad9f9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1555431189-0fabf2667795?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1555431189-0fabf2667795?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop"
   ]
 }
