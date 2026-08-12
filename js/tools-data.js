@@ -759,5 +759,6 @@ window.MYAI_AFF_MAP = {
   "typeframes": "https://typeframes.com",
   "hyperprobe": "https://hyperprobe.dev",
   "hirenewtalent": "https://hirenewtalent.ai",
-  "outset": "https://outset.ai"
+  "outset": "https://outset.ai",
+  "agentevals": "https://agentevals.io"
 };
