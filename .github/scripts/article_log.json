@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-05",
-      "slot": "evening",
-      "slug": "how-solo-creators-produce-a-month-of-social-content-in-one",
-      "title": "How Solo Creators Produce a Month of Social Content in One Afternoon",
-      "type": "playbook",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1673767297196-ce9739933932?w=800&q=85&auto=format&fit=crop",
-      "topic": "solo creators produce month",
-      "pair": "",
-      "tool": "",
-      "words": 2303,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-05",
       "slot": "night",
       "slug": "educator-or-trainer-s-guide-to-ai-tools-in-2026-what-to-use-and",
       "title": "Educator or Trainer's Guide to AI Tools in 2026: What to Use and When",
@@ -1127,10 +1106,31 @@
       "partners": [
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-08-12",
+      "slot": "morning",
+      "slug": "the-free-plan-stack-how-far-can-you-get-with-0-in-ai-tools-in",
+      "title": "The Free-Plan Stack: How Far Can You Get With $0 in AI Tools in 2026?",
+      "type": "playbook",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1516409590654-e8d51fc2d25c?w=800&q=85&auto=format&fit=crop",
+      "topic": "freeplan stack tools 2026",
+      "pair": "",
+      "tool": "",
+      "words": 2269,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1684369175809-f9642140a1bd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1766695782111-15e89e4b3abe?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop",
@@ -1329,6 +1329,7 @@
     "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1758626101945-ed0068aad9f9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1555431189-0fabf2667795?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1516409590654-e8d51fc2d25c?w=800&q=85&auto=format&fit=crop"
   ]
 }
