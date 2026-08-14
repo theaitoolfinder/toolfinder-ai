@@ -1,25 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-05",
-      "slot": "latenight",
-      "slug": "the-faceless-youtube-channel-playbook-ai-voice-music-and-clips",
-      "title": "The Faceless YouTube Channel Playbook: AI Voice, Music, and Clips Explained",
-      "type": "playbook",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=85&auto=format&fit=crop",
-      "topic": "faceless youtube channel playbook",
-      "pair": "",
-      "tool": "",
-      "words": 2285,
-      "partners": [
-        "ElevenLabs",
-        "Make.com",
-        "OpusClip",
-        "Soundraw"
-      ]
-    },
-    {
       "date": "2026-07-06",
       "slot": "morning",
       "slug": "scispace-or-perplexity-ai-the-2026-comparison-no-one-s-being",
@@ -1131,10 +1112,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-14",
+      "slot": "exclusive",
+      "slug": "tired-of-not-being-able-to-use-the-music-you-want-in-your-videos",
+      "title": "Tired of not being able to use the music you want in your videos without risking a copyright strike? Here's the Soundraw Fix Video Creators and Musicians Are Using in 2026",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired being able music",
+      "pair": "",
+      "tool": "Soundraw",
+      "words": 2284,
+      "partners": [
+        "Soundraw"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1764601841454-bec59400b439?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
@@ -1333,6 +1329,7 @@
     "https://images.unsplash.com/photo-1555431189-0fabf2667795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516409590654-e8d51fc2d25c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop"
   ]
 }
