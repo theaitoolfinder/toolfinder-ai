@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-07-06",
-      "slot": "morning",
-      "slug": "scispace-or-perplexity-ai-the-2026-comparison-no-one-s-being",
-      "title": "SciSpace or Perplexity AI? The 2026 Comparison No One's Being Honest About",
-      "type": "comparison",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1677691824654-080253698493?w=800&q=85&auto=format&fit=crop",
-      "topic": "scispace perplexity 2026 comparison",
-      "pair": "SciSpace vs Perplexity AI? The 2026 Comparison No One's Being Honest About",
-      "tool": "SciSpace",
-      "words": 2016,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "SciSpace"
-      ]
-    },
-    {
-      "date": "2026-07-06",
       "slot": "midday",
       "slug": "is-reclaim-ai-the-best-in-its-category-a-full-2026-review",
       "title": "Is Reclaim AI the Best in Its Category? A Full 2026 Review",
@@ -1128,10 +1106,25 @@
       "partners": [
         "Soundraw"
       ]
+    },
+    {
+      "date": "2026-08-15",
+      "slot": "morning",
+      "slug": "still-spending-days-digging-through-academic-papers-just-to-find",
+      "title": "Still spending days digging through academic papers just to find the handful that actually matter? SciSpace Just Solved Your Biggest Time-Waster",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop",
+      "topic": "still spending days digging",
+      "pair": "",
+      "tool": "SciSpace",
+      "words": 2407,
+      "partners": [
+        "SciSpace"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
@@ -1330,6 +1323,7 @@
     "https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516409590654-e8d51fc2d25c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop"
   ]
 }

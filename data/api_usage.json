@@ -386,16 +386,25 @@
    "output_tokens": 3510,
    "requests": 1,
    "cost_usd": 0.064356
+  },
+  {
+   "worker": "generate_article",
+   "model": "claude-sonnet-4-5",
+   "date": "2026-08-15T00:02:35.610918+00:00",
+   "input_tokens": 3872,
+   "output_tokens": 3498,
+   "requests": 1,
+   "cost_usd": 0.064086
   }
  ],
  "totals": {
   "generate_article::claude-sonnet-4-5": {
    "worker": "generate_article",
    "model": "claude-sonnet-4-5",
-   "input_tokens": 122897,
-   "output_tokens": 122804,
-   "requests": 34,
-   "cost_usd": 2.210751
+   "input_tokens": 126769,
+   "output_tokens": 126302,
+   "requests": 35,
+   "cost_usd": 2.274837
   },
   "discover_tools::claude-opus-4-5": {
    "worker": "discover_tools",
@@ -406,5 +415,5 @@
    "cost_usd": 0.27919
   }
  },
- "updated_at": "2026-08-14T00:02:22.555288+00:00"
+ "updated_at": "2026-08-15T00:02:35.610941+00:00"
 }
