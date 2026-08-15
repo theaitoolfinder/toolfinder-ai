@@ -760,5 +760,6 @@ window.MYAI_AFF_MAP = {
   "hyperprobe": "https://hyperprobe.dev",
   "hirenewtalent": "https://hirenewtalent.ai",
   "outset": "https://outset.ai",
-  "agentevals": "https://agentevals.io"
+  "agentevals": "https://agentevals.io",
+  "discovered materials": "https://discoveredmaterials.com"
 };

@@ -159,6 +159,13 @@
         "AgentEvals"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-08-15",
+      "tools": [
+        "Discovered Materials"
+      ],
+      "count": 1
     }
   ]
 }
