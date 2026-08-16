@@ -2,27 +2,6 @@
   "generated": [
     {
       "date": "2026-07-06",
-      "slot": "midday",
-      "slug": "is-reclaim-ai-the-best-in-its-category-a-full-2026-review",
-      "title": "Is Reclaim AI the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1594997792070-3e3deff4c283?w=800&q=85&auto=format&fit=crop",
-      "topic": "reclaim category full 2026",
-      "pair": "",
-      "tool": "Reclaim AI",
-      "words": 2554,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai",
-        "Reclaim AI"
-      ]
-    },
-    {
-      "date": "2026-07-06",
       "slot": "afternoon",
       "slug": "soundraw-pros-cons-what-ai-music-users-actually-think",
       "title": "Soundraw Pros & Cons: What Ai Music Users Actually Think",
@@ -1122,10 +1101,25 @@
       "partners": [
         "SciSpace"
       ]
+    },
+    {
+      "date": "2026-08-16",
+      "slot": "morning",
+      "slug": "wanting-to-start-a-newsletter-but-losing-momentum-fighting",
+      "title": "Wanting to start a newsletter but losing momentum fighting clunky software just to send one email? Beehiiv Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop",
+      "topic": "wanting start newsletter losing",
+      "pair": "",
+      "tool": "Beehiiv",
+      "words": 1924,
+      "partners": [
+        "Beehiiv"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1679403766682-3b31efa571a8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
@@ -1324,6 +1318,7 @@
     "https://images.unsplash.com/photo-1516409590654-e8d51fc2d25c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop"
   ]
 }
