@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-06",
-      "slot": "afternoon",
-      "slug": "soundraw-pros-cons-what-ai-music-users-actually-think",
-      "title": "Soundraw Pros & Cons: What Ai Music Users Actually Think",
-      "type": "pros_cons",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1758626099012-2904337e9c60?w=800&q=85&auto=format&fit=crop",
-      "topic": "soundraw pros cons music",
-      "pair": "",
-      "tool": "Soundraw",
-      "words": 2504,
-      "partners": [
-        "ElevenLabs",
-        "OpusClip",
-        "Soundraw"
-      ]
-    },
-    {
-      "date": "2026-07-06",
       "slot": "evening",
       "slug": "the-underrated-ai-tools-quietly-outperforming-the-big-names",
       "title": "The Underrated AI Tools Quietly Outperforming the Big Names",
@@ -1117,10 +1099,26 @@
       "partners": [
         "Beehiiv"
       ]
+    },
+    {
+      "date": "2026-08-17",
+      "slot": "morning",
+      "slug": "the-keyword-insights-trick-that-saves-seo-teams-and-bloggers-2026-08-17",
+      "title": "The Keyword Insights Trick That Saves SEO Teams and Bloggers months writing content that never ranks, Starting Today",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop",
+      "topic": "keyword insights trick saves",
+      "pair": "",
+      "tool": "Keyword Insights",
+      "words": 2700,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
@@ -1319,6 +1317,7 @@
     "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop"
   ]
 }
