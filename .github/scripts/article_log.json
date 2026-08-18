@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-06",
-      "slot": "evening",
-      "slug": "the-underrated-ai-tools-quietly-outperforming-the-big-names",
-      "title": "The Underrated AI Tools Quietly Outperforming the Big Names",
-      "type": "playbook",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1569783899817-a49d2d25287c?w=800&q=85&auto=format&fit=crop",
-      "topic": "underrated tools quietly outperforming",
-      "pair": "",
-      "tool": "",
-      "words": 2316,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-06",
       "slot": "night",
       "slug": "if-you-re-a-social-media-manager-this-is-the-ai-toolkit-you",
       "title": "If You're a Social Media Manager, This Is the AI Toolkit You Actually Need in 2026",
@@ -1116,10 +1093,32 @@
         "Keyword Insights",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-08-18",
+      "slot": "morning",
+      "slug": "the-ai-stack-behind-a-6-figure-solopreneur-every-tool-every-cost",
+      "title": "The AI Stack Behind a 6-Figure Solopreneur: Every Tool, Every Cost",
+      "type": "playbook",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?w=800&q=85&auto=format&fit=crop",
+      "topic": "stack behind 6figure solopreneur",
+      "pair": "",
+      "tool": "",
+      "words": 2386,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop",
@@ -1318,6 +1317,7 @@
     "https://images.unsplash.com/photo-1713947503867-3b27964f042b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1630244028360-cb5246b2c31c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?w=800&q=85&auto=format&fit=crop"
   ]
 }
