@@ -1,29 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-06",
-      "slot": "latenight",
-      "slug": "what-happens-when-you-automate-everything-for-30-days-a-real",
-      "title": "What Happens When You Automate Everything for 30 Days — A Real Experiment",
-      "type": "playbook",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1762330470070-249e7c23c8c0?w=800&q=85&auto=format&fit=crop",
-      "topic": "happens automate everything days",
-      "pair": "",
-      "tool": "",
-      "words": 2420,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "OpusClip",
-        "Predis.ai",
-        "Reclaim AI"
-      ]
-    },
-    {
       "date": "2026-07-07",
       "slot": "morning",
       "slug": "i-switched-from-predis-ai-to-adcreative-ai-here-s-what-actually",
@@ -1117,10 +1094,25 @@
         "Predis.ai",
         "Reclaim AI"
       ]
+    },
+    {
+      "date": "2026-08-20",
+      "slot": "morning",
+      "slug": "how-consultants-and-founders-are-getting-back-hours-of-note",
+      "title": "How Consultants and Founders Are Getting Back hours of note-taking and re-explaining With Fireflies.ai",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop",
+      "topic": "consultants founders getting back",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2356,
+      "partners": [
+        "Fireflies.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1598363432303-fc8e1fb5a72d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
@@ -1319,6 +1311,7 @@
     "https://images.unsplash.com/photo-1626245550585-0b8d640da77f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1763718432504-7716caff6e99?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1763718432504-7716caff6e99?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop"
   ]
 }
