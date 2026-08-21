@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-07",
-      "slot": "morning",
-      "slug": "i-switched-from-predis-ai-to-adcreative-ai-here-s-what-actually",
-      "title": "I Switched from Predis.ai to AdCreative.ai — Here's What Actually Happened",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1667372283545-1261fb5c427a?w=800&q=85&auto=format&fit=crop",
-      "topic": "switched predisai adcreativeai heres",
-      "pair": "",
-      "tool": "",
-      "words": 2268,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-07",
       "slot": "midday",
       "slug": "simplified-everything-you-need-to-know-before-you-sign-up-2026",
       "title": "Simplified: Everything You Need to Know Before You Sign Up (2026)",
@@ -1110,10 +1087,25 @@
       "partners": [
         "Fireflies.ai"
       ]
+    },
+    {
+      "date": "2026-08-21",
+      "slot": "exclusive",
+      "slug": "how-small-business-owners-are-getting-back-hours-every-week-on",
+      "title": "How Small Business Owners Are Getting Back hours every week on captions and graphics With Predis.ai",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop",
+      "topic": "small business owners getting",
+      "pair": "",
+      "tool": "Predis.ai",
+      "words": 2606,
+      "partners": [
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1553484771-0a615f264d58?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
@@ -1312,6 +1304,7 @@
     "https://images.unsplash.com/photo-1527600478564-488952effedb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763718432504-7716caff6e99?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop"
   ]
 }
