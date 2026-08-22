@@ -2,30 +2,6 @@
   "generated": [
     {
       "date": "2026-07-07",
-      "slot": "midday",
-      "slug": "simplified-everything-you-need-to-know-before-you-sign-up-2026",
-      "title": "Simplified: Everything You Need to Know Before You Sign Up (2026)",
-      "type": "featured",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1562776903-cc60d622df72?w=800&q=85&auto=format&fit=crop",
-      "topic": "simplified everything need know",
-      "pair": "",
-      "tool": "Simplified",
-      "words": 2393,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Simplified",
-        "Taskade AI"
-      ]
-    },
-    {
-      "date": "2026-07-07",
       "slot": "afternoon",
       "slug": "neuronwriter-7-genuine-pros-and-5-real-cons-you-need-to-know",
       "title": "NeuronWriter: 7 Genuine Pros and 5 Real Cons You Need to Know",
@@ -1103,10 +1079,25 @@
       "partners": [
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-22",
+      "slot": "morning",
+      "slug": "consultants-and-founders-are-quietly-switching-to-fireflies-ai",
+      "title": "Consultants and Founders Are Quietly Switching to Fireflies.ai to Stop losing the important details from every client call because no one has time to take notes during the meeting",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop",
+      "topic": "consultants founders quietly switching",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2464,
+      "partners": [
+        "Fireflies.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1677442135131-4d7c123aef1c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
@@ -1305,6 +1296,7 @@
     "https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1763718432504-7716caff6e99?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop"
   ]
 }
