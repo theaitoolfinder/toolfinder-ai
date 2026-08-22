@@ -173,6 +173,14 @@
         "Jobscan AI"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-08-22",
+      "tools": [
+        "Vendo",
+        "OneCLI"
+      ],
+      "count": 2
     }
   ]
 }

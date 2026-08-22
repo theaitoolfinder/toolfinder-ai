@@ -762,5 +762,7 @@ window.MYAI_AFF_MAP = {
   "outset": "https://outset.ai",
   "agentevals": "https://agentevals.io",
   "discovered materials": "https://discoveredmaterials.com",
-  "jobscan ai": "https://jobscan.co"
+  "jobscan ai": "https://jobscan.co",
+  "vendo": "https://vendo.dev",
+  "onecli": "https://onecli.dev"
 };
