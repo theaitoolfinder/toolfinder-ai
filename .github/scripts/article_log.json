@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-07",
-      "slot": "afternoon",
-      "slug": "neuronwriter-7-genuine-pros-and-5-real-cons-you-need-to-know",
-      "title": "NeuronWriter: 7 Genuine Pros and 5 Real Cons You Need to Know",
-      "type": "pros_cons",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1704463858759-7696a2c1dd7e?w=800&q=85&auto=format&fit=crop",
-      "topic": "neuronwriter genuine pros cons",
-      "pair": "",
-      "tool": "NeuronWriter",
-      "words": 2186,
-      "partners": [
-        "Keyword Insights",
-        "NeuronWriter",
-        "RankMath AI",
-        "Writesonic"
-      ]
-    },
-    {
-      "date": "2026-07-07",
       "slot": "evening",
       "slug": "the-seo-content-system-that-ranks-keyword-insights-neuronwriter",
       "title": "The SEO Content System That Ranks: Keyword Insights → NeuronWriter → Publish",
@@ -1095,10 +1076,25 @@
       "partners": [
         "Fireflies.ai"
       ]
+    },
+    {
+      "date": "2026-08-23",
+      "slot": "morning",
+      "slug": "manually-copying-the-same-data-between-five-different-apps-every",
+      "title": "Manually copying the same data between five different apps every single day? Make.com Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop",
+      "topic": "manually copying same data",
+      "pair": "",
+      "tool": "Make.com",
+      "words": 2443,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
@@ -1297,6 +1293,7 @@
     "https://images.unsplash.com/photo-1763718432504-7716caff6e99?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop"
   ]
 }
