@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-07",
-      "slot": "evening",
-      "slug": "the-seo-content-system-that-ranks-keyword-insights-neuronwriter",
-      "title": "The SEO Content System That Ranks: Keyword Insights → NeuronWriter → Publish",
-      "type": "playbook",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1637606346315-d23ed32a6cfc?w=800&q=85&auto=format&fit=crop",
-      "topic": "content system ranks keyword",
-      "pair": "",
-      "tool": "",
-      "words": 2442,
-      "partners": [
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter"
-      ]
-    },
-    {
-      "date": "2026-07-07",
       "slot": "night",
       "slug": "if-you-re-a-customer-support-team-this-is-the-ai-toolkit-you",
       "title": "If You're a Customer Support Team, This Is the AI Toolkit You Actually Need in 2026",
@@ -1092,10 +1073,32 @@
       "partners": [
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-08-24",
+      "slot": "morning",
+      "slug": "5-ai-workflows-so-good-they-feel-like-cheating-all-beginner",
+      "title": "5 AI Workflows So Good They Feel Like Cheating (All Beginner-Friendly)",
+      "type": "playbook",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
+      "topic": "workflows good they feel",
+      "pair": "",
+      "tool": "",
+      "words": 2276,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
@@ -1294,6 +1297,7 @@
     "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop"
   ]
 }
