@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-07",
-      "slot": "night",
-      "slug": "if-you-re-a-customer-support-team-this-is-the-ai-toolkit-you",
-      "title": "If You're a Customer Support Team, This Is the AI Toolkit You Actually Need in 2026",
-      "type": "roadmap",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1603714228681-b399854b8f80?w=800&q=85&auto=format&fit=crop",
-      "topic": "youre customer support team",
-      "pair": "",
-      "tool": "",
-      "words": 2260,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-07-07",
       "slot": "latenight",
       "slug": "publishing-content-around-the-wrong-keywords-because-proper",
       "title": "Publishing content around the wrong keywords because proper keyword research takes too long to do right? Keyword Insights Is the Fastest Fix in 2026",
@@ -1096,10 +1077,30 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-25",
+      "slot": "morning",
+      "slug": "the-complete-podcaster-ai-toolkit-from-day-1-to-full-automation",
+      "title": "The Complete Podcaster AI Toolkit — From Day 1 to Full Automation",
+      "type": "roadmap",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop",
+      "topic": "podcaster toolkit full automation",
+      "pair": "",
+      "tool": "",
+      "words": 2457,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1608755768421-ba3662c9e7ec?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
@@ -1298,6 +1299,7 @@
     "https://images.unsplash.com/photo-1575663620136-5ebbfcc2c597?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop"
   ]
 }
