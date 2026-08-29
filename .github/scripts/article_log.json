@@ -1,23 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-07",
-      "slot": "latenight",
-      "slug": "publishing-content-around-the-wrong-keywords-because-proper",
-      "title": "Publishing content around the wrong keywords because proper keyword research takes too long to do right? Keyword Insights Is the Fastest Fix in 2026",
-      "type": "problem_solution",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1610311213453-e1a8e0ca6e18?w=800&q=85&auto=format&fit=crop",
-      "topic": "publishing content around keywords",
-      "pair": "",
-      "tool": "Keyword Insights",
-      "words": 2502,
-      "partners": [
-        "Keyword Insights",
-        "NeuronWriter"
-      ]
-    },
-    {
       "date": "2026-07-08",
       "slot": "morning",
       "slug": "is-mailchimp-finally-better-than-beehiiv-2026-head-to-head",
@@ -1098,10 +1081,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-29",
+      "slot": "morning",
+      "slug": "the-elevenlabs-trick-that-saves-podcasters-and-youtubers-200-per",
+      "title": "The ElevenLabs Trick That Saves Podcasters and YouTubers $200+ per episode, Starting Today",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop",
+      "topic": "elevenlabs trick saves podcasters",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2155,
+      "partners": [
+        "ElevenLabs"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1558751634-b2c4d856fa9d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
@@ -1300,6 +1298,7 @@
     "https://images.unsplash.com/photo-1568658173325-c7b8a11d5666?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop"
   ]
 }
