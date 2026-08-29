@@ -764,5 +764,6 @@ window.MYAI_AFF_MAP = {
   "discovered materials": "https://discoveredmaterials.com",
   "jobscan ai": "https://jobscan.co",
   "vendo": "https://vendo.dev",
-  "onecli": "https://onecli.dev"
+  "onecli": "https://onecli.dev",
+  "camel agi": "https://camelagi.com"
 };
