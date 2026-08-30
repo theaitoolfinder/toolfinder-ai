@@ -2,23 +2,6 @@
   "generated": [
     {
       "date": "2026-07-08",
-      "slot": "morning",
-      "slug": "is-mailchimp-finally-better-than-beehiiv-2026-head-to-head",
-      "title": "Is Mailchimp Finally Better Than Beehiiv? (2026 Head-to-Head)",
-      "type": "comparison",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1502911714542-002b74c313cf?w=800&q=85&auto=format&fit=crop",
-      "topic": "mailchimp finally better than",
-      "pair": "",
-      "tool": "",
-      "words": 2286,
-      "partners": [
-        "Beehiiv",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-07-08",
       "slot": "midday",
       "slug": "is-opusclip-the-best-in-its-category-a-full-2026-review",
       "title": "Is OpusClip the Best in Its Category? A Full 2026 Review",
@@ -1097,10 +1080,27 @@
       "partners": [
         "ElevenLabs"
       ]
+    },
+    {
+      "date": "2026-08-30",
+      "slot": "morning",
+      "slug": "the-real-reason-small-business-owners-waste-hours-every-week-on",
+      "title": "The Real Reason Small Business Owners Waste hours every week on captions and graphics (And the Predis.ai Fix for It)",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1599965534164-2e964738e9a9?w=800&q=85&auto=format&fit=crop",
+      "topic": "reason small business owners",
+      "pair": "",
+      "tool": "Predis.ai",
+      "words": 2325,
+      "partners": [
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1521302200778-33500795e128?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
@@ -1299,6 +1299,7 @@
     "https://images.unsplash.com/photo-1529078155058-5d716f45d604?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599965534164-2e964738e9a9?w=800&q=85&auto=format&fit=crop"
   ]
 }
