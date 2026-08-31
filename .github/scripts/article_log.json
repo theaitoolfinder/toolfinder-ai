@@ -2,25 +2,6 @@
   "generated": [
     {
       "date": "2026-07-08",
-      "slot": "midday",
-      "slug": "is-opusclip-the-best-in-its-category-a-full-2026-review",
-      "title": "Is OpusClip the Best in Its Category? A Full 2026 Review",
-      "type": "featured",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?w=800&q=85&auto=format&fit=crop",
-      "topic": "opusclip category full 2026",
-      "pair": "",
-      "tool": "OpusClip",
-      "words": 2269,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "OpusClip"
-      ]
-    },
-    {
-      "date": "2026-07-08",
       "slot": "afternoon",
       "slug": "is-suno-worth-it-full-pros-cons-and-verdict-for-2026",
       "title": "Is Suno Worth It? Full Pros, Cons, and Verdict for 2026",
@@ -1098,10 +1079,26 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-08-31",
+      "slot": "morning",
+      "slug": "knowing-you-need-to-post-on-social-media-daily-but-not-having",
+      "title": "Knowing you need to post on social media daily but not having hours to spend writing captions and designing graphics? Predis.ai Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1657974361095-4d5f3fb381fb?w=800&q=85&auto=format&fit=crop",
+      "topic": "knowing need post social",
+      "pair": "",
+      "tool": "Predis.ai",
+      "words": 2238,
+      "partners": [
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1649091245823-18be815da4f7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1619507845851-1ada1136b795?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
@@ -1300,6 +1297,7 @@
     "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1599965534164-2e964738e9a9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1599965534164-2e964738e9a9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1657974361095-4d5f3fb381fb?w=800&q=85&auto=format&fit=crop"
   ]
 }
