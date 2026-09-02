@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-08",
-      "slot": "evening",
-      "slug": "from-zero-to-paid-newsletter-the-beehiiv-ai-playbook-working-in",
-      "title": "From Zero to Paid Newsletter: The Beehiiv + AI Playbook Working in 2026",
-      "type": "playbook",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1604833102475-d50706d35edb?w=800&q=85&auto=format&fit=crop",
-      "topic": "zero paid newsletter beehiiv",
-      "pair": "",
-      "tool": "",
-      "words": 2489,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com"
-      ]
-    },
-    {
-      "date": "2026-07-08",
       "slot": "night",
       "slug": "the-researcher-or-academic-ai-roadmap-which-tools-to-add-first",
       "title": "The Researcher or Academic AI Roadmap: Which Tools to Add First (and Why)",
@@ -1092,10 +1074,27 @@
         "NeuronWriter",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-09-02",
+      "slot": "morning",
+      "slug": "the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw",
+      "title": "The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough",
+      "type": "playbook",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
+      "topic": "voiceover studio browser elevenlabs",
+      "pair": "",
+      "tool": "",
+      "words": 1968,
+      "partners": [
+        "ElevenLabs",
+        "Make.com",
+        "Soundraw"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1696272440000-0808a203c852?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632594737623-bea601083890?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
@@ -1294,6 +1293,7 @@
     "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1599965534164-2e964738e9a9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1657974361095-4d5f3fb381fb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622673037994-e4a73f4e5eb0?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1622673037994-e4a73f4e5eb0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop"
   ]
 }

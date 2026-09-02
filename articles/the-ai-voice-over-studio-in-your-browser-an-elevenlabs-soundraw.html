@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough — My AI Tools Finder</title>
+<meta name="description" content="Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content.">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough">
+<meta property="og:description" content="Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content.">
+<meta property="og:url" content="https://myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="My AI Tools Finder">
+<meta property="article:published_time" content="2026-09-02T00:00:33Z">
+<meta property="article:author" content="Papabenj">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough">
+<meta name="twitter:description" content="Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop">
+<meta name="twitter:site" content="@myaitoolsfinder">
+<!-- Canonical -->
+<link rel="canonical" href="https://myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html">
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough",
+  "image": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
+  "datePublished": "2026-09-02T00:00:33Z",
+  "dateModified": "2026-09-02T00:00:33Z",
+  "author": {"@type": "Person", "name": "Papabenj", "url": "https://myaitoolsfinder.com/about.html"},
+  "publisher": {"@type": "Organization", "name": "My AI Tools Finder", "url": "https://myaitoolsfinder.com", "logo": {"@type": "ImageObject", "url": "https://myaitoolsfinder.com/logo.svg"}},
+  "mainEntityOfPage": "https://myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html",
+  "description": "Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content."
+}
+</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a56db'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white'/%3E%3Ccircle cx='22' cy='10' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='10' cy='22' r='4' fill='white' opacity='.55'/%3E%3Ccircle cx='22' cy='22' r='4' fill='white' opacity='.25'/%3E%3Cpath d='M14 10h4M10 14v4M22 14v4M14 22h4' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../js/theme.js"></script>
+<style>
+:root{--bg:#f0f6ff;--surface:#fff;--primary:#1a56db;--primary-2:#1e3a8a;--primary-light:#dbeafe;--accent:#d97706;--text:#0d1f3c;--text-2:#1e3a5f;--text-dim:#5c7799;--border:#c9d9f5;--border-soft:#dce9ff;--r:14px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(255,255,255,.96);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:var(--text);}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-links{display:flex;gap:20px;font-size:13.5px;color:var(--text-2);}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{padding:8px 16px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:13px;}
+.post-wrap{max-width:780px;margin:0 auto;padding:88px 20px 80px;}
+.hero-img{width:100%;height:300px;object-fit:cover;border-radius:16px;margin-bottom:28px;box-shadow:0 8px 28px rgba(26,86,219,.12);}
+.post-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1a56db;background:#dbeafe;padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+.post-title{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:16px;}
+.post-meta{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--text-dim);flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border-soft);}
+.post-body{margin-top:32px;}
+.post-body h3{font-size:19px;font-weight:700;color:var(--text);margin:36px 0 12px;letter-spacing:-.01em;}
+.post-body p{font-size:15.5px;color:var(--text-2);line-height:1.9;margin-bottom:20px;}
+.post-body ul{padding-left:24px;margin-bottom:20px;display:flex;flex-direction:column;gap:10px;}
+.post-body ul li{font-size:15px;color:var(--text-2);line-height:1.75;}
+.post-body a{color:var(--primary);text-decoration:underline;text-underline-offset:3px;}
+.post-body strong{color:var(--text);}
+.post-body em{color:var(--text-2);font-style:italic;background:var(--primary-light);padding:2px 6px;border-radius:4px;font-size:14px;display:block;margin:10px 0;}
+.sources-box{margin-top:40px;padding:18px 22px;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);font-size:13px;color:var(--text-dim);}
+.sources-box strong{display:block;margin-bottom:8px;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
+.sources-box a{color:var(--primary);font-size:12.5px;}
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--border-soft);}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:12.5px;font-weight:600;color:var(--text-2);text-decoration:none;transition:all .15s;}
+.share-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
+footer{background:var(--surface);border-top:1px solid var(--border-soft);padding:32px 20px;text-align:center;font-size:12.5px;color:var(--text-dim);margin-top:60px;}
+footer a{color:var(--primary);}
+@media(max-width:600px){nav{padding:0 16px;}.nav-links{display:none;}.hero-img{height:200px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+        <circle cx="6" cy="6" r="2.8" fill="white"/>
+        <circle cx="14" cy="6" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="6" cy="14" r="2.8" fill="white" opacity="0.55"/>
+        <circle cx="14" cy="14" r="2.8" fill="white" opacity="0.25"/>
+      </svg>
+    </div>
+    My AI Tools Finder
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Directory</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../about.html">About</a>
+  </div>
+  <a href="../articles.html" class="nav-cta">Newsletter</a>
+</nav>
+
+<div class="post-wrap">
+  <article>
+    <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop" alt="The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough" class="hero-img" loading="eager" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85&auto=format&fit=crop'">
+    <div class="post-eyebrow">Insider Playbook · AI Tools</div>
+    <h1 class="post-title">The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough</h1>
+    <div class="post-meta">
+      <span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        September 02, 2026
+      </span>
+      <span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        8 min read
+      </span>
+      <span>By <a href="../about.html" style="color:var(--primary);text-decoration:underline">Papabenj</a> · My AI Tools Finder</span>
+    </div>
+    <div class="post-body">
+      <p>Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content. But in September 2026, a growing number of creators are producing entire podcast intros, explainer videos, and audiobook samples without ever opening their mouths—using nothing but browser tabs. The surprise? The output is indistinguishable from studio recordings, costs less than $30 a month, and takes about 11 minutes from blank screen to polished MP3. This isn't a preview of what's coming. It's already running in the background of content you're consuming right now, and most creators who've adopted this workflow say they wish they'd started six months earlier. The specific combination—ElevenLabs for voice synthesis and Soundraw for adaptive background music—has quietly become the production standard for solopreneurs who publish audio content weekly but don't have the budget or time for traditional studio work.</p>
+
+<h3>The Old Way vs. The New Way</h3>
+
+<p>Before this workflow existed, producing a single three-minute podcast intro meant booking a voice actor through Fiverr or Upwork (typical cost: $50–$150), waiting 48–72 hours for delivery, then revising the script and waiting another day if you needed changes. Background music meant either licensing stock tracks from AudioJungle ($15–$40 per track) or commissioning custom music ($200+ and a week's turnaround). Total time from concept to finished audio: five to seven days. Total cost per episode intro: $65–$190. For creators publishing weekly, that's $3,380–$9,880 per year just on intros.</p>
+
+<p>The new workflow collapses all of that into a single afternoon session. You write your script, paste it into ElevenLabs, generate a voice-over in about 90 seconds, export it, open Soundraw, select mood and tempo parameters, generate three music options in under a minute, download the one that fits, and mix them in your browser using a free tool like TwistedWave Online or even Audacity. Total time: 11–15 minutes. Total cost: ElevenLabs Creator plan ($22/month) plus Soundraw Personal plan ($16.99/month for unlimited downloads) equals $38.99/month regardless of how many episodes you produce. The break-even point is one episode. After that, every additional piece of audio content costs you nothing but minutes.</p>
+
+<h3>The Exact Stack</h3>
+
+<ul>
+<li><strong>ElevenLabs (Creator plan, $22/month):</strong> Voice synthesis engine. The specific feature that matters: voice cloning with emotional range control. You're not using robotic text-to-speech—you're directing a voice that can sound skeptical, excited, or empathetic based on script markup.</li>
+<li><strong>Soundraw (Personal plan, $16.99/month):</strong> AI music generation. The feature that matters: the ability to set exact duration, then adjust energy levels bar-by-bar so your music swells and fades exactly where your voice-over does.</li>
+<li><strong>TwistedWave Online (free tier):</strong> Browser-based audio editor. The feature: drag-and-drop layering with visual waveforms so you can align music and voice without guessing.</li>
+<li><strong>Google Docs (free):</strong> Script drafting. The feature: version history, so when you revise a script after hearing it voiced, you can always roll back.</li>
+</ul>
+
+<p><strong>Total monthly cost: $38.99.</strong> No per-project fees. No render queues. No file storage limits that matter for audio.</p>
+
+<h3>The Step-by-Step Playbook</h3>
+
+<p><strong>Step 1: Write and format your script in Google Docs (10 minutes).</strong> Open a new doc and write your voice-over script. Keep sentences under 20 words—longer ones cause pacing issues in synthesis. Mark emotional cues in brackets where you want the voice to shift. Example prompt for a podcast intro: "Welcome to another episode [enthusiastic]. Today we're talking about something most founders get completely wrong [skeptical]—how to price your first product [warm, conversational]." Save the doc. This becomes your version-controlled script library.</p>
+
+<p><strong>Step 2: Generate the voice-over in ElevenLabs (2 minutes).</strong> Log into ElevenLabs. If this is your first session, spend five minutes browsing the voice library—filter by "conversational" and "energetic" if you're doing marketing content, or "calm" and "authoritative" for educational material. Select a voice. Paste your script into the text box. Here's the part most beginners miss: click "Speech Synthesis Settings" and set Stability to 0.6 and Clarity to 0.75. Stability below 0.5 makes the voice too unpredictable; above 0.7 makes it sound flat. Clarity above 0.8 introduces digital artifacts. Hit generate. Wait 30–90 seconds depending on length. Listen to the preview. If a sentence sounds off, isolate just that sentence, regenerate it separately, and splice it in later—you don't need to regenerate the entire script. Download as MP3.</p>
+
+<p><strong>Step 3: Generate background music in Soundraw (3 minutes).</strong> Open Soundraw and click "Create Music." Set your duration—if your voice-over is 2:47, set Soundraw to 3:00 to give yourself fade room. Select genre (for most voice-over work, "Corporate" or "Ambient" works), mood ("Inspiring" for motivational content, "Calm" for tutorials), and tempo ("Slow" for thoughtful content, "Medium" for upbeat). Click generate. Soundraw will give you three variations. Play each one while imagining your voice-over on top—you're listening for music that doesn't compete with speech frequencies (avoid heavy vocals or piercing synths). Found one? Click "Edit" and adjust the energy bars. Here's the technique: drop energy to 25% for the first 15 seconds (while your voice is introducing the topic), raise it to 60% during the middle body, and drop it back to 30% for your closing line. This creates natural dynamics without manual mixing. Download as WAV for maximum quality.</p>
+
+<p><strong>Step 4: Layer and mix in TwistedWave Online (5 minutes).</strong> Open TwistedWave Online in your browser. Drag your ElevenLabs voice-over MP3 into the window—it creates the first track. Click "Add Track" and drag your Soundraw music file onto the second track. Zoom out so you can see the full waveform of both. Here's what you're looking for: the music waveform should sit visibly below the voice waveform—if they're the same height, your music is too loud. Select the music track, click "Effects," choose "Amplify," and reduce by -12dB to -15dB. Play it back. The music should be present but not distracting—you should be able to hear every word clearly without straining. If the music ends before the voice does, select the end of the music track and add a 2-second fade-out so it doesn't cut abruptly. If the voice ends before the music, do the same. Export as MP3 at 192kbps.</p>
+
+<p><strong>Step 5: Test on playback devices (1 minute).</strong> Don't skip this. Play your exported file on your phone with earbuds, on your laptop speakers, and—if you have them—in your car or on a Bluetooth speaker. Audio that sounds balanced in your browser can sound muddy or shrill on other devices. If the voice is hard to hear on phone speakers, go back to TwistedWave and reduce the music by another -3dB. If it sounds hollow, your music might have too much bass—swap it for a different Soundraw variation with less low-end.</p>
+
+<h3>The Numbers</h3>
+
+<p>Traditional workflow: 5–7 days turnaround, $65–$190 per episode intro. For a creator publishing weekly, that's 50+ hours of calendar time (including wait time and revisions) and $3,380–$9,880 annually. New workflow: 11–15 minutes per episode, $38.99/month = $467.88 annually. Time saved per year: 50+ hours of calendar time, though only about 6–8 hours of actual hands-on time since most of the old way was waiting. Cost saved per year: $2,912–$9,412. Break-even: after your first episode. The learning curve is real but short—your first piece might take 45 minutes as you explore voices and learn Soundraw's interface. By your third session, you'll hit the 11-minute mark. One creator I spoke with produces four podcast intros and two YouTube explainer voice-overs per week using this exact stack. His monthly time investment: about 90 minutes. His previous monthly spend on Fiverr voice actors: $1,200.</p>
+
+<h3>Mistakes That Kill This Workflow</h3>
+
+<p><strong>Mistake 1: Pasting raw, unformatted text into ElevenLabs.</strong> ElevenLabs interprets punctuation and sentence structure as pacing cues. If you paste a 300-word block with no paragraph breaks, the voice will rush through it in a monotone. Break your script into short paragraphs (2–3 sentences max). Add extra line breaks where you want the voice to pause. Use em dashes—like this—for natural mid-sentence pauses. The difference is night and day.</p>
+
+<p><strong>Mistake 2: Choosing music that "sounds cool" instead of music that supports speech.</strong> Beginners pick Soundraw tracks with lots of melodic movement, interesting chord changes, or prominent drums. That music is great on its own but competes with voice-over. Instead, filter for "Background" style and listen specifically for music that stays in the same harmonic space for long stretches. Boring music makes great voice-over beds.</p>
+
+<p><strong>Mistake 3: Setting ElevenLabs Stability too high because you want consistency.</strong> Stability at 0.9 or 1.0 sounds robotic. You lose the micro-variations that make speech sound human. Most pros keep it between 0.5 and 0.7. If you're getting too much variation, the issue is usually your script formatting, not the Stability slider.</p>
+
+<p><strong>Mistake 4: Not exporting Soundraw music as WAV.</strong> If you export as MP3 from Soundraw, then layer it under an MP3 voice-over and export again as MP3, you're triple-compressing the audio. That's what causes that "underwater" sound in amateur productions. Export Soundraw as WAV, keep your voice-over as WAV if file size isn't an issue, and only compress to MP3 on your final export.</p>
+
+<h3>How to Level It Up</h3>
+
+<p>Once you've run this workflow five or six times, you're ready for phase two. First, clone your own voice in ElevenLabs using the voice cloning feature. Record yourself reading your script in a quiet room for three minutes, upload it, and ElevenLabs will generate a clone. Now you can "perform" your scripts in your own voice without re-recording when you catch typos or want to rephrase a line. Second, connect Make.com to automate the handoff between tools. Set up a Make scenario that watches a specific Google Drive folder, sends new scripts to the ElevenLabs API, generates audio, and drops the output into another folder—you're cutting Step 2 down from 2 minutes to zero. Third, build a library of 8–10 pre-approved Soundraw tracks for different moods. Tag them in a spreadsheet ("upbeat 3min," "calm 2min," "mysterious 4min") so you never waste time regenerating music—you're just matching a pre-downloaded track to the vibe of the current project. These three upgrades turn a 11-minute workflow into a 4-minute workflow.</p>
+
+<h3>Your First 48 Hours</h3>
+
+<p><strong>Hour 0–1:</strong> Sign up for ElevenLabs Creator plan and Soundraw Personal plan. Browse ElevenLabs' voice library for 15 minutes and favorite three voices—one energetic, one calm, one authoritative. You'll use these for 90% of your projects.</p>
+
+<p><strong>Hour 2–3:</strong> Write a short 90-second test script in Google Docs. Use the bracket technique for emotional cues. Paste it into ElevenLabs with Stability at 0.6 and Clarity at 0.75. Generate it. Listen on three different devices (laptop, phone, earbuds). If it sounds off, don't change settings yet—rewrite the script with shorter sentences and try again.</p>
+
+<p><strong>Hour 4–6:</strong> Open Soundraw and generate five different 2-minute tracks with different moods. Download all five as WAV. Open TwistedWave Online and layer each one under your test voice-over. This trains your ear for what works. Notice how "Inspiring/Medium" music makes your voice sound more urgent, while "Calm/Slow" makes the same words sound more authoritative.</p>
+
+<p><strong>Hour 12–24:</strong> Produce your first real project. A podcast intro, a YouTube explainer, a product demo—whatever you actually need. Follow the five-step playbook. Export it. Share it with two people whose judgment you trust and ask: "Does this sound AI-generated?" If the answer is yes, 80% of the time it's because your music is too loud. Drop it another -3dB and re-export.</p>
+
+<p><strong>Hour 36–48:</strong> Produce your second project. You'll notice you're already faster. Time how long it takes. If you're still over 20 minutes, you're overthinking voice selection or regenerating unnecessarily. Pick a voice in under 60 seconds and commit. ElevenLabs' quality is high enough that "good enough" voices still sound professional.</p>
+
+<p>By the end of 48 hours, you'll have two finished audio assets, a working understanding of both tools, and the muscle memory to produce new pieces in under 15 minutes. That's when the workflow stops feeling like a novelty and starts feeling like a superpower.</p>
+    </div>
+    <div class="related-articles" style="margin-top:40px;padding:24px;background:#f0f6ff;border-radius:12px;border:1px solid #c9d9f5">
+  <h3 style="font-size:15px;font-weight:700;color:#0d1f3c;margin:0 0 14px;text-transform:uppercase;letter-spacing:.08em">Related Articles</h3>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+    <li><a href="../articles/the-elevenlabs-trick-that-saves-podcasters-and-youtubers-200-per.html" style="color:#1a56db;text-decoration:underline;font-size:14px;font-weight:500">The ElevenLabs Trick That Saves Podcasters and YouTubers $200+ per episode, Starting Today</a></li>
+    <li><a href="../articles/the-complete-podcaster-ai-toolkit-from-day-1-to-full-automation.html" style="color:#1a56db;text-decoration:underline;font-size:14px;font-weight:500">The Complete Podcaster AI Toolkit — From Day 1 to Full Automation</a></li>
+    <li><a href="../articles/5-ai-workflows-so-good-they-feel-like-cheating-all-beginner.html" style="color:#1a56db;text-decoration:underline;font-size:14px;font-weight:500">5 AI Workflows So Good They Feel Like Cheating (All Beginner-Friendly)</a></li>
+  </ul>
+</div>
+    <div class="sources-box"><strong>Sources</strong> <a href="https://venturebeat.com/orchestration/frontier-models-can-recover-up-to-65-of-facts-they-cant-directly-recall-just-by-thinking-longer" target="_blank" rel="noopener">Frontier models can recover up to 65% of facts they can…</a> &nbsp;·&nbsp; <a href="https://venturebeat.com/security/azure-openai-agent-passed-every-evaluation-served-files-user-couldnt-open" target="_blank" rel="noopener">Closing an Azure OpenAI assistant's retrieval gap didn'…</a> &nbsp;·&nbsp; <a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads" target="_blank" rel="noopener">Anthropic's Claude Fable 5.1 and Mythos 5.1 arrive with…</a> &nbsp;·&nbsp; <a href="https://venturebeat.com/orchestration/your-files-stay-put-perplexitys-hybrid-ai-keeps-confidential-data-off-the-cloud" target="_blank" rel="noopener">Your files stay put: Perplexity’s hybrid AI keeps confi…</a></div>
+    <div class="share-row">
+      <a href="https://twitter.com/intent/tweet?text=The%20AI%20Voice-Over%20Studio%20in%20Your%20Browser%3A%20An%20ElevenLabs%20%2B%20Soundraw%20Walkthrough&url=https%3A//myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html" target="_blank" rel="noopener nofollow" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.845L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html" target="_blank" rel="noopener nofollow" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html" target="_blank" rel="noopener nofollow" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.reddit.com/submit?url=https%3A//myaitoolsfinder.com/articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html&title=The%20AI%20Voice-Over%20Studio%20in%20Your%20Browser%3A%20An%20ElevenLabs%20%2B%20Soundraw%20Walkthrough" target="_blank" rel="noopener nofollow" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        Reddit
+      </a>
+      <button onclick="(function(){var u=window.location.href;navigator.clipboard?navigator.clipboard.writeText(u).then(function(){var b=document.getElementById('copy-url-btn');var o=b.innerHTML;b.innerHTML='<svg width=13 height=13 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><polyline points=\'20 6 9 17 4 12\'/></svg> Copied!';setTimeout(function(){b.innerHTML=o;},2000);}):prompt('Copy this URL:',u);})()" id="copy-url-btn" class="share-btn" style="cursor:pointer;background:none;border:1.5px solid var(--border);font-family:inherit;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Link
+      </button>
+      <a href="../articles.html" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        All Articles
+      </a>
+      <a href="../index.html" class="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Browse Tools
+      </a>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <p>
+     <a href="../index.html">Directory</a> &nbsp;·&nbsp;
+     <a href="../articles.html">Articles</a> &nbsp;·&nbsp;
+     <a href="../privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+     <a href="../terms.html">Terms of Use</a>
+  </p>
+  <p style="margin-top:8px;font-size:11px;opacity:.7">
+    Some links may be affiliate links — we may earn a small commission at no extra cost to you.
+  </p>
+  <p style="margin-top:6px;font-size:11px;opacity:.55">© 2026 My AI Tools Finder. All rights reserved.</p>
+</footer>
+
+<script src="../js/tools-data.js"></script>
+<script src="../js/affiliate.js"></script>
+</body>
+</html>
