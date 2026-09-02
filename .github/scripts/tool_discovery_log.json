@@ -188,6 +188,14 @@
         "Camel AGI"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-09-02",
+      "tools": [
+        "Hebbian Robotics",
+        "Almanac AI"
+      ],
+      "count": 2
     }
   ]
 }
