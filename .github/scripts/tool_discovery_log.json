@@ -196,6 +196,14 @@
         "Almanac AI"
       ],
       "count": 2
+    },
+    {
+      "date": "2026-10-07",
+      "tools": [
+        "Vespper",
+        "Caspian"
+      ],
+      "count": 2
     }
   ]
 }

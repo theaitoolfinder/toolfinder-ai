@@ -767,5 +767,7 @@ window.MYAI_AFF_MAP = {
   "onecli": "https://onecli.dev",
   "camel agi": "https://camelagi.com",
   "hebbian robotics": "https://hebbian.io",
-  "almanac ai": "https://almanac.io"
+  "almanac ai": "https://almanac.io",
+  "vespper": "https://vespper.com",
+  "caspian": "https://caspian.dev"
 };
