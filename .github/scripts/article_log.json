@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-08",
-      "slot": "latenight",
-      "slug": "losing-the-important-details-from-every-client-call-because-no",
-      "title": "Losing the important details from every client call because no one has time to take notes during the meeting? Fireflies.ai Is the Fastest Fix in 2026",
-      "type": "problem_solution",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1539614712445-33db8da8b8ea?w=800&q=85&auto=format&fit=crop",
-      "topic": "losing important details every",
-      "pair": "",
-      "tool": "Fireflies.ai",
-      "words": 2733,
-      "partners": [
-        "Fireflies.ai"
-      ]
-    },
-    {
       "date": "2026-07-09",
       "slot": "morning",
       "slug": "is-captions-ai-finally-better-than-submagic-ai-2026-head-to-head",
@@ -1092,10 +1076,26 @@
         "OpusClip",
         "Soundraw"
       ]
+    },
+    {
+      "date": "2026-10-08",
+      "slot": "morning",
+      "slug": "the-real-reason-solopreneurs-and-small-teams-waste-hours-2026-10-08",
+      "title": "The Real Reason Solopreneurs and Small Teams Waste hours untangling three different apps (And the Taskade AI Fix for It)",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop",
+      "topic": "reason solopreneurs small teams",
+      "pair": "",
+      "tool": "Taskade AI",
+      "words": 2603,
+      "partners": [
+        "Make.com",
+        "Taskade AI"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1683971336619-d445cbec0276?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
@@ -1294,6 +1294,7 @@
     "https://images.unsplash.com/photo-1657974361095-4d5f3fb381fb?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1622673037994-e4a73f4e5eb0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop"
   ]
 }
