@@ -2,28 +2,6 @@
   "generated": [
     {
       "date": "2026-07-09",
-      "slot": "morning",
-      "slug": "is-captions-ai-finally-better-than-submagic-ai-2026-head-to-head",
-      "title": "Is Captions AI Finally Better Than Submagic AI? (2026 Head-to-Head)",
-      "type": "comparison",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1764663908286-b6b6ec959d1a?w=800&q=85&auto=format&fit=crop",
-      "topic": "captions finally better than",
-      "pair": "",
-      "tool": "",
-      "words": 2075,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai",
-        "Submagic AI"
-      ]
-    },
-    {
-      "date": "2026-07-09",
       "slot": "midday",
       "slug": "the-submagic-ai-trick-that-saves-faceless-channel-creators-hours",
       "title": "The Submagic AI Trick That Saves Faceless Channel Creators hours manually captioning every clip, Starting Today",
@@ -1093,10 +1071,25 @@
         "Make.com",
         "Taskade AI"
       ]
+    },
+    {
+      "date": "2026-10-09",
+      "slot": "exclusive",
+      "slug": "tired-of-manually-copying-the-same-data-between-five-different-2026-10-09",
+      "title": "Tired of manually copying the same data between five different apps every single day? Here's the Make.com Fix Agencies and Ops Teams Are Using in 2026",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1605978542268-b49288706bfd?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired manually copying same",
+      "pair": "",
+      "tool": "Make.com",
+      "words": 2465,
+      "partners": [
+        "Make.com"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
@@ -1295,6 +1288,7 @@
     "https://images.unsplash.com/photo-1622673037994-e4a73f4e5eb0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605978542268-b49288706bfd?w=800&q=85&auto=format&fit=crop"
   ]
 }
