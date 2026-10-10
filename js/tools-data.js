@@ -769,5 +769,6 @@ window.MYAI_AFF_MAP = {
   "hebbian robotics": "https://hebbian.io",
   "almanac ai": "https://almanac.io",
   "vespper": "https://vespper.com",
-  "caspian": "https://caspian.dev"
+  "caspian": "https://caspian.dev",
+  "repurpose.io": "https://repurpose.io"
 };
