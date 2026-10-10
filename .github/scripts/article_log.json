@@ -2,24 +2,6 @@
   "generated": [
     {
       "date": "2026-07-09",
-      "slot": "midday",
-      "slug": "the-submagic-ai-trick-that-saves-faceless-channel-creators-hours",
-      "title": "The Submagic AI Trick That Saves Faceless Channel Creators hours manually captioning every clip, Starting Today",
-      "type": "problem_solution",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1612537538844-58db865aefc1?w=800&q=85&auto=format&fit=crop",
-      "topic": "submagic trick saves faceless",
-      "pair": "",
-      "tool": "Submagic AI",
-      "words": 2290,
-      "partners": [
-        "ElevenLabs",
-        "OpusClip",
-        "Submagic AI"
-      ]
-    },
-    {
-      "date": "2026-07-09",
       "slot": "afternoon",
       "slug": "the-real-reason-solopreneurs-and-small-teams-waste-hours",
       "title": "The Real Reason Solopreneurs and Small Teams Waste hours untangling three different apps (And the Taskade AI Fix for It)",
@@ -1087,10 +1069,25 @@
       "partners": [
         "Make.com"
       ]
+    },
+    {
+      "date": "2026-10-10",
+      "slot": "morning",
+      "slug": "the-fireflies-ai-trick-that-saves-consultants-and-founders-hours",
+      "title": "The Fireflies.ai Trick That Saves Consultants and Founders hours of note-taking and re-explaining, Starting Today",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1661010854520-32ab127f1783?w=800&q=85&auto=format&fit=crop",
+      "topic": "firefliesai trick saves consultants",
+      "pair": "",
+      "tool": "Fireflies.ai",
+      "words": 2609,
+      "partners": [
+        "Fireflies.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1757920750508-50f93061b416?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611890798517-07b0fcb4a811?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1617004574627-d3bd7fb4a71a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
@@ -1289,6 +1286,7 @@
     "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1605978542268-b49288706bfd?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1605978542268-b49288706bfd?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1661010854520-32ab127f1783?w=800&q=85&auto=format&fit=crop"
   ]
 }
