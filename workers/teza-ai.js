@@ -15,8 +15,24 @@
  */
 
 const ALLOWED_ORIGIN   = 'https://myaitoolsfinder.com';
-const GROQ_MODEL       = 'llama-3.3-70b-versatile'; // fast, free, no geo-restrictions
+// Preferred models, best first. Groq retires models without notice (the
+// previous single hard-coded model started returning 404 model_not_found and
+// took the whole chatbot down), so the Worker walks this list and, if none
+// work, asks Groq which models are currently available — see pickModel().
+const GROQ_MODELS      = [
+  'openai/gpt-oss-120b',
+  'llama-3.3-70b-versatile',
+  'meta-llama/llama-4-scout-17b-16e-instruct',
+  'qwen/qwen3-32b',
+  'openai/gpt-oss-20b',
+  'llama-3.1-8b-instant',
+];
+const GROQ_MODEL       = GROQ_MODELS[0];
 const GROQ_URL         = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODELS_URL  = 'https://api.groq.com/openai/v1/models';
+const NON_CHAT_RE      = /whisper|guard|tts|embed|prompt-guard|safeguard|distil-whisper|orpheus/i;
+
+let _workingModel = null; // remembered for the isolate's lifetime once one succeeds
 const AFFILIATE_JSON   = 'https://myaitoolsfinder.com/data/affiliate_tools.json';
 
 // ── In-memory affiliate cache (lives for the isolate lifetime, ~few minutes) ─
@@ -211,45 +227,75 @@ export default {
       })),
     ];
 
-    const groqPayload = {
-      model: GROQ_MODEL,
-      messages: groqMessages,
-      max_tokens: 400,
-      temperature: 0.75,
-    };
-
-    // ── Call Groq (with one automatic retry) ─────────────────────────────────
+    // ── Call Groq with model fallback ────────────────────────────────────────
     const groqHeaders = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${env.GROQ_API_KEY}`,
     };
 
-    async function callGroq() {
+    async function callGroqWith(model) {
       const r = await fetch(GROQ_URL, {
         method: 'POST',
         headers: groqHeaders,
-        body: JSON.stringify(groqPayload),
+        body: JSON.stringify({ model, messages: groqMessages, max_tokens: 400, temperature: 0.75 }),
       });
       if (!r.ok) {
         const errBody = await r.text();
-        throw new Error(`Groq ${r.status}: ${errBody}`);
+        const err = new Error(`Groq ${r.status}: ${errBody}`);
+        err.status = r.status;
+        err.modelGone = r.status === 404 || r.status === 400 && /decommission|model_not_found|not exist|no longer supported/i.test(errBody);
+        throw err;
       }
       return r.json();
     }
 
-    let groqData;
-    try {
-      groqData = await callGroq();
-    } catch {
-      // One retry after a short pause
+    // Ask Groq which chat models exist right now (used only when the
+    // preferred list is exhausted), preferring bigger/newer-looking names.
+    async function discoverModels() {
       try {
-        await new Promise(res => setTimeout(res, 800));
-        groqData = await callGroq();
-      } catch (err) {
-        return new Response(JSON.stringify({ error: 'Groq request failed', detail: String(err) }), {
-          status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        const r = await fetch(GROQ_MODELS_URL, { headers: groqHeaders });
+        if (!r.ok) return [];
+        const j = await r.json();
+        return (j.data || []).map(m => m.id).filter(id => id && !NON_CHAT_RE.test(id));
+      } catch { return []; }
+    }
+
+    let groqData = null;
+    let lastErr = null;
+    const tried = new Set();
+    const candidates = _workingModel ? [_workingModel, ...GROQ_MODELS] : [...GROQ_MODELS];
+
+    async function tryModels(list) {
+      for (const model of list) {
+        if (tried.has(model)) continue;
+        tried.add(model);
+        try {
+          groqData = await callGroqWith(model);
+          _workingModel = model;
+          return true;
+        } catch (e) {
+          lastErr = e;
+          if (e.modelGone) continue;                       // model retired → next one
+          if (e.status === 429 || e.status >= 500) {        // transient → one short retry on same model
+            try {
+              await new Promise(res => setTimeout(res, 800));
+              groqData = await callGroqWith(model);
+              _workingModel = model;
+              return true;
+            } catch (e2) { lastErr = e2; if (!e2.modelGone) continue; }
+          }
+        }
       }
+      return false;
+    }
+
+    let ok = await tryModels(candidates);
+    if (!ok) ok = await tryModels(await discoverModels());
+
+    if (!ok) {
+      return new Response(JSON.stringify({ error: 'Groq request failed', detail: String(lastErr), tried: [...tried] }), {
+        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
     }
 
     const text = groqData?.choices?.[0]?.message?.content || null;
@@ -263,7 +309,7 @@ export default {
     return new Response(JSON.stringify({
       text,
       _meta: {
-        model: groqData.model || GROQ_MODEL,
+        model: groqData.model || _workingModel || GROQ_MODEL,
         tokens: groqData.usage?.total_tokens || null,
         finish: groqData.choices?.[0]?.finish_reason || null,
       }
