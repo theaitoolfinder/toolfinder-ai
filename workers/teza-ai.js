@@ -40,6 +40,77 @@ let _affiliateCache    = null;
 let _affiliateCacheAt  = 0;
 const CACHE_TTL_MS     = 60 * 60 * 1000; // 1 hour
 
+
+// ── Link safety net ─────────────────────────────────────────────────────────
+// The model sometimes invents URLs (e.g. ?q= search links, or category pages
+// that don't exist). Before a reply leaves the Worker, every myaitoolsfinder.com
+// link is checked against the live sitemap: valid → kept, a tool search link →
+// rewritten to that tool's page, anything else → plain bold text (no dead link).
+const SITEMAP_URL      = 'https://myaitoolsfinder.com/sitemap.xml';
+const SITE_STATIC      = ['prompts.html','articles.html','tutorials.html','about.html','quiz.html','academy.html','badge.html','privacy.html','terms.html'];
+const CATEGORY_ALIAS   = { 'ai-automation-tools': 'ai-productivity-tools', 'ai-no-code-tools': 'ai-productivity-tools', 'ai-image-tools': 'ai-design-tools', 'ai-sales-tools': 'ai-marketing-tools' };
+let _sitePaths = null, _sitePathsAt = 0;
+
+async function getSitePaths() {
+  const now = Date.now();
+  if (_sitePaths && now - _sitePathsAt < CACHE_TTL_MS) return _sitePaths;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const resp = await fetch(SITEMAP_URL, { signal: controller.signal, cf: { cacheEverything: true, cacheTtl: 3600 } });
+    clearTimeout(timer);
+    if (resp.ok) {
+      const xml = await resp.text();
+      const set = new Set(SITE_STATIC);
+      for (const m of xml.matchAll(/<loc>https?:\/\/(?:www\.)?myaitoolsfinder\.com\/([^<]+)<\/loc>/g)) set.add(m[1].trim());
+      if (set.size > 50) { _sitePaths = set; _sitePathsAt = now; return set; }
+    }
+  } catch { /* fall through to stale cache / null */ }
+  return _sitePaths; // may be null → fixLinks() then leaves links untouched
+}
+
+function slugify(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+
+function matchToolSlug(query, label, slugs) {
+  const set = new Set(slugs);
+  const cands = [slugify(query), slugify(label)].filter(Boolean);
+  for (const c of cands) { if (set.has(c)) return c; if (set.has(c + '-ai')) return c + '-ai'; }
+  for (const c of cands) {
+    if (c.length < 3) continue;
+    const hit = slugs.find(sl => sl === c || sl.startsWith(c + '-'));
+    if (hit) return hit;
+  }
+  return null;
+}
+
+async function fixLinks(text) {
+  const paths = await getSitePaths();
+  if (!paths) return text;
+  const toolSlugs = [...paths].filter(p => p.startsWith('tools/') && p.endsWith('.html')).map(p => p.slice(6, -5));
+  return text.replace(/\[([^\]]+)\]\((https?:\/\/(?:www\.)?myaitoolsfinder\.com[^)\s]*)\)/g, (m, label, url) => {
+    let u;
+    try { u = new URL(url); } catch { return `**${label}**`; }
+    const path = u.pathname.replace(/^\/+/, '');
+    if (path === '') {                       // homepage
+      const q = u.searchParams.get('q');
+      if (!q) return m;                      // plain homepage or #newsletter etc.
+      const slug = matchToolSlug(q, label, toolSlugs);
+      return slug ? `[${label}](https://myaitoolsfinder.com/tools/${slug}.html)` : `**${label}**`;
+    }
+    if (paths.has(path)) return m;           // real page
+    const cat = path.match(/^categories\/(.+)\.html$/);
+    if (cat && CATEGORY_ALIAS[cat[1]] && paths.has(`categories/${CATEGORY_ALIAS[cat[1]]}.html`)) {
+      return `[${label}](https://myaitoolsfinder.com/categories/${CATEGORY_ALIAS[cat[1]]}.html)`;
+    }
+    const tool = path.match(/^tools\/(.+)\.html$/);
+    if (tool) {
+      const slug = matchToolSlug(tool[1], label, toolSlugs);
+      if (slug) return `[${label}](https://myaitoolsfinder.com/tools/${slug}.html)`;
+    }
+    return `**${label}**`;                   // unknown page → no dead link
+  });
+}
+
 async function fetchAffiliateTools() {
   const now = Date.now();
   if (_affiliateCache && now - _affiliateCacheAt < CACHE_TTL_MS) {
@@ -120,17 +191,17 @@ ${affiliateSection}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ALL OTHER TOOLS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-For any tool NOT in the affiliate list above, link to the site search:
-Format: https://myaitoolsfinder.com/?q=TOOLNAME (replace spaces with +)
+For any tool NOT in the affiliate list above, link to that tool's own page on this site:
+Format: https://myaitoolsfinder.com/tools/SLUG.html  (SLUG = tool name in lowercase, spaces and symbols become hyphens)
 Examples:
-- [ChatGPT](https://myaitoolsfinder.com/?q=chatgpt)
-- [Midjourney](https://myaitoolsfinder.com/?q=midjourney)
-- [Jasper](https://myaitoolsfinder.com/?q=jasper)
-- [Canva](https://myaitoolsfinder.com/?q=canva)
-- [Notion AI](https://myaitoolsfinder.com/?q=notion+ai)
-- [Claude](https://myaitoolsfinder.com/?q=claude)
-- [Runway](https://myaitoolsfinder.com/?q=runway)
-- [Perplexity](https://myaitoolsfinder.com/?q=perplexity)
+- [ChatGPT](https://myaitoolsfinder.com/tools/chatgpt.html)
+- [Midjourney](https://myaitoolsfinder.com/tools/midjourney.html)
+- [Notion AI](https://myaitoolsfinder.com/tools/notion-ai.html)
+- [Perplexity AI](https://myaitoolsfinder.com/tools/perplexity-ai.html)
+LINK RULES (important):
+- NEVER invent a URL. NEVER use "?q=" search links — they do not work.
+- Only link category pages from the list above. There is NO "automation" category: for automation or no-code, use the Productivity category.
+- If you are not sure a tool's page exists, write its name in bold with no link.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SUBSCRIBER BENEFITS
@@ -298,7 +369,8 @@ export default {
       });
     }
 
-    const text = groqData?.choices?.[0]?.message?.content || null;
+    let text = groqData?.choices?.[0]?.message?.content || null;
+    if (text) text = await fixLinks(text);
 
     if (!text) {
       return new Response(JSON.stringify({ error: 'No response from Groq', raw: groqData }), {
