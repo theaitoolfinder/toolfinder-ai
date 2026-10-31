@@ -1711,8 +1711,11 @@ def main():
     if not body_html:
         # Do NOT fall back to a template — a fake fill-in-the-blank article wastes
         # readers' time and hurts the site's credibility. Skip gracefully instead.
-        print("[WARN] Claude generation failed — skipping this slot. No article published.", file=sys.stderr)
-        return
+        print("[ERROR] Claude generation failed — no article published for this slot. "
+              "Check ANTHROPIC_API_KEY, Anthropic billing/credits and model availability.", file=sys.stderr)
+        # Fail loudly: a green run here hid a 2-week outage. A red run makes
+        # GitHub email the repo owner, and the catch-up cron retries later.
+        sys.exit(1)
 
     # ── Save article file ──────────────────────────────────────────────────────
     html = build_article_html(slug, title, body_html, stories, hero_url, article_type)

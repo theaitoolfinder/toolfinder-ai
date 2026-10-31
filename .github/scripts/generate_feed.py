@@ -60,6 +60,22 @@ def parse_date(iso: str) -> datetime | None:
 
 
 def file_mtime(path: Path) -> datetime:
+    """Stable fallback date: the file's FIRST git commit date.
+
+    Plain mtime is "now" on every CI checkout, which re-stamped every
+    undated article as brand new on each run (feed.xml churned hourly and
+    RSS readers saw old posts as new). Falls back to mtime only if git
+    history is unavailable (e.g. shallow clone)."""
+    import subprocess
+    try:
+        out = subprocess.run(
+            ["git", "log", "--diff-filter=A", "--format=%cI", "--", str(path)],
+            cwd=ROOT, capture_output=True, text=True, timeout=20,
+        ).stdout.strip().splitlines()
+        if out:
+            return datetime.fromisoformat(out[-1])
+    except Exception:
+        pass
     return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
 
 
@@ -75,7 +91,10 @@ def escape_xml(s: str) -> str:
 
 
 def build_feed(items: list[dict]) -> str:
-    now_str = rfc2822(datetime.now(timezone.utc))
+    # Newest item date, not "now" — keeps feed.xml byte-identical between runs
+    # when no article changed, so CI doesn't commit a no-op feed every hour.
+    newest = max((i["date"] for i in items), default=datetime.now(timezone.utc))
+    now_str = rfc2822(newest)
     entries = []
     for item in items[:MAX_ITEMS]:
         pub = rfc2822(item["date"])
