@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/building-your-ai-stack-as-a-online-coach-or-course-creator-a.html",
+   "img": "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop",
+   "cat": "AI Roadmap",
+   "title": "Building Your AI Stack as a Online Coach or Course Creator: A Step-by-Step Guide for 2026",
+   "excerpt": "You've built a course that actually works. You've coached clients who got real results. But every week you're stuck re-recording the same lesson three times bec…",
+   "date": "Oct 31, 2026"
+  },
+  {
    "href": "articles/the-exact-ai-workflow-that-turns-one-blog-post-into-30-pieces-of.html",
    "img": "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=85&auto=format&fit=crop",
    "cat": "Insider Playbook",
@@ -87,14 +95,6 @@
    "title": "The Complete Podcaster AI Toolkit — From Day 1 to Full Automation",
    "excerpt": "A podcast production studio charges $800 per episode for editing, show notes, audiograms, and social clips. With the right AI tools, you can produce the same ou…",
    "date": "Aug 25, 2026"
-  },
-  {
-   "href": "articles/5-ai-workflows-so-good-they-feel-like-cheating-all-beginner.html",
-   "img": "https://images.unsplash.com/photo-1743385779347-1549dabf1320?w=800&q=85&auto=format&fit=crop",
-   "cat": "Insider Playbook",
-   "title": "5 AI Workflows So Good They Feel Like Cheating (All Beginner-Friendly)",
-   "excerpt": "A freelance writer charges $500 for a week-long blog content package. With the right AI workflow, you can produce the same quality output in 3 hours for $28. A …",
-   "date": "Aug 24, 2026"
   }
  ]
 }
