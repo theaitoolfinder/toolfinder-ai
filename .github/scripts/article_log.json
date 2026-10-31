@@ -2,29 +2,6 @@
   "generated": [
     {
       "date": "2026-07-09",
-      "slot": "night",
-      "slug": "the-solopreneur-ai-roadmap-which-tools-to-add-first-and-why",
-      "title": "The Solopreneur AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=800&q=85&auto=format&fit=crop",
-      "topic": "solopreneur roadmap which tools",
-      "pair": "",
-      "tool": "",
-      "words": 2485,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
-      "date": "2026-07-09",
       "slot": "latenight",
       "slug": "spending-days-digging-through-academic-papers-just-to-find-the",
       "title": "Spending days digging through academic papers just to find the handful that actually matter? SciSpace Is the Fastest Fix in 2026",
@@ -1087,10 +1064,30 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-10-31",
+      "slot": "morning",
+      "slug": "building-your-ai-stack-as-a-online-coach-or-course-creator-a",
+      "title": "Building Your AI Stack as a Online Coach or Course Creator: A Step-by-Step Guide for 2026",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop",
+      "topic": "building stack online coach",
+      "pair": "",
+      "tool": "",
+      "words": 2590,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1738628537350-cc587b853cb9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
@@ -1289,6 +1286,7 @@
     "https://images.unsplash.com/photo-1605978542268-b49288706bfd?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1661010854520-32ab127f1783?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1678329885908-85eb768aa61b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop"
   ]
 }
