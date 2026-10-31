@@ -78,6 +78,33 @@
   .stat span{font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
 
 
+
+  /* insights (Growth & business health) */
+  .ins-hero{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border-radius:16px;padding:22px 26px;margin-bottom:18px;border:1px solid var(--border);background:var(--card);position:relative;overflow:hidden}
+  .ins-hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--hero-c,var(--accent))}
+  .ins-hero .big{font-size:54px;font-weight:800;line-height:1;color:var(--hero-c,var(--accent));letter-spacing:-.02em}
+  .ins-hero .big small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-top:6px}
+  .ins-hero h4{margin:0 0 6px;font-size:18px;font-weight:800;color:var(--text)}
+  .ins-hero p{margin:0;font-size:13.5px;line-height:1.55;color:var(--text-dim);max-width:640px}
+  .ins-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:20px}
+  .ins-kpi{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px;position:relative}
+  .ins-kpi .ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:var(--k-bg,rgba(26,86,219,.1));color:var(--k-c,var(--accent))}
+  .ins-kpi .v{font-size:28px;font-weight:800;line-height:1.1;color:var(--text);letter-spacing:-.01em}
+  .ins-kpi .l{font-size:12px;font-weight:600;color:var(--text-dim);margin-top:3px}
+  .ins-kpi .t{display:inline-block;margin-top:9px;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--bg-soft);color:var(--text-dim)}
+  .ins-kpi .t.good{background:rgba(22,163,74,.12);color:#15803d}.ins-kpi .t.bad{background:rgba(239,68,68,.12);color:#b91c1c}
+  .ins-sec{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin:24px 0 10px}
+  .ins-rows{display:grid;gap:10px}
+  .ins-row{display:flex;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;border-left:5px solid var(--r-c,var(--accent))}
+  .ins-row b{display:block;font-size:14px;color:var(--text);margin-bottom:2px}
+  .ins-row span{font-size:13px;line-height:1.5;color:var(--text-dim)}
+  .ins-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+  .ins-chart{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+  .ins-chart h5{margin:0;font-size:13.5px;font-weight:800;color:var(--text)}
+  .ins-chart .cap{font-size:12px;color:var(--text-dim);margin:2px 0 10px}
+  .ins-chart svg{width:100%;height:96px;display:block}
+  .ins-chart .ax{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-top:6px}
+
   /* audience tab */
   .aud-h{font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px}
   .aud-sub{font-size:11.5px;font-weight:400;color:var(--text-dim);margin-left:6px}
@@ -1909,10 +1936,6 @@ function switchToTab(name){
 
 
 /* ===== Growth & business health (from data/insights.json) ===== */
-function insBars(vals, color, h){
-  const max=Math.max(1,...vals); h=h||56;
-  return `<div style="display:flex;align-items:flex-end;gap:3px;height:${h}px">`+vals.map(v=>`<div title="${v}" style="flex:1;min-width:3px;background:${color};border-radius:3px 3px 0 0;height:${Math.max(4,v/max*100)}%;opacity:.88"></div>`).join('')+'</div>';
-}
 async function loadInsights(){
   const repo=localStorage.getItem('myai_gh_repo')||'theaitoolfinder/toolfinder-ai';
   const box=document.getElementById('ins-box');
@@ -1924,56 +1947,82 @@ async function loadInsights(){
     box.innerHTML='<div class="info-banner">Insights file not published yet — it is created by the daily "Sync Audience Analytics" job (GitHub → Actions → Run workflow). ('+audEsc(e.message)+')</div>';
   }
 }
+function insSvgBars(vals,color){
+  const W=300,H=90,n=Math.max(1,vals.length),gap=4,bw=(W-gap*(n-1))/n,max=Math.max(1,...vals);
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`+vals.map((v,i)=>{const h=Math.max(v>0?3:1,v/max*(H-4));return `<rect x="${(i*(bw+gap)).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="${color}" opacity=".9"/>`}).join('')+`</svg>`;
+}
+function insSvgLine(vals,color){
+  const W=300,H=90,n=vals.length; if(n<2) return insSvgBars(vals,color);
+  const min=Math.min(...vals), max=Math.max(...vals), span=Math.max(1,max-min), pad=8;
+  const X=i=>i/(n-1)*W, Y=v=>H-pad-((v-min)/span)*(H-pad*2)-(max===min?(H-pad*2)/2:0);
+  const pts=vals.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`);
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><polygon points="0,${H} ${pts.join(' ')} ${W},${H}" fill="${color}" opacity=".12"/><polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="${X(n-1).toFixed(1)}" cy="${Y(vals[n-1]).toFixed(1)}" r="4" fill="${color}"/></svg>`;
+}
 function renderInsights(d){
   const box=document.getElementById('ins-box');
-  const today=new Date(); const dayMs=864e5;
+  const today=new Date(), dayMs=864e5;
   const subs=d.subscribers||[]; const now=subs.length?subs[subs.length-1].count:0;
   const cut=new Date(today-30*dayMs).toISOString().slice(0,10);
   const old=[...subs].reverse().find(p=>p.date<=cut)||subs[0]||{count:now};
   const delta30=now-old.count;
   let lastChange=subs.length?subs[0].date:null;
   for(let i=subs.length-1;i>0;i--){ if(subs[i].count!==subs[i-1].count){ lastChange=subs[i].date; break; } }
-  const flatDays=lastChange? Math.floor((today-new Date(lastChange))/dayMs) : null;
+  const flatDays=lastChange?Math.floor((today-new Date(lastChange))/dayMs):null;
   const A=d.articles||{}, S=d.spend||{}, I=d.inventory||{};
-  const wk=(A.per_week||[]).map(w=>w.count);
-  const last4=wk.slice(-4).reduce((a,b)=>a+b,0), prev4=wk.slice(-8,-4).reduce((a,b)=>a+b,0);
+  const wk=(A.per_week||[]); const wkv=wk.map(w=>w.count);
+  const last4=wkv.slice(-4).reduce((a,b)=>a+b,0), prev4=wkv.slice(-8,-4).reduce((a,b)=>a+b,0);
   document.getElementById('ins-updated').textContent=d.generated_at?('Updated '+new Date(d.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})):'';
 
-  const card=(v,l,sub)=>`<div class="stat"><b>${v}</b><span>${l}</span><div style="margin-top:4px;font-size:11.5px;color:var(--text-dim)">${sub||'&nbsp;'}</div></div>`;
-  const cards=
-    card(audInt(now),'Subscribers', delta30>0?`<span style="font-weight:700;color:var(--ok)">+${delta30} in 30 days</span>`:'<span style="font-weight:700;color:var(--danger)">no growth in 30 days</span>')+
-    card(flatDays===null?'—':flatDays+'d','Since last new subscriber', lastChange?('last change '+lastChange):'')+
-    card(audInt(A.total_published),'Articles published', A.days_since_last!==null&&A.days_since_last!==undefined?('latest: '+(A.days_since_last===0?'today':A.days_since_last+'d ago')):'')+
-    card('$'+(S.last_30d_usd||0).toFixed(2),'AI spend, last 30 days', S.per_article_usd?('≈ $'+S.per_article_usd.toFixed(3)+' per article'):'')+
-    card(audInt(I.tool_pages),'Tool pages', 'each is a search-engine landing page')+
-    card(audInt(I.tutorials),'Tutorials', I.affiliate_tools?(I.affiliate_tools+' partner tools'):'');
+  const flat=delta30<=0;
+  const heroC=flat?'#dc2626':'#16a34a';
+  const hero=`<div class="ins-hero" style="--hero-c:${heroC}">
+      <div class="big">${audInt(now)}<small>subscribers</small></div>
+      <div><h4>${flat?'Your biggest opportunity: turning visitors into subscribers':'Subscribers are growing — keep it going'}</h4>
+      <p>${flat?`The list has not grown for <b>${flatDays}</b> days. Traffic only helps if people join. Open the <b>Audience</b> tab to find the pages that get visits but lose people, and put the sign-up there.`:`You gained <b>${delta30}</b> in the last 30 days. Check the Audience tab to see which pages and sources bring them.`}</p></div>
+    </div>`;
 
-  /* meaning: plain-language takeaways */
-  const tag=(t,c)=>`<span class="aud-tag ${c}">${t}</span>`; const ins=[];
-  if(subs.length){
-    ins.push(delta30>0
-      ? `${tag('GROWING','good')}You gained <b>${delta30}</b> subscriber${delta30>1?'s':''} in the last 30 days (now ${now}).`
-      : `${tag('BIGGEST OPPORTUNITY','bad')}Subscribers have been stuck at <b>${now}</b>${flatDays!==null?` for <b>${flatDays} days</b>`:''}. If your visitor numbers are rising, then <b>visitors are not signing up</b> — that is the gap to close. Ideas: show the newsletter box after someone reads an article, put a "free prompts pack" offer on the most-visited pages, and give a small taste of members-only content before the lock. Check the Audience tab to see which pages get traffic but lose people.`);
-  }
-  if(A.days_since_last!==null && A.days_since_last!==undefined){
-    ins.push(A.days_since_last>3
-      ? `${tag('CONTENT STALLED','bad')}The last article was ${A.days_since_last} days ago. Check Admin → API Usage for a warning (usually out of Anthropic credit).`
-      : `${tag('PUBLISHING','good')}New articles are going out (${last4} in the last 4 weeks${prev4?`, vs ${prev4} the 4 weeks before`:''}). Keep it to about one a day — more than that looked like spam to Google in July.`);
-  }
-  if(S.per_article_usd){
-    ins.push(`${tag('COST','info')}Your whole AI automation costs about <b>$${(S.last_30d_usd||0).toFixed(2)}</b> over 30 days (≈ $${S.per_article_usd.toFixed(3)} per article). Cheap enough that money isn't the limit — quality and sign-ups are.`);
-  }
-  if(I.tool_pages) ins.push(`${tag('SEARCH POTENTIAL','info')}You have <b>${audInt(I.tool_pages)} tool pages</b> that Google can index, one per tool. Those pages are your long-term search growth — improving them (real pricing, screenshots, honest pros and cons) pays off more than adding more articles.`);
-
-  box.innerHTML=
-    `<div class="stats" style="grid-template-columns:repeat(3,1fr)">${cards}</div>`+
-    `<h4 class="aud-h">What this means</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 16px;margin-bottom:22px">${ins.map(h=>`<div class="aud-ins">${h}</div>`).join('')}</div>`+
-    `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:22px">`+
-      `<div><h4 class="aud-h">Subscribers over time <span class="aud-sub">since ${audEsc((subs[0]||{}).date||'')}</span></h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars(subs.slice(-60).map(p=>p.count),'var(--accent)')}</div></div>`+
-      `<div><h4 class="aud-h">Articles per week</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars(wk,'#7c3aed')}</div></div>`+
-      `<div><h4 class="aud-h">AI spend per week ($)</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars((S.per_week||[]).map(w=>w.usd),'#b45309')}</div></div>`+
+  const ic={
+    cal:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+    doc:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>',
+    usd:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    grid:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+    book:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+    trend:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>'
+  };
+  const kpi=(icon,col,bg,v,l,tag,tc)=>`<div class="ins-kpi" style="--k-c:${col};--k-bg:${bg}"><div class="ico">${ic[icon]}</div><div class="v">${v}</div><div class="l">${l}</div>${tag?`<span class="t ${tc||''}">${tag}</span>`:''}</div>`;
+  const stalled=A.days_since_last>3;
+  const kpis=`<div class="ins-kpis">`+
+    kpi('trend',flat?'#b91c1c':'#15803d',flat?'rgba(239,68,68,.12)':'rgba(22,163,74,.12)',(delta30>=0?'+':'')+delta30,'New subscribers, 30 days',flat?'no growth':'growing',flat?'bad':'good')+
+    kpi('cal','#b45309','rgba(180,83,9,.12)',flatDays===null?'—':flatDays,'Days since last sign-up',lastChange?('since '+lastChange):'')+
+    kpi('doc','#7c3aed','rgba(124,58,237,.12)',audInt(A.total_published),'Articles published',stalled?(A.days_since_last+' days since latest'):'latest: today',stalled?'bad':'good')+
+    kpi('usd','#0369a1','rgba(3,105,161,.12)','$'+(S.last_30d_usd||0).toFixed(2),'AI spend, last 30 days',S.per_article_usd?('≈ '+(S.per_article_usd*100).toFixed(1)+'¢ per article'):'')+
+    kpi('grid','#1a56db','rgba(26,86,219,.1)',audInt(I.tool_pages),'Tool pages','search landing pages')+
+    kpi('book','#0f766e','rgba(15,118,110,.12)',audInt(I.tutorials),'Tutorials',I.affiliate_tools?(I.affiliate_tools+' partner tools'):'')+
     `</div>`;
+
+  const row=(c,h,t)=>`<div class="ins-row" style="--r-c:${c}"><div><b>${h}</b><span>${t}</span></div></div>`;
+  const rows=[];
+  if(subs.length) rows.push(flat
+    ? row('#dc2626','Visitors are not becoming subscribers','Try: a sign-up prompt after people finish an article, a free prompts pack on your busiest pages, and a short preview of members-only content before the lock.')
+    : row('#16a34a','Sign-ups are moving',`+${delta30} in 30 days. Find what drives them in the Audience tab and repeat it.`));
+  if(A.days_since_last!==null&&A.days_since_last!==undefined) rows.push(stalled
+    ? row('#dc2626','Publishing has stalled',`The last article was ${A.days_since_last} days ago. Check Admin → API Usage for a credit warning.`)
+    : row('#16a34a','Publishing is running',`${last4} articles in the last 4 weeks${prev4?` (${prev4} in the 4 weeks before)`:''}. About one a day is the safe pace; more looked like spam to Google in July.`));
+  if(S.per_article_usd) rows.push(row('#0369a1','Automation is cheap',`$${(S.last_30d_usd||0).toFixed(2)} over 30 days. Money is not the limit — quality and sign-ups are.`));
+  if(I.tool_pages) rows.push(row('#1a56db',`${audInt(I.tool_pages)} tool pages are your long-term search engine`,'Better pages (real pricing, honest pros and cons) earn more than extra articles.'));
+
+  const fmt=w=>w?w.slice(5):'';
+  const chart=(title,cap,svg,l,r)=>`<div class="ins-chart"><h5>${title}</h5><div class="cap">${cap}</div>${svg}<div class="ax"><span>${l}</span><span>${r}</span></div></div>`;
+  const sv=subs.slice(-60).map(p=>p.count);
+  const charts=`<div class="ins-charts">`+
+    chart('Subscribers over time','A flat line means no new sign-ups',insSvgLine(sv,'#1a56db'),audEsc((subs[Math.max(0,subs.length-60)]||{}).date||''),'now: '+now)+
+    chart('Articles per week','Aim for about 5–7',insSvgBars(wkv,'#7c3aed'),fmt((wk[0]||{}).week),fmt((wk[wk.length-1]||{}).week))+
+    chart('AI spend per week','In US dollars',insSvgBars((S.per_week||[]).map(w=>w.usd),'#0369a1'),fmt(((S.per_week||[])[0]||{}).week),'$'+(S.total_usd||0).toFixed(2)+' total')+
+    `</div>`;
+
+  box.innerHTML=hero+kpis+`<div class="ins-sec">What this means</div><div class="ins-rows">${rows.join('')}</div><div class="ins-sec">Trends</div>`+charts;
 }
+
 /* ===== Audience (GA4): how people find the site + what keeps them ===== */
 const AUD_CHANNELS = {
   'Direct':          {label:'Direct', desc:'Typed the address, used a bookmark, OR opened a link from an app that hides where it came from (WhatsApp, Messenger, Telegram, Instagram/Facebook in-app browser, email apps).'},

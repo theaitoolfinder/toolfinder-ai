@@ -37,6 +37,17 @@ def week_start(d: datetime) -> str:
     return (d - timedelta(days=d.weekday())).strftime("%Y-%m-%d")
 
 
+def last_weeks(mapping, n=12, as_int=True):
+    """Last n CALENDAR weeks ending this week, empty weeks = 0 (so gaps are visible)."""
+    start = NOW - timedelta(days=NOW.weekday())
+    out = []
+    for i in range(n - 1, -1, -1):
+        w = (start - timedelta(weeks=i)).strftime("%Y-%m-%d")
+        v = mapping.get(w, 0)
+        out.append({"week": w, ("count" if as_int else "usd"): v if as_int else round(v, 4)})
+    return out
+
+
 def subscriber_timeline():
     """One point per day: the subscriber count after the last change that day."""
     path = "data/subscribers_db.json"
@@ -98,7 +109,7 @@ def articles_info():
     newest = max([x for x in (last, latest_pub) if x], default=None)
     return {
         "total_published": real,
-        "per_week": [{"week": w, "count": c} for w, c in sorted(weeks.items())[-12:]],
+        "per_week": last_weeks(weeks),
         "last_date": newest.strftime("%Y-%m-%d") if newest else None,
         "days_since_last": (NOW - newest).days if newest else None,
     }
@@ -130,7 +141,7 @@ def spend_info():
         "total_usd": round(sum(workers.values()), 4),
         "last_30d_usd": round(last30, 4),
         "per_article_usd": round(art_cost / art_n, 4) if art_n else None,
-        "per_week": [{"week": w, "usd": round(v, 4)} for w, v in sorted(weeks.items())[-12:]],
+        "per_week": last_weeks(weeks, as_int=False),
         "by_worker": {k: round(v, 4) for k, v in sorted(workers.items(), key=lambda kv: -kv[1])},
         "last_call": max((r["date"] for r in runs), default=None),
     }
