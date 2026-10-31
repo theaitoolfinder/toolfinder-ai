@@ -449,6 +449,7 @@
     </div>
 
     <div id="apiusage-error" class="danger-banner" style="display:none"></div>
+    <div id="apiusage-stale" class="danger-banner" style="display:none"></div>
     <div id="apiusage-loading" style="color:var(--text-dim);font-size:13px">Loading…</div>
 
     <div id="apiusage-content" style="display:none">
@@ -2136,6 +2137,14 @@ async function loadApiUsage(){
       </tr>`;
     }).join('') : `<tr><td colspan="5" style="padding:14px;text-align:center;color:var(--text-dim)">No runs logged yet.</td></tr>`;
 
+    /* Warn if the workers have gone quiet — the usual cause is exhausted Anthropic credit or a revoked key */
+    const staleEl=document.getElementById('apiusage-stale');
+    const lastCall=(data.runs||[]).length? new Date(data.runs[data.runs.length-1].date) : null;
+    const ageDays=lastCall? (Date.now()-lastCall)/864e5 : null;
+    if(ageDays!==null && ageDays>3){
+      staleEl.innerHTML=`<b>⚠ No successful Claude call for ${Math.floor(ageDays)} days</b> (last: ${escApiUsage(lastCall.toLocaleDateString('en-US',{month:'short',day:'numeric'}))}). Article, tutorial, tool-discovery and tool-page generation are probably failing. Most likely cause: Anthropic credit used up or the API key was revoked — check <a href="https://console.anthropic.com/settings/billing" target="_blank" rel="noopener">console.anthropic.com → Billing</a>.`;
+      staleEl.style.display='block';
+    } else { staleEl.style.display='none'; }
     loading.style.display='none';
     content.style.display='block';
   }catch(e){

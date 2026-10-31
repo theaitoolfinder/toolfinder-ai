@@ -1711,11 +1711,13 @@ def main():
     if not body_html:
         # Do NOT fall back to a template — a fake fill-in-the-blank article wastes
         # readers' time and hurts the site's credibility. Skip gracefully instead.
-        print("[ERROR] Claude generation failed — no article published for this slot. "
+        # GitHub turns this into a red annotation on the run page. We deliberately do NOT
+        # exit non-zero: if something triggers this workflow frequently, a red run each time
+        # would flood the owner's inbox. The Admin → API Usage tab shows a staleness warning
+        # when no Claude call has succeeded for several days instead.
+        print("::error title=Article generation failed::Claude call failed - no article published. "
               "Check ANTHROPIC_API_KEY, Anthropic billing/credits and model availability.", file=sys.stderr)
-        # Fail loudly: a green run here hid a 2-week outage. A red run makes
-        # GitHub email the repo owner, and the catch-up cron retries later.
-        sys.exit(1)
+        return
 
     # ── Save article file ──────────────────────────────────────────────────────
     html = build_article_html(slug, title, body_html, stories, hero_url, article_type)
