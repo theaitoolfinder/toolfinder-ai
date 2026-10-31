@@ -77,6 +77,35 @@
   .stat b{display:block;font-size:22px;color:var(--accent);margin-bottom:2px}
   .stat span{font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
 
+
+  /* audience tab */
+  .aud-h{font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px}
+  .aud-sub{font-size:11.5px;font-weight:400;color:var(--text-dim);margin-left:6px}
+  .aud-dot{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle;margin-right:4px}
+  .aud-table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:22px;background:var(--card)}
+  .aud-table-wrap table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .aud-table-wrap th{padding:8px 12px;text-align:left;font-weight:600;color:var(--text-dim);background:var(--bg-soft);border-bottom:1px solid var(--border);white-space:nowrap}
+  .aud-table-wrap td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+  .aud-table-wrap tr:last-child td{border-bottom:0}
+  .aud-table-wrap .num{text-align:right;white-space:nowrap}
+  .aud-mini{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:12.5px}
+  .aud-mini .r{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)}
+  .aud-mini .r:last-child{border-bottom:0}
+  .aud-ch{padding:12px 0;border-bottom:1px solid var(--border)}
+  .aud-ch:last-child{border-bottom:0}
+  .aud-ch .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px}
+  .aud-ch .aud-bar{height:9px;background:var(--bg-soft);border-radius:999px;overflow:hidden;margin:7px 0 5px}
+  .aud-ch .aud-bar i{display:block;height:100%;border-radius:999px}
+  .aud-ch .desc{font-size:11.5px;color:var(--text-dim)}
+  .aud-ins{padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.55}
+  .aud-ins:last-child{border-bottom:0}
+  .aud-tag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:999px;margin-right:6px;vertical-align:1px}
+  .aud-tag.good{background:rgba(22,163,74,.12);color:#15803d}
+  .aud-tag.warn{background:rgba(180,83,9,.12);color:#b45309}
+  .aud-tag.bad{background:rgba(239,68,68,.12);color:#b91c1c}
+  .aud-tag.info{background:rgba(26,86,219,.1);color:#1e40af}
+  @media (max-width:700px){#aud-cards{grid-template-columns:repeat(2,1fr)!important}}
+
   @media (max-width:700px){
     .tool.open .body{grid-template-columns:1fr}
     .siteform{grid-template-columns:1fr}
@@ -157,6 +186,7 @@
     <button class="tab" data-tab="subscribers">Subscribers</button>
     <button class="tab" data-tab="reviews">Reviews</button>
     <button class="tab" data-tab="analytics">Analytics</button>
+    <button class="tab" data-tab="audience">Audience</button>
     <button class="tab" data-tab="apiusage">API Usage</button>
     <button class="tab" data-tab="site">Site settings</button>
     <button class="tab" data-tab="github">GitHub Sync</button>
@@ -350,6 +380,64 @@
           <tbody id="analytics-log-body"></tbody>
         </table>
       </div>
+    </div>
+  </div>
+
+  <!-- AUDIENCE TAB -->
+  <div id="tab-audience" style="display:none">
+    <div style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <h3 style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">Audience — how people find you &amp; what keeps them</h3>
+        <p style="font-size:13px;color:var(--text-dim);margin:0">Last 30 days from Google Analytics 4, refreshed daily. <span id="aud-updated" style="font-weight:600"></span></p>
+      </div>
+      <a id="aud-run-link" class="btn" href="#" target="_blank" rel="noopener" style="display:none">Refresh now (GitHub) ↗</a>
+    </div>
+
+    <div id="aud-loading" style="color:var(--text-dim);font-size:13px">Loading…</div>
+    <div id="aud-error" class="danger-banner" style="display:none"></div>
+
+    <div id="aud-setup" style="display:none">
+      <div class="info-banner"><b>One-time setup (about 10 minutes).</b> Google Analytics is already collecting this data on every page — this just lets the admin page read it. Nothing is exposed publicly.</div>
+      <ol style="font-size:13.5px;line-height:1.8;color:var(--text);padding-left:20px;margin:0 0 14px">
+        <li>Open <a href="https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com" target="_blank" rel="noopener">Google Cloud → Analytics Data API</a> and click <b>Enable</b> (create a project first if asked).</li>
+        <li>Go to <a href="https://console.cloud.google.com/iam-admin/serviceaccounts" target="_blank" rel="noopener">IAM &amp; Admin → Service Accounts</a> → <b>Create service account</b> (any name, e.g. <code>ga-reader</code>). Open it → <b>Keys → Add key → JSON</b>. A file downloads.</li>
+        <li>Copy the service account's email (looks like <code>ga-reader@yourproject.iam.gserviceaccount.com</code>). In <a href="https://analytics.google.com" target="_blank" rel="noopener">GA4</a> → <b>Admin → Property access management → +</b> → paste the email → role <b>Viewer</b>.</li>
+        <li>GA4 → <b>Admin → Property settings</b> → copy the numeric <b>Property ID</b> (digits only — not the <code>G-…</code> code).</li>
+        <li>On GitHub: your repo → <b>Settings → Secrets and variables → Actions → New repository secret</b>. Add <code>GA4_PROPERTY_ID</code> (the digits) and <code>GA4_SERVICE_ACCOUNT_JSON</code> (open the downloaded file and paste its entire contents).</li>
+        <li>Repo → <b>Actions → "Sync Audience Analytics" → Run workflow</b>. Come back here in a minute and reload this tab.</li>
+      </ol>
+    </div>
+
+    <div id="aud-content" style="display:none">
+      <div id="aud-cards" class="stats" style="grid-template-columns:repeat(3,1fr)"></div>
+
+      <h4 class="aud-h">Key takeaways</h4>
+      <div id="aud-insights" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 16px;margin-bottom:22px"></div>
+
+      <h4 class="aud-h">How people find you <span class="aud-sub">sessions by channel · bar colour = how engaged those visitors are</span></h4>
+      <div id="aud-channels" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 16px;margin-bottom:8px"></div>
+      <div style="font-size:11.5px;color:var(--text-dim);margin-bottom:22px"><span class="aud-dot" style="background:var(--ok)"></span>engaged above site average &nbsp; <span class="aud-dot" style="background:#b45309"></span>a bit below &nbsp; <span class="aud-dot" style="background:var(--danger)"></span>well below (possible bots or poor match)</div>
+
+      <h4 class="aud-h">Top sources <span class="aud-sub">the exact site / app behind each channel</span></h4>
+      <div id="aud-sources" class="aud-table-wrap"></div>
+
+      <h4 class="aud-h">What keeps them here <span class="aud-sub">entry pages ranked by visits — "Sticky" = holds attention, "Leaky" = people leave fast</span></h4>
+      <div id="aud-landing" class="aud-table-wrap"></div>
+
+      <h4 class="aud-h">Pages people actually read <span class="aud-sub">most-viewed pages and average time spent per visitor</span></h4>
+      <div id="aud-pages" class="aud-table-wrap"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:22px">
+        <div><h4 class="aud-h" style="margin-top:0">New vs returning</h4><div id="aud-newret" class="aud-mini"></div></div>
+        <div><h4 class="aud-h" style="margin-top:0">Devices</h4><div id="aud-devices" class="aud-mini"></div></div>
+        <div><h4 class="aud-h" style="margin-top:0">Top countries</h4><div id="aud-countries" class="aud-mini"></div></div>
+      </div>
+
+      <h4 class="aud-h">Daily sessions <span class="aud-sub">last 30 days</span></h4>
+      <div id="aud-daily" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:22px"></div>
+
+      <h4 class="aud-h">What visitors do <span class="aud-sub">most frequent actions recorded by Analytics</span></h4>
+      <div id="aud-events" style="display:flex;flex-wrap:wrap;gap:8px"></div>
     </div>
   </div>
 
@@ -1815,13 +1903,167 @@ function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,
 /* ===== Tab + search wiring ===== */
 function switchToTab(name){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
-  ['tools','subscribers','reviews','analytics','apiusage','site','github'].forEach(n=>{
+  ['tools','subscribers','reviews','analytics','audience','apiusage','site','github'].forEach(n=>{
     document.getElementById('tab-'+n).style.display = (n===name)?'block':'none';
   });
   if(name==='subscribers') loadSubDB();
   if(name==='reviews') initReviewsTab();
   if(name==='analytics') renderAnalyticsTab();
+  if(name==='audience') loadAudience();
   if(name==='apiusage') loadApiUsage();
+}
+
+/* ===== Audience (GA4): how people find the site + what keeps them ===== */
+const AUD_CHANNELS = {
+  'Direct':          {label:'Direct', desc:'Typed the address, used a bookmark, OR opened a link from an app that hides where it came from (WhatsApp, Messenger, Telegram, Instagram/Facebook in-app browser, email apps).'},
+  'Organic Search':  {label:'Organic Search (Google/Bing)', desc:'Free clicks from search results.'},
+  'Organic Social':  {label:'Organic Social', desc:'Clicks from social posts and shares (Facebook, X, LinkedIn, Reddit…). Needs tagged links to be recognised.'},
+  'Referral':        {label:'Referral', desc:'Clicks from other websites that link to you.'},
+  'Email':           {label:'Email', desc:'Newsletter and email clicks (only recognised when links carry utm tags).'},
+  'Paid Search':     {label:'Paid Search', desc:'Paid search ads.'},
+  'Paid Social':     {label:'Paid Social', desc:'Paid social ads.'},
+  'Organic Video':   {label:'Organic Video', desc:'Clicks from video sites such as YouTube.'},
+  'Unassigned':      {label:'Unassigned', desc:'Analytics could not classify the visit — usually missing tags or automated/bot traffic.'}
+};
+const audEsc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const audInt = n => Math.round(+n||0).toLocaleString();
+const audPct = (x,d=0) => ((+x||0)*100).toFixed(d)+'%';
+function audSecs(s){ s=+s||0; if(s<60) return Math.round(s)+'s'; return Math.floor(s/60)+'m '+String(Math.round(s%60)).padStart(2,'0')+'s'; }
+function audDelta(cur,prev){
+  cur=+cur||0; prev=+prev||0;
+  if(!prev) return '';
+  const d=(cur-prev)/prev*100, up=d>=0;
+  return `<span style="font-size:11.5px;font-weight:600;color:${up?'var(--ok)':'var(--danger)'}">${up?'▲':'▼'} ${Math.abs(d).toFixed(0)}% vs prev 30d</span>`;
+}
+function audQuality(rate, avg){
+  if(rate >= avg - 0.02) return 'var(--ok)';
+  if(rate >= avg - 0.15) return '#b45309';
+  return 'var(--danger)';
+}
+function audPageName(p){ p=String(p||'/'); try{ p=decodeURIComponent(p);}catch(e){} return p.length>58? p.slice(0,56)+'…' : p; }
+
+async function loadAudience(){
+  const repo=localStorage.getItem('myai_gh_repo')||'theaitoolfinder/toolfinder-ai';
+  const $=id=>document.getElementById(id);
+  ['aud-error','aud-setup','aud-content'].forEach(i=>$(i).style.display='none');
+  $('aud-loading').style.display='block'; $('aud-updated').textContent='';
+  const link=$('aud-run-link'); link.href=`https://github.com/${repo}/actions/workflows/sync-audience.yml`; link.style.display='inline-block';
+  let d=null;
+  try{
+    const r=await fetch(`https://raw.githubusercontent.com/${repo}/main/data/audience.json?_=${Date.now()}`);
+    if(r.status===404){ $('aud-loading').style.display='none'; $('aud-setup').style.display='block'; return; }
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    d=await r.json();
+  }catch(e){
+    $('aud-loading').style.display='none';
+    $('aud-error').textContent='Could not load audience data: '+e.message; $('aud-error').style.display='block'; return;
+  }
+  $('aud-loading').style.display='none';
+  if(!d || d.status!=='ok'){ $('aud-setup').style.display='block'; return; }
+  renderAudience(d);
+  $('aud-content').style.display='block';
+}
+
+function renderAudience(d){
+  const $=id=>document.getElementById(id);
+  const T=d.totals.current||{}, P=d.totals.previous||{};
+  const siteRate=T.engagementRate||0, totalS=T.sessions||0;
+  const age=d.updated_at? Math.max(0,Math.round((Date.now()-new Date(d.updated_at))/3600000)) : null;
+  $('aud-updated').textContent = age===null?'':('Updated '+(age<1?'just now':age+'h ago'));
+
+  /* headline cards */
+  const card=(v,l,sub)=>`<div class="stat"><b>${v}</b><span>${l}</span><div style="margin-top:4px">${sub||'&nbsp;'}</div></div>`;
+  const newPct = T.totalUsers? (T.newUsers/T.totalUsers) : 0;
+  $('aud-cards').innerHTML =
+    card(audInt(totalS),'Sessions',audDelta(T.sessions,P.sessions)) +
+    card(audInt(T.totalUsers),'Visitors',audDelta(T.totalUsers,P.totalUsers)) +
+    card(audPct(siteRate),'Engaged visits',audDelta(T.engagementRate,P.engagementRate)) +
+    card(audSecs(T.avg_engagement_sec),'Avg time per visit',audDelta(T.avg_engagement_sec,P.avg_engagement_sec)) +
+    card((T.screenPageViewsPerSession||0).toFixed(1),'Pages per visit',audDelta(T.screenPageViewsPerSession,P.screenPageViewsPerSession)) +
+    card(audPct(newPct),'First-time visitors','<span style="font-size:11.5px;color:var(--text-dim)">rest are returning</span>');
+
+  /* channels */
+  const ch=(d.channels||[]);
+  $('aud-channels').innerHTML = ch.length? ch.map((c,i)=>{
+    const name=c.sessionDefaultChannelGroup, info=AUD_CHANNELS[name]||{label:name,desc:''};
+    const share=totalS? c.sessions/totalS : 0;
+    const col=audQuality(c.engagementRate||0, siteRate);
+    return `<div class="aud-ch">
+      <div class="top"><div><b>${audEsc(info.label)}</b>${i===0?' <span class="aud-tag info">#1 DRIVER</span>':''}</div>
+        <div style="color:var(--text-dim)"><b style="color:var(--text)">${audInt(c.sessions)}</b> visits (${audPct(share)}) · ${audPct(c.engagementRate)} engaged · ${audSecs(c.avg_engagement_sec)} avg · ${(c.screenPageViewsPerSession||0).toFixed(1)} pages</div></div>
+      <div class="aud-bar"><i style="width:${Math.max(2,share*100).toFixed(1)}%;background:${col}"></i></div>
+      <div class="desc">${audEsc(info.desc)}</div></div>`;
+  }).join('') : '<p style="color:var(--text-dim);font-size:13px;padding:10px 0">No channel data yet.</p>';
+
+  /* sources table */
+  const row=(cells)=>'<tr>'+cells.join('')+'</tr>';
+  $('aud-sources').innerHTML = `<table><thead><tr><th>Source / medium</th><th class="num">Visits</th><th class="num">Engaged</th><th class="num">Avg time</th><th class="num">Pages</th></tr></thead><tbody>`+
+    (d.sources||[]).map(s=>row([`<td>${audEsc(s.sessionSourceMedium)}</td>`,`<td class="num">${audInt(s.sessions)}</td>`,
+      `<td class="num" style="color:${audQuality(s.engagementRate||0,siteRate)};font-weight:600">${audPct(s.engagementRate)}</td>`,
+      `<td class="num">${audSecs(s.avg_engagement_sec)}</td>`,`<td class="num">${(s.screenPageViewsPerSession||0).toFixed(1)}</td>`])).join('')+'</tbody></table>';
+
+  /* landing pages with sticky/leaky tags */
+  const lp=(d.landing_pages||[]);
+  const sorted=[...lp].filter(x=>x.sessions>=Math.max(5,totalS*0.01)&&(x.avg_engagement_sec||0)>=(T.avg_engagement_sec||0)).sort((a,b)=>b.avg_engagement_sec-a.avg_engagement_sec);
+  const stickySet=new Set(sorted.slice(0,3).map(x=>x.landingPage));
+  $('aud-landing').innerHTML = `<table><thead><tr><th>Entry page</th><th class="num">Visits</th><th class="num">Engaged</th><th class="num">Avg time</th><th class="num">Left fast</th><th></th></tr></thead><tbody>`+
+    lp.map(x=>{
+      const leaky = x.sessions>=Math.max(5,totalS*0.02) && (x.engagementRate||0) < siteRate-0.15;
+      const tag = stickySet.has(x.landingPage)&&!leaky ? '<span class="aud-tag good">Sticky</span>' : leaky ? '<span class="aud-tag bad">Leaky</span>' : '';
+      return row([`<td title="${audEsc(x.landingPage)}">${audEsc(audPageName(x.landingPage))}</td>`,`<td class="num">${audInt(x.sessions)}</td>`,
+        `<td class="num" style="color:${audQuality(x.engagementRate||0,siteRate)};font-weight:600">${audPct(x.engagementRate)}</td>`,
+        `<td class="num">${audSecs(x.avg_engagement_sec)}</td>`,`<td class="num">${audPct(x.bounceRate)}</td>`,`<td>${tag}</td>`]);
+    }).join('')+'</tbody></table>';
+
+  /* pages read */
+  $('aud-pages').innerHTML = `<table><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Visitors</th><th class="num">Avg time / visitor</th></tr></thead><tbody>`+
+    (d.top_pages||[]).map(x=>row([`<td title="${audEsc(x.pagePath)}">${audEsc(audPageName(x.pagePath))}</td>`,`<td class="num">${audInt(x.screenPageViews)}</td>`,`<td class="num">${audInt(x.totalUsers)}</td>`,`<td class="num">${audSecs(x.avg_engagement_sec)}</td>`])).join('')+'</tbody></table>';
+
+  /* mini lists */
+  const mini=(arr,key,labelFn)=>(arr||[]).map(x=>`<div class="r"><span>${audEsc(labelFn?labelFn(x[key]):x[key])}</span><span style="color:var(--text-dim)"><b style="color:var(--text)">${audInt(x.sessions)}</b> · ${audPct(x.engagementRate)} engaged</span></div>`).join('')||'<div class="r">No data</div>';
+  $('aud-newret').innerHTML=mini(d.new_vs_returning,'newVsReturning',v=>v==='new'?'First-time visitors':v==='returning'?'Returning visitors':v);
+  $('aud-devices').innerHTML=mini(d.devices,'deviceCategory',v=>v?v[0].toUpperCase()+v.slice(1):v);
+  $('aud-countries').innerHTML=mini(d.countries,'country');
+
+  /* daily bars */
+  const days=(d.daily||[]); const max=Math.max(1,...days.map(x=>x.sessions));
+  $('aud-daily').innerHTML = days.length? `<div style="display:flex;align-items:flex-end;gap:3px;height:90px">`+days.map(x=>{
+      const ds=String(x.date); const lab=`${ds.slice(4,6)}/${ds.slice(6,8)}: ${audInt(x.sessions)} visits`;
+      return `<div title="${lab}" style="flex:1;background:var(--accent);opacity:.85;border-radius:3px 3px 0 0;height:${Math.max(3,x.sessions/max*100)}%"></div>`;
+    }).join('')+`</div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-top:6px"><span>${String(days[0].date).slice(4,6)}/${String(days[0].date).slice(6,8)}</span><span>peak ${audInt(max)}/day</span><span>${String(days[days.length-1].date).slice(4,6)}/${String(days[days.length-1].date).slice(6,8)}</span></div>` : 'No data';
+
+  /* events */
+  const evLabels={tool_click:'Tool clicks',scroll:'Scrolled down',page_view:'Page views',click:'Outbound clicks',user_engagement:'Engaged moments',session_start:'Visits started',first_visit:'First visits',filter_used:'Filters used',search_used:'Searches',tutorial_start:'Tutorials started',affiliate_click:'Affiliate clicks',file_download:'Downloads'};
+  $('aud-events').innerHTML=(d.events||[]).filter(e=>!['page_view','session_start','first_visit','user_engagement'].includes(e.eventName)).slice(0,12).map(e=>`<span style="background:var(--card);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:12.5px"><b>${audInt(e.eventCount)}</b> ${audEsc(evLabels[e.eventName]||e.eventName.replace(/_/g,' '))}</span>`).join('')||'<span style="color:var(--text-dim);font-size:13px">No events yet.</span>';
+
+  /* plain-language insights */
+  const ins=[]; const tag=(t,c)=>`<span class="aud-tag ${c}">${t}</span>`;
+  if(ch.length){
+    const top=ch[0], info=AUD_CHANNELS[top.sessionDefaultChannelGroup]||{label:top.sessionDefaultChannelGroup};
+    ins.push(`${tag('MAIN DRIVER','info')}<b>${audEsc(info.label)}</b> brings ${audPct(top.sessions/totalS)} of all visits (${audInt(top.sessions)}). Those visitors are ${audPct(top.engagementRate)} engaged vs ${audPct(siteRate)} site-wide.`);
+    const direct=ch.find(c=>c.sessionDefaultChannelGroup==='Direct');
+    if(direct && direct.sessions/totalS>=0.35){
+      const real = (direct.engagementRate||0) >= siteRate*0.8 && (direct.avg_engagement_sec||0) >= 10;
+      ins.push(real
+        ? `${tag('GOOD NEWS','good')}Direct traffic looks like <b>real people</b> (${audPct(direct.engagementRate)} engaged, ${audSecs(direct.avg_engagement_sec)} average). Most likely links shared in chats/in-app browsers plus returning bookmarks. Share and Copy-Link buttons now carry tags, so shares will start to appear under their own names.`
+        : `${tag('CHECK','warn')}Direct is large but weakly engaged (${audPct(direct.engagementRate)} engaged, ${audSecs(direct.avg_engagement_sec)} average) — part of it may be bots or accidental opens. Compare its countries/devices in GA4 before trusting the growth.`);
+    }
+    const best=[...ch].filter(c=>c.sessions/totalS>=0.05).sort((a,b)=>b.engagementRate-a.engagementRate)[0];
+    if(best && best!==top) ins.push(`${tag('BEST QUALITY','good')}<b>${audEsc((AUD_CHANNELS[best.sessionDefaultChannelGroup]||{label:best.sessionDefaultChannelGroup}).label)}</b> visitors engage the most (${audPct(best.engagementRate)}) — more of this is worth chasing.`);
+    const search=ch.find(c=>c.sessionDefaultChannelGroup==='Organic Search');
+    if(!search || search.sessions/totalS<0.1) ins.push(`${tag('SEO','warn')}Google search brings only ${audPct(search?search.sessions/totalS:0)} of visits. Growth is coming from sharing and returning visitors, not search — keep content quality high and publishing steady rather than high-volume.`);
+  }
+  const nr=(d.new_vs_returning||[]); const ret=nr.find(x=>x.newVsReturning==='returning');
+  if(ret && totalS){ const r=ret.sessions/totalS;
+    ins.push(r>=0.25? `${tag('LOYALTY','good')}${audPct(r)} of visits are people coming back — a good sign the content is worth returning for.`
+                    : `${tag('RETENTION','warn')}Only ${audPct(r)} of visits are returning people. Pushing the newsletter and saved prompts/tutorials is the cheapest way to make visitors come back.`); }
+  const sticky=sorted.slice(0,3).filter(x=>x.avg_engagement_sec>0);
+  if(sticky.length) ins.push(`${tag('STICKY','good')}Pages that hold attention longest: ${sticky.map(x=>`<b>${audEsc(audPageName(x.landingPage))}</b> (${audSecs(x.avg_engagement_sec)})`).join(', ')}. Link to these more.`);
+  const leaky=lp.filter(x=>x.sessions>=Math.max(5,totalS*0.02)&&(x.engagementRate||0)<siteRate-0.15).slice(0,3);
+  if(leaky.length) ins.push(`${tag('FIX FIRST','bad')}Busy entry pages where people leave quickly: ${leaky.map(x=>`<b>${audEsc(audPageName(x.landingPage))}</b> (${audPct(x.engagementRate)} engaged, ${audInt(x.sessions)} visits)`).join(', ')}. Improving these helps the most visitors.`);
+  const dev=(d.devices||[]).find(x=>x.deviceCategory==='mobile');
+  if(dev && totalS && dev.sessions/totalS>=0.6) ins.push(`${tag('MOBILE','info')}${audPct(dev.sessions/totalS)} of visitors are on phones — mobile speed and layout matter most.`);
+  $('aud-insights').innerHTML = ins.length? ins.map(h=>`<div class="aud-ins">${h}</div>`).join('') : '<div class="aud-ins" style="color:var(--text-dim)">Not enough data yet.</div>';
 }
 
 /* ===== API Usage (Anthropic credits per worker) ===== */

@@ -1,0 +1,57 @@
+name: Sync Audience Analytics
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Once a day (and on demand), exports a 30-day audience summary from Google
+# Analytics 4 → data/audience.json. The Admin → Audience tab reads that file
+# to show HOW visitors find the site and WHAT keeps them engaged.
+#
+# Required GitHub secrets (one-time setup, steps are shown in Admin → Audience):
+#   GA4_PROPERTY_ID           numeric GA4 property ID
+#   GA4_SERVICE_ACCOUNT_JSON  service-account JSON key with Viewer access to it
+# Until they exist the job just writes a "not configured" marker and passes.
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    - cron: '15 2 * * *'     # daily, 10:15 PHT
+  workflow_dispatch:
+
+concurrency:
+  group: sync-audience
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install GA4 client
+        run: pip install google-analytics-data
+
+      - name: Export audience summary
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: python .github/scripts/fetch_ga4_audience.py
+
+      - name: Commit if changed
+        run: |
+          git config user.email "bot@myaitoolsfinder.com"
+          git config user.name "My AI Tools Finder Bot"
+          git add data/audience.json
+          if git diff --staged --quiet; then
+            echo "No audience changes."
+          else
+            git commit -m "Sync audience analytics ($(TZ='Asia/Manila' date +'%b %d %Y'))"
+            for attempt in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              sleep 8
+            done
+          fi
