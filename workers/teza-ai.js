@@ -174,6 +174,10 @@ Tool category pages (link when recommending a category):
 - Research: https://myaitoolsfinder.com/categories/ai-research-tools.html
 - Education: https://myaitoolsfinder.com/categories/ai-education-tools.html
 - Finance: https://myaitoolsfinder.com/categories/ai-finance-tools.html
+- SEO (keywords, ranking, search): https://myaitoolsfinder.com/categories/ai-seo-tools.html
+- Design & images (image generators, graphics, logos): https://myaitoolsfinder.com/categories/ai-design-tools.html
+- Creators (YouTubers, influencers, content creators): https://myaitoolsfinder.com/categories/ai-tools-for-creators.html
+Pick the category that matches the topic: image generators → Design, SEO/keywords → SEO, video editing → Video.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 AFFILIATE TOOLS (PRIORITY LINKS)
