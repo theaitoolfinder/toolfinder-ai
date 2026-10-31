@@ -92,7 +92,8 @@ try{
 [data-theme="brown"]{--primary:#92400e;--primary-2:#78350f;--primary-light:#fef3c7;--surface-2:#fdf6ec;--border:#fcd9a0;--border-soft:#fef3c7;--bg:#fdf6ec;--shadow:0 2px 12px rgba(146,64,14,.07);--shadow-lg:0 8px 28px rgba(146,64,14,.13);--brain-clr:rgba(146,64,14,.11);--hero-grad:linear-gradient(160deg,#fef3c7 0%,#fdf6ec 45%,#fff7ed 100%)}
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--hero-grad);color:var(--text);font:15px/1.55 "Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-html{overflow-x:hidden}body{-webkit-overflow-scrolling:touch}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;touch-action:manipulation}a,button,[onclick]{touch-action:manipulation}.container{max-width:1180px;margin:0 auto;padding:0 20px}
+html{overflow-x:hidden}body{-webkit-overflow-scrolling:touch}
+#newsletter,#tools,#directory,#compare,#articles-preview,#reviews{scroll-margin-top:84px}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;touch-action:manipulation}a,button,[onclick]{touch-action:manipulation}.container{max-width:1180px;margin:0 auto;padding:0 20px}
 .disclosure{background:rgba(26,86,219,.06);border-bottom:1px solid rgba(26,86,219,.12);color:var(--text-dim);font-size:11px;text-align:center;padding:5px 16px}
 .disclosure a{color:var(--primary);text-decoration:underline;font-weight:500}
 header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(200%) blur(22px);-webkit-backdrop-filter:saturate(200%) blur(22px);border-bottom:1px solid rgba(255,255,255,.55);box-shadow:0 1px 0 rgba(26,86,219,.06),0 4px 24px rgba(26,86,219,.06)}
@@ -2408,11 +2409,11 @@ function setFilter(lens,value){
     const ddId=map[lens];
     const lbl=document.getElementById('flabel-'+ddId);
     if(lbl)lbl.textContent=value||LENSES[lens].label;
-    ga4track('filter_used',{filter_type:lens,filter_value:value||LENSES[lens].options[0]});
+    if(!window._initFilter)ga4track('filter_used',{filter_type:lens,filter_value:value||LENSES[lens].options[0]});
   }
   buildDDs();
   renderRows();
-  syncHash();
+  syncHash(!window._initFilter);
 }
 function quickSearch(term){
   document.getElementById('search').value=term;
@@ -2426,7 +2427,14 @@ function renderRows(){
     :LENSES[currentFilter.lens].rowsFor(currentFilter.value);
   $rows.innerHTML=rows.map(r=>rowHTML({title:r.title,items:filterIndices(r.filter)})).join('');
 }
-function syncHash(){history.replaceState(null,'','#'+currentFilter.lens+':'+encodeURIComponent(currentFilter.value));}
+function syncHash(force){
+  /* Don't overwrite a real anchor (#newsletter, #tools, #directory…) on page load —
+     that made every "Subscribe free →" / "#tools" deep link land at the top instead.
+     Only rewrite the hash when the visitor actually changes a filter. */
+  const cur=decodeURIComponent(location.hash.replace(/^#/,''));
+  if(!force&&cur&&!/^(all|job|need|cat|trend)(:|$)/.test(cur))return;
+  history.replaceState(null,'','#'+currentFilter.lens+':'+encodeURIComponent(currentFilter.value));
+}
 function setLens(l){setFilter(l,LENSES[l]?LENSES[l].options[0]:'All');}
 function setValue(v){setFilter(currentFilter.lens,v);}
 document.getElementById("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderTfmView();if(searchQuery.length>2){ga4track('search_used',{search_term:searchQuery});}});
@@ -3268,7 +3276,7 @@ function renderSocialFooter(){
     </a>`;
   }).join('');
 }
-setFilter('job',LENSES.job.options[0]);buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();initReviews();
+window._initFilter=true;setFilter('job',LENSES.job.options[0]);window._initFilter=false;buildDDs();renderStats();renderLdJson();renderDirectoryTabs();renderDirectory();renderSocialFooter();initReviews();
 /* Init TFM filter */
 // Move dropdowns to <body> — position:fixed inside a transformed/overflow:hidden
 // ancestor is broken on iOS Safari. Body-level ensures viewport-relative positioning.
@@ -3276,6 +3284,14 @@ document.querySelectorAll('.tfm-dd').forEach(d=>document.body.appendChild(d));
 buildTfmDDs();
 setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
 window.addEventListener("hashchange",readHash);readHash();
+/* Deep links to real sections (#newsletter, #tools, #directory…): rows render after load and shift
+   the layout, so re-align once things have settled. */
+(function(){
+  const id=decodeURIComponent(location.hash.replace(/^#/,''));
+  if(!id||/^(all|job|need|cat|trend)(:|$)/.test(id)||id==='admin')return;
+  const go=()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({block:'start'});};
+  setTimeout(go,150);setTimeout(go,900);
+})();
 // Generic sticky bar — locks below header, releases when next section enters view
 (function(){
   const headerEl=document.querySelector('header.site');
@@ -3348,7 +3364,8 @@ window.addEventListener("hashchange",readHash);readHash();
     if(!wrap||!card)return;
     var img=card.querySelector('img');
     var imgEl=document.getElementById('art-featured-img');
-    if(img&&imgEl){imgEl.src=img.getAttribute('src');imgEl.alt=cardField(card,'.art-card-title');}
+    var fSrc=card.getAttribute('data-img')||(img?img.getAttribute('src'):'');
+    if(fSrc&&imgEl){imgEl.src=fSrc;imgEl.alt=cardField(card,'.art-card-title');}
     wrap.href=card.getAttribute('href')||'articles.html';
     document.getElementById('art-featured-cat').textContent=cardField(card,'.art-card-cat');
     document.getElementById('art-featured-title').textContent=cardField(card,'.art-card-title');
@@ -3362,7 +3379,7 @@ window.addEventListener("hashchange",readHash);readHash();
     carousel.innerHTML=cards.map(function(card){
       const href=card.getAttribute('href')||'articles.html';
       const img=card.querySelector('img');
-      const imgSrc=img?img.getAttribute('src'):'';
+      const imgSrc=card.getAttribute('data-img')||(img?img.getAttribute('src'):'');
       const cat=card.querySelector('.art-card-cat');
       const title=card.querySelector('.art-card-title');
       const date=card.querySelector('.art-card-date');
@@ -3393,19 +3410,40 @@ window.addEventListener("hashchange",readHash);readHash();
     updateBtns();
   }
 
-  // Try fetching articles.html to pull live article cards
-  fetch('articles.html')
-    .then(function(r){return r.text();})
-    .then(function(html){
-      var tmp=document.createElement('div');
-      tmp.innerHTML=html;
-      var cards=Array.from(tmp.querySelectorAll('#art-grid .art-card')).filter(function(c){
-        return !c.classList.contains('exclusive-card');
-      }).slice(0,9);
+  // Small JSON (≈7 KB, built by build_articles_latest.py) instead of downloading
+  // all of articles.html (~500 KB and growing). Old method kept as fallback.
+  function cardsFromJson(list){
+    return list.map(function(a){
+      var c=document.createElement('a');c.className='art-card';c.setAttribute('href',a.href);c.setAttribute('data-img',a.img||'');
+      [['art-card-cat','span',a.cat],['art-card-title','div',a.title],['art-card-excerpt','div',a.excerpt],['art-card-date','span',a.date]].forEach(function(f){
+        var e=document.createElement(f[1]);e.className=f[0];e.textContent=f[2]||'';c.appendChild(e);
+      });
+      return c;
+    });
+  }
+  function fromArticlesHtml(){
+    fetch('articles.html')
+      .then(function(r){return r.text();})
+      .then(function(html){
+        var tmp=document.createElement('div');
+        tmp.innerHTML=html;
+        var cards=Array.from(tmp.querySelectorAll('#art-grid .art-card')).filter(function(c){
+          return !c.classList.contains('exclusive-card');
+        }).slice(0,9);
+        buildFeatured(cards[0]);
+        buildCarousel(cards.slice(1));
+      })
+      .catch(function(){section.style.display='none';});
+  }
+  fetch('data/articles-latest.json')
+    .then(function(r){if(!r.ok)throw new Error('no json');return r.json();})
+    .then(function(j){
+      var cards=cardsFromJson((j&&j.articles)||[]).slice(0,9);
+      if(!cards.length)throw new Error('empty');
       buildFeatured(cards[0]);
       buildCarousel(cards.slice(1));
     })
-    .catch(function(){section.style.display='none';});
+    .catch(fromArticlesHtml);
 })();
 
 /* ── Brevo form submit (v2 endpoint) ────────────────────────────────────────
