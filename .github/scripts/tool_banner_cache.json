@@ -7,12 +7,12 @@
  "claude": {
   "url": "https://claude.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "gemini": {
   "url": "https://gemini.google.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "perplexity-ai": {
   "url": "https://perplexity.ai",
@@ -32,12 +32,12 @@
  "deepseek": {
   "url": "https://chat.deepseek.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "poe": {
   "url": "https://poe.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "character-ai": {
   "url": "https://character.ai",
@@ -47,7 +47,7 @@
  "meta-ai": {
   "url": "https://meta.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "mistral-ai": {
   "url": "https://mistral.ai",
@@ -57,7 +57,7 @@
  "pi": {
   "url": "https://pi.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "grammarly": {
   "url": "https://grammarly.com",
@@ -86,8 +86,8 @@
  },
  "rytr": {
   "url": "https://rytr.me",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://rytr.me/assets/product/home-brief.webp",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "quillbot": {
   "url": "https://quillbot.com",
@@ -112,7 +112,7 @@
  "hemingway-editor": {
   "url": "https://hemingwayapp.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "hyperwrite": {
   "url": "https://hyperwrite.ai",
@@ -122,17 +122,17 @@
  "midjourney": {
   "url": "https://midjourney.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "adobe-firefly": {
   "url": "https://firefly.adobe.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "leonardo-ai": {
   "url": "https://leonardo.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "dall-e-3": {
   "url": "https://openai.com/dall-e-3",
@@ -162,7 +162,7 @@
  "nightcafe": {
   "url": "https://nightcafe.studio",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "flux-ai": {
   "url": "https://blackforestlabs.ai",
@@ -192,12 +192,12 @@
  "looka": {
   "url": "https://looka.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "designs-ai": {
   "url": "https://designs.ai",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://designs.ai/img/png/landing-hero-default-banner.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "runway": {
   "url": "https://runwayml.com",
@@ -226,13 +226,13 @@
  },
  "invideo-ai": {
   "url": "https://invideo.ai",
-  "banner": null,
-  "checked_at": "2026-07-11T15:48:31.084097+00:00"
+  "banner": "https://pro-static-assets.invideo.io/images/large/Pasted_16_10_2026_at_19_54_50_8d5fd22857.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "pictory": {
   "url": "https://pictory.ai",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://pictory.ai/wp-content/uploads/2022/04/thumb-home.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "lumen5": {
   "url": "https://lumen5.com",
@@ -262,7 +262,7 @@
  "adobe-podcast": {
   "url": "https://podcast.adobe.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "otter-ai": {
   "url": "https://otter.ai",
@@ -346,8 +346,8 @@
  },
  "tabnine": {
   "url": "https://tabnine.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://be.tricentis.com/media-assets/2026/03/Product_platforms-share-image.webp",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "codeium": {
   "url": "https://codeium.com",
@@ -441,8 +441,8 @@
  },
  "make-com": {
   "url": "https://make.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://cdn.prod.website-files.com/6a294495bc84130c6dd0c4fd/6a706624f7fdfc3470419256_og-img.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "zapier": {
   "url": "https://zapier.com",
@@ -487,7 +487,7 @@
  "gamma": {
   "url": "https://gamma.app",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "beautiful-ai": {
   "url": "https://beautiful.ai",
@@ -497,7 +497,7 @@
  "tome": {
   "url": "https://tome.app",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "slidesai": {
   "url": "https://slidesai.io",
@@ -537,7 +537,7 @@
  "khan-academy-ai": {
   "url": "https://khanacademy.org/khan-labs",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "duolingo-max": {
   "url": "https://duolingo.com",
@@ -552,7 +552,7 @@
  "notebooklm": {
   "url": "https://notebooklm.google.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "photomath": {
   "url": "https://photomath.com",
@@ -562,7 +562,7 @@
  "quizlet-ai": {
   "url": "https://quizlet.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "socratic": {
   "url": "https://socratic.org",
@@ -592,12 +592,12 @@
  "memrise": {
   "url": "https://memrise.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "tableau-ai": {
   "url": "https://tableau.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "obviously-ai": {
   "url": "https://obviously.ai",
@@ -637,7 +637,7 @@
  "salesforce-einstein": {
   "url": "https://salesforce.com/artificial-intelligence",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "hubspot-sales-ai": {
   "url": "https://hubspot.com/products/sales",
@@ -707,7 +707,7 @@
  "expensify": {
   "url": "https://expensify.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "workday-ai": {
   "url": "https://workday.com",
@@ -721,8 +721,8 @@
  },
  "hirevue": {
   "url": "https://hirevue.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.hirevue.com/wp-content/uploads/2026/09/home-seo-img.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "eightfold-ai": {
   "url": "https://eightfold.ai",
@@ -757,12 +757,12 @@
  "replicate": {
   "url": "https://replicate.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "phind": {
   "url": "https://phind.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "anyword": {
   "url": "https://anyword.com",
@@ -797,12 +797,12 @@
  "ai-writer": {
   "url": "https://ai-writer.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "magnific-ai": {
   "url": "https://magnific.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "clipdrop": {
   "url": "https://clipdrop.co",
@@ -867,7 +867,7 @@
  "vizard": {
   "url": "https://vizard.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "wisecut": {
   "url": "https://wisecut.video",
@@ -882,7 +882,7 @@
  "play-ht": {
   "url": "https://play.ht",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "podcastle": {
   "url": "https://podcastle.ai",
@@ -892,7 +892,7 @@
  "lalal-ai": {
   "url": "https://lalal.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "soundraw": {
   "url": "https://soundraw.io",
@@ -906,18 +906,18 @@
  },
  "keyword-insights": {
   "url": "https://keywordinsights.ai",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.keywordinsights.ai/media/site/og-banner-0d1d91.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "outranking": {
   "url": "https://outranking.io",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "seo-ai": {
   "url": "https://seo.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "pageoptimizer-pro": {
   "url": "https://pageoptimizer.pro",
@@ -937,7 +937,7 @@
  "continue-dev": {
   "url": "https://continue.dev",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "blackbox-ai": {
   "url": "https://blackbox.ai",
@@ -962,12 +962,12 @@
  "aws-codewhisperer": {
   "url": "https://aws.amazon.com/codewhisperer",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "adobe-express-ai": {
   "url": "https://adobe.com/express",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "durable-ai": {
   "url": "https://durable.co",
@@ -982,12 +982,12 @@
  "brandmark": {
   "url": "https://brandmark.io",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "wix-ai": {
   "url": "https://wix.com/ai-website-builder",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "relume-ai": {
   "url": "https://relume.io",
@@ -1032,7 +1032,7 @@
  "xembly": {
   "url": "https://xembly.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "klaviyo-ai": {
   "url": "https://klaviyo.com",
@@ -1042,7 +1042,7 @@
  "phantombuster": {
   "url": "https://phantombuster.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "taplio": {
   "url": "https://taplio.com",
@@ -1067,7 +1067,7 @@
  "pipedream": {
   "url": "https://pipedream.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "pabbly-connect": {
   "url": "https://pabbly.com/connect",
@@ -1077,7 +1077,7 @@
  "microsoft-power-automate": {
   "url": "https://powerautomate.microsoft.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "workato": {
   "url": "https://workato.com",
@@ -1162,7 +1162,7 @@
  "convergence-proxy": {
   "url": "https://convergence.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "wispr-flow": {
   "url": "https://wispr.ai",
@@ -1177,7 +1177,7 @@
  "amazon-q": {
   "url": "https://aws.amazon.com/q",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "google-ai-studio": {
   "url": "https://aistudio.google.com",
@@ -1187,7 +1187,7 @@
  "copilot-studio": {
   "url": "https://copilotstudio.microsoft.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "replika": {
   "url": "https://replika.com",
@@ -1222,12 +1222,12 @@
  "article-forge": {
   "url": "https://articleforge.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "writecream": {
   "url": "https://writecream.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.writecream.com/v2-assets/og.jpg?v=b9d957c90f",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "ink-ai": {
   "url": "https://inkforall.com",
@@ -1247,12 +1247,12 @@
  "journalist-ai": {
   "url": "https://journalist.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "texta-ai": {
   "url": "https://texta.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "seowind": {
   "url": "https://seowind.io",
@@ -1272,7 +1272,7 @@
  "freepik-ai": {
   "url": "https://freepik.com/ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "picsart-ai": {
   "url": "https://picsart.com",
@@ -1302,7 +1302,7 @@
  "dreamstudio": {
   "url": "https://dreamstudio.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "getimg-ai": {
   "url": "https://getimg.ai",
@@ -1317,12 +1317,12 @@
  "craiyon": {
   "url": "https://craiyon.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "magnific-upscale": {
   "url": "https://magnific.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "lexica-art": {
   "url": "https://lexica.art",
@@ -1337,7 +1337,7 @@
  "haiper-ai": {
   "url": "https://haiper.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "hailuo-ai": {
   "url": "https://hailuoai.com",
@@ -1367,7 +1367,7 @@
  "d-id": {
   "url": "https://d-id.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "deepbrain-ai": {
   "url": "https://deepbrain.io",
@@ -1401,23 +1401,23 @@
  },
  "cleanvoice-ai": {
   "url": "https://cleanvoice.ai",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://cleanvoice.ai/cms/uploads/Cleanvoice_new_OG_image_1_735355c27d.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "auphonic": {
   "url": "https://auphonic.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "soundful": {
   "url": "https://soundful.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "boomy": {
   "url": "https://boomy.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "voicemod-ai": {
   "url": "https://voicemod.net",
@@ -1432,7 +1432,7 @@
  "wellsaid-labs": {
   "url": "https://wellsaidlabs.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "dubverse": {
   "url": "https://dubverse.ai",
@@ -1477,12 +1477,12 @@
  "mutableai": {
   "url": "https://mutable.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "gpt-engineer": {
   "url": "https://gptengineer.app",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "marblism": {
   "url": "https://marblism.com",
@@ -1562,7 +1562,7 @@
  "omnisend-ai": {
   "url": "https://omnisend.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "drip-ai": {
   "url": "https://drip.com",
@@ -1616,8 +1616,8 @@
  },
  "metricool-ai": {
   "url": "https://metricool.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://metricool.com/wp-content/uploads/home-image-1.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "se-ranking-ai": {
   "url": "https://seranking.com",
@@ -1632,7 +1632,7 @@
  "alli-ai": {
   "url": "https://alliai.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "moz-pro-ai": {
   "url": "https://moz.com",
@@ -1652,12 +1652,12 @@
  "looker-ai": {
   "url": "https://looker.google.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "power-bi-ai": {
   "url": "https://powerbi.microsoft.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "heap-ai": {
   "url": "https://heap.io",
@@ -1787,7 +1787,7 @@
  "15five-ai": {
   "url": "https://15five.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "brex-ai": {
   "url": "https://brex.com",
@@ -1801,8 +1801,8 @@
  },
  "bill-ai": {
   "url": "https://bill.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://cdn.prod.website-files.com/63e3da3df35cd62f54751985/6abc001892ee95dd47a8cb28_bill-logo-wide.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "stampli-ai": {
   "url": "https://stampli.com",
@@ -1822,12 +1822,12 @@
  "freshbooks-ai": {
   "url": "https://freshbooks.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "quickbooks-ai": {
   "url": "https://quickbooks.intuit.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "trullion-ai": {
   "url": "https://trullion.com",
@@ -1841,8 +1841,8 @@
  },
  "casetext-ai": {
   "url": "https://casetext.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.thomsonreuters.com/content/dam/ue/en-us/images/product-images/248901.png.transform/rect-768/q90/image.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "spellbook-ai": {
   "url": "https://spellbook.legal",
@@ -1856,8 +1856,8 @@
  },
  "luminance": {
   "url": "https://luminance.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://framerusercontent.com/images/tUrUTR6IVcTAjG1MKvIY71cBTzI.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "evisort-ai": {
   "url": "https://evisort.com",
@@ -1872,7 +1872,7 @@
  "klarity-ai": {
   "url": "https://klaritylaw.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "ada-health": {
   "url": "https://ada.com",
@@ -1897,7 +1897,7 @@
  "nuance-dax": {
   "url": "https://nuance.com/healthcare",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "corti-ai": {
   "url": "https://corti.ai",
@@ -1922,7 +1922,7 @@
  "limespot-ai": {
   "url": "https://limespot.io",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "privy-ai": {
   "url": "https://privy.com",
@@ -1932,7 +1932,7 @@
  "smsbump": {
   "url": "https://smsbump.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "tapcart-ai": {
   "url": "https://tapcart.com",
@@ -1966,8 +1966,8 @@
  },
  "lusha-ai": {
   "url": "https://lusha.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.lusha.com/wp-content/uploads/2025/02/Website-thumbnail-560x292-1.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "hunter-io": {
   "url": "https://hunter.io",
@@ -1982,7 +1982,7 @@
  "saleshandy-ai": {
   "url": "https://saleshandy.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "qualified-ai": {
   "url": "https://qualified.com",
@@ -1997,7 +1997,7 @@
  "ada-ai": {
   "url": "https://ada.cx",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "yuma-ai": {
   "url": "https://yuma.ai",
@@ -2021,8 +2021,8 @@
  },
  "netomi-ai": {
   "url": "https://netomi.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.netomi.com/og-card.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "gorgias-ai": {
   "url": "https://gorgias.com",
@@ -2122,7 +2122,7 @@
  "zoho-zia": {
   "url": "https://zoho.com/crm/ai-sales-assistant.html",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "folk-ai-crm": {
   "url": "https://folk.app",
@@ -2187,7 +2187,7 @@
  "bland-ai": {
   "url": "https://bland.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "perplexity-labs": {
   "url": "https://perplexity.ai/labs",
@@ -2207,7 +2207,7 @@
  "respell-ai": {
   "url": "https://respell.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "pabbly-connect-ai": {
   "url": "https://pabbly.com/connect",
@@ -2246,8 +2246,8 @@
  },
  "tl-dv-ai": {
   "url": "https://tldv.io",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://assets.tldv.io/wv2/m/73284cb74ffd2ad1a88fb46ef814e76cb9448a2cf7b8b74f9e785aff221b5433",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "fathom-ai": {
   "url": "https://fathom.video",
@@ -2292,12 +2292,12 @@
  "6sense-ai": {
   "url": "https://6sense.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "zoominfo-ai": {
   "url": "https://zoominfo.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://images.ctfassets.net/kyld7105l6mt/34fryPjsduPJNux4mNaujI/591a263a9cd216bcd8072f25b5c38978/OG_Image_ZoomInfo_Marketing__1_.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "chili-piper-ai": {
   "url": "https://chilipiper.com",
@@ -2312,7 +2312,7 @@
  "chorus-ai": {
   "url": "https://chorus.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "outreach-kaia": {
   "url": "https://outreach.io/kaia",
@@ -2346,8 +2346,8 @@
  },
  "thinkific-ai": {
   "url": "https://thinkific.com",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://www.thinkific.com/wp-content/uploads/2026/09/mosaic-graphic-836x1024-1.webp",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "podia-ai": {
   "url": "https://podia.com",
@@ -2372,7 +2372,7 @@
  "beacons-ai": {
   "url": "https://beacons.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "kleo-ai": {
   "url": "https://kleo.so",
@@ -2382,7 +2382,7 @@
  "tribescaler": {
   "url": "https://tribescaler.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "authoredup": {
   "url": "https://authoredup.com",
@@ -2447,7 +2447,7 @@
  "canva-ai-video": {
   "url": "https://canva.com/video",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "lumen5-ai": {
   "url": "https://lumen5.com",
@@ -2456,8 +2456,8 @@
  },
  "pictory-ai": {
   "url": "https://pictory.ai",
-  "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "banner": "https://pictory.ai/wp-content/uploads/2022/04/thumb-home.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "heygen-ai": {
   "url": "https://heygen.com",
@@ -2492,7 +2492,7 @@
  "nightcafe-ai": {
   "url": "https://nightcafe.studio",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "seaart-ai": {
   "url": "https://seaart.ai",
@@ -2537,7 +2537,7 @@
  "command-center": {
   "url": "https://commandcenter.dev",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "intuned": {
   "url": "https://intuned.io",
@@ -2557,12 +2557,12 @@
  "bitboard": {
   "url": "https://bitboard.co",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "kikubot": {
   "url": "https://kikubot.com",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "viggle": {
   "url": "https://viggle.ai",
@@ -2572,7 +2572,7 @@
  "elevenlabs-reader": {
   "url": "https://reader.elevenlabs.io",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "afforai": {
   "url": "https://afforai.com",
@@ -2582,12 +2582,12 @@
  "napkin-ai": {
   "url": "https://napkin.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "turboscribe": {
   "url": "https://turboscribe.ai",
   "banner": null,
-  "checked_at": "2026-07-10T22:56:44.875240+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "hix-ai": {
   "url": "https://hix.ai",
@@ -2607,11 +2607,151 @@
  "manufact": {
   "url": "https://manufact.dev",
   "banner": null,
-  "checked_at": "2026-07-11T15:22:01.748330+00:00"
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  },
  "outlier-ai": {
   "url": "https://outlier.ai",
   "banner": "https://framerusercontent.com/assets/W97xgVbkAOe9QWwqhMuBINE.png",
   "checked_at": "2026-07-11T15:22:01.748330+00:00"
+ },
+ "agnost-ai": {
+  "url": "https://agnost.ai",
+  "banner": "https://agnost.ai/agnost/link-preview.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "traceforce": {
+  "url": "https://traceforce.ai",
+  "banner": "https://cdn.prod.website-files.com/6a337860fcbf50b53c7a1c80/6a3a3baf9cbd8d33814e167d_home%20open%20graph.avif",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "trickle-ai": {
+  "url": "https://trickle.so",
+  "banner": "https://trickle.so/thumbnail.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "genspark": {
+  "url": "https://genspark.ai",
+  "banner": "https://cdn1.genspark.ai/user-upload-image/admin/image/seo/og/en.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "bloomy": {
+  "url": "https://bloomy.ai",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "cohere-coral": {
+  "url": "https://coral.cohere.com",
+  "banner": "https://dashboard.cohere.com/images/share.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "palmier-pro": {
+  "url": "https://palmier.pro",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "screenpipe": {
+  "url": "https://screenpipe.com",
+  "banner": "https://screenpipe.com/og?v=memory-brand-20260929",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "unlayer": {
+  "url": "https://unlayer.com",
+  "banner": "https://unlayer.com/images/opengraph-image.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "langy": {
+  "url": "https://langy.ai",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "sixb": {
+  "url": "https://sixb.ai",
+  "banner": "https://sixb.ai/social-card.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "metaview": {
+  "url": "https://metaview.ai",
+  "banner": "https://www.metaview.ai/_next/static/immutable/media/og-image-social-1200x630.3-id2nmakfwf4.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "langtrace": {
+  "url": "https://langtrace.ai",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "typeframes": {
+  "url": "https://typeframes.com",
+  "banner": "https://www.revid.ai/api/og?title=Studio-Quality%20Video%20Making&amp;cta=1",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "hyperprobe": {
+  "url": "https://hyperprobe.dev",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "hirenewtalent": {
+  "url": "https://hirenewtalent.ai",
+  "banner": "https://hirenewtalent.ai/og-default.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "outset": {
+  "url": "https://outset.ai",
+  "banner": "https://framerusercontent.com/images/RDUaYx944RtZzuRpyCSHdqhk1g4.webp",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "agentevals": {
+  "url": "https://agentevals.io",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "discovered-materials": {
+  "url": "https://discoveredmaterials.com",
+  "banner": "https://discoveredmaterials.com/assets/og-image.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "jobscan-ai": {
+  "url": "https://jobscan.co",
+  "banner": "https://static.jobscan.co/blog/uploads/logo_blue_square-og.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "vendo": {
+  "url": "https://vendo.dev",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "onecli": {
+  "url": "https://onecli.dev",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "camel-agi": {
+  "url": "https://camelagi.com",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "hebbian-robotics": {
+  "url": "https://hebbian.io",
+  "banner": "https://framerusercontent.com/images/zaICqCSxKKWsitVd3gcZcHtAqQ.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "almanac-ai": {
+  "url": "https://almanac.io",
+  "banner": "https://cdn.prod.website-files.com/5f46d1d4db469a4b6dfa3924/64c827989dcce24965eaf8ce_Frame%208827.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "vespper": {
+  "url": "https://vespper.com",
+  "banner": "https://www.vespper.com/blog/launching-vespper-docx-mcp/og-v1.jpg",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "caspian": {
+  "url": "https://caspian.dev",
+  "banner": null,
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
+ },
+ "repurpose-io": {
+  "url": "https://repurpose.io",
+  "banner": "https://repurpose.io/wp-content/uploads/2026/02/repurpose-tiktok-youtube-instagram-facebook-reels-shorts.png",
+  "checked_at": "2026-10-31T09:29:45.554337+00:00"
  }
 }
