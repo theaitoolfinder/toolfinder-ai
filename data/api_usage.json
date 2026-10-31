@@ -674,6 +674,15 @@
    "output_tokens": 952,
    "requests": 1,
    "cost_usd": 0.03058
+  },
+  {
+   "worker": "generate_tool_pages",
+   "model": "claude-haiku-4-5",
+   "date": "2026-10-31T11:28:53.688529+00:00",
+   "input_tokens": 1216,
+   "output_tokens": 777,
+   "requests": 2,
+   "cost_usd": 0.005101
   }
  ],
  "totals": {
@@ -696,11 +705,11 @@
   "generate_tool_pages::claude-haiku-4-5": {
    "worker": "generate_tool_pages",
    "model": "claude-haiku-4-5",
-   "input_tokens": 17121,
-   "output_tokens": 10691,
-   "requests": 28,
-   "cost_usd": 0.070576
+   "input_tokens": 18337,
+   "output_tokens": 11468,
+   "requests": 30,
+   "cost_usd": 0.075677
   }
  },
- "updated_at": "2026-10-31T11:28:13.515284+00:00"
+ "updated_at": "2026-10-31T11:28:53.688546+00:00"
 }
