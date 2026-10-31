@@ -770,5 +770,7 @@ window.MYAI_AFF_MAP = {
   "almanac ai": "https://almanac.io",
   "vespper": "https://vespper.com",
   "caspian": "https://caspian.dev",
-  "repurpose.io": "https://repurpose.io"
+  "repurpose.io": "https://repurpose.io",
+  "simantic": "https://simantic.dev",
+  "exa ai": "https://exa.ai"
 };
