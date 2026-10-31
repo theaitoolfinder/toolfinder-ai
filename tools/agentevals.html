@@ -289,10 +289,12 @@ async function toolGateSubmit(){
     unlockToolGate();
     return;
   }
+  window.trk&&trk('newsletter_submit',{placement:'tool_gate'});
   const ok=await brevoSubscribe(email);
   btn.textContent='Unlock Free →'; btn.disabled=false;
   if(ok){
     grantSubscriberAccess(email);
+    window.trk&&(trk('newsletter_success',{placement:'tool_gate'}),trk('generate_lead',{placement:'tool_gate'}));
     unlockToolGate();
   } else {
     msgEl.style.color='#ef4444';
@@ -311,6 +313,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 });
 </script>
 <script src="../js/mobile-nav.js"></script>
+<script src="../js/track.js" defer></script>
 <script src="../js/affiliate.js"></script>
 </body>
 </html>

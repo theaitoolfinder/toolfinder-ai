@@ -1514,6 +1514,7 @@ footer a{{color:var(--primary);}}
 
 <script src="../js/tools-data.js"></script>
 <script src="../js/affiliate.js"></script>
+<script src="../js/track.js" defer></script>
 </body>
 </html>"""
 

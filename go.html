@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZQYFK19QN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SZQYFK19QN');</script>
+
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="robots" content="noindex,nofollow"/>
@@ -66,6 +69,7 @@ html,body{margin:0;padding:0;background:#f0f6ff;color:#0d1f3c;font:15px/1.55 "Po
   const domain=url?new URL(url).hostname.replace(/^www\./,''):'';
 
   document.getElementById('tool-name').textContent=name;
+  try{ if(typeof gtag==='function') gtag('event','affiliate_redirect',{tool_name:name,destination:domain}); }catch(e){}
   document.title=`Visiting ${name} · My AI Tools Finder`;
 
   const img=document.getElementById('tool-img');
@@ -101,5 +105,6 @@ html,body{margin:0;padding:0;background:#f0f6ff;color:#0d1f3c;font:15px/1.55 "Po
   },1000);
 })();
 </script>
+<script src="js/track.js" defer></script>
 </body>
 </html>

@@ -3283,7 +3283,7 @@ window._initFilter=true;setFilter('job',LENSES.job.options[0]);window._initFilte
 document.querySelectorAll('.tfm-dd').forEach(d=>document.body.appendChild(d));
 buildTfmDDs();
 setTfmCount(TOOLS.map((_,i)=>tool(i)).filter(Boolean).length);
-window.addEventListener("hashchange",readHash);readHash();
+window.addEventListener("hashchange",readHash);window._initFilter=true;readHash();window._initFilter=false;
 /* Deep links to real sections (#newsletter, #tools, #directory…): rows render after load and shift
    the layout, so re-align once things have settled. */
 (function(){
@@ -3502,14 +3502,17 @@ async function nlSubscribe(e){
     msg.style.color='#ef4444'; msg.textContent='⚠ Please enter a valid email address.'; return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
+  window.trk&&trk('newsletter_submit',{placement:'home'});
   const ok=await brevoSubmit(email, fname);
   if(!ok){
+    window.trk&&trk('newsletter_error',{placement:'home'});
     msg.style.color='#ef4444';
     msg.textContent='⚠ Subscription failed — please check your connection and try again.';
     btn.disabled=false; btn.textContent='Subscribe Free';
     return;
   }
   memberLogin(email, fname || null);
+  window.trk&&(trk('newsletter_success',{placement:'home'}),trk('generate_lead',{placement:'home'}));
   msg.style.color='var(--ok)';
   msg.innerHTML='🎉 <strong>You\'re in!</strong> Check your inbox — first email arrives this Friday.';
   btn.textContent='✓ Subscribed!';
@@ -3929,14 +3932,17 @@ async function popSubscribe(){
     emailEl.focus(); return;
   }
   btn.disabled=true; btn.textContent='Subscribing…';
+  window.trk&&trk('newsletter_submit',{placement:'popup'});
   const ok=await brevoSubmit(email, fname);
   if(!ok){
+    window.trk&&trk('newsletter_error',{placement:'popup'});
     msgEl.style.color='#ef4444';
     msgEl.textContent='⚠ Subscription failed — please check your connection and try again.';
     btn.disabled=false; btn.textContent='Subscribe Free →';
     return;
   }
   memberLogin(email, fname || null);
+  window.trk&&(trk('newsletter_success',{placement:'popup'}),trk('generate_lead',{placement:'popup'}));
   msgEl.style.color='var(--ok)';
   msgEl.innerHTML='🎉 <strong>You\'re in!</strong> First email arrives this Friday — check your inbox!';
   btn.textContent='✓ Subscribed!';
@@ -5629,5 +5635,6 @@ async function popSubscribe(){
 <script src="js/mobile-nav.js"></script>
 <!-- Hidden iframe target for Brevo form submissions (avoids Cloudflare bot detection on fetch) -->
 <iframe id="_brevo_ifr" name="_brevo_ifr" style="display:none" aria-hidden="true" title="" tabindex="-1"></iframe>
+<script src="js/track.js" defer></script>
 </body>
 </html>

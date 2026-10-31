@@ -154,6 +154,37 @@ def main():
     events = rows(run(["eventName"], ["eventCount"], limit=20, order_metric="eventCount"),
                   ["eventName"], ["eventCount"])
 
+    # ── Sign-up funnel + engagement actions (events added by js/track.js) ────
+    FUNNEL = ["newsletter_view", "newsletter_cta_click", "newsletter_submit", "newsletter_success",
+              "newsletter_error", "gate_success", "share_click", "article_read_25", "article_read_75",
+              "affiliate_redirect", "tool_click"]
+    from google.analytics.data_v1beta.types import Filter, FilterExpression, FilterExpressionList
+    flt = FilterExpression(filter=Filter(field_name="eventName",
+                                         in_list_filter=Filter.InListFilter(values=FUNNEL)))
+
+    def run_filtered(dims, limit):
+        req = RunReportRequest(property=prop_path, date_ranges=[cur], limit=limit,
+                               dimensions=[Dimension(name=d) for d in dims],
+                               metrics=[Metric(name="eventCount")], dimension_filter=flt)
+        req.order_bys = [OrderBy(metric=OrderBy.MetricOrderBy(metric_name="eventCount"), desc=True)]
+        try:
+            return client.run_report(req)
+        except Exception as e:  # noqa: BLE001
+            print(f"[ga4] funnel query skipped: {e}", file=sys.stderr)
+            return None
+
+    funnel_totals, funnel_pages = {}, []
+    rep = run_filtered(["eventName"], 50)
+    if rep is not None:
+        funnel_totals = {r.dimension_values[0].value: int(float(r.metric_values[0].value)) for r in rep.rows}
+    rep = run_filtered(["pagePath", "eventName"], 400)
+    if rep is not None:
+        pages_map = {}
+        for r in rep.rows:
+            pth, ev = r.dimension_values[0].value, r.dimension_values[1].value
+            pages_map.setdefault(pth, {})[ev] = int(float(r.metric_values[0].value))
+        funnel_pages = [{"page": k, **v} for k, v in pages_map.items()]
+
     data = {
         "status": "ok",
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -168,6 +199,8 @@ def main():
         "countries": countries,
         "daily": daily,
         "events": events,
+        "funnel_totals": funnel_totals,
+        "funnel_pages": funnel_pages,
     }
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(data, indent=1), encoding="utf-8")

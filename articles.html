@@ -6610,6 +6610,7 @@ async function gateSubmit(isRetry){
   if(result===true){
     btn.textContent='Unlock →'; btn.disabled=false;
     grantSubscriberAccess(email);
+    window.trk&&trk('gate_success',{placement:'exclusive_gate'});
     setGateMsg('✅ Access granted! Loading your articles…','success');
     setTimeout(unlockExclusiveCards, 900);
     return;
@@ -6620,6 +6621,7 @@ async function gateSubmit(isRetry){
        before entering the sync-wait loop, otherwise there is nothing to
        sync and the retry would run forever. */
     btn.textContent='Subscribing…';
+    window.trk&&trk('newsletter_submit',{placement:'exclusive_gate'});
     await brevoSubscribe(email);
   }
   btn.textContent='Unlock →'; btn.disabled=false;
@@ -6921,5 +6923,6 @@ document.addEventListener('DOMContentLoaded',async function(){
 })();
 </script>
 <script src="js/mobile-nav.js"></script>
+<script src="js/track.js" defer></script>
 </body>
 </html>
