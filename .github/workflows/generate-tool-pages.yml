@@ -21,6 +21,8 @@ on:
     paths:
       - 'data/affiliate_tools.json'
       - 'index.html'
+  schedule:
+    - cron: '30 1 * * *'   # daily safety net — cheap, cache means only new/changed tools hit the API
   workflow_dispatch:
 
 jobs:
