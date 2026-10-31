@@ -344,32 +344,25 @@
 
   <!-- ANALYTICS TAB -->
   <div id="tab-analytics" style="display:none">
-    <div style="margin-bottom:18px">
-      <h3 style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">Site Analytics</h3>
-      <p style="font-size:13px;color:var(--text-dim);margin:0 0 16px">Local event counts (this browser) + link to your full GA4 dashboard. Events are tracked across index, tutorials, and article pages.</p>
+    <div style="margin-bottom:14px">
+      <h3 style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">Growth &amp; business health</h3>
+      <p style="font-size:13px;color:var(--text-dim);margin:0">Built daily from your own data (subscribers, articles, AI spend) — no setup needed. <span id="ins-updated" style="font-weight:600"></span></p>
     </div>
 
-    <!-- GA4 link banner -->
-    <div class="info-banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <span>📊 Full analytics data (all visitors, real-time) lives in <b>Google Analytics 4</b> — property ID <code>G-SZQYFK19QN</code></span>
-      <a href="https://analytics.google.com" target="_blank" rel="noopener" class="btn primary" style="white-space:nowrap">Open GA4 →</a>
+    <div id="ins-box"><div style="color:var(--text-dim);font-size:13px">Loading…</div></div>
+
+    <div class="info-banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px">
+      <span>For <b>visitor behaviour</b> (where people come from, what keeps them reading) open the <b>Audience</b> tab. Raw visitor data: <a href="https://analytics.google.com" target="_blank" rel="noopener">Google Analytics</a> (measurement ID <code>G-SZQYFK19QN</code>).</span>
     </div>
 
-    <!-- Local event counters -->
-    <div style="margin-bottom:20px">
-      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Local Event Counts <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(your browser session)</span></h4>
-      <div id="analytics-event-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px"></div>
-    </div>
-
-    <!-- Top tools by click -->
-    <div style="margin-bottom:20px">
-      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Top Tools by Click <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(this browser)</span></h4>
-      <div id="analytics-top-tools" style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden"></div>
-    </div>
-
-    <!-- Recent event log -->
-    <div>
-      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Recent Events <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(last 50)</span></h4>
+    <details style="margin-top:14px">
+      <summary style="cursor:pointer;font-size:13px;color:var(--text-dim);font-weight:600">Your browser only — testing counters (not real visitors)</summary>
+      <div style="margin:12px 0 20px">
+        <div id="analytics-event-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px"></div>
+      </div>
+      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Top tools clicked <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(this browser)</span></h4>
+      <div id="analytics-top-tools" style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px"></div>
+      <h4 style="font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 10px">Recent events <span style="font-size:11.5px;font-weight:400;color:var(--text-dim)">(last 50)</span></h4>
       <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
         <table id="analytics-log-table" style="width:100%;border-collapse:collapse;font-size:12.5px">
           <thead><tr style="background:var(--bg-soft);border-bottom:1px solid var(--border)">
@@ -380,7 +373,7 @@
           <tbody id="analytics-log-body"></tbody>
         </table>
       </div>
-    </div>
+    </details>
   </div>
 
   <!-- AUDIENCE TAB -->
@@ -1914,6 +1907,73 @@ function switchToTab(name){
   if(name==='apiusage') loadApiUsage();
 }
 
+
+/* ===== Growth & business health (from data/insights.json) ===== */
+function insBars(vals, color, h){
+  const max=Math.max(1,...vals); h=h||56;
+  return `<div style="display:flex;align-items:flex-end;gap:3px;height:${h}px">`+vals.map(v=>`<div title="${v}" style="flex:1;min-width:3px;background:${color};border-radius:3px 3px 0 0;height:${Math.max(4,v/max*100)}%;opacity:.88"></div>`).join('')+'</div>';
+}
+async function loadInsights(){
+  const repo=localStorage.getItem('myai_gh_repo')||'theaitoolfinder/toolfinder-ai';
+  const box=document.getElementById('ins-box');
+  try{
+    const r=await fetch(`https://raw.githubusercontent.com/${repo}/main/data/insights.json?_=${Date.now()}`);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    renderInsights(await r.json());
+  }catch(e){
+    box.innerHTML='<div class="info-banner">Insights file not published yet — it is created by the daily "Sync Audience Analytics" job (GitHub → Actions → Run workflow). ('+audEsc(e.message)+')</div>';
+  }
+}
+function renderInsights(d){
+  const box=document.getElementById('ins-box');
+  const today=new Date(); const dayMs=864e5;
+  const subs=d.subscribers||[]; const now=subs.length?subs[subs.length-1].count:0;
+  const cut=new Date(today-30*dayMs).toISOString().slice(0,10);
+  const old=[...subs].reverse().find(p=>p.date<=cut)||subs[0]||{count:now};
+  const delta30=now-old.count;
+  let lastChange=subs.length?subs[0].date:null;
+  for(let i=subs.length-1;i>0;i--){ if(subs[i].count!==subs[i-1].count){ lastChange=subs[i].date; break; } }
+  const flatDays=lastChange? Math.floor((today-new Date(lastChange))/dayMs) : null;
+  const A=d.articles||{}, S=d.spend||{}, I=d.inventory||{};
+  const wk=(A.per_week||[]).map(w=>w.count);
+  const last4=wk.slice(-4).reduce((a,b)=>a+b,0), prev4=wk.slice(-8,-4).reduce((a,b)=>a+b,0);
+  document.getElementById('ins-updated').textContent=d.generated_at?('Updated '+new Date(d.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})):'';
+
+  const card=(v,l,sub)=>`<div class="stat"><b>${v}</b><span>${l}</span><div style="margin-top:4px;font-size:11.5px;color:var(--text-dim)">${sub||'&nbsp;'}</div></div>`;
+  const cards=
+    card(audInt(now),'Subscribers', delta30>0?`<span style="font-weight:700;color:var(--ok)">+${delta30} in 30 days</span>`:'<span style="font-weight:700;color:var(--danger)">no growth in 30 days</span>')+
+    card(flatDays===null?'—':flatDays+'d','Since last new subscriber', lastChange?('last change '+lastChange):'')+
+    card(audInt(A.total_published),'Articles published', A.days_since_last!==null&&A.days_since_last!==undefined?('latest: '+(A.days_since_last===0?'today':A.days_since_last+'d ago')):'')+
+    card('$'+(S.last_30d_usd||0).toFixed(2),'AI spend, last 30 days', S.per_article_usd?('≈ $'+S.per_article_usd.toFixed(3)+' per article'):'')+
+    card(audInt(I.tool_pages),'Tool pages', 'each is a search-engine landing page')+
+    card(audInt(I.tutorials),'Tutorials', I.affiliate_tools?(I.affiliate_tools+' partner tools'):'');
+
+  /* meaning: plain-language takeaways */
+  const tag=(t,c)=>`<span class="aud-tag ${c}">${t}</span>`; const ins=[];
+  if(subs.length){
+    ins.push(delta30>0
+      ? `${tag('GROWING','good')}You gained <b>${delta30}</b> subscriber${delta30>1?'s':''} in the last 30 days (now ${now}).`
+      : `${tag('BIGGEST OPPORTUNITY','bad')}Subscribers have been stuck at <b>${now}</b>${flatDays!==null?` for <b>${flatDays} days</b>`:''}. If your visitor numbers are rising, then <b>visitors are not signing up</b> — that is the gap to close. Ideas: show the newsletter box after someone reads an article, put a "free prompts pack" offer on the most-visited pages, and give a small taste of members-only content before the lock. Check the Audience tab to see which pages get traffic but lose people.`);
+  }
+  if(A.days_since_last!==null && A.days_since_last!==undefined){
+    ins.push(A.days_since_last>3
+      ? `${tag('CONTENT STALLED','bad')}The last article was ${A.days_since_last} days ago. Check Admin → API Usage for a warning (usually out of Anthropic credit).`
+      : `${tag('PUBLISHING','good')}New articles are going out (${last4} in the last 4 weeks${prev4?`, vs ${prev4} the 4 weeks before`:''}). Keep it to about one a day — more than that looked like spam to Google in July.`);
+  }
+  if(S.per_article_usd){
+    ins.push(`${tag('COST','info')}Your whole AI automation costs about <b>$${(S.last_30d_usd||0).toFixed(2)}</b> over 30 days (≈ $${S.per_article_usd.toFixed(3)} per article). Cheap enough that money isn't the limit — quality and sign-ups are.`);
+  }
+  if(I.tool_pages) ins.push(`${tag('SEARCH POTENTIAL','info')}You have <b>${audInt(I.tool_pages)} tool pages</b> that Google can index, one per tool. Those pages are your long-term search growth — improving them (real pricing, screenshots, honest pros and cons) pays off more than adding more articles.`);
+
+  box.innerHTML=
+    `<div class="stats" style="grid-template-columns:repeat(3,1fr)">${cards}</div>`+
+    `<h4 class="aud-h">What this means</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 16px;margin-bottom:22px">${ins.map(h=>`<div class="aud-ins">${h}</div>`).join('')}</div>`+
+    `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:22px">`+
+      `<div><h4 class="aud-h">Subscribers over time <span class="aud-sub">since ${audEsc((subs[0]||{}).date||'')}</span></h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars(subs.slice(-60).map(p=>p.count),'var(--accent)')}</div></div>`+
+      `<div><h4 class="aud-h">Articles per week</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars(wk,'#7c3aed')}</div></div>`+
+      `<div><h4 class="aud-h">AI spend per week ($)</h4><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">${insBars((S.per_week||[]).map(w=>w.usd),'#b45309')}</div></div>`+
+    `</div>`;
+}
 /* ===== Audience (GA4): how people find the site + what keeps them ===== */
 const AUD_CHANNELS = {
   'Direct':          {label:'Direct', desc:'Typed the address, used a bookmark, OR opened a link from an app that hides where it came from (WhatsApp, Messenger, Telegram, Instagram/Facebook in-app browser, email apps).'},
@@ -2155,6 +2215,7 @@ async function loadApiUsage(){
 }
 
 function renderAnalyticsTab(){
+  loadInsights();
   // Event counters
   const counts = JSON.parse(localStorage.getItem('myai_analytics_v1')||'{}');
   const grid = document.getElementById('analytics-event-grid');
