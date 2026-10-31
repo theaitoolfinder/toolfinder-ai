@@ -20,11 +20,11 @@ const ALLOWED_ORIGIN   = 'https://myaitoolsfinder.com';
 // took the whole chatbot down), so the Worker walks this list and, if none
 // work, asks Groq which models are currently available — see pickModel().
 const GROQ_MODELS      = [
-  'openai/gpt-oss-120b',
+  'meta-llama/llama-4-scout-17b-16e-instruct', // fast, answers directly (no hidden "thinking")
   'llama-3.3-70b-versatile',
-  'meta-llama/llama-4-scout-17b-16e-instruct',
-  'qwen/qwen3-32b',
+  'openai/gpt-oss-120b',                        // reasoning model — needs low effort + more tokens
   'openai/gpt-oss-20b',
+  'qwen/qwen3-32b',
   'llama-3.1-8b-instant',
 ];
 const GROQ_MODEL       = GROQ_MODELS[0];
@@ -308,7 +308,7 @@ export default {
       const r = await fetch(GROQ_URL, {
         method: 'POST',
         headers: groqHeaders,
-        body: JSON.stringify({ model, messages: groqMessages, max_tokens: 400, temperature: 0.75 }),
+        body: JSON.stringify({ model, messages: groqMessages, max_tokens: 900, temperature: 0.75, ...(model.startsWith('openai/gpt-oss') ? { reasoning_effort: 'low' } : {}) }),
       });
       if (!r.ok) {
         const errBody = await r.text();
@@ -317,7 +317,13 @@ export default {
         err.modelGone = r.status === 404 || r.status === 400 && /decommission|model_not_found|not exist|no longer supported/i.test(errBody);
         throw err;
       }
-      return r.json();
+      const data = await r.json();
+      if (!data?.choices?.[0]?.message?.content) {      // e.g. reasoning model used all tokens thinking
+        const err = new Error(`Groq ${model}: empty answer (finish=${data?.choices?.[0]?.finish_reason})`);
+        err.modelGone = true;                            // → move on to the next model
+        throw err;
+      }
+      return data;
     }
 
     // Ask Groq which chat models exist right now (used only when the
