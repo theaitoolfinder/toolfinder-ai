@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-09",
-      "slot": "latenight",
-      "slug": "spending-days-digging-through-academic-papers-just-to-find-the",
-      "title": "Spending days digging through academic papers just to find the handful that actually matter? SciSpace Is the Fastest Fix in 2026",
-      "type": "problem_solution",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1559327437-4f87b63db9eb?w=800&q=85&auto=format&fit=crop",
-      "topic": "spending days digging through",
-      "pair": "",
-      "tool": "SciSpace",
-      "words": 2502,
-      "partners": [
-        "SciSpace"
-      ]
-    },
-    {
       "date": "2026-07-10",
       "slot": "exclusive",
       "slug": "the-writesonic-trick-that-saves-content-creators-6-hours-a-week",
@@ -1085,10 +1069,25 @@
         "NeuronWriter",
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-11-01",
+      "slot": "morning",
+      "slug": "tired-of-spending-hours-manually-clipping-one-long-recording",
+      "title": "Tired of spending hours manually clipping one long recording into shareable short-form videos? Here's the OpusClip Fix Podcasters and Video Editors Are Using in 2026",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired spending hours manually",
+      "pair": "",
+      "tool": "OpusClip",
+      "words": 2586,
+      "partners": [
+        "OpusClip"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1674027444636-ce7379d51252?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1671040690726-b78261eff126?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1738107450290-ec41c2399ad7?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1608699565448-9492aaf3c708?w=800&q=85&auto=format&fit=crop",
@@ -1287,6 +1286,7 @@
     "https://images.unsplash.com/photo-1661010854520-32ab127f1783?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1678329885908-85eb768aa61b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop"
   ]
 }
