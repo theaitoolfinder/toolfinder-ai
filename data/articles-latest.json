@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/podcasters-and-video-editors-are-quietly-switching-to-opusclip.html",
+   "img": "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Podcasters and Video Editors Are Quietly Switching to OpusClip to Stop spending hours manually clipping one long recording into shareable short-form videos",
+   "excerpt": "Most podcasters assume their biggest editing bottleneck is cutting the main episode. It's not. A 2026 study of 400+ content creators found that 73% spend more t…",
+   "date": "Nov 02, 2026"
+  },
+  {
    "href": "articles/tired-of-spending-hours-manually-clipping-one-long-recording.html",
    "img": "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "The Real Reason Small Business Owners Waste hours every week on captions and graphics (And the Predis.ai Fix for It)",
    "excerpt": "Small business owners waste an average of 6–8 hours per week creating social media content. That's roughly 350 hours a year — or nearly nine full workweeks — sp…",
    "date": "Aug 30, 2026"
-  },
-  {
-   "href": "articles/the-elevenlabs-trick-that-saves-podcasters-and-youtubers-200-per.html",
-   "img": "https://images.unsplash.com/photo-1770368787729-6a42187b668c?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "The ElevenLabs Trick That Saves Podcasters and YouTubers $200+ per episode, Starting Today",
-   "excerpt": "The first time I heard an ElevenLabs voice narrate a true crime intro, I had to check the YouTube description twice. It wasn't a hired narrator. It wasn't even …",
-   "date": "Aug 29, 2026"
   }
  ]
 }

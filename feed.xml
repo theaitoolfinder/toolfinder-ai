@@ -5,7 +5,7 @@
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Nov 2026 00:00:37 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 00:00:42 GMT</lastBuildDate>
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
@@ -13,6 +13,14 @@
       <link>https://myaitoolsfinder.com</link>
     </image>
 
+  <item>
+    <title>Podcasters and Video Editors Are Quietly Switching to OpusClip to Stop spending hours manually clipping one long recording into shareable short-form videos</title>
+    <link>https://myaitoolsfinder.com/articles/podcasters-and-video-editors-are-quietly-switching-to-opusclip.html</link>
+    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/podcasters-and-video-editors-are-quietly-switching-to-opusclip.html</guid>
+    <pubDate>Mon, 02 Nov 2026 00:00:42 GMT</pubDate>
+    <description>Most podcasters assume their biggest editing bottleneck is cutting the main episode.</description>
+    <enclosure url="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>Tired of spending hours manually clipping one long recording into shareable short-form videos? Here's the OpusClip Fix Podcasters and Video Editors Are Using in 2026</title>
     <link>https://myaitoolsfinder.com/articles/tired-of-spending-hours-manually-clipping-one-long-recording.html</link>
@@ -404,14 +412,6 @@
     <pubDate>Tue, 21 Jul 2026 00:00:35 GMT</pubDate>
     <description>Here's the mistake most bloggers make: they write what they think is great content, hit publish, then wait for Google to reward their effort.</description>
     <enclosure url="https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>The Project Manager's AI Tools Roadmap for 2026: Start Here</title>
-    <link>https://myaitoolsfinder.com/articles/the-project-manager-s-ai-tools-roadmap-for-2026-start-here.html</link>
-    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/the-project-manager-s-ai-tools-roadmap-for-2026-start-here.html</guid>
-    <pubDate>Mon, 20 Jul 2026 00:00:36 GMT</pubDate>
-    <description>Project managers used to spend 12+ hours a week manually updating task boards, chasing stakeholders for status updates, and copy-pasting meeting notes i…</description>
-    <enclosure url="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
   </item>
   </channel>
 </rss>
