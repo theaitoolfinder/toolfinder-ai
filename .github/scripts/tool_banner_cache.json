@@ -227,7 +227,7 @@
  "invideo-ai": {
   "url": "https://invideo.ai",
   "banner": "https://pro-static-assets.invideo.io/images/large/Pasted_16_10_2026_at_19_54_50_8d5fd22857.png",
-  "checked_at": "2026-11-04T07:44:11.083236+00:00"
+  "checked_at": "2026-11-04T13:40:16.106043+00:00"
  },
  "pictory": {
   "url": "https://pictory.ai",
@@ -2763,5 +2763,10 @@
   "url": "https://exa.ai",
   "banner": "https://exa.imgix.net/og-image-v4.png/",
   "checked_at": "2026-10-31T11:28:40.048411+00:00"
+ },
+ "spirify": {
+  "url": "https://spirify.co",
+  "banner": null,
+  "checked_at": "2026-11-04T13:40:16.106043+00:00"
  }
 }
