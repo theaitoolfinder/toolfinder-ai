@@ -1,23 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-12",
-      "slot": "morning",
-      "slug": "the-keyword-insights-trick-that-saves-seo-teams-and-bloggers",
-      "title": "The Keyword Insights Trick That Saves SEO Teams and Bloggers months writing content that never ranks, Starting Today",
-      "type": "problem_solution",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1595896424050-f70867364590?w=800&q=85&auto=format&fit=crop",
-      "topic": "keyword insights trick saves",
-      "pair": "",
-      "tool": "Keyword Insights",
-      "words": 2323,
-      "partners": [
-        "Keyword Insights",
-        "NeuronWriter"
-      ]
-    },
-    {
       "date": "2026-07-13",
       "slot": "morning",
       "slug": "students-are-using-these-ai-research-tools-to-cut-study-time-in",
@@ -1087,10 +1070,26 @@
         "NeuronWriter",
         "RankMath AI"
       ]
+    },
+    {
+      "date": "2026-11-04",
+      "slot": "morning",
+      "slug": "still-publishing-content-around-the-wrong-keywords-because",
+      "title": "Still publishing content around the wrong keywords because proper keyword research takes too long to do right? Keyword Insights Just Solved Your Biggest Time-Waster",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
+      "topic": "still publishing content around",
+      "pair": "",
+      "tool": "Keyword Insights",
+      "words": 2331,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1608699565448-9492aaf3c708?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
@@ -1289,6 +1288,7 @@
     "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1653212884026-e5aa3cb7eb5b?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1653212884026-e5aa3cb7eb5b?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop"
   ]
 }
