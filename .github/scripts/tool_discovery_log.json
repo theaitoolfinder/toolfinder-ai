@@ -219,6 +219,13 @@
         "Exa AI"
       ],
       "count": 2
+    },
+    {
+      "date": "2026-11-04",
+      "tools": [
+        "Spirify"
+      ],
+      "count": 1
     }
   ]
 }

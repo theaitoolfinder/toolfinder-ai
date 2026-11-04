@@ -772,5 +772,6 @@ window.MYAI_AFF_MAP = {
   "caspian": "https://caspian.dev",
   "repurpose.io": "https://repurpose.io",
   "simantic": "https://simantic.dev",
-  "exa ai": "https://exa.ai"
+  "exa ai": "https://exa.ai",
+  "spirify": "https://spirify.co"
 };
