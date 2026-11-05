@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T09:04:56.919607+00:00",
+ "generated_at": "2026-11-05T09:25:09.638654+00:00",
  "subscribers": [
   {
    "date": "2026-08-26",
@@ -270,12 +270,12 @@
    "count": 8
   },
   {
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "count": 8
   }
  ],
  "articles": {
-  "total_published": 322,
+  "total_published": 323,
   "per_week": [
    {
     "week": "2026-08-17",
@@ -323,16 +323,16 @@
    },
    {
     "week": "2026-11-02",
-    "count": 3
+    "count": 4
    }
   ],
-  "last_date": "2026-11-04",
+  "last_date": "2026-11-05",
   "days_since_last": 0
  },
  "spend": {
-  "total_usd": 4.595,
-  "last_30d_usd": 0.9006,
-  "per_article_usd": 0.0655,
+  "total_usd": 4.6997,
+  "last_30d_usd": 1.0053,
+  "per_article_usd": 0.0656,
   "per_week": [
    {
     "week": "2026-08-17",
@@ -380,18 +380,18 @@
    },
    {
     "week": "2026-11-02",
-    "usd": 0.1923
+    "usd": 0.297
    }
   ],
   "by_worker": {
-   "generate_article": 3.9942,
-   "discover_tools": 0.5251,
-   "generate_tool_pages": 0.0757
+   "generate_article": 4.0657,
+   "discover_tools": 0.556,
+   "generate_tool_pages": 0.078
   },
-  "last_call": "2026-11-04T00:03:35.286714+00:00"
+  "last_call": "2026-11-05T00:02:54.215627+00:00"
  },
  "inventory": {
-  "tool_pages": 553,
+  "tool_pages": 554,
   "tutorials": 26,
   "affiliate_tools": 16
  }
