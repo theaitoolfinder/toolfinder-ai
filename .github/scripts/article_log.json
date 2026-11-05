@@ -1,24 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-13",
-      "slot": "morning",
-      "slug": "students-are-using-these-ai-research-tools-to-cut-study-time-in",
-      "title": "Students Are Using These AI Research Tools to Cut Study Time in Half",
-      "type": "playbook",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?w=800&q=85&auto=format&fit=crop",
-      "topic": "students these research tools",
-      "pair": "",
-      "tool": "",
-      "words": 2453,
-      "partners": [
-        "Make.com",
-        "NeuronWriter",
-        "SciSpace"
-      ]
-    },
-    {
       "date": "2026-07-14",
       "slot": "morning",
       "slug": "if-you-re-a-e-commerce-owner-this-is-the-ai-toolkit-you-actually",
@@ -1087,10 +1069,27 @@
         "Keyword Insights",
         "NeuronWriter"
       ]
+    },
+    {
+      "date": "2026-11-05",
+      "slot": "morning",
+      "slug": "batch-create-a-month-of-instagram-posts-in-90-minutes-with-2026-11-05",
+      "title": "Batch-Create a Month of Instagram Posts in 90 Minutes With Predis.ai (2026)",
+      "type": "playbook",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
+      "topic": "batchcreate month instagram posts",
+      "pair": "",
+      "tool": "",
+      "words": 2433,
+      "partners": [
+        "Make.com",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
@@ -1289,6 +1288,7 @@
     "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1653212884026-e5aa3cb7eb5b?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop"
   ]
 }

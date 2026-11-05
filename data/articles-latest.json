@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/batch-create-a-month-of-instagram-posts-in-90-minutes-with-2026-11-05.html",
+   "img": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
+   "cat": "Insider Playbook",
+   "title": "Batch-Create a Month of Instagram Posts in 90 Minutes With Predis.ai (2026)",
+   "excerpt": "A social media agency charges $2,500 for a month of Instagram content. With Predis.ai and 90 minutes, you'll spend $32 and get 30 carousel posts, 30 captions, a…",
+   "date": "Nov 05, 2026"
+  },
+  {
    "href": "articles/still-publishing-content-around-the-wrong-keywords-because.html",
    "img": "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough",
    "excerpt": "Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content. But in September 2026, a growing number o…",
    "date": "Sep 02, 2026"
-  },
-  {
-   "href": "articles/publishing-content-that-never-ranks-because-it-s-missing-the.html",
-   "img": "https://images.unsplash.com/photo-1622673037994-e4a73f4e5eb0?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "Publishing content that never ranks because it's missing the exact structure and terms Google actually rewards? RankMath AI Is the Fastest Fix in 2026",
-   "excerpt": "Most bloggers assume good writing is what gets you ranked. But analysis of 50,000+ pages that jumped from page three to page one in 2025 revealed something unco…",
-   "date": "Sep 01, 2026"
   }
  ]
 }
