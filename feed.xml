@@ -5,7 +5,7 @@
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2026 00:00:40 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:37 GMT</lastBuildDate>
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
@@ -13,6 +13,14 @@
       <link>https://myaitoolsfinder.com</link>
     </image>
 
+  <item>
+    <title>AI Tools for Marketing Managers: The Exact Stack to Build, Phase by Phase</title>
+    <link>https://myaitoolsfinder.com/articles/ai-tools-for-marketing-managers-the-exact-stack-to-build-phase-2026-11-06.html</link>
+    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/ai-tools-for-marketing-managers-the-exact-stack-to-build-phase-2026-11-06.html</guid>
+    <pubDate>Fri, 06 Nov 2026 00:00:37 GMT</pubDate>
+    <description>Marketing managers used to spend Monday mornings reviewing last week's campaign performance across six different platforms, manually compiling reports, …</description>
+    <enclosure url="https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>Batch-Create a Month of Instagram Posts in 90 Minutes With Predis.ai (2026)</title>
     <link>https://myaitoolsfinder.com/articles/batch-create-a-month-of-instagram-posts-in-90-minutes-with-2026-11-05.html</link>
@@ -404,14 +412,6 @@
     <pubDate>Sat, 25 Jul 2026 00:00:35 GMT</pubDate>
     <description>A freelance designer named Maya used to spend an entire Sunday afternoon planning her Instagram content for the month—sketching ideas, writing captions,…</description>
     <enclosure url="https://images.unsplash.com/photo-1611262588024-d12430b98920?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>Agencies and Ops Teams: Stop Losing hours of repetitive busywork every week — Make.com Solves This in Minutes</title>
-    <link>https://myaitoolsfinder.com/articles/agencies-and-ops-teams-stop-losing-hours-of-repetitive-busywork.html</link>
-    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/agencies-and-ops-teams-stop-losing-hours-of-repetitive-busywork.html</guid>
-    <pubDate>Fri, 24 Jul 2026 00:00:31 GMT</pubDate>
-    <description>Agency ops teams are losing an average of $2,400 per month in billable hours — not on client work, but on copying the same data between apps.</description>
-    <enclosure url="https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
   </item>
   </channel>
 </rss>

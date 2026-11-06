@@ -1,27 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-14",
-      "slot": "morning",
-      "slug": "if-you-re-a-e-commerce-owner-this-is-the-ai-toolkit-you-actually",
-      "title": "If You're a E-commerce Owner, This Is the AI Toolkit You Actually Need in 2026",
-      "type": "roadmap",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1674027392857-9aed6e8ecab9?w=800&q=85&auto=format&fit=crop",
-      "topic": "youre ecommerce owner toolkit",
-      "pair": "",
-      "tool": "",
-      "words": 2262,
-      "partners": [
-        "Beehiiv",
-        "Fireflies.ai",
-        "Make.com",
-        "NeuronWriter",
-        "OpusClip",
-        "Predis.ai"
-      ]
-    },
-    {
       "date": "2026-07-15",
       "slot": "morning",
       "slug": "how-solopreneurs-and-small-teams-are-getting-back-hours",
@@ -1087,10 +1066,32 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-11-06",
+      "slot": "exclusive",
+      "slug": "ai-tools-for-marketing-managers-the-exact-stack-to-build-phase-2026-11-06",
+      "title": "AI Tools for Marketing Managers: The Exact Stack to Build, Phase by Phase",
+      "type": "roadmap",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools marketing managers exact",
+      "pair": "",
+      "tool": "",
+      "words": 2581,
+      "partners": [
+        "Beehiiv",
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "NeuronWriter",
+        "OpusClip",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1638950368511-4e670058fc87?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
@@ -1289,6 +1290,7 @@
     "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1653212884026-e5aa3cb7eb5b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop"
   ]
 }
