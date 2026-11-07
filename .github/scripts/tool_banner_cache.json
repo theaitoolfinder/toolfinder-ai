@@ -227,7 +227,7 @@
  "invideo-ai": {
   "url": "https://invideo.ai",
   "banner": "https://pro-static-assets.invideo.io/images/large/Pasted_16_10_2026_at_19_54_50_8d5fd22857.png",
-  "checked_at": "2026-11-07T07:29:27.238741+00:00"
+  "checked_at": "2026-11-07T12:10:47.002572+00:00"
  },
  "pictory": {
   "url": "https://pictory.ai",
@@ -2768,5 +2768,20 @@
   "url": "https://spirify.co",
   "banner": null,
   "checked_at": "2026-11-04T13:40:16.106043+00:00"
+ },
+ "kino-ai": {
+  "url": "https://kino.ai",
+  "banner": "https://kino.ai/landing/opengraph-image-1uiiob.png?opengraph-image.1ngnq7k6ak393.png",
+  "checked_at": "2026-11-07T12:10:47.002572+00:00"
+ },
+ "rivet": {
+  "url": "https://rivet.dev",
+  "banner": "https://rivet.dev/images/og/default.png",
+  "checked_at": "2026-11-07T12:10:47.002572+00:00"
+ },
+ "elevenreader": {
+  "url": "https://elevenreader.io",
+  "banner": "https://eleven-public-cdn.elevenlabs.io/payloadcmsreader/mpygd9h0dy-og_image.webp",
+  "checked_at": "2026-11-07T12:10:47.002572+00:00"
  }
 }
