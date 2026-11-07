@@ -773,5 +773,8 @@ window.MYAI_AFF_MAP = {
   "repurpose.io": "https://repurpose.io",
   "simantic": "https://simantic.dev",
   "exa ai": "https://exa.ai",
-  "spirify": "https://spirify.co"
+  "spirify": "https://spirify.co",
+  "kino ai": "https://kino.ai",
+  "rivet": "https://rivet.dev",
+  "elevenreader": "https://elevenreader.io"
 };
