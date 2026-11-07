@@ -1,23 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-15",
-      "slot": "morning",
-      "slug": "how-solopreneurs-and-small-teams-are-getting-back-hours",
-      "title": "How Solopreneurs and Small Teams Are Getting Back hours untangling three different apps With Taskade AI",
-      "type": "problem_solution",
-      "source": "hackernews",
-      "hero": "https://images.unsplash.com/photo-1622258415402-d6f597973b03?w=800&q=85&auto=format&fit=crop",
-      "topic": "solopreneurs small teams getting",
-      "pair": "",
-      "tool": "Taskade AI",
-      "words": 2637,
-      "partners": [
-        "Make.com",
-        "Taskade AI"
-      ]
-    },
-    {
       "date": "2026-07-16",
       "slot": "morning",
       "slug": "solopreneurs-and-small-teams-stop-losing-hours-untangling-three",
@@ -1089,10 +1072,25 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "slot": "morning",
+      "slug": "how-podcasters-and-youtubers-are-getting-back-200-per-episode",
+      "title": "How Podcasters and YouTubers Are Getting Back $200+ per episode With ElevenLabs",
+      "type": "problem_solution",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop",
+      "topic": "podcasters youtubers getting back",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2202,
+      "partners": [
+        "ElevenLabs"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1529836349180-223cd77d8cb6?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
@@ -1291,6 +1289,7 @@
     "https://images.unsplash.com/photo-1653212884026-e5aa3cb7eb5b?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop"
   ]
 }

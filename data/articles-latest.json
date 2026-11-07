@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/how-podcasters-and-youtubers-are-getting-back-200-per-episode.html",
+   "img": "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "How Podcasters and YouTubers Are Getting Back $200+ per episode With ElevenLabs",
+   "excerpt": "Most podcasters and YouTubers assume that professional voiceovers require professional voice actors. That assumption costs them $200–$350 per episode, every sin…",
+   "date": "Nov 07, 2026"
+  },
+  {
    "href": "articles/batch-create-a-month-of-instagram-posts-in-90-minutes-with-2026-11-05.html",
    "img": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
    "cat": "Insider Playbook",
@@ -87,14 +95,6 @@
    "title": "The Musician or Audio Producer's AI Tools Roadmap for 2026: Start Here",
    "excerpt": "Musicians and audio producers waste an average of 14 hours per week on tasks that have nothing to do with making music: transcribing session notes, cleaning up …",
    "date": "Oct 07, 2026"
-  },
-  {
-   "href": "articles/the-ai-voice-over-studio-in-your-browser-an-elevenlabs-soundraw.html",
-   "img": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=85&auto=format&fit=crop",
-   "cat": "Insider Playbook",
-   "title": "The AI Voice-Over Studio in Your Browser: An ElevenLabs + Soundraw Walkthrough",
-   "excerpt": "Most people assume you need a microphone, a soundproof booth, and a voice actor to produce professional audio content. But in September 2026, a growing number o…",
-   "date": "Sep 02, 2026"
   }
  ]
 }
