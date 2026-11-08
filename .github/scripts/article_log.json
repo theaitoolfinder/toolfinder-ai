@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-16",
-      "slot": "morning",
-      "slug": "solopreneurs-and-small-teams-stop-losing-hours-untangling-three",
-      "title": "Solopreneurs and Small Teams: Stop Losing hours untangling three different apps — Taskade AI Solves This in Minutes",
-      "type": "problem_solution",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=800&q=85&auto=format&fit=crop",
-      "topic": "solopreneurs small teams stop",
-      "pair": "",
-      "tool": "Taskade AI",
-      "words": 2189,
-      "partners": [
-        "Taskade AI"
-      ]
-    },
-    {
       "date": "2026-07-17",
       "slot": "exclusive",
       "slug": "how-content-creators-are-getting-back-6-hours-a-week-with",
@@ -1088,10 +1072,27 @@
       "partners": [
         "ElevenLabs"
       ]
+    },
+    {
+      "date": "2026-11-08",
+      "slot": "morning",
+      "slug": "content-creators-are-quietly-switching-to-writesonic-to-stop",
+      "title": "Content Creators Are Quietly Switching to Writesonic to Stop spending hours every week turning one idea into blog posts, captions, and emails that still sound robotic",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop",
+      "topic": "content creators quietly switching",
+      "pair": "",
+      "tool": "Writesonic",
+      "words": 2369,
+      "partners": [
+        "Make.com",
+        "Predis.ai",
+        "Writesonic"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1679094837433-32484a621c74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
@@ -1290,6 +1291,7 @@
     "https://images.unsplash.com/photo-1580130037321-446dba3cacc2?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop"
   ]
 }

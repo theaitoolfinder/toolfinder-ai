@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/content-creators-are-quietly-switching-to-writesonic-to-stop.html",
+   "img": "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Content Creators Are Quietly Switching to Writesonic to Stop spending hours every week turning one idea into blog posts, captions, and emails that still sound robotic",
+   "excerpt": "You're losing 6+ hours every week—and here's exactly where they go: an hour brainstorming variations of the same idea, two hours writing a blog post that never …",
+   "date": "Nov 08, 2026"
+  },
+  {
    "href": "articles/how-podcasters-and-youtubers-are-getting-back-200-per-episode.html",
    "img": "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "The Real Reason Solopreneurs and Small Teams Waste hours untangling three different apps (And the Taskade AI Fix for It)",
    "excerpt": "You opened your to-do list app this morning to check what's due today. Then you switched to your notes app to find the brief from last week's client call. Then …",
    "date": "Oct 08, 2026"
-  },
-  {
-   "href": "articles/the-musician-or-audio-producer-s-ai-tools-roadmap-for-2026-start.html",
-   "img": "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=85&auto=format&fit=crop",
-   "cat": "AI Roadmap",
-   "title": "The Musician or Audio Producer's AI Tools Roadmap for 2026: Start Here",
-   "excerpt": "Musicians and audio producers waste an average of 14 hours per week on tasks that have nothing to do with making music: transcribing session notes, cleaning up …",
-   "date": "Oct 07, 2026"
   }
  ]
 }
