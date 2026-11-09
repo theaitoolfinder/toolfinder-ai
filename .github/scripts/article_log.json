@@ -1,25 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-17",
-      "slot": "exclusive",
-      "slug": "how-content-creators-are-getting-back-6-hours-a-week-with",
-      "title": "How Content Creators Are Getting Back 6+ hours a week With Writesonic",
-      "type": "problem_solution",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1664277497087-51787d2b9d15?w=800&q=85&auto=format&fit=crop",
-      "topic": "content creators getting back",
-      "pair": "",
-      "tool": "Writesonic",
-      "words": 2302,
-      "partners": [
-        "Beehiiv",
-        "OpusClip",
-        "Predis.ai",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-07-18",
       "slot": "morning",
       "slug": "tired-of-manually-copying-the-same-data-between-five-different",
@@ -1090,10 +1071,25 @@
         "Predis.ai",
         "Writesonic"
       ]
+    },
+    {
+      "date": "2026-11-09",
+      "slot": "morning",
+      "slug": "needing-a-professional-voiceover-but-not-having-the-budget-for",
+      "title": "Needing a professional voiceover but not having the budget for studio time or a hired narrator? ElevenLabs Is the Fastest Fix in 2026",
+      "type": "problem_solution",
+      "source": "hackernews",
+      "hero": "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=800&q=85&auto=format&fit=crop",
+      "topic": "needing professional voiceover having",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2282,
+      "partners": [
+        "ElevenLabs"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1754783591383-17e596af9e74?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740645581660-a35f5380dc95?w=800&q=85&auto=format&fit=crop",
@@ -1292,6 +1288,7 @@
     "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1676282827533-d6058df56a69?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1673767298248-b128f17f89af?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=800&q=85&auto=format&fit=crop"
   ]
 }

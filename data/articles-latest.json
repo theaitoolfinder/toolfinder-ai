@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/needing-a-professional-voiceover-but-not-having-the-budget-for.html",
+   "img": "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Needing a professional voiceover but not having the budget for studio time or a hired narrator? ElevenLabs Is the Fastest Fix in 2026",
+   "excerpt": "Six months ago, recording a professional voiceover for a YouTube video or podcast episode meant blocking out half a day, booking studio time, and either hiring …",
+   "date": "Nov 09, 2026"
+  },
+  {
    "href": "articles/content-creators-are-quietly-switching-to-writesonic-to-stop.html",
    "img": "https://images.unsplash.com/photo-1673767297209-35b4a5dc3ec9?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "The Fireflies.ai Trick That Saves Consultants and Founders hours of note-taking and re-explaining, Starting Today",
    "excerpt": "Six months ago, a 45-minute client discovery call meant another 90 minutes of reconstruction work afterward. Now it takes 3 minutes to review everything that ma…",
    "date": "Oct 10, 2026"
-  },
-  {
-   "href": "articles/the-real-reason-solopreneurs-and-small-teams-waste-hours-2026-10-08.html",
-   "img": "https://images.unsplash.com/photo-1521866337281-e7207a7159c9?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "The Real Reason Solopreneurs and Small Teams Waste hours untangling three different apps (And the Taskade AI Fix for It)",
-   "excerpt": "You opened your to-do list app this morning to check what's due today. Then you switched to your notes app to find the brief from last week's client call. Then …",
-   "date": "Oct 08, 2026"
   }
  ]
 }
