@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/the-real-reason-content-creators-waste-6-hours-a-week-and-the-2026-11-10.html",
+   "img": "https://images.unsplash.com/photo-1722172597269-d911054badb9?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "The Real Reason Content Creators Waste 6+ hours a week (And the Writesonic Fix for It)",
+   "excerpt": "The thing that surprised me most when I tested Writesonic against my usual content workflow wasn't the speed—I expected that. It was opening my Google Doc the n…",
+   "date": "Nov 10, 2026"
+  },
+  {
    "href": "articles/needing-a-professional-voiceover-but-not-having-the-budget-for.html",
    "img": "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "Faceless Channel Creators: Stop Losing hours manually captioning every clip — Submagic AI Solves This in Minutes",
    "excerpt": "You've just recorded a killer 60-second voiceover for your faceless YouTube Short. The script is tight, the visuals are engaging, and you're ready to upload—exc…",
    "date": "Oct 11, 2026"
-  },
-  {
-   "href": "articles/the-fireflies-ai-trick-that-saves-consultants-and-founders-hours.html",
-   "img": "https://images.unsplash.com/photo-1661010854520-32ab127f1783?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "The Fireflies.ai Trick That Saves Consultants and Founders hours of note-taking and re-explaining, Starting Today",
-   "excerpt": "Six months ago, a 45-minute client discovery call meant another 90 minutes of reconstruction work afterward. Now it takes 3 minutes to review everything that ma…",
-   "date": "Oct 10, 2026"
   }
  ]
 }
