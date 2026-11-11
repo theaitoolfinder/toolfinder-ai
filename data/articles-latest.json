@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/students-are-using-these-ai-research-tools-to-cut-study-time-in-2026-11-11.html",
+   "img": "https://images.unsplash.com/photo-1707944745899-104a4b12d945?w=800&q=85&auto=format&fit=crop",
+   "cat": "Insider Playbook",
+   "title": "Students Are Using These AI Research Tools to Cut Study Time in Half",
+   "excerpt": "The thing that surprised me most when I tested this research workflow wasn't how fast the AI tools were — it was how much better the notes ended up being than w…",
+   "date": "Nov 11, 2026"
+  },
+  {
    "href": "articles/the-real-reason-content-creators-waste-6-hours-a-week-and-the-2026-11-10.html",
    "img": "https://images.unsplash.com/photo-1722172597269-d911054badb9?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "The Exact AI Workflow That Turns One Blog Post Into 30 Pieces of Content",
    "excerpt": "One blog post can become 30 pieces of content in under four hours—and the entire process runs on five AI tools that cost less than $150 per month combined. I've…",
    "date": "Oct 17, 2026"
-  },
-  {
-   "href": "articles/faceless-channel-creators-stop-losing-hours-manually-captioning.html",
-   "img": "https://images.unsplash.com/photo-1678329885908-85eb768aa61b?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "Faceless Channel Creators: Stop Losing hours manually captioning every clip — Submagic AI Solves This in Minutes",
-   "excerpt": "You've just recorded a killer 60-second voiceover for your faceless YouTube Short. The script is tight, the visuals are engaging, and you're ready to upload—exc…",
-   "date": "Oct 11, 2026"
   }
  ]
 }
