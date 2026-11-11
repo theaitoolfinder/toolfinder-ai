@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T09:42:44.138665+00:00",
+ "generated_at": "2026-11-11T09:18:33.085783+00:00",
  "subscribers": [
   {
    "date": "2026-08-26",
@@ -270,12 +270,12 @@
    "count": 8
   },
   {
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "count": 8
   }
  ],
  "articles": {
-  "total_published": 328,
+  "total_published": 329,
   "per_week": [
    {
     "week": "2026-08-24",
@@ -323,15 +323,15 @@
    },
    {
     "week": "2026-11-09",
-    "count": 2
+    "count": 3
    }
   ],
-  "last_date": "2026-11-10",
+  "last_date": "2026-11-11",
   "days_since_last": 0
  },
  "spend": {
-  "total_usd": 5.072,
-  "last_30d_usd": 1.0811,
+  "total_usd": 5.1431,
+  "last_30d_usd": 1.0586,
   "per_article_usd": 0.0657,
   "per_week": [
    {
@@ -380,15 +380,15 @@
    },
    {
     "week": "2026-11-09",
-    "usd": 0.1343
+    "usd": 0.2054
    }
   ],
   "by_worker": {
-   "generate_article": 4.3995,
+   "generate_article": 4.4706,
    "discover_tools": 0.5871,
    "generate_tool_pages": 0.0854
   },
-  "last_call": "2026-11-10T00:02:42.910141+00:00"
+  "last_call": "2026-11-11T00:03:02.782123+00:00"
  },
  "inventory": {
   "tool_pages": 557,
