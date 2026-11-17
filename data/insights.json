@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T09:33:28.956983+00:00",
+ "generated_at": "2026-11-17T10:39:11.624409+00:00",
  "subscribers": [
   {
    "date": "2026-08-26",
@@ -270,7 +270,7 @@
    "count": 8
   },
   {
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "count": 8
   }
  ],
@@ -327,11 +327,11 @@
    }
   ],
   "last_date": "2026-11-11",
-  "days_since_last": 5
+  "days_since_last": 6
  },
  "spend": {
   "total_usd": 5.1431,
-  "last_30d_usd": 1.0586,
+  "last_30d_usd": 0.9868,
   "per_article_usd": 0.0657,
   "per_week": [
    {
