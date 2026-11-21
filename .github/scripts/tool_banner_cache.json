@@ -227,7 +227,7 @@
  "invideo-ai": {
   "url": "https://invideo.ai",
   "banner": "https://pro-static-assets.invideo.io/images/large/Pasted_16_10_2026_at_19_54_50_8d5fd22857.png",
-  "checked_at": "2026-11-21T08:30:54.401022+00:00"
+  "checked_at": "2026-11-21T13:57:18.879547+00:00"
  },
  "pictory": {
   "url": "https://pictory.ai",
@@ -2783,5 +2783,10 @@
   "url": "https://elevenreader.io",
   "banner": "https://eleven-public-cdn.elevenlabs.io/payloadcmsreader/mpygd9h0dy-og_image.webp",
   "checked_at": "2026-11-07T12:10:47.002572+00:00"
+ },
+ "pomerado": {
+  "url": "https://pomerado.dev",
+  "banner": null,
+  "checked_at": "2026-11-21T13:57:18.879547+00:00"
  }
 }
