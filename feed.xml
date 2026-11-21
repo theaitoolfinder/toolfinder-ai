@@ -5,7 +5,7 @@
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Nov 2026 00:00:40 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 04:00:32 GMT</lastBuildDate>
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
@@ -13,6 +13,14 @@
       <link>https://myaitoolsfinder.com</link>
     </image>
 
+  <item>
+    <title>AI Tools for Journalist or Reporters: The Exact Stack to Build, Phase by Phase</title>
+    <link>https://myaitoolsfinder.com/articles/ai-tools-for-journalist-or-reporters-the-exact-stack-to-build.html</link>
+    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/ai-tools-for-journalist-or-reporters-the-exact-stack-to-build.html</guid>
+    <pubDate>Sat, 21 Nov 2026 04:00:32 GMT</pubDate>
+    <description>A metro newspaper reporter spent four hours transcribing a city council meeting, another two fact-checking quotes against her notes, then missed the eve…</description>
+    <enclosure url="https://images.unsplash.com/photo-1575507479993-7bb702d5e966?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>Students Are Using These AI Research Tools to Cut Study Time in Half</title>
     <link>https://myaitoolsfinder.com/articles/students-are-using-these-ai-research-tools-to-cut-study-time-in-2026-11-11.html</link>
@@ -404,14 +412,6 @@
     <pubDate>Fri, 31 Jul 2026 00:00:29 GMT</pubDate>
     <description>The #1 mistake people make with AI content tools?</description>
     <enclosure url="https://images.unsplash.com/photo-1717323454555-f053c31ff4b4?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>The Real Reason Agencies and Ops Teams Waste hours of repetitive busywork every week (And the Make.com Fix for It)</title>
-    <link>https://myaitoolsfinder.com/articles/the-real-reason-agencies-and-ops-teams-waste-hours-of-repetitive.html</link>
-    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/the-real-reason-agencies-and-ops-teams-waste-hours-of-repetitive.html</guid>
-    <pubDate>Thu, 30 Jul 2026 00:00:30 GMT</pubDate>
-    <description>A client email lands at 9:47 AM asking for an updated campaign report—leads from Facebook Ads, conversions from the CRM, budget actuals from the finance…</description>
-    <enclosure url="https://images.unsplash.com/photo-1746059876599-b914dbde0417?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
   </item>
   </channel>
 </rss>
