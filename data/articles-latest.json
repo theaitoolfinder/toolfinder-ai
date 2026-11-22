@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/tired-of-juggling-four-different-apps-just-to-write-the-copy.html",
+   "img": "https://images.unsplash.com/photo-1667589543257-08665277f1ac?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Tired of juggling four different apps just to write the copy, design the graphic, and resize it for every platform? Here's the Simplified Fix Freelance Designers and Marketers Are Using in 2026",
+   "excerpt": "Most people believe using multiple specialized tools makes them more efficient. They're wrong — and it's costing them 12+ hours every single week.",
+   "date": "Nov 22, 2026"
+  },
+  {
    "href": "articles/ai-tools-for-journalist-or-reporters-the-exact-stack-to-build.html",
    "img": "https://images.unsplash.com/photo-1575507479993-7bb702d5e966?w=800&q=85&auto=format&fit=crop",
    "cat": "AI Roadmap",
@@ -87,14 +95,6 @@
    "title": "Tired of spending hours manually clipping one long recording into shareable short-form videos? Here's the OpusClip Fix Podcasters and Video Editors Are Using in 2026",
    "excerpt": "Ever finish recording a killer podcast episode or client video, feel great about the content, then realize you now have to spend the next six hours scrubbing th…",
    "date": "Nov 01, 2026"
-  },
-  {
-   "href": "articles/building-your-ai-stack-as-a-online-coach-or-course-creator-a.html",
-   "img": "https://images.unsplash.com/photo-1787672357525-bf335686ab46?w=800&q=85&auto=format&fit=crop",
-   "cat": "AI Roadmap",
-   "title": "Building Your AI Stack as a Online Coach or Course Creator: A Step-by-Step Guide for 2026",
-   "excerpt": "You've built a course that actually works. You've coached clients who got real results. But every week you're stuck re-recording the same lesson three times bec…",
-   "date": "Oct 31, 2026"
   }
  ]
 }
