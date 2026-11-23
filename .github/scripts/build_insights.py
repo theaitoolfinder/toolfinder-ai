@@ -162,8 +162,13 @@ def inventory():
 
 
 def main():
+    try:
+        synced = json.loads((ROOT / "data" / "subscribers_db.json").read_text()).get("last_updated")
+    except Exception:  # noqa: BLE001
+        synced = None
     data = {
         "generated_at": NOW.isoformat(),
+        "subscribers_synced_at": synced,
         "subscribers": subscriber_timeline(),
         "articles": articles_info(),
         "spend": spend_info(),

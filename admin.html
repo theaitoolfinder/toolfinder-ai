@@ -1879,6 +1879,9 @@ function renderInsights(d){
   const last4=wkv.slice(-4).reduce((a,b)=>a+b,0), prev4=wkv.slice(-8,-4).reduce((a,b)=>a+b,0);
   document.getElementById('ins-updated').textContent=d.generated_at?('Updated '+new Date(d.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})):'';
 
+  const synced=d.subscribers_synced_at?new Date(d.subscribers_synced_at):null;
+  const staleDays=synced?Math.floor((today-synced)/dayMs):null;
+  const syncWarn=(staleDays!==null&&staleDays>=2)?`<div class="danger-banner" style="margin-bottom:14px"><b>⚠ Subscriber numbers are out of date.</b> The Brevo sync last worked ${staleDays} days ago (${synced.toLocaleDateString('en-US',{month:'short',day:'numeric'})}), so new sign-ups are NOT being counted or unlocked. Open GitHub → Actions → "Sync Subscriber List" → latest run → the "Sync subscriber hashes" step to see the error. The usual cause is an expired or replaced Brevo API key (update the <code>BREVO_API_KEY</code> secret) or a Brevo IP restriction.</div>`:'';
   const flat=delta30<=0;
   const heroC=flat?'#dc2626':'#16a34a';
   const hero=`<div class="ins-hero" style="--hero-c:${heroC}">
@@ -1926,7 +1929,7 @@ function renderInsights(d){
     chart('AI spend per week','In US dollars',insSvgBars((S.per_week||[]).map(w=>w.usd),'#0369a1'),fmt(((S.per_week||[])[0]||{}).week),'$'+(S.total_usd||0).toFixed(2)+' total')+
     `</div>`;
 
-  box.innerHTML=hero+kpis+`<div class="ins-sec">What this means</div><div class="ins-rows">${rows.join('')}</div><div class="ins-sec">Trends</div>`+charts;
+  box.innerHTML=syncWarn+hero+kpis+`<div class="ins-sec">What this means</div><div class="ins-rows">${rows.join('')}</div><div class="ins-sec">Trends</div>`+charts;
 }
 
 /* ===== Audience (GA4): how people find the site + what keeps them ===== */
