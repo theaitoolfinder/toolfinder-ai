@@ -2683,7 +2683,6 @@ function exportSubsCSV(){
 }
 
 function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-document.getElementById('pw').addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); });
 document.getElementById('search').addEventListener('input',e=>{ search = e.target.value; _toolPage=0; renderToolList(); });
 
 /* Auth boot is handled by initAdmin() below — do not add sync auth checks here */
