@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-22",
-      "slot": "morning",
-      "slug": "the-real-reason-podcasters-and-video-editors-waste-a-full-day-of",
-      "title": "The Real Reason Podcasters and Video Editors Waste a full day of editing per episode (And the OpusClip Fix for It)",
-      "type": "problem_solution",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1676380364777-d53c900178fa?w=800&q=85&auto=format&fit=crop",
-      "topic": "reason podcasters video editors",
-      "pair": "",
-      "tool": "OpusClip",
-      "words": 2392,
-      "partners": [
-        "OpusClip"
-      ]
-    },
-    {
       "date": "2026-07-23",
       "slot": "morning",
       "slug": "how-content-creators-are-getting-back-6-hours-a-week-with-2026-07-23",
@@ -1084,10 +1068,25 @@
         "Predis.ai",
         "Simplified"
       ]
+    },
+    {
+      "date": "2026-11-23",
+      "slot": "morning",
+      "slug": "still-needing-a-professional-voiceover-but-not-having-the-budget",
+      "title": "Still needing a professional voiceover but not having the budget for studio time or a hired narrator? ElevenLabs Just Solved Your Biggest Time-Waster",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop",
+      "topic": "still needing professional voiceover",
+      "pair": "",
+      "tool": "ElevenLabs",
+      "words": 2594,
+      "partners": [
+        "ElevenLabs"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1615458317538-72c46d9359d8?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1729860649094-12000c94f4b0?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1750365919971-7dd273e7b317?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&q=85&auto=format&fit=crop",
@@ -1286,6 +1285,7 @@
     "https://images.unsplash.com/photo-1722172597269-d911054badb9?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1707944745899-104a4b12d945?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1575507479993-7bb702d5e966?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1667589543257-08665277f1ac?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1667589543257-08665277f1ac?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop"
   ]
 }

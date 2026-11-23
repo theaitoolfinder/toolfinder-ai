@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/still-needing-a-professional-voiceover-but-not-having-the-budget.html",
+   "img": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Still needing a professional voiceover but not having the budget for studio time or a hired narrator? ElevenLabs Just Solved Your Biggest Time-Waster",
+   "excerpt": "You just spent $225 hiring a voiceover artist for a single YouTube video. The turnaround took four days. You sent three rounds of revision notes because the pac…",
+   "date": "Nov 23, 2026"
+  },
+  {
    "href": "articles/tired-of-juggling-four-different-apps-just-to-write-the-copy.html",
    "img": "https://images.unsplash.com/photo-1667589543257-08665277f1ac?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "Podcasters and Video Editors Are Quietly Switching to OpusClip to Stop spending hours manually clipping one long recording into shareable short-form videos",
    "excerpt": "Most podcasters assume their biggest editing bottleneck is cutting the main episode. It's not. A 2026 study of 400+ content creators found that 73% spend more t…",
    "date": "Nov 02, 2026"
-  },
-  {
-   "href": "articles/tired-of-spending-hours-manually-clipping-one-long-recording.html",
-   "img": "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "Tired of spending hours manually clipping one long recording into shareable short-form videos? Here's the OpusClip Fix Podcasters and Video Editors Are Using in 2026",
-   "excerpt": "Ever finish recording a killer podcast episode or client video, feel great about the content, then realize you now have to spend the next six hours scrubbing th…",
-   "date": "Nov 01, 2026"
   }
  ]
 }
