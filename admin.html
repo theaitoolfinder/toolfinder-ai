@@ -142,45 +142,18 @@
 </head>
 <body>
 
-<!-- ===== First-time setup ===== -->
-<div id="setup" class="gate" style="display:none">
-  <h1>🔑 Set up admin access</h1>
-  <p>First-time setup — choose a secure passphrase and connect your GitHub repo. These are stored safely (hash only — never the raw passphrase).</p>
-  <div style="margin-bottom:10px">
-    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">GitHub Personal Access Token</label>
-    <input id="setup-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
-    <div style="font-size:11.5px;color:var(--text-dim);margin-top:4px">Create at github.com/settings/tokens — needs <b>Contents: Write</b> permission. Stored in your browser only.</div>
-  </div>
-  <div style="margin-bottom:10px">
-    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">Repository (owner/repo)</label>
-    <input id="setup-repo" type="text" value="theaitoolfinder/toolfinder-ai" placeholder="owner/repo" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
-  </div>
-  <div style="margin-bottom:8px">
-    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">New passphrase</label>
-    <input id="setup-pw1" type="password" placeholder="At least 8 characters" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
-  </div>
-  <div>
-    <label style="display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px">Confirm passphrase</label>
-    <input id="setup-pw2" type="password" placeholder="Confirm passphrase" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0">
-  </div>
-  <div class="err" id="setup-err" style="min-height:18px;margin-top:6px"></div>
-  <div style="display:flex;justify-content:flex-end;margin-top:14px">
-    <button class="btn primary" onclick="setupPassphrase()">Save &amp; Unlock</button>
-  </div>
-</div>
-
-<!-- ===== Password gate ===== -->
+<!-- ===== Login (authenticator code) ===== -->
 <div id="gate" class="gate" style="display:none">
   <h1>🔒 Admin access</h1>
-  <p>This page lets you edit affiliate URLs, tool data and site settings for <b>My AI Tools Finder</b>. Your passphrase is stored as a salted SHA-256 hash — never plain text in source code.</p>
-  <input id="pw" type="password" placeholder="Enter passphrase" autocomplete="off" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:8px;font-size:14px;outline:0"/>
-  <div class="err" id="err" style="min-height:18px;margin-top:6px"></div>
+  <p>Open <b>Google Authenticator</b> on your phone and type the 6-digit code shown for <b>My AI Tools Finder</b>.</p>
+  <input id="otp" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="7" placeholder="6-digit code" autocomplete="one-time-code" onkeydown="if(event.key==='Enter')unlockWithCode()" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:14px 12px;border-radius:8px;font-size:22px;letter-spacing:.35em;text-align:center;outline:0">
+  <div class="err" id="otp-err" style="min-height:18px;margin-top:6px"></div>
   <div style="display:flex;justify-content:flex-end;margin-top:14px">
-    <button class="btn primary" onclick="unlock()">Unlock</button>
+    <button class="btn primary" id="otp-btn" onclick="unlockWithCode()">Sign in</button>
   </div>
   <p style="margin-top:14px;font-size:11.5px;line-height:1.6;color:var(--text-dim)">
-    ✅ Settings sync across all your devices via GitHub.<br>
-    🔄 To reset passphrase: delete <code>data/admin_config.json</code> from your repo, then reload this page.
+    The code changes every 30 seconds. If it says "wrong", wait for the next one and try again.<br>
+    Lost your phone? Re-add the setup key from your saved <code>admin-2fa-setup.txt</code> to a new authenticator.
   </p>
 </div>
 
@@ -345,28 +318,7 @@
       <input type="text" id="cfg-google-place-id" placeholder="ChIJ…" autocomplete="off" />
     </div>
 
-    <!-- Change Passphrase -->
-    <h3 style="margin:28px 0 4px;font-size:15px;font-weight:700;color:var(--text)">Change Admin Passphrase</h3>
-    <p style="font-size:13px;color:var(--text-dim);margin:0 0 14px;line-height:1.6">Use a strong passphrase — at least 12 characters, mixing letters, numbers and symbols. The new hash is saved to GitHub so it works on all your devices.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:end" id="chpw-grid">
-      <div>
-        <label>Current passphrase</label>
-        <input type="password" id="chpw-current" placeholder="Current passphrase" autocomplete="current-password" />
-      </div>
-      <div>
-        <label>New passphrase</label>
-        <input type="password" id="chpw-new" placeholder="Min 12 characters" autocomplete="new-password" />
-      </div>
-      <div>
-        <label>Confirm new passphrase</label>
-        <input type="password" id="chpw-confirm" placeholder="Repeat new passphrase" autocomplete="new-password" />
-      </div>
-      <div style="grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <button class="btn primary" onclick="changePassphrase()">Update Passphrase</button>
-        <span id="chpw-status" style="font-size:13px"></span>
-      </div>
-    </div>
-    <style>@media(max-width:600px){#chpw-grid{grid-template-columns:1fr}}</style>
+    
   </div>
 
   <!-- ANALYTICS TAB -->
@@ -707,10 +659,9 @@
 
 <script>
 /* =========================================================
-   AUTH — passphrase hash stored in data/admin_config.json.
-   No password lives in this source file.
-   First-time setup: the setup form creates admin_config.json.
-   To reset: delete data/admin_config.json from GitHub repo.
+   AUTH — Google Authenticator code, verified by the admin-auth
+   Cloudflare Worker (workers/admin-auth.js). No password and no
+   secret key live in this public file.
    ========================================================= */
 const LS_AUTH       = "myai_admin_auth_v1";
 const LS_OVERRIDES  = "myai_admin_overrides_v1";  // shared with index.html
@@ -720,16 +671,6 @@ const LS_SITECONFIG = "myai_site_config_v1";
 async function sha256(str){
   const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
   return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-
-/* ── Admin config (salted hash in data/admin_config.json) ─ */
-let _adminCfg=null;
-async function fetchAdminConfig(){
-  try{
-    const r=await fetch('/data/admin_config.json?_='+Date.now(),{cache:'no-store'});
-    if(r.ok){_adminCfg=await r.json();return true;}
-  }catch(e){}
-  return false;
 }
 
 /* ── Sync saved data from live site — no token needed ────── *
@@ -778,80 +719,34 @@ async function syncFromLiveSite(){
   }catch(e){}
 }
 
-/* ── Unlock (login) ──────────────────────────────────────── */
-async function unlock(){
-  const v=document.getElementById('pw').value;
-  if(!v){document.getElementById('err').textContent='Enter your passphrase.';return;}
-  if(!_adminCfg){const ok=await fetchAdminConfig();if(!ok){document.getElementById('err').textContent='Could not load auth config. Check your connection.';return;}}
-  const h=await sha256(_adminCfg.salt+v);
-  if(h!==_adminCfg.hash){document.getElementById('err').textContent='Wrong passphrase.';return;}
-  sessionStorage.setItem(LS_AUTH,'1');  // sessionStorage = auto-locks on tab/browser close
-  await syncFromLiveSite();          // always works — no token needed
-  await loadOverridesFromGitHub();   // also try GitHub API if token saved
-  showApp();
-}
-
-/* ── First-time setup ────────────────────────────────────── */
-async function setupPassphrase(){
-  const token=document.getElementById('setup-token').value.trim();
-  const repo=(document.getElementById('setup-repo').value||'').trim()||'theaitoolfinder/toolfinder-ai';
-  const pw1=document.getElementById('setup-pw1').value;
-  const pw2=document.getElementById('setup-pw2').value;
-  const err=document.getElementById('setup-err');
+/* ── Login with the authenticator code ──────────────────────
+ * The 6-digit Google Authenticator code is checked by the admin-auth
+ * Cloudflare Worker (workers/admin-auth.js), which holds the secret key.
+ * It returns an 8-hour signed session; this page only keeps its expiry. */
+const ADMIN_AUTH_URL='https://admin-auth.info-myaitoolbox.workers.dev';
+const LS_AUTH_EXP="myai_admin_auth_exp_v1";
+async function unlockWithCode(){
+  const el=document.getElementById('otp'), err=document.getElementById('otp-err'), btn=document.getElementById('otp-btn');
+  const code=(el.value||'').replace(/\s+/g,'');
   err.textContent='';
-  if(!token){err.textContent='GitHub token is required.';return;}
-  if(!repo.includes('/')){err.textContent='Repository must be in owner/repo format (e.g. theaitoolfinder/toolfinder-ai).';return;}
-  if(!pw1){err.textContent='Passphrase cannot be empty.';return;}
-  if(pw1.length<8){err.textContent='Passphrase must be at least 8 characters.';return;}
-  if(pw1!==pw2){err.textContent='Passphrases do not match.';return;}
-  const btn=document.querySelector('#setup .btn.primary');
-  if(btn){btn.disabled=true;btn.textContent='Saving…';}
-  localStorage.setItem('myai_gh_token',token);
-  localStorage.setItem('myai_gh_repo',repo);
-  const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
-  const hash=await sha256(salt+pw1);
-  const cfg={v:1,salt,hash};
-  const res=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: set passphrase hash');
-  if(btn){btn.disabled=false;btn.textContent='Save & Unlock';}
-  if(!res.ok){err.textContent=res.msg||'Failed to commit config.';return;}
-  _adminCfg=cfg;
-  sessionStorage.setItem(LS_AUTH,'1');  // sessionStorage = auto-locks on tab/browser close
-  await syncFromLiveSite();
-  document.getElementById('setup').style.display='none';
-  showApp();
-}
-
-/* ── Change passphrase (while logged in) ─────────────────── */
-async function changePassphrase(){
-  const cur=document.getElementById('chpw-current').value;
-  const pw1=document.getElementById('chpw-new').value;
-  const pw2=document.getElementById('chpw-confirm').value;
-  const st=document.getElementById('chpw-status');
-  st.style.color='var(--danger)';
-  st.textContent='';
-  if(!cur){st.textContent='Enter your current passphrase.';return;}
-  if(!_adminCfg){st.textContent='Auth config not loaded — try refreshing.';return;}
-  const curH=await sha256(_adminCfg.salt+cur);
-  if(curH!==_adminCfg.hash){st.textContent='Current passphrase is wrong.';return;}
-  if(!pw1){st.textContent='New passphrase cannot be empty.';return;}
-  if(pw1.length<12){st.textContent='New passphrase must be at least 12 characters.';return;}
-  if(pw1!==pw2){st.textContent='New passphrases do not match.';return;}
-  if(pw1===cur){st.textContent='New passphrase must be different from current.';return;}
-  const btn=document.querySelector('#chpw-grid .btn.primary');
-  if(btn){btn.disabled=true;btn.textContent='Saving…';}
-  const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');
-  const hash=await sha256(salt+pw1);
-  const cfg={v:1,salt,hash};
-  const res=await commitToGitHub('data/admin_config.json',JSON.stringify(cfg,null,2)+'\n','Admin: update passphrase hash');
-  if(btn){btn.disabled=false;btn.textContent='Update Passphrase';}
-  if(!res.ok){st.textContent=res.msg||'Failed to save — check your GitHub token.';return;}
-  _adminCfg=cfg;
-  document.getElementById('chpw-current').value='';
-  document.getElementById('chpw-new').value='';
-  document.getElementById('chpw-confirm').value='';
-  st.style.color='var(--ok)';
-  st.textContent='✅ Passphrase updated successfully!';
-  setTimeout(()=>{st.textContent='';},5000);
+  if(!/^\d{6}$/.test(code)){err.textContent='Type the 6-digit code from Google Authenticator.';return;}
+  btn.disabled=true; btn.textContent='Checking…';
+  try{
+    const r=await fetch(ADMIN_AUTH_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
+    const d=await r.json().catch(()=>({}));
+    if(r.status===429){err.textContent='Too many wrong codes. Wait 10 minutes and try again.';return;}
+    if(!r.ok||!d.ok){err.textContent=r.status===401?'That code is wrong or was already used. Wait for the next code and try again.':'Login service problem ('+(d.error||('HTTP '+r.status))+').';return;}
+    sessionStorage.setItem(LS_AUTH,'1');   // sessionStorage = also locks when the tab closes
+    sessionStorage.setItem(LS_AUTH_EXP,String(d.exp||(Date.now()+8*3600e3)));
+    el.value='';
+    await syncFromLiveSite();
+    await loadOverridesFromGitHub();
+    showApp();
+  }catch(e){
+    err.textContent='Could not reach the login service. Check your internet and try again.';
+  }finally{
+    btn.disabled=false; btn.textContent='Sign in';
+  }
 }
 
 /* ── Load cross-device overrides + site config from GitHub ── */
@@ -1524,7 +1419,7 @@ const DEFAULT_SITE = {
 };
 
 /* ===== Auth helpers ===== */
-function logout(){ sessionStorage.removeItem(LS_AUTH); location.reload(); }
+function logout(){ sessionStorage.removeItem(LS_AUTH); sessionStorage.removeItem(LS_AUTH_EXP); location.reload(); }
 function isAuthed(){ return sessionStorage.getItem(LS_AUTH) === '1'; }
 function showApp(){
   document.getElementById('gate').style.display = 'none';
@@ -2970,33 +2865,17 @@ async function autoCommitAfterSave(){
    3. No config file → first-time setup.
    ─────────────────────────────────────────────────────────────────────────── */
 (async function initAdmin(){
-  // Restore saved GitHub token/repo into setup-repo input if present
-  const savedRepo=localStorage.getItem('myai_gh_repo')||'theaitoolfinder/toolfinder-ai';
-  const savedToken=localStorage.getItem('myai_gh_token')||'';
-  const setupRepo=document.getElementById('setup-repo');
-  const setupToken=document.getElementById('setup-token');
-  if(setupRepo)setupRepo.value=savedRepo;
-  if(setupToken&&savedToken)setupToken.value=savedToken;
-
-  // If already authed (persisted in localStorage), show app right away
-  if(sessionStorage.getItem(LS_AUTH)==='1'){
+  // Already signed in this tab and the 8-hour session has not expired → straight to the app
+  const exp=parseInt(sessionStorage.getItem(LS_AUTH_EXP)||'0',10);
+  if(sessionStorage.getItem(LS_AUTH)==='1' && exp>Date.now()){
     await syncFromLiveSite();          // always works — no token needed
     await loadOverridesFromGitHub();   // also try GitHub API if token saved
     showApp();
     return;
   }
-
-  // Try to fetch admin_config.json from the live site
-  const configFound=await fetchAdminConfig();
-  if(configFound){
-    document.getElementById('gate').style.display='block';
-    // Pre-focus the passphrase input
-    const pwEl=document.getElementById('pw');
-    if(pwEl)setTimeout(()=>pwEl.focus(),50);
-  }else{
-    // No config exists — first-time setup
-    document.getElementById('setup').style.display='block';
-  }
+  sessionStorage.removeItem(LS_AUTH); sessionStorage.removeItem(LS_AUTH_EXP);
+  document.getElementById('gate').style.display='block';
+  const otp=document.getElementById('otp'); if(otp)setTimeout(()=>otp.focus(),50);
 })();
 
 /* ═══════════════════════════════════════════════════
