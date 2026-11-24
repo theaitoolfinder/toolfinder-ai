@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/tired-of-spending-hours-manually-clipping-one-long-recording-2026-11-24.html",
+   "img": "https://images.unsplash.com/photo-1752650735615-9829d8008a01?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Tired of spending hours manually clipping one long recording into shareable short-form videos? Here's the OpusClip Fix Podcasters and Video Editors Are Using in 2026",
+   "excerpt": "You just wrapped a 90-minute podcast interview, and now you're staring at the timeline knowing you need to carve out 15 clips for Instagram, TikTok, LinkedIn, a…",
+   "date": "Nov 24, 2026"
+  },
+  {
    "href": "articles/still-needing-a-professional-voiceover-but-not-having-the-budget.html",
    "img": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop",
    "cat": "Problem → Solution",
@@ -87,14 +95,6 @@
    "title": "Publishing content that never ranks because it's missing the exact structure and terms Google actually rewards? RankMath AI Is the Fastest Fix in 2026",
    "excerpt": "You published a blog post two months ago that you were certain would rank. The topic was solid, the research was thorough, and you spent an entire weekend writi…",
    "date": "Nov 03, 2026"
-  },
-  {
-   "href": "articles/podcasters-and-video-editors-are-quietly-switching-to-opusclip.html",
-   "img": "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=800&q=85&auto=format&fit=crop",
-   "cat": "Problem → Solution",
-   "title": "Podcasters and Video Editors Are Quietly Switching to OpusClip to Stop spending hours manually clipping one long recording into shareable short-form videos",
-   "excerpt": "Most podcasters assume their biggest editing bottleneck is cutting the main episode. It's not. A 2026 study of 400+ content creators found that 73% spend more t…",
-   "date": "Nov 02, 2026"
   }
  ]
 }
