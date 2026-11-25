@@ -242,6 +242,14 @@
         "Pomerado"
       ],
       "count": 1
+    },
+    {
+      "date": "2026-11-25",
+      "tools": [
+        "Versine",
+        "KradleBench"
+      ],
+      "count": 2
     }
   ]
 }

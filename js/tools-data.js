@@ -777,5 +777,7 @@ window.MYAI_AFF_MAP = {
   "kino ai": "https://kino.ai",
   "rivet": "https://rivet.dev",
   "elevenreader": "https://elevenreader.io",
-  "pomerado": "https://pomerado.dev"
+  "pomerado": "https://pomerado.dev",
+  "versine": "https://versine.com",
+  "kradlebench": "https://kradlebench.dev"
 };
