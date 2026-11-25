@@ -1,22 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-24",
-      "slot": "exclusive",
-      "slug": "agencies-and-ops-teams-stop-losing-hours-of-repetitive-busywork",
-      "title": "Agencies and Ops Teams: Stop Losing hours of repetitive busywork every week — Make.com Solves This in Minutes",
-      "type": "problem_solution",
-      "source": "techcrunch",
-      "hero": "https://images.unsplash.com/photo-1590482930637-c8d907ce02bb?w=800&q=85&auto=format&fit=crop",
-      "topic": "agencies teams stop losing",
-      "pair": "",
-      "tool": "Make.com",
-      "words": 2567,
-      "partners": [
-        "Make.com"
-      ]
-    },
-    {
       "date": "2026-07-25",
       "slot": "morning",
       "slug": "batch-create-a-month-of-instagram-posts-in-90-minutes-with",
@@ -1083,10 +1067,25 @@
       "partners": [
         "OpusClip"
       ]
+    },
+    {
+      "date": "2026-11-25",
+      "slot": "morning",
+      "slug": "video-creators-and-musicians-stop-losing-hours-hunting-for",
+      "title": "Video Creators and Musicians: Stop Losing hours hunting for royalty-free music — Soundraw Solves This in Minutes",
+      "type": "problem_solution",
+      "source": "techcrunch",
+      "hero": "https://images.unsplash.com/photo-1614963552875-7696b187a85d?w=800&q=85&auto=format&fit=crop",
+      "topic": "video creators musicians stop",
+      "pair": "",
+      "tool": "Soundraw",
+      "words": 1985,
+      "partners": [
+        "Soundraw"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1750365919971-7dd273e7b317?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1746608943506-bb1663f3f61a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
@@ -1285,6 +1284,7 @@
     "https://images.unsplash.com/photo-1575507479993-7bb702d5e966?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1667589543257-08665277f1ac?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1752650735615-9829d8008a01?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1752650735615-9829d8008a01?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614963552875-7696b187a85d?w=800&q=85&auto=format&fit=crop"
   ]
 }
