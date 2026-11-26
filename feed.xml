@@ -5,7 +5,7 @@
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Nov 2026 00:00:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 00:00:37 GMT</lastBuildDate>
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
@@ -13,6 +13,14 @@
       <link>https://myaitoolsfinder.com</link>
     </image>
 
+  <item>
+    <title>One Podcast Episode → 10 Viral Clips: The OpusClip + Submagic Pipeline</title>
+    <link>https://myaitoolsfinder.com/articles/one-podcast-episode-10-viral-clips-the-opusclip-submagic-pipeline.html</link>
+    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/one-podcast-episode-10-viral-clips-the-opusclip-submagic-pipeline.html</guid>
+    <pubDate>Thu, 26 Nov 2026 00:00:37 GMT</pubDate>
+    <description>A marketing consultant I know recorded a 45-minute podcast episode with a client in September 2026.</description>
+    <enclosure url="https://images.unsplash.com/photo-1620924333549-6ca69f51e5c2?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>Video Creators and Musicians: Stop Losing hours hunting for royalty-free music — Soundraw Solves This in Minutes</title>
     <link>https://myaitoolsfinder.com/articles/video-creators-and-musicians-stop-losing-hours-hunting-for.html</link>
@@ -404,14 +412,6 @@
     <pubDate>Wed, 05 Aug 2026 00:00:39 GMT</pubDate>
     <description>You finish writing a great blog post on Tuesday afternoon.</description>
     <enclosure url="https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>The Soundraw Trick That Saves Video Creators and Musicians hours hunting for royalty-free music, Starting Today</title>
-    <link>https://myaitoolsfinder.com/articles/the-soundraw-trick-that-saves-video-creators-and-musicians-hours.html</link>
-    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/the-soundraw-trick-that-saves-video-creators-and-musicians-hours.html</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:28 GMT</pubDate>
-    <description>A music licensing service charges $200+ per track for commercial use.</description>
-    <enclosure url="https://images.unsplash.com/photo-1612045195112-f290c693a63d?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
   </item>
   </channel>
 </rss>
