@@ -1,28 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-26",
-      "slot": "morning",
-      "slug": "the-freelance-writer-ai-roadmap-which-tools-to-add-first-and-why",
-      "title": "The Freelance Writer AI Roadmap: Which Tools to Add First (and Why)",
-      "type": "roadmap",
-      "source": "venturebeat",
-      "hero": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=85&auto=format&fit=crop",
-      "topic": "freelance writer roadmap which",
-      "pair": "",
-      "tool": "",
-      "words": 1927,
-      "partners": [
-        "Beehiiv",
-        "ElevenLabs",
-        "Fireflies.ai",
-        "Keyword Insights",
-        "Make.com",
-        "NeuronWriter",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-07-27",
       "slot": "morning",
       "slug": "still-spending-hours-every-week-turning-one-idea-into-blog-posts",
@@ -1084,10 +1062,29 @@
         "OpusClip",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "slot": "exclusive",
+      "slug": "ai-tools-for-real-estate-agents-the-exact-stack-to-build-phase",
+      "title": "AI Tools for Real Estate Agents: The Exact Stack to Build, Phase by Phase",
+      "type": "roadmap",
+      "source": "devto",
+      "hero": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=85&auto=format&fit=crop",
+      "topic": "tools estate agents exact",
+      "pair": "",
+      "tool": "",
+      "words": 2384,
+      "partners": [
+        "ElevenLabs",
+        "Fireflies.ai",
+        "Keyword Insights",
+        "Make.com",
+        "Predis.ai"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1746608943506-bb1663f3f61a?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740818576358-7596eb883cf3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
@@ -1286,6 +1283,7 @@
     "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1752650735615-9829d8008a01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614963552875-7696b187a85d?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1620924333549-6ca69f51e5c2?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1620924333549-6ca69f51e5c2?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=85&auto=format&fit=crop"
   ]
 }

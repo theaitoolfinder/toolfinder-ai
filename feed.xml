@@ -5,7 +5,7 @@
     <link>https://myaitoolsfinder.com</link>
     <description>Honest AI tools reviews, comparisons and workflow guides for solopreneurs, freelancers and creators.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2026 00:00:37 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 00:00:38 GMT</lastBuildDate>
     <atom:link href="https://myaitoolsfinder.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://myaitoolsfinder.com/og-image.png</url>
@@ -13,6 +13,14 @@
       <link>https://myaitoolsfinder.com</link>
     </image>
 
+  <item>
+    <title>AI Tools for Real Estate Agents: The Exact Stack to Build, Phase by Phase</title>
+    <link>https://myaitoolsfinder.com/articles/ai-tools-for-real-estate-agents-the-exact-stack-to-build-phase.html</link>
+    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/ai-tools-for-real-estate-agents-the-exact-stack-to-build-phase.html</guid>
+    <pubDate>Fri, 27 Nov 2026 00:00:38 GMT</pubDate>
+    <description>Six months ago, putting together a competitive market analysis for a listing presentation took 4 hours of pulling comps, writing descriptions, and desig…</description>
+    <enclosure url="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>One Podcast Episode → 10 Viral Clips: The OpusClip + Submagic Pipeline</title>
     <link>https://myaitoolsfinder.com/articles/one-podcast-episode-10-viral-clips-the-opusclip-submagic-pipeline.html</link>
@@ -404,14 +412,6 @@
     <pubDate>Thu, 06 Aug 2026 00:00:35 GMT</pubDate>
     <description>You're charging $75 an hour for client work — web design, copywriting, video editing, whatever your craft is — and you're maxed out at maybe 25 billable…</description>
     <enclosure url="https://images.unsplash.com/photo-1629695004811-b74115f875d4?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>The Real Reason Content Creators Waste 6+ hours a week (And the Writesonic Fix for It)</title>
-    <link>https://myaitoolsfinder.com/articles/the-real-reason-content-creators-waste-6-hours-a-week-and-the.html</link>
-    <guid isPermaLink="true">https://myaitoolsfinder.com/articles/the-real-reason-content-creators-waste-6-hours-a-week-and-the.html</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:39 GMT</pubDate>
-    <description>You finish writing a great blog post on Tuesday afternoon.</description>
-    <enclosure url="https://images.unsplash.com/photo-1676287571987-2f98ced3e6c4?w=800&amp;q=85&amp;auto=format&amp;fit=crop" type="image/jpeg" length="0"/>
   </item>
   </channel>
 </rss>
