@@ -1,6 +1,14 @@
 {
  "articles": [
   {
+   "href": "articles/tired-of-guessing-at-keywords-instead-of-knowing-exactly-what.html",
+   "img": "https://images.unsplash.com/photo-1591144670842-ac7c69216bec?w=800&q=85&auto=format&fit=crop",
+   "cat": "Problem → Solution",
+   "title": "Tired of guessing at keywords instead of knowing exactly what will actually rank before you write a single word? Here's the NeuronWriter Fix Content Marketers Are Using in 2026",
+   "excerpt": "Most content marketers assume the hard part of SEO is writing the content. But here's what the top 8% know: the writers who consistently rank aren't better at w…",
+   "date": "Nov 28, 2026"
+  },
+  {
    "href": "articles/one-podcast-episode-10-viral-clips-the-opusclip-submagic-pipeline.html",
    "img": "https://images.unsplash.com/photo-1620924333549-6ca69f51e5c2?w=800&q=85&auto=format&fit=crop",
    "cat": "Insider Playbook",
@@ -87,14 +95,6 @@
    "title": "How Podcasters and YouTubers Are Getting Back $200+ per episode With ElevenLabs",
    "excerpt": "Most podcasters and YouTubers assume that professional voiceovers require professional voice actors. That assumption costs them $200–$350 per episode, every sin…",
    "date": "Nov 07, 2026"
-  },
-  {
-   "href": "articles/batch-create-a-month-of-instagram-posts-in-90-minutes-with-2026-11-05.html",
-   "img": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=85&auto=format&fit=crop",
-   "cat": "Insider Playbook",
-   "title": "Batch-Create a Month of Instagram Posts in 90 Minutes With Predis.ai (2026)",
-   "excerpt": "A social media agency charges $2,500 for a month of Instagram content. With Predis.ai and 90 minutes, you'll spend $32 and get 30 carousel posts, 30 captions, a…",
-   "date": "Nov 05, 2026"
   }
  ]
 }

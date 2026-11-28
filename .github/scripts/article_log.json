@@ -1,24 +1,6 @@
 {
   "generated": [
     {
-      "date": "2026-07-27",
-      "slot": "morning",
-      "slug": "still-spending-hours-every-week-turning-one-idea-into-blog-posts",
-      "title": "Still spending hours every week turning one idea into blog posts, captions, and emails that still sound robotic? Writesonic Just Solved Your Biggest Time-Waster",
-      "type": "problem_solution",
-      "source": "devto",
-      "hero": "https://images.unsplash.com/photo-1650821414390-276561abd95a?w=800&q=85&auto=format&fit=crop",
-      "topic": "still spending hours every",
-      "pair": "",
-      "tool": "Writesonic",
-      "words": 1848,
-      "partners": [
-        "Beehiiv",
-        "OpusClip",
-        "Writesonic"
-      ]
-    },
-    {
       "date": "2026-07-28",
       "slot": "morning",
       "slug": "tired-of-publishing-content-that-never-ranks-because-it-s",
@@ -1082,10 +1064,26 @@
         "Make.com",
         "Predis.ai"
       ]
+    },
+    {
+      "date": "2026-11-28",
+      "slot": "morning",
+      "slug": "tired-of-guessing-at-keywords-instead-of-knowing-exactly-what",
+      "title": "Tired of guessing at keywords instead of knowing exactly what will actually rank before you write a single word? Here's the NeuronWriter Fix Content Marketers Are Using in 2026",
+      "type": "problem_solution",
+      "source": "venturebeat",
+      "hero": "https://images.unsplash.com/photo-1591144670842-ac7c69216bec?w=800&q=85&auto=format&fit=crop",
+      "topic": "tired guessing keywords instead",
+      "pair": "",
+      "tool": "NeuronWriter",
+      "words": 2553,
+      "partners": [
+        "Keyword Insights",
+        "NeuronWriter"
+      ]
     }
   ],
   "hero_history": [
-    "https://images.unsplash.com/photo-1770233621425-5d9ee7a0a700?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1740818576358-7596eb883cf3?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=800&q=85&auto=format&fit=crop",
@@ -1284,6 +1282,7 @@
     "https://images.unsplash.com/photo-1752650735615-9829d8008a01?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614963552875-7696b187a85d?w=800&q=85&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1620924333549-6ca69f51e5c2?w=800&q=85&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=85&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=85&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1591144670842-ac7c69216bec?w=800&q=85&auto=format&fit=crop"
   ]
 }
