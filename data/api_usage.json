@@ -926,6 +926,15 @@
    "output_tokens": 3774,
    "requests": 1,
    "cost_usd": 0.067257
+  },
+  {
+   "worker": "discover_tools",
+   "model": "claude-opus-4-5",
+   "date": "2026-11-28T14:48:48.064790+00:00",
+   "input_tokens": 1295,
+   "output_tokens": 951,
+   "requests": 1,
+   "cost_usd": 0.03025
   }
  ],
  "totals": {
@@ -940,10 +949,10 @@
   "discover_tools::claude-opus-4-5": {
    "worker": "discover_tools",
    "model": "claude-opus-4-5",
-   "input_tokens": 28730,
-   "output_tokens": 20186,
-   "requests": 21,
-   "cost_usd": 0.6483
+   "input_tokens": 30025,
+   "output_tokens": 21137,
+   "requests": 22,
+   "cost_usd": 0.67855
   },
   "generate_tool_pages::claude-haiku-4-5": {
    "worker": "generate_tool_pages",
@@ -954,5 +963,5 @@
    "cost_usd": 0.093298
   }
  },
- "updated_at": "2026-11-28T00:02:30.506882+00:00"
+ "updated_at": "2026-11-28T14:48:48.064816+00:00"
 }
